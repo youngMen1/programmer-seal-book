@@ -62,21 +62,15 @@ public class CreateThreadDemo {
 
 ![](/assets/futureTask接口实现关系.png)
 
-
-
 另外由于FeatureTask也实现了Runable接口也可以利用上面第二种方式（实现Runable接口）来新建线程；
 
-- 可以通过Executors将Runable转换成Callable，具体方法是：Callable&lt;T&gt; callable\(Runnable task, T result\)， Callable&lt;Object&gt; callable\(Runnable task\)。
-
-
+* 可以通过Executors将Runable转换成Callable，具体方法是：Callable&lt;T&gt; callable\(Runnable task, T result\)， Callable&lt;Object&gt; callable\(Runnable task\)。
 
 ## 2. 线程状态转换
 
 此图来源于《JAVA并发编程的艺术》一书中，线程是会在不同的状态间进行转换的，java线程线程转换图如上图所示。线程创建之后调用start\(\)方法开始运行，当调用wait\(\),join\(\),LockSupport.lock\(\)方法线程会进入到\*\*WAITING\*\*状态，而同样的
 
 ![](/assets/线程状态转换关系.png)
-
-
 
 wait\(long timeout\)，
 
@@ -103,4 +97,6 @@ LockSupport.parkUtil\(\)增加了超时等待的功能，也就是调用这些�
 isInterrupted（）来感知其他线程对其自身的中断操作，从而做出响应。另外，同样可以调用Thread的静态方法
 
 interrupted（）对当前线程进行中断操作，该方法会清除中断标志位。\*\*需要注意的是，当抛出InterruptedException时候，会清除中断标志位，也就是说在调用isInterrupted会返回false。\*\*
+
+![](/assets/中断线程方法.png)
 
