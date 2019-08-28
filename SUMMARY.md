@@ -20,7 +20,8 @@
 * 并发
 * 操作系统
 * 设计模式
-* 运维 & 统计 & 技术支持
+* [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
+  * 常规监控
 * [中间件](zhong-jian-jian.md)
   * Web Server
 * [网络](wang-luo.md)
