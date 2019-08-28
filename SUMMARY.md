@@ -41,7 +41,8 @@
   * web 安全
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
-* 分布式设计
+* [分布式设计](fen-bu-shi-she-ji.md)
+  * 扩展性设计
 * 设计思想 & 开发模式
 * 项目管理
 
