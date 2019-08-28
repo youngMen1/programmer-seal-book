@@ -17,7 +17,8 @@
     * 二分查找
     * java中的排序工具
   * 布隆过滤器
-* 并发
+* [并发](bing-fa.md)
+  * Java 并发
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
