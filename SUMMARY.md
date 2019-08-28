@@ -19,7 +19,8 @@
   * 布隆过滤器
 * 并发
 * 操作系统
-* 设计模式
+* [设计模式](she-ji-mo-shi.md)
+  * 设计模式的六大原则
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * 常规监控
 * [中间件](zhong-jian-jian.md)
