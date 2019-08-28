@@ -20,7 +20,7 @@
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
-    * 线程状态转换以及基本操作
+    * [线程状态转换以及基本操作](bing-fa/java-bing-fa/xian-cheng-zhuang-tai-zhuan-huan-yi-ji-ji-ben-cao-zuo.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
