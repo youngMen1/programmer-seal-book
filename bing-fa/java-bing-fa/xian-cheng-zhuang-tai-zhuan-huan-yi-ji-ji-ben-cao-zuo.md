@@ -100,3 +100,43 @@ interrupted（）对当前线程进行中断操作，该方法会清除中断标
 
 ![](/assets/中断线程方法.png)
 
+
+
+下面结合具体的实例来看一看
+
+```
+public class InterruptDemo {
+	    public static void main(String[] args) throws InterruptedException {
+	        //sleepThread睡眠1000ms
+	        final Thread sleepThread = new Thread() {
+	            @Override
+	            public void run() {
+	                try {
+	                    Thread.sleep(1000);
+	                } catch (InterruptedException e) {
+	                    e.printStackTrace();
+	                }
+	                super.run();
+	            }
+	        };
+	        //busyThread一直执行死循环
+	        Thread busyThread = new Thread() {
+	            @Override
+	            public void run() {
+	                while (true) ;
+	            }
+	        };
+	        sleepThread.start();
+	        busyThread.start();
+	        sleepThread.interrupt();
+	        busyThread.interrupt();
+	        while (sleepThread.isInterrupted()) ;
+	        System.out.println("sleepThread isInterrupted: " + sleepThread.isInterrupted());
+	        System.out.println("busyThread isInterrupted: " + busyThread.isInterrupted());
+	    }
+	}
+
+```
+
+
+
