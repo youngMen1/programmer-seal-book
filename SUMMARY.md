@@ -23,7 +23,7 @@
     * [线程状态转换以及基本操作](bing-fa/java-bing-fa/xian-cheng-zhuang-tai-zhuan-huan-yi-ji-ji-ben-cao-zuo.md)
     * [Java内存模型以及happens-before](bing-fa/java-bing-fa/javanei-cun-mo-xing-yi-ji-happens-before.md)
     * [java关键字---synchronized](bing-fa/java-bing-fa/javaguan-jian5b57-synchronized.md)
-    * java关键字---volatile
+    * [java关键字---volatile](bing-fa/java-bing-fa/javaguan-jian-5b57-volatile.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
