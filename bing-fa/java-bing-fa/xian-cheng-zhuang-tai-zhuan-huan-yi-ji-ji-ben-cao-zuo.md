@@ -143,9 +143,33 @@ public class InterruptDemo {
 
 开启了两个线程分别为sleepThread和BusyThread, sleepThread睡眠1s，BusyThread执行死循环。然后分别对着两个线程进行中断操作，可以看出sleepThread抛出InterruptedException后清除标志位，而busyThread就不会清除标志位。
 
-
-
 另外，同样可以通过中断的方式实现线程间的简单交互， while \(sleepThread.isInterrupted\(\)\) 表示在Main中会持续监测sleepThread，一旦sleepThread的中断标志位清零，即sleepThread.isInterrupted\(\)返回为false时才会继续Main线程才会继续往下执行。因此，中断操作可以看做线程间一种简便的交互方式。一般在\*\*结束线程时通过中断标志位或者标志位的方式可以有机会去清理资源，相对于武断而直接的结束线程，这种方式要优雅和安全。\*\*
+
+## 3.2.	join
+
+join方法可以看做是线程间协作的一种方式，很多时候，一个线程的输入可能非常依赖于另一个线程的输出，这就像两个好基友，一个基友先走在前面突然看见另一个基友落在后面了，这个时候他就会在原处等一等这个基友，等基友赶上来后，就两人携手并进。其实线程间的这种协作方式也符合现实生活。在软件开发的过程中，从客户那里获取需求后，需要经过需求分析师进行需求分解后，这个时候产品，开发才会继续跟进。如果一个线程实例A执行了threadB.join\(\),其含义是：当前线程A会等待threadB线程终止后threadA才会继续执行。关于join方法一共提供如下这些方法:
+
+&gt; public final synchronized void join\(long millis\)
+
+&gt; public final synchronized void join\(long millis, int nanos\)
+
+&gt; public final void join\(\) throws InterruptedException
+
+
+
+Thread类除了提供join\(\)方法外，另外还提供了超时等待的方法，如果线程threadB在等待的时间内还没有结束的话，threadA会在超时之后继续执行。join方法源码关键是：
+
+
+
+	 while \(isAlive\(\)\) {
+
+	    wait\(0\);
+
+	 }
+
+
+
+可以看出来当前等待对象threadA会一直阻塞，直到被等待对象threadB结束后即isAlive\(\)返回false的时候才会结束while循环，当threadB退出时会调用notifyAll\(\)方法通知所有的等待线程。下面用一个具体的例子来说说join方法的使用：
 
 
 
