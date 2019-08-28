@@ -158,13 +158,13 @@ CAS的实现需要硬件指令集的支撑，在JDK1.5后虚拟机才可以使�
 
 在同步的时候是获取对象的monitor,即获取到对象的锁。那么对象的锁怎么理解？无非就是类似对对象的一个标志，那么这个标志就是存放在Java对象的对象头。Java对象头里的Mark Word里默认的存放的对象的Hashcode,分代年龄和锁标记位。32为JVM Mark Word默认存储结构为（注:java对象头以及下面的锁状态变化摘自《java并发编程的艺术》一书，该书我认为写的足够好，就没在自己组织语言班门弄斧了）：
 
-!\[Mark Word存储结构\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cff10307a29?w=700&h=71&f=png&s=23717\](https://user-gold-cdn.xitu.io/2018/4/30/16315cff10307a29?w=700&h=71&f=png&s=23717\)\)
+!\[Mark Word存储结构\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cff10307a29?w=700&h=71&f=png&s=23717\](https://user-gold-cdn.xitu.io/2018/4/30/16315cff10307a29?w=700&h=71&f=png&s=23717%29\)
 
 如图在Mark Word会默认存放hasdcode，年龄值以及锁标志位等信息。
 
 Java SE 1.6中，锁一共有4种状态，级别从低到高依次是：\*\*无锁状态、偏向锁状态、轻量级锁状态和重量级锁状态\*\*，这几个状态会随着竞争情况逐渐升级。\*\*锁可以升级但不能降级\*\*，意味着偏向锁升级成轻量级锁后不能降级成偏向锁。这种锁升级却不能降级的策略，目的是为了提高获得锁和释放锁的效率。对象的MarkWord变化为下图：
 
-!\[Mark Word状态变化\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315d056598e4c2?w=700&h=151&f=png&s=47968\](https://user-gold-cdn.xitu.io/2018/4/30/16315d056598e4c2?w=700&h=151&f=png&s=47968\)\)
+!\[Mark Word状态变化\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315d056598e4c2?w=700&h=151&f=png&s=47968\](https://user-gold-cdn.xitu.io/2018/4/30/16315d056598e4c2?w=700&h=151&f=png&s=47968%29\)
 
 \#\# 3.2 偏向锁 \#\#
 
@@ -178,13 +178,13 @@ HotSpot的作者经过研究发现，大多数情况下，锁不仅不存在多�
 
 偏向锁使用了一种\*\*等到竞争出现才释放锁\*\*的机制，所以当其他线程尝试竞争偏向锁时，持有偏向锁的线程才会释放锁。
 
-!\[偏向锁撤销流程\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315d0b13b37da4?w=567&h=736&f=png&s=72325\](https://user-gold-cdn.xitu.io/2018/4/30/16315d0b13b37da4?w=567&h=736&f=png&s=72325\)\)
+!\[偏向锁撤销流程\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315d0b13b37da4?w=567&h=736&f=png&s=72325\](https://user-gold-cdn.xitu.io/2018/4/30/16315d0b13b37da4?w=567&h=736&f=png&s=72325%29\)
 
 如图，偏向锁的撤销，需要等待\*\*全局安全点\*\*（在这个时间点上没有正在执行的字节码）。它会首先暂停拥有偏向锁的线程，然后检查持有偏向锁的线程是否活着，如果线程不处于活动状态，则将对象头设置成无锁状态；如果线程仍然活着，拥有偏向锁的栈会被执行，遍历偏向对象的锁记录，栈中的锁记录和对象头的Mark Word\*\*要么\*\*重新偏向于其他线程，\*\*要么\*\*恢复到无锁或者标记对象不适合作为偏向锁，最后唤醒暂停的线程。
 
 下图线程1展示了偏向锁获取的过程，线程2展示了偏向锁撤销的过程。
 
-!\[偏向锁获取和撤销流程\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223\)\)
+!\[偏向锁获取和撤销流程\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223%29\)
 
 &gt; \*\*如何关闭偏向锁\*\*
 
@@ -200,15 +200,46 @@ HotSpot的作者经过研究发现，大多数情况下，锁不仅不存在多�
 
 轻量级解锁时，会使用原子的CAS操作将Displaced Mark Word替换回到对象头，如果成功，则表示没有竞争发生。如果失败，表示当前锁存在竞争，锁就会膨胀成重量级锁。下图是两个线程同时争夺锁，导致锁膨胀的流程图。
 
-!\[轻量级锁加锁解锁以及锁膨胀\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb9193719c2?w=794&h=772&f=png&s=287958\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb9193719c2?w=794&h=772&f=png&s=287958\)\)
+!\[轻量级锁加锁解锁以及锁膨胀\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb9193719c2?w=794&h=772&f=png&s=287958\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb9193719c2?w=794&h=772&f=png&s=287958%29\)
 
 因为自旋会消耗CPU，为了避免无用的自旋（比如获得锁的线程被阻塞住了），一旦锁升级成重量级锁，就不会再恢复到轻量级锁状态。当锁处于这个状态下，其他线程试图获取锁时，都会被阻塞住，当持有锁的线程释放锁之后会唤醒这些线程，被唤醒的线程就会进行新一轮的夺锁之争。
 
 \#\# 3.5 各种锁的比较 \#\#
 
-!\[各种锁的对比\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb91da523d9?w=800&h=193&f=png&s=116058\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb91da523d9?w=800&h=193&f=png&s=116058\)\)
+!\[各种锁的对比\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb91da523d9?w=800&h=193&f=png&s=116058\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb91da523d9?w=800&h=193&f=png&s=116058%29\)
 
 \# 4. 一个例子 \#
 
 经过上面的理解，我们现在应该知道了该怎样解决了。更正后的代码为：
+
+```
+public class SynchronizedDemo implements Runnable {
+	    private static int count = 0;
+	
+	    public static void main(String[] args) {
+	        for (int i = 0; i < 10; i++) {
+	            Thread thread = new Thread(new SynchronizedDemo());
+	            thread.start();
+	        }
+	        try {
+	            Thread.sleep(500);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	        System.out.println("result: " + count);
+	    }
+	
+	    @Override
+	    public void run() {
+	        synchronized (SynchronizedDemo.class) {
+	            for (int i = 0; i < 1000000; i++)
+	                count++;
+	        }
+	    }
+	}
+```
+
+
+
+
 
