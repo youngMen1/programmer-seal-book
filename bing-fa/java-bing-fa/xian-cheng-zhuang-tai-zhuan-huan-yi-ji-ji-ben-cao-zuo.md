@@ -133,13 +133,10 @@ public class InterruptDemo {
             System.out.println("busyThread isInterrupted: " + busyThread.isInterrupted());
         }
     }
-```
-
 输出结果
-
-&gt; sleepThread isInterrupted: false
-
-&gt; busyThread isInterrupted: true
+> sleepThread isInterrupted: false
+> busyThread isInterrupted: true
+```
 
 开启了两个线程分别为sleepThread和BusyThread, sleepThread睡眠1s，BusyThread执行死循环。然后分别对着两个线程进行中断操作，可以看出sleepThread抛出InterruptedException后清除标志位，而busyThread就不会清除标志位。
 
@@ -167,33 +164,33 @@ while (isAlive()) {
 
 ```
 public class JoinDemo {
-	    public static void main(String[] args) {
-	        Thread previousThread = Thread.currentThread();
-	        for (int i = 1; i <= 10; i++) {
-	            Thread curThread = new JoinThread(previousThread);
-	            curThread.start();
-	            previousThread = curThread;
-	        }
-	    }
-	
-	    static class JoinThread extends Thread {
-	        private Thread thread;
-	
-	        public JoinThread(Thread thread) {
-	            this.thread = thread;
-	        }
-	
-	        @Override
-	        public void run() {
-	            try {
-	                thread.join();
-	                System.out.println(thread.getName() + " terminated.");
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-	}
+        public static void main(String[] args) {
+            Thread previousThread = Thread.currentThread();
+            for (int i = 1; i <= 10; i++) {
+                Thread curThread = new JoinThread(previousThread);
+                curThread.start();
+                previousThread = curThread;
+            }
+        }
+
+        static class JoinThread extends Thread {
+            private Thread thread;
+
+            public JoinThread(Thread thread) {
+                this.thread = thread;
+            }
+
+            @Override
+            public void run() {
+                try {
+                    thread.join();
+                    System.out.println(thread.getName() + " terminated.");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 输出结果为：
 
@@ -208,10 +205,6 @@ public class JoinDemo {
 > Thread-7 terminated.
 > Thread-8 terminated.
 ```
-
-
-
-
 
 
 
