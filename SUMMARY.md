@@ -39,7 +39,8 @@
   * 流式计算
 * [安全](an-quan.md)
   * web 安全
-* 常用开源框架
+* [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
+  * 开源协议
 * 分布式设计
 * 设计思想 & 开发模式
 * 项目管理
