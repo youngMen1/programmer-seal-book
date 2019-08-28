@@ -159,9 +159,59 @@ Thread类除了提供join\(\)方法外，另外还提供了超时等待的方法
 
 ```
 while (isAlive()) {
-	    wait(0);
-	 }
+        wait(0);
+     }
 ```
 
 可以看出来当前等待对象threadA会一直阻塞，直到被等待对象threadB结束后即isAlive\(\)返回false的时候才会结束while循环，当threadB退出时会调用notifyAll\(\)方法通知所有的等待线程。下面用一个具体的例子来说说join方法的使用：
+
+```
+public class JoinDemo {
+	    public static void main(String[] args) {
+	        Thread previousThread = Thread.currentThread();
+	        for (int i = 1; i <= 10; i++) {
+	            Thread curThread = new JoinThread(previousThread);
+	            curThread.start();
+	            previousThread = curThread;
+	        }
+	    }
+	
+	    static class JoinThread extends Thread {
+	        private Thread thread;
+	
+	        public JoinThread(Thread thread) {
+	            this.thread = thread;
+	        }
+	
+	        @Override
+	        public void run() {
+	            try {
+	                thread.join();
+	                System.out.println(thread.getName() + " terminated.");
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	}
+
+输出结果为：
+
+> main terminated.
+> Thread-0 terminated.
+> Thread-1 terminated.
+> Thread-2 terminated.
+> Thread-3 terminated.
+> Thread-4 terminated.
+> Thread-5 terminated.
+> Thread-6 terminated.
+> Thread-7 terminated.
+> Thread-8 terminated.
+```
+
+
+
+
+
+
 
