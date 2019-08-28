@@ -55,5 +55,12 @@ public class CreateThreadDemo {
         }
 ```
 
-三种新建线程的方式具体看以上注释，需要主要的是：- 由于java不能多继承可以实现多个接口，因此，在创建线程的时候尽量多考虑采用实现接口的形式；- 实现callable接口，提交给ExecutorService返回的是异步执行的结果，另外，通常也可以利用FutureTask\(Callable&lt;V&gt; callable\)将callable进行包装然后FeatureTask提交给ExecutorsService。如图，
+三种新建线程的方式具体看以上注释，需要主要的是：
+
+* 由于java不能多继承可以实现多个接口，因此，在创建线程的时候尽量多考虑采用实现接口的形式；
+* 实现callable接口，提交给ExecutorService返回的是异步执行的结果，另外，通常也可以利用FutureTask\(Callable&lt;V&gt; callable\)将callable进行包装然后FeatureTask提交给ExecutorsService。如图，
+
+![](/assets/futureTask接口实现关系.png)
+
+
 
