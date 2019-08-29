@@ -277,7 +277,19 @@ private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
     }
 ```
 
-shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitStatus\(pred, ws, Node.SIGNAL\)\`使用CAS将节点状态由INITIAL设置成SIGNAL，表示当前线程阻塞。当compareAndSetWaitStatus设置失败则说明shouldParkAfterFailedAcquire方法返回false，
+shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitStatus\(pred, ws, Node.SIGNAL\)\`使用CAS将节点状态由INITIAL设置成SIGNAL，表示当前线程阻塞。当compareAndSetWaitStatus设置失败则说明shouldParkAfterFailedAcquire方法返回false，
 
 然后会在acquireQueued\(\)方法中for \(;;\)死循环中会继续重试，直至compareAndSetWaitStatus设置节点状态位为SIGNAL时shouldParkAfterFailedAcquire返回true时才会执行方法parkAndCheckInterrupt\(\)方法，该方法的源码为：
+
+```
+	private final boolean parkAndCheckInterrupt() {
+	        //使得该线程阻塞
+			LockSupport.park(this);
+	        return Thread.interrupted();
+	}
+```
+
+
+
+
 
