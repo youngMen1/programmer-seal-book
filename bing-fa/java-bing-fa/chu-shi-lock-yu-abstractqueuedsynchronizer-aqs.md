@@ -10,6 +10,12 @@
 
 \([https://juejin.im/post/5ae9b41b518825670b33e6c4\)，关于CAS可以看\[这篇文章的3.1节\]\(https://juejin.im/post/5ae6dc04f265da0ba351d3ff\)），从整体上来看concurrent包的整体实现图如下图所示：](https://juejin.im/post/5ae9b41b518825670b33e6c4%29，关于CAS可以看[这篇文章的3.1节]%28https://juejin.im/post/5ae6dc04f265da0ba351d3ff%29），从整体上来看concurrent包的整体实现图如下图所示：)
 
+![](/assets/concurrent包实现整体示意图.png)
+
+
+
+
+
 !\[concurrent包实现整体示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-24da822ddc226b03.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-24da822ddc226b03.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 ## 2. lock简介
