@@ -90,3 +90,13 @@ public class VolatileExample {
 
 !\[线程A执行volatile写后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
+
+
+当volatile变量写后，线程中本地内存中共享变量就会置为失效的状态，因此线程B再需要读取从主内存中去读取该变量的最新值。下图就展示了线程B读取同一个volatile变量的内存变化示意图。
+
+![](/assets/线程B读volatile后的内存状态图.png)
+
+
+
+!\[线程B读volatile后的内存状态图\]\(http://upload-images.jianshu.io/upload\_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+
