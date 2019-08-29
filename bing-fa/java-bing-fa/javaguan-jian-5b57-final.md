@@ -215,7 +215,7 @@ public class FinalDemo {
 
 &gt; \*\***写final域重排序规则**\*\*
 
-写final域的重排序规则\*\*禁止对final域的写重排序到构造函数之外\*\*，这个规则的实现主要包含了两个方面：
+写final域的重排序规则\*\***禁止对final域的写重排序到构造函数之外**\*\*，这个规则的实现主要包含了两个方面：
 
 1. JMM禁止编译器把final域的写重排序到构造函数之外；
 
@@ -264,6 +264,10 @@ read\(\)方法主要包含了三个操作：
 3. 初次读引用变量finalDemo的final与b;
 
 假设线程A写过程没有重排序，那么线程A和线程B有一种的可能执行时序为下图：
+
+![](/assets/final域读可能存在的执行时序.png)
+
+
 
 !\[final域读可能存在的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-)
 
