@@ -318,14 +318,48 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：
 
 ```
-	public final boolean release(int arg) {
-	        if (tryRelease(arg)) {
-	            Node h = head;
-	            if (h != null && h.waitStatus != 0)
-	                unparkSuccessor(h);
-	            return true;
-	        }
-	        return false;
+    public final boolean release(int arg) {
+            if (tryRelease(arg)) {
+                Node h = head;
+                if (h != null && h.waitStatus != 0)
+                    unparkSuccessor(h);
+                return true;
+            }
+            return false;
+    }
+```
+
+这段代码逻辑就比较容易理解了，如果同步状态释放成功（tryRelease返回true）则会执行if块中的代码，当head指向的头结点不为null，并且该节点的状态值不为0的话才会执行unparkSuccessor\(\)方法。unparkSuccessor方法源码：
+
+```
+private void unparkSuccessor(Node node) {
+	    /*
+	     * If status is negative (i.e., possibly needing signal) try
+	     * to clear in anticipation of signalling.  It is OK if this
+	     * fails or if status is changed by waiting thread.
+	     */
+	    int ws = node.waitStatus;
+	    if (ws < 0)
+	        compareAndSetWaitStatus(node, ws, 0);
+	
+	    /*
+	     * Thread to unpark is held in successor, which is normally
+	     * just the next node.  But if cancelled or apparently null,
+	     * traverse backwards from tail to find the actual
+	     * non-cancelled successor.
+	     */
+
+		//头节点的后继节点
+	    Node s = node.next;
+	    if (s == null || s.waitStatus > 0) {
+	        s = null;
+	        for (Node t = tail; t != null && t != node; t = t.prev)
+	            if (t.waitStatus <= 0)
+	                s = t;
+	    }
+	    if (s != null)
+			//后继节点不为null时唤醒该线程
+	        LockSupport.unpark(s.thread);
 	}
 ```
 
