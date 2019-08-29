@@ -89,7 +89,7 @@ counter的值；2.对counter加一；3.将新值赋值给变量counter。如果�
 
 synchronized语义表示锁在同一时刻只能由一个线程进行获取，当锁被占用后，其他线程只能等待。因此，synchronized语义就要求线程在访问读写共享变量时只能“串行”执行，因此\*\*synchronized具有有序性\*\*。
 
-&gt; volatile
+**&gt; volatile**
 
 在java内存模型中说过，为了性能优化，编译器和处理器会进行指令重排序；也就是说java程序天然的有序性可以总结为：\*\*如果在本线程
 
