@@ -176,15 +176,11 @@ public class VolatileDemo {
     }
 ```
 
-注意不同点，现在已经\*\*将isOver设置成了volatile变量\*\*，这样在main线程中将isOver改为了true后，thread的工作内存该变量值就会失效，从而需要再次从主内存中读取该值，现在能够读出isOver最新值为true从而能够结束在thread里的死循环，从而能够顺利停止
+注意不同点，现在已经\*\***将isOver设置成了volatile变量**\*\*，这样在main线程中将isOver改为了true后，thread的工作内存该变量值就会失效，从而需要再次从主内存中读取该值，现在能够读出isOver最新值为true从而能够结束在thread里的死循环，从而能够顺利停止
 
 掉thread线程。现在问题也解决了，知识也学到了：）。（如果觉得还不错，请点赞，是对我的一个鼓励。）
 
-
-
 &gt; 参考文献
-
-
 
 《java并发编程的艺术》
 
