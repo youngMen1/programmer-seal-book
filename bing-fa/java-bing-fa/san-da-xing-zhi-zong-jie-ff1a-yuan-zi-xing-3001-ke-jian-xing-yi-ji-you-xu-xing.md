@@ -91,7 +91,30 @@ synchronized语义表示锁在同一时刻只能由一个线程进行获取，�
 
 **&gt; volatile**
 
-在java内存模型中说过，为了性能优化，编译器和处理器会进行指令重排序；也就是说java程序天然的有序性可以总结为：\*\***如果在本线程内观察，所有的操作都是有序的；如果在一个线程观察另一个线程，所有的操作都是无序的**\*\*。在单例模式的实现上有一种双重检验锁定的
+在java内存模型中说过，为了性能优化，编译器和处理器会进行指令重排序；也就是说java程序天然的有序性可以总结为：\*\***如果在本线程内观察，所有的操作都是有序的；如果在一个线程观察另一个线程，所有的操作都是无序的**\*\*。在单例模式的实现上有一种双重检验锁定的方式（Double-checked Locking）。代码如下：
 
-方式（Double-checked Locking）。代码如下：
+```
+public class Singleton {
+	    private Singleton() { }
+	    private volatile static Singleton instance;
+	    public Singleton getInstance(){
+	        if(instance==null){
+	            synchronized (Singleton.class){
+	                if(instance==null){
+	                    instance = new Singleton();
+	                }
+	            }
+	        }
+	        return instance;
+	    }
+	}
+```
+
+
+
+
+
+
+
+
 
