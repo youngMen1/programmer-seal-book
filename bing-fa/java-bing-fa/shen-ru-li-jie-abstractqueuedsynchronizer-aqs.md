@@ -180,7 +180,44 @@ private Node addWaiter(Node mode) {
 
 2. \*\***自旋不断尝试CAS尾插入节点直至成功为止**\*\*。
 
-现在我们已经很清楚获取独占式锁失败的线程包装成Node然后插入同步队列的过程了？那么紧接着会有下一个问题？在同步队列中的节点（线程）会做什么事情了来保证自己能够有机会获得独占式锁了？带着这样的问题我们就来看看acquireQueued\(\)方法，从方法名就可
+现在我们已经很清楚获取独占式锁失败的线程包装成Node然后插入同步队列的过程了？那么紧接着会有下一个问题？在同步队列中的节点（线程）会做什么事情了来保证自己能够有机会获得独占式锁了？带着这样的问题我们就来看看acquireQueued\(\)方法，从方法名就可以很清楚，这个方法的作用就是排队获取锁的过程，源码如下：
 
-以很清楚，这个方法的作用就是排队获取锁的过程，源码如下：
+```
+
+	final boolean acquireQueued(final Node node, int arg) {
+	        boolean failed = true;
+	        try {
+	            boolean interrupted = false;
+	            for (;;) {
+					// 1. 获得当前节点的先驱节点
+	                final Node p = node.predecessor();
+					// 2. 当前节点能否获取独占式锁					
+					// 2.1 如果当前节点的先驱节点是头结点并且成功获取同步状态，即可以获得独占式锁
+	                if (p == head && tryAcquire(arg)) {
+						//队列头指针用指向当前节点
+	                    setHead(node);
+						//释放前驱节点
+	                    p.next = null; // help GC
+	                    failed = false;
+	                    return interrupted;
+	                }
+					// 2.2 获取锁失败，线程进入等待状态等待获取独占式锁
+	                if (shouldParkAfterFailedAcquire(p, node) &&
+	                    parkAndCheckInterrupt())
+	                    interrupted = true;
+	            }
+	        } finally {
+	            if (failed)
+	                cancelAcquire(node);
+	        }
+	}
+```
+
+
+
+
+
+
+
+
 
