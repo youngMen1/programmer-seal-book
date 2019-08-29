@@ -10,17 +10,3 @@ TCP：transmission control protocol 传输控制协议
 
 UDP：user data protocol 用户数据报协议
 
-
-
-| OSI七层网络模型 | TCP/IP四层概念模型   | 对应网络协议 |
-| :--- | :--- | :--- |
-| 应用层（Application） | 应用层 | HTTP、TFTP, FTP, NFS, WAIS、SMTP |
-|  | 表示层（Presentation） | Telnet, Rlogin, SNMP, Gopher |
-|  | 会话层（Session） | SMTP, DNS |
-| 传输层（Transport） | 传输层 | TCP, UDP |
-| 网络层（Network） | 网络层 | IP, ICMP, ARP, RARP, AKP, UUCP |
-| 数据链路层（Data Link） | 数据链路层 | FDDI, Ethernet, Arpanet, PDN, SLIP, PPP |
-|  | 物理层（Physical） | IEEE 802.1A, IEEE 802.2到IEEE 802.11 |
-
-
-
