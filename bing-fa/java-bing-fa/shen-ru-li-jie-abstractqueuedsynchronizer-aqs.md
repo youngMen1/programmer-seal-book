@@ -440,16 +440,55 @@ private void doAcquireInterruptibly(int arg)
 
 ```
 public final boolean tryAcquireNanos(int arg, long nanosTimeout)
-	        throws InterruptedException {
-	    if (Thread.interrupted())
-	        throw new InterruptedException();
-	    return tryAcquire(arg) ||
-			//实现超时等待的效果
-	        doAcquireNanos(arg, nanosTimeout);
-	}
+            throws InterruptedException {
+        if (Thread.interrupted())
+            throw new InterruptedException();
+        return tryAcquire(arg) ||
+            //实现超时等待的效果
+            doAcquireNanos(arg, nanosTimeout);
+    }
 ```
 
+很显然这段源码最终是靠doAcquireNanos方法实现超时等待的效果，该方法源码如下：
 
+```
+private boolean doAcquireNanos(int arg, long nanosTimeout)
+	        throws InterruptedException {
+	    if (nanosTimeout <= 0L)
+	        return false;
+		//1. 根据超时时间和当前时间计算出截止时间
+	    final long deadline = System.nanoTime() + nanosTimeout;
+	    final Node node = addWaiter(Node.EXCLUSIVE);
+	    boolean failed = true;
+	    try {
+	        for (;;) {
+	            final Node p = node.predecessor();
+				//2. 当前线程获得锁出队列
+	            if (p == head && tryAcquire(arg)) {
+	                setHead(node);
+	                p.next = null; // help GC
+	                failed = false;
+	                return true;
+	            }
+				// 3.1 重新计算超时时间
+	            nanosTimeout = deadline - System.nanoTime();
+	            // 3.2 已经超时返回false
+				if (nanosTimeout <= 0L)
+	                return false;
+				// 3.3 线程阻塞等待 
+	            if (shouldParkAfterFailedAcquire(p, node) &&
+	                nanosTimeout > spinForTimeoutThreshold)
+	                LockSupport.parkNanos(this, nanosTimeout);
+	            // 3.4 线程被中断抛出被中断异常
+				if (Thread.interrupted())
+	                throw new InterruptedException();
+	        }
+	    } finally {
+	        if (failed)
+	            cancelAcquire(node);
+	    }
+	}
+```
 
 
 
