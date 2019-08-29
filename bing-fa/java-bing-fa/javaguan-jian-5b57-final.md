@@ -34,10 +34,6 @@ final局部变量由程序员进行显式初始化，如果final局部变量已�
 
 ![](/assets/final修饰局部变量.png)
 
-
-
-
-
 !\[final修饰局部变量\]\([http://upload-images.jianshu.io/upload\_images/2615789-7077bdb169d4d1c3.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-7077bdb169d4d1c3.png?imageMogr2/auto-)
 
 orient/strip%7CimageView2/2/w/1240\)
@@ -46,7 +42,41 @@ orient/strip%7CimageView2/2/w/1240\)
 
 &gt; \*\***final基本数据类型  VS final引用数据类型**\*\*
 
-通过上面的例子我们已经看出来，如果final修饰的是一个基本数据类型的数据，一旦赋值后就不能再次更改，那么，如果final是引用数据
+通过上面的例子我们已经看出来，如果final修饰的是一个基本数据类型的数据，一旦赋值后就不能再次更改，那么，如果final是引用数据类型了？这个引用的对象能够改变吗？我们同样来看一段代码。
 
-类型了？这个引用的对象能够改变吗？我们同样来看一段代码。
+```
+public class FinalExample {
+	    //在声明final实例成员变量时进行赋值
+	    private final static Person person = new Person(24, 170);
+	    public static void main(String[] args) {
+	        //对final引用数据类型person进行更改
+	        person.age = 22;
+	        System.out.println(person.toString());
+	    }
+	    static class Person {
+	        private int age;
+	        private int height;
+	
+	        public Person(int age, int height) {
+	            this.age = age;
+	            this.height = height;
+	        }
+	        @Override
+	        public String toString() {
+	            return "Person{" +
+	                    "age=" + age +
+	                    ", height=" + height +
+	                    '}';
+	        }
+	    }
+	}
+```
+
+
+
+
+
+
+
+
 
