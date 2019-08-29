@@ -15,7 +15,7 @@ synchronized。\[Java内存模型\]\([https://juejin.im/post/5ae6d30951882567312
 volatile是怎样实现了？比如一个很简单的Java代码：
 
 ```
-
+instance = new Instancce()  // instance是volatile变量
 ```
 
 
