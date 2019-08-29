@@ -180,11 +180,7 @@ JDK中提供的八个包装类和String类都是不可变类，我们来看看St
 
 在\[java内存模型\]\([https://juejin.im/post/5ae6d309518825673123fd0e\)中我们知道java内存模型为了能让处理器和编译器底层发挥他](https://juejin.im/post/5ae6d309518825673123fd0e%29中我们知道java内存模型为了能让处理器和编译器底层发挥他)
 
-们的最大优势，对底层的约束就很少，也就是说针对底层来说java内存模型就是一弱内存数据模型。同时，处理器和编译为了性能优化会对
-
-指令序列有\*\***编译器和处理器重排序**\*\*。那么，在多线程情况下,final会进行怎样的重排序？会导致线程安全的问题吗？下面，就来看看
-
-final的重排序。
+们的最大优势，对底层的约束就很少，也就是说针对底层来说java内存模型就是一弱内存数据模型。同时，处理器和编译为了性能优化会对指令序列有\*\***编译器和处理器重排序**\*\*。那么，在多线程情况下,final会进行怎样的重排序？会导致线程安全的问题吗？下面，就来看看final的重排序。
 
 ### 4.1 final域重排序规则
 
@@ -193,7 +189,26 @@ final的重排序。
 先看一段示例性的代码：
 
 ```
-
+public class FinalDemo {
+	    private int a;  //普通域
+	    private final int b; //final域
+	    private static FinalDemo finalDemo;
+	
+	    public FinalDemo() {
+	        a = 1; // 1. 写普通域
+	        b = 2; // 2. 写final域
+	    }
+	
+	    public static void writer() {
+	        finalDemo = new FinalDemo();
+	    }
+	
+	    public static void reader() {
+	        FinalDemo demo = finalDemo; // 3.读对象引用
+	        int a = demo.a;    //4.读普通域
+	        int b = demo.b;    //5.读final域
+	    }
+	}
 ```
 
 
