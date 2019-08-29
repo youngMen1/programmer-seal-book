@@ -90,9 +90,22 @@ public class FinalExample {
 
 &gt; \*\***重写？**\*\*
 
-当父类的方法被final修饰的时候，子类不能重写父类的该方法，比如在Object中，getClass\(\)方法就是final的，我们就不能重写该方法，
-
-但是hashCode\(\)方法就不是被final所修饰的，我们就可以重写hashCode\(\)方法。我们还是来写一个例子来加深一下理解：
+当父类的方法被final修饰的时候，子类不能重写父类的该方法，比如在Object中，getClass\(\)方法就是final的，我们就不能重写该方法，但是hashCode\(\)方法就不是被final所修饰的，我们就可以重写hashCode\(\)方法。我们还是来写一个例子来加深一下理解：
 
 先定义一个父类，里面有final修饰的方法test\(\);
+
+```
+public class FinalExampleParent {
+	    public final void test() {
+	    }
+	}
+```
+
+
+
+
+
+
+
+
 
