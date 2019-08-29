@@ -70,10 +70,9 @@ HTTP是基于传输层的TCP协议，而TCP是一个端到端的面向连接的�
 
 点击"Capture Filter"，此处选择的是"HTTP TCP port（80）"，选择后点击上图的"Start"开始抓包。
 
-  
+然后在浏览器中打开[http://image.baidu.com/，抓包结果如下图所示：](http://image.baidu.com/，抓包结果如下图所示：)
 
-
-然后在浏览器中打开http://image.baidu.com/，抓包结果如下图所示：
+![](/assets/121502073952141.png)
 
 
 
