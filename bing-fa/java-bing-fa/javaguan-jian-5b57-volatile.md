@@ -70,11 +70,11 @@ public class VolatileExample {
 
 上面的实例代码对应的happens-before关系如下图所示：
 
-!\[VolatileExample的happens-before关系推导\]\(http://upload-images.jianshu.io/upload\_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+![](/assets/VolatileExample的happens-before关系推导.png)
 
 
 
 
 
-
+!\[VolatileExample的happens-before关系推导\]\([http://upload-images.jianshu.io/upload\_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
 
