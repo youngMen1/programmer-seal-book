@@ -359,31 +359,25 @@ public class FinalReferenceEscapeDemo {
 
 可能的执行时序如图所示：
 
+![](/assets/final域引用可能的执行时序.png)
 
 
-!\[final域引用可能的执行时序\]\(http://upload-images.jianshu.io/upload\_images/2615789-e020492056ee1242.png?imageMogr2/auto-
+
+
+
+!\[final域引用可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-e020492056ee1242.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-e020492056ee1242.png?imageMogr2/auto-)
 
 orient/strip%7CimageView2/2/w/1240\)
 
+假设一个线程A执行writer方法另一个线程执行reader方法。因为构造函数中操作1和2之间没有数据依赖性，1和2可以重排序，先执行了2，
 
-
-假设一个线程A执行writer方法另一个线程执行reader方法。因为构造函数中操作1和2之间没有数据依赖性，1和2可以重排序，先执行了2，
-
-这个时候引用对象referenceDemo是个没有完全初始化的对象，而当线程B去读取该对象时就会出错。尽管依然满足了final域写重排序规则：
+这个时候引用对象referenceDemo是个没有完全初始化的对象，而当线程B去读取该对象时就会出错。尽管依然满足了final域写重排序规则：
 
 在引用对象对所有线程可见时，其final域已经完全初始化成功。但是，引用对象“this”逸出，该代码依然存在线程安全的问题。
 
-
-
-
-
 &gt; 参看文献
 
-
-
 《java并发编程的艺术》
-
-
 
 《疯狂java讲义》
 
