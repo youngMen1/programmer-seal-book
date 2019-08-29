@@ -85,11 +85,9 @@ counter的值；2.对counter加一；3.将新值赋值给变量counter。如果�
 
 ## 3. 有序性
 
-&gt; synchronized
+**&gt; synchronized**
 
-synchronized语义表示锁在同一时刻只能由一个线程进行获取，当锁被占用后，其他线程只能等待。因此，synchronized语义就要求线程在
-
-访问读写共享变量时只能“串行”执行，因此\*\*synchronized具有有序性\*\*。
+synchronized语义表示锁在同一时刻只能由一个线程进行获取，当锁被占用后，其他线程只能等待。因此，synchronized语义就要求线程在访问读写共享变量时只能“串行”执行，因此\*\*synchronized具有有序性\*\*。
 
 &gt; volatile
 
