@@ -259,9 +259,7 @@ read\(\)方法主要包含了三个操作：
 
 ![](/assets/final域读可能存在的执行时序.png)
 
-!\[final域读可能存在的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-)
-
-orient/strip%7CimageView2/2/w/800\)
+!\[final域读可能存在的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-)orient/strip%7CimageView2/2/w/800\)
 
 读对象的普通域被重排序到了读对象引用的前面就会出现线程B还未读到对象引用就在读取该对象的普通域变量，这显然是错误的操作。而
 
@@ -307,6 +305,12 @@ public class FinalReferenceDemo {
 
 序出现的一种情况来讨论（耐心看完才有收获）。
 
+![](/assets/写final修饰引用类型数据可能的执行时序.png)
+
+
+
+
+
 !\[写final修饰引用类型数据可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-1f5f0a39a3f6977e.png?](http://upload-images.jianshu.io/upload_images/2615789-1f5f0a39a3f6977e.png?)
 
 imageMogr2/auto-orient/strip%7CimageView2/2/w/800\)
@@ -331,11 +335,11 @@ volatile。
 
 1. final域写：禁止\*\***final域写**\*\*与\*\***构造方法**\*\*重排序，即禁止final域写重排序到构造方法之外，从而保证该对象对所有线程可见时，该对象的final域全部已经初始化过。
 
-1. final域读：禁止初次\*\*读对象的引用\*\*与\*\*读该对象包含的final域\*\*的重排序。引用数据类型：
+2. final域读：禁止初次\*\*读对象的引用\*\*与\*\*读该对象包含的final域\*\*的重排序。引用数据类型：
 
 额外增加约束：禁止在构造函数对\*\***一个final修饰的对象的成员域的写入**\*\***与随后将**\*\***这个被构造的对象的引用赋值给引用变量**\*\* 重排序
 
-##  5.final的实现原理 \#
+## 5.final的实现原理 \
 
 上面我们提到过，写final域会要求编译器在final域写之后，构造函数返回前插入一个StoreStore屏障。读final域的重排序规则会要求编译
 
@@ -347,7 +351,7 @@ volatile。
 
 会被省略\*\*！具体是否插入还是得看是什么处理器
 
-## 6. 为什么final引用不能从构造函数中“溢出” \#
+## 6. 为什么final引用不能从构造函数中“溢出” \
 
 这里还有一个比较有意思的问题：上面对final域写重排序规则可以确保我们在使用一个对象引用的时候该对象的final域已经在构造函数被
 
