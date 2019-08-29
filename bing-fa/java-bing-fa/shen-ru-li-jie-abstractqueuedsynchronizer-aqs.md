@@ -150,31 +150,43 @@ private Node addWaiter(Node mode) {
     }
 ```
 
-分析可以看上面的注释。程序的逻辑主要分为两个部分：\*\*1. 当前同步队列的尾节点为null，调用方法enq\(\)插入;2. 当前队列的尾节点不为null，则采用尾插入（compareAndSetTail（）方法）的方式入队。\*\*另外还会有另外一个问题：如果 \`if \(compareAndSetTail
+分析可以看上面的注释。程序的逻辑主要分为两个部分：\*\*1. 当前同步队列的尾节点为null，调用方法enq\(\)插入;2. 当前队列的尾节点不为null，则采用尾插入（compareAndSetTail（）方法）的方式入队。\*\*另外还会有另外一个问题：如果 \`if \(compareAndSetTail
 
-\(pred, node\)\)\`为false怎么办？会继续执行到enq\(\)方法，同时很明显compareAndSetTail是一个CAS操作，通常来说如果CAS操作失败会继续自旋（死循环）进行重试。因此，经过我们这样的分析，enq\(\)方法可能承担两个任务：\*\*1. 处理当前同步队列尾节点为null时进
-
-行入队操作；2. 如果CAS尾插入节点失败后负责自旋进行尝试。\*\*那么是不是真的就像我们分析的一样了？只有源码会告诉我们答案:\),enq\(\)源码如下：
+\(pred, node\)\)\`为false怎么办？会继续执行到enq\(\)方法，同时很明显compareAndSetTail是一个CAS操作，通常来说如果CAS操作失败会继续自旋（死循环）进行重试。因此，经过我们这样的分析，enq\(\)方法可能承担两个任务：\*\*1. 处理当前同步队列尾节点为null时进行入队操作；2. 如果CAS尾插入节点失败后负责自旋进行尝试。\*\*那么是不是真的就像我们分析的一样了？只有源码会告诉我们答案:\),enq\(\)源码如下：
 
 ```
-	private Node enq(final Node node) {
-	        for (;;) {
-	            Node t = tail;
-				if (t == null) { // Must initialize
-					//1. 构造头结点
-	                if (compareAndSetHead(new Node()))
-	                    tail = head;
-	            } else {
-					// 2. 尾插入，CAS操作失败自旋尝试
-	                node.prev = t;
-	                if (compareAndSetTail(t, node)) {
-	                    t.next = node;
-	                    return t;
-	                }
-	            }
-	        }
-	}
+    private Node enq(final Node node) {
+            for (;;) {
+                Node t = tail;
+                if (t == null) { // Must initialize
+                    //1. 构造头结点
+                    if (compareAndSetHead(new Node()))
+                        tail = head;
+                } else {
+                    // 2. 尾插入，CAS操作失败自旋尝试
+                    node.prev = t;
+                    if (compareAndSetTail(t, node)) {
+                        t.next = node;
+                        return t;
+                    }
+                }
+            }
+    }
 ```
 
+在上面的分析中我们可以看出在第1步中会先创建头结点，说明同步队列是\*\*带头结点的链式存储结构\*\*。带头结点与不带头结点相比，会在入队和出队的操作中获得更大的便捷性，因此同步队列选择了带头结点的链式存储结构。那么带头节点的队列初始化时机是什么？
 
+自然而然是在\*\*tail为null时，即当前线程是第一次插入同步队列\*\*。compareAndSetTail\(t, node\)方法会利用CAS操作设置尾节点，如果CAS操作失败会在\`for \(;;\)\`for死循环中不断尝试，直至成功return返回为止。因此，对enq\(\)方法可以做这样的总结：
+
+
+
+1. \*\*在当前线程是第一个加入同步队列时，调用compareAndSetHead\(new Node\(\)\)方法，完成链式队列的头结点的初始化\*\*；
+
+2. \*\*自旋不断尝试CAS尾插入节点直至成功为止\*\*。
+
+
+
+现在我们已经很清楚获取独占式锁失败的线程包装成Node然后插入同步队列的过程了？那么紧接着会有下一个问题？在同步队列中的节点（线程）会做什么事情了来保证自己能够有机会获得独占式锁了？带着这样的问题我们就来看看acquireQueued\(\)方法，从方法名就可
+
+以很清楚，这个方法的作用就是排队获取锁的过程，源码如下：
 
