@@ -144,25 +144,19 @@ public final class FinalExampleParent {
 
 父类会被final修饰，当子类继承该父类的时候，就会报错，如下图：
 
+![](/assets/final类不能继承.png)
 
-
-!\[final类不能继承\]\(http://upload-images.jianshu.io/upload\_images/2615789-835b66d960e21e2e.png?imageMogr2/auto-orient/strip
+!\[final类不能继承\]\([http://upload-images.jianshu.io/upload\_images/2615789-835b66d960e21e2e.png?imageMogr2/auto-orient/strip](http://upload-images.jianshu.io/upload_images/2615789-835b66d960e21e2e.png?imageMogr2/auto-orient/strip)
 
 %7CimageView2/2/w/1240\)
-
-
 
 \# 3. final的例子 \#
 
 final经常会被用作不变类上，利用final的不可更改性。我们先来看看什么是不变类。
 
-&gt; 不变类 
-
-
+&gt; 不变类
 
 不变类的意思是创建该类的实例后，该实例的实例变量是不可改变的。满足以下条件则可以成为不可变类：
-
-
 
 1. 使用private和final修饰符来修饰该类的成员变量
 
@@ -172,43 +166,37 @@ final经常会被用作不变类上，利用final的不可更改性。我们先�
 
 4. 如果有必要就重写Object类 的hashCode\(\)和equals\(\)方法，应该保证用equals\(\)判断相同的两个对象其Hashcode值也是相等的。
 
-
-
 JDK中提供的八个包装类和String类都是不可变类，我们来看看String的实现。
 
+```
+/\*\* The value is used for character storage. \*/
 
-
-	/\*\* The value is used for character storage. \*/
-
-	 private final char value\[\];
+ private final char value\[\];
+```
 
 可以看出String的value就是final修饰的，上述其他几条性质也是吻合的。
 
-
-
 \# 4. 多线程中你真的了解final吗？ \#
 
-上面我们聊的final使用，应该属于\*\*Java基础层面\*\*的，当理解这些后我们就真的算是掌握了final吗？有考虑过final在多线程并发的情况
+上面我们聊的final使用，应该属于\*\*Java基础层面\*\*的，当理解这些后我们就真的算是掌握了final吗？有考虑过final在多线程并发的情况
 
-吗？在\[java内存模型\]\(https://juejin.im/post/5ae6d309518825673123fd0e\)中我们知道java内存模型为了能让处理器和编译器底层发挥他
+吗？在\[java内存模型\]\([https://juejin.im/post/5ae6d309518825673123fd0e\)中我们知道java内存模型为了能让处理器和编译器底层发挥他](https://juejin.im/post/5ae6d309518825673123fd0e%29中我们知道java内存模型为了能让处理器和编译器底层发挥他)
 
-们的最大优势，对底层的约束就很少，也就是说针对底层来说java内存模型就是一弱内存数据模型。同时，处理器和编译为了性能优化会对
+们的最大优势，对底层的约束就很少，也就是说针对底层来说java内存模型就是一弱内存数据模型。同时，处理器和编译为了性能优化会对
 
-指令序列有\*\*编译器和处理器重排序\*\*。那么，在多线程情况下,final会进行怎样的重排序？会导致线程安全的问题吗？下面，就来看看
+指令序列有\*\*编译器和处理器重排序\*\*。那么，在多线程情况下,final会进行怎样的重排序？会导致线程安全的问题吗？下面，就来看看
 
 final的重排序。
 
-
-
 ### 4.1 final域重排序规则
 
-
-
-####  4.1.1 final域为基本类型
+#### 4.1.1 final域为基本类型
 
 先看一段示例性的代码：
 
 ```
 
 ```
+
+
 
