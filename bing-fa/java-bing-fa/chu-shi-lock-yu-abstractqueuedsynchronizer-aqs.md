@@ -28,17 +28,11 @@ Lock lock = new ReentrantLock();
     }
 ```
 
-需要注意的是\*\*synchronized同步块执行完成或者遇到异常是锁会自动释放，而lock必须调用unlock\(\)方法释放锁，因此在finally块中释放锁\*\*。
+需要注意的是\*\***synchronized同步块执行完成或者遇到异常是锁会自动释放，而lock必须调用unlock\(\)方法释放锁，因此在finally块中释放锁**\*\*。
 
-
-
-### 2.1 Lock接口API \#\#
-
-
+### 2.1 Lock接口API 
 
 我们现在就来看看lock接口定义了哪些方法：
-
-
 
 &gt; void lock\(\); //获取锁
 
@@ -50,25 +44,15 @@ Lock lock = new ReentrantLock();
 
 &gt; Condition newCondition\(\);//获取与lock绑定的等待通知组件，当前线程必须获得了锁才能进行等待，进行等待时会先释放锁，当再次获取锁时才能从等待中返回
 
-
-
 上面是lock接口下的五个方法，也只是从源码中英译中翻译了一遍，感兴趣的可以自己的去看看。那么在locks包下有哪些类实现了该接口了？先从最熟悉的ReentrantLock说起。
-
-
 
 &gt; public class ReentrantLock implements \*\*Lock\*\*, java.io.Serializable
 
-
-
-很显然ReentrantLock实现了lock接口，接下来我们来仔细研究一下它是怎样实现的。当你查看源码时你会惊讶的发现ReentrantLock并没有多少代码，另外有一个很明显的特点是：\*\*基本上所有的方法的实现实际上都是调用了其静态内存类\`Sync\`中的方法，而Sync类继
+很显然ReentrantLock实现了lock接口，接下来我们来仔细研究一下它是怎样实现的。当你查看源码时你会惊讶的发现ReentrantLock并没有多少代码，另外有一个很明显的特点是：\*\*基本上所有的方法的实现实际上都是调用了其静态内存类\`Sync\`中的方法，而Sync类继
 
 承了\`AbstractQueuedSynchronizer（AQS）\`\*\*。可以看出要想理解ReentrantLock关键核心在于对队列同步器AbstractQueuedSynchronizer（简称同步器）的理解。
 
-
-
-### 2.2 初识AQS \#\#
-
-
+### 2.2 初识AQS \#\
 
 关于AQS在源码中有十分具体的解释：
 
