@@ -144,17 +144,19 @@ java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 
 ![](/assets/volatile写插入内存屏障示意图.png)
 
-
-
 !\[volatile写插入内存屏障示意图\]\([http://upload-images.jianshu.io/upload\_images/2615789-a31dbae587e8a946.png?imageMogr2/auto-orient/strip\|imageView2/2/w/620\](http://upload-images.jianshu.io/upload_images/2615789-a31dbae587e8a946.png?imageMogr2/auto-orient/strip|imageView2/2/w/620%29\)
-
-
 
 ![](/assets/volatile读插入内存屏障示意图.png)
 
 !\[volatile读插入内存屏障示意图\]\([http://upload-images.jianshu.io/upload\_images/2615789-dc628461898a66a6.png?imageMogr2/auto-orient/strip\|imageView2/2/w/620\](http://upload-images.jianshu.io/upload_images/2615789-dc628461898a66a6.png?imageMogr2/auto-orient/strip|imageView2/2/w/620%29\)
 
-\# 5. 一个示例 \#
+## 5. 一个示例
 
 我们现在已经理解volatile的精华了，文章开头的那个问题我想现在我们都能给出答案了。更正后的代码为：
+
+```
+
+```
+
+
 
