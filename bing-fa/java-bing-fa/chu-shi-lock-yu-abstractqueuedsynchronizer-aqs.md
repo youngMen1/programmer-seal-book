@@ -91,3 +91,28 @@ Provides a framework for implementing blocking locks and related
 
 AQS的设计是使用模板方法设计模式，它将\*\***一些方法开放给子类进行重写，而同步器给同步组件所提供模板方法又会重新调用被子类所重写的方法**\*\*。举个例子，AQS中需要重写的方法tryAcquire：
 
+```
+protected boolean tryAcquire(int arg) {
+	        throw new UnsupportedOperationException();
+	}
+
+ReentrantLock中NonfairSync（继承AQS）会重写该方法为：
+
+	protected final boolean tryAcquire(int acquires) {
+	    return nonfairTryAcquire(acquires);
+	}
+而AQS中的模板方法acquire():
+
+	 public final void acquire(int arg) {
+	        if (!tryAcquire(arg) &&
+	            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+	            selfInterrupt();
+	 }
+```
+
+
+
+
+
+
+
