@@ -131,26 +131,50 @@ AQS中有两个重要的成员变量：
 
 ```
 private Node addWaiter(Node mode) {
-			// 1. 将当前线程构建成Node类型
-	        Node node = new Node(Thread.currentThread(), mode);
-	        // Try the fast path of enq; backup to full enq on failure
-	        // 2. 当前尾节点是否为null？
-			Node pred = tail;
-	        if (pred != null) {
-				// 2.2 将当前节点尾插入的方式插入同步队列中
-	            node.prev = pred;
-	            if (compareAndSetTail(pred, node)) {
-	                pred.next = node;
-	                return node;
-	            }
-	        }
-			// 2.1. 当前同步队列尾节点为null，说明当前线程是第一个加入同步队列进行等待的线程
-	        enq(node);
-	        return node;
-	}
+            // 1. 将当前线程构建成Node类型
+            Node node = new Node(Thread.currentThread(), mode);
+            // Try the fast path of enq; backup to full enq on failure
+            // 2. 当前尾节点是否为null？
+            Node pred = tail;
+            if (pred != null) {
+                // 2.2 将当前节点尾插入的方式插入同步队列中
+                node.prev = pred;
+                if (compareAndSetTail(pred, node)) {
+                    pred.next = node;
+                    return node;
+                }
+            }
+            // 2.1. 当前同步队列尾节点为null，说明当前线程是第一个加入同步队列进行等待的线程
+            enq(node);
+            return node;
+    }
 ```
 
+分析可以看上面的注释。程序的逻辑主要分为两个部分：\*\*1. 当前同步队列的尾节点为null，调用方法enq\(\)插入;2. 当前队列的尾节点不为null，则采用尾插入（compareAndSetTail（）方法）的方式入队。\*\*另外还会有另外一个问题：如果 \`if \(compareAndSetTail
 
+\(pred, node\)\)\`为false怎么办？会继续执行到enq\(\)方法，同时很明显compareAndSetTail是一个CAS操作，通常来说如果CAS操作失败会继续自旋（死循环）进行重试。因此，经过我们这样的分析，enq\(\)方法可能承担两个任务：\*\*1. 处理当前同步队列尾节点为null时进
+
+行入队操作；2. 如果CAS尾插入节点失败后负责自旋进行尝试。\*\*那么是不是真的就像我们分析的一样了？只有源码会告诉我们答案:\),enq\(\)源码如下：
+
+```
+	private Node enq(final Node node) {
+	        for (;;) {
+	            Node t = tail;
+				if (t == null) { // Must initialize
+					//1. 构造头结点
+	                if (compareAndSetHead(new Node()))
+	                    tail = head;
+	            } else {
+					// 2. 尾插入，CAS操作失败自旋尝试
+	                node.prev = t;
+	                if (compareAndSetTail(t, node)) {
+	                    t.next = node;
+	                    return t;
+	                }
+	            }
+	        }
+	}
+```
 
 
 
