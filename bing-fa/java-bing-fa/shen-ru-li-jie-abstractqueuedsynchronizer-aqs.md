@@ -301,7 +301,7 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 
 !\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-##  3.2 独占锁的释放（release\(\)方法）
+## 3.2 独占锁的释放（release\(\)方法）
 
 独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：该方法的关键是会调用LookSupport.park\(\)方法（关于LookSupport会在以后的文章进行讨论），该方法是用来阻塞当前线程的。因此到这里就应该清楚了，acquireQueued\(\)在自旋过程中主要完成了两件事情：
 
@@ -313,7 +313,7 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 
 !\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-###  3.2 独占锁的释放（release\(\)方法）
+### 3.2 独占锁的释放（release\(\)方法）
 
 独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：
 
@@ -385,42 +385,67 @@ acquireInterruptibly方法，源码为：
 
 ```
 public final void acquireInterruptibly(int arg)
-	        throws InterruptedException {
-	    if (Thread.interrupted())
-	        throw new InterruptedException();
-	    if (!tryAcquire(arg))
-			//线程获取锁失败
-	        doAcquireInterruptibly(arg);
-	}
+            throws InterruptedException {
+        if (Thread.interrupted())
+            throw new InterruptedException();
+        if (!tryAcquire(arg))
+            //线程获取锁失败
+            doAcquireInterruptibly(arg);
+    }
 ```
 
 在获取同步状态失败后就会调用doAcquireInterruptibly方法：
 
 ```
 private void doAcquireInterruptibly(int arg)
-	    throws InterruptedException {
-		//将节点插入到同步队列中
-	    final Node node = addWaiter(Node.EXCLUSIVE);
-	    boolean failed = true;
-	    try {
-	        for (;;) {
-	            final Node p = node.predecessor();
-	            //获取锁出队
-				if (p == head && tryAcquire(arg)) {
-	                setHead(node);
-	                p.next = null; // help GC
-	                failed = false;
-	                return;
-	            }
-	            if (shouldParkAfterFailedAcquire(p, node) &&
-	                parkAndCheckInterrupt())
-					//线程中断抛异常
-	                throw new InterruptedException();
-	        }
-	    } finally {
-	        if (failed)
-	            cancelAcquire(node);
-	    }
+        throws InterruptedException {
+        //将节点插入到同步队列中
+        final Node node = addWaiter(Node.EXCLUSIVE);
+        boolean failed = true;
+        try {
+            for (;;) {
+                final Node p = node.predecessor();
+                //获取锁出队
+                if (p == head && tryAcquire(arg)) {
+                    setHead(node);
+                    p.next = null; // help GC
+                    failed = false;
+                    return;
+                }
+                if (shouldParkAfterFailedAcquire(p, node) &&
+                    parkAndCheckInterrupt())
+                    //线程中断抛异常
+                    throw new InterruptedException();
+            }
+        } finally {
+            if (failed)
+                cancelAcquire(node);
+        }
+    }
+```
+
+关键信息请看注释，现在看这段代码就很轻松了吧:\),与acquire方法逻辑几乎一致，唯一的区别是当\*\*parkAndCheckInterrupt\*\*返回true时即线程阻塞时该线程被中断，代码抛出被中断异常。
+
+### 3.4 超时等待式获取锁（tryAcquireNanos\(\)方法）
+
+通过调用lock.tryLock\(timeout,TimeUnit\)方式达到超时等待获取锁的效果，该方法会在三种情况下才会返回：
+
+1. 在超时时间内，当前线程成功获取了锁；
+
+2. 当前线程在超时时间内被中断；
+
+3. 超时时间结束，仍未获得锁返回false。
+
+我们仍然通过采取阅读源码的方式来学习底层具体是怎么实现的，该方法会调用AQS的方法tryAcquireNanos\(\),源码为：
+
+```
+public final boolean tryAcquireNanos(int arg, long nanosTimeout)
+	        throws InterruptedException {
+	    if (Thread.interrupted())
+	        throw new InterruptedException();
+	    return tryAcquire(arg) ||
+			//实现超时等待的效果
+	        doAcquireNanos(arg, nanosTimeout);
 	}
 ```
 
