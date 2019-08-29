@@ -245,11 +245,7 @@ imageMogr2/auto-orient/strip%7CimageView2/2/w/800\)
 
 &gt;\*\***读final域重排序规则**\*\*
 
-读final域重排序规则为：\*\*在一个线程中，初次读对象引用和初次读该对象包含的final域，JMM会禁止这两个操作的重排序。\*\*（注意，这
-
-个规则仅仅是针对处理器），处理器会在读final域操作的前面插入一个LoadLoad屏障。实际上，读对象的引用和读该对象的final域存在间
-
-接依赖性，一般处理器不会重排序这两个操作。但是有一些处理器会重排序，因此，这条禁止重排序规则就是针对这些处理器而设定的。
+读final域重排序规则为：\*\***在一个线程中，初次读对象引用和初次读该对象包含的final域，JMM会禁止这两个操作的重排序。**\*\*（注意，这个规则仅仅是针对处理器），处理器会在读final域操作的前面插入一个LoadLoad屏障。实际上，读对象的引用和读该对象的final域存在间接依赖性，一般处理器不会重排序这两个操作。但是有一些处理器会重排序，因此，这条禁止重排序规则就是针对这些处理器而设定的。
 
 read\(\)方法主要包含了三个操作：
 
@@ -283,135 +279,106 @@ final域的读操作就“限定”了在读final域变量前已经读到了该�
 
 ```
 public class FinalReferenceDemo {
-	    final int[] arrays;
-	    private FinalReferenceDemo finalReferenceDemo;
-	
-	    public FinalReferenceDemo() {
-	        arrays = new int[1];  //1
-	        arrays[0] = 1;        //2
-	    }
-	
-	    public void writerOne() {
-	        finalReferenceDemo = new FinalReferenceDemo(); //3
-	    }
-	
-	    public void writerTwo() {
-	        arrays[0] = 2;  //4
-	    }
-	
-	    public void reader() {
-	        if (finalReferenceDemo != null) {  //5
-	            int temp = finalReferenceDemo.arrays[0];  //6
-	        }
-	    }
-	}
+        final int[] arrays;
+        private FinalReferenceDemo finalReferenceDemo;
+
+        public FinalReferenceDemo() {
+            arrays = new int[1];  //1
+            arrays[0] = 1;        //2
+        }
+
+        public void writerOne() {
+            finalReferenceDemo = new FinalReferenceDemo(); //3
+        }
+
+        public void writerTwo() {
+            arrays[0] = 2;  //4
+        }
+
+        public void reader() {
+            if (finalReferenceDemo != null) {  //5
+                int temp = finalReferenceDemo.arrays[0];  //6
+            }
+        }
+    }
 ```
 
-针对上面的实例程序，线程线程A执行wirterOne方法，执行完后线程B执行writerTwo方法，然后线程C执行reader方法。下图就以这种执行时
+针对上面的实例程序，线程线程A执行wirterOne方法，执行完后线程B执行writerTwo方法，然后线程C执行reader方法。下图就以这种执行时
 
 序出现的一种情况来讨论（耐心看完才有收获）。
 
-
-
-
-
-!\[写final修饰引用类型数据可能的执行时序\]\(http://upload-images.jianshu.io/upload\_images/2615789-1f5f0a39a3f6977e.png?
+!\[写final修饰引用类型数据可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-1f5f0a39a3f6977e.png?](http://upload-images.jianshu.io/upload_images/2615789-1f5f0a39a3f6977e.png?)
 
 imageMogr2/auto-orient/strip%7CimageView2/2/w/800\)
 
-
-
-由于对final域的写禁止重排序到构造方法外，因此1和3不能被重排序。由于一个final域的引用对象的成员域写入不能与随后将这个被构造
+由于对final域的写禁止重排序到构造方法外，因此1和3不能被重排序。由于一个final域的引用对象的成员域写入不能与随后将这个被构造
 
 出来的对象赋给引用变量重排序，因此2和3不能重排序。
 
-
-
 &gt; \*\*对final修饰的对象的成员域读操作\*\*
 
+JMM可以确保线程C至少能看到写线程A对final引用的对象的成员域的写入，即能看下arrays\[0\] = 1，而写线程B对数组元素的写入可能看到
 
-
-JMM可以确保线程C至少能看到写线程A对final引用的对象的成员域的写入，即能看下arrays\[0\] = 1，而写线程B对数组元素的写入可能看到
-
-可能看不到。JMM不保证线程B的写入对线程C可见，线程B和线程C之间存在数据竞争，此时的结果是不可预知的。如果可见的，可使用锁或者
+可能看不到。JMM不保证线程B的写入对线程C可见，线程B和线程C之间存在数据竞争，此时的结果是不可预知的。如果可见的，可使用锁或者
 
 volatile。
 
-
-
 &gt;\*\*关于final重排序的总结\*\*
-
-
 
 按照final修饰的数据类型分类：
 
-
-
 基本数据类型:
 
-
-
-1. final域写：禁止\*\*final域写\*\*与\*\*构造方法\*\*重排序，即禁止final域写重排序到构造方法之外，从而保证该对象对所有线程可见时，
+1. final域写：禁止\*\*final域写\*\*与\*\*构造方法\*\*重排序，即禁止final域写重排序到构造方法之外，从而保证该对象对所有线程可见时，
 
 该对象的final域全部已经初始化过。
 
-2. final域读：禁止初次\*\*读对象的引用\*\*与\*\*读该对象包含的final域\*\*的重排序。
-
-
+1. final域读：禁止初次\*\*读对象的引用\*\*与\*\*读该对象包含的final域\*\*的重排序。
 
 引用数据类型：
 
-
-
 额外增加约束：禁止在构造函数对\*\*一个final修饰的对象的成员域的写入\*\*与随后将\*\*这个被构造的对象的引用赋值给引用变量\*\* 重排序
-
-
 
 \# 5.final的实现原理 \#
 
-上面我们提到过，写final域会要求编译器在final域写之后，构造函数返回前插入一个StoreStore屏障。读final域的重排序规则会要求编译
+上面我们提到过，写final域会要求编译器在final域写之后，构造函数返回前插入一个StoreStore屏障。读final域的重排序规则会要求编译
 
 器在读final域的操作前插入一个LoadLoad屏障。
 
+很有意思的是，如果以X86处理为例，X86不会对写-写重排序，所以\*\*StoreStore屏障可以省略\*\*。由于\*\*不会对有间接依赖性的操作重排序
 
-
-很有意思的是，如果以X86处理为例，X86不会对写-写重排序，所以\*\*StoreStore屏障可以省略\*\*。由于\*\*不会对有间接依赖性的操作重排序
-
-\*\*，所以在X86处理器中，读final域需要的\*\*LoadLoad屏障也会被省略掉\*\*。也就是说，\*\*以X86为例的话，对final域的读/写的内存屏障都
+\*\*，所以在X86处理器中，读final域需要的\*\*LoadLoad屏障也会被省略掉\*\*。也就是说，\*\*以X86为例的话，对final域的读/写的内存屏障都
 
 会被省略\*\*！具体是否插入还是得看是什么处理器
 
-
-
 \# 6. 为什么final引用不能从构造函数中“溢出” \#
 
-这里还有一个比较有意思的问题：上面对final域写重排序规则可以确保我们在使用一个对象引用的时候该对象的final域已经在构造函数被
+这里还有一个比较有意思的问题：上面对final域写重排序规则可以确保我们在使用一个对象引用的时候该对象的final域已经在构造函数被
 
-初始化过了。但是这里其实是有一个前提条件的，也就是：\*\*在构造函数，不能让这个被构造的对象被其他线程可见，也就是说该对象引用
+初始化过了。但是这里其实是有一个前提条件的，也就是：\*\*在构造函数，不能让这个被构造的对象被其他线程可见，也就是说该对象引用
 
 不能在构造函数中“逸出”\*\*。以下面的例子来说：
 
 ```
 public class FinalReferenceEscapeDemo {
-	    private final int a;
-	    private FinalReferenceEscapeDemo referenceDemo;
-	
-	    public FinalReferenceEscapeDemo() {
-	        a = 1;  //1
-	        referenceDemo = this; //2
-	    }
-	
-	    public void writer() {
-	        new FinalReferenceEscapeDemo();
-	    }
-	
-	    public void reader() {
-	        if (referenceDemo != null) {  //3
-	            int temp = referenceDemo.a; //4
-	        }
-	    }
-	}
+        private final int a;
+        private FinalReferenceEscapeDemo referenceDemo;
 
+        public FinalReferenceEscapeDemo() {
+            a = 1;  //1
+            referenceDemo = this; //2
+        }
+
+        public void writer() {
+            new FinalReferenceEscapeDemo();
+        }
+
+        public void reader() {
+            if (referenceDemo != null) {  //3
+                int temp = referenceDemo.a; //4
+            }
+        }
+    }
 ```
 
 
