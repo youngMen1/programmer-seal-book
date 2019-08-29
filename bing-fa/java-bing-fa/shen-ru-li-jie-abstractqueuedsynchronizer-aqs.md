@@ -97,21 +97,33 @@ AQS中有两个重要的成员变量：
 
 ![](/assets/队列的示意图.png)
 
-
-
-!\[队列示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[队列示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 通过对源码的理解以及做实验的方式，现在我们可以清楚的知道这样几点：
 
-1. \*\*节点的数据结构，即AQS的静态内部类Node,节点的等待状态等信息\*\*；
+1. \*\***节点的数据结构，即AQS的静态内部类Node,节点的等待状态等信息**\*\*；
 
-2. \*\*同步队列是一个双向队列，AQS通过持有头尾指针管理同步队列\*\*；
+2. \*\***同步队列是一个双向队列，AQS通过持有头尾指针管理同步队列**\*\*；
 
 那么，节点如何进行入队和出队是怎样做的了？实际上这对应着锁的获取和释放两个操作：获取锁失败进行入队操作，获取锁成功进行出队操作。
 
-\# 3. 独占锁 \#
+##  3. 独占锁 
 
-\#\# 3.1 独占锁的获取（acquire方法）
+### 3.1 独占锁的获取（acquire方法）
 
-我们继续通过看源码和debug的方式来看，还是以上面的demo为例，调用lock\(\)方法是获取独占式锁，获取失败就将当前线程加入同步队列，成功则线程执行。而lock\(\)方法实际上会调用AQS的\*\*acquire\(\)\*\*方法，源码如下
+我们继续通过看源码和debug的方式来看，还是以上面的demo为例，调用lock\(\)方法是获取独占式锁，获取失败就将当前线程加入同步队列，成功则线程执行。而lock\(\)方法实际上会调用AQS的\*\***acquire\(\)**\*\*方法，源码如下
+
+```
+	public final void acquire(int arg) {
+			//先看同步状态是否获取成功，如果成功则方法结束返回
+			//若失败则先调用addWaiter()方法再调用acquireQueued()方法
+	        if (!tryAcquire(arg) &&
+	            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+	            selfInterrupt();
+	}
+```
+
+
+
+
 
