@@ -556,3 +556,16 @@ private void doAcquireShared(int arg) {
 
 共享锁的释放在AQS中会调用方法releaseShared：
 
+```
+public final boolean releaseShared(int arg) {
+	    if (tryReleaseShared(arg)) {
+	        doReleaseShared();
+	        return true;
+	    }
+	    return false;
+	}
+
+```
+
+
+
