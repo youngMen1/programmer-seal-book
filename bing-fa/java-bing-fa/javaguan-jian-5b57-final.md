@@ -96,16 +96,20 @@ public class FinalExample {
 
 ```
 public class FinalExampleParent {
-	    public final void test() {
-	    }
-	}
+        public final void test() {
+        }
+    }
 ```
 
+然后FinalExample继承该父类，当重写test\(\)方法时出现报错，如下图：
 
 
 
+!\[final方法不能重写\]\(http://upload-images.jianshu.io/upload\_images/2615789-5d831da449f512e9.png?imageMogr2/auto-
+
+orient/strip%7CimageView2/2/w/1240\)
 
 
 
-
+通过这个现象我们就可以看出来\*\*被final修饰的方法不能够被子类所重写\*\*。
 
