@@ -155,7 +155,25 @@ java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 我们现在已经理解volatile的精华了，文章开头的那个问题我想现在我们都能给出答案了。更正后的代码为：
 
 ```
-
+public class VolatileDemo {
+	    private static volatile boolean isOver = false;
+	
+	    public static void main(String[] args) {
+	        Thread thread = new Thread(new Runnable() {
+	            @Override
+	            public void run() {
+	                while (!isOver) ;
+	            }
+	        });
+	        thread.start();
+	        try {
+	            Thread.sleep(500);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	        isOver = true;
+	    }
+	}
 ```
 
 
