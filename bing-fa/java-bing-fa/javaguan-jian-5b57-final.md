@@ -148,7 +148,7 @@ public final class FinalExampleParent {
 
 !\[final类不能继承\]\([http://upload-images.jianshu.io/upload\_images/2615789-835b66d960e21e2e.png?imageMogr2/auto-orient/strip](http://upload-images.jianshu.io/upload_images/2615789-835b66d960e21e2e.png?imageMogr2/auto-orient/strip)%7CimageView2/2/w/1240\)
 
-##  3. final的例子 
+## 3. final的例子
 
 final经常会被用作不变类上，利用final的不可更改性。我们先来看看什么是不变类。
 
@@ -174,7 +174,7 @@ JDK中提供的八个包装类和String类都是不可变类，我们来看看St
 
 可以看出String的value就是final修饰的，上述其他几条性质也是吻合的。
 
-##  4. 多线程中你真的了解final吗？ 
+## 4. 多线程中你真的了解final吗？
 
 上面我们聊的final使用，应该属于\*\*Java基础层面\*\*的，当理解这些后我们就真的算是掌握了final吗？有考虑过final在多线程并发的情况吗？
 
@@ -182,7 +182,7 @@ JDK中提供的八个包装类和String类都是不可变类，我们来看看St
 
 们的最大优势，对底层的约束就很少，也就是说针对底层来说java内存模型就是一弱内存数据模型。同时，处理器和编译为了性能优化会对
 
-指令序列有\*\*编译器和处理器重排序\*\*。那么，在多线程情况下,final会进行怎样的重排序？会导致线程安全的问题吗？下面，就来看看
+指令序列有\*\***编译器和处理器重排序**\*\*。那么，在多线程情况下,final会进行怎样的重排序？会导致线程安全的问题吗？下面，就来看看
 
 final的重排序。
 
