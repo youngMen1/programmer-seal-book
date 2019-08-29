@@ -30,7 +30,7 @@ Lock lock = new ReentrantLock();
 
 需要注意的是\*\***synchronized同步块执行完成或者遇到异常是锁会自动释放，而lock必须调用unlock\(\)方法释放锁，因此在finally块中释放锁**\*\*。
 
-### 2.1 Lock接口API 
+### 2.1 Lock接口API
 
 我们现在就来看看lock接口定义了哪些方法：
 
@@ -52,7 +52,34 @@ Lock lock = new ReentrantLock();
 
 承了\`AbstractQueuedSynchronizer（AQS）\`\*\*。可以看出要想理解ReentrantLock关键核心在于对队列同步器AbstractQueuedSynchronizer（简称同步器）的理解。
 
-### 2.2 初识AQS \#\
+### 2.2 初识AQS
 
 关于AQS在源码中有十分具体的解释：
+
+```
+Provides a framework for implementing blocking locks and related
+	 synchronizers (semaphores, events, etc) that rely on
+	 first-in-first-out (FIFO) wait queues.  This class is designed to
+	 be a useful basis for most kinds of synchronizers that rely on a
+	 single atomic {@code int} value to represent state. Subclasses
+	 must define the protected methods that change this state, and which
+	 define what that state means in terms of this object being acquired
+	 or released.  Given these, the other methods in this class carry
+	 out all queuing and blocking mechanics. Subclasses can maintain
+	 other state fields, but only the atomically updated {@code int}
+	 value manipulated using methods {@link #getState}, {@link
+	 #setState} and {@link #compareAndSetState} is tracked with respect
+	 to synchronization.
+	 
+	 <p>Subclasses should be defined as non-public internal helper
+	 classes that are used to implement the synchronization properties
+	 of their enclosing class.  Class
+	 {@code AbstractQueuedSynchronizer} does not implement any
+	 synchronization interface.  Instead it defines methods such as
+	 {@link #acquireInterruptibly} that can be invoked as
+	 appropriate by concrete locks and related synchronizers to
+	 implement their public methods.
+```
+
+
 
