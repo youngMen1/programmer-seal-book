@@ -122,7 +122,7 @@ public class Singleton {
 
 !\[不加volatile可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-e7931260b0449eb1.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-e7931260b0449eb1.png?imageMogr2/auto-)orient/strip%7CimageView2/2/w/1240\)
 
-如果2和3进行了重排序的话，线程B进行判断if\(instance==null\)时就会为true，而实际上这个instance并没有初始化成功，显而易见对线程B来说之后的操作就会是错得。而\*\*用volatile修饰\*\*的话就可以禁止2和3操作重排序，从而避免这种情况。\*\*volatile包含禁止指令重排序的语义，其具有有序性\*\*。
+如果2和3进行了重排序的话，线程B进行判断if\(instance==null\)时就会为true，而实际上这个instance并没有初始化成功，显而易见对线程B来说之后的操作就会是错得。而\*\***用volatile修饰\*\*的话就可以禁止2和3操作重排序，从而避免这种情况。\*\*volatile包含禁止指令重排序的语义，其具有有序性**\*\*。
 
 ## 4. 可见性 \
 
