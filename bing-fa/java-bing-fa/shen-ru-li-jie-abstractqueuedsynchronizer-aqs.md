@@ -212,23 +212,19 @@ private Node addWaiter(Node mode) {
     }
 ```
 
-程序逻辑通过注释已经标出，整体来看这是一个这又是一个自旋的过程（for \(;;\)），代码首先获取当前节点的先驱节点，\*\*如果先驱节点是头结点的并且成功获得同步状态的时候（if \(p == head && tryAcquire\(arg\)\)），当前节点所指向的线程能够获取锁\*\*。反之，
+程序逻辑通过注释已经标出，整体来看这是一个这又是一个自旋的过程（for \(;;\)），代码首先获取当前节点的先驱节点，\*\*如果先驱节点是头结点的并且成功获得同步状态的时候（if \(p == head && tryAcquire\(arg\)\)），当前节点所指向的线程能够获取锁\*\*。反之，
 
 获取锁失败进入等待状态。整体示意图为下图：
 
+![](/assets/自旋的获取锁整体示意图.png)
 
 
 
 
-!\[自旋获取锁整体示意图.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
 
-
-
-
+!\[自旋获取锁整体示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
 
 &gt; \*\*获取锁成功，出队操作\*\*
-
-
 
 获取锁的节点出队的逻辑是：
 
