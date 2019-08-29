@@ -2,13 +2,13 @@
 
 在并发编程中分析线程安全的问题时往往需要切入点，那就是\*\***两大核心**\*\*：JMM抽象内存模型以及happens-before规则（在\[这篇文章\]
 
-\(\[[https://juejin.im/post/5ae6d309518825673123fd0e\)中已经经过了），三条性质：\*\*原子性，有序性和可见性\*\*。关于\[synchronized\]\(https://juejin.im/post/5ae6d309518825673123fd0e\)中已经经过了），三条性质：\*\*原子性，有序性和可见性\*\*。关于\[synchronized\)\](https://juejin.im/post/5ae6d309518825673123fd0e%29中已经经过了），三条性质：**原子性，有序性和可见性**。关于[synchronized]%28https://juejin.im/post/5ae6d309518825673123fd0e%29中已经经过了），三条性质：**原子性，有序性和可见性**。关于[synchronized%29\)\]
+\(\[\[[https://juejin.im/post/5ae6d309518825673123fd0e\)中已经经过了），三条性质：\*\*原子性，有序性和可见性\*\*。关于\[synchronized\]\(https://juejin.im/post/5ae6d309518825673123fd0e\)中已经经过了），三条性质：\*\*原子性，有序性和可见性\*\*。关于\[synchronized\)\]\(https://juejin.im/post/5ae6d309518825673123fd0e\)中已经经过了），三条性质：\*\*原子性，有序性和可见性\*\*。关于\[synchronized\]\(https://juejin.im/post/5ae6d309518825673123fd0e\)中已经经过了），三条性质：\*\*原子性，有序性和可见性\*\*。关于\[synchronized\)\)\](https://juejin.im/post/5ae6d309518825673123fd0e%29中已经经过了），三条性质：**原子性，有序性和可见性**。关于[synchronized]%28https://juejin.im/post/5ae6d309518825673123fd0e%29中已经经过了），三条性质：**原子性，有序性和可见性**。关于[synchronized%29]%28https://juejin.im/post/5ae6d309518825673123fd0e%29中已经经过了），三条性质：**原子性，有序性和可见性**。关于[synchronized]%28https://juejin.im/post/5ae6d309518825673123fd0e%29中已经经过了），三条性质：**原子性，有序性和可见性**。关于[synchronized%29%29\)\]
 
 \([https://juejin.im/post/5ae6dc04f265da0ba351d3ff\)和\[volatile\]\(https://juejin.im/post/5ae9b41b518825670b33e6c4\)已经讨论过了](https://juejin.im/post/5ae6dc04f265da0ba351d3ff%29和[volatile]%28https://juejin.im/post/5ae9b41b518825670b33e6c4%29已经讨论过了)
 
 ，就想着将并发编程中这两大神器在 \*\*原子性，有序性和可见性\*\*上做一个比较，当然这也是面试中的高频考点，值得注意。
 
-\# 2. 原子性 \#
+##  2. 原子性
 
 原子性是指\*\*一个操作是不可中断的，要么全部执行成功要么全部执行失败，有着“同生共死”的感觉\*\*。及时在多个线程一起执行的时候
 
