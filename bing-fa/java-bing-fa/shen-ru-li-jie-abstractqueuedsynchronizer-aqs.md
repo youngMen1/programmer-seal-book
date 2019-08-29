@@ -494,9 +494,7 @@ private boolean doAcquireNanos(int arg, long nanosTimeout)
 
 ![](/assets/超时的等待式获取锁（doAcquireNanos%28%29方法）.png)
 
-
-
-!\[超时等待式获取锁（doAcquireNanos\(\)方法）\]\([http://upload-images.jianshu.io/upload\_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[超时等待式获取锁（doAcquireNanos\(\)方法）\]\([http://upload-images.jianshu.io/upload\_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 程序逻辑同独占锁可响应中断式获取基本一致，唯一的不同在于获取锁失败后，对超时时间的处理上，在第1步会先计算出按照现在时间和超时时间计算出理论上的截止时间，比如当前时间是8h10min,超时时间是10min，那么根据\`deadline = System.nanoTime\(\) +
 
@@ -506,9 +504,63 @@ System.nanoTime\(\)\`计算出来就是一个负数，自然而然会在3.2步�
 
 出被中断异常。
 
-## 4. 共享锁 
+## 4. 共享锁
 
 ### 4.1 共享锁的获取（acquireShared\(\)方法）
 
 在聊完AQS对独占锁的实现后，我们继续一鼓作气的来看看共享锁是怎样实现的？共享锁的获取方法为acquireShared，源码为：
+
+```
+public final void acquireShared(int arg) {
+	    if (tryAcquireShared(arg) < 0)
+	        doAcquireShared(arg);
+	}
+```
+
+这段源码的逻辑很容易理解，在该方法中会首先调用tryAcquireShared方法，tryAcquireShared返回值是一个int类型，当返回值为大于等于0的时候方法结束说明获得成功获取锁，否则，表明获取同步状态失败即所引用的线程获取锁失败，会执行doAcquireShared方法，
+
+该方法的源码为：
+
+```
+private void doAcquireShared(int arg) {
+	    final Node node = addWaiter(Node.SHARED);
+	    boolean failed = true;
+	    try {
+	        boolean interrupted = false;
+	        for (;;) {
+	            final Node p = node.predecessor();
+	            if (p == head) {
+	                int r = tryAcquireShared(arg);
+	                if (r >= 0) {
+						// 当该节点的前驱节点是头结点且成功获取同步状态
+	                    setHeadAndPropagate(node, r);
+	                    p.next = null; // help GC
+	                    if (interrupted)
+	                        selfInterrupt();
+	                    failed = false;
+	                    return;
+	                }
+	            }
+	            if (shouldParkAfterFailedAcquire(p, node) &&
+	                parkAndCheckInterrupt())
+	                interrupted = true;
+	        }
+	    } finally {
+	        if (failed)
+	            cancelAcquire(node);
+	    }
+	}
+```
+
+现在来看这段代码会不会很容易了？逻辑几乎和独占式锁的获取一模一样，这里的自旋过程中能够退出的条件\*\*是当前节点的前驱节点是头结点并且tryAcquireShared\(arg\)返回值大于等于0即能成功获得同步状态\*\*。
+
+
+
+### 4.2 共享锁的释放（releaseShared\(\)方法） \#\#
+
+共享锁的释放在AQS中会调用方法releaseShared：
+
+
+
+
 
