@@ -18,7 +18,7 @@ UDP：user data protocol 用户数据报协议
 | 传输层（Transport） | 传输层 | TCP, UDP |
 | 网络层（Network） | 网络层 | IP, ICMP, ARP, RARP, AKP, UUCP |
 | 数据链路层（Data Link） | 数据链路层 | FDDI, Ethernet, Arpanet, PDN, SLIP, PPP |
-| 1物理层（Physical） | 物理层（Physical）数据链路层 | IEEE 802.1A, IEEE 802.2到IEEE 802.11 |
+| 1物理层（Physical） | 数据链路层 | IEEE 802.1A, IEEE 802.2到IEEE 802.11 |
 
 
 
