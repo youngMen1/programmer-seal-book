@@ -512,11 +512,13 @@ System.nanoTime\(\)\`计算出来就是一个负数，自然而然会在3.2步�
 
 public final void acquireShared\(int arg\) {
 
-        if \(tryAcquireShared\(arg\) &lt; 0\)
+```
+    if \(tryAcquireShared\(arg\) &lt; 0\)
 
-            doAcquireShared\(arg\);
+        doAcquireShared\(arg\);
 
-    }
+}
+```
 
 这段源码的逻辑很容易理解，在该方法中会首先调用tryAcquireShared方法，tryAcquireShared返回值是一个int类型，当返回值为大于等于0的时候方法结束说明获得成功获取锁，否则，表明获取同步状态失败即所引用的线程获取锁失败，会执行doAcquireShared方法，该方法的源码为：
 
@@ -571,53 +573,47 @@ public final boolean releaseShared(int arg) {
 
 ```
 private void doReleaseShared() {
-	    /*
-	     * Ensure that a release propagates, even if there are other
-	     * in-progress acquires/releases.  This proceeds in the usual
-	     * way of trying to unparkSuccessor of head if it needs
-	     * signal. But if it does not, status is set to PROPAGATE to
-	     * ensure that upon release, propagation continues.
-	     * Additionally, we must loop in case a new node is added
-	     * while we are doing this. Also, unlike other uses of
-	     * unparkSuccessor, we need to know if CAS to reset status
-	     * fails, if so rechecking.
-	     */
-	    for (;;) {
-	        Node h = head;
-	        if (h != null && h != tail) {
-	            int ws = h.waitStatus;
-	            if (ws == Node.SIGNAL) {
-	                if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))
-	                    continue;            // loop to recheck cases
-	                unparkSuccessor(h);
-	            }
-	            else if (ws == 0 &&
-	                     !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
-	                continue;                // loop on failed CAS
-	        }
-	        if (h == head)                   // loop if head changed
-	            break;
-	    }
-	}
-
-
+        /*
+         * Ensure that a release propagates, even if there are other
+         * in-progress acquires/releases.  This proceeds in the usual
+         * way of trying to unparkSuccessor of head if it needs
+         * signal. But if it does not, status is set to PROPAGATE to
+         * ensure that upon release, propagation continues.
+         * Additionally, we must loop in case a new node is added
+         * while we are doing this. Also, unlike other uses of
+         * unparkSuccessor, we need to know if CAS to reset status
+         * fails, if so rechecking.
+         */
+        for (;;) {
+            Node h = head;
+            if (h != null && h != tail) {
+                int ws = h.waitStatus;
+                if (ws == Node.SIGNAL) {
+                    if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))
+                        continue;            // loop to recheck cases
+                    unparkSuccessor(h);
+                }
+                else if (ws == 0 &&
+                         !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
+                    continue;                // loop on failed CAS
+            }
+            if (h == head)                   // loop if head changed
+                break;
+        }
+    }
 ```
 
 这段方法跟独占式锁释放过程有点点不同，在共享式锁的释放过程中，对于能够支持多个线程同时访问的并发组件，必须保证多个线程能够安全的释放同步状态，这里采用的CAS保证，当CAS操作失败continue，在下一次循环中进行重试。
 
-
-
-###  4.3 可中断（acquireSharedInterruptibly\(\)方法），超时等待（tryAcquireSharedNanos\(\)方法） \#\#
+### 4.3 可中断（acquireSharedInterruptibly\(\)方法），超时等待（tryAcquireSharedNanos\(\)方法） \#\
 
 关于可中断锁以及超时等待的特性其实现和独占式锁可中断获取锁以及超时等待的实现几乎一致，具体的就不再说了，如果理解了上面的内容对这部分的理解也是水到渠成的。
 
-
-
 通过这篇，加深了对AQS的底层实现更加清楚了，也对了解并发组件的实现原理打下了基础，学无止境，继续加油:\);如果觉得不错，请给赞，嘿嘿。
 
-
-
 &gt; 参考文献
+
+《java并发编程的艺术》
 
 
 
