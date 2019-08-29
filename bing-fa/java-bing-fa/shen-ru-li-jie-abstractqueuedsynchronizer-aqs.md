@@ -301,19 +301,19 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 
 !\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-\#\# 3.2 独占锁的释放（release\(\)方法） \#\#
+##  3.2 独占锁的释放（release\(\)方法）
 
 独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：该方法的关键是会调用LookSupport.park\(\)方法（关于LookSupport会在以后的文章进行讨论），该方法是用来阻塞当前线程的。因此到这里就应该清楚了，acquireQueued\(\)在自旋过程中主要完成了两件事情：
 
-1. \*\*如果当前节点的前驱节点是头节点，并且能够获得同步状态的话，当前线程能够获得锁该方法执行结束退出\*\*；
+1. \*\***如果当前节点的前驱节点是头节点，并且能够获得同步状态的话，当前线程能够获得锁该方法执行结束退出**\*\*；
 
-2. \*\*获取锁失败的话，先将节点状态设置成SIGNAL，然后调用LookSupport.park方法使得当前线程阻塞\*\*。
+2. \*\***获取锁失败的话，先将节点状态设置成SIGNAL，然后调用LookSupport.park方法使得当前线程阻塞**\*\*。
 
 经过上面的分析，独占式锁的获取过程也就是acquire\(\)方法的执行流程如下图所示：
 
 !\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-\#\# 3.2 独占锁的释放（release\(\)方法） \#\#
+###  3.2 独占锁的释放（release\(\)方法）
 
 独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：
 
@@ -377,9 +377,54 @@ private void unparkSuccessor(Node node) {
 
 &gt; \*\***独占锁特性学习**\*\*
 
-###  3.3 可中断式获取锁（acquireInterruptibly方法）
+### 3.3 可中断式获取锁（acquireInterruptibly方法）
 
 我们知道lock相较于synchronized有一些更方便的特性，比如能响应中断以及超时等待等特性，现在我们依旧采用通过学习源码的方式来看看能够响应中断是怎么实现的。可响应中断式锁可调用方法lock.lockInterruptibly\(\);而该方法其底层会调用AQS的
 
 acquireInterruptibly方法，源码为：
+
+```
+public final void acquireInterruptibly(int arg)
+	        throws InterruptedException {
+	    if (Thread.interrupted())
+	        throw new InterruptedException();
+	    if (!tryAcquire(arg))
+			//线程获取锁失败
+	        doAcquireInterruptibly(arg);
+	}
+```
+
+在获取同步状态失败后就会调用doAcquireInterruptibly方法：
+
+```
+private void doAcquireInterruptibly(int arg)
+	    throws InterruptedException {
+		//将节点插入到同步队列中
+	    final Node node = addWaiter(Node.EXCLUSIVE);
+	    boolean failed = true;
+	    try {
+	        for (;;) {
+	            final Node p = node.predecessor();
+	            //获取锁出队
+				if (p == head && tryAcquire(arg)) {
+	                setHead(node);
+	                p.next = null; // help GC
+	                failed = false;
+	                return;
+	            }
+	            if (shouldParkAfterFailedAcquire(p, node) &&
+	                parkAndCheckInterrupt())
+					//线程中断抛异常
+	                throw new InterruptedException();
+	        }
+	    } finally {
+	        if (failed)
+	            cancelAcquire(node);
+	    }
+	}
+```
+
+
+
+
 
