@@ -295,6 +295,34 @@ Session的实现方式：
 1、使用Cookie来实现
 服务器给每个Session分配一个唯一的JSESSIONID，并通过Cookie发送给客户端。
 当客户端发起新的请求的时候，将在Cookie头中携带这个JSESSIONID。这样服务器能够找到这个客户端对应的Session。
+![](/assets/121638564269748.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
