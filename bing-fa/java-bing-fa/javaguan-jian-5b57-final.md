@@ -46,33 +46,37 @@ orient/strip%7CimageView2/2/w/1240\)
 
 ```
 public class FinalExample {
-	    //在声明final实例成员变量时进行赋值
-	    private final static Person person = new Person(24, 170);
-	    public static void main(String[] args) {
-	        //对final引用数据类型person进行更改
-	        person.age = 22;
-	        System.out.println(person.toString());
-	    }
-	    static class Person {
-	        private int age;
-	        private int height;
-	
-	        public Person(int age, int height) {
-	            this.age = age;
-	            this.height = height;
-	        }
-	        @Override
-	        public String toString() {
-	            return "Person{" +
-	                    "age=" + age +
-	                    ", height=" + height +
-	                    '}';
-	        }
-	    }
-	}
+        //在声明final实例成员变量时进行赋值
+        private final static Person person = new Person(24, 170);
+        public static void main(String[] args) {
+            //对final引用数据类型person进行更改
+            person.age = 22;
+            System.out.println(person.toString());
+        }
+        static class Person {
+            private int age;
+            private int height;
+
+            public Person(int age, int height) {
+                this.age = age;
+                this.height = height;
+            }
+            @Override
+            public String toString() {
+                return "Person{" +
+                        "age=" + age +
+                        ", height=" + height +
+                        '}';
+            }
+        }
+    }
 ```
 
+当我们对final修饰的引用数据类型变量person的属性改成22，是可以成功操作的。通过这个实验我们就可以看出来\*\*当final修饰基本数据
 
+类型变量时，不能对基本数据类型变量重新赋值，因此基本数据类型变量不能被改变。而对于引用类型变量而言，它仅仅保存的是一个引用
+
+，final只保证这个引用类型变量所引用的地址不会发生改变，即一直引用这个对象，但这个对象属性是可以改变的\*\*。
 
 
 
