@@ -222,3 +222,22 @@ private Node addWaiter(Node mode) {
 
 获取锁的节点出队的逻辑是：
 
+```
+	//队列头结点引用指向当前节点
+	setHead(node);
+	//释放前驱节点
+	p.next = null; // help GC
+	failed = false;
+	return interrupted;
+
+setHead()方法为：
+
+	private void setHead(Node node) {
+	        head = node;
+	        node.thread = null;
+	        node.prev = null;
+	}
+```
+
+
+
