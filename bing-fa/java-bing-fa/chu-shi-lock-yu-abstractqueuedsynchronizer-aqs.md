@@ -93,26 +93,70 @@ AQS的设计是使用模板方法设计模式，它将\*\***一些方法开放�
 
 ```
 protected boolean tryAcquire(int arg) {
-	        throw new UnsupportedOperationException();
-	}
+            throw new UnsupportedOperationException();
+    }
 
 ReentrantLock中NonfairSync（继承AQS）会重写该方法为：
 
-	protected final boolean tryAcquire(int acquires) {
-	    return nonfairTryAcquire(acquires);
-	}
+    protected final boolean tryAcquire(int acquires) {
+        return nonfairTryAcquire(acquires);
+    }
 而AQS中的模板方法acquire():
 
-	 public final void acquire(int arg) {
-	        if (!tryAcquire(arg) &&
-	            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
-	            selfInterrupt();
-	 }
+     public final void acquire(int arg) {
+            if (!tryAcquire(arg) &&
+                acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+                selfInterrupt();
+     }
 ```
 
+会调用tryAcquire方法，而此时当继承AQS的NonfairSync调用模板方法acquire时就会调用已经被NonfairSync重写的tryAcquire方法。这就是使用AQS的方式，在弄懂这点后会lock的实现理解有很大的提升。可以归纳总结为这么几点：
+
+
+
+1. 同步组件（这里不仅仅值锁，还包括CountDownLatch等）的实现依赖于同步器AQS，在同步组件实现中，使用AQS的方式被推荐定义继承AQS的静态内存类；
+
+2. AQS采用模板方法进行设计，AQS的protected修饰的方法需要由继承AQS的子类进行重写实现，当调用AQS的子类的方法时就会调用被重写的方法；
+
+3. AQS负责同步状态的管理，线程的排队，等待和唤醒这些底层操作，而Lock等同步组件主要专注于实现同步语义；
+
+4. 在重写AQS的方式时，使用AQS提供的\`getState\(\),setState\(\),compareAndSetState\(\)\`方法进行修改同步状态
+
+
+
+AQS可重写的方法如下图（摘自《java并发编程的艺术》一书）：
+
+
+
+!\[AQS可重写的方法.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+
+
+
+在实现同步组件时AQS提供的模板方法如下图：
+
+
+
+!\[AQS提供的模板方法.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
 
 
 
 
 
+AQS提供的模板方法可以分为3类：
+
+1. 独占式获取与释放同步状态；
+
+2. 共享式获取与释放同步状态；
+
+3. 查询同步队列中等待线程情况；
+
+
+
+同步组件通过AQS提供的模板方法实现自己的同步语义。
+
+
+
+## 3. 一个例子 \#
+
+下面使用一个例子来进一步理解下AQS的使用。这个例子也是来源于AQS源码中的example。
 
