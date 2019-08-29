@@ -553,7 +553,7 @@ private void doAcquireShared(int arg) {
     }
 ```
 
-现在来看这段代码会不会很容易了？逻辑几乎和独占式锁的获取一模一样，这里的自旋过程中能够退出的条件\*\*是当前节点的前驱节点是头结点并且tryAcquireShared\(arg\)返回值大于等于0即能成功获得同步状态\*\*。
+现在来看这段代码会不会很容易了？逻辑几乎和独占式锁的获取一模一样，这里的自旋过程中能够退出的条件\*\***是当前节点的前驱节点是头结点并且tryAcquireShared\(arg\)返回值大于等于0即能成功获得同步状态**\*\*。
 
 ### 4.2 共享锁的释放（releaseShared\(\)方法）
 
@@ -605,7 +605,7 @@ private void doReleaseShared() {
 
 这段方法跟独占式锁释放过程有点点不同，在共享式锁的释放过程中，对于能够支持多个线程同时访问的并发组件，必须保证多个线程能够安全的释放同步状态，这里采用的CAS保证，当CAS操作失败continue，在下一次循环中进行重试。
 
-### 4.3 可中断（acquireSharedInterruptibly\(\)方法），超时等待（tryAcquireSharedNanos\(\)方法） \#\
+### 4.3 可中断（acquireSharedInterruptibly\(\)方法），超时等待（tryAcquireSharedNanos\(\)方法）
 
 关于可中断锁以及超时等待的特性其实现和独占式锁可中断获取锁以及超时等待的实现几乎一致，具体的就不再说了，如果理解了上面的内容对这部分的理解也是水到渠成的。
 
@@ -614,6 +614,4 @@ private void doReleaseShared() {
 &gt; 参考文献
 
 《java并发编程的艺术》
-
-
 
