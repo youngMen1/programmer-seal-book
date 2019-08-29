@@ -223,21 +223,41 @@ private Node addWaiter(Node mode) {
 获取锁的节点出队的逻辑是：
 
 ```
-	//队列头结点引用指向当前节点
-	setHead(node);
-	//释放前驱节点
-	p.next = null; // help GC
-	failed = false;
-	return interrupted;
+    //队列头结点引用指向当前节点
+    setHead(node);
+    //释放前驱节点
+    p.next = null; // help GC
+    failed = false;
+    return interrupted;
 
 setHead()方法为：
 
-	private void setHead(Node node) {
-	        head = node;
-	        node.thread = null;
-	        node.prev = null;
-	}
+    private void setHead(Node node) {
+            head = node;
+            node.thread = null;
+            node.prev = null;
+    }
 ```
+
+将当前节点通过setHead\(\)方法设置为队列的头结点，然后将之前的头结点的next域设置为null并且pre域也为null，即与队列断开，无任何引用方便GC时能够将内存进行回收。示意图如下：
+
+
+
+
+
+
+
+
+
+
+
+!\[当前节点引用线程获取锁，当前节点设置为队列头结点.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+
+
+
+
+
+那么当获取锁失败的时候会调用shouldParkAfterFailedAcquire\(\)方法和parkAndCheckInterrupt\(\)方法，看看他们做了什么事情。shouldParkAfterFailedAcquire\(\)方法源码为：
 
 
 
