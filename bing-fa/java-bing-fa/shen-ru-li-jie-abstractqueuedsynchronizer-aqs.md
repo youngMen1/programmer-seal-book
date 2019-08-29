@@ -1,8 +1,6 @@
 ## AQS简介
 
-在\[上一篇文章\]\([https://juejin.im/post/5aeb055b6fb9a07abf725c8c\)中我们对lock和AbstractQueuedSynchronizer\(AQS\)有了初步的认识。在同步组件的实现中，AQS是核心部分，同步组件的实现者通过使用AQS提供的模板方法实现同步组件语义，AQS则实现了对\*\*同步](https://juejin.im/post/5aeb055b6fb9a07abf725c8c%29中我们对lock和AbstractQueuedSynchronizer%28AQS%29有了初步的认识。在同步组件的实现中，AQS是核心部分，同步组件的实现者通过使用AQS提供的模板方法实现同步组件语义，AQS则实现了对**同步)
-
-状态的管理，以及对阻塞线程进行排队，等待通知\*\*等等一些底层的实现处理。AQS的核心也包括了这些方面:\*\***同步队列，独占式锁的获取和释放，共享锁的获取和释放以及可中断锁，超时等待锁获取这些特性的实现**\*\*，而这些实际上则是AQS提供出来的模板方法，归纳整理如下：
+在\[上一篇文章\]\([https://juejin.im/post/5aeb055b6fb9a07abf725c8c\)中我们对lock和AbstractQueuedSynchronizer\(AQS\)有了初步的认识。在同步组件的实现中，AQS是核心部分，同步组件的实现者通过使用AQS提供的模板方法实现同步组件语义，AQS则实现了对\*\*同步](https://juejin.im/post/5aeb055b6fb9a07abf725c8c%29中我们对lock和AbstractQueuedSynchronizer%28AQS%29有了初步的认识。在同步组件的实现中，AQS是核心部分，同步组件的实现者通过使用AQS提供的模板方法实现同步组件语义，AQS则实现了对**同步)状态的管理，以及对阻塞线程进行排队，等待通知\*\*等等一些底层的实现处理。AQS的核心也包括了这些方面:\*\***同步队列，独占式锁的获取和释放，共享锁的获取和释放以及可中断锁，超时等待锁获取这些特性的实现**\*\*，而这些实际上则是AQS提供出来的模板方法，归纳整理如下：
 
 \*\***独占式锁：**\*\*
 
@@ -26,7 +24,7 @@
 
 要想掌握AQS的底层实现，其实也就是对这些模板方法的逻辑进行学习。在学习这些模板方法之前，我们得首先了解下AQS中的同步队列是一种什么样的数据结构，因为同步队列是AQS对同步状态的管理的基石。
 
-\# 2. 同步队列 \#
+##  2. 同步队列 
 
 当共享资源被某个线程占有，其他请求该资源的线程将会阻塞，从而进入同步队列。就数据结构而言，队列的实现方式无外乎两者一是通过数组的形式，另外一种则是链表的形式。AQS中的同步队列则是\*\*通过链式方式\*\*进行实现。接下来，很显然我们至少会抱有这样的
 
@@ -56,5 +54,32 @@
 
 &gt; int INITIAL = 0;//初始状态
 
-现在我们知道了节点的数据结构类型，并且每个节点拥有其前驱和后继节点，很显然这是\*\*一个双向队列\*\*。同样的我们可以用一段demo看一下。
+现在我们知道了节点的数据结构类型，并且每个节点拥有其前驱和后继节点，很显然这是\*\***一个双向队列**\*\*。同样的我们可以用一段demo看一下。
+
+```
+	public class LockDemo {
+	    private static ReentrantLock lock = new ReentrantLock();
+	
+	    public static void main(String[] args) {
+	        for (int i = 0; i < 5; i++) {
+	            Thread thread = new Thread(() -> {
+	                lock.lock();
+	                try {
+	                    Thread.sleep(10000);
+	                } catch (InterruptedException e) {
+	                    e.printStackTrace();
+	                } finally {
+	                    lock.unlock();
+	                }
+	            });
+	            thread.start();
+	        }
+	    }
+	}
+
+```
+
+
+
+
 
