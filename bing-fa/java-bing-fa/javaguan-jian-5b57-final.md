@@ -16,8 +16,6 @@ final能够修饰变量，方法和类，也就是final使用范围基本涵盖�
 
 ![](/assets/final修饰成员变量.png)
 
-
-
 !\[final修饰成员变量\]\([http://upload-images.jianshu.io/upload\_images/2615789-768017317b5fab78.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-768017317b5fab78.png?imageMogr2/auto-)
 
 orient/strip%7CimageView2/2/w/1240\)
@@ -28,15 +26,11 @@ orient/strip%7CimageView2/2/w/1240\)
 
 1. \*\***类变量**\*\*：必须要在\*\***静态初始化块**\*\*中指定初始值或者\*\*声明该类变量时\*\*指定初始值，而且只能在这\*\***两个地方**\*\*之一进行指定；
 
-2. \*\***实例变量**\*\*：必要要在\*\***非静态初始化块**\*\*，\*\*声明该实例变量\*\*或者在\*\*构造器中\*\*指定初始值，而且只能在这\*\***三个地方**\*\*进行指
-
-定。
+2. \*\***实例变量**\*\*：必要要在\*\***非静态初始化块**\*\*，\*\*声明该实例变量\*\*或者在\*\*构造器中\*\*指定初始值，而且只能在这\*\***三个地方**\*\*进行指定。
 
 #### 2.2.2 final局部变量
 
-final局部变量由程序员进行显式初始化，如果final局部变量已经进行了初始化则后面就不能再次进行更改，如果final变量未进行初始化，
-
-可以进行赋值，\*\***当且仅有一次**\*\*赋值，一旦赋值之后再次赋值就会出错。下面用具体的代码演示final局部变量的情况：
+final局部变量由程序员进行显式初始化，如果final局部变量已经进行了初始化则后面就不能再次进行更改，如果final变量未进行初始化，可以进行赋值，\*\***当且仅有一次**\*\*赋值，一旦赋值之后再次赋值就会出错。下面用具体的代码演示final局部变量的情况：
 
 !\[final修饰局部变量\]\([http://upload-images.jianshu.io/upload\_images/2615789-7077bdb169d4d1c3.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-7077bdb169d4d1c3.png?imageMogr2/auto-)
 
