@@ -183,41 +183,52 @@ private Node addWaiter(Node mode) {
 现在我们已经很清楚获取独占式锁失败的线程包装成Node然后插入同步队列的过程了？那么紧接着会有下一个问题？在同步队列中的节点（线程）会做什么事情了来保证自己能够有机会获得独占式锁了？带着这样的问题我们就来看看acquireQueued\(\)方法，从方法名就可以很清楚，这个方法的作用就是排队获取锁的过程，源码如下：
 
 ```
-
-	final boolean acquireQueued(final Node node, int arg) {
-	        boolean failed = true;
-	        try {
-	            boolean interrupted = false;
-	            for (;;) {
-					// 1. 获得当前节点的先驱节点
-	                final Node p = node.predecessor();
-					// 2. 当前节点能否获取独占式锁					
-					// 2.1 如果当前节点的先驱节点是头结点并且成功获取同步状态，即可以获得独占式锁
-	                if (p == head && tryAcquire(arg)) {
-						//队列头指针用指向当前节点
-	                    setHead(node);
-						//释放前驱节点
-	                    p.next = null; // help GC
-	                    failed = false;
-	                    return interrupted;
-	                }
-					// 2.2 获取锁失败，线程进入等待状态等待获取独占式锁
-	                if (shouldParkAfterFailedAcquire(p, node) &&
-	                    parkAndCheckInterrupt())
-	                    interrupted = true;
-	            }
-	        } finally {
-	            if (failed)
-	                cancelAcquire(node);
-	        }
-	}
+    final boolean acquireQueued(final Node node, int arg) {
+            boolean failed = true;
+            try {
+                boolean interrupted = false;
+                for (;;) {
+                    // 1. 获得当前节点的先驱节点
+                    final Node p = node.predecessor();
+                    // 2. 当前节点能否获取独占式锁                    
+                    // 2.1 如果当前节点的先驱节点是头结点并且成功获取同步状态，即可以获得独占式锁
+                    if (p == head && tryAcquire(arg)) {
+                        //队列头指针用指向当前节点
+                        setHead(node);
+                        //释放前驱节点
+                        p.next = null; // help GC
+                        failed = false;
+                        return interrupted;
+                    }
+                    // 2.2 获取锁失败，线程进入等待状态等待获取独占式锁
+                    if (shouldParkAfterFailedAcquire(p, node) &&
+                        parkAndCheckInterrupt())
+                        interrupted = true;
+                }
+            } finally {
+                if (failed)
+                    cancelAcquire(node);
+            }
+    }
 ```
 
+程序逻辑通过注释已经标出，整体来看这是一个这又是一个自旋的过程（for \(;;\)），代码首先获取当前节点的先驱节点，\*\*如果先驱节点是头结点的并且成功获得同步状态的时候（if \(p == head && tryAcquire\(arg\)\)），当前节点所指向的线程能够获取锁\*\*。反之，
+
+获取锁失败进入等待状态。整体示意图为下图：
 
 
 
 
 
+!\[自旋获取锁整体示意图.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
 
 
+
+
+
+&gt; \*\*获取锁成功，出队操作\*\*
+
+
+
+获取锁的节点出队的逻辑是：
 
