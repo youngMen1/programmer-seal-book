@@ -74,7 +74,7 @@ public class VolatileExample {
 
 !\[VolatileExample的happens-before关系推导\]\([http://upload-images.jianshu.io/upload\_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-加锁线程A先执行writer方法，然后线程B执行reader方法图中每一个箭头两个节点就代码一个happens-before关系，黑色的代表根据\*\***程序顺序规则**\*\*推导出来，红色的是根据\*\*volatile变量的写happens-before 于任意后续对volatile变量的读\*\*，而蓝色的就是根据传
+加锁线程A先执行writer方法，然后线程B执行reader方法图中每一个箭头两个节点就代码一个happens-before关系，黑色的代表根据\*\***程序顺序规则**\*\*推导出来，红色的是根据\*\***volatile变量的写happens-before 于任意后续对volatile变量的读**\*\*，而蓝色的就是根据传
 
 递性规则推导出来的。这里的2 happen-before 3，同样根据happens-before规则定义：如果A happens-before B,则A的执行结果对B可见，并且A的执行顺序先于B的执行顺序，我们可以知道操作2执行结果对操作3来说是可见的，也就是说当线程A将volatile变量 flag更
 
@@ -86,5 +86,5 @@ public class VolatileExample {
 
 ）。还是以上面的代码为例，假设线程A先执行writer方法，线程B随后执行reader方法，初始时线程的本地内存中flag和a都是初始状态，下图是线程A执行volatile写后的状态图。
 
-!\[线程A执行volatile写后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[线程A执行volatile写后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
