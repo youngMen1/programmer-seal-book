@@ -95,39 +95,21 @@ AQS中有两个重要的成员变量：
 
 也就是说AQS实际上通过头尾指针来管理同步队列，同时实现包括获取锁失败的线程进行入队，释放锁时对同步队列中的线程进行通知等核心方法。其示意图如下：
 
+![](/assets/队列的示意图.png)
 
 
 
-
-
-
-!\[队列示意图.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
-
-
-
-
-
-
-
-
+!\[队列示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-dbfc975d3601bb52.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
 
 通过对源码的理解以及做实验的方式，现在我们可以清楚的知道这样几点：
-
-
 
 1. \*\*节点的数据结构，即AQS的静态内部类Node,节点的等待状态等信息\*\*；
 
 2. \*\*同步队列是一个双向队列，AQS通过持有头尾指针管理同步队列\*\*；
 
-
-
 那么，节点如何进行入队和出队是怎样做的了？实际上这对应着锁的获取和释放两个操作：获取锁失败进行入队操作，获取锁成功进行出队操作。
 
-
-
 \# 3. 独占锁 \#
-
-
 
 \#\# 3.1 独占锁的获取（acquire方法）
 
