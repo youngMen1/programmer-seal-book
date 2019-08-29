@@ -114,75 +114,49 @@ public class Singleton {
 
 &gt; instance = new Singleton\(\);
 
-
-
-这条语句实际上包含了三个操作：1.分配对象的内存空间；2.初始化对象；3.设置instance指向刚分配的内存地址。但由于存在重排序的问
+这条语句实际上包含了三个操作：1.分配对象的内存空间；2.初始化对象；3.设置instance指向刚分配的内存地址。但由于存在重排序的问
 
 题，可能有以下的执行顺序：
 
 
 
-!\[不加volatile可能的执行时序\]\(http://upload-images.jianshu.io/upload\_images/2615789-e7931260b0449eb1.png?imageMogr2/auto-
+![](/assets/不加volatile可能的执行时序.png)
+
+
+
+!\[不加volatile可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-e7931260b0449eb1.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-e7931260b0449eb1.png?imageMogr2/auto-)
 
 orient/strip%7CimageView2/2/w/1240\)
 
+如果2和3进行了重排序的话，线程B进行判断if\(instance==null\)时就会为true，而实际上这个instance并没有初始化成功，显而易见对线程
 
-
-
-
-如果2和3进行了重排序的话，线程B进行判断if\(instance==null\)时就会为true，而实际上这个instance并没有初始化成功，显而易见对线程
-
-B来说之后的操作就会是错得。而\*\*用volatile修饰\*\*的话就可以禁止2和3操作重排序，从而避免这种情况。\*\*volatile包含禁止指令重排序
+B来说之后的操作就会是错得。而\*\*用volatile修饰\*\*的话就可以禁止2和3操作重排序，从而避免这种情况。\*\*volatile包含禁止指令重排序
 
 的语义，其具有有序性\*\*。
 
-\# 4. 可见性 \#
+##  4. 可见性 \#
 
+可见性是指当一个线程修改了共享变量后，其他线程能够立即得知这个修改。通过之前对\[synchronzed\]
 
+\([https://juejin.im/post/5ae6dc04f265da0ba351d3ff\)内存语义进行了分析，当线程获取锁时会从主内存中获取共享变量的最新值，释放锁](https://juejin.im/post/5ae6dc04f265da0ba351d3ff%29内存语义进行了分析，当线程获取锁时会从主内存中获取共享变量的最新值，释放锁)
 
-可见性是指当一个线程修改了共享变量后，其他线程能够立即得知这个修改。通过之前对\[synchronzed\]
+的时候会将共享变量同步到主内存中。从而，\*\*synchronized具有可见性\*\*。同样的在\[volatile分析中\]
 
-\(https://juejin.im/post/5ae6dc04f265da0ba351d3ff\)内存语义进行了分析，当线程获取锁时会从主内存中获取共享变量的最新值，释放锁
-
-的时候会将共享变量同步到主内存中。从而，\*\*synchronized具有可见性\*\*。同样的在\[volatile分析中\]
-
-\(https://juejin.im/post/5ae9b41b518825670b33e6c4\)，会通过在指令中添加\*\*lock指令\*\*，以实现内存可见性。因此, \*\*volatile具有可
+\([https://juejin.im/post/5ae9b41b518825670b33e6c4\)，会通过在指令中添加\*\*lock指令\*\*，以实现内存可见性。因此](https://juejin.im/post/5ae9b41b518825670b33e6c4%29，会通过在指令中添加**lock指令**，以实现内存可见性。因此), \*\*volatile具有可
 
 见性\*\*
-
-
 
 \# 5. 总结 \#
 
 通过这篇文章，主要是比较了synchronized和volatile在三条性质：原子性，可见性，以及有序性的情况，归纳如下：
 
-
-
 &gt; \*\*synchronized: 具有原子性，有序性和可见性\*\*；
 
 &gt; \*\*volatile：具有有序性和可见性\*\*
 
-
-
-
-
 &gt; 参考文献
-
-
 
 《java并发编程的艺术》
 
 《深入理解java虚拟机》
-
-
-
-
-
-
-
-
-
-
-
-
 
