@@ -218,13 +218,9 @@ private Node addWaiter(Node mode) {
 
 ![](/assets/自旋的获取锁整体示意图.png)
 
+!\[自旋获取锁整体示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-
-
-
-!\[自旋获取锁整体示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-3fe83cfaf03a02c8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
-
-&gt; \*\*获取锁成功，出队操作\*\*
+&gt; \*\***获取锁成功，出队操作**\*\*
 
 获取锁的节点出队的逻辑是：
 
