@@ -25,6 +25,7 @@
     * [java关键字---synchronized](bing-fa/java-bing-fa/javaguan-jian5b57-synchronized.md)
     * [java关键字---volatile](bing-fa/java-bing-fa/javaguan-jian-5b57-volatile.md)
     * [java关键字--final](bing-fa/java-bing-fa/javaguan-jian-5b57-final.md)
+    * 三大性质总结：原子性、可见性以及有序性
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
