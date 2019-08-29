@@ -20,5 +20,9 @@ UDP：user data protocol 用户数据报协议
 | 数据链路层（Data Link） | 数据链路层 | FDDI, Ethernet, Arpanet, PDN, SLIP, PPP |
 | 物理层（Physical） | 数据链路层 | IEEE 802.1A, IEEE 802.2到IEEE 802.11 |
 
+**2. OSI七层协议模型**
 
+七层结构记忆方法：应、表、会、传、网、数、物
+
+应用层协议需要掌握的是：HTTP（Hyper text transfer protocol）、FTP（file transfer protocol）、SMTP（simple mail transfer rotocol）、POP3（post office protocol 3）、IMAP4（Internet mail access protocol）
 
