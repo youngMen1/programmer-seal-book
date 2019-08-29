@@ -233,6 +233,10 @@ public class FinalDemo {
 
 我们来画下存在的一种可能执行时序图，如下：
 
+![](/assets/final域写可能的存在的执行时序.png)
+
+
+
 !\[final域写可能的存在的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-9e3937df955a9862.png?](http://upload-images.jianshu.io/upload_images/2615789-9e3937df955a9862.png?)
 
 imageMogr2/auto-orient/strip%7CimageView2/2/w/800\)
@@ -266,8 +270,6 @@ read\(\)方法主要包含了三个操作：
 假设线程A写过程没有重排序，那么线程A和线程B有一种的可能执行时序为下图：
 
 ![](/assets/final域读可能存在的执行时序.png)
-
-
 
 !\[final域读可能存在的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-2a93b67948d7fc64.png?imageMogr2/auto-)
 
