@@ -492,37 +492,23 @@ private boolean doAcquireNanos(int arg, long nanosTimeout)
 
 程序逻辑如图所示：
 
-
-
-!\[超时等待式获取锁（doAcquireNanos\(\)方法）\]\(http://upload-images.jianshu.io/upload\_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
-
+![](/assets/超时的等待式获取锁（doAcquireNanos%28%29方法）.png)
 
 
 
+!\[超时等待式获取锁（doAcquireNanos\(\)方法）\]\([http://upload-images.jianshu.io/upload\_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a80779d4736afb87.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
 
+程序逻辑同独占锁可响应中断式获取基本一致，唯一的不同在于获取锁失败后，对超时时间的处理上，在第1步会先计算出按照现在时间和超时时间计算出理论上的截止时间，比如当前时间是8h10min,超时时间是10min，那么根据\`deadline = System.nanoTime\(\) +
 
+nanosTimeout\`计算出刚好达到超时时间时的系统时间就是8h 10min+10min = 8h 20min。然后根据\`deadline - System.nanoTime\(\)\`就可以判断是否已经超时了，比如，当前系统时间是8h 30min很明显已经超过了理论上的系统时间8h 20min，\`deadline -
 
-程序逻辑同独占锁可响应中断式获取基本一致，唯一的不同在于获取锁失败后，对超时时间的处理上，在第1步会先计算出按照现在时间和超时时间计算出理论上的截止时间，比如当前时间是8h10min,超时时间是10min，那么根据\`deadline = System.nanoTime\(\) + 
-
-nanosTimeout\`计算出刚好达到超时时间时的系统时间就是8h 10min+10min = 8h 20min。然后根据\`deadline - System.nanoTime\(\)\`就可以判断是否已经超时了，比如，当前系统时间是8h 30min很明显已经超过了理论上的系统时间8h 20min，\`deadline - 
-
-System.nanoTime\(\)\`计算出来就是一个负数，自然而然会在3.2步中的If判断之间返回false。如果还没有超时即3.2步中的if判断为true时就会继续执行3.3步通过\*\*LockSupport.parkNanos\*\*使得当前线程阻塞，同时在3.4步增加了对中断的检测，若检测出被中断直接抛
+System.nanoTime\(\)\`计算出来就是一个负数，自然而然会在3.2步中的If判断之间返回false。如果还没有超时即3.2步中的if判断为true时就会继续执行3.3步通过\*\*LockSupport.parkNanos\*\*使得当前线程阻塞，同时在3.4步增加了对中断的检测，若检测出被中断直接抛
 
 出被中断异常。
 
+## 4. 共享锁 
 
-
-
-
-
-
-
-
-## 4. 共享锁 \#
-
-###  4.1 共享锁的获取（acquireShared\(\)方法） \#\#
+### 4.1 共享锁的获取（acquireShared\(\)方法）
 
 在聊完AQS对独占锁的实现后，我们继续一鼓作气的来看看共享锁是怎样实现的？共享锁的获取方法为acquireShared，源码为：
-
-
 
