@@ -82,7 +82,9 @@
 
 
 
-!\[LockDemo debug下 .png\]\([http://upload-images.jianshu.io/upload\_images/2615789-d05d3f44ce4c205a.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-d05d3f44ce4c205a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+![](/assets/LockDemo debug下.png)
+
+!\[LockDemo debug下 .png\]\([http://upload-images.jianshu.io/upload\_images/2615789-d05d3f44ce4c205a.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-d05d3f44ce4c205a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 Thread-0先获得锁后进行睡眠，其他线程（Thread-1,Thread-2,Thread-3,Thread-4）获取锁失败进入同步队列，同时也可以很清楚的看出来每个节点有两个域：prev\(前驱\)和next\(后继\)，并且每个节点用来保存获取同步状态失败的线程引用以及等待状态等信息。另外
 
