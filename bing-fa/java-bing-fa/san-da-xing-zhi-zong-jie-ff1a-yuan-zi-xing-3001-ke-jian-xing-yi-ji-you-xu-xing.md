@@ -138,9 +138,9 @@ public class Singleton {
 
 通过这篇文章，主要是比较了synchronized和volatile在三条性质：原子性，可见性，以及有序性的情况，归纳如下：
 
-&gt; \*\*synchronized: 具有原子性，有序性和可见性\*\*；
+&gt; \*\***synchronized: 具有原子性，有序性和可见性**\*\*；
 
-&gt; \*\*volatile：具有有序性和可见性\*\*
+&gt; \*\***volatile：具有有序性和可见性**\*\*
 
 &gt; 参考文献
 
