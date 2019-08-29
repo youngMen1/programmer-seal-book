@@ -299,9 +299,7 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 
 ![](/assets/独占式锁的获取（acquire%28%29方法）流程图.png)
 
-
-
-!\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 \#\# 3.2 独占锁的释放（release\(\)方法） \#\#
 
@@ -313,9 +311,23 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 
 经过上面的分析，独占式锁的获取过程也就是acquire\(\)方法的执行流程如下图所示：
 
-!\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[独占式锁获取（acquire\(\)方法）流程图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 \#\# 3.2 独占锁的释放（release\(\)方法） \#\#
 
 独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：
+
+```
+	public final boolean release(int arg) {
+	        if (tryRelease(arg)) {
+	            Node h = head;
+	            if (h != null && h.waitStatus != 0)
+	                unparkSuccessor(h);
+	            return true;
+	        }
+	        return false;
+	}
+```
+
+
 
