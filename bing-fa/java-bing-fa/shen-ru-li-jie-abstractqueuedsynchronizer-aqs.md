@@ -512,55 +512,47 @@ System.nanoTime\(\)\`计算出来就是一个负数，自然而然会在3.2步�
 
 ```
 public final void acquireShared(int arg) {
-	    if (tryAcquireShared(arg) < 0)
-	        doAcquireShared(arg);
-	}
+        if (tryAcquireShared(arg) < 0)
+            doAcquireShared(arg);
+    }
 ```
 
-这段源码的逻辑很容易理解，在该方法中会首先调用tryAcquireShared方法，tryAcquireShared返回值是一个int类型，当返回值为大于等于0的时候方法结束说明获得成功获取锁，否则，表明获取同步状态失败即所引用的线程获取锁失败，会执行doAcquireShared方法，
-
-该方法的源码为：
+这段源码的逻辑很容易理解，在该方法中会首先调用tryAcquireShared方法，tryAcquireShared返回值是一个int类型，当返回值为大于等于0的时候方法结束说明获得成功获取锁，否则，表明获取同步状态失败即所引用的线程获取锁失败，会执行doAcquireShared方法，该方法的源码为：
 
 ```
 private void doAcquireShared(int arg) {
-	    final Node node = addWaiter(Node.SHARED);
-	    boolean failed = true;
-	    try {
-	        boolean interrupted = false;
-	        for (;;) {
-	            final Node p = node.predecessor();
-	            if (p == head) {
-	                int r = tryAcquireShared(arg);
-	                if (r >= 0) {
-						// 当该节点的前驱节点是头结点且成功获取同步状态
-	                    setHeadAndPropagate(node, r);
-	                    p.next = null; // help GC
-	                    if (interrupted)
-	                        selfInterrupt();
-	                    failed = false;
-	                    return;
-	                }
-	            }
-	            if (shouldParkAfterFailedAcquire(p, node) &&
-	                parkAndCheckInterrupt())
-	                interrupted = true;
-	        }
-	    } finally {
-	        if (failed)
-	            cancelAcquire(node);
-	    }
-	}
+        final Node node = addWaiter(Node.SHARED);
+        boolean failed = true;
+        try {
+            boolean interrupted = false;
+            for (;;) {
+                final Node p = node.predecessor();
+                if (p == head) {
+                    int r = tryAcquireShared(arg);
+                    if (r >= 0) {
+                        // 当该节点的前驱节点是头结点且成功获取同步状态
+                        setHeadAndPropagate(node, r);
+                        p.next = null; // help GC
+                        if (interrupted)
+                            selfInterrupt();
+                        failed = false;
+                        return;
+                    }
+                }
+                if (shouldParkAfterFailedAcquire(p, node) &&
+                    parkAndCheckInterrupt())
+                    interrupted = true;
+            }
+        } finally {
+            if (failed)
+                cancelAcquire(node);
+        }
+    }
 ```
 
 现在来看这段代码会不会很容易了？逻辑几乎和独占式锁的获取一模一样，这里的自旋过程中能够退出的条件\*\*是当前节点的前驱节点是头结点并且tryAcquireShared\(arg\)返回值大于等于0即能成功获得同步状态\*\*。
 
-
-
-### 4.2 共享锁的释放（releaseShared\(\)方法） \#\#
+### 4.2 共享锁的释放（releaseShared\(\)方法）
 
 共享锁的释放在AQS中会调用方法releaseShared：
-
-
-
-
 
