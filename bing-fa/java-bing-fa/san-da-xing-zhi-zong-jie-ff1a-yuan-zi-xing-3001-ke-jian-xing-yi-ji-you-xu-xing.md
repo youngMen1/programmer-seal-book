@@ -126,7 +126,7 @@ public class Singleton {
 
 ## 4. 可见性
 
-可见性是指当一个线程修改了共享变量后，其他线程能够立即得知这个修改。通过之前对\[synchronzed\]
+**可见性是指当一个线程修改了共享变量后，其他线程能够立即得知这个修改**。通过之前对\[synchronzed\]
 
 \([https://juejin.im/post/5ae6dc04f265da0ba351d3ff\)内存语义进行了分析，当线程获取锁时会从主内存中获取共享变量的最新值，释放锁](https://juejin.im/post/5ae6dc04f265da0ba351d3ff%29内存语义进行了分析，当线程获取锁时会从主内存中获取共享变量的最新值，释放锁)
 
@@ -134,7 +134,7 @@ public class Singleton {
 
 \([https://juejin.im/post/5ae9b41b518825670b33e6c4\)，会通过在指令中添加\*\*lock指令\*\*，以实现内存可见性。因此](https://juejin.im/post/5ae9b41b518825670b33e6c4%29，会通过在指令中添加**lock指令**，以实现内存可见性。因此), \*\***volatile具有可见性**\*\*
 
-##  5. 总结
+## 5. 总结
 
 通过这篇文章，主要是比较了synchronized和volatile在三条性质：原子性，可见性，以及有序性的情况，归纳如下：
 
