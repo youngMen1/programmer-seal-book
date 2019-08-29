@@ -282,14 +282,76 @@ shouldParkAfterFailedAcquire\(\)方法主要逻辑是使用\`compareAndSetWaitSt
 然后会在acquireQueued\(\)方法中for \(;;\)死循环中会继续重试，直至compareAndSetWaitStatus设置节点状态位为SIGNAL时shouldParkAfterFailedAcquire返回true时才会执行方法parkAndCheckInterrupt\(\)方法，该方法的源码为：
 
 ```
-	private final boolean parkAndCheckInterrupt() {
-	        //使得该线程阻塞
-			LockSupport.park(this);
-	        return Thread.interrupted();
-	}
+    private final boolean parkAndCheckInterrupt() {
+            //使得该线程阻塞
+            LockSupport.park(this);
+            return Thread.interrupted();
+    }
 ```
 
+该方法的关键是会调用LookSupport.park\(\)方法（关于LookSupport会在以后的文章进行讨论），该方法是用来阻塞当前线程的。因此到这里就应该清楚了，acquireQueued\(\)在自旋过程中主要完成了两件事情：
 
 
 
+1. \*\*如果当前节点的前驱节点是头节点，并且能够获得同步状态的话，当前线程能够获得锁该方法执行结束退出\*\*；
+
+2. \*\*获取锁失败的话，先将节点状态设置成SIGNAL，然后调用LookSupport.park方法使得当前线程阻塞\*\*。
+
+
+
+经过上面的分析，独占式锁的获取过程也就是acquire\(\)方法的执行流程如下图所示：
+
+
+
+
+
+
+
+
+
+
+
+!\[独占式锁获取（acquire\(\)方法）流程图.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+
+
+
+
+
+\#\# 3.2 独占锁的释放（release\(\)方法） \#\#
+
+
+
+独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：该方法的关键是会调用LookSupport.park\(\)方法（关于LookSupport会在以后的文章进行讨论），该方法是用来阻塞当前线程的。因此到这里就应该清楚了，acquireQueued\(\)在自旋过程中主要完成了两件事情：
+
+
+
+1. \*\*如果当前节点的前驱节点是头节点，并且能够获得同步状态的话，当前线程能够获得锁该方法执行结束退出\*\*；
+
+2. \*\*获取锁失败的话，先将节点状态设置成SIGNAL，然后调用LookSupport.park方法使得当前线程阻塞\*\*。
+
+
+
+经过上面的分析，独占式锁的获取过程也就是acquire\(\)方法的执行流程如下图所示：
+
+
+
+
+
+
+
+
+
+
+
+!\[独占式锁获取（acquire\(\)方法）流程图.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-a0d913dc40da5629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+
+
+
+
+
+\#\# 3.2 独占锁的释放（release\(\)方法） \#\#
+
+
+
+独占锁的释放就相对来说比较容易理解了，废话不多说先来看下源码：
 
