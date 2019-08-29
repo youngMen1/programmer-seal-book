@@ -62,3 +62,40 @@
 
 我们先来看这样一个例子：
 
+```
+public class VolatileExample {
+	    private static volatile int counter = 0;
+	
+	    public static void main(String[] args) {
+	        for (int i = 0; i < 10; i++) {
+	            Thread thread = new Thread(new Runnable() {
+	                @Override
+	                public void run() {
+	                    for (int i = 0; i < 10000; i++)
+	                        counter++;
+	                }
+	            });
+	            thread.start();
+	        }
+	        try {
+	            Thread.sleep(1000);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	        System.out.println(counter);
+	    }
+	}
+```
+
+开启10个线程，每个线程都自加10000次，如果不出现线程安全的问题最终的结果应该就是：10\*10000 = 100000;可是运行多次都是小于100000的结果，问题在于 \*\*volatile并不能保证原子性\*\*，在前面说过counter++这并不是一个原子操作，包含了三个步骤：1.读取变量counter的值；2.对counter加一；3.将新值赋值给变量counter。如果线程A读取counter到工作内存后，其他线程对这个值已经做了自增操作后，那么线程A的这个值自然而然就是一个过期的值，因此，总结果必然会是小于100000的。
+
+如果让volatile保证原子性，必须符合以下两条规则：
+
+1. \*\*运算结果并不依赖于变量的当前值，或者能够确保只有一个线程修改变量的值；\*\*
+
+2. \*\*变量不需要与其他的状态变量共同参与不变约束\*\*
+
+##  3. 有序性 \#
+
+
+
