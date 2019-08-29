@@ -32,6 +32,12 @@ orient/strip%7CimageView2/2/w/1240\)
 
 final局部变量由程序员进行显式初始化，如果final局部变量已经进行了初始化则后面就不能再次进行更改，如果final变量未进行初始化，可以进行赋值，\*\***当且仅有一次**\*\*赋值，一旦赋值之后再次赋值就会出错。下面用具体的代码演示final局部变量的情况：
 
+![](/assets/final修饰局部变量.png)
+
+
+
+
+
 !\[final修饰局部变量\]\([http://upload-images.jianshu.io/upload\_images/2615789-7077bdb169d4d1c3.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-7077bdb169d4d1c3.png?imageMogr2/auto-)
 
 orient/strip%7CimageView2/2/w/1240\)
