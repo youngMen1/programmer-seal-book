@@ -241,15 +241,42 @@ setHead()方法为：
 
 将当前节点通过setHead\(\)方法设置为队列的头结点，然后将之前的头结点的next域设置为null并且pre域也为null，即与队列断开，无任何引用方便GC时能够将内存进行回收。示意图如下：
 
-
-
 ![](/assets/当前的节点引用线程获取锁，当前节点设置为队列头结点.png)
 
-
-
-
-
-!\[当前节点引用线程获取锁，当前节点设置为队列头结点.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[当前节点引用线程获取锁，当前节点设置为队列头结点.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 那么当获取锁失败的时候会调用shouldParkAfterFailedAcquire\(\)方法和parkAndCheckInterrupt\(\)方法，看看他们做了什么事情。shouldParkAfterFailedAcquire\(\)方法源码为：
+
+```
+private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
+        int ws = pred.waitStatus;
+        if (ws == Node.SIGNAL)
+            /*
+             * This node has already set status asking a release
+             * to signal it, so it can safely park.
+             */
+            return true;
+        if (ws > 0) {
+            /*
+             * Predecessor was cancelled. Skip over predecessors and
+             * indicate retry.
+             */
+            do {
+                node.prev = pred = pred.prev;
+            } while (pred.waitStatus > 0);
+            pred.next = node;
+        } else {
+            /*
+             * waitStatus must be 0 or PROPAGATE.  Indicate that we
+             * need a signal, but don't park yet.  Caller will need to
+             * retry to make sure it cannot acquire before parking.
+             */
+            compareAndSetWaitStatus(pred, ws, Node.SIGNAL);
+        }
+        return false;
+    }
+
+```
+
+
 
