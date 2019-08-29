@@ -129,3 +129,28 @@ AQS中有两个重要的成员变量：
 
 当线程获取独占式锁失败后就会将当前线程加入同步队列，那么加入队列的方式是怎样的了？我们接下来就应该去研究一下addWaiter\(\)和acquireQueued\(\)。addWaiter\(\)源码如下：
 
+```
+private Node addWaiter(Node mode) {
+			// 1. 将当前线程构建成Node类型
+	        Node node = new Node(Thread.currentThread(), mode);
+	        // Try the fast path of enq; backup to full enq on failure
+	        // 2. 当前尾节点是否为null？
+			Node pred = tail;
+	        if (pred != null) {
+				// 2.2 将当前节点尾插入的方式插入同步队列中
+	            node.prev = pred;
+	            if (compareAndSetTail(pred, node)) {
+	                pred.next = node;
+	                return node;
+	            }
+	        }
+			// 2.1. 当前同步队列尾节点为null，说明当前线程是第一个加入同步队列进行等待的线程
+	        enq(node);
+	        return node;
+	}
+```
+
+
+
+
+
