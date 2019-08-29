@@ -221,8 +221,6 @@ public class FinalDemo {
 
 2. 编译器会在final域写之后，构造函数return之前，插入一个storestore屏障
 
-
-
 （关于内存屏障可以看\[这篇文章\]
 
 \([https://juejin.im/post/5ae6d309518825673123fd0e\)）。这个屏障可以禁止处理器把final域的写重排序到构造函数之外。](https://juejin.im/post/5ae6d309518825673123fd0e%29）。这个屏障可以禁止处理器把final域的写重排序到构造函数之外。)
@@ -249,7 +247,7 @@ imageMogr2/auto-orient/strip%7CimageView2/2/w/800\)
 
 个保障\*\*。比如在上例，线程B有可能就是一个未正确初始化的对象finalDemo。
 
-&gt;\*\*读final域重排序规则\*\*
+&gt;\*\***读final域重排序规则**\*\*
 
 读final域重排序规则为：\*\*在一个线程中，初次读对象引用和初次读该对象包含的final域，JMM会禁止这两个操作的重排序。\*\*（注意，这
 
