@@ -56,13 +56,9 @@
 
 &gt; **synchronized**
 
-上面一共有八条原子操作，其中六条可以满足基本数据类型的访问读写具备原子性，还剩下lock和unlock两条原子操作。如果我们需要更大
+上面一共有八条原子操作，其中六条可以满足基本数据类型的访问读写具备原子性，还剩下lock和unlock两条原子操作。如果我们需要更大范围的原子性操作就可以使用lock和unlock原子操作。尽管jvm没有把lock和unlock开放给我们使用，但jvm以更高层次的指令monitorenter和monitorexit指令开放给我们使用，反应到java代码中就是---synchronized关键字，也就是说\*\*synchronized满足原子性\*\*。
 
-范围的原子性操作就可以使用lock和unlock原子操作。尽管jvm没有把lock和unlock开放给我们使用，但jvm以更高层次的指令monitorenter
-
-和monitorexit指令开放给我们使用，反应到java代码中就是---synchronized关键字，也就是说\*\*synchronized满足原子性\*\*。
-
-&gt; volatile
+**&gt; volatile**
 
 我们先来看这样一个例子：
 
