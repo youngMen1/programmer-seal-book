@@ -94,31 +94,21 @@ public class VolatileExample {
 
 ![](/assets/线程B读volatile后的内存状态图.png)
 
-!\[线程B读volatile后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[线程B读volatile后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-从横向来看，线程A和线程B之间进行了一次通信，线程A在写volatile变量时，实际上就像是给B发送了一个消息告诉线程B你现在的值都是旧的了，然后线程B读这个volatile变量时就像是接收了线程A刚刚发送的消息。既然是旧的了，那线程B该怎么办了？自然而然就只
+从横向来看，线程A和线程B之间进行了一次通信，线程A在写volatile变量时，实际上就像是给B发送了一个消息告诉线程B你现在的值都是旧的了，然后线程B读这个volatile变量时就像是接收了线程A刚刚发送的消息。既然是旧的了，那线程B该怎么办了？自然而然就只
 
 能去主内存去取啦。
 
+好的，我们现在\*\***两个核心**\*\*：happens-before以及内存语义现在已经都了解清楚了。是不是还不过瘾，突然发现原来自己会这么爱学习（微笑脸），那我们下面就再来一点干货----volatile内存语义的实现。
 
-
-好的，我们现在\*\*两个核心\*\*：happens-before以及内存语义现在已经都了解清楚了。是不是还不过瘾，突然发现原来自己会这么爱学习（微笑脸），那我们下面就再来一点干货----volatile内存语义的实现。
-
-
-
-\#\# 4.1 volatile的内存语义实现 \#\#
+## 4.1 volatile的内存语义实现
 
 我们都知道，为了性能优化，JMM在不改变正确语义的前提下，会允许编译器和处理器对指令序列进行重排序，那如果想阻止重排序要怎么办了？答案是可以添加内存屏障。
 
-
-
 &gt; \*\*内存屏障\*\*
-
-
 
 JMM内存屏障分为四类见下图，
 
-
-
-!\[内存屏障分类表\]\(http://upload-images.jianshu.io/upload\_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/680\)
+!\[内存屏障分类表\]\([http://upload-images.jianshu.io/upload\_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip\|imageView2/2/w/680\](http://upload-images.jianshu.io/upload_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip|imageView2/2/w/680\)\)
 
