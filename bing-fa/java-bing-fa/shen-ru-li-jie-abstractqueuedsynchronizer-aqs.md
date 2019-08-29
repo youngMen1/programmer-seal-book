@@ -243,21 +243,13 @@ setHead()方法为：
 
 
 
+![](/assets/当前的节点引用线程获取锁，当前节点设置为队列头结点.png)
 
 
 
 
 
-
-
-
-!\[当前节点引用线程获取锁，当前节点设置为队列头结点.png\]\(http://upload-images.jianshu.io/upload\_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
-
-
-
-
+!\[当前节点引用线程获取锁，当前节点设置为队列头结点.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-13963e1b3bcfe656.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
 
 那么当获取锁失败的时候会调用shouldParkAfterFailedAcquire\(\)方法和parkAndCheckInterrupt\(\)方法，看看他们做了什么事情。shouldParkAfterFailedAcquire\(\)方法源码为：
-
-
 
