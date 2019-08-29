@@ -42,7 +42,7 @@
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
     * [TCP/IP](wang-luo/xie-yi/tcpip.md)
       * [TCP协议中的三次握手和四次挥手](wang-luo/xie-yi/tcpip/tcpxie-yi-zhong-de-san-ci-wo-shou-he-si-ci-hui-shou.md)
-    * HTTP
+    * [HTTP](wang-luo/xie-yi/http.md)
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
