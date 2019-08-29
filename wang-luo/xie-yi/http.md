@@ -285,7 +285,16 @@ _**7.1、通过Cookies保存状态信息**_
 通过Cookies，服务器就可以清楚的知道请求2和请求1来自同一个客户端。
 
 ![](/assets/122123269892896.png)
+7.2、通过Session保存状态信息
 
+Session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
+当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识 - 称为 session id，如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个 session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。
+
+Session的实现方式：
+
+1、使用Cookie来实现
+服务器给每个Session分配一个唯一的JSESSIONID，并通过Cookie发送给客户端。
+当客户端发起新的请求的时候，将在Cookie头中携带这个JSESSIONID。这样服务器能够找到这个客户端对应的Session。
 
 
 
