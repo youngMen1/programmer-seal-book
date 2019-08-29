@@ -124,13 +124,13 @@ AQS可重写的方法如下图（摘自《java并发编程的艺术》一书）�
 
 ![](/assets/AQS可重写的方法.png)
 
-!\[AQS可重写的方法.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[AQS可重写的方法.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 在实现同步组件时AQS提供的模板方法如下图：
 
 ![](/assets/AQS提供的模板方法.png)
 
-!\[AQS提供的模板方法.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240\)\)
+!\[AQS提供的模板方法.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 AQS提供的模板方法可以分为3类：
 
@@ -142,7 +142,112 @@ AQS提供的模板方法可以分为3类：
 
 同步组件通过AQS提供的模板方法实现自己的同步语义。
 
-## 3. 一个例子 
+## 3. 一个例子
 
 下面使用一个例子来进一步理解下AQS的使用。这个例子也是来源于AQS源码中的example。
+
+```
+class Mutex implements Lock, java.io.Serializable {
+	    // Our internal helper class
+	    // 继承AQS的静态内存类
+	    // 重写方法
+	    private static class Sync extends AbstractQueuedSynchronizer {
+	        // Reports whether in locked state
+	        protected boolean isHeldExclusively() {
+	            return getState() == 1;
+	        }
+	
+	        // Acquires the lock if state is zero
+	        public boolean tryAcquire(int acquires) {
+	            assert acquires == 1; // Otherwise unused
+	            if (compareAndSetState(0, 1)) {
+	                setExclusiveOwnerThread(Thread.currentThread());
+	                return true;
+	            }
+	            return false;
+	        }
+	
+	        // Releases the lock by setting state to zero
+	        protected boolean tryRelease(int releases) {
+	            assert releases == 1; // Otherwise unused
+	            if (getState() == 0) throw new IllegalMonitorStateException();
+	            setExclusiveOwnerThread(null);
+	            setState(0);
+	            return true;
+	        }
+	
+	        // Provides a Condition
+	        Condition newCondition() {
+	            return new ConditionObject();
+	        }
+	
+	        // Deserializes properly
+	        private void readObject(ObjectInputStream s)
+	                throws IOException, ClassNotFoundException {
+	            s.defaultReadObject();
+	            setState(0); // reset to unlocked state
+	        }
+	    }
+	
+	    // The sync object does all the hard work. We just forward to it.
+	    private final Sync sync = new Sync();
+	    //使用同步器的模板方法实现自己的同步语义
+	    public void lock() {
+	        sync.acquire(1);
+	    }
+	
+	    public boolean tryLock() {
+	        return sync.tryAcquire(1);
+	    }
+	
+	    public void unlock() {
+	        sync.release(1);
+	    }
+	
+	    public Condition newCondition() {
+	        return sync.newCondition();
+	    }
+	
+	    public boolean isLocked() {
+	        return sync.isHeldExclusively();
+	    }
+	
+	    public boolean hasQueuedThreads() {
+	        return sync.hasQueuedThreads();
+	    }
+	
+	    public void lockInterruptibly() throws InterruptedException {
+	        sync.acquireInterruptibly(1);
+	    }
+	
+	    public boolean tryLock(long timeout, TimeUnit unit)
+	            throws InterruptedException {
+	        return sync.tryAcquireNanos(1, unit.toNanos(timeout));
+	    }
+	}
+
+MutexDemo：
+
+	public class MutextDemo {
+	    private static Mutex mutex = new Mutex();
+	
+	    public static void main(String[] args) {
+	        for (int i = 0; i < 10; i++) {
+	            Thread thread = new Thread(() -> {
+	                mutex.lock();
+	                try {
+	                    Thread.sleep(3000);
+	                } catch (InterruptedException e) {
+	                    e.printStackTrace();
+	                } finally {
+	                    mutex.unlock();
+	                }
+	            });
+	            thread.start();
+	        }
+	    }
+	}
+```
+
+
 
