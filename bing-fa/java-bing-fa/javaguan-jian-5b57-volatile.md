@@ -82,9 +82,11 @@ public class VolatileExample {
 
 ## 4. volatile的内存语义
 
-还是按照\*\*两个核心\*\*的分析方式，分析完happens-before关系后我们现在就来进一步分析volatile的内存语义（按照这种方式去学习，会不会让大家对知识能够把握的更深，而不至于不知所措，如果大家认同我的这种方式，不妨给个赞，小弟在此谢过，对我是个鼓励
+还是按照\*\***两个核心**\*\*的分析方式，分析完happens-before关系后我们现在就来进一步分析volatile的内存语义（按照这种方式去学习，会不会让大家对知识能够把握的更深，而不至于不知所措，如果大家认同我的这种方式，不妨给个赞，小弟在此谢过，对我是个鼓励
 
 ）。还是以上面的代码为例，假设线程A先执行writer方法，线程B随后执行reader方法，初始时线程的本地内存中flag和a都是初始状态，下图是线程A执行volatile写后的状态图。
+
+![](/assets/线程A执行volatile写后的内存状态图.png)
 
 !\[线程A执行volatile写后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
