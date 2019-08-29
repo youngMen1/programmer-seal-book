@@ -13,8 +13,8 @@ UDP：user data protocol 用户数据报协议
 | OSI七层网络模型 | TCP/IP四层概念模型 | 对应网络协议 |
 | :--- | :--- | :--- |
 | 应用层（Application） | 应用层 | HTTP、TFTP, FTP, NFS, WAIS、SMTP |
-| 表示层（Presentation） |  | Telnet, Rlogin, SNMP, Gopher |
-| 会话层（Session） | 会话层（Session） | SMTP, DNS |
+| 表示层（Presentation） | 1 | Telnet, Rlogin, SNMP, Gopher |
+| 会话层（Session） | 1 | SMTP, DNS |
 | 传输层（Transport） | 传输层 | TCP, UDP |
 | 网络层（Network） | 网络层 | IP, ICMP, ARP, RARP, AKP, UUCP |
 | 数据链路层（Data Link） | 数据链路层 | FDDI, Ethernet, Arpanet, PDN, SLIP, PPP |
