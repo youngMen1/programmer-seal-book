@@ -24,7 +24,7 @@
 
 要想掌握AQS的底层实现，其实也就是对这些模板方法的逻辑进行学习。在学习这些模板方法之前，我们得首先了解下AQS中的同步队列是一种什么样的数据结构，因为同步队列是AQS对同步状态的管理的基石。
 
-##  2. 同步队列 
+## 2. 同步队列
 
 当共享资源被某个线程占有，其他请求该资源的线程将会阻塞，从而进入同步队列。就数据结构而言，队列的实现方式无外乎两者一是通过数组的形式，另外一种则是链表的形式。AQS中的同步队列则是\*\*通过链式方式\*\*进行实现。接下来，很显然我们至少会抱有这样的
 
@@ -57,29 +57,48 @@
 现在我们知道了节点的数据结构类型，并且每个节点拥有其前驱和后继节点，很显然这是\*\***一个双向队列**\*\*。同样的我们可以用一段demo看一下。
 
 ```
-	public class LockDemo {
-	    private static ReentrantLock lock = new ReentrantLock();
-	
-	    public static void main(String[] args) {
-	        for (int i = 0; i < 5; i++) {
-	            Thread thread = new Thread(() -> {
-	                lock.lock();
-	                try {
-	                    Thread.sleep(10000);
-	                } catch (InterruptedException e) {
-	                    e.printStackTrace();
-	                } finally {
-	                    lock.unlock();
-	                }
-	            });
-	            thread.start();
-	        }
-	    }
-	}
+    public class LockDemo {
+        private static ReentrantLock lock = new ReentrantLock();
+
+        public static void main(String[] args) {
+            for (int i = 0; i < 5; i++) {
+                Thread thread = new Thread(() -> {
+                    lock.lock();
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        lock.unlock();
+                    }
+                });
+                thread.start();
+            }
+        }
+    }
+```
+
+实例代码中开启了5个线程，先获取锁之后再睡眠10S中，实际上这里让线程睡眠是想模拟出当线程无法获取锁时进入同步队列的情况。通过debug，当Thread-4（在本例中最后一个线程）获取锁失败后进入同步时，AQS时现在的同步队列如图所示：
+
+
+
+
+
+!\[LockDemo debug下 .png\]\(http://upload-images.jianshu.io/upload\_images/2615789-d05d3f44ce4c205a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\)
+
+
+
+
+
+Thread-0先获得锁后进行睡眠，其他线程（Thread-1,Thread-2,Thread-3,Thread-4）获取锁失败进入同步队列，同时也可以很清楚的看出来每个节点有两个域：prev\(前驱\)和next\(后继\)，并且每个节点用来保存获取同步状态失败的线程引用以及等待状态等信息。另外
+
+AQS中有两个重要的成员变量：
 
 ```
 
-
+	private transient volatile Node head;
+	private transient volatile Node tail;
+```
 
 
 
