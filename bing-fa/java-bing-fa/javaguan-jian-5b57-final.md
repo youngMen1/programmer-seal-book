@@ -115,13 +115,29 @@ orient/strip%7CimageView2/2/w/1240\)
 
 ```
 public class FinalExampleParent {
-	    public final void test() {
-	    }
-	
-	    public final void test(String str) {
-	    }
-	}
+        public final void test() {
+        }
+
+        public final void test(String str) {
+        }
+    }
 ```
+
+可以看出被final修饰的方法是可以重载的。经过我们的分析可以得出如下结论：
+
+\*\***1. 父类的final方法是不能够被子类重写的**\*\*
+
+\*\***2. final方法是可以被重载的**\*\*
+
+###  2.3 类 
+
+\*\***当一个类被final修饰时，表名该类是不能被子类继承的**\*\*。子类继承往往可以重写父类的方法和改变父类属性，会带来一定的安全隐患，因此，当一个类不希望被继承时就可以使用final修饰。还是来写一个小例子：
+
+
+
+
+
+
 
 
 
