@@ -107,23 +107,33 @@ AQS中有两个重要的成员变量：
 
 那么，节点如何进行入队和出队是怎样做的了？实际上这对应着锁的获取和释放两个操作：获取锁失败进行入队操作，获取锁成功进行出队操作。
 
-##  3. 独占锁 
+## 3. 独占锁
 
 ### 3.1 独占锁的获取（acquire方法）
 
 我们继续通过看源码和debug的方式来看，还是以上面的demo为例，调用lock\(\)方法是获取独占式锁，获取失败就将当前线程加入同步队列，成功则线程执行。而lock\(\)方法实际上会调用AQS的\*\***acquire\(\)**\*\*方法，源码如下
 
 ```
-	public final void acquire(int arg) {
-			//先看同步状态是否获取成功，如果成功则方法结束返回
-			//若失败则先调用addWaiter()方法再调用acquireQueued()方法
-	        if (!tryAcquire(arg) &&
-	            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
-	            selfInterrupt();
-	}
+    public final void acquire(int arg) {
+            //先看同步状态是否获取成功，如果成功则方法结束返回
+            //若失败则先调用addWaiter()方法再调用acquireQueued()方法
+            if (!tryAcquire(arg) &&
+                acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+                selfInterrupt();
+    }
 ```
 
+关键信息请看注释，acquire根据当前获得同步状态成功与否做了两件事情：1. 成功，则方法结束返回，2. 失败，则先调用addWaiter\(\)然后在调用acquireQueued\(\)方法。
 
+
+
+&gt; \*\*获取同步状态失败，入队操作\*\*
+
+
+
+
+
+当线程获取独占式锁失败后就会将当前线程加入同步队列，那么加入队列的方式是怎样的了？我们接下来就应该去研究一下addWaiter\(\)和acquireQueued\(\)。addWaiter\(\)源码如下：
 
 
 
