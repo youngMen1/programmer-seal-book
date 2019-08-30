@@ -1,22 +1,23 @@
-《web优化必须了解的原理之I/o的五种模型和web的三种工作模式》
+## 《web优化必须了解的原理之I/o的五种模型和web的三种工作模式》
 
 五种I/O模型：阻塞I/O，非阻塞I/O，I/O复用、事件(信号)驱动I/O、异步I/O，前四种I/O属于同步操作，I/O的第一阶段不同、第二阶段相同，最后的一种则属于异步操作。
 三种 Web Server 工作方式：Prefork(多进程)、Worker方式(线程方式)、Event方式。
-《select、poll、epoll之间的区别总结》
+
+## 《select、poll、epoll之间的区别总结》
 
 select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的。
 select 有打开文件描述符数量限制，默认1024（2048 for x64），100万并发，就要用1000个进程、切换开销大；poll采用链表结构，没有数量限制。
 select，poll “醒着”的时候要遍历整个fd集合，而epoll在“醒着”的时候只要判断一下就绪链表是否为空就行了，通过回调机制节省大量CPU时间；select，poll每次调用都要把fd集合从用户态往内核态拷贝一次，而epoll只要一次拷贝。
 poll会随着并发增加，性能逐渐下降，epoll采用红黑树结构，性能稳定，不会随着连接数增加而降低。
-《select，poll，epoll比较 》
+## 《select，poll，epoll比较 》
 
 在连接数少并且连接都十分活跃的情况下，select和poll的性能可能比epoll好，毕竟epoll的通知机制需要很多函数回调。
-《深入理解Java NIO》
+## 《深入理解Java NIO》
 
 NIO 是一种同步非阻塞的 IO 模型。同步是指线程不断轮询 IO 事件是否就绪，非阻塞是指线程在等待 IO 的时候，可以同时做其他任务
-《BIO与NIO、AIO的区别》
+## 《BIO与NIO、AIO的区别》
 
-《两种高效的服务器设计模型：Reactor和Proactor模型》
+## 《两种高效的服务器设计模型：Reactor和Proactor模型》
 
 
 
