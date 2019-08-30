@@ -68,4 +68,78 @@ public CompositeByteBuf addComponents(boolean increaseWriterIndex, ByteBuf... bu
 ```
 compositeByteBuf.addComponents(header, body);
 ```
+那么其实 compositeByteBuf 的 writeIndex 仍然是0, 因此此时我们就不可能从 compositeByteBuf 中读取到数据, 这一点希望大家要特别注意.
+
+除了上面直接使用 CompositeByteBuf 类外, 我们还可以使用 Unpooled.wrappedBuffer 方法, 它底层封装了 CompositeByteBuf 操作, 因此使用起来更加方便:
+
+
+```
+ByteBuf header = ...
+ByteBuf body = ...
+
+ByteBuf allByteBuf = Unpooled.wrappedBuffer(header, body);
+```
+通过 wrap 操作实现零拷贝
+例如我们有一个 byte 数组, 我们希望将它转换为一个 ByteBuf 对象, 以便于后续的操作, 那么传统的做法是将此 byte 数组拷贝到 ByteBuf 中, 即:
+
+
+```
+byte[] bytes = ...
+ByteBuf byteBuf = Unpooled.buffer();
+byteBuf.writeBytes(bytes);
+```
+显然这样的方式也是有一个额外的拷贝操作的, 我们可以使用 Unpooled 的相关方法, 包装这个 byte 数组, 生成一个新的 ByteBuf 实例, 而不需要进行拷贝操作. 上面的代码可以改为:
+
+
+```
+byte[] bytes = ...
+ByteBuf byteBuf = Unpooled.wrappedBuffer(bytes);
+```
+可以看到, 我们通过 Unpooled.wrappedBuffer 方法来将 bytes 包装成为一个 UnpooledHeapByteBuf 对象, 而在包装的过程中, 是不会有拷贝操作的. 即最后我们生成的生成的 ByteBuf 对象是和 bytes 数组共用了同一个存储空间, 对 bytes 的修改也会反映到 ByteBuf 对象中.
+
+Unpooled 工具类还提供了很多重载的 wrappedBuffer 方法:
+
+
+```
+public static ByteBuf wrappedBuffer(byte[] array)
+public static ByteBuf wrappedBuffer(byte[] array, int offset, int length)
+
+public static ByteBuf wrappedBuffer(ByteBuffer buffer)
+public static ByteBuf wrappedBuffer(ByteBuf buffer)
+
+public static ByteBuf wrappedBuffer(byte[]... arrays)
+public static ByteBuf wrappedBuffer(ByteBuf... buffers)
+public static ByteBuf wrappedBuffer(ByteBuffer... buffers)
+
+public static ByteBuf wrappedBuffer(int maxNumComponents, byte[]... arrays)
+public static ByteBuf wrappedBuffer(int maxNumComponents, ByteBuf... buffers)
+public static ByteBuf wrappedBuffer(int maxNumComponents, ByteBuffer... buffers)
+```
+
+这些方法可以将一个或多个 buffer 包装为一个 ByteBuf 对象, 从而避免了拷贝操作.
+
+## 通过 slice 操作实现零拷贝
+slice 操作和 wrap 操作刚好相反, Unpooled.wrappedBuffer 可以将多个 ByteBuf 合并为一个, 而 slice 操作可以将一个 ByteBuf 切片 为多个共享一个存储区域的 ByteBuf 对象.
+ByteBuf 提供了两个 slice 操作方法:
+
+
+```
+public ByteBuf slice();
+public ByteBuf slice(int index, int length);
+```
+不带参数的 slice 方法等同于 buf.slice(buf.readerIndex(), buf.readableBytes()) 调用, 即返回 buf 中可读部分的切片. 而 slice(int index, int length) 方法相对就比较灵活了, 我们可以设置不同的参数来获取到 buf 的不同区域的切片.
+
+下面的例子展示了 ByteBuf.slice 方法的简单用法:
+
+
+```
+ByteBuf byteBuf = ...
+ByteBuf header = byteBuf.slice(0, 5);
+ByteBuf body = byteBuf.slice(5, 10);
+```
+用 slice 方法产生 header 和 body 的过程是没有拷贝操作的, header 和 body 对象在内部其实是共享了 byteBuf 存储空间的不同部分而已. 即:
+![img](/static/image/1006163-20161122125113893-136149474.png)
+
+
+
 
