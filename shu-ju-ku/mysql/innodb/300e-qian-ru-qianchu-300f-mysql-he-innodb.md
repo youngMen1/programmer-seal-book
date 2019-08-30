@@ -42,8 +42,6 @@ MySQL 从第一个版本发布到现在已经有了 20 多年的历史，在这�
 
 如何存储表
 MySQL 使用 InnoDB 存储表时，会将表的定义和数据索引等信息分开存储，其中前者存储在 .frm 文件中，后者存储在 .ibd 文件中，这一节就会对这两种不同的文件分别进行介绍。
-![img](/static/image/frm-and-ibd-file.jpg)
-
 
 ![img](/static/image/frm-and-ibd-file.jpg)
 
