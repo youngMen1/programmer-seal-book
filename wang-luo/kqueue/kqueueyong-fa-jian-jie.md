@@ -156,7 +156,7 @@ int main(){
                 int new_nread;
                 if( (new_nread = read(ev_fd, buffer + nread, sizeof(buffer) - nread)) <= 0 )
                     quit("read()"); // 由于可读事件已经发生，因此如果读出0个字节也是不正常的
-                
+
                 nread += new_nread; // 递增已读数据字节数
             }
 
@@ -175,5 +175,5 @@ int main(){
 }
 ```
 
-
+程序中对stdin和stdout设置非阻塞的原因是我们希望有多少就绪的数据就读多少，或者能写入多少进缓冲区就写入多少。否则在阻塞模式下，如果read没有填满buffer（文件没读完时）,或者还有buffer数据没写入时，系统调用\(read和write\)会阻塞，这会对性能造成很大影响。因此这里设置为非阻塞模式。
 
