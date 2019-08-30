@@ -50,7 +50,6 @@ Selector中注册的感兴趣事件有：
 一种优化方式是：将Selector进一步分解为Reactor，将不同的感兴趣事件分开，每一个Reactor只负责一种感兴趣的事件。这样做的好处是：1、分离阻塞级别，减少了轮询的时间；2、线程无需遍历set以找到自己感兴趣的事件，因为得到的set中仅包含自己感兴趣的事件。
 ![img](/static/image/6631645009304717344.png)
 
-
 NIO和epoll：
 
     epoll是Linux内核的IO模型。我想一定有人想问，AIO听起来比NIO更加高大上，为什么不使用AIO？AIO其实也有应用，但是有一个问题就是，Linux是不支持AIO的，因此基于AIO的程序运行在Linux上的效率相比NIO反而更低。而Linux是最主要的服务器OS，因此相比AIO，目前NIO的应用更加广泛。
