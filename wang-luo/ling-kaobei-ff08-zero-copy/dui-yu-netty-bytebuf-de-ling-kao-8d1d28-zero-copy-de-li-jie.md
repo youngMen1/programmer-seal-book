@@ -59,6 +59,10 @@ public CompositeByteBuf addComponents(boolean increaseWriterIndex, ByteBuf... bu
 ```
 方法将 header 与 body 合并为一个逻辑上的 ByteBuf, 即:
 ![img](/static/image/1006163-20161122125123065-1400680861.png)
+
+
+![img](/static/image/1006163-20161122125123065-1400680861.png)
+
 不过需要注意的是, 虽然看起来 CompositeByteBuf 是由两个 ByteBuf 组合而成的, 不过在 CompositeByteBuf 内部, 这两个 ByteBuf 都是单独存在的, CompositeByteBuf 只是逻辑上是一个整体.
 
 上面 CompositeByteBuf 代码还以一个地方值得注意的是, 我们调用 addComponents(boolean increaseWriterIndex, ByteBuf... buffers) 来添加两个 ByteBuf, 其中第一个参数是 true, 表示当添加新的 ByteBuf 时, 自动递增 CompositeByteBuf 的 writeIndex.
