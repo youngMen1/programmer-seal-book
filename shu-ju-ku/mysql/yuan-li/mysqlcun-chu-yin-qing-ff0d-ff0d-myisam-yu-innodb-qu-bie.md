@@ -1,6 +1,6 @@
 ## MySQL存储引擎－－MyISAM与InnoDB区别
 
-MyISAM 和InnoDB 讲解
+## MyISAM 和InnoDB 讲解
 
 InnoDB和MyISAM是许多人在使用MySQL时最常用的两个表类型，这两个表类型各有优劣，视具体应用而定。基本的差别为：MyISAM类型不支持事务处理等高级处理，而InnoDB类型支持。MyISAM类型的表强调的是性能，其执行数度比InnoDB类型更快，但是不提供事务支持，而InnoDB提供事务支持以及外部键等高级数据库功能。
 
@@ -22,7 +22,7 @@ InnoDB和MyISAM是许多人在使用MySQL时最常用的两个表类型，这两
 
 作为使用MySQL的用户角度出发，Innodb和MyISAM都是比较喜欢的，如果数据库平台要达到需求：99.9%的稳定性，方便的扩展性和高可用性来说的话，MyISAM绝对是首选。
 
-原因如下：
+## 原因如下：
 
 1、平台上承载的大部分项目是读多写少的项目，而MyISAM的读性能是比Innodb强不少的。
 
