@@ -17,3 +17,20 @@ EPOLL_CTL_ADD：注册新的fd到epfd中；
 EPOLL_CTL_MOD：修改已经注册的fd的监听事件；
 EPOLL_CTL_DEL：从epfd中删除一个fd；
 第三个参数是需要监听的fd，第四个参数是告诉内核需要监听什么事，struct epoll_event结构如下：
+
+
+```
+
+```
+
+typedef union epoll_data {
+    void *ptr;
+    int fd;
+    __uint32_t u32;
+    __uint64_t u64;
+} epoll_data_t;
+
+struct epoll_event {
+    __uint32_t events; /* Epoll events */
+    epoll_data_t data; /* User data variable */
+};
