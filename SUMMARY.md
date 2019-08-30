@@ -58,7 +58,8 @@
     * [Epoll](wang-luo/wang-luo-mo-xing/epoll.md)
     * [kqueue](wang-luo/kqueue.md)
       * [kqueue用法简介](wang-luo/kqueue/kqueueyong-fa-jian-jie.md)
-  * 连接和短连接
+  * [连接和短连接](wang-luo/lian-jie-he-duan-lian-jie.md)
+    * TCP/IP系列——长连接与短连接的区别
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
