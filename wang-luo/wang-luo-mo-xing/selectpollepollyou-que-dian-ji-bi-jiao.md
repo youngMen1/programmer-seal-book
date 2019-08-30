@@ -13,4 +13,7 @@ poll与select不同，通过一个pollfd数组向内核传递需要关注的事�
 　　poll的实现机制与select类似，其对应内核中的sys_poll，只不过poll向内核传递pollfd数组，然后对pollfd中的每个描述符进行poll，相比处理fdset来说，poll效率更高。　 
 　　poll返回后，需要对pollfd中的每个元素检查其revents值，来得指事件是否发生。
 ### poll优点
+1）poll() 不要求开发者计算最大文件描述符加一的大小。 
+2）poll() 在应付大数目的文件描述符的时候相比于select速度更快 
+3）它没有最大连接数的限制，原因是它是基于链表来存储的。
 ### poll缺点
