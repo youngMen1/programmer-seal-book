@@ -62,6 +62,8 @@
     * [TCP/IP系列——长连接与短连接的区别](wang-luo/lian-jie-he-duan-lian-jie/tcpipxi-lie-2014-2014-chang-lian-jie-yu-duan-lian-jie-de-qu-bie.md)
   * [框架](wang-luo/kuang-jia.md)
     * [Netty原理剖析](wang-luo/kuang-jia/nettyyuan-li-pou-xi.md)
+  * [零拷贝（Zero-copy）](wang-luo/ling-kaobei-ff08-zero-copy.md)
+    * 对于 Netty ByteBuf 的零拷贝\(Zero Copy\) 的理解
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
