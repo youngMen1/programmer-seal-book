@@ -167,10 +167,11 @@ Connection: Upgrade
 Upgrade: h2c
 
 HTTP Upgrade success               /*协商完成*/
-
 ```
 
 ## **6.3 完整通信过程** {#63-完整通信过程}
 
 TCP连接建立：
+
+![](/assets/20170406160432663.png)
 
