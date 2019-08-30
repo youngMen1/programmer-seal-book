@@ -92,8 +92,15 @@ Prefork工作原理
 
   图解Prefork工作原理：
   ![img](/static/image/084450144.png)
+Worker工作原理
 
+    主进程生成多个工作进程，每个工作进程生成一个多个线程，每个线程去
 
+响应客户端的请求
+
+   图解Worker工作原理：
+   
+![img](/static/image/084552193.png
 
 
 
