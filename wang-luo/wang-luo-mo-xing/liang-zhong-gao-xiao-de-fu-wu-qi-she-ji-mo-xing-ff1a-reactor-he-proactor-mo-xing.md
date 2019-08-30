@@ -120,9 +120,9 @@ Proactor（异步）中的读：
  - 事件处理器处理用户自定义缓冲区中的数据，然后启动一个新的异步操作，并将控制权返回事件分离器。
 ## 现行做法
 ## 开源C++框架：ACE
-         开源C++开发框架 ACE 提供了大量平台独立的底层并发支持类(线程、互斥量等)。 同时在更高一层它也提供了独立的几组C++类，用于实现Reactor及Proactor模式。 尽管它们都是平台独立的单元，但他们都提供了不同的接口。ACE Proactor在MS-Windows上无论是性能还在健壮性都更胜一筹，这主要是由于Windows提供了一系列高效的底层异步API。(这段可能过时了点吧) 不幸的是，并不是所有操作系统都为底层异步提供健壮的支持。举例来说， 许多Unix系统就有麻烦。因此， ACE Reactor可能是Unix系统上更合适的解决方案。 正因为系统底层的支持力度不一，为了在各系统上有更好的性能，开发者不得不维护独立的好几份代码: 为Windows准备的ACE Proactor以及为Unix系列提供的ACE Reactor。真正的异步模式需要操作系统级别的支持。由于事件处理者及操作系统交互的差异，为Reactor和Proactor设计一种通用统一的外部接口是非常困难的。这也是设计通行开发框架的难点所在。
+开源C++开发框架 ACE 提供了大量平台独立的底层并发支持类(线程、互斥量等)。 同时在更高一层它也提供了独立的几组C++类，用于实现Reactor及Proactor模式。 尽管它们都是平台独立的单元，但他们都提供了不同的接口。ACE Proactor在MS-Windows上无论是性能还在健壮性都更胜一筹，这主要是由于Windows提供了一系列高效的底层异步API。(这段可能过时了点吧) 不幸的是，并不是所有操作系统都为底层异步提供健壮的支持。举例来说， 许多Unix系统就有麻烦。因此， ACE Reactor可能是Unix系统上更合适的解决方案。 正因为系统底层的支持力度不一，为了在各系统上有更好的性能，开发者不得不维护独立的好几份代码: 为Windows准备的ACE Proactor以及为Unix系列提供的ACE Reactor。真正的异步模式需要操作系统级别的支持。由于事件处理者及操作系统交互的差异，为Reactor和Proactor设计一种通用统一的外部接口是非常困难的。这也是设计通行开发框架的难点所在。
 
-       ACE是一个大型的中间件产品，代码20万行左右，过于宏大，一堆的设计模式，架构了一层又一层，使用的时候，要根据情况，看从那一层来进行使用。支持跨平台。
+ACE是一个大型的中间件产品，代码20万行左右，过于宏大，一堆的设计模式，架构了一层又一层，使用的时候，要根据情况，看从那一层来进行使用。支持跨平台。
 设计模式 ：ACE主要应用了Reactor,Proactor等； 
 层次架构 ：ACE底层是C风格的OS适配层，上一层基于C++的wrap类，再上一层是一些框架 (Accpetor,Connector,Reactor,Proactor等)，最上一层是框架上服务；
 可移植性 ：ACE支持多种平台，可移植性不存在问题，据说socket编程在linux下有不少bugs； 
@@ -143,8 +143,7 @@ libevent是一个C语言写的网络库，官方主要支持的是类linux操作
 开发难度 ：基于libevent开发应用，相对容易，具体可以参考memcached这个开源的应用，里面使用了 libevent这个库。 
 
 ## 改进方案：模拟异步
-        在改进方案中，我们将Reactor原来位于事件处理器内的read/write操作移至分离器(不妨将这个思路称为“模拟异步”)，以此寻求将Reactor多路同步IO转化为模拟异步IO。
-
+在改进方案中，我们将Reactor原来位于事件处理器内的read/write操作移至分离器(不妨将这个思路称为“模拟异步”)，以此寻求将Reactor多路同步IO转化为模拟异步IO。
 以读操作为例子，改进过程如下：
   - 注册读就绪事件及其处理器，并为分离器提供数据缓冲区地址，需要读取数据量等信息。
   - 分离器等待事件（如在select()上等待）
@@ -165,10 +164,8 @@ libevent是一个C语言写的网络库，官方主要支持的是类linux操作
 
        对于不提供异步IO API的操作系统来说，这种办法可以隐藏socket API的交互细节，从而对外暴露一个完整的异步接口。借此，我们就可以进一步构建完全可移植的，平台无关的，有通用对外接口的解决方案。上述方案已经由Terabit P/L公司（http://www.terabit.com.au/）实现为TProactor。它有两个版本：C++和JAVA的。C++版本采用ACE跨平台底层类开发，为所有平台提供了通用统一的主动式异步接口。
 
-
-
 ## Boost.Asio类库
-       Boost.Asio类库，其就是以Proactor这种设计模式来实现，参见：Proactor（The Boost.Asio library is based on the Proactor pattern. This design note outlines the advantages and disadvantages of this approach.），其设计文档链接：http://asio.sourceforge.net/boost_asio_0_3_7/libs/asio/doc/design/index.html
+Boost.Asio类库，其就是以Proactor这种设计模式来实现，参见：Proactor（The Boost.Asio library is based on the Proactor pattern. This design note outlines the advantages and disadvantages of this approach.），其设计文档链接：http://asio.sourceforge.net/boost_asio_0_3_7/libs/asio/doc/design/index.html
 
 ## 参考资料
 1、Reactor构架模式及框架概述
