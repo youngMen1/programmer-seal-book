@@ -217,5 +217,12 @@ public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception
 }
 ```
 
+上面的代码是 Netty 的一个例子, 其源码在 netty/example/src/main/java/io/netty/example/file/FileServerHandler.java
+可以看到, 第一步是通过 RandomAccessFile 打开一个文件, 然后 Netty 使用了 DefaultFileRegion 来封装一个 FileChannel 即:
 
+
+```
+new DefaultFileRegion(raf.getChannel(), 0, length)
+```
+当有了 FileRegion 后, 我们就可以直接通过它将文件的内容直接写入 Channel 中, 而不需要像传统的做法: 拷贝文件内容到临时 buffer, 然后再将 buffer 写入 Channel. 通过这样的零拷贝操作, 无疑对传输大文件很有帮助.
 
