@@ -28,6 +28,7 @@ Wikipedia这么解释Reactor模型：“The reactor design pattern is an event h
 
 
 1.第一种实现模型如下： 
+![img](/static/image/20161129103222584.png)
 
 
 
