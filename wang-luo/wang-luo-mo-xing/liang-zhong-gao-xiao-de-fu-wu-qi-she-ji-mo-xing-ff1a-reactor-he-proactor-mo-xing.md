@@ -91,7 +91,9 @@ Reactor做法：汽车是乘客访问的主体（Reactor），乘客上车后，
 ## 2 多线程模式（单Reactor）
 该模型在事件处理器（Handler）链部分采用了多线程（线程池），也是后端程序常用的模型。
 ![img](/static/image/20150530200945280.png)
-
+## 3 多线程模式（多个Reactor）
+比起第二种模型，它是将Reactor分成两部分，mainReactor负责监听并accept新连接，然后将建立的socket通过多路复用器（Acceptor）分派给subReactor。subReactor负责多路分离已连接的socket，读写网络数据；业务处理功能，其交给worker线程池完成。通常，subReactor个数上可与CPU个数等同。
+![img](/static/image/20150530201146975.png)
 
 
 ## Proacotr模型
