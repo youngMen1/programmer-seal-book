@@ -66,12 +66,6 @@ CREATE TABLE test_frm(
 
 ![img](/static/image/frm-file-hex.png)
 
-
-
-
-
-![img](/static/image/frm-file-hex.png)
-
 MySQL 官方文档中的 11.1 MySQL .frm File Format 一文对于 .frm 文件格式中的二进制的内容有着非常详细的表述，在这里就不展开介绍了。
 
 ## .ibd 文件
