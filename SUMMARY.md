@@ -72,7 +72,7 @@
   * [MySQL](shu-ju-ku/mysql.md)
     * [原理](shu-ju-ku/mysql/yuan-li.md)
       * [MySQL的InnoDB索引原理详解](shu-ju-ku/mysql/yuan-li/mysqlde-innodb-suo-yin-yuan-li-xiang-jie.md)
-    * InnoDB
+    * [InnoDB](shu-ju-ku/mysql/innodb.md)
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * 搜索引擎原理
