@@ -1,4 +1,4 @@
-![](/static/image/38623091724161.png)
+![img](/static/image/38623091724161.png)
 SSL证书，用于加密HTTP协议，也就是HTTPS。随着淘宝、百度等网站纷纷实现全站Https加密访问，搜索引擎对于Https更加友好，加上互联网上越来越多的人重视隐私安全，站长们给网站添加SSL证书似乎成为了一种趋势。
 
 给自己的网站添加SSL证书其实并不复杂，但是关键一点就是首先要拥有一个SSL证书。由于SSL证书价格不菲，很多个人站长会选择放弃使用Https。但是，自从开源、免费的Let's Encrypt证书出现后，我觉得SSL也是我们草根站长可以玩的了。
@@ -37,5 +37,5 @@ SSL证书，用于加密HTTP协议，也就是HTTPS。随着淘宝、百度等�
 
 1、申请和安装COMODO PositiveSSL免费证书及利用VPS自己签发SSL证书
 ## 四、CloudFlare SSL
-
+![img](/static/image/38623091724165.png)
 
