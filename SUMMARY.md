@@ -45,7 +45,8 @@
     * [HTTP](wang-luo/xie-yi/http.md)
     * [HTTP2.0](wang-luo/xie-yi/http20.md)
       * [HTTP2.0的基本单位为二进制帧](wang-luo/xie-yi/http20/http20de-ji-ben-dan-wei-wei-er-jin-zhi-zheng.md)
-    * HTTPS
+    * [HTTPS](wang-luo/xie-yi/https.md)
+      * https原理通俗了解
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
