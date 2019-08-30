@@ -66,7 +66,10 @@
     * [对于 Netty ByteBuf 的零拷贝\(Zero Copy\) 的理解](wang-luo/ling-kaobei-ff08-zero-copy/dui-yu-netty-bytebuf-de-ling-kao-8d1d28-zero-copy-de-li-jie.md)
   * [序列化\(二进制协议\)](wang-luo/xu-lie-531628-er-jin-zhi-xie-8bae29.md)
 * [数据库](shu-ju-ku.md)
-  * 基础理论
+  * [基础理论](shu-ju-ku/ji-chu-li-lun.md)
+    * 关系数据库设计的三大范式
+  * [MySQL](shu-ju-ku/mysql.md)
+    * 原理
 * [搜索引擎](sou-suo-yin-qing.md)
   * 搜索引擎原理
 * [性能](xing-neng.md)
