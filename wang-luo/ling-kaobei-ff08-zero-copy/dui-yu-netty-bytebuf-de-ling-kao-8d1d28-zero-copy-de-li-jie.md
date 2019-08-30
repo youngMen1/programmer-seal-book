@@ -23,3 +23,11 @@ ByteBuf 支持 slice 操作, 因此可以将 ByteBuf 分解为多个共享同一
 
 通过 CompositeByteBuf 实现零拷贝
 假设我们有一份协议数据, 它由头部和消息体组成, 而头部和消息体是分别存放在两个 ByteBuf 中的, 即:
+
+
+```
+ByteBuf header = ...
+ByteBuf body = ...
+
+```
+
