@@ -70,6 +70,8 @@
     * 关系数据库设计的三大范式
   * [MySQL](shu-ju-ku/mysql.md)
     * 原理
+    * InnoDB
+  * NoSQL
 * [搜索引擎](sou-suo-yin-qing.md)
   * 搜索引擎原理
 * [性能](xing-neng.md)
