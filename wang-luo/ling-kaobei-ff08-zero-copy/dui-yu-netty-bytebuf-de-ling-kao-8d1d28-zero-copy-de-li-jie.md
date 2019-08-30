@@ -57,6 +57,6 @@ public CompositeByteBuf addComponents(boolean increaseWriterIndex, ByteBuf... bu
 ...
 }
 ```
-
+方法将 header 与 body 合并为一个逻辑上的 ByteBuf, 即:
 
 
