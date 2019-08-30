@@ -51,7 +51,7 @@ epoll是Linux内核的IO模型。我想一定有人想问，AIO听起来比NIO�
 
 说到这里，可能你已经明白了，epoll一定和NIO有着很深的因缘。没错，如果仔细研究epoll的技术内幕，你会发现它确实和NIO非常相似，都是基于“通道”和缓冲区的，也有selector，只是在epoll中，通道实际上是操作系统的“管道”。和NIO不同的是，NIO中，解放了线程，但是需要由selector阻塞式地轮询IO事件的就绪；而epoll中，IO事件就绪后，会自动发送消息，通知selector：“我已经就绪了。”可以认为，Linux的epoll是一种效率更高的NIO。
 
-NIO轶事：
+**NIO轶事：**
 
 一篇有意思的博客，讲的 Java selector.open\(\) 的时候，会创建一个自己和自己的链接（windows上是tcp，linux上是通道）
 
