@@ -22,6 +22,8 @@
 
 ## MySQL 的架构
 MySQL 从第一个版本发布到现在已经有了 20 多年的历史，在这么多年的发展和演变中，整个应用的体系结构变得越来越复杂：
+![img](/static/image/Logical-View-of-MySQL-Architecture.jpg)
+
 
 ![img](/static/image/Logical-View-of-MySQL-Architecture.jpg)
 
