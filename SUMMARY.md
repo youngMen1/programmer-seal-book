@@ -57,7 +57,7 @@
     * [两种高效的服务器设计模型：Reactor和Proactor模型](wang-luo/wang-luo-mo-xing/liang-zhong-gao-xiao-de-fu-wu-qi-she-ji-mo-xing-ff1a-reactor-he-proactor-mo-xing.md)
   * [Epoll](wang-luo/wang-luo-mo-xing/epoll.md)
   * [kqueue](wang-luo/kqueue.md)
-    * kqueue用法简介
+    * [kqueue用法简介](wang-luo/kqueue/kqueueyong-fa-jian-jie.md)
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
