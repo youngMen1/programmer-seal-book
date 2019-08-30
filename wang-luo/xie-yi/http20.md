@@ -100,35 +100,30 @@ HTTP 2.0增加了服务端推送功能，服务端可以根据客户端的请求
 
 ![](/assets/20170406105233944.png)
 
+PUSH\_PROMISE帧是服务端向客户端有意推送资源的信号。
 
 
 
+如果客户端不需要服务端Push，可在SETTINGS帧中设定服务端流的值为0，禁用此功能
 
+PUSH\_PROMISE帧中只包含预推送资源的首部。如果客户端对PUSH\_PROMISE帧没有意见，服务端在PUSH\_PROMISE帧后发送响应的DATA帧开始推送资源。如果客户端已经缓存该资源，不需要再推送，可以选择拒绝PUSH\_PROMISE帧。
 
+PUSH\_PROMISE必须遵循请求-响应原则，只能借着对请求的响应推送资源。 
 
+目前，Apache的mod\_http2能够开启 H2Push on服务端推送Push。Nginx的ngx\_http\_v2\_module还不支持服务端Push。
 
+```
+ Apache mod_headers example
+<Location /index.html>
+    Header add Link "</css/site.css>;rel=preload"
+    Header add Link "</images/logo.jpg>;rel=preload"
+</Location>
 
+```
 
+# **5. 首部压缩** {#5-首部压缩}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+HTTP 1.x每一次通信（请求/响应）都会携带首部信息用于描述资源属性。HTTP 2.0在客户端和服务端之间使用“首部表”来跟踪和存储之前发送的键-值对。首部表在连接过程中始终存在，新增的键-值对会更新到表尾，因此，不需要每次通信都需要再携带首部。
 
 
 
