@@ -1,2 +1,1 @@
-## 
-select，poll，epoll优缺点及比较
+## select，poll，epoll优缺点及比较
