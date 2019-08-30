@@ -69,7 +69,7 @@
   * [基础理论](shu-ju-ku/ji-chu-li-lun.md)
     * 关系数据库设计的三大范式
   * [MySQL](shu-ju-ku/mysql.md)
-    * 原理
+    * [原理](shu-ju-ku/mysql/yuan-li.md)
     * InnoDB
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
