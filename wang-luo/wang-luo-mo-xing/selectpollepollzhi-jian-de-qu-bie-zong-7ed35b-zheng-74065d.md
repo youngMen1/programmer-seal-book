@@ -38,7 +38,7 @@ select的几大缺点：
 
 （3）select支持的文件描述符数量太小了，默认是1024
 
-##2、poll实现
+## 2、poll实现
 
 　　poll的实现和select非常相似，只是描述fd集合的方式不同，poll使用pollfd结构而不是select的fd_set结构，其他的都差不多。
 
