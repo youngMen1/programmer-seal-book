@@ -60,7 +60,28 @@ struct kevent {
 };
 ```
 
+**EV\_SET**
 
+是用于初始化kevent结构的便利宏，其签名为:
 
+```
+EV_SET(&kev, ident, filter, flags, fflags, data, udata);
+```
 
+可以发现和kevent结构体完全对应，除了第一个，它就是你要初始化的那个kevent结构。
+
+**kevent**是真正进行IO复用的函数，其签名为：
+
+```
+int kevent(int kq, 
+    const struct kevent *changelist, // 监视列表
+    int nchanges, // 长度
+    struct kevent *eventlist, // kevent函数用于返回已经就绪的事件列表
+    int nevents, // 长度
+    const struct timespec *timeout); // 超时限制
+```
+
+# 4. 完整示例 {#完整示例}
+
+下面给出一个完整的示例，这个程序将从标准输入中读取数据，写到标准输出中。其中输入输出全部使用kqueue来进行IO复用。可以使用重定向把文件写入标准输入来进行测试。
 
