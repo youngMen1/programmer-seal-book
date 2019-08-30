@@ -75,6 +75,7 @@
       * [MySQL存储引擎－－MyISAM与InnoDB区别](shu-ju-ku/mysql/yuan-li/mysqlcun-chu-yin-qing-ff0d-ff0d-myisam-yu-innodb-qu-bie.md)
       * [myisam和innodb索引实现的不同](shu-ju-ku/mysql/yuan-li/myisamhe-innodb-suo-yin-shi-xian-de-bu-tong.md)
     * [InnoDB](shu-ju-ku/mysql/innodb.md)
+      * [『浅入浅出』MySQL 和 InnoDB](shu-ju-ku/mysql/innodb/300e-qian-ru-qianchu-300f-mysql-he-innodb.md)
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * 搜索引擎原理
