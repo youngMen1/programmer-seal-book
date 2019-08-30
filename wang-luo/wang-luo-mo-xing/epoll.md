@@ -20,9 +20,6 @@ EPOLL_CTL_DEL：从epfd中删除一个fd；
 
 
 ```
-
-```
-
 typedef union epoll_data {
     void *ptr;
     int fd;
@@ -34,3 +31,5 @@ struct epoll_event {
     __uint32_t events; /* Epoll events */
     epoll_data_t data; /* User data variable */
 };
+```
+
