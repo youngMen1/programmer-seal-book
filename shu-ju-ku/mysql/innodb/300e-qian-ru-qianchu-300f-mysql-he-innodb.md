@@ -38,5 +38,8 @@ Tablespace-segment-extent-page-row.jpg
 
 同一个数据库实例的所有表空间都有相同的页大小；默认情况下，表空间中的页大小都为 16KB，当然也可以通过改变 innodb_page_size 选项对默认大小进行修改，需要注意的是不同的页大小最终也会导致区大小的不同：
 
+Relation Between Page Size - Extent Size.png
+
+
 
 
