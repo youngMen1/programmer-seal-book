@@ -140,6 +140,82 @@ ByteBuf body = byteBuf.slice(5, 10);
 用 slice 方法产生 header 和 body 的过程是没有拷贝操作的, header 和 body 对象在内部其实是共享了 byteBuf 存储空间的不同部分而已. 即:
 ![img](/static/image/1006163-20161122125113893-136149474.png)
 
+通过 FileRegion 实现零拷贝
+Netty 中使用 FileRegion 实现文件传输的零拷贝, 不过在底层 FileRegion 是依赖于 Java NIO FileChannel.transfer 的零拷贝功能.
+
+首先我们从最基础的 Java IO 开始吧. 假设我们希望实现一个文件拷贝的功能, 那么使用传统的方式, 我们有如下实现:
+
+
+```
+public static void copyFile(String srcFile, String destFile) throws Exception {
+    byte[] temp = new byte[1024];
+    FileInputStream in = new FileInputStream(srcFile);
+    FileOutputStream out = new FileOutputStream(destFile);
+    int length;
+    while ((length = in.read(temp)) != -1) {
+        out.write(temp, 0, length);
+    }
+
+    in.close();
+    out.close();
+}
+```
+
+上面是一个典型的读写二进制文件的代码实现了. 不用我说, 大家肯定都知道, 上面的代码中不断中源文件中读取定长数据到 temp 数组中, 然后再将 temp 中的内容写入目的文件, 这样的拷贝操作对于小文件倒是没有太大的影响, 但是如果我们需要拷贝大文件时, 频繁的内存拷贝操作就消耗大量的系统资源了.
+下面我们来看一下使用 Java NIO 的 FileChannel 是如何实现零拷贝的:
+
+
+```
+public static void copyFileWithFileChannel(String srcFileName, String destFileName) throws Exception {
+    RandomAccessFile srcFile = new RandomAccessFile(srcFileName, "r");
+    FileChannel srcFileChannel = srcFile.getChannel();
+
+    RandomAccessFile destFile = new RandomAccessFile(destFileName, "rw");
+    FileChannel destFileChannel = destFile.getChannel();
+
+    long position = 0;
+    long count = srcFileChannel.size();
+
+    srcFileChannel.transferTo(position, count, destFileChannel);
+}
+
+```
+可以看到, 使用了 FileChannel 后, 我们就可以直接将源文件的内容直接拷贝(transferTo) 到目的文件中, 而不需要额外借助一个临时 buffer, 避免了不必要的内存操作.
+
+有了上面的一些理论知识, 我们来看一下在 Netty 中是怎么使用 FileRegion 来实现零拷贝传输一个文件的:
+
+
+```
+@Override
+public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    RandomAccessFile raf = null;
+    long length = -1;
+    try {
+        // 1. 通过 RandomAccessFile 打开一个文件.
+        raf = new RandomAccessFile(msg, "r");
+        length = raf.length();
+    } catch (Exception e) {
+        ctx.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
+        return;
+    } finally {
+        if (length < 0 && raf != null) {
+            raf.close();
+        }
+    }
+
+    ctx.write("OK: " + raf.length() + '\n');
+    if (ctx.pipeline().get(SslHandler.class) == null) {
+        // SSL not enabled - can use zero-copy file transfer.
+        // 2. 调用 raf.getChannel() 获取一个 FileChannel.
+        // 3. 将 FileChannel 封装成一个 DefaultFileRegion
+        ctx.write(new DefaultFileRegion(raf.getChannel(), 0, length));
+    } else {
+        // SSL enabled - cannot use zero-copy file transfer.
+        ctx.write(new ChunkedFile(raf));
+    }
+    ctx.writeAndFlush("\n");
+}
+```
 
 
 
