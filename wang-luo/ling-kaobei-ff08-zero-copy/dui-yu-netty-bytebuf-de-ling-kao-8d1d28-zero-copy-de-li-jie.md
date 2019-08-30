@@ -29,4 +29,14 @@ ByteBuf header = ...
 ByteBuf body = ...
 
 ```
+我们在代码处理中, 通常希望将 header 和 body 合并为一个 ByteBuf, 方便处理, 那么通常的做法是:
+
+
+```
+ByteBuf allBuf = Unpooled.buffer(header.readableBytes() + body.readableBytes());
+allBuf.writeBytes(header);
+allBuf.writeBytes(body);
+```
+
+
 
