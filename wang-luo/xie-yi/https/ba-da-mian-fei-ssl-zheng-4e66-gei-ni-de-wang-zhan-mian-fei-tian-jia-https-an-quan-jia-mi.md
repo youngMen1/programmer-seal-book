@@ -22,7 +22,7 @@ SSL证书，用于加密HTTP协议，也就是HTTPS。随着淘宝、百度等�
 
 1、免费SSL证书Let’s Encrypt安装使用教程:Apache和Nginx配置SSL
 ## 二、StartSSL
- ![](/static/image/38623091724163.png)
+ ![img](/static/image/38623091724163.png)
  1、StartSSL是StartCom公司旗下的SSL证书，应该算是免费SSL证书中的“鼻祖”，最早提供完全免费的SSL证书并且被各大浏览器所支持的恐怕就只有StartSSL证书了。任何个人都可以从StartSSL中申请到免费一年的SSL证书。
 
 2、首次申请StartSSL免费SSL证书是免费一年，但是你可以在第二年继续续期。之前StartSSL管理SSL证书只有本地浏览器安装数字证书一种，所以一旦本地的数字证书丢失的话就无法获取到自己之前申请的证书了，不过现在已经增加了邮箱登录了。
