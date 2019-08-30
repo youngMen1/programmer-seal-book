@@ -40,7 +40,9 @@ SSL证书，用于加密HTTP协议，也就是HTTPS。随着淘宝、百度等�
 
 1、申请和安装COMODO PositiveSSL免费证书及利用VPS自己签发SSL证书
 ## 四、CloudFlare SSL
+
 ![img](/static/image/38623091724165.png)
+
 1、CloudFlare提供的免费SSL证书是UniversalSSL，即通用SSL，用户无需向证书发放机构申请和配置证书就可以使用的SSL证书，CloudFlare向所有用户(包括免费用户)提供SSL加密功能。
 
 2、不过Universal SSL的服务对免费用户有限制，CloudFlare只支持扩展支持Server Name Indication(SNI)协议的现代浏览器，这意味着它不支持IE6及之前版本、运行android 2.2或更旧版本的Android浏览器。
