@@ -364,8 +364,11 @@ Difference between clustered and nonclustered index
 InnoDB Locking  
 乐观锁与悲观锁的区别  
 Optimistic concurrency control  
-MySQL 四种事务隔离级的说明  
-关于图片和转载  
-知识共享许可协议  
-本作品采用知识共享署名 4.0 国际许可协议进行许可。 转载时请注明原文链接，图片在使用时请保留图片中的全部内容，可适当缩放并在引用处附上图片所在的文章链接，图片使用 Sketch 进行绘制。
+MySQL 四种事务隔离级的说明
+
+## 参考:
+
+https://draveness.me/
+
+
 
