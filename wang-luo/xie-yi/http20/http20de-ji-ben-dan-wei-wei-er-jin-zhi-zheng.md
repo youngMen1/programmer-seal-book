@@ -16,5 +16,15 @@ HTTP2.0这么多新特性就是因为底层数据格式的改变：
 +---------------------------------------------------+
 ```
 
+length：表示Frame Payload部分的长度，其FrameHeader固定为9字节共72比特
+
+type：区分Frame Payload部分是HTTP Header还是HTTP Body
+
+Flags：8位，每一位都起标记作用，表示这个帧的类型
+
+R：保留位
+
+Stream Identifier：帧流ID，当开始建立连接时，先发送一个Stream ID=0的流来最初始化工作，之后从1开始发送请求/响应。
+
 
 
