@@ -9,6 +9,9 @@ Netty是一个高性能、异步事件驱动的NIO框架，基于JAVA NIO提供�
 ### 2.1 Reactor模式
 
 Wikipedia这么解释Reactor模型：“The reactor design pattern is an event handling pattern for handling service requests delivered concurrently by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to associated request handlers.”。首先Reactor模式首先是事件驱动的，有一个或者多个并发输入源，有一个Server Handler和多个Request Handlers，这个Service Handler会同步的将输入的请求多路复用的分发给相应的Request Handler。可以如下图所示：
+![img](/static/image/20161129103112729.png)
+
+
 
 ![img](/static/image/20161129103112729.png)
 
