@@ -146,23 +146,31 @@ HTTP 1.x每一次通信（请求/响应）都会携带首部信息用于描述�
 
 ![](/assets/20170406154450854.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
 6.2 基于HTTP的协商过程
 
 然而，HTTP 2.0一定是HTTPS（TLS 1.2）的特权吗？
 
 当然不是，客户端使用HTTP也可以开启HTTP 2.0通信。只不过因为HTTP 1. 0和HTTP 2. 0都使用同一个 端口（80）， 又没有服务器是否支持HTTP 2. 0的其他任何 信息，此时 客户端只能使用HTTP Upgrade机制（OkHttp, nghttp2等组件均可实现，也可以自己编码完成）通过协调确定适当的协议：
+
+```
+HTTP Upgrade request
+GET / HTTP/1.1
+host: nghttp2.org
+connection: Upgrade, HTTP2-Settings
+upgrade: h2c        /*发起带有HTTP2.0 Upgrade头部的请求*/       
+http2-settings: AAMAAABkAAQAAP__   /*客户端SETTINGS净荷*/
+user-agent: nghttp2/1.9.0-DEV
+
+HTTP Upgrade response    
+HTTP/1.1 101 Switching Protocols   /*服务端同意升级到HTTP 2.0*/
+Connection: Upgrade
+Upgrade: h2c
+
+HTTP Upgrade success               /*协商完成*/
+ ———————————————— 
+版权声明：本文为CSDN博主「皖南笑笑生」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zhuyiquan/article/details/69257126
+```
 
 
 
