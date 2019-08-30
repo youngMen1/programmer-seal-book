@@ -50,7 +50,7 @@
       * [八大免费SSL证书-给你的网站免费添加Https安全加密](wang-luo/xie-yi/https/ba-da-mian-fei-ssl-zheng-4e66-gei-ni-de-wang-zhan-mian-fei-tian-jia-https-an-quan-jia-mi.md)
   * [网络模型](wang-luo/wang-luo-mo-xing.md)
     * [web优化必须了解的原理之I/o的五种模型和web的三种工作模式](wang-luo/wang-luo-mo-xing/webyou-hua-bi-xu-le-jie-de-yuan-li-zhi-i-o-de-wu-zhong-mo-xing-he-web-de-san-zhong-gong-zuo-mo-shi.md)
-    * select、poll、epoll之间的区别总结\[整理\]
+    * [select、poll、epoll之间的区别总结\[整理\]](wang-luo/wang-luo-mo-xing/selectpollepollzhi-jian-de-qu-bie-zong-7ed35b-zheng-74065d.md)
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
