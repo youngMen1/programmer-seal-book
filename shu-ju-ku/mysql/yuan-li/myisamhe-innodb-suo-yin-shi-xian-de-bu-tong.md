@@ -9,10 +9,6 @@ MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数�
 ![img](/static/image/20121130111258238.png)
 
 
-
-![img](/static/image/20121130111258238.png)
-
-
 同样也是一颗B+Tree，data域保存数据记录的地址。因此，MyISAM中索引检索的算法为首先按照B+Tree搜索算法搜索索引，如果指定的Key存在，则取出其data域的值，然后以data域的值为地址，读取相应数据记录。
 
 MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。
