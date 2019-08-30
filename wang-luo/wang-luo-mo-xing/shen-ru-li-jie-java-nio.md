@@ -52,15 +52,15 @@ Selector中注册的感兴趣事件有：
 
 NIO和epoll：
 
-    epoll是Linux内核的IO模型。我想一定有人想问，AIO听起来比NIO更加高大上，为什么不使用AIO？AIO其实也有应用，但是有一个问题就是，Linux是不支持AIO的，因此基于AIO的程序运行在Linux上的效率相比NIO反而更低。而Linux是最主要的服务器OS，因此相比AIO，目前NIO的应用更加广泛。
+epoll是Linux内核的IO模型。我想一定有人想问，AIO听起来比NIO更加高大上，为什么不使用AIO？AIO其实也有应用，但是有一个问题就是，Linux是不支持AIO的，因此基于AIO的程序运行在Linux上的效率相比NIO反而更低。而Linux是最主要的服务器OS，因此相比AIO，目前NIO的应用更加广泛。
 
-    说到这里，可能你已经明白了，epoll一定和NIO有着很深的因缘。没错，如果仔细研究epoll的技术内幕，你会发现它确实和NIO非常相似，都是基于“通道”和缓冲区的，也有selector，只是在epoll中，通道实际上是操作系统的“管道”。和NIO不同的是，NIO中，解放了线程，但是需要由selector阻塞式地轮询IO事件的就绪；而epoll中，IO事件就绪后，会自动发送消息，通知selector：“我已经就绪了。”可以认为，Linux的epoll是一种效率更高的NIO。
+说到这里，可能你已经明白了，epoll一定和NIO有着很深的因缘。没错，如果仔细研究epoll的技术内幕，你会发现它确实和NIO非常相似，都是基于“通道”和缓冲区的，也有selector，只是在epoll中，通道实际上是操作系统的“管道”。和NIO不同的是，NIO中，解放了线程，但是需要由selector阻塞式地轮询IO事件的就绪；而epoll中，IO事件就绪后，会自动发送消息，通知selector：“我已经就绪了。”可以认为，Linux的epoll是一种效率更高的NIO。
 
 NIO轶事：
 
-    一篇有意思的博客，讲的 Java selector.open() 的时候，会创建一个自己和自己的链接（windows上是tcp，linux上是通道）
+一篇有意思的博客，讲的 Java selector.open() 的时候，会创建一个自己和自己的链接（windows上是tcp，linux上是通道）
 
-    这么做的原因：可以从 Apache Mina 中窥探。在 Mina 中，有如下机制：
+这么做的原因：可以从 Apache Mina 中窥探。在 Mina 中，有如下机制：
 
 Mina框架会创建一个Work对象的线程。
 
@@ -70,7 +70,7 @@ Work对象的线程的run()方法会从一个队列中拿出一堆Channel，然�
 
 要唤醒select方法，只需要调用Selector的wakeup()方法。
 
-    而一个阻塞在select上的线程有以下三种方式可以被唤醒：
+而一个阻塞在select上的线程有以下三种方式可以被唤醒：
 
 有数据可读/写，或出现异常。
 
@@ -78,7 +78,7 @@ Work对象的线程的run()方法会从一个队列中拿出一堆Channel，然�
 
 收到一个non-block的信号。可由kill或pthread_kill发出。
 
-    首先 2 可以排除，而第三种方式，只在linux中存在。因此，Java NIO为什么要创建一个自己和自己的链接：就是如果想要唤醒select，只需要朝着自己的这个loopback连接发点数据过去，于是，就可以唤醒阻塞在select上的线程了。
+首先 2 可以排除，而第三种方式，只在linux中存在。因此，Java NIO为什么要创建一个自己和自己的链接：就是如果想要唤醒select，只需要朝着自己的这个loopback连接发点数据过去，于是，就可以唤醒阻塞在select上的线程了。
 
 
 
