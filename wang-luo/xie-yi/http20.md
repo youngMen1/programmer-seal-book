@@ -4,11 +4,17 @@ HTTP 2.0是在SPDY（An experimental protocol for a faster web, The Chromium Pro
 
 本文目的是学习HTTP 2.0的原理并研究其通信的详细细节。大部分知识点源于《Web性能权威指南》。
 
+1. 二进制分帧层
 
+二进制分帧层，是HTTP 2.0性能增强的核心。 
 
+HTTP 1.x在应用层以纯文本的形式进行通信，而HTTP 2.0将所有的传输信息分割为更小的消息和帧，并对它们采用二进制格式编码。这样，客户端和服务端都需要引入新的二进制编码和解码的机制。 
 
+如下图所示，HTTP 2.0并没有改变HTTP 1.x的语义，只是在应用层使用二进制分帧方式传输。
 
+ ———————————————— 
 
+版权声明：本文为CSDN博主「皖南笑笑生」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 
-
+原文链接：https://blog.csdn.net/zhuyiquan/article/details/69257126
 
