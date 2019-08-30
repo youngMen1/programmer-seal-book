@@ -43,5 +43,9 @@ for(int i=0; i<nev; i++){
 }
 ```
 
+# 3. 相关结构体与函数解析 {#相关结构体与函数解析}
 
+可以看出来，kqueue体系只有三样东西：struct kevent结构体，EV\_SET宏以及kevent函数。
+
+**struct kevent**结构体内容如下：
 
