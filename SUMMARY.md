@@ -67,7 +67,7 @@
   * [序列化\(二进制协议\)](wang-luo/xu-lie-531628-er-jin-zhi-xie-8bae29.md)
 * [数据库](shu-ju-ku.md)
   * [基础理论](shu-ju-ku/ji-chu-li-lun.md)
-    * 关系数据库设计的三大范式
+    * [关系数据库设计的三大范式](shu-ju-ku/ji-chu-li-lun/guan-xi-shu-ju-ku-she-ji-de-san-da-fan-shi.md)
   * [MySQL](shu-ju-ku/mysql.md)
     * [原理](shu-ju-ku/mysql/yuan-li.md)
       * [MySQL的InnoDB索引原理详解](shu-ju-ku/mysql/yuan-li/mysqlde-innodb-suo-yin-yuan-li-xiang-jie.md)
