@@ -40,4 +40,7 @@ epoll是Linux下多路复用IO接口select/poll的增强版本。
 
 3）使用mmap加速内核与用户空间的消息传递。
 
+总结
+
+
 
