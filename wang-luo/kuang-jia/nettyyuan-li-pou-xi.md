@@ -42,5 +42,12 @@ Wikipedia这么解释Reactor模型：“The reactor design pattern is an event h
 2.Reactor多线程模型： 
 ![img](/static/image/20161129103519887.png)
 
+比上一种模式，该模型在处理链部分采用了多线程（线程池）。
+
+在绝大多数场景下，该模型都能满足性能需求。但是，在一些特殊的应用场景下，如服务器会对客户端的握手消息进行安全认证。这类场景下，单独的一个Acceptor线程可能会存在性能不足的问题。为了解决这些问题，产生了第三种Reactor线程模型
+
+3.Reactor主从模型 
+![img](/static/image/20161129103725841.png)
+
 
 
