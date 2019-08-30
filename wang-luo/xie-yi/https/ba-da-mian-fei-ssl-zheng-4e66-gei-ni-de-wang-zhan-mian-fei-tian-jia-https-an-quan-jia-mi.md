@@ -12,12 +12,30 @@ SSL证书，用于加密HTTP协议，也就是HTTPS。随着淘宝、百度等�
 3、CDN安全：DNSPOD分布式解析+安全宝和Incapsula对搜索引擎分别CDN加速
 八大免费SSL证书-给你的网站免费添加Https安全加密
 
-一、Let's Encrypt
+## 一、Let's Encrypt
 ![](/static/image/38623091724162.png)
 1、Let's Encrypt是国外一个公共的免费SSL项目，由 Linux 基金会托管，它的来头不小，由Mozilla、思科、Akamai、IdenTrust和EFF等组织发起，目的就是向网站自动签发和管理免费证书，以便加速互联网由HTTP过渡到HTTPS。
 
 2、Let's Encrypt安装部署简单、方便，目前Cpanel、Oneinstack等面板都已经集成了Let's Encrypt一键申请安装，网上也有不少的利用Let's Encrypt开源的特性制作的在线免费SSL证书申请网站，总之Let's Encrypt得到大家的认可。
 
 1、免费SSL证书Let’s Encrypt安装使用教程:Apache和Nginx配置SSL
-二、StartSSL
+## 二、StartSSL
  ![](/static/image/38623091724163.png)
+ 1、StartSSL是StartCom公司旗下的SSL证书，应该算是免费SSL证书中的“鼻祖”，最早提供完全免费的SSL证书并且被各大浏览器所支持的恐怕就只有StartSSL证书了。任何个人都可以从StartSSL中申请到免费一年的SSL证书。
+
+2、首次申请StartSSL免费SSL证书是免费一年，但是你可以在第二年继续续期。之前StartSSL管理SSL证书只有本地浏览器安装数字证书一种，所以一旦本地的数字证书丢失的话就无法获取到自己之前申请的证书了，不过现在已经增加了邮箱登录了。
+
+3、如果你有看新闻，也许已经知道了“Mozilla正式提议将停止信任 WoSign 和 StartCom 签发的新证书”，对于StartSSL请观察事态发展后再谨慎使用。
+
+1、新StartSSL免费SSL证书申请使用:Apache和Ngnix安装配置SSL证书
+## 三、COMODO PositiveSSL
+![img](/static/image/38623091724164.png)
+
+1、COMODO官网只有免费90天的SSL证书试用申请，这个COMODO PositiveSSL证书来自UK2公司，VPS.net等就是UK2公司旗下的产品。目前获取UK2提供的免费COMODO PositiveSSL不需要额外的操作，只需要你将域名的IP地址解析到指定的IP即可。
+
+2、先把域名解析到UK2公司的服务器上，然后在网页上获取SSL证书并下载，最后你就可以解除域名解析，同时将下载的域名证书文件上传到服务器配置SSL即可。不过由于是UK2提供的COMODO PositiveSSL免费证书，如果你没有用他们的主机总归不知道哪一天会出问题的。
+
+1、申请和安装COMODO PositiveSSL免费证书及利用VPS自己签发SSL证书
+## 四、CloudFlare SSL
+
+
