@@ -4,7 +4,7 @@ _摘要：本文尝试一步步**还原**HTTPS的设计过程，以理解为什�
 
 我们先不了聊HTTP，HTTPS，我们先从一个聊天软件说起，我们要实现A能发一个hello消息给B：
 
-![](https://img-blog.csdn.net/20180115171257989)  
+![](static/image/20180115171257989)  
 
 
 ![](https://blog.csdn.net/qq_32523587/article/details/79066271)
