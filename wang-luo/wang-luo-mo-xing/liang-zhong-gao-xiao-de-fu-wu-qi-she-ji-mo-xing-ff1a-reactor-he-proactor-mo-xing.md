@@ -90,11 +90,6 @@ Reactor做法：汽车是乘客访问的主体（Reactor），乘客上车后，
 
 ![img](/static/image/20150530200837585.png)
 
-
-
-![img](/static/image/20150530200837585.png)
-
-
 ## 2 多线程模式（单Reactor）
 该模型在事件处理器（Handler）链部分采用了多线程（线程池），也是后端程序常用的模型。
 
