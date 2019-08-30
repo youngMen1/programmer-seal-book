@@ -77,7 +77,7 @@ I/O复用的图解：
 
      nginx就采用了边缘触发的事件驱动机制，这就是为什么nginx的并发性比apache好，当然nginx的性能比apache好，还有其它方面，如nginx支持异步I/O，mmap(内存映射)等等
 
-
+![img](/static/image/210003879.png)
 
 
 
