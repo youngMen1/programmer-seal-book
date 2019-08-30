@@ -80,7 +80,7 @@ I/O复用的图解：
 ![img](/static/image/210003879.png)
 
 异步I/O的图解：
-
+![img](/static/image/210054915.png)
 
 
 
