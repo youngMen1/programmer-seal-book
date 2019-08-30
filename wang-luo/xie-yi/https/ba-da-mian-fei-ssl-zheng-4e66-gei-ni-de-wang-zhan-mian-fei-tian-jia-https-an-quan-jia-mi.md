@@ -53,10 +53,7 @@ SSL证书，用于加密HTTP协议，也就是HTTPS。随着淘宝、百度等�
 
 1、免费SSL证书:CloudFlare SSL和Wosign沃通SSL申请开通和安装使用
 ## 六、腾讯云DV SSL 证书
-![img](/static/image/38623091724165.png)
-
 ![img](/static/image/38623091724167.png)
-
 1、腾讯云DV SSL 域名型证书由赛门铁克提供自动审核认证，快速签发，支持自动 CSR 生成、域名身份 DNS 自动验证，一步提交申请，审核签发流程全自动。可以一键部署到腾讯云资源，轻松获得数据安全。
 
 1、免费DV SSL证书和AlphaSSL Wildcard SSL证书申请-腾讯云SSL和loovit.net AlphaSSL
