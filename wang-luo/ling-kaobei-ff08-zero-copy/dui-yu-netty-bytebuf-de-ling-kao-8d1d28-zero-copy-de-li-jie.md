@@ -48,9 +48,7 @@ CompositeByteBuf compositeByteBuf = Unpooled.compositeBuffer();
 compositeByteBuf.addComponents(true, header, body);
 ```
 
-上面代码中, 我们定义了一个
-
-`CompositeByteBuf`
+上面代码中, 我们定义了一个`CompositeByteBuf`
 
 对象, 然后调用
 
