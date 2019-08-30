@@ -266,29 +266,18 @@ t=370261 [st=   36]    HTTP2_SESSION_RECV_DATA
 t=370295 [st=   70]    HTTP2_STREAM_UPDATE_RECV_WINDOW
                        --> delta = 58
                        --> window_size = 15728640
-t=402700 [st=32475] 
-
+t=402700 [st=32475]
 ```
 
-7. HTTP 2.0性能瓶颈
+1. HTTP 2.0性能瓶颈
 
-是不是启用HTTP 2.0后性能必然提升了？任何事情都不是绝对的，虽然总体而言性能肯定是能提升的。 
+是不是启用HTTP 2.0后性能必然提升了？任何事情都不是绝对的，虽然总体而言性能肯定是能提升的。
 
 我想HTTP 2.0会带来新的性能瓶颈。因为现在所有的压力集中在底层一个TCP连接之上，TCP很可能就是下一个性能瓶颈，比如TCP分组的队首阻塞问题，单个TCP packet丢失导致整个连接阻塞，无法逃避，此时所有消息都会受到影响。未来，服务器端针对HTTP 2.0下的TCP配置优化至关重要，有机会我们再跟进详述。
 
-
-
 参考文献
 
-《Web性能权威指南》 
+《Web性能权威指南》
 
-《使用 nghttp2 调试 HTTP/2 流量》 https://imququ.com/post/intro-to-nghttp2.html
-
- ———————————————— 
-
-版权声明：本文为CSDN博主「皖南笑笑生」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：https://blog.csdn.net/zhuyiquan/article/details/69257126
-
-
+《使用 nghttp2 调试 HTTP/2 流量》 [https://imququ.com/post/intro-to-nghttp2.html](https://imququ.com/post/intro-to-nghttp2.html)
 
