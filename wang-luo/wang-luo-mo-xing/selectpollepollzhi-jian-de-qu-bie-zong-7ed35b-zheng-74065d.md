@@ -38,7 +38,7 @@ select的几大缺点：
 
 （3）select支持的文件描述符数量太小了，默认是1024
 
-2 poll实现
+##2、poll实现
 
 　　poll的实现和select非常相似，只是描述fd集合的方式不同，poll使用pollfd结构而不是select的fd_set结构，其他的都差不多。
 
@@ -54,7 +54,7 @@ http://www.ibm.com/developerworks/cn/linux/l-cn-edntwk/index.html?ca=drs-
 
 http://linux.chinaunix.net/techdoc/net/2009/05/03/1109887.shtml
 
-3、epoll
+## 3、epoll
 
 　　epoll既然是对select和poll的改进，就应该能避免上述的三个缺点。那epoll都是怎么解决的呢？在此之前，我们先看一下epoll和select和poll的调用接口上的不同，select和poll都只提供了一个函数——select或者poll函数。而epoll提供了三个函数，epoll_create,epoll_ctl和epoll_wait，epoll_create是创建一个epoll句柄；epoll_ctl是注册要监听的事件类型；epoll_wait则是等待事件的产生。
 
