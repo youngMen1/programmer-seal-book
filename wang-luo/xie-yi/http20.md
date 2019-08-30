@@ -181,3 +181,114 @@ TCP连接建立：
 
 命令也能捕获HTTP 2.0通信过程：
 
+```
+42072: HTTP2_SESSION
+textlink.simba.taobao.com:443 (PROXY 10.19.110.55:8080)
+Start Time: 2017-04-05 11:39:11.459
+
+t=370225 [st=    0] +HTTP2_SESSION  [dt=32475+]
+                     --> host = "textlink.simba.taobao.com:443"
+                     --> proxy = "PROXY 10.19.110.55:8080"
+t=370225 [st=    0]    HTTP2_SESSION_INITIALIZED
+                       --> protocol = "h2"
+                       --> source_dependency = 42027 (PROXY_CLIENT_SOCKET_WRAPPER)
+t=370225 [st=    0]    HTTP2_SESSION_SEND_SETTINGS
+                       --> settings = ["[id:3 flags:0 value:1000]","[id:4 flags:0 value:6291456]","[id:1 flags:0 value:65536]"]
+t=370225 [st=    0]    HTTP2_STREAM_UPDATE_RECV_WINDOW
+                       --> delta = 15663105
+                       --> window_size = 15728640
+t=370225 [st=    0]    HTTP2_SESSION_SENT_WINDOW_UPDATE_FRAME
+                       --> delta = 15663105
+                       --> stream_id = 0
+t=370225 [st=    0]    HTTP2_SESSION_SEND_HEADERS
+                       --> exclusive = true
+                       --> fin = true
+                       --> has_priority = true
+                       --> :method: GET
+                           :authority: textlink.simba.taobao.com
+                           :scheme: https
+                           :path: /?name=tbhs&cna=IAj9EOy3fngCAXBQ5kJ9yusH&nn=&count=13&pid=430266_1006&_ksTS=1491363551394_94&callback=jsonp95
+                           user-agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+                           accept: */*
+                           referer: https://www.taobao.com/
+                           accept-encoding: gzip, deflate, sdch, br
+                           accept-language: zh-CN,zh;q=0.8
+                           cookie: [382 bytes were stripped]
+                       --> parent_stream_id = 0
+                       --> stream_id = 1
+                       --> weight = 147
+t=370256 [st=   31]    HTTP2_SESSION_RECV_SETTINGS
+                       --> host = "textlink.simba.taobao.com:443"
+t=370256 [st=   31]    HTTP2_SESSION_RECV_SETTING
+                       --> flags = 0
+                       --> id = 3
+                       --> value = 128
+t=370256 [st=   31]    HTTP2_SESSION_UPDATE_STREAMS_SEND_WINDOW_SIZE
+                       --> delta_window_size = 2147418112
+t=370256 [st=   31]    HTTP2_SESSION_RECV_SETTING
+                       --> flags = 0
+                       --> id = 4
+                       --> value = 2147483647
+t=370256 [st=   31]    HTTP2_SESSION_RECV_SETTING
+                       --> flags = 0
+                       --> id = 5
+                       --> value = 16777215
+t=370256 [st=   31]    HTTP2_SESSION_RECEIVED_WINDOW_UPDATE_FRAME
+                       --> delta = 2147418112
+                       --> stream_id = 0
+t=370256 [st=   31]    HTTP2_SESSION_UPDATE_SEND_WINDOW
+                       --> delta = 2147418112
+                       --> window_size = 2147483647
+t=370261 [st=   36]    HTTP2_SESSION_RECV_HEADERS
+                       --> fin = false
+                       --> :status: 200
+                           date: Wed, 05 Apr 2017 03:39:11 GMT
+                           content-type: text/html; charset=ISO-8859-1
+                           vary: Accept-Encoding
+                           server: Tengine
+                           expires: Wed, 05 Apr 2017 03:39:11 GMT
+                           cache-control: max-age=0
+                           strict-transport-security: max-age=0
+                           timing-allow-origin: *
+                           content-encoding: gzip
+                       --> stream_id = 1
+t=370261 [st=   36]    HTTP2_SESSION_RECV_DATA
+                       --> fin = false
+                       --> size = 58
+                       --> stream_id = 1
+t=370261 [st=   36]    HTTP2_SESSION_UPDATE_RECV_WINDOW
+                       --> delta = -58
+                       --> window_size = 15728582
+t=370261 [st=   36]    HTTP2_SESSION_RECV_DATA
+                       --> fin = true
+                       --> size = 0
+                       --> stream_id = 1
+t=370295 [st=   70]    HTTP2_STREAM_UPDATE_RECV_WINDOW
+                       --> delta = 58
+                       --> window_size = 15728640
+t=402700 [st=32475] 
+
+```
+
+7. HTTP 2.0性能瓶颈
+
+是不是启用HTTP 2.0后性能必然提升了？任何事情都不是绝对的，虽然总体而言性能肯定是能提升的。 
+
+我想HTTP 2.0会带来新的性能瓶颈。因为现在所有的压力集中在底层一个TCP连接之上，TCP很可能就是下一个性能瓶颈，比如TCP分组的队首阻塞问题，单个TCP packet丢失导致整个连接阻塞，无法逃避，此时所有消息都会受到影响。未来，服务器端针对HTTP 2.0下的TCP配置优化至关重要，有机会我们再跟进详述。
+
+
+
+参考文献
+
+《Web性能权威指南》 
+
+《使用 nghttp2 调试 HTTP/2 流量》 https://imququ.com/post/intro-to-nghttp2.html
+
+ ———————————————— 
+
+版权声明：本文为CSDN博主「皖南笑笑生」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/zhuyiquan/article/details/69257126
+
+
+
