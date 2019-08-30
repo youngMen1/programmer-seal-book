@@ -100,7 +100,7 @@ Worker工作原理
 
    图解Worker工作原理：
    
-![img](/static/image/084552193.png
+![img](/static/image/084552193.png)
 
 
 
