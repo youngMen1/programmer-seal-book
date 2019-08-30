@@ -63,7 +63,7 @@
   * [框架](wang-luo/kuang-jia.md)
     * [Netty原理剖析](wang-luo/kuang-jia/nettyyuan-li-pou-xi.md)
   * [零拷贝（Zero-copy）](wang-luo/ling-kaobei-ff08-zero-copy.md)
-    * 对于 Netty ByteBuf 的零拷贝\(Zero Copy\) 的理解
+    * [对于 Netty ByteBuf 的零拷贝\(Zero Copy\) 的理解](wang-luo/ling-kaobei-ff08-zero-copy/dui-yu-netty-bytebuf-de-ling-kao-8d1d28-zero-copy-de-li-jie.md)
 * [数据库](shu-ju-ku.md)
   * 基础理论
 * [搜索引擎](sou-suo-yin-qing.md)
