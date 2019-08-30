@@ -1,12 +1,12 @@
-1. Netty简介
+## 1. Netty简介
 
 Netty是一个高性能、异步事件驱动的NIO框架，基于JAVA NIO提供的API实现。它提供了对TCP、UDP和文件传输的支持，作为一个异步NIO框架，Netty的所有IO操作都是异步非阻塞的，通过Future-Listener机制，用户可以方便的主动获取或者通过通知机制获得IO操作结果。 作为当前最流行的NIO框架，Netty在互联网领域、大数据分布式计算领域、游戏行业、通信行业等获得了广泛的应用，一些业界著名的开源组件也基于Netty的NIO框架构建。
 
-1. Netty线程模型
+## 1. Netty线程模型
 
 在JAVA NIO方面Selector给Reactor模式提供了基础，Netty结合Selector和Reactor模式设计了高效的线程模型。先来看下Reactor模式：
 
-2.1 Reactor模式
+### 2.1 Reactor模式
 
 Wikipedia这么解释Reactor模型：“The reactor design pattern is an event handling pattern for handling service requests delivered concurrently by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to associated request handlers.”。首先Reactor模式首先是事件驱动的，有一个或者多个并发输入源，有一个Server Handler和多个Request Handlers，这个Service Handler会同步的将输入的请求多路复用的分发给相应的Request Handler。可以如下图所示：
 ![img](/static/image/20161129103112729.png)
@@ -19,7 +19,7 @@ Wikipedia这么解释Reactor模型：“The reactor design pattern is an event h
 
 
 
-2.2 Reator模式的实现
+### 2.2 Reator模式的实现
 
 
 
@@ -27,7 +27,7 @@ Wikipedia这么解释Reactor模型：“The reactor design pattern is an event h
 
 
 
-1.第一种实现模型如下： 
+## 1.第一种实现模型如下： 
 ![img](/static/image/20161129103222584.png)
 
 这是最简单的Reactor单线程模型，由于Reactor模式使用的是异步非阻塞IO，所有的IO操作都不会被阻塞，理论上一个线程可以独立处理所有的IO操作。这时Reactor线程是个多面手，负责多路分离套接字，Accept新连接，并分发请求到处理链中。
@@ -39,27 +39,27 @@ Wikipedia这么解释Reactor模型：“The reactor design pattern is an event h
 可靠性低，一个线程意外死循环，会导致整个通信系统不可用
 为了解决这些问题，出现了Reactor多线程模型。
 
-2.Reactor多线程模型： 
+## 2.Reactor多线程模型： 
 ![img](/static/image/20161129103519887.png)
 
 比上一种模式，该模型在处理链部分采用了多线程（线程池）。
 
 在绝大多数场景下，该模型都能满足性能需求。但是，在一些特殊的应用场景下，如服务器会对客户端的握手消息进行安全认证。这类场景下，单独的一个Acceptor线程可能会存在性能不足的问题。为了解决这些问题，产生了第三种Reactor线程模型
 
-3.Reactor主从模型 
+## 3.Reactor主从模型 
 ![img](/static/image/20161129103725841.png)
 该模型相比第二种模型，是将Reactor分成两部分，mainReactor负责监听server socket，accept新连接；并将建立的socket分派给subReactor。subReactor负责多路分离已连接的socket，读写网络数据，对业务处理功能，其扔给worker线程池完成。通常，subReactor个数上可与CPU个数等同。
 
-2.3 Netty模型
+### 2.3 Netty模型
 
-2.2中说完了Reactor的三种模型，那么Netty是哪一种呢？其实Netty的线程模型是Reactor模型的变种，那就是去掉线程池的第三种形式的变种，这也是Netty NIO的默认模式。Netty中Reactor模式的参与者主要有下面一些组件：
+### 2.2中说完了Reactor的三种模型，那么Netty是哪一种呢？其实Netty的线程模型是Reactor模型的变种，那就是去掉线程池的第三种形式的变种，这也是Netty NIO的默认模式。Netty中Reactor模式的参与者主要有下面一些组件：
 
 Selector
 EventLoopGroup/EventLoop
 ChannelPipeline
 Selector即为NIO中提供的SelectableChannel多路复用器，充当着demultiplexer的角色，这里不再赘述；下面对另外两种功能和其在Netty之Reactor模式中扮演的角色进行介绍。
 
-3.EventLoopGroup/EventLoop
+## 3.EventLoopGroup/EventLoop
 当系统在运行过程中，如果频繁的进行线程上下文切换，会带来额外的性能损耗。多线程并发执行某个业务流程，业务开发者还需要时刻对线程安全保持警惕，哪些数据可能会被并发修改，如何保护？这不仅降低了开发效率，也会带来额外的性能损耗。
 
 为了解决上述问题，Netty采用了串行化设计理念，从消息的读取、编码以及后续Handler的执行，始终都由IO线程EventLoop负责，这就意外着整个流程不会进行线程上下文的切换，数据也不会面临被并发修改的风险。这也解释了为什么Netty线程模型去掉了Reactor主从模型中线程池。
@@ -68,7 +68,7 @@ EventLoopGroup是一组EventLoop的抽象，EventLoopGroup提供next接口，可
 
 EventLoop的实现充当Reactor模式中的分发（Dispatcher）的角色。
 
-4.ChannelPipeline
+## 4.ChannelPipeline
 ChannelPipeline其实是担任着Reactor模式中的请求处理器这个角色。
 
 ChannelPipeline的默认实现是DefaultChannelPipeline，DefaultChannelPipeline本身维护着一个用户不可见的tail和head的ChannelHandler，他们分别位于链表队列的头部和尾部。tail在更上层的部分，而head在靠近网络层的方向。在Netty中关于ChannelHandler有两个重要的接口，ChannelInBoundHandler和ChannelOutBoundHandler。inbound可以理解为网络数据从外部流向系统内部，而outbound可以理解为网络数据从系统内部流向系统外部。用户实现的ChannelHandler可以根据需要实现其中一个或多个接口，将其放入Pipeline中的链表队列中，ChannelPipeline会根据不同的IO事件类型来找到相应的Handler来处理，同时链表队列是责任链模式的一种变种，自上而下或自下而上所有满足事件关联的Handler都会对事件进行处理。
@@ -79,21 +79,21 @@ ChannelInBoundHandler对从客户端发往服务器的报文进行处理，一�
 ![img](/static/image/20161129104246082.png)
 关于Pipeline的更多知识可参考：浅谈管道模型(Pipeline)
 
-5.Buffer
+## 5.Buffer
 Netty提供的经过扩展的Buffer相对NIO中的有个许多优势，作为数据存取非常重要的一块，我们来看看Netty中的Buffer有什么特点。
 
-1.ByteBuf读写指针
+## 1.ByteBuf读写指针
 
 在ByteBuffer中，读写指针都是position，而在ByteBuf中，读写指针分别为readerIndex和writerIndex，直观看上去ByteBuffer仅用了一个指针就实现了两个指针的功能，节省了变量，但是当对于ByteBuffer的读写状态切换的时候必须要调用flip方法，而当下一次写之前，必须要将Buffe中的内容读完，再调用clear方法。每次读之前调用flip，写之前调用clear，这样无疑给开发带来了繁琐的步骤，而且内容没有读完是不能写的，这样非常不灵活。相比之下我们看看ByteBuf，读的时候仅仅依赖readerIndex指针，写的时候仅仅依赖writerIndex指针，不需每次读写之前调用对应的方法，而且没有必须一次读完的限制。
-2.零拷贝
+## 2.零拷贝
 
 Netty的接收和发送ByteBuffer采用DIRECT BUFFERS，使用堆外直接内存进行Socket读写，不需要进行字节缓冲区的二次拷贝。如果使用传统的堆内存（HEAP BUFFERS）进行Socket读写，JVM会将堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中。相比于堆外直接内存，消息在发送过程中多了一次缓冲区的内存拷贝。
 Netty提供了组合Buffer对象，可以聚合多个ByteBuffer对象，用户可以像操作一个Buffer那样方便的对组合Buffer进行操作，避免了传统通过内存拷贝的方式将几个小Buffer合并成一个大的Buffer。
 Netty的文件传输采用了transferTo方法，它可以直接将文件缓冲区的数据发送到目标Channel，避免了传统通过循环write方式导致的内存拷贝问题。
-3.引用计数与池化技术
+## 3.引用计数与池化技术
 
 在Netty中，每个被申请的Buffer对于Netty来说都可能是很宝贵的资源，因此为了获得对于内存的申请与回收更多的控制权，Netty自己根据引用计数法去实现了内存的管理。Netty对于Buffer的使用都是基于直接内存（DirectBuffer）实现的，大大提高I/O操作的效率，然而DirectBuffer和HeapBuffer相比之下除了I/O操作效率高之外还有一个天生的缺点，即对于DirectBuffer的申请相比HeapBuffer效率更低，因此Netty结合引用计数实现了PolledBuffer，即池化的用法，当引用计数等于0的时候，Netty将Buffer回收致池中，在下一次申请Buffer的没某个时刻会被复用。
-总结
+## 总结
 Netty其实本质上就是Reactor模式的实现，Selector作为多路复用器，EventLoop作为转发器，Pipeline作为事件处理器。但是和一般的Reactor不同的是，Netty使用串行化实现，并在Pipeline中使用了责任链模式。
 
 Netty中的buffer相对有NIO中的buffer又做了一些优化，大大提高了性能。
