@@ -32,7 +32,7 @@
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
-  * 设计模式的六大原则
+  * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * 常规监控
 * [中间件](zhong-jian-jian.md)
@@ -71,7 +71,7 @@
   * [MySQL](shu-ju-ku/mysql.md)
     * 原理
     * InnoDB
-  * NoSQL
+  * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * 搜索引擎原理
 * [性能](xing-neng.md)
