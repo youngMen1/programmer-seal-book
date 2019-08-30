@@ -16,6 +16,8 @@
 ### 数据库和实例 {#数据库和实例}
 
 在 MySQL 中，实例和数据库往往都是一一对应的，而我们也无法直接操作数据库，而是要通过数据库实例来操作数据库文件，可以理解为数据库实例是数据库为上层提供的一个专门用于操作的接口。
+![img](/static/image/Database-Instance.jpg)
+
 
 ![img](/static/image/Database-Instance.jpg)
 
@@ -38,7 +40,7 @@ MySQL 从第一个版本发布到现在已经有了 20 多年的历史，在这�
 
 同一个数据库实例的所有表空间都有相同的页大小；默认情况下，表空间中的页大小都为 16KB，当然也可以通过改变 innodb_page_size 选项对默认大小进行修改，需要注意的是不同的页大小最终也会导致区大小的不同：
 
-![img](/static/image/Relation Between Page Size - Extent Size.png)
+![img](/static/image/RelationBetweenPageSize-ExtentSize.png)
 
 从图中可以看出，在 InnoDB 存储引擎中，一个区的大小最小为 1MB，页的数量最少为 64 个。
 
