@@ -12,3 +12,21 @@ Wikipedia这么解释Reactor模型：“The reactor design pattern is an event h
 
 
 
+
+
+从结构上有点类似生产者和消费者模型，即一个或多个生产者将事件放入一个Queue中，而一个或者多个消费者主动的从这个队列中poll事件来处理；而Reactor模式则没有Queue来做缓冲，每当一个事件输入到Service Handler之后，该Service Handler会主动根据不同的Evnent类型将其分发给对应的Request Handler来处理。
+
+
+
+2.2 Reator模式的实现
+
+
+
+关于Java NIO 构造Reator模式，Doug lea在《Scalable IO in Java》中给了很好的阐述，这里截取PPT对Reator模式的实现进行说明
+
+
+
+1.第一种实现模型如下： 
+
+
+
