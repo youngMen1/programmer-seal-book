@@ -49,3 +49,18 @@ for(int i=0; i<nev; i++){
 
 **struct kevent**结构体内容如下：
 
+```
+struct kevent {
+    uintptr_t       ident;          /* identifier for this event，比如该事件关联的文件描述符 */
+    int16_t         filter;         /* filter for event，可以指定监听类型，如EVFILT_READ，EVFILT_WRITE，EVFILT_TIMER等 */
+    uint16_t        flags;          /* general flags ，可以指定事件操作类型，比如EV_ADD，EV_ENABLE， EV_DELETE等 */
+    uint32_t        fflags;         /* filter-specific flags */
+    intptr_t        data;           /* filter-specific data */
+    void            *udata;         /* opaque user data identifier，可以携带的任意数据 */
+};
+```
+
+
+
+
+
