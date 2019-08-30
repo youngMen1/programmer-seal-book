@@ -100,5 +100,3 @@ HTTP 1.x发起请求是串行的，image1返回后才能再发起image2，image2
 
 
 
-
-
