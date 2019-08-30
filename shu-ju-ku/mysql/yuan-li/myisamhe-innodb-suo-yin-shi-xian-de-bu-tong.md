@@ -14,7 +14,7 @@ MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数�
 MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。
 
   
-InnoDB索引实现
+## InnoDB索引实现
 
 虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。
 
