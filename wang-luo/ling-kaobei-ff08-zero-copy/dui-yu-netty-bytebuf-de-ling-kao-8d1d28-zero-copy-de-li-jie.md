@@ -63,3 +63,9 @@ public CompositeByteBuf addComponents(boolean increaseWriterIndex, ByteBuf... bu
 
 上面 CompositeByteBuf 代码还以一个地方值得注意的是, 我们调用 addComponents(boolean increaseWriterIndex, ByteBuf... buffers) 来添加两个 ByteBuf, 其中第一个参数是 true, 表示当添加新的 ByteBuf 时, 自动递增 CompositeByteBuf 的 writeIndex.
 如果我们调用的是
+
+
+```
+compositeByteBuf.addComponents(header, body);
+```
+
