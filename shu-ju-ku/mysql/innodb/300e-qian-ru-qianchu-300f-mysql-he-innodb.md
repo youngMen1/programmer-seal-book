@@ -40,6 +40,60 @@ Tablespace-segment-extent-page-row.jpg
 
 Relation Between Page Size - Extent Size.png
 
+从图中可以看出，在 InnoDB 存储引擎中，一个区的大小最小为 1MB，页的数量最少为 64 个。
+
+如何存储表
+MySQL 使用 InnoDB 存储表时，会将表的定义和数据索引等信息分开存储，其中前者存储在 .frm 文件中，后者存储在 .ibd 文件中，这一节就会对这两种不同的文件分别进行介绍。
+
+frm-and-ibd-file.jpg
+
+.frm 文件
+无论在 MySQL 中选择了哪个存储引擎，所有的 MySQL 表都会在硬盘上创建一个 .frm 文件用来描述表的格式或者说定义；.frm 文件的格式在不同的平台上都是相同的。
+
+
+
+```
+CREATE TABLE test_frm(
+    column1 CHAR(5),
+    column2 INTEGER
+);
+
+```
+
+当我们使用上面的代码创建表时，会在磁盘上的 datadir 文件夹中生成一个 test_frm.frm 的文件，这个文件中就包含了表结构相关的信息：
+
+frm-file-hex.png
+
+MySQL 官方文档中的 11.1 MySQL .frm File Format 一文对于 .frm 文件格式中的二进制的内容有着非常详细的表述，在这里就不展开介绍了。
+
+## .ibd 文件
+InnoDB 中用于存储数据的文件总共有两个部分，一是系统表空间文件，包括 ibdata1、ibdata2 等文件，其中存储了 InnoDB 系统信息和用户数据库表数据和索引，是所有表公用的。
+
+当打开 innodb_file_per_table 选项时，.ibd 文件就是每一个表独有的表空间，文件存储了当前表的数据和相关的索引数据。
+
+## 如何存储记录
+与现有的大多数存储引擎一样，InnoDB 使用页作为磁盘管理的最小单位；数据在 InnoDB 存储引擎中都是按行存储的，每个 16KB 大小的页中可以存放 2-200 行的记录。
+
+当 InnoDB 存储数据时，它可以使用不同的行格式进行存储；MySQL 5.7 版本支持以下格式的行存储方式：
+
+Antelope-Barracuda-Row-Format.jpg
+
+
+Antelope 是 InnoDB 最开始支持的文件格式，它包含两种行格式 Compact 和 Redundant，它最开始并没有名字；Antelope 的名字是在新的文件格式 Barracuda 出现后才起的，Barracuda 的出现引入了两种新的行格式 Compressed 和 Dynamic；InnoDB 对于文件格式都会向前兼容，而官方文档中也对之后会出现的新文件格式预先定义好了名字：Cheetah、Dragon、Elk 等等。
+
+两种行记录格式 Compact 和 Redundant 在磁盘上按照以下方式存储：
+COMPACT-And-REDUNDANT-Row-Format.jpg
+
+Compact 和 Redundant 格式最大的不同就是记录格式的第一个部分；在 Compact 中，行记录的第一部分倒序存放了一行数据中列的长度（Length），而 Redundant 中存的是每一列的偏移量（Offset），从总体上上看，Compact 行记录格式相比 Redundant 格式能够减少 20% 的存储空间。
+
+行溢出数据
+当 InnoDB 使用 Compact 或者 Redundant 格式存储极长的 VARCHAR 或者 BLOB 这类大对象时，我们并不会直接将所有的内容都存放在数据页节点中，而是将行数据中的前 768 个字节存储在数据页中，后面会通过偏移量指向溢出页。
+Row-Overflow.jpg
+
+但是当我们使用新的行记录格式 Compressed 或者 Dynamic 时都只会在行记录中保存 20 个字节的指针，实际的数据都会存放在溢出页面中。
+
+Row-Overflow-in-Barracuda.jpg
+
 
 
 
