@@ -7,6 +7,6 @@ poll：http://www.cnblogs.com/Anker/archive/2013/08/15/3261006.html
 
 epoll：http://www.cnblogs.com/Anker/archive/2013/08/17/3263780.html
 
-　　今天对这三种IO多路复用进行对比，参考网上和书上面的资料，整理如下：
+今天对这三种IO多路复用进行对比，参考网上和书上面的资料，整理如下：
 
 
