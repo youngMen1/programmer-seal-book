@@ -80,7 +80,14 @@ Reactor做法：汽车是乘客访问的主体（Reactor），乘客上车后，
 
 （5）定时器也是由反应堆对象使用，它必须至少提供4个方法，包括添加、删除定时器事件，这该由应用代码调用。最近超时时间是需要的，这会被反应堆对象使用，用于确认select或者epoll_wait执行时的阻塞超时时间，防止IO的等待影响了定时事件的处理。遍历也是由反应堆框架使用，用于处理定时事件。
 
+## Reactor的几种模式
+参考资料：Scalable IO in Java
 
+在web服务中，很多都涉及基本的操作：read request、decode request、process service、encod reply、send reply等。
+
+## 1 单线程模式
+      这是最简单的单Reactor单线程模型。Reactor线程是个多面手，负责多路分离套接字，Accept新连接，并分派请求到处理器链中。该模型适用于处理器链中业务处理组件能快速完成的场景。不过这种单线程模型不能充分利用多核资源，所以实际使用的不多。
+![img](/static/image/20150530200837585.png)
 
 
 
