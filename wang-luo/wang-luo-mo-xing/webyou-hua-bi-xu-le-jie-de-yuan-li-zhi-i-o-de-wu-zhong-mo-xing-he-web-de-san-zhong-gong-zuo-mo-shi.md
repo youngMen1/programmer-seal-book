@@ -67,6 +67,9 @@ I/O完成，系统直接通知进程，则进程被唤醒
 ### 非阻塞I/O的图解：
 ![img](/static/image/205605819.png)
 
+I/O复用的图解：
+![img](/static/image/205635176.png)
+
 
 
 
