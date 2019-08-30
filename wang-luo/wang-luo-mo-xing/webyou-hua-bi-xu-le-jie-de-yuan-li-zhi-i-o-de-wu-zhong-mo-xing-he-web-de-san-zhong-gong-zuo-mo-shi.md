@@ -83,7 +83,7 @@ I/O复用的图解：
 ![img](/static/image/210054915.png)
 前四种I/O属于同步操作，最后的一种则属于异步操作
 五种I/O模型的比较：
-![img](/static/image/212627938.png
+![img](/static/image/212627938.png)
 
 
 
