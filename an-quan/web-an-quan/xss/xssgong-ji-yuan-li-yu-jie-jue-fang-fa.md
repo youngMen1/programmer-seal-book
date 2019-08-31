@@ -12,3 +12,17 @@ XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页�
 
 看一下下面这个例子：
 
+```
+<div id="el" style="background:url('javascript:eval(document.getElementById("el").getAttribute("code")) ')"
+
+        code="var a = document.createElement('a');
+
+        a.innerHTML= '执行了恶意代码';document.body.appendChild(a);
+
+        //这这里执行代码
+
+        "></div>
+```
+
+
+
