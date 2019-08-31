@@ -8,5 +8,5 @@ Jetty 目前的是一个比较被看好的 Servlet 引擎，它的架构比较�
 
 ##### 图 1. Jetty 的基本架构 {#fig1}
 
-
+image003.png
 
