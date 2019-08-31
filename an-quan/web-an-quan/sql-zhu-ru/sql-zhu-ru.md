@@ -24,3 +24,5 @@ SELECT * FROM users WHERE username = "archer2017" AND password = "anywords" OR 1
 
 ​ 使用预编译语句（PreparedStatement）：一方面可以加速 SQL 的执行，一方面可以防止SQL注入。理解 PreparedStatement 防范 SQL 注入的原理，先要理解预编译语句的原理，如下图所示：
 
+4C186014-E51E-43B8-86FC-21092D2C30D2.png
+
