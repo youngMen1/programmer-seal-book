@@ -93,6 +93,7 @@
       * [SQL 注入](an-quan/web-an-quan/sql-zhu-ru/sql-zhu-ru.md)
       * 上传文件漏洞
     * Hash Dos
+    * 脚本注入
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
