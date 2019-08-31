@@ -6,5 +6,11 @@ SQL 注入页也是一种常见的 Web 攻击方式，主要是利用后端程�
 SELECT * FROM users WHERE username = "$username" AND password = "$password";
 ```
 
-比如攻击者已知一个用户名archer2017，可以构造密码为 anywords" OR 1=1，此时，此时后端程序的执行的SQL语句为：
+比如攻击者已知一个用户名archer2017，可以构造密码为 anywords" OR 1=1，此时，此时后端程序的执行的SQL语句为：
+
+```
+SELECT * FROM users WHERE username = "archer2017" AND password = "anywords" OR 1=1;
+```
+
+
 
