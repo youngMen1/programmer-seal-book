@@ -28,3 +28,13 @@ XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页�
 
 再来看一下面这段代码：
 
+```
+<div>
+
+  <img src="/images/handler.ashx?id=<%= Request.QueryString["id"] %>" />
+
+  </div>
+```
+
+
+
