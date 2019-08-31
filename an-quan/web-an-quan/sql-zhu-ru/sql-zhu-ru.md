@@ -12,5 +12,11 @@ SELECT * FROM users WHERE username = "$username" AND password = "$password";
 SELECT * FROM users WHERE username = "archer2017" AND password = "anywords" OR 1=1;
 ```
 
-这样无论输入什么样的密码，都会要绕过验证，如果更验证一些，构造密码为 anywords" OR 1=1;DROP TABLE users ，那么整个表都将被删除，执行SQL如下:
+这样无论输入什么样的密码，都会要绕过验证，如果更验证一些，构造密码为 anywords" OR 1=1;DROP TABLE users ，那么整个表都将被删除，执行SQL如下:
+
+```
+SELECT * FROM users WHERE username = "archer2017" AND password = "anywords" OR 1=1;DROP TABLE users;
+```
+
+
 
