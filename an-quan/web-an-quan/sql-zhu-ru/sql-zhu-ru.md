@@ -61,7 +61,9 @@ StringEscapeUtils.escapeSql 方法在最新版的Apache Common 类库中被移�
 或者使用 ESAPI （OWASP Enterprise Security API），是一套开源的企业级的安全过滤组件。
 
 ```
-
+Codec MYSQL_CODEC = new MySQLCodec(MySQLCodec.Mode.STANDARD);
+String query = "SELECT * FROM users WHERE username = '"
+  + ESAPI.encoder().encodeForSQL(MYSQL_CODEC, username) + "' AND password = '" + ESAPI.encoder().encodeForSQL(MYSQL_CODEC, password) + "'";
 ```
 
 
