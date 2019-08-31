@@ -46,3 +46,15 @@ headers: {
 二次验证：对于一些铭感操作，比如设计到交易的操作，可以更加严格一些。在用户提交时可以让用户输入验证码，或者再次输入交易密码，确保是用户的真实操作，而不是机器触发的。
 使用 SameSite Cookie 属性：SameSite 是在跨域请求时是否传输 Cookie 的一种约束，顾名思义在 SameSite 的限制下，Cookie 的传输必须在同一个域名下。SameSite 属性有两种限制模式 strict 和 lax，默认为 lax。下面举例说明，对于下面的代码：
 
+
+```
+<?php
+//www.a.com/test_samecookie.php
+//第二个参数为false表示不不进行覆盖，否则只能设置一个cookie
+header("Set-Cookie: cookie1=value1; domain=a.com; SameSite=Strict", false);
+header("Set-Cookie: cookie2=value2; domain=a.com; SameSite=Lax", false);
+?>
+```
+
+
+
