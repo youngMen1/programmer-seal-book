@@ -96,5 +96,19 @@ cb({"userid":"12345678","usernick":"coderxing"});
 
 B 网站通过 JQuery 使用 jsonp 的代码如下：
 
+```
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+url:"http://www.a.com/jsonp.php?callback=cb",
+dataType:'jsonp',
+jsonp:'callback',
+success:function(result) {
+console.log(result);
+}
+});
+</script>
+```
+
 
 
