@@ -4,3 +4,29 @@
 
 ​ 我们通过一个例子演示利用文件上传漏洞进行攻击的例子，下面的代码负责接受上传文件，并保存在`./uploads/`目录中（在单机应用的场景下，文件和应用程序保存在一起是比较常见的）。
 
+```
+<?php
+//上传文件路径
+$upload_path = "./uploads/";
+$upload_file_path = $upload_path . basename($_FILES['uploadedfile']['name']);
+
+$size = $_FILES['uploadedfile']['size'];
+$type = $_FILES['uploadedfile']['type'];
+
+//验证文件大小和文件类型
+if ($size < 1000000 && ($size == 'image/jpeg' || $size == 'image/png')) {
+
+    print_r($_FILES['uploadedfile']);
+    echo "\n";
+
+    if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $upload_file_path)) {
+        echo "上传成功\n";
+    } else {
+        echo "上传失败\n";
+    }
+}
+?>
+```
+
+
+
