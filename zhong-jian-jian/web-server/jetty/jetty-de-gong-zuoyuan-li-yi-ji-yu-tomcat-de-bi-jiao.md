@@ -76,3 +76,15 @@ Jetty 创建接受连接环境需要三个步骤：
 
 image015.jpg
 
+Accetptor 线程将会为这个请求创建 ConnectorEndPoint。HttpConnection 用来表示这个连接是一个 HTTP 协议的连接，它会创建 HttpParse 类解析 HTTP 协议，并且会创建符合 HTTP 协议的 Request 和 Response 对象。接下去就是将这个线程交给队列线程池去执行了。
+
+### 基于 AJP 工作 {#minor3.2}
+
+通常一个 web 服务站点的后端服务器不是将 Java 的应用服务器直接暴露给服务访问者，而是在应用服务器，如 Jboss 的前面在加一个 web 服务器，如 Apache 或者 nginx，我想这个原因大家应该很容易理解，如做日志分析、负载均衡、权限控制、防止恶意请求以及静态资源预加载等等。
+
+下图是通常的 web 服务端的架构图：
+
+##### 图 7. Web 服务端架构（[查看大图](https://www.ibm.com/developerworks/cn/java/j-lo-jetty/image017-large.jpg)） {#fig8}
+
+
+
