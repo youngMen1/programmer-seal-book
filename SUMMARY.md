@@ -47,6 +47,7 @@
   * [服务端缓存](zhong-jian-jian/fu-wu-duan-huan-cun.md)
     * Web缓存
     * Memcached
+    * Redis
   * 定时调度
   * RPC
   * 数据库中间件
