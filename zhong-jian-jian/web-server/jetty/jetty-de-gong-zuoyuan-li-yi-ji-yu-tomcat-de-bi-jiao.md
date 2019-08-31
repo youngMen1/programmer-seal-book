@@ -30,5 +30,7 @@ image007.jpg
 
 ##### 图 3. Handler 的体系结构（[查看大图](https://www.ibm.com/developerworks/cn/java/j-lo-jetty/image008.png)） {#fig4}
 
+##### image009.jpg {#fig4}
+
 
 
