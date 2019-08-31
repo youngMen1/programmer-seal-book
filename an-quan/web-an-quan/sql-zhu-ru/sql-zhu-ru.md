@@ -49,5 +49,14 @@ ResultSet results = pstmt.executeQuery( );
 预编译语句需要数据库支持，不过目前主流的关系型数据库如 MySQL，PostgreSQL都支持预编译语句。
 ```
 
+如果不可避免地使用 SQL 语句进行拼装，可以对用户输入数据进行转移，尤其是多单双引号的转义。
+
+​ Java 中可以使用 Apache Common类库的`StringEscapeUtils`中的方法，例如：
+
+```
+StringEscapeUtils.escapeSql(sql);
+StringEscapeUtils.escapeSql 方法在最新版的Apache Common 类库中被移除掉，按照官方文档的说法，是为了避免引起程序员在处理SQL时的产生误解，官方推荐使用与预编译语句，而不是拼装字符串的方法。
+```
+
 
 
