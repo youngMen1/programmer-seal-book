@@ -40,9 +40,21 @@ headers: {
 });
 ```
 
-另外，为了更可靠的安全性，token 在使用之后一般置为失效，避免被窃取。  
-二次验证：对于一些铭感操作，比如设计到交易的操作，可以更加严格一些。在用户提交时可以让用户输入验证码，或者再次输入交易密码，确保是用户的真实操作，而不是机器触发的。  
+```
+另外，为了更可靠的安全性，token 在使用之后一般置为失效，避免被窃取。<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+url:"http://www.a.com/jsonp.php?callback=cb",
+dataType:'jsonp',
+jsonp:'callback',
+success:function(result) {
+console.log(result);
+}
+});
+</script>
+二次验证：对于一些铭感操作，比如设计到交易的操作，可以更加严格一些。在用户提交时可以让用户输入验证码，或者再次输入交易密码，确保是用户的真实操作，而不是机器触发的。
 使用 SameSite Cookie 属性：SameSite 是在跨域请求时是否传输 Cookie 的一种约束，顾名思义在 SameSite 的限制下，Cookie 的传输必须在同一个域名下。SameSite 属性有两种限制模式 strict 和 lax，默认为 lax。下面举例说明，对于下面的代码：
+```
 
 ```
 <?php
@@ -81,6 +93,8 @@ echo "$callback($json);";
 ```
 cb({"userid":"12345678","usernick":"coderxing"});
 ```
+
+B 网站通过 JQuery 使用 jsonp 的代码如下：
 
 
 
