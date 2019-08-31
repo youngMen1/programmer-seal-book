@@ -97,6 +97,7 @@
     * 漏洞扫描工具
     * 验证码
     * DDoS 防范
+  * 用户隐私信息保护
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
