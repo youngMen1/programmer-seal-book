@@ -7,3 +7,11 @@ CSRF \(Cross—Site Request Forgery\)，既跨站点请求伪造，也被叫做 
 转账的GET请求如下：
 
 
+```
+GET http://normal-site.com/transfer.do?from=rommel&to=alice&amount=100 HTTP/1.1
+
+```
+
+
+
+
