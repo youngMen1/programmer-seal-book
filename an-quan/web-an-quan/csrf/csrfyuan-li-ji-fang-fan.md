@@ -22,5 +22,5 @@ CSRF 攻击有一个前提条件，是用户具有某个正常访问的访问权
 <img widht=0 height=0 src="http://normal-site.com/transfer.do?from=rommel&to=attacker&amount=100" />
 
 ```
-
+由于加载恶意页面B和触发攻击请求都是在用户浏览器端完成的，因为之前用户登录过正常网站，发往正常网站的请求会带有用户授权信息（在cookie中），在授权信息没有过期的情况达到攻击目的。
 
