@@ -10,3 +10,9 @@ Jetty 目前的是一个比较被看好的 Servlet 引擎，它的架构比较�
 
 image003.png
 
+Jetty 中还有一些可有可无的组件，我们可以在它上做扩展。如 JMX，我们可以定义一些 Mbean 把它加到 Server 中，当 Server 启动的时候，这些 Bean 就会一起工作。
+
+##### 图 2. Jetty 的主要组件的类图 {#fig2}
+
+
+
