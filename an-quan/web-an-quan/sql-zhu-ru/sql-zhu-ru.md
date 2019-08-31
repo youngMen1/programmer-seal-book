@@ -66,5 +66,8 @@ String query = "SELECT * FROM users WHERE username = '"
   + ESAPI.encoder().encodeForSQL(MYSQL_CODEC, username) + "' AND password = '" + ESAPI.encoder().encodeForSQL(MYSQL_CODEC, password) + "'";
 ```
 
+另外，除了上述两种方案意外，还要用户输入的数据进行校验，Java 中可以使用 Apache Commons Validator 类库，PHP 中可以使用 filter\_var 中的过滤器，可以参考（TODO）XSS 一节。
 
+[  
+](https://coderxing.gitbooks.io/architecture-evolution/di-san-pian-ff1a-bu-luo/641-web-an-quan-fang-fan/6412-csrf.html)
 
