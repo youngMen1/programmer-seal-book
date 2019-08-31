@@ -40,6 +40,20 @@ SQL 语句的编译分为如下几个阶段：
 
 Java 代码中使用预编译语句：
 
+```
+String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+PreparedStatement pstmt = connection.prepareStatement( query );
+pstmt.setString( 1, username); 
+pstmt.setString( 2, password); 
+ResultSet results = pstmt.executeQuery( );
+```
+
+
+
+
+
+
+
 
 
 
