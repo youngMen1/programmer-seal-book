@@ -86,5 +86,39 @@ Accetptor 线程将会为这个请求创建 ConnectorEndPoint。HttpConnection �
 
 ##### 图 7. Web 服务端架构（[查看大图](https://www.ibm.com/developerworks/cn/java/j-lo-jetty/image017-large.jpg)） {#fig8}
 
+image017.jpg
+
+这种架构下 servlet 引擎就不需要解析和封装返回的 HTTP 协议，因为 HTTP 协议的解析工作已经在 Apache 或 Nginx 服务器上完成了，Jboss 只要基于更加简单的 AJP 协议工作就行了，这样能加快请求的响应速度。
+
+对比 HTTP 协议的时序图可以发现，它们的逻辑几乎是相同的，不同的是替换了一个类 Ajp13Parserer 而不是 HttpParser，它定义了如何处理 AJP 协议以及需要哪些类来配合。
+
+实际上在 AJP 处理请求相比较 HTTP 时唯一的不同就是在读取到 socket 数据包时，如何来转换这个数据包，是按照 HTTP 协议的包格式来解析就是 HttpParser，按照 AJP 协议来解析就是 Ajp13Parserer。封装返回的数据也是如此。
+
+让 Jetty 工作在 AJP 协议下，需要配置 connector 的实现类为 Ajp13SocketConnector，这个类继承了 SocketConnector 类，覆盖了父类的 newConnection 方法，为的是创建 Ajp13Connection 对象而不是 HttpConnection。如下图表示的是 Jetty 创建连接环境时序图：
+
+image019.jpg
+
+与 HTTP 方式唯一不同的地方的就是将 SocketConnector 类替换成了 Ajp13SocketConnector。改成 Ajp13SocketConnector 的目的就是可以创建 Ajp13Connection 类，表示当前这个连接使用的是 AJP 协议，所以需要用 Ajp13Parser 类解析 AJP 协议，处理连接的逻辑都是一样的。如下时序图所示：
+
+image021.jpg
+
+### 基于 NIO 方式工作 {#minor3.3}
+
+前面所描述的 Jetty 建立客户端连接到处理客户端的连接都是基于 BIO 的方式，它也支持另外一种 NIO 的处理方式，其中 Jetty 的默认 connector 就是 NIO 方式。
+
+关于 NIO 的工作原理可以参考 developerworks 上关于 NIO 的文章，通常 NIO 的工作原型如下：
+
+```
+Selector selector = Selector.open(); 
+ServerSocketChannel ssc = ServerSocketChannel.open(); 
+ssc.configureBlocking( false ); 
+SelectionKey key = ssc.register( selector, SelectionKey.OP_ACCEPT ); 
+ServerSocketChannel ss = (ServerSocketChannel)key.channel(); 
+SocketChannel sc = ss.accept(); 
+sc.configureBlocking( false ); 
+SelectionKey newKey = sc.register( selector, SelectionKey.OP_READ ); 
+Set selectedKeys = selector.selectedKeys();
+```
+
 
 
