@@ -48,7 +48,8 @@
       * [Jetty 的工作原理以及与 Tomcat 的比较](zhong-jian-jian/web-server/jetty/jetty-de-gong-zuoyuan-li-yi-ji-yu-tomcat-de-bi-jiao.md)
       * [jetty和tomcat优势比较](zhong-jian-jian/web-server/jetty/jettyhe-tomcat-you-shi-bi-jiao.md)
   * [缓存](zhong-jian-jian/huan-cun.md)
-    * 本地缓存
+    * [本地缓存](zhong-jian-jian/huan-cun/ben-di-huan-cun.md)
+    * 缓存失效策略（FIFO 、LRU、LFU三种算法的区别）
   * [客户端缓存](zhong-jian-jian/ke-hu-duan-huan-cun.md)
   * [服务端缓存](zhong-jian-jian/fu-wu-duan-huan-cun.md)
     * [Memcached](zhong-jian-jian/fu-wu-duan-huan-cun/memcached.md)
