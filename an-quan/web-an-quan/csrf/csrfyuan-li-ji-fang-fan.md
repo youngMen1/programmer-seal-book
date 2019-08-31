@@ -60,3 +60,10 @@ header("Set-Cookie: cookie2=value2; domain=a.com; SameSite=Lax", false);
 在 www.b.com/access_same_page_in_site.php 构造同样的页面访问 www.a.com 中的任何页面。
 
 
+```
+<a href="www.a.com/test.html">test</a>
+
+```
+
+
+
