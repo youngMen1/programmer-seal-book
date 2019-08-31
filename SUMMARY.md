@@ -45,8 +45,8 @@
     * Apache Httpd
     * Tomcat
     * [Jetty](zhong-jian-jian/web-server/jetty.md)
-      * Jetty 的工作原理以及与 Tomcat 的比较
-      * jetty和tomcat优势比较
+      * [Jetty 的工作原理以及与 Tomcat 的比较](zhong-jian-jian/web-server/jetty/jetty-de-gong-zuoyuan-li-yi-ji-yu-tomcat-de-bi-jiao.md)
+      * [jetty和tomcat优势比较](zhong-jian-jian/web-server/jetty/jettyhe-tomcat-you-shi-bi-jiao.md)
   * [缓存](zhong-jian-jian/huan-cun.md)
     * 本地缓存
   * [客户端缓存](zhong-jian-jian/ke-hu-duan-huan-cun.md)
