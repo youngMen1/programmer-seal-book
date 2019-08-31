@@ -38,7 +38,7 @@
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
-    * OpenResty
+    * [OpenResty](zhong-jian-jian/web-server/openresty.md)
     * Tengine
     * Apache Httpd
   * [缓存](zhong-jian-jian/huan-cun.md)
