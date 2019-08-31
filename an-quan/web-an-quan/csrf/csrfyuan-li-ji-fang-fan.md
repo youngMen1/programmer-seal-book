@@ -55,6 +55,7 @@ header("Set-Cookie: cookie1=value1; domain=a.com; SameSite=Strict", false);
 header("Set-Cookie: cookie2=value2; domain=a.com; SameSite=Lax", false);
 ?>
 ```
+访问，www.a.com/test_samecookie.php 通过Chome 的开发者工具查看cookie信息，如下：
 
 
 
