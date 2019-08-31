@@ -113,9 +113,11 @@ console.log(result);
 通过Chrome浏览器访问：
 
 [http://www.b.com/use\_jsonp.html，控制台会输出](http://www.b.com/use_jsonp.html%EF%BC%8C%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BC%9A%E8%BE%93%E5%87%BA):
+![img](/static/image/AB3E8ED3-5F75-4F76-B0E1-1413742BC7D6.png
+)
 
 ```
-AB3E8ED3-5F75-4F76-B0E1-1413742BC7D6.png
+
 ```
 
 
