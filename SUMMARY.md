@@ -51,6 +51,7 @@
     * Memcached
     * Redis
     * Tair
+  * [Web缓存](zhong-jian-jian/webhuan-cun.md)
   * 定时调度
   * [RPC](zhong-jian-jian/rpc.md)
   * 数据库中间件
@@ -61,8 +62,7 @@
     * Spring Cloud Config 分布式配置中心使用教程
     * servlet3.0 新特性——异步处理
   * API 网关
-  * 消息队列
-  * Web缓存
+  * [Web缓存](zhong-jian-jian/webhuan-cun.md)
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
