@@ -48,6 +48,7 @@
     * Web缓存
     * Memcached
     * Redis
+    * Tair
   * 定时调度
   * RPC
   * 数据库中间件
