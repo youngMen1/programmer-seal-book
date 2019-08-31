@@ -57,6 +57,6 @@ header("Set-Cookie: cookie2=value2; domain=a.com; SameSite=Lax", false);
 ```
 访问，www.a.com/test_samecookie.php 通过Chome 的开发者工具查看cookie信息，如下：
 ![img](/static/image/3E9E901F-40EE-401E-B3ED-C36BFAC4CFE5.png)
-
+在 www.b.com/access_same_page_in_site.php 构造同样的页面访问 www.a.com 中的任何页面。
 
 
