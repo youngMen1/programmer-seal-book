@@ -8,7 +8,7 @@ Jetty 目前的是一个比较被看好的 Servlet 引擎，它的架构比较�
 
 ##### 图 1. Jetty 的基本架构 {#fig1}
 
-image003.png
+![img](/static/image/image003.png)
 
 Jetty 中还有一些可有可无的组件，我们可以在它上做扩展。如 JMX，我们可以定义一些 Mbean 把它加到 Server 中，当 Server 启动的时候，这些 Bean 就会一起工作。
 
@@ -40,7 +40,7 @@ Jetty 的入口是 Server 类，Server 类启动完成了，就代表 Jetty 能�
 
 ##### 图 4. Jetty 的启动流程 {#fig5}
 
-image011.jpg
+![img](/static/image/image011.jpg)
 
 因为 Jetty 中所有的组件都会继承 LifeCycle，所以 Server 的 start 方法调用就会调用所有已经注册到 Server 的组件，Server 启动其它组件的顺序是：首先启动设置到 Server 的 Handler，通常这个 Handler 会有很多子 Handler，这些 Handler 将组成一个 Handler 链。Server 会依次启动这个链上的所有 Handler。接着会启动注册在 Server 上 JMX 的 Mbean，让 Mbean 也一起工作起来，最后会启动 Connector，打开端口，接受客户端请求，启动逻辑非常简单。
 
@@ -60,7 +60,7 @@ Jetty 作为一个独立的 Servlet 引擎可以独立提供 Web 服务，但是
 
 ##### 图 5. 建立连接的时序图 {#fig6}
 
-image013.jpg
+![img](/static/image/image013.jpg)
 
 Jetty 创建接受连接环境需要三个步骤：
 
@@ -74,7 +74,7 @@ Jetty 创建接受连接环境需要三个步骤：
 
 ##### 图 6. 处理连接时序图 {#fig7}
 
-image015.jpg
+![img](/static/image/image015.jpg)
 
 Accetptor 线程将会为这个请求创建 ConnectorEndPoint。HttpConnection 用来表示这个连接是一个 HTTP 协议的连接，它会创建 HttpParse 类解析 HTTP 协议，并且会创建符合 HTTP 协议的 Request 和 Response 对象。接下去就是将这个线程交给队列线程池去执行了。
 
@@ -86,7 +86,7 @@ Accetptor 线程将会为这个请求创建 ConnectorEndPoint。HttpConnection �
 
 ##### 图 7. Web 服务端架构（[查看大图](https://www.ibm.com/developerworks/cn/java/j-lo-jetty/image017-large.jpg)） {#fig8}
 
-image017.jpg
+![img](/static/image/image017.jpg)
 
 这种架构下 servlet 引擎就不需要解析和封装返回的 HTTP 协议，因为 HTTP 协议的解析工作已经在 Apache 或 Nginx 服务器上完成了，Jboss 只要基于更加简单的 AJP 协议工作就行了，这样能加快请求的响应速度。
 
@@ -96,11 +96,11 @@ image017.jpg
 
 让 Jetty 工作在 AJP 协议下，需要配置 connector 的实现类为 Ajp13SocketConnector，这个类继承了 SocketConnector 类，覆盖了父类的 newConnection 方法，为的是创建 Ajp13Connection 对象而不是 HttpConnection。如下图表示的是 Jetty 创建连接环境时序图：
 
-image019.jpg
+![img](/static/image/image019.jpg)
 
 与 HTTP 方式唯一不同的地方的就是将 SocketConnector 类替换成了 Ajp13SocketConnector。改成 Ajp13SocketConnector 的目的就是可以创建 Ajp13Connection 类，表示当前这个连接使用的是 AJP 协议，所以需要用 Ajp13Parser 类解析 AJP 协议，处理连接的逻辑都是一样的。如下时序图所示：
 
-image021.jpg
+![img](/static/image/image021.jpg)
 
 ### 基于 NIO 方式工作 {#minor3.3}
 
