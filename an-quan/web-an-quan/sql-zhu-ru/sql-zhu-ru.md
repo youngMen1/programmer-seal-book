@@ -46,15 +46,8 @@ PreparedStatement pstmt = connection.prepareStatement( query );
 pstmt.setString( 1, username); 
 pstmt.setString( 2, password); 
 ResultSet results = pstmt.executeQuery( );
+预编译语句需要数据库支持，不过目前主流的关系型数据库如 MySQL，PostgreSQL都支持预编译语句。
 ```
-
-
-
-
-
-
-
-
 
 
 
