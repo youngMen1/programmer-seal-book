@@ -36,5 +36,10 @@ CSRF 攻击有一个前提条件，是用户具有某个正常访问的访问权
 <input name="to" value="" />
 <input name="csrf_token" value="QMYjiBlZ9V9mGnap" />
 </form>
+$.ajax({
+headers: {
+"X-CSRF-TOKEN": "QMYjiBlZ9V9mGnap"
+}
+});
 ```
 
