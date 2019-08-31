@@ -49,5 +49,11 @@ http://www.xxx.com/?id=" /><script>alert(/xss/)</script><br x="
     </div>
 ```
 
+也许您会觉得把ValidateRequest设置为true或者保持默认值就能高枕无忧了，其实这种情况还可以输入下面的地址达到相同的攻击效果：
+
+```
+http://www.xxx.com/?id=xx" οnerrοr="this.onload()" οnlοad="alert(/xss/)" x="
+```
+
 
 
