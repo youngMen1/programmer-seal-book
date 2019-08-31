@@ -30,7 +30,7 @@ Jetty 中还有一些可有可无的组件，我们可以在它上做扩展。�
 
 ##### 图 3. Handler 的体系结构（[查看大图](https://www.ibm.com/developerworks/cn/java/j-lo-jetty/image008.png)） {#fig4}
 
-##### image009.jpg {#fig4}
+![img](/static/image/image009.jpg)
 
 Jetty 主要提供了两种 Handler 类型，一种是 HandlerWrapper，它可以将一个 Handler 委托给另外一个类去执行，如我们要将一个 Handler 加到 Jetty 中，那么就必须将这个 Handler 委托给 Server 去调用。配合 ScopeHandler 类我们可以拦截 Handler 的执行，在调用 Handler 之前或之后，可以做一些另外的事情，类似于 Tomcat 中的 Valve；另外一个 Handler 类型是 HandlerCollection，这个 Handler 类可以将多个 Handler 组装在一起，构成一个 Handler 链，方便我们做扩展。
 
