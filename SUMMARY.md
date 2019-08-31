@@ -96,6 +96,7 @@
       * [上传文件漏洞原理及防范](an-quan/web-an-quan/jiao-ben-zhu-ru/shang-chuan-wen-jian-lou-dong-yuan-li-ji-fang-fan.md)
     * 漏洞扫描工具
     * 验证码
+    * DDoS 防范
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
