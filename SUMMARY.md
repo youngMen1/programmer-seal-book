@@ -52,6 +52,7 @@
     * Redis
     * Tair
   * [Web缓存](zhong-jian-jian/webhuan-cun.md)
+  * [Web缓存](zhong-jian-jian/webhuan-cun.md)
   * 定时调度
   * [RPC](zhong-jian-jian/rpc.md)
   * 数据库中间件
@@ -61,7 +62,6 @@
     * 基于zookeeper实现统一配置管理
     * Spring Cloud Config 分布式配置中心使用教程
     * servlet3.0 新特性——异步处理
-  * API 网关
   * [Web缓存](zhong-jian-jian/webhuan-cun.md)
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
