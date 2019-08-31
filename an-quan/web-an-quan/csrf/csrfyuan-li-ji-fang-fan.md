@@ -11,7 +11,7 @@ CSRF \(Cross—Site Request Forgery\)，既跨站点请求伪造，也被叫做 
 GET http://normal-site.com/transfer.do?from=rommel&to=alice&amount=100 HTTP/1.1
 
 ```
-
+这是我们出于演示方便使用GET请求来完成转账，实际应用远比这个列子要复杂，需要更加安全的机制，比如一次性 token，https 等，而且一般都是用POST请求。
 
 
 
