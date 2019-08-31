@@ -50,10 +50,11 @@
     * Redis
     * Tair
   * 定时调度
-  * RPC
+  * [RPC](zhong-jian-jian/rpc.md)
   * 数据库中间件
   * 日志系统
-  * 配置中心
+  * [配置中心](zhong-jian-jian/pei-zhi-zhong-xin.md)
+    * Apollo - 携程开源的配置中心应用
   * API 网关
   * 消息队列
 * [网络](wang-luo.md)
