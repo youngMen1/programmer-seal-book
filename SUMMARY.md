@@ -52,8 +52,7 @@
     * Redis
     * Tair
   * [Web缓存](zhong-jian-jian/webhuan-cun.md)
-  * [Web缓存](zhong-jian-jian/webhuan-cun.md)
-  * 定时调度
+  * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
   * [RPC](zhong-jian-jian/rpc.md)
   * 数据库中间件
   * 日志系统
