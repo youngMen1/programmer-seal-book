@@ -58,5 +58,5 @@ StringEscapeUtils.escapeSql(sql);
 StringEscapeUtils.escapeSql 方法在最新版的Apache Common 类库中被移除掉，按照官方文档的说法，是为了避免引起程序员在处理SQL时的产生误解，官方推荐使用与预编译语句，而不是拼装字符串的方法。
 ```
 
-
+或者使用 ESAPI （OWASP Enterprise Security API），是一套开源的企业级的安全过滤组件。
 
