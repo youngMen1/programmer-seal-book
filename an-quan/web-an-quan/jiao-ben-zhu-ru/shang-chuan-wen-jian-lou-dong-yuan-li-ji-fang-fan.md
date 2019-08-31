@@ -32,3 +32,11 @@ if ($size < 1000000 && ($size == 'image/jpeg' || $size == 'image/png')) {
 
 PHP 脚本，文件名为 attack.php
 
+```
+<?php
+echo "attack success !!!";
+?>
+```
+
+
+
