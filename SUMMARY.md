@@ -38,7 +38,7 @@
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
-      * Ngnix的基本学习-多进程和Apache的比较
+      * [Ngnix的基本学习-多进程和Apache的比较](zhong-jian-jian/web-server/nginx/ngnixde-ji-ben-xue-4e60-duo-jin-cheng-he-apache-de-bi-jiao.md)
     * [OpenResty](zhong-jian-jian/web-server/openresty.md)
     * Tengine
     * Apache Httpd
