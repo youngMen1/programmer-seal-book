@@ -47,6 +47,7 @@
   * [服务端缓存](zhong-jian-jian/fu-wu-duan-huan-cun.md)
     * [Web缓存](zhong-jian-jian/fu-wu-duan-huan-cun/webhuan-cun.md)
       * nuster - nuster cache
+      * varnish - varnish cache
     * Memcached
     * Redis
     * Tair
