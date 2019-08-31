@@ -1,0 +1,16 @@
+当缓存需要被清理时（比如空间占用已经接近临界值了），需要使用某种淘汰算法来决定清理掉哪些数据。常用的淘汰算法有下面几种：
+
+FIFO：First In First Out，先进先出。判断被存储的时间，离目前最远的数据优先被淘汰。
+
+LRU：Least Recently Used，最近最少使用。判断最近被使用的时间，目前最远的数据优先被淘汰。
+
+LFU：Least Frequently Used，最不经常使用。在一段时间内，数据被使用次数最少的，优先被淘汰。
+
+
+
+————————————————
+
+版权声明：本文为CSDN博主「Clement-Xu」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/clementad/article/details/48229243
+
