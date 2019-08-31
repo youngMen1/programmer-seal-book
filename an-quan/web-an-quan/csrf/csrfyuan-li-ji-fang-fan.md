@@ -76,5 +76,11 @@ echo "$callback($json);";
 ?>
 ```
 
+输出内容为：
+
+```
+cb({"userid":"12345678","usernick":"coderxing"});
+```
+
 
 
