@@ -34,7 +34,7 @@
 * [设计模式](she-ji-mo-shi.md)
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
-  * 常规监控
+  * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
 * [中间件](zhong-jian-jian.md)
   * Web Server
 * [网络](wang-luo.md)
@@ -80,11 +80,11 @@
 * [搜索引擎](sou-suo-yin-qing.md)
   * 搜索引擎原理
 * [性能](xing-neng.md)
-  * 性能优化方法论
+  * [性能优化方法论](xing-neng/xing-neng-you-hua-fang-fa-lun.md)
 * [大数据](da-shu-ju.md)
   * 流式计算
 * [安全](an-quan.md)
-  * web 安全
+  * [web 安全](an-quan/web-an-quan.md)
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
