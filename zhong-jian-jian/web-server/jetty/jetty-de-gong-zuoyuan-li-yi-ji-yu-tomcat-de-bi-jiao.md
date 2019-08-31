@@ -14,13 +14,13 @@ Jetty 中还有一些可有可无的组件，我们可以在它上做扩展。�
 
 ##### 图 2. Jetty 的主要组件的类图 {#fig2}
 
-image005.jpg
+![img](/static/image/image005.jpg)
 
 从上图可以看出整个 Jetty 的核心是围绕着 Server 类来构建，Server 类继承了 Handler，关联了 Connector 和 Container。Container 是管理 Mbean 的容器。Jetty 的 Server 的扩展主要是实现一个个 Handler 并将 Handler 加到 Server 中，Server 中提供了调用这些 Handler 的访问规则。
 
 整个 Jetty 的所有组件的生命周期管理是基于观察者模板设计，它和 Tomcat 的管理是类似的。下面是 LifeCycle 的类关系图
 
-image007.jpg
+![img](/static/image/image007.jpg)
 
 ##### 每个组件都会持有一个观察者（在这里是 Listener 类，这个类通常对应到观察者模式中常用的 Observer 角色，关于观察者模式可以参考[《](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)[Tomcat](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)[系统架构与设计模式，第](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)[2](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)[部分](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)[:](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)[设计模式分析》](http://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html)一文中关于观察者模式的讲解）集合，当 start、fail 或 stop 等事件触发时，这些 Listener 将会被调用，这是最简单的一种设计方式，相比 Tomcat 的 LifeCycle 要简单的多。 {#fig3}
 
