@@ -20,3 +20,5 @@ image005.jpg
 
 整个 Jetty 的所有组件的生命周期管理是基于观察者模板设计，它和 Tomcat 的管理是类似的。下面是 LifeCycle 的类关系图
 
+image007.jpg
+
