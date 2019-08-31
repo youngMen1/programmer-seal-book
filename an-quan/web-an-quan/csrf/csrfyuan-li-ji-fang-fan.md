@@ -64,6 +64,6 @@ header("Set-Cookie: cookie2=value2; domain=a.com; SameSite=Lax", false);
 <a href="www.a.com/test.html">test</a>
 
 ```
-
+点击页面上的链接之后，会发现，只有 cookie2 传递到了www.a.com strict 模式限制所有的跨域cookie传输，lax 模式相当于在安全性和可用性之间做了个折中，某些场景允许跨域传输，比如 a 标签中中的GET请求，但会对 img、iframe 和 ajax 中的GET请求以及POST请求做限制，
 
 
