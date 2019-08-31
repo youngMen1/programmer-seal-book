@@ -36,5 +36,18 @@ XSS攻击是Web攻击中最常见的攻击方法之一，它是通过对网页�
   </div>
 ```
 
+相信很多程序员都觉得这个代码很正常，其实这个代码就存在一个反射型的XSS攻击，假如输入下面的地址：
+
+```
+http://www.xxx.com/?id=" /><script>alert(/xss/)</script><br x="
+
+最终反射出来的HTML代码：
+
+    <div>
+
+    <img src="/images/handler.ashx?id=" /><script>alert(/xss/)</script><br x="" />
+    </div>
+```
+
 
 
