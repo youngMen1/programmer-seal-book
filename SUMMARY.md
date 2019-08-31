@@ -54,7 +54,7 @@
   * [客户端缓存](zhong-jian-jian/ke-hu-duan-huan-cun.md)
   * [服务端缓存](zhong-jian-jian/fu-wu-duan-huan-cun.md)
     * [Memcached](zhong-jian-jian/fu-wu-duan-huan-cun/memcached.md)
-    * Redis
+    * [Redis](zhong-jian-jian/fu-wu-duan-huan-cun/redis.md)
     * [Web缓存](zhong-jian-jian/webhuan-cun.md)
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
