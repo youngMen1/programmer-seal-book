@@ -87,7 +87,8 @@
   * [web 安全](an-quan/web-an-quan.md)
     * [XSS](an-quan/web-an-quan/xss.md)
       * [xss攻击原理与解决方法](an-quan/web-an-quan/xss/xssgong-ji-yuan-li-yu-jie-jue-fang-fa.md)
-    * CSRF
+    * [CSRF](an-quan/web-an-quan/csrf.md)
+      * [CSRF原理及防范](an-quan/web-an-quan/csrf/csrfyuan-li-ji-fang-fan.md)
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
