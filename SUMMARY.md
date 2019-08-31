@@ -56,6 +56,7 @@
   * [配置中心](zhong-jian-jian/pei-zhi-zhong-xin.md)
     * Apollo - 携程开源的配置中心应用
     * 基于zookeeper实现统一配置管理
+    * Spring Cloud Config 分布式配置中心使用教程
   * API 网关
   * 消息队列
 * [网络](wang-luo.md)
