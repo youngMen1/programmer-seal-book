@@ -36,7 +36,9 @@
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
 * [中间件](zhong-jian-jian.md)
-  * Web Server
+  * [Web Server](zhong-jian-jian/web-server.md)
+    * Nginx
+    * OpenResty
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
