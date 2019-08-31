@@ -2,15 +2,15 @@
 
 
 
-FIFO：First In First Out，先进先出。判断被存储的时间，离目前最远的数据优先被淘汰。
+**FIFO：First In First Out，先进先出。判断被存储的时间，离目前最远的数据优先被淘汰。**
+
+**
+
+LRU：Least Recently Used，最近最少使用。判断最近被使用的时间，目前最远的数据优先被淘汰。**
 
 
 
-LRU：Least Recently Used，最近最少使用。判断最近被使用的时间，目前最远的数据优先被淘汰。
-
-
-
-LFU：Least Frequently Used，最不经常使用。在一段时间内，数据被使用次数最少的，优先被淘汰。
+**LFU：Least Frequently Used，最不经常使用。在一段时间内，数据被使用次数最少的，优先被淘汰。**
 
 
 
