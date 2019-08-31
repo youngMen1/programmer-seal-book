@@ -17,3 +17,10 @@ CSRF 攻击有一个前提条件，是用户具有某个正常访问的访问权
 攻击者利用正常网站A的CSFR漏洞，构造页面一个恶意网页B，在页面中包含对发往正常网站A的请求，在用户C加载页面B（或者点击某些元素时触发）时，会触发攻击请求，目的是为了实现虚拟币的转账，请求可能隐藏得很深，用户并不一定能发现，伪造的请求如下：
 
 
+
+```
+<img widht=0 height=0 src="http://normal-site.com/transfer.do?from=rommel&to=attacker&amount=100" />
+
+```
+
+
