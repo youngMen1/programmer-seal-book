@@ -18,5 +18,9 @@ SELECT * FROM users WHERE username = "archer2017" AND password = "anywords" OR 1
 SELECT * FROM users WHERE username = "archer2017" AND password = "anywords" OR 1=1;DROP TABLE users;
 ```
 
+##### SQL 注入的防范 {#sql-注入的防范}
 
+​ SQL 注入发生绝大多数情况都是直接使用户输入参数拼装 SQL 语句造成的，防范 SQL 注入，主要的方式丢失避免直接使用用户输入的数据。
+
+​ 使用预编译语句（PreparedStatement）：一方面可以加速 SQL 的执行，一方面可以防止SQL注入。理解 PreparedStatement 防范 SQL 注入的原理，先要理解预编译语句的原理，如下图所示：
 
