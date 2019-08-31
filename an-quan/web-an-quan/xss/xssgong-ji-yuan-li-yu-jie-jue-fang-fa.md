@@ -265,3 +265,32 @@ public class EncodeFilter {
 
 二、 过滤用户输入的 检查用户输入的内容中是否有非法内容。如&lt;&gt;（尖括号）、”（引号）、 ‘（单引号）、%（百分比符号）、;（分号）、\(\)（括号）、&（& 符号）、+（加号）等。、严格控制输出
 
+```
+可以利用下面这些函数对出现xss漏洞的参数进行过滤
+
+1、htmlspecialchars() 函数,用于转义处理在页面上显示的文本。
+
+2、htmlentities() 函数,用于转义处理在页面上显示的文本。
+
+3、strip_tags() 函数,过滤掉输入、输出里面的恶意标签。
+
+4、header() 函数,使用header("Content-type:application/json"); 用于控制 json 数据的头部，不用于浏览。
+
+5、urlencode() 函数,用于输出处理字符型参数带入页面链接中。
+
+6、intval() 函数用于处理数值型参数输出页面中。
+
+7、自定义函数,在大多情况下，要使用一些常用的 html 标签，以美化页面显示，如留言、小纸条。那么在这样的情况下，要采用白名单的方法使用合法的标签显示，过滤掉非法的字符。
+
+各语言示例：
+
+  PHP的htmlentities()或是htmlspecialchars()。
+   Python的cgi.escape()。
+   ASP的Server.HTMLEncode()。
+   ASP.NET的Server.HtmlEncode()或功能更强的Microsoft Anti-Cross Site Scripting Library
+   Java的xssprotect(Open Source Library)。
+   Node.js的node-validator。
+```
+
+
+
