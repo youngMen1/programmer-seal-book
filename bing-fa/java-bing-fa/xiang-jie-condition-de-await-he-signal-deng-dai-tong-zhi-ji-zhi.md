@@ -259,7 +259,6 @@ sigllAll与sigal方法的区别体现在doSignalAll方法上，前面我们已�
 ![img](/static/image/condition下的等待通知机制.png)
 
 
-
 如图，**线程awaitThread先通过lock.lock()方法获取锁成功后调用了condition.await方法进入等待队列，而另一个线程signalThread通过lock.lock()方法获取锁成功后调用了condition.signal或者signalAll方法，使得线程awaitThread能够有机会移入到同步队列中，当其他线程释放lock后使得线程awaitThread能够有机会获取lock，从而使得线程awaitThread能够从await方法中退出执行后续操作。如果awaitThread获取lock失败会直接进入到同步队列**。
 
 # 3. 一个例子 #
