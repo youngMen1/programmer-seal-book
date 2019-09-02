@@ -111,7 +111,7 @@
       * [『浅入浅出』MySQL 和 InnoDB](shu-ju-ku/mysql/innodb/300e-qian-ru-qianchu-300f-mysql-he-innodb.md)
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
-  * 搜索引擎原理
+  * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
 * [性能](xing-neng.md)
   * [性能优化方法论](xing-neng/xing-neng-you-hua-fang-fa-lun.md)
 * [大数据](da-shu-ju.md)
