@@ -31,7 +31,7 @@
     * [彻底理解ReentrantLock](bing-fa/java-bing-fa/che-di-li-jie-reentrantlock.md)
     * [深入理解读写锁ReentrantReadWriteLock](bing-fa/java-bing-fa/shen-ru-li-jie-du-xie-suo-reentrantreadwritelock.md)
     * [详解Condition的await和signal等待通知机制](bing-fa/java-bing-fa/xiang-jie-condition-de-await-he-signal-deng-dai-tong-zhi-ji-zhi.md)
-    * LockSupport工具
+    * [LockSupport工具](bing-fa/java-bing-fa/locksupportgong-ju.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
