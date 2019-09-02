@@ -23,3 +23,19 @@
 
 做个试验：\(以下所有试验要注意存储引擎和隔离级别\)
 
+    mysql> show create table t_bitfly\G;
+    CREATE TABLE `t_bitfly` (
+    `id` bigint(20) NOT NULL default '0',
+    `value` varchar(32) default NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=gbk
+
+    mysql> select @@global.tx_isolation, @@tx_isolation;
+    +-----------------------+-----------------+
+    | @@global.tx_isolation | @@tx_isolation  |
+    +-----------------------+-----------------+
+    | REPEATABLE-READ       | REPEATABLE-READ |
+    +-----------------------+-----------------+
+
+
+
