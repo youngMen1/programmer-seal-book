@@ -47,6 +47,7 @@
     * [大白话说java并发工具类-Semaphore，Exchanger](bing-fa/java-bing-fa/da-bai-hua-shuo-java-bing-fa-gong-ju-7c7b-semaphore-exchanger.md)
     * [一篇文章，让你彻底弄懂生产者--消费者问题](bing-fa/java-bing-fa/yi-pian-wen-zhang-ff0c-rang-ni-che-di-nong-dong-sheng-chan-8005-xiao-fei-zhe-wen-ti.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
+    * Java并发编程——线程安全及解决机制简介
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
