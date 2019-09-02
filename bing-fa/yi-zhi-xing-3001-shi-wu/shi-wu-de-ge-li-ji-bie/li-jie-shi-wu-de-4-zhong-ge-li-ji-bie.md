@@ -2,7 +2,7 @@
 
 数据库事务的隔离级别有4种，由低到高分别为Read uncommitted 、Read committed 、Repeatable read 、Serializable 。而且，在事务的并发操作中可能会出现脏读，不可重复读，幻读。下面通过事例一一阐述它们的概念与联系。
 
-Read uncommitted
+### Read uncommitted
 
 读未提交，顾名思义，就是一个事务可以读取另一个未提交事务的数据。
 
@@ -12,7 +12,7 @@ Read uncommitted
 
 那怎么解决脏读呢？Read committed！读提交，能解决脏读问题。
 
-Read committed
+### Read committed
 
 读提交，顾名思义，就是一个事务要等另一个事务提交后才能读取数据。
 
@@ -22,7 +22,7 @@ Read committed
 
 那怎么解决可能的不可重复读问题？Repeatable read ！
 
-Repeatable read
+### Repeatable read
 
 重复读，就是在开始读取数据（事务开启）时，不再允许修改操作
 
@@ -30,17 +30,15 @@ Repeatable read
 
 分析：重复读可以解决不可重复读问题。写到这里，应该明白的一点就是，不可重复读对应的是修改，即UPDATE操作。但是可能还会有幻读问题。因为幻读问题对应的是插入INSERT操作，而不是UPDATE操作。
 
-什么时候会出现幻读？
+### 什么时候会出现幻读？
 
 事例：程序员某一天去消费，花了2千元，然后他的妻子去查看他今天的消费记录（全表扫描FTS，妻子事务开启），看到确实是花了2千元，就在这个时候，程序员花了1万买了一部电脑，即新增INSERT了一条消费记录，并提交。当妻子打印程序员的消费记录清单时（妻子事务提交），发现花了1.2万元，似乎出现了幻觉，这就是幻读。
 
 那怎么解决幻读问题？Serializable！
 
-Serializable 序列化
+### Serializable 序列化
 
 Serializable 是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。
 
 值得一提的是：大多数数据库默认的事务隔离级别是Read committed，比如Sql Server , Oracle。Mysql的默认隔离级别是Repeatable read。
-
-
 
