@@ -48,7 +48,8 @@
     * [一篇文章，让你彻底弄懂生产者--消费者问题](bing-fa/java-bing-fa/yi-pian-wen-zhang-ff0c-rang-ni-che-di-nong-dong-sheng-chan-8005-xiao-fei-zhe-wen-ti.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
     * [Java并发编程——线程安全及解决机制简介](bing-fa/duo-xian-cheng/javabing-fa-bian-cheng-2014-2014-xian-cheng-an-quan-ji-jie-jue-ji-zhi-jian-jie.md)
-  * 一致性、事务
+  * [一致性、事务](bing-fa/yi-zhi-xing-3001-shi-wu.md)
+    * 事务 ACID 特性
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
