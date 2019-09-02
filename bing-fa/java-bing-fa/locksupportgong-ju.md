@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 # 1. LockSupport简介 #
 在之前介绍[AQS的底层实现](https://juejin.im/post/5aeb07ab6fb9a07ac36350c8)，已经在介绍java中的Lock时，比如[ReentrantLock](https://juejin.im/post/5aeb0a8b518825673a2066f0),[ReentReadWriteLocks](https://juejin.im/post/5aeb0e016fb9a07ab7740d90),已经在介绍线程间等待/通知机制使用的[Condition](https://juejin.im/post/5aeea5e951882506a36c67f0)时都会调用LockSupport.park()方法和LockSupport.unpark()方法。而这个在同步组件的实现中被频繁使用的LockSupport到底是何方神圣，现在就来看看。LockSupport位于java.util.concurrent.locks包下，有兴趣的可以直接去看源码，该类的方法并不是很多。LockSupprot是线程的阻塞原语，用来阻塞线程和唤醒线程。每个使用LockSupport的线程都会与一个许可关联，如果该许可可用，并且可在线程中使用，则调用park()将会立即返回，否则可能阻塞。如果许可尚不可用，则可以调用 unpark 使其可用。但是注意许可**不可重入**，也就是说只能调用一次park()方法，否则会一直阻塞。
 
