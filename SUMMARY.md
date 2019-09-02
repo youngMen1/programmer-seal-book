@@ -39,6 +39,7 @@
     * [一篇文章，从源码深入详解ThreadLocal内存泄漏问题](bing-fa/java-bing-fa/yi-pian-wen-zhang-ff0c-cong-yuan-ma-shen-ru-xiang-jie-threadlocal-nei-cun-xie-lou-wen-ti.md)
     * [并发容器之BlockingQueue](bing-fa/java-bing-fa/bing-fa-rong-qi-zhi-blockingqueue.md)
     * [并发容器之ArrayBlockingQueue和LinkedBlockingQueue实现原理详解](bing-fa/java-bing-fa/bing-fa-rong-qi-zhi-arrayblockingqueue-helinkedblockingqueue-shi-xian-yuan-li-xiang-jie.md)
+    * 线程池ThreadPoolExecutor实现原理
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
