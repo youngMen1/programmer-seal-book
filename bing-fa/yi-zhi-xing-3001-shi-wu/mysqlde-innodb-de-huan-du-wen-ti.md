@@ -62,5 +62,53 @@ t Session A                   Session B
 v (shit, 刚刚明明告诉我没有这条记录的)
 ```
 
+如此就出现了幻读，以为表里没有数据，其实数据已经存在了，傻乎乎的提交后，才发现数据冲突了。
+
+试验二：
+
+```
+t Session A                  Session B
+|
+| START TRANSACTION;         START TRANSACTION;
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+|                            INSERT INTO t_bitfly
+|                            VALUES (2, 'b');
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+|                            COMMIT;
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+|
+| UPDATE t_bitfly SET value='z';
+| Rows matched: 2  Changed: 2  Warnings: 0
+| (怎么多出来一行)
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | z     |
+| |    2 | z     |
+| +------+-------+
+|
+v
+```
+
 
 
