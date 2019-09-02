@@ -52,7 +52,8 @@
     * 事务 ACID 特性
     * 事务的隔离级别
     * MVCC
-  * 锁
+  * [锁](bing-fa/suo.md)
+    * Java中的锁和同步类
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
