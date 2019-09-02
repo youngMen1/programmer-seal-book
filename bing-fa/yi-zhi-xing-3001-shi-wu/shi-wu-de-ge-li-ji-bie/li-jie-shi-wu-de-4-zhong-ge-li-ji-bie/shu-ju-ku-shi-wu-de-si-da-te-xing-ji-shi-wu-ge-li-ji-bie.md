@@ -184,21 +184,21 @@ select @@tx_isolation;
 
 例2：将事务的隔离级别设置为Read uncommitted级别：
 
-!\[img\]\(/static/image/787876-20160313202224241-2101542210.png\)
+![img](/static/image/787876-20160313202224241-2101542210.png)
 
 或：
 
-787876-20160313202245210-345198166.png
+![img](/static/image/787876-20160313202245210-345198166.png)
 
 记住：设置数据库的隔离级别一定要是在开启事务之前！
 
 如果是使用JDBC对数据库的事务设置隔离级别的话，也应该是在调用Connection对象的setAutoCommit\(false\)方法之前。调用Connection对象的setTransactionIsolation\(level\)即可设置当前链接的隔离级别，至于参数level，可以使用Connection对象的字段：
 
-787876-20160313202333460-377269897.png
+![img](/static/image/787876-20160313202333460-377269897.png)
 
 在JDBC中设置隔离级别的部分代码：
 
-787876-20160313202355694-2106931487.png
+![img](/static/image/787876-20160313202355694-2106931487.png)
 
 后记：
 
