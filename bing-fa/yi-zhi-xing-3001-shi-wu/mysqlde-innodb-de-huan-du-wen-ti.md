@@ -112,7 +112,15 @@ v
 
 本事务中第一次读取出一行，做了一次更新后，另一个事务里提交的数据就出现了。也可以看做是一种幻读。
 
-------
+---
 
 那么，InnoDB指出的可以避免幻读是怎么回事呢？
+
+```
+http://dev.mysql.com/doc/refman/5.0/en/innodb-record-level-locks.html
+
+By default, InnoDB operates in REPEATABLE READ transaction isolation level and with the innodb_locks_unsafe_for_binlog system variable disabled. In this case, InnoDB uses next-key locks for searches and index scans, which prevents phantom rows (see Section 13.6.8.5, “Avoiding the Phantom Problem Using Next-Key Locking”).
+```
+
+
 
