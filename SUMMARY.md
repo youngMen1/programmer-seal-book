@@ -42,7 +42,7 @@
     * [线程池ThreadPoolExecutor实现原理](bing-fa/java-bing-fa/xian-cheng-chi-threadpoolexecutor-shi-xian-yuan-li.md)
     * [线程池之ScheduledThreadPoolExecutor](bing-fa/java-bing-fa/xian-cheng-chi-zhi-scheduledthreadpoolexecutor.md)
     * [FutureTask基本操作总结](bing-fa/java-bing-fa/futuretaskji-ben-cao-zuo-zong-jie.md)
-    * Java中atomic包中的原子操作类总结
+    * [Java中atomic包中的原子操作类总结](bing-fa/java-bing-fa/javazhong-atomic-bao-zhong-de-yuan-zi-cao-zuo-lei-zong-jie.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
