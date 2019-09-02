@@ -122,5 +122,140 @@ http://dev.mysql.com/doc/refman/5.0/en/innodb-record-level-locks.html
 By default, InnoDB operates in REPEATABLE READ transaction isolation level and with the innodb_locks_unsafe_for_binlog system variable disabled. In this case, InnoDB uses next-key locks for searches and index scans, which prevents phantom rows (see Section 13.6.8.5, “Avoiding the Phantom Problem Using Next-Key Locking”).
 ```
 
+准备的理解是，当隔离级别是可重复读，且禁用innodb\_locks\_unsafe\_for\_binlog的情况下，在搜索和扫描index的时候使用的next-key locks可以避免幻读。
+
+关键点在于，是InnoDB默认对一个普通的查询也会加next-key locks，还是说需要应用自己来加锁呢？如果单看这一句，可能会以为InnoDB对普通的查询也加了锁，如果是，那和序列化（SERIALIZABLE）的区别又在哪里呢？
+
+MySQL manual里还有一段：
+
+```
+13.2.8.5. Avoiding the Phantom Problem Using Next-Key Locking (http://dev.mysql.com/doc/refman/5.0/en/innodb-next-key-locking.html)
+
+To prevent phantoms, InnoDB uses an algorithm called next-key locking that combines index-row locking with gap locking.
+
+You can use next-key locking to implement a uniqueness check in your application: If you read your data in share mode and do not see a duplicate for a row you are going to insert, then you can safely insert your row and know that the next-key lock set on the successor of your row during the read prevents anyone meanwhile inserting a duplicate for your row. Thus, the next-key locking enables you to “lock” the nonexistence of something in your table.
+```
+
+我的理解是说，InnoDB提供了next-key locks，但需要应用程序自己去加锁。manual里提供一个例子：
+
+```
+SELECT * FROM child WHERE id > 100 FOR UPDATE;
+```
+
+这样，InnoDB会给id大于100的行（假如child表里有一行id为102），以及100-102，102+的gap都加上锁。
+
+可以使用show innodb status来查看是否给表加上了锁。
+
+再看一个实验，要注意，表t\_bitfly里的id为主键字段。实验三：
+
+```
+t Session A                 Session B
+|
+| START TRANSACTION;        START TRANSACTION;
+|
+| SELECT * FROM t_bitfly
+| WHERE id&lt;=1
+| FOR UPDATE;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+|                           INSERT INTO t_bitfly
+|                           VALUES (2, 'b');
+|                           Query OK, 1 row affected
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+|                           INSERT INTO t_bitfly
+|                           VALUES (0, '0');
+|                           (waiting for lock ...
+|                           then timeout)
+|                           ERROR 1205 (HY000):
+|                           Lock wait timeout exceeded;
+|                           try restarting transaction
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+|                           COMMIT;
+|
+| SELECT * FROM t_bitfly;
+| +------+-------+
+| | id   | value |
+| +------+-------+
+| |    1 | a     |
+| +------+-------+
+v
+```
+
+可以看到，用id&lt;=1加的锁，只锁住了id&lt;=1的范围，可以成功添加id为2的记录，添加id为0的记录时就会等待锁的释放。
+
+MySQL manual里对可重复读里的锁的详细解释：
+
+```
+http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html#isolevel_repeatable-read
+
+For locking reads (SELECT with FOR UPDATE or LOCK IN SHARE MODE),UPDATE, and DELETE statements, locking depends on whether the statement uses a unique index with a unique search condition, or a range-type search condition. For a unique index with a unique search condition, InnoDB locks only the index record found, not the gap before it. For other search conditions, InnoDB locks the index range scanned, using gap locks or next-key (gap plus index-record) locks to block insertions by other sessions into the gaps covered by the range.
+```
+
+---
+
+一致性读和提交读，先看实验，实验四：
+
+```
+t Session A                      Session B
+|
+| START TRANSACTION;             START TRANSACTION;
+|
+| SELECT * FROM t_bitfly;
+| +----+-------+
+| | id | value |
+| +----+-------+
+| |  1 | a     |
+| +----+-------+
+|                                INSERT INTO t_bitfly
+|                                VALUES (2, 'b');
+|                                COMMIT;
+|
+| SELECT * FROM t_bitfly;
+| +----+-------+
+| | id | value |
+| +----+-------+
+| |  1 | a     |
+| +----+-------+
+|
+| SELECT * FROM t_bitfly LOCK IN SHARE MODE;
+| +----+-------+
+| | id | value |
+| +----+-------+
+| |  1 | a     |
+| |  2 | b     |
+| +----+-------+
+|
+| SELECT * FROM t_bitfly FOR UPDATE;
+| +----+-------+
+| | id | value |
+| +----+-------+
+| |  1 | a     |
+| |  2 | b     |
+| +----+-------+
+|
+| SELECT * FROM t_bitfly;
+| +----+-------+
+| | id | value |
+| +----+-------+
+| |  1 | a     |
+| +----+-------+
+v
+```
+
 
 
