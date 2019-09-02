@@ -28,7 +28,7 @@
     * [三大性质总结：原子性、可见性以及有序性](bing-fa/java-bing-fa/san-da-xing-zhi-zong-jie-ff1a-yuan-zi-xing-3001-ke-jian-xing-yi-ji-you-xu-xing.md)
     * [初识Lock与AbstractQueuedSynchronizer\(AQS\)](bing-fa/java-bing-fa/chu-shi-lock-yu-abstractqueuedsynchronizer-aqs.md)
     * [深入理解AbstractQueuedSynchronizer\(AQS\)](bing-fa/java-bing-fa/shen-ru-li-jie-abstractqueuedsynchronizer-aqs.md)
-    * 彻底理解ReentrantLock
+    * [彻底理解ReentrantLock](bing-fa/java-bing-fa/che-di-li-jie-reentrantlock.md)
     * [深入理解读写锁ReentrantReadWriteLock](bing-fa/java-bing-fa/shen-ru-li-jie-du-xie-suo-reentrantreadwritelock.md)
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
