@@ -51,6 +51,7 @@
   * [一致性、事务](bing-fa/yi-zhi-xing-3001-shi-wu.md)
     * [事务 ACID 特性](bing-fa/yi-zhi-xing-3001-shi-wu/shi-wu-acid-te-xing.md)
     * [事务的隔离级别](bing-fa/yi-zhi-xing-3001-shi-wu/shi-wu-de-ge-li-ji-bie.md)
+      * 理解事务的4种隔离级别
     * MVCC
   * [锁](bing-fa/suo.md)
     * Java中的锁和同步类
