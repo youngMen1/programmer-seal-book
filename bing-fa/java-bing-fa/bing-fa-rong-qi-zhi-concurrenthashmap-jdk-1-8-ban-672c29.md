@@ -1,5 +1,11 @@
 
 
+$$
+
+$$
+
+
+
 # 1.ConcurrentHashmap简介 #
 在使用HashMap时在多线程情况下扩容会出现CPU接近100%的情况，因为hashmap并不是线程安全的，通常我们可以使用在java体系中古老的hashtable类，该类基本上所有的方法都采用synchronized进行线程安全的控制，可想而知，在高并发的情况下，每次只有一个线程能够获取对象监视器锁，这样的并发性能的确不令人满意。另外一种方式通过Collections的`Map<K,V> synchronizedMap(Map<K,V> m)`将hashmap包装成一个线程安全的map。比如SynchronzedMap的put方法源码为：
 
