@@ -37,5 +37,30 @@
     | REPEATABLE-READ       | REPEATABLE-READ |
     +-----------------------+-----------------+
 
+试验一：
+
+```
+t Session A                   Session B
+|
+| START TRANSACTION;          START TRANSACTION;
+|
+| SELECT * FROM t_bitfly;
+| empty set
+|                             INSERT INTO t_bitfly
+|                             VALUES (1, 'a');
+|
+| SELECT * FROM t_bitfly;
+| empty set
+|                             COMMIT;
+|
+| SELECT * FROM t_bitfly;
+| empty set
+|
+| INSERT INTO t_bitfly VALUES (1, 'a');
+| ERROR 1062 (23000):
+| Duplicate entry '1' for key 1
+v (shit, 刚刚明明告诉我没有这条记录的)
+```
+
 
 
