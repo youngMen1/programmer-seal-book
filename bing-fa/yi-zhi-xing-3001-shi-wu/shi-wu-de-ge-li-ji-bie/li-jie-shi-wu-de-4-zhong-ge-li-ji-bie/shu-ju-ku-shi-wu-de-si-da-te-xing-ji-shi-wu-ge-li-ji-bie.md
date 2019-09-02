@@ -184,3 +184,5 @@ select @@tx_isolation;
 
 例2：将事务的隔离级别设置为Read uncommitted级别：
 
+787876-20160313202224241-2101542210.png
+
