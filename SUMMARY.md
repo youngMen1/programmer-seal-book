@@ -33,6 +33,7 @@
     * [详解Condition的await和signal等待通知机制](bing-fa/java-bing-fa/xiang-jie-condition-de-await-he-signal-deng-dai-tong-zhi-ji-zhi.md)
     * [LockSupport的工具](bing-fa/java-bing-fa/locksupportde-gong-ju.md)
     * [并发容器之ConcurrentHashMap\(JDK 1.8版本\)](bing-fa/java-bing-fa/bing-fa-rong-qi-zhi-concurrenthashmap-jdk-1-8-ban-672c29.md)
+    * 并发容器之ConcurrentLinkedQueue
   * [多线程](bing-fa/duo-xian-cheng.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
