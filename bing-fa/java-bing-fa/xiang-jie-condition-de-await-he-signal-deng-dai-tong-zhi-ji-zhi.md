@@ -52,21 +52,21 @@
 	    }
 	}
 这段代码没有任何实际意义，甚至很臭，只是想说明下我们刚才所想的。新建了10个线程，没有线程先获取锁，然后调用condition.await方法释放锁将当前线程加入到等待队列中，通过debug控制当走到第10个线程的时候查看`firstWaiter`即等待队列中的头结点，debug模式下情景图如下：
+![img](/static/image/debug模式下情景图)
 
-![debug模式下情景图](http://upload-images.jianshu.io/upload_images/2615789-67a211209835e36d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
 从这个图我们可以很清楚的看到这样几点：1. 调用condition.await方法后线程依次尾插入到等待队列中，如图队列中的线程引用依次为Thread-0,Thread-1,Thread-2....Thread-8；2. 等待队列是一个单向队列。通过我们的猜想然后进行实验验证，我们可以得出等待队列的示意图如下图所示：
+![img](/static/image/等待队列的示意图)
 
 ![等待队列的示意图](http://upload-images.jianshu.io/upload_images/2615789-5aa1ee1ae8cb7f5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 同时还有一点需要注意的是：我们可以多次调用lock.newCondition()方法创建多个condition对象，也就是一个lock可以持有多个等待队列。而在之前利用Object的方式实际上是指在**对象Object对象监视器上只能拥有一个同步队列和一个等待队列，而并发包中的Lock拥有一个同步队列和多个等待队列**。示意图如下：
 
+![img](/static/image/AQS持有多个Condition.png)
 
-
-![AQS持有多个Condition.png](http://upload-images.jianshu.io/upload_images/2615789-6621181fc19603c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
@@ -151,8 +151,7 @@
 	}
 
 很显然，当线程第一次调用condition.await()方法时，会进入到这个while()循环中，然后通过LockSupport.park(this)方法使得当前线程进入等待状态，那么要想退出这个await方法第一个前提条件自然而然的是要先退出这个while循环，出口就只剩下两个地方：**1. 逻辑走到break退出while循环；2. while循环中的逻辑判断为false**。再看代码出现第1种情况的条件是当前等待的线程被中断后代码会走到break退出，第二种情况是当前节点被移动到了同步队列中（即另外线程调用的condition的signal或者signalAll方法），while中逻辑判断为false后结束while循环。总结下，就是**当前线程被中断或者调用condition.signal/condition.signalAll方法当前节点移动到了同步队列后** ，这是当前线程退出await方法的前提条件。当退出while循环后就会调用`acquireQueued(node, savedState)`，这个方法在介绍AQS的底层实现时说过了，若感兴趣的话可以去[看这篇文章](https://juejin.im/post/5aeb07ab6fb9a07ac36350c8)，该方法的作用是在**自旋过程中线程不断尝试获取同步状态，直至成功（线程获取到lock）**。这样也说明了**退出await方法必须是已经获得了condition引用（关联）的lock**。到目前为止，开头的三个问题我们通过阅读源码的方式已经完全找到了答案，也对await方法的理解加深。await方法示意图如下图：
-
-![await方法示意图](http://upload-images.jianshu.io/upload_images/2615789-1cb1c2fe3c1ddf38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![img](/static/image/await方法示意图)
 
 
 
