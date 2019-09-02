@@ -50,7 +50,7 @@
     * [Java并发编程——线程安全及解决机制简介](bing-fa/duo-xian-cheng/javabing-fa-bian-cheng-2014-2014-xian-cheng-an-quan-ji-jie-jue-ji-zhi-jian-jie.md)
   * [一致性、事务](bing-fa/yi-zhi-xing-3001-shi-wu.md)
     * [事务 ACID 特性](bing-fa/yi-zhi-xing-3001-shi-wu/shi-wu-acid-te-xing.md)
-    * 事务的隔离级别
+    * [事务的隔离级别](bing-fa/yi-zhi-xing-3001-shi-wu/shi-wu-de-ge-li-ji-bie.md)
     * MVCC
   * [锁](bing-fa/suo.md)
     * Java中的锁和同步类
