@@ -257,5 +257,22 @@ t Session A                      Session B
 v
 ```
 
+如果使用普通的读，会得到一致性的结果，如果使用了加锁的读，就会读到“最新的”“提交”读的结果。
+
+本身，可重复读和提交读是矛盾的。在同一个事务里，如果保证了可重复读，就会看不到其他事务的提交，违背了提交读；如果保证了提交读，就会导致前后两次读到的结果不一致，违背了可重复读。
+
+可以这么讲，InnoDB提供了这样的机制，在默认的可重复读的隔离级别里，可以使用加锁读去查询最新的数据。
+
+```
+http://dev.mysql.com/doc/refman/5.0/en/innodb-consistent-read.html
+
+If you want to see the “freshest” state of the database, you should use either the READ COMMITTED isolation level or a locking read:
+SELECT * FROM t_bitfly LOCK IN SHARE MODE;
+```
+
+------
+
+结论：MySQL InnoDB的可重复读并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁度使用到的机制就是next-key locks。
+
 
 
