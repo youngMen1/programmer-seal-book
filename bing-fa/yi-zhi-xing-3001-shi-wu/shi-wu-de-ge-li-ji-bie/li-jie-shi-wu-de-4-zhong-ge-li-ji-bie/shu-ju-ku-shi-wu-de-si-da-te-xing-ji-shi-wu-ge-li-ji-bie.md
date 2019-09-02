@@ -192,5 +192,7 @@ select @@tx_isolation;
 
 记住：设置数据库的隔离级别一定要是在开启事务之前！
 
-　　如果是使用JDBC对数据库的事务设置隔离级别的话，也应该是在调用Connection对象的setAutoCommit\(false\)方法之前。调用Connection对象的setTransactionIsolation\(level\)即可设置当前链接的隔离级别，至于参数level，可以使用Connection对象的字段：
+如果是使用JDBC对数据库的事务设置隔离级别的话，也应该是在调用Connection对象的setAutoCommit\(false\)方法之前。调用Connection对象的setTransactionIsolation\(level\)即可设置当前链接的隔离级别，至于参数level，可以使用Connection对象的字段：
+
+787876-20160313202333460-377269897.png
 
