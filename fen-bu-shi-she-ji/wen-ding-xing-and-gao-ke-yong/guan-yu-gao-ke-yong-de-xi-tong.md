@@ -95,7 +95,7 @@ mysql-high-availability-solutions-feb-2015-webinar-9-638.jpg
 
 下图来自Oracle的 《[High Availability Concepts and Best Practices](https://docs.oracle.com/cd/A91202_01/901_doc/rac.901/a89867/pshavdtl.htm)》
 
-planned\_downtime.gif
+![img](/static/image/planned_downtime.gif)
 
 我们可以看到，上面的宕机原因包括如下：
 
