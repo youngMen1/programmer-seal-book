@@ -64,7 +64,7 @@
     * [公平锁 & 非公平锁](bing-fa/suo/gong-ping-suo-and-fei-gong-ping-suo.md)
       * [公平锁与非公平锁](bing-fa/suo/gong-ping-suo-and-fei-gong-ping-suo/gong-ping-suo-yu-fei-gong-ping-suo.md)
     * [悲观锁](bing-fa/suo/bei-guan-suo.md)
-      * 【MySQL】悲观锁&乐观锁
+      * [【MySQL】悲观锁&乐观锁](bing-fa/suo/bei-guan-suo/mysql3011-bei-guan-950126-le-guan-suo.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
