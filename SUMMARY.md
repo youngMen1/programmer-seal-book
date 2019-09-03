@@ -215,6 +215,7 @@
   * [数据库扩展](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan.md)
     * [读写分离模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi.md)
       * Mysql主从方案的实现
+      * 搭建MySQL主从复制经典架构
     * 分片模式
   * 服务治理
   * 分布式一致
