@@ -239,10 +239,10 @@ OKOK，acquireQueued\(\)分析完之后，我们接下来再回到acquire\(\)！
 
 ```
 public final void acquire(int arg) {
-2     if (!tryAcquire(arg) &&
-3         acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
-4         selfInterrupt();
-5 }
+     if (!tryAcquire(arg) &&
+        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+       selfInterrupt();
+}
 ```
 
 
