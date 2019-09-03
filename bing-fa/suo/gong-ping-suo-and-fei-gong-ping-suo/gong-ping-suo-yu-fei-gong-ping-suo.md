@@ -34,8 +34,7 @@
     public void lock() {
         sync.lock();
     }
-
 ```
 
-
+下面参考一下FairSync和NonfairSync对lock方法的实现：
 
