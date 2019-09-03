@@ -36,5 +36,5 @@ public final int get() {
 }
 ```
 
-
+然后来看看 ++i 是怎么做到的。
 
