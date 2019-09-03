@@ -70,7 +70,7 @@ select * from t3 where id=22 for update;
 
 Empty set (0.00 sec)
 
- 
+
 
 session2:
 
@@ -78,7 +78,7 @@ select * from t3 where id=23  for update;
 
 Empty set (0.00 sec)
 
- 
+
 
 Session1:
 
@@ -86,7 +86,7 @@ insert into t3 values(22,'ac','a',now());
 
 锁等待中……
 
- 
+
 
 Session2:
 
@@ -95,5 +95,35 @@ insert into t3 values(23,'bc','b',now());
 ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
 ```
 
+当对存在的行进行锁的时候\(主键\)，mysql就只有行锁。
 
+当对未存在的行进行锁的时候\(即使条件为主键\)，mysql是会锁住一段范围（有gap锁）
+
+
+
+
+
+锁住的范围为：
+
+\(无穷小或小于表中锁住id的最大值，无穷大或大于表中锁住id的最小值\)
+
+
+
+如：如果表中目前有已有的id为（11 ， 12）
+
+那么就锁住（12，无穷大）
+
+如果表中目前已有的id为（11 ， 30）
+
+那么就锁住（11，30）
+
+
+
+**对于这种死锁的解决办法是：**
+
+**insert into t3\(xx,xx\) on duplicate key update \`xx\`='XX';**
+
+
+
+用mysql特有的语法来解决此问题。因为insert语句对于主键来说，插入的行不管有没有存在，都会只有行锁。
 
