@@ -44,3 +44,11 @@ final void setArray(Object[] a) {
 
 读的时候不需要加锁，如果读的时候有多个线程正在向ArrayList添加数据，读还是会读到旧的数据，因为写的时候不会锁住旧的ArrayList。
 
+```
+public E get(int index) {
+    return get(getArray(), index);
+}
+```
+
+
+
