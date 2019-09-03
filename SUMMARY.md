@@ -77,6 +77,7 @@
     * [RingBuffer](bing-fa/suo/ringbuffer.md)
     * [可重入锁 & 不可重入锁](bing-fa/suo/ke-zhong-ru-suo-and-bu-ke-zhong-ru-suo.md)
       * [可重入锁和不可重入锁](bing-fa/suo/ke-zhong-ru-suo-and-bu-ke-zhong-ru-suo/ke-zhong-ru-suo-he-bu-ke-zhong-ru-suo.md)
+      * ReenTrantLock可重入锁（和synchronized的区别）总结
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
