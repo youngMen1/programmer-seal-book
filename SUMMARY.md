@@ -199,6 +199,7 @@
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
+  * 稳定性 & 高可用
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
