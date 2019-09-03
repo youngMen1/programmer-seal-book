@@ -133,7 +133,7 @@
 
 计数法是限流算法里最容易理解的一种，该方法统计最近一段时间的请求量，如果超过一定的阈值，就开始限流。在 TCP 网络协议中，也用到了滑动窗口来限制数据传输速率。
 
-![img](/static/image/lhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtMDllMGRhZGVjNDJmZjdkZC5wbmc.jpg)
+![img](/static/image/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtMDllMGRhZGVjNDJmZjdkZC5wbmc.jpg)
 
 滑动窗口计数有两个关键的因素：窗口时长、滚动时间间隔。滚动时间间隔一般等于上图中的一个桶 bucket，窗口时长除以滚动时间间隔，就是一个窗口所包含的 bucket 数目。
 
