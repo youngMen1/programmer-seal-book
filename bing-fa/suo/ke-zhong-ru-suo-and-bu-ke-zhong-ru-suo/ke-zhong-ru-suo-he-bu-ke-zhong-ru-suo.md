@@ -71,5 +71,36 @@ public class Count{
 }
 ```
 
+当调用print\(\)方法时，获得了锁，这时就无法再调用doAdd\(\)方法，这时必须先释放锁才能调用，所以称这种锁为不可重入锁，也叫自旋锁。
+
+## 可重入锁
+
+```
+public class Lock{
+    boolean isLocked = false;
+    Thread  lockedBy = null;
+    int lockedCount = 0;
+    public synchronized void lock()
+            throws InterruptedException{
+        Thread thread = Thread.currentThread();
+        while(isLocked && lockedBy != thread){
+            wait();
+        }
+        isLocked = true;
+        lockedCount++;
+        lockedBy = thread;
+    }
+    public synchronized void unlock(){
+        if(Thread.currentThread() == this.lockedBy){
+            lockedCount--;
+            if(lockedCount == 0){
+                isLocked = false;
+                notify();
+            }
+        }
+    }
+}
+```
+
 
 
