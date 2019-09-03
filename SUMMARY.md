@@ -82,7 +82,7 @@
       * [并发库应用之五 & ReadWriteLock场景应用](bing-fa/suo/hu-chi-suo-and-gong-xiang-suo/bing-fa-ku-ying-yong-zhi-wu-and-readwritelock-chang-jing-ying-yong.md)
     * [死锁](bing-fa/suo/si-suo.md)
       * [“死锁”四个必要条件的合理解释](bing-fa/suo/si-suo/201c-si-suo-201d-si-ge-bi-yao-tiao-jian-de-he-li-jie-shi.md)
-      * Java如何查看死锁？
+      * [Java如何查看死锁？](bing-fa/suo/si-suo/javaru-he-cha-kan-si-suo-ff1f.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)

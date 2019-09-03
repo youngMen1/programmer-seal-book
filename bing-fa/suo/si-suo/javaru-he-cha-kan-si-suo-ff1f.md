@@ -1,5 +1,3 @@
-
-
 Java如何查看死锁？
 
 Java中当我们的开发涉及到多线程的时候，这个时候就很容易遇到死锁问题，刚开始遇到死锁问题的时候，我们很容易觉得莫名其妙，而且定位问题也很困难。
@@ -10,9 +8,60 @@ Java中jdk 给我们提供了很便利的工具，帮助我们定位和分析死
 
 1、死锁产生原因：当两个或者多个线程互相持有一定资源，并互相等待其他线程释放资源而形成的一
 
+```
+
+public class Test {
+ 
+	public static void main(String[] args) {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				synchronized (B.class) {
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					synchronized (A.class) {
+						
+					}
+				}
+			}
+		}).start();
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				synchronized (A.class) {
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					synchronized (B.class) {
+						
+					}
+				}
+				
+			}
+		}).start();
+	}
+	
+}
+class A {
+	
+}
+ 
+class B {
+	
+}
+
 ————————————————
+版权声明：本文为CSDN博主「ZK_小姜」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u014039577/article/details/52351626
+```
 
-版权声明：本文为CSDN博主「ZK\_小姜」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
 
-原文链接：[https://blog.csdn.net/u014039577/article/details/52351626](https://blog.csdn.net/u014039577/article/details/52351626)
 
