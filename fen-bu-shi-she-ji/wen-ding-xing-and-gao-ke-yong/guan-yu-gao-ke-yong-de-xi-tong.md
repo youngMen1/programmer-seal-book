@@ -52,3 +52,24 @@ Transaction-Across-DataCenter.jpg
 
 mysql-high-availability-solutions-feb-2015-webinar-9-638.jpg
 
+简单解释一下MySQL的这几个方案（主要是想表达一个越多的9就越复杂）
+
+* MySQL Repleaction就是传统的异步数据同步或是半同步Semi-Sync（只要有一个slave收到更新就返回成功）这个方式本质上不到2个9。
+* MySQL Fabric简单来说就是数据分片下的M/S的读写分离模式。这个方案的的可用性可以达到99%
+* DRBD通过底层的磁盘同步技术来解决数据同步的问题，就是RAID 1——把两台以上的主机的硬盘镜像成一个。这个方案不到3个9
+* Solaris Clustering/Oracle VM ，这个机制监控了包括硬件、操作系统、网络和数据库。这个方案一般会伴随着节点间的“心跳机制”，而且还会动用到SAN（Storage Area Network）或是本地的分布式存储系统，还会动用虚拟化技术来做虚拟机的迁移以降低宕机时间的概率。这个解决方案完全就是一个“全栈式的解决方案”。这个方案接近4个9。
+* MySQL Cluster是官方的一个开源方案，其把MySQL的集群分成SQL Node 和Data Node，Data Node是一个自动化sharing和复制的集群NDB，为了更高的可用性，MySQL Cluster采用了“完全同步”的数据复制的机制来冗余数据结点。这个方案接近5个9。
+
+那么，这些2个9，3个9，4个9，5个9是什么意思呢？又是怎么来的呢？请往下看。
+
+#### 高可用性的SLA的定义
+
+**上面那些都不是本文的重点，本文的重点现在开始，如何测量系统的高可用性**。当然是SLA，全称[Service Level Agrement](https://en.wikipedia.org/wiki/Service-level_agreement)，也就是有几个9的高可用性。
+
+工业界有两种方法来测量SLA，
+
+* 一个是故障发生到恢复的时间
+* 另一个是两次故障间的时间
+
+但大多数都采用第一种方法，也就是故障发生到恢复的时间，也就是服务不可用的时间，如下表所示：
+
