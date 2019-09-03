@@ -34,7 +34,7 @@ ReentrantReadWriteLock会使用两把锁来解决问题，一个读锁，一个�
  　　 1. 没有其他线程的写锁
 ```
 
-2. 没有写请求，或者有写请求但调用线程和持有锁的线程是同一个线程
+1. 没有写请求，或者有写请求但调用线程和持有锁的线程是同一个线程
 
 **进入写锁的前提条件：**
 
@@ -58,6 +58,19 @@ ReentrantReadWriteLock会使用两把锁来解决问题，一个读锁，一个�
  System.out.println("get readLock.");
  rtLock.writeLock().lock();
  System.out.println("blocking");
+```
+
+**ReentrantReadWriteLock支持锁降级，**
+
+如下代码不会产生死锁。
+
+```
+ReadWriteLock rtLock = new ReentrantReadWriteLock();
+rtLock.writeLock().lock();
+System.out.println("writeLock");
+
+rtLock.readLock().lock();
+System.out.println("get read lock");
 ```
 
 
