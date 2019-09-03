@@ -94,5 +94,39 @@ if (memcache.get(key) == null) {
 
 在value内部设置1个超时值\(timeout1\), timeout1比实际的memcache timeout\(timeout2\)小。当从cache读取到timeout1发现它已经过期时候，马上延长timeout1并重新设置到cache。然后再从数据库加载数据并设置到cache中。伪代码如下：
 
+```
+v = memcache.get(key);  
+if (v == null) {  
+    if (memcache.add(key_mutex, 3 * 60 * 1000) == true) {  
+        value = db.get(key);  
+        memcache.set(key, value);  
+        memcache.delete(key_mutex);  
+    } else {  
+        sleep(50);  
+        retry();  
+    }  
+} else {  
+    if (v.timeout <= now()) {  
+        if (memcache.add(key_mutex, 3 * 60 * 1000) == true) {  
+            // extend the timeout for other threads  
+            v.timeout += 3 * 60 * 1000;  
+            memcache.set(key, v, KEY_TIMEOUT * 2);  
+  
+            // load the latest value from db  
+            v = db.get(key);  
+            v.timeout = KEY_TIMEOUT;  
+            memcache.set(key, value, KEY_TIMEOUT * 2);  
+            memcache.delete(key_mutex);  
+        } else {  
+            sleep(50);  
+            retry();  
+        }  
+    }  
+}
+————————————————
+版权声明：本文为CSDN博主「zeb_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zeb_perfect/article/details/54135506
+```
+
 
 
