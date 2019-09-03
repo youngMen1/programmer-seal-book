@@ -38,3 +38,35 @@
 
 下面参考一下FairSync和NonfairSync对lock方法的实现：
 
+```
+ /**
+     * Sync object for non-fair locks
+     */
+    static final class NonfairSync extends Sync {
+        /**
+         * Performs lock.  Try immediate barge, backing up to normal
+         * acquire on failure.
+         */
+        final void lock() {
+            if (compareAndSetState(0, 1))
+                setExclusiveOwnerThread(Thread.currentThread());
+            else
+                acquire(1);
+        }
+    }
+
+    /**
+     * Sync object for fair locks
+     */
+    static final class FairSync extends Sync {
+        final void lock() {
+            acquire(1);
+        }
+    }
+————————————————
+版权声明：本文为CSDN博主「EthanPark」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/EthanWhite/article/details/55508357
+```
+
+
+
