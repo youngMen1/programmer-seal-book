@@ -32,3 +32,15 @@ update table1 a set IsSuccess=0 where id =400000;
 
 再执行下面的sql语句
 
+```
+-- 1:
+set autocommit=0;
+begin;
+select * from table1 where getTime < 1 and IsSuccess=0 order by id asc limit 0,30 for update;
+commit;
+-- 2:
+update table1 a set IsSuccess=2 where id =400000;
+```
+
+
+
