@@ -102,5 +102,36 @@ public class Lock{
 }
 ```
 
+相对来说，可重入就意味着：线程可以进入任何一个它已经拥有的锁所同步着的代码块。
+
+第一个线程执行print\(\)方法，得到了锁，使lockedBy等于当前线程，也就是说，执行的这个方法的线程获得了这个锁，执行add\(\)方法时，同样要先获得锁，因不满足while循环的条件，也就是不等待，继续进行，将此时的lockedCount变量，也就是当前获得锁的数量加一，当释放了所有的锁，才执行notify\(\)。如果在执行这个方法时，有第二个线程想要执行这个方法，因为lockedBy不等于第二个线程，导致这个线程进入了循环，也就是等待，不断执行wait\(\)方法。只有当第一个线程释放了所有的锁，执行了notify\(\)方法，第二个线程才得以跳出循环，继续执行。
+
+这就是可重入锁的特点。
+
+java中常用的可重入锁
+
+synchronized
+
+java.util.concurrent.locks.ReentrantLock
+
+ps:顺便记录下java中实现原子操作的类（记录至[http://blog.csdn.net/huzhigenlaohu/article/details/51646455](http://blog.csdn.net/huzhigenlaohu/article/details/51646455)）
+
+* AtomicIntegerFieldUpdater:原子更新整型的字段的更新器
+* AtomicLongFieldUpdater：原子更新长整型字段的更新器
+* AtomicStampedReference:原子更新带有版本号的引用类型。该类将整型数值与引用关联起来，可用于原子的更新数据和数据的版本号，可以解决使用CAS进行原子更新时可能出现的ABA问题。
+
+* AtomicReference ：原子更新引用类型
+* AtomicReferenceFieldUpdater ：原子更新引用类型里的字段
+* AtomicMarkableReference：原子更新带有标记位的引用类型。可以原子更新一个布尔类型的标记位和应用类型
+
+* AtomicIntegerArray ：原子更新整型数组里的元素
+* AtomicLongArray :原子更新长整型数组里的元素
+* AtomicReferenceArray : 原子更新引用类型数组的元素
+* AtomicBooleanArray ：原子更新布尔类型数组的元素
+
+* AtomicBoolean ：原子更新布尔类型
+* AtomicInteger： 原子更新整型
+* AtomicLong: 原子更新长整型
+
 
 
