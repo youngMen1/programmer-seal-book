@@ -219,7 +219,8 @@
       * Haproxy+多台MySQL从服务器\(Slave\) 实现负载均衡
       * DRBD+Heartbeat+Mysql高可用读写分离架构
       * MySQL Cluster 方式
-    * 分片模式
+    * [分片模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi.md)
+      * 分库分表需要考虑的问题及方案
   * 服务治理
   * 分布式一致
   * 分布式文件系统
