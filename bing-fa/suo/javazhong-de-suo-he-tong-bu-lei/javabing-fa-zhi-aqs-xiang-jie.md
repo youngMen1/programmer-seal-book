@@ -68,9 +68,23 @@ public final void acquire(int arg) {
    3. acquireQueued\(\)使线程在等待队列中获取资源，一直获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。
    4. 如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt\(\)，将中断补上。
 
-　　这时单凭这4个抽象的函数来看流程还有点朦胧，不要紧，看完接下来的分析后，你就会明白了。就像《大话西游》里唐僧说的：等你明白了舍生取义的道理，你自然会回来和我唱这首歌的。
+这时单凭这4个抽象的函数来看流程还有点朦胧，不要紧，看完接下来的分析后，你就会明白了。就像《大话西游》里唐僧说的：等你明白了舍生取义的道理，你自然会回来和我唱这首歌的。
 
 ### 3.1.1 tryAcquire\(int\)
 
-　　此方法尝试去获取独占资源。如果获取成功，则直接返回true，否则直接返回false。这也正是tryLock\(\)的语义，还是那句话，当然不仅仅只限于tryLock\(\)。如下是tryAcquire\(\)的源码：
+此方法尝试去获取独占资源。如果获取成功，则直接返回true，否则直接返回false。这也正是tryLock\(\)的语义，还是那句话，当然不仅仅只限于tryLock\(\)。如下是tryAcquire\(\)的源码：
+
+$$x = y$$
+
+
+
+```
+protected boolean tryAcquire(int arg) {
+2         throw new UnsupportedOperationException();
+3     }
+```
+
+
+
+
 
