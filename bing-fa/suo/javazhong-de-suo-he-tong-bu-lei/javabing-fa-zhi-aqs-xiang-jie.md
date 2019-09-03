@@ -223,23 +223,27 @@ private final boolean parkAndCheckInterrupt() {
  }
 ```
 
-
-
-park\(\)会让当前线程进入waiting状态。在此状态下，有两种途径可以唤醒该线程：1）被unpark\(\)；2）被interrupt\(\)。（再说一句，如果线程状态转换不熟，可以参考本人写的[Thread详解](http://www.cnblogs.com/waterystone/p/4920007.html)）。需要注意的是，Thread.interrupted\(\)会清除当前线程的中断标记位。 
+park\(\)会让当前线程进入waiting状态。在此状态下，有两种途径可以唤醒该线程：1）被unpark\(\)；2）被interrupt\(\)。（再说一句，如果线程状态转换不熟，可以参考本人写的[Thread详解](http://www.cnblogs.com/waterystone/p/4920007.html)）。需要注意的是，Thread.interrupted\(\)会清除当前线程的中断标记位。
 
 #### 3.1.3.3 小结
 
-　　OK，看了shouldParkAfterFailedAcquire\(\)和parkAndCheckInterrupt\(\)，现在让我们再回到acquireQueued\(\)，总结下该函数的具体流程：
+OK，看了shouldParkAfterFailedAcquire\(\)和parkAndCheckInterrupt\(\)，现在让我们再回到acquireQueued\(\)，总结下该函数的具体流程：
 
 1. 结点进入队尾后，检查状态，找到安全休息点；
 2. 调用park\(\)进入waiting状态，等待unpark\(\)或interrupt\(\)唤醒自己；
 3. 被唤醒后，看自己是不是有资格能拿到号。如果拿到，head指向当前结点，并返回从入队到拿到号的整个过程中是否被中断过；如果没拿到，继续流程1。
 
-
-
 ### 3.1.4 小结
 
-　　OKOK，acquireQueued\(\)分析完之后，我们接下来再回到acquire\(\)！再贴上它的源码吧：
+OKOK，acquireQueued\(\)分析完之后，我们接下来再回到acquire\(\)！再贴上它的源码吧：
+
+```
+public final void acquire(int arg) {
+2     if (!tryAcquire(arg) &&
+3         acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+4         selfInterrupt();
+5 }
+```
 
 
 
