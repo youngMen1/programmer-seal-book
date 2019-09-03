@@ -212,7 +212,7 @@
     * 跨机房容灾
     * 容灾演练流程
     * 平滑启动
-  * 数据库扩展
+  * [数据库扩展](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan.md)
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
