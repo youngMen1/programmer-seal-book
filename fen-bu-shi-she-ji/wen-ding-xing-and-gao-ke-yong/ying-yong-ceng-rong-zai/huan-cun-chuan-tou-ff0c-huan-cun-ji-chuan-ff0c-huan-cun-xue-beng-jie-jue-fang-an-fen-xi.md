@@ -72,8 +72,26 @@ public String get(key) {
               return value;      
           }
  }
-
 ```
 
 memcache代码：
+
+```
+if (memcache.get(key) == null) {  
+    // 3 min timeout to avoid mutex holder crash  
+    if (memcache.add(key_mutex, 3 * 60 * 1000) == true) {  
+        value = db.get(key);  
+        memcache.set(key, value);  
+        memcache.delete(key_mutex);  
+    } else {  
+        sleep(50);  
+        retry();  
+    }  
+}
+————————————————
+版权声明：本文为CSDN博主「zeb_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zeb_perfect/article/details/54135506
+```
+
+
 
