@@ -46,22 +46,24 @@ private void doCheck()
     while (true)
     {
         ll.addLast(counter);
-        
+
         if (ll.size() > 10)
         {
             ll.removeFirst();
         }
-        
+
         //比较最后一个和第一个，两者相差一秒
         if ((ll.peekLast() - ll.peekFirst()) > 100)
         {
             //To limit rate
         }
-        
+
         Thread.sleep(100);
     }
 }
 ```
 
+**漏桶算法**
 
+漏桶算法即leaky bucket是一种非常常用的限流算法，可以用来实现流量整形（Traffic Shaping）和流量控制（Traffic Policing）。贴了一张维基百科上示意图帮助大家理解：
 
