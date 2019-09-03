@@ -38,3 +38,16 @@ public final int get() {
 
 然后来看看 ++i 是怎么做到的。
 
+```
+public final int incrementAndGet() {
+    for (;;) {
+        int current = get();
+        int next = current + 1;
+        if (compareAndSet(current, next))
+            return next;
+    }
+}
+```
+
+
+
