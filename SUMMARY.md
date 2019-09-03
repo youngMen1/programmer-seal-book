@@ -216,7 +216,8 @@
   * 服务治理
   * 分布式一致
   * 分布式文件系统
-  * 唯一ID 生成
+  * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
+    * 全局唯一ID
   * 一致性Hash算法
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
