@@ -93,7 +93,7 @@
   * [线程](cao-zuo-xi-tong/xian-cheng.md)
     * [线程的生命周期及状态转换详解](cao-zuo-xi-tong/xian-cheng/xian-cheng-de-sheng-ming-zhou-qi-ji-zhuang-tai-zhuan-huan-xiang-jie.md)
   * 协程
-  * Linux
+  * [Linux](cao-zuo-xi-tong/linux.md)
 * [设计模式](she-ji-mo-shi.md)
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
@@ -198,7 +198,7 @@
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
-  * 扩展性设计
+  * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
