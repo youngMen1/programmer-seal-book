@@ -66,15 +66,15 @@ class B {
 
 进入java安装的位置，输入Jconsole，然后弹出界面（或者进入安装目录/java/jdk1.70\_80/bin/，点击Jconsole.exe）：
 
-20160829115018823.png
+![img](/static/image/20160829115018823.png)
 
 然后点击进入：
 
-20160829115235476.png
+![img](/static/image/20160829115235476.png)
 
 然后点击检测死锁：
 
-20160829115346025.png
+![img](/static/image/20160829115346025.png)
 
 然后可以看到造成死锁的两个线程，以及死锁原因：
 
@@ -82,7 +82,7 @@ class B {
 
 Thread-0：持有java.lang.Class@1694ce18，需要java.lang.Class@1feb0edd，但是java.lang.Class@1feb0edd却被Thread-1持有，然后陷入等待。
 
-20160829115634888.png
+![img](/static/image/20160829115634888.png)
 
 Thread-1：持有java.lang.Class@1feb0edd，需要java.lang.Class@1694ce18，但是java.lang.Class@1694ce18却被Thread-0持有，然后陷入等待。
 
@@ -90,15 +90,15 @@ Thread-1：持有java.lang.Class@1feb0edd，需要java.lang.Class@1694ce18，但
 
 同样，也是进入jdk安装目录的bin下面，输入jps，先查看我们要检测死锁的进程：
 
-20160829115959999.png
+![img](/static/image/20160829115959999.png)
 
 然后可以看到进程Test的进程号：8384，然后执行：Jstack -l 8384
 
-20160829124553194.png
+![img](/static/image/20160829124553194.png)
 
 查看死锁信息：
 
-20160829124600437.png
+![img](/static/image/20160829124600437.png)
 
 
 
