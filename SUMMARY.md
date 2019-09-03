@@ -210,6 +210,7 @@
     * 限流
     * 应用层容灾
     * 跨机房容灾
+    * 容灾演练流程
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
