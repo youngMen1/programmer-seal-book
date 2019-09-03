@@ -73,5 +73,17 @@ rtLock.readLock().lock();
 System.out.println("get read lock");
 ```
 
+　以上这段代码虽然不会导致死锁，但没有正确的释放锁。从写锁降级成读锁，并不会自动释放当前线程获取的写锁，仍然需要显示的释放，否则别的线程永远也获取不到写锁。
 
+============
+
+以下我会通过一个真实场景下的缓存机制来讲解 ReentrantReadWriteLock 实际应用
+
+============
+
+首先来看看
+
+ReentrantReadWriteLock的javaodoc
+
+文档中提供给我们的一个很好的Cache实例代码案例：
 
