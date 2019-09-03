@@ -18,3 +18,16 @@
 
 乐观锁在数据库上的实现完全是逻辑的，不需要数据库提供特殊的支持。一般的做法是在需要锁的数据上增加一个版本号，或者时间戳，然后按照如下方式实现：
 
+```
+1. SELECT data AS old_data, version AS old_version FROM …;
+2. 根据获取的数据进行业务操作，得到new_data和new_version
+3. UPDATE SET data = new_data, version = new_version WHERE version = old_version
+if (updated row > 0) {
+    // 乐观锁获取成功，操作完成
+} else {
+    // 乐观锁获取失败，回滚并重试
+}
+```
+
+
+
