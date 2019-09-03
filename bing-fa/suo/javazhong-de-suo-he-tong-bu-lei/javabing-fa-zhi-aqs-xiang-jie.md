@@ -92,7 +92,7 @@ protected boolean tryAcquire(int arg) {
 private Node addWaiter(Node mode) {
     //以给定模式构造结点。mode有两种：EXCLUSIVE（独占）和SHARED（共享）
     Node node = new Node(Thread.currentThread(), mode);
-    
+
     //尝试快速方式直接放到队尾。
     Node pred = tail;
     if (pred != null) {
@@ -102,12 +102,28 @@ private Node addWaiter(Node mode) {
             return node;
         }
     }
-    
+
     //上一步失败则通过enq入队。
     enq(node);
     return node;
 }
 ```
 
+不用再说了，直接看注释吧。这里我们说下Node。Node结点是对每一个访问同步代码的线程的封装，其包含了需要同步的线程本身以及线程的状态，如是否被阻塞，是否等待唤醒，是否已经被取消等。变量waitStatus则表示当前被封装成Node结点的等待状态，共有4种取值CANCELLED、SIGNAL、CONDITION、PROPAGATE。
 
+* CANCELLED：值为1，在同步队列中等待的线程等待超时或被中断，需要从同步队列中取消该Node的结点，其结点的waitStatus为CANCELLED，即结束状态，进入该状态后的结点将不会再变化。
+
+* SIGNAL：值为-1，被标识为该等待唤醒状态的后继结点，当其前继结点的线程释放了同步锁或被取消，将会通知该后继结点的线程执行。说白了，就是处于唤醒状态，只要前继结点释放锁，就会通知标识为SIGNAL状态的后继结点的线程执行。
+
+* CONDITION：值为-2，与Condition相关，该标识的结点处于**等待队列**中，结点的线程等待在Condition上，当其他线程调用了Condition的signal\(\)方法后，CONDITION状态的结点将**从等待队列转移到同步队列中**，等待获取同步锁。
+
+* PROPAGATE：值为-3，与共享模式相关，在共享模式中，该状态标识结点的线程处于可运行状态。
+
+* 0状态：值为0，代表初始化状态。
+
+AQS在判断状态时，通过用waitStatus&gt;0表示取消状态，而waitStatus&lt;0表示有效状态。
+
+#### 3.1.2.1 enq\(Node\)
+
+ 　　此方法用于将node加入队尾。源码如下：
 
