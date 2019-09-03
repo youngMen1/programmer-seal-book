@@ -66,5 +66,9 @@ class B {
 
 进入java安装的位置，输入Jconsole，然后弹出界面（或者进入安装目录/java/jdk1.70\_80/bin/，点击Jconsole.exe）：
 
+20160829115018823.png
+
+
+
 
 
