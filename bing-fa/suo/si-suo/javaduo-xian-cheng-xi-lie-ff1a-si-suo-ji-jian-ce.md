@@ -11,5 +11,7 @@ Thread 1  locks A, waits for B
 Thread 2  locks B, waits for A
 ```
 
+#### 更复杂的死锁 {#ComplicatedDeadlock}
 
+死锁可能不止包含2个线程，这让检测死锁变得更加困难。下面是4个线程发生死锁的例子：
 
