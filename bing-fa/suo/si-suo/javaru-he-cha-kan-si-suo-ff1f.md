@@ -78,7 +78,7 @@ class B {
 
 然后可以看到造成死锁的两个线程，以及死锁原因：
 
-20160829115452716.png
+![img](/static/image/20160829115452716.png)
 
 Thread-0：持有java.lang.Class@1694ce18，需要java.lang.Class@1feb0edd，但是java.lang.Class@1feb0edd却被Thread-1持有，然后陷入等待。
 
