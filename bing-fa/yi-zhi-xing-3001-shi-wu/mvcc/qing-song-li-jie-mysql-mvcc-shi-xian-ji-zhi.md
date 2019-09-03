@@ -36,7 +36,9 @@ name varchar\(20\)\);
 
 假设系统的版本号从1开始.
 
+```
 INSERT
+```
 
 InnoDB为新插入的每一行保存当前系统版本号作为版本号.
 
@@ -87,4 +89,12 @@ commit;
 
 假设在执行这个事务ID为2的过程中,刚执行到\(1\),这时,有另一个事务ID为3往这个表里插入了一条数据;  
 第三个事务ID为3;
+
+```
+start transaction;
+insert into yang values(NULL,'tian');
+commit;
+```
+
+
 
