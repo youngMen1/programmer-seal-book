@@ -208,6 +208,7 @@
     * [软件负载均衡](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng.md)
       * [几种负载均衡算法](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/ji-zhong-fu-zai-jun-heng-suan-fa.md)
     * [限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu.md)
+      * 谈谈高并发系统的限流
     * 应用层容灾
     * 跨机房容灾
     * 容灾演练流程
