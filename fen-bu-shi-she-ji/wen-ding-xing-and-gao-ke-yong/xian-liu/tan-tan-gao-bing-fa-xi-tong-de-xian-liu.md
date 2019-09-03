@@ -209,5 +209,12 @@ limit_conn_log_level error;
 limit_conn_status 503;
 ```
 
+然后在server{}里加上如下代码：
+
+```
+#限制用户并发连接数为1
+limit_conn one 1;
+```
+
 
 
