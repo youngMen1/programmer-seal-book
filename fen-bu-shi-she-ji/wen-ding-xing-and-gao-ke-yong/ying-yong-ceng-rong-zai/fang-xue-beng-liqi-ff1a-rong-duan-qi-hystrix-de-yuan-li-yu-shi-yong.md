@@ -191,5 +191,68 @@ public class Service1HystrixCommand extends HystrixCommand<Response> {
 }
 ```
 
+在使用了Command模式构建了服务对象之后, 服务便拥有了熔断器和线程池的功能.
 
+2144341479-578b3fd5d7881\_articlex.png
+
+#### Hystrix的内部处理逻辑
+
+下图为Hystrix服务调用的内部逻辑:
+
+1222062593-578b40230bde1\_articlex.png
+
+构建Hystrix的Command对象, 调用执行方法.
+
+1. Hystrix检查当前服务的熔断器开关是否开启, 若开启, 则执行降级服务getFallback方法.
+
+2. 若熔断器开关关闭, 则Hystrix检查当前服务的线程池是否能接收新的请求, 若超过线程池已满, 则执行降级服务getFallback方法.
+
+3. 若线程池接受请求, 则Hystrix开始执行服务调用具体逻辑run方法.
+
+4. 若服务执行失败, 则执行降级服务getFallback方法, 并将执行结果上报Metrics更新服务健康状况.
+
+5. 若服务执行超时, 则执行降级服务getFallback方法, 并将执行结果上报Metrics更新服务健康状况.
+
+6. 若服务执行成功, 返回正常结果.
+
+7. 若服务降级方法getFallback执行成功, 则返回降级结果.
+
+8. 若服务降级方法getFallback执行失败, 则抛出异常.
+
+## Hystrix Metrics的实现 {#articleHeader5}
+
+Hystrix的Metrics中保存了当前服务的健康状况, 包括服务调用总次数和服务调用失败次数等. 根据Metrics的计数, 熔断器从而能计算出当前服务的调用失败率, 用来和设定的阈值比较从而决定熔断器的状态切换逻辑. 因此Metrics的实现非常重要.
+
+#### 1.4之前的滑动窗口实现
+
+Hystrix在这些版本中的使用自己定义的滑动窗口数据结构来记录当前时间窗的各种事件\(成功,失败,超时,线程池拒绝等\)的计数.  
+事件产生时, 数据结构根据当前时间确定使用旧桶还是创建新桶来计数, 并在桶中对计数器经行修改.  
+这些修改是多线程并发执行的, 代码中有不少加锁操作,逻辑较为复杂.
+
+1552054050-578b3faa651b9\_articlex.png
+
+#### 1.5之后的滑动窗口实现
+
+Hystrix在这些版本中开始使用RxJava的Observable.window\(\)实现滑动窗口.  
+RxJava的window使用后台线程创建新桶, 避免了并发创建桶的问题.  
+同时RxJava的单线程无锁特性也保证了计数变更时的线程安全. 从而使代码更加简洁.  
+以下为我使用RxJava的window方法实现的一个简易滑动窗口Metrics, 短短几行代码便能完成统计功能,足以证明RxJava的强大:
+
+```
+@Test
+public void timeWindowTest() throws Exception{
+  Observable<Integer> source = Observable.interval(50, TimeUnit.MILLISECONDS).map(i -> RandomUtils.nextInt(2));
+  source.window(1, TimeUnit.SECONDS).subscribe(window -> {
+    int[] metrics = new int[2];
+    window.subscribe(i -> metrics[i]++,
+      InternalObservableUtils.ERROR_NOT_IMPLEMENTED,
+      () -> System.out.println("窗口Metrics:" + JSON.toJSONString(metrics)));
+  });
+  TimeUnit.SECONDS.sleep(3);
+}
+```
+
+## 总结 {#articleHeader6}
+
+通过使用Hystrix,我们能方便的防止雪崩效应, 同时使系统具有自动降级和自动恢复服务的效果.
 
