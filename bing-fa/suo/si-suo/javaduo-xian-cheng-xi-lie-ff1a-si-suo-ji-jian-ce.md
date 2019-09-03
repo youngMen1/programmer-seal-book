@@ -245,16 +245,28 @@ Found 1 deadlock.
 
 ## 如何避免死锁：
 
-在有些情况下死锁是可以避免的。  
-
-
-
+在有些情况下死锁是可以避免的。
 
 #### 加锁顺序 {#ordering}
-
-
 
 当多个线程需要相同的一些锁，但是按照不同的顺序加锁，死锁就很容易发生。
 
 如果能确保所有的线程都是按照相同的顺序获得锁，那么死锁就不会发生。看下面这个例子：
+
+```
+Thread 1:
+  lock A 
+  lock B
+
+Thread 2:
+   wait for A
+   lock C (when A locked)
+
+Thread 3:
+   wait for A
+   wait for B
+   wait for C
+```
+
+
 
