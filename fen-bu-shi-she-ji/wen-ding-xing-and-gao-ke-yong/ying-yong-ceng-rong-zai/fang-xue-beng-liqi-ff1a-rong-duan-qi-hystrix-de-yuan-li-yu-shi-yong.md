@@ -134,8 +134,62 @@ Hystrix将同样的模式运用到了服务调用者上.
 
 Hystrix通过将每个依赖服务分配独立的线程池进行资源隔离, 从而避免服务雪崩.
 
-  
-
-
 如下图所示, 当商品评论服务不可用时, 即使商品服务独立分配的20个线程全部处于同步等待状态,也不会影响其他依赖服务的调用.739202903-578b4011c7ab6\_articlex.png
+
+#### 熔断器模式
+
+熔断器模式定义了熔断器开关相互转换的逻辑:
+
+2158565585-578b3fecb5bcd\_articlex.png
+
+服务的健康状况 = 请求失败数 / 请求总数.  
+熔断器开关由关闭到打开的状态转换是通过当前服务健康状况和设定阈值比较决定的.
+
+1. 当熔断器开关关闭时, 请求被允许通过熔断器. 如果当前健康状况高于设定阈值, 开关继续保持关闭. 如果当前健康状况低于设定阈值, 开关则切换为打开状态.
+
+2. 当熔断器开关打开时, 请求被禁止通过.
+
+3. 当熔断器开关处于打开状态, 经过一段时间后, 熔断器会自动进入半开状态, 这时熔断器只允许一个请求通过. 当该请求调用成功时, 熔断器恢复到关闭状态. 若该请求失败, 熔断器继续保持打开状态, 接下来的请求被禁止通过.
+
+熔断器的开关能保证服务调用者在调用异常服务时, 快速返回结果, 避免大量的同步等待. 并且熔断器能在一段时间后继续侦测请求执行结果, 提供恢复服务调用的可能.
+
+#### 命令模式
+
+Hystrix使用命令模式\(继承HystrixCommand类\)来包裹具体的服务调用逻辑\(run方法\), 并在命令模式中添加了服务调用失败后的降级逻辑\(getFallback\).  
+同时我们在Command的构造方法中可以定义当前服务线程池和熔断器的相关参数. 如下代码所示:
+
+```
+public class Service1HystrixCommand extends HystrixCommand<Response> {
+  private Service1 service;
+  private Request request;
+
+  public Service1HystrixCommand(Service1 service, Request request){
+    supper(
+      Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ServiceGroup"))
+          .andCommandKey(HystrixCommandKey.Factory.asKey("servcie1query"))
+          .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("service1ThreadPool"))
+          .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
+            .withCoreSize(20))//服务线程池数量
+          .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+            .withCircuitBreakerErrorThresholdPercentage(60)//熔断器关闭到打开阈值
+            .withCircuitBreakerSleepWindowInMilliseconds(3000)//熔断器打开到关闭的时间窗长度
+      ))
+      this.service = service;
+      this.request = request;
+    );
+  }
+
+  @Override
+  protected Response run(){
+    return service1.call(request);
+  }
+
+  @Override
+  protected Response getFallback(){
+    return Response.dummy();
+  }
+}
+```
+
+
 
