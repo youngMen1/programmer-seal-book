@@ -76,3 +76,27 @@ class B {
 
 20160829115346025.png
 
+然后可以看到造成死锁的两个线程，以及死锁原因：
+
+20160829115452716.png
+
+Thread-0：持有java.lang.Class@1694ce18，需要java.lang.Class@1feb0edd，但是java.lang.Class@1feb0edd却被Thread-1持有，然后陷入等待。
+
+20160829115634888.png
+
+Thread-1：持有java.lang.Class@1feb0edd，需要java.lang.Class@1694ce18，但是java.lang.Class@1694ce18却被Thread-0持有，然后陷入等待。
+
+
+
+4、Jstack查看死锁：
+
+
+
+同样，也是进入jdk安装目录的bin下面，输入jps，先查看我们要检测死锁的进程：
+
+————————————————
+
+版权声明：本文为CSDN博主「ZK\_小姜」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/u014039577/article/details/52351626
+
