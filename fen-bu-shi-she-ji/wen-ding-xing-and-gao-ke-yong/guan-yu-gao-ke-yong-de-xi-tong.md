@@ -73,3 +73,5 @@ mysql-high-availability-solutions-feb-2015-webinar-9-638.jpg
 
 但大多数都采用第一种方法，也就是故障发生到恢复的时间，也就是服务不可用的时间，如下表所示：
 
+微信截图\_20190903163105.png
+
