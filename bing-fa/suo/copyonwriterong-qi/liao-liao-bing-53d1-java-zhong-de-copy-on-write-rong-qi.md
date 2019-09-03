@@ -50,5 +50,5 @@ public E get(int index) {
 }
 ```
 
-
+JDK中并没有提供CopyOnWriteMap，我们可以参考CopyOnWriteArrayList来实现一个，基本代码如下：
 
