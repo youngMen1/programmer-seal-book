@@ -225,3 +225,12 @@ ab -n 5 -c 5 [http://10.23.22.239/index.html](http://10.23.22.239/index.html)
 
 另外刚才是配置针对单个IP的并发限制，还是可以针对域名进行并发限制，配置和客户端IP类似。
 
+```
+ #http{}段配置
+limit_conn_zone $ server_name zone=perserver:10m;
+#server{}段配置
+limit_conn perserver 1;
+```
+
+
+
