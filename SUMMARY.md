@@ -218,6 +218,7 @@
       * 搭建MySQL主从复制经典架构
       * Haproxy+多台MySQL从服务器\(Slave\) 实现负载均衡
       * DRBD+Heartbeat+Mysql高可用读写分离架构
+      * MySQL Cluster 方式
     * 分片模式
   * 服务治理
   * 分布式一致
