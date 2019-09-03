@@ -48,68 +48,79 @@ package thread;
  * 2016年4月12日 下午5:51:54
  */
 public class DeadLocakTest {
-	final static Object obj1 = new Object();
-	final static Object obj2 = new Object();
- 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		DeadLocakTest test = new DeadLocakTest();
-		Thread t1 = new Thread(test.new DeadThread1());
-		Thread t2 = new Thread(test.new DeadThread2());
-		
-		t1.start();
-		t2.start();
-	}
- 
- 
-	class DeadThread1 implements Runnable {
- 
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			synchronized(obj1){
-				
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println(Thread.currentThread().getName()+"loack obj1");
-				synchronized(obj2){
-					System.out.println(Thread.currentThread().getName()+"is running");
-				}
-				
-			}
-		}  
-		 
-	 }
-	
-	 class DeadThread2 implements Runnable {
- 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				synchronized(obj2){
-					
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					System.out.println(Thread.currentThread().getName()+"loack obj2");
-					synchronized(obj1){
-						System.out.println(Thread.currentThread().getName()+"is running");
-					}
-					
-				}
-			}  
-			 
-		 }
- 
+    final static Object obj1 = new Object();
+    final static Object obj2 = new Object();
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        DeadLocakTest test = new DeadLocakTest();
+        Thread t1 = new Thread(test.new DeadThread1());
+        Thread t2 = new Thread(test.new DeadThread2());
+
+        t1.start();
+        t2.start();
+    }
+
+
+    class DeadThread1 implements Runnable {
+
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            synchronized(obj1){
+
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName()+"loack obj1");
+                synchronized(obj2){
+                    System.out.println(Thread.currentThread().getName()+"is running");
+                }
+
+            }
+        }  
+
+     }
+
+     class DeadThread2 implements Runnable {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                synchronized(obj2){
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName()+"loack obj2");
+                    synchronized(obj1){
+                        System.out.println(Thread.currentThread().getName()+"is running");
+                    }
+
+                }
+            }  
+
+         }
+
 }
 ```
 
+## 死锁检测：
 
+我们上面的程序在eclipse运行会卡住，为了模拟线上情况，在Linux环境部署。
+
+运行如下：
+
+![](https://img-blog.csdn.net/20160412181614426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+  
+
+
+会卡住，我们解析来找到正在运行的程序id.使用jsatck来查看堆栈信息：
 
