@@ -215,6 +215,7 @@
   * [数据库扩展](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan.md)
   * 服务治理
   * 分布式一致
+  * 分布式文件系统
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
