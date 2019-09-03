@@ -157,7 +157,7 @@ final boolean acquireQueued(final Node node, int arg) {
     boolean failed = true;//标记是否成功拿到资源
     try {
         boolean interrupted = false;//标记等待过程中是否被中断过
-        
+
         //又是一个“自旋”！
         for (;;) {
             final Node p = node.predecessor();//拿到前驱
@@ -168,7 +168,7 @@ final boolean acquireQueued(final Node node, int arg) {
                 failed = false;
                 return interrupted;//返回等待过程中是否被中断过
             }
-            
+
             //如果自己可以休息了，就进入waiting状态，直到被unpark()
             if (shouldParkAfterFailedAcquire(p, node) &&
                 parkAndCheckInterrupt())
@@ -181,5 +181,9 @@ final boolean acquireQueued(final Node node, int arg) {
 }
 ```
 
+到这里了，我们先不急着总结acquireQueued\(\)的函数流程，先看看shouldParkAfterFailedAcquire\(\)和parkAndCheckInterrupt\(\)具体干些什么。
 
+#### 3.1.3.1 shouldParkAfterFailedAcquire\(Node, Node\)
+
+　　此方法主要用于检查状态，看看自己是否真的可以去休息了（进入waiting状态，如果线程状态转换不熟，可以参考本人上一篇写的[Thread详解](http://www.cnblogs.com/waterystone/p/4920007.html)），万一队列前边的线程都放弃了只是瞎站着，那也说不定，对吧！
 
