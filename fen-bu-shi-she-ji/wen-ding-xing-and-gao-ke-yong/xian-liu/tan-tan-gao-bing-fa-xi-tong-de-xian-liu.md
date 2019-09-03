@@ -232,5 +232,11 @@ limit_conn_zone $ server_name zone=perserver:10m;
 limit_conn perserver 1;
 ```
 
+2. ngx\_http\_limit\_req\_module
 
+上面我们使用到了ngx\_http\_limit\_conn\_module 模块，来限制连接数。那么请求数的限制该怎么做呢？这就需要通过ngx\_http\_limit\_req\_module 模块来实现，该模块可以通过定义的键值来限制请求处理的频率。特别的，可以限制来自单个IP地址的请求处理频率。 限制的方法是使用了漏斗算法，每秒固定处理请求数，推迟过多请求。如果请求的频率超过了限制域配置的值，请求处理会被延迟或被丢弃，所以所有的请求都是以定义的频率被处理的。
+
+在http{}中配置
+
+\#区域名称为one，大小为10m，平均处理的请求频率不能超过每秒一次。
 
