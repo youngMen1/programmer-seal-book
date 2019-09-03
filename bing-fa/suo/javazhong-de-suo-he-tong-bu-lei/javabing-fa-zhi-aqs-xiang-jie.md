@@ -328,14 +328,14 @@ release\(\)是独占模式下线程释放共享资源的顶层入口。它会释
 4 }
 ```
 
-　这里tryAcquireShared\(\)依然需要自定义同步器去实现。但是AQS已经把其返回值的语义定义好了：负值代表获取失败；0代表获取成功，但没有剩余资源；正数表示获取成功，还有剩余资源，其他线程还可以去获取。所以这里acquireShared\(\)的流程就是：
+这里tryAcquireShared\(\)依然需要自定义同步器去实现。但是AQS已经把其返回值的语义定义好了：负值代表获取失败；0代表获取成功，但没有剩余资源；正数表示获取成功，还有剩余资源，其他线程还可以去获取。所以这里acquireShared\(\)的流程就是：
 
 1. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
    2. 失败则通过doAcquireShared\(\)进入等待队列，直到获取到资源为止才返回。
 
 ### 3.3.1 doAcquireShared\(int\)
 
-　　此方法用于将当前线程加入等待队列尾部休息，直到其他线程释放资源唤醒自己，自己成功拿到相应量的资源后才返回。下面是doAcquireShared\(\)的源码：
+此方法用于将当前线程加入等待队列尾部休息，直到其他线程释放资源唤醒自己，自己成功拿到相应量的资源后才返回。下面是doAcquireShared\(\)的源码：
 
 ```
 private void doAcquireShared(int arg) {
@@ -356,7 +356,7 @@ private void doAcquireShared(int arg) {
                     return;
                 }
             }
-            
+
             //判断状态，寻找安全点，进入waiting状态，等着被unpark()或interrupt()
             if (shouldParkAfterFailedAcquire(p, node) &&
                 parkAndCheckInterrupt())
@@ -369,13 +369,9 @@ private void doAcquireShared(int arg) {
 }
 ```
 
-
-
 有木有觉得跟acquireQueued\(\)很相似？对，其实流程并没有太大区别。只不过这里将补中断的selfInterrupt\(\)放到doAcquireShared\(\)里了，而独占模式是放到acquireQueued\(\)之外，其实都一样，不知道Doug Lea是怎么想的。
 
-　　跟独占模式比，还有一点需要注意的是，这里只有线程是head.next时（“老二”），才会去尝试获取资源，有剩余的话还会唤醒之后的队友。那么问题就来了，假如老大用完后释放了5个资源，而老二需要6个，老三需要1个，老四需要2个。老大先唤醒老二，老二一看资源不够，他是把资源让给老三呢，还是不让？答案是否定的！老二会继续park\(\)等待其他线程释放资源，也更不会去唤醒老三和老四了。独占模式，同一时刻只有一个线程去执行，这样做未尝不可；但共享模式下，多个线程是可以同时执行的，现在因为老二的资源需求量大，而把后面量小的老三和老四也都卡住了。当然，这并不是问题，只是AQS保证严格按照入队顺序唤醒罢了（保证公平，但降低了并发）。
-
-
+跟独占模式比，还有一点需要注意的是，这里只有线程是head.next时（“老二”），才会去尝试获取资源，有剩余的话还会唤醒之后的队友。那么问题就来了，假如老大用完后释放了5个资源，而老二需要6个，老三需要1个，老四需要2个。老大先唤醒老二，老二一看资源不够，他是把资源让给老三呢，还是不让？答案是否定的！老二会继续park\(\)等待其他线程释放资源，也更不会去唤醒老三和老四了。独占模式，同一时刻只有一个线程去执行，这样做未尝不可；但共享模式下，多个线程是可以同时执行的，现在因为老二的资源需求量大，而把后面量小的老三和老四也都卡住了。当然，这并不是问题，只是AQS保证严格按照入队顺序唤醒罢了（保证公平，但降低了并发）。
 
 #### 3.3.1.1 setHeadAndPropagate\(Node, int\)
 
@@ -394,23 +390,21 @@ private void setHeadAndPropagate(Node node, int propagate) {
 
 此方法在setHead\(\)的基础上多了一步，就是自己苏醒的同时，如果条件符合（比如还有剩余资源），还会去唤醒后继结点，毕竟是共享模式！
 
-　　doReleaseShared\(\)我们留着下一小节的releaseShared\(\)里来讲。
-
-
+doReleaseShared\(\)我们留着下一小节的releaseShared\(\)里来讲。
 
 ### 3.3.2 小结
 
-　　OK，至此，acquireShared\(\)也要告一段落了。让我们再梳理一下它的流程：
+OK，至此，acquireShared\(\)也要告一段落了。让我们再梳理一下它的流程：
 
 1. 
 2. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
    2. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
 
-　　其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
+其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
 
-## 3.4 releaseShared\(\)
+## 3.4 releaseShared\(\)
 
-　　上一小节已经把acquireShared\(\)说完了，这一小节就来讲讲它的反操作releaseShared\(\)吧。此方法是共享模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果成功释放且允许唤醒等待线程，它会唤醒等待队列里的其他线程来获取资源。下面是releaseShared\(\)的源码：
+上一小节已经把acquireShared\(\)说完了，这一小节就来讲讲它的反操作releaseShared\(\)吧。此方法是共享模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果成功释放且允许唤醒等待线程，它会唤醒等待队列里的其他线程来获取资源。下面是releaseShared\(\)的源码：
 
 ```
 public final boolean releaseShared(int arg) {
@@ -424,9 +418,9 @@ public final boolean releaseShared(int arg) {
 
 此方法的流程也比较简单，一句话：释放掉资源后，唤醒后继。跟独占模式下的release\(\)相似，但有一点稍微需要注意：独占模式下的tryRelease\(\)在完全释放掉资源（state=0）后，才会返回true去唤醒其他线程，这主要是基于独占下可重入的考量；而共享模式下的releaseShared\(\)则没有这种要求，共享模式实质就是控制一定量的线程并发执行，那么拥有资源的线程在释放掉部分资源时就可以唤醒后继等待结点。例如，资源总量是13，A（5）和B（7）分别获取到资源并发运行，C（4）来时只剩1个资源就需要等待。A在运行过程中释放掉2个资源量，然后tryReleaseShared\(2\)返回true唤醒C，C一看只有3个仍不够继续等待；随后B又释放2个，tryReleaseShared\(2\)返回true唤醒C，C一看有5个够自己用了，然后C就可以跟A和B一起运行。而ReentrantReadWriteLock读锁的tryReleaseShared\(\)只有在完全释放掉资源（state=0）才返回true，所以自定义同步器可以根据需要决定tryReleaseShared\(\)的返回值。
 
-### 3.4.1 doReleaseShared\(\)
+### 3.4.1 doReleaseShared\(\)
 
-　　此方法主要用于唤醒后继。下面是它的源码：
+此方法主要用于唤醒后继。下面是它的源码：
 
 ```
 private void doReleaseShared() {
@@ -451,7 +445,80 @@ private void doReleaseShared() {
 
 ## 3.5 小结
 
-　　本节我们详解了独占和共享两种模式下获取-释放资源\(acquire-release、acquireShared-releaseShared\)的源码，相信大家都有一定认识了。值得注意的是，acquire\(\)和acquireShared\(\)两种方法下，线程在等待队列中都是忽略中断的。AQS也支持响应中断的，acquireInterruptibly\(\)/acquireSharedInterruptibly\(\)即是，这里相应的源码跟acquire\(\)和acquireShared\(\)差不多，这里就不再详解了。
+本节我们详解了独占和共享两种模式下获取-释放资源\(acquire-release、acquireShared-releaseShared\)的源码，相信大家都有一定认识了。值得注意的是，acquire\(\)和acquireShared\(\)两种方法下，线程在等待队列中都是忽略中断的。AQS也支持响应中断的，acquireInterruptibly\(\)/acquireSharedInterruptibly\(\)即是，这里相应的源码跟acquire\(\)和acquireShared\(\)差不多，这里就不再详解了。
+
+# 四、简单应用
+
+　　通过前边几个章节的学习，相信大家已经基本理解AQS的原理了。这里再将“框架”一节中的一段话复制过来：
+
+　　不同的自定义同步器争用共享资源的方式也不同。**自定义同步器在实现时只需要实现共享资源state的获取与释放方式即可**，至于具体线程等待队列的维护（如获取资源失败入队/唤醒出队等），AQS已经在顶层实现好了。自定义同步器实现时主要实现以下几种方法：
+
+* isHeldExclusively\(\)：该线程是否正在独占资源。只有用到condition才需要去实现它。
+* tryAcquire\(int\)：独占方式。尝试获取资源，成功则返回true，失败则返回false。
+* tryRelease\(int\)：独占方式。尝试释放资源，成功则返回true，失败则返回false。
+* tryAcquireShared\(int\)：共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。
+* tryReleaseShared\(int\)：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回true，否则返回false。
+
+　　OK，下面我们就以AQS源码里的Mutex为例，讲一下AQS的简单应用。
+
+## 4.1 Mutex（互斥锁）
+
+　　Mutex是一个不可重入的互斥锁实现。锁资源（AQS里的state）只有两种状态：0表示未锁定，1表示锁定。下边是Mutex的核心源码：
+
+```
+class Mutex implements Lock, java.io.Serializable {
+    // 自定义同步器
+    private static class Sync extends AbstractQueuedSynchronizer {
+        // 判断是否锁定状态
+        protected boolean isHeldExclusively() {
+            return getState() == 1;
+        }
+
+        // 尝试获取资源，立即返回。成功则返回true，否则false。
+        public boolean tryAcquire(int acquires) {
+            assert acquires == 1; // 这里限定只能为1个量
+            if (compareAndSetState(0, 1)) {//state为0才设置为1，不可重入！
+                setExclusiveOwnerThread(Thread.currentThread());//设置为当前线程独占资源
+                return true;
+            }
+            return false;
+        }
+
+        // 尝试释放资源，立即返回。成功则为true，否则false。
+        protected boolean tryRelease(int releases) {
+            assert releases == 1; // 限定为1个量
+            if (getState() == 0)//既然来释放，那肯定就是已占有状态了。只是为了保险，多层判断！
+                throw new IllegalMonitorStateException();
+            setExclusiveOwnerThread(null);
+            setState(0);//释放资源，放弃占有状态
+            return true;
+        }
+    }
+
+    // 真正同步类的实现都依赖继承于AQS的自定义同步器！
+    private final Sync sync = new Sync();
+
+    //lock<-->acquire。两者语义一样：获取资源，即便等待，直到成功才返回。
+    public void lock() {
+        sync.acquire(1);
+    }
+
+    //tryLock<-->tryAcquire。两者语义一样：尝试获取资源，要求立即返回。成功则为true，失败则为false。
+    public boolean tryLock() {
+        return sync.tryAcquire(1);
+    }
+
+    //unlock<-->release。两者语文一样：释放资源。
+    public void unlock() {
+        sync.release(1);
+    }
+
+    //锁是否占有状态
+    public boolean isLocked() {
+        return sync.isHeldExclusively();
+    }
+}
+```
 
 
 
