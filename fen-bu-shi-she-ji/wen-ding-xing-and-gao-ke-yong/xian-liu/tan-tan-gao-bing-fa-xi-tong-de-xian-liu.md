@@ -199,3 +199,15 @@ while (true) {
 
 我们可以在nginx\_conf的http{}中加上如下配置实现限制：
 
+```
+#限制每个用户的并发连接数，取名one
+limit_conn_zone $binary_remote_addr zone=one:10m;
+
+#配置记录被限流后的日志级别，默认error级别
+limit_conn_log_level error;
+#配置被限流后返回的状态码，默认返回503
+limit_conn_status 503;
+```
+
+
+
