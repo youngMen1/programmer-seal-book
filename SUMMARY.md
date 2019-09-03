@@ -89,6 +89,7 @@
     * [操作系统基础知识——操作系统的原理，类型和结构](cao-zuo-xi-tong/ji-suan-ji-yuan-li/cao-zuo-xi-tong-ji-chu-zhi-shi-2014-2014-cao-zuo-xi-tong-de-yuan-li-ff0c-lei-xing-he-jie-gou.md)
   * CPU
   * 进程
+  * 线程
 * [设计模式](she-ji-mo-shi.md)
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
