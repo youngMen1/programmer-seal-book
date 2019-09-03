@@ -171,7 +171,7 @@
 
 当进入 Open 状态一段时间后，进入 Half-Open状态，需要去尝试调用几次服务，检查故障的服务是否恢复。如果成功则熔断器关闭，如果失败，则再次进入 Open 状态。
 
-![img](static/image/C1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtNzA1M2UwMmE4ZTA3MGIyMi5wbmc.jpg)
+![img](/static/image/C1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtNzA1M2UwMmE4ZTA3MGIyMi5wbmc.jpg)
 
 目前比较流行的降级熔断框架，是由 Netflix 开源的 Hystrix 框架。
 
@@ -234,7 +234,7 @@ AWS 有一个 CloudTrail 系统，专门记录重大活动事件，可以简化�
 
 ## 总结
 
-![img](static/image/微信截图_20190903162426.png)
+![img](/static/image/微信截图_20190903162426.png)
 
 在这篇文章中，我们探讨了一些提供系统可靠性的技术方案。关于高可用的更多问题可以看看这篇文章 陈皓：关于高可用的系统，这篇文章的核心在于提出：
 
