@@ -137,5 +137,32 @@ if (v == null) {
     从实战看，这种方法对于性能非常友好，唯一不足的就是构建缓存时候，其余线程\(非构建缓存的线程\)可能访问的是老数据，但是对于一般的互联网功能来说这个还是可以忍受。
 ```
 
+```
+String get(final String key) {  
+        V v = redis.get(key);  
+        String value = v.getValue();  
+        long timeout = v.getTimeout();  
+        if (v.timeout <= System.currentTimeMillis()) {  
+            // 异步更新后台异常执行  
+            threadPool.execute(new Runnable() {  
+                public void run() {  
+                    String keyMutex = "mutex:" + key;  
+                    if (redis.setnx(keyMutex, "1")) {  
+                        // 3 min timeout to avoid mutex holder crash  
+                        redis.expire(keyMutex, 3 * 60);  
+                        String dbValue = db.get(key);  
+                        redis.set(key, dbValue);  
+                        redis.delete(keyMutex);  
+                    }  
+                }  
+            });  
+        }  
+        return value;  
+}
+————————————————
+版权声明：本文为CSDN博主「zeb_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zeb_perfect/article/details/54135506
+```
+
 
 
