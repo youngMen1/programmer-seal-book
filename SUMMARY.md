@@ -218,6 +218,7 @@
       * 异地多活（异地双活）实践经验
       * 容灾技术及建设经验介绍
     * [容灾演练流程](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/rong-zai-yan-lian-liu-cheng.md)
+      * 依赖治理、灰度发布、故障演练，阿里电商故障演练系统的设计与实战经验
     * [平滑启动](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ping-hua-qi-dong.md)
   * [数据库扩展](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan.md)
     * [读写分离模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi.md)
