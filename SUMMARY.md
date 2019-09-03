@@ -201,6 +201,7 @@
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
   * [稳定性 & 高可用](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong.md)
     * 系统设计：关于高可用系统的一些技术方案
+    * 关于高可用的系统
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
