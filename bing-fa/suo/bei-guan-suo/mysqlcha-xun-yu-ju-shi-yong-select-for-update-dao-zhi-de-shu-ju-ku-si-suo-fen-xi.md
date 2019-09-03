@@ -42,5 +42,21 @@ commit;
 update table1 a set IsSuccess=2 where id =400000;
 ```
 
+这样第二条sql语句将可以执行。因为IsSuccess=2的索引段没有被锁。
+
+上面的例子知道了锁索引段后还比较容易看懂，下面就奇葩一点：
+
+先把id =400000数据的GetTime修改为1，IsSuccess=0，然后一次执行sql：
+
+```
+-- 1:
+set autocommit=0;
+begin;
+update ctripticketchangeresultdata a set issuccess=1 where id =400000;
+commit;
+-- 2:
+select * from table1 where getTime < 1 and IsSuccess=0 order by id asc limit 0,30 for update;
+```
+
 
 
