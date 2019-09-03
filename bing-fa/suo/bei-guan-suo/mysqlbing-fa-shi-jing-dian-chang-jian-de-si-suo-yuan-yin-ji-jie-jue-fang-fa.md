@@ -45,13 +45,9 @@ Recordlock锁（锁数据，不锁Gap）
 
 Select \* from xxx where id='随机id' for update
 
-
-
 基本来说，程序开启后不一会就死锁。
 
 这可以是说最经典的死锁情形了。
-
-
 
 例如两个用户同时投资，A用户金额随机分为2份，分给借款人1，2
 
@@ -59,11 +55,45 @@ B用户金额随机分为2份，分给借款人2，1
 
 由于加锁的顺序不一样，死锁当然很快就出现了。
 
-
-
 **对于这个问题的改进很简单，直接把所有分配到的借款人直接一次锁住就行了。**
 
 **Select \* from xxx where id in \(xx,xx,xx\) for update**
 
 **在in里面的列表值mysql是会自动从小到大排序，加锁也是一条条从小到大加的锁**
+
+```
+以id为主键为例，目前还没有id=22的行
+
+Session1:
+
+select * from t3 where id=22 for update;
+
+Empty set (0.00 sec)
+
+ 
+
+session2:
+
+select * from t3 where id=23  for update;
+
+Empty set (0.00 sec)
+
+ 
+
+Session1:
+
+insert into t3 values(22,'ac','a',now());
+
+锁等待中……
+
+ 
+
+Session2:
+
+insert into t3 values(23,'bc','b',now());
+
+ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
+```
+
+
 
