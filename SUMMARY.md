@@ -63,6 +63,7 @@
       * [Java并发之AQS详解](bing-fa/suo/javazhong-de-suo-he-tong-bu-lei/javabing-fa-zhi-aqs-xiang-jie.md)
     * [公平锁 & 非公平锁](bing-fa/suo/gong-ping-suo-and-fei-gong-ping-suo.md)
       * [公平锁与非公平锁](bing-fa/suo/gong-ping-suo-and-fei-gong-ping-suo/gong-ping-suo-yu-fei-gong-ping-suo.md)
+    * 悲观锁
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
