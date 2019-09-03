@@ -210,5 +210,9 @@ private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
 }
 ```
 
+整个流程中，如果前驱结点的状态不是SIGNAL，那么自己就不能安心去休息，需要去找个安心的休息点，同时可以再尝试下看有没有机会轮到自己拿号。
 
+#### 3.1.3.2 parkAndCheckInterrupt\(\)
+
+　　如果线程找好安全休息点后，那就可以安心去休息了。此方法就是让线程去休息，真正进入等待状态。
 
