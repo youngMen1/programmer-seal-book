@@ -18,5 +18,15 @@
 
 数据从id =400000的数据开始，IsSuccess和GetTime字段都为0，现在如果400000数据的IsSuccess为1了。执行下面两条sql.
 
+```
+-- 1:
+set autocommit=0;
+begin;
+select * from table1 where getTime < 1 and IsSuccess=0 order by id asc limit 0,30 for update;
+commit;
+-- 2:
+update table1 a set IsSuccess=0 where id =400000;
+```
+
 
 
