@@ -214,7 +214,7 @@
     * 平滑启动
   * [数据库扩展](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan.md)
     * [读写分离模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi.md)
-      * Mysql主从方案的实现
+      * [Mysql主从方案的实现](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi/mysqlzhu-cong-fang-an-de-shi-xian.md)
       * 搭建MySQL主从复制经典架构
       * Haproxy+多台MySQL从服务器\(Slave\) 实现负载均衡
       * DRBD+Heartbeat+Mysql高可用读写分离架构
