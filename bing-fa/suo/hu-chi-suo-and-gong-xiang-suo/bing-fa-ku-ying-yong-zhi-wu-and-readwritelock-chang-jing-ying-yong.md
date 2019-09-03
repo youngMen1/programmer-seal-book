@@ -87,3 +87,39 @@ ReentrantReadWriteLock的javaodoc
 
 文档中提供给我们的一个很好的Cache实例代码案例：
 
+```
+class CachedData {
+  Object data;
+  volatile boolean cacheValid;
+  final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+
+  public void processCachedData() {
+    rwl.readLock().lock();
+    if (!cacheValid) {
+      // Must release read lock before acquiring write lock
+      rwl.readLock().unlock();
+      rwl.writeLock().lock();
+      try {
+        // Recheck state because another thread might have,acquired write lock and changed state before we did.
+        if (!cacheValid) {
+          data = ...
+          cacheValid = true;
+        }
+        // 在释放写锁之前通过获取读锁降级写锁(注意此时还没有释放写锁)
+        rwl.readLock().lock();
+      } finally {
+        rwl.writeLock().unlock(); // 释放写锁而此时已经持有读锁
+      }
+    }
+
+    try {
+      use(data);
+    } finally {
+      rwl.readLock().unlock();
+    }
+  }
+}
+```
+
+
+
