@@ -52,9 +52,7 @@
 
 3、有序分配：采用资源有序分配法，破坏"环路"条件。
 
-————————————————
+---
 
-版权声明：本文为CSDN博主「天朗-星空」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
 
-原文链接：[https://blog.csdn.net/yunfenglw/article/details/45950305](https://blog.csdn.net/yunfenglw/article/details/45950305)
 
