@@ -119,8 +119,7 @@ public class DeadLocakTest {
 
 ![](https://img-blog.csdn.net/20160412181614426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-  
-
-
 会卡住，我们解析来找到正在运行的程序id.使用jsatck来查看堆栈信息：
+
+20160412181706647.png
 
