@@ -76,15 +76,11 @@ public final void acquire(int arg) {
 
 $$x = y$$
 
-
-
 ```
 protected boolean tryAcquire(int arg) {
-2         throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
 3     }
 ```
-
-
 
 
 
