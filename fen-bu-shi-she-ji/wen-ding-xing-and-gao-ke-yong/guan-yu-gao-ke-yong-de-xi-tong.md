@@ -31,7 +31,7 @@
 
 我在《[分布式系统的事务处理](https://coolshell.cn/articles/10910.html)》中引用过下面这个图：这个图来自来自：Google App Engine的co-founder Ryan Barrett在2009年的Google I/O上的演讲《[Transaction Across DataCenter](http://snarfed.org/transactions_across_datacenters_io.html)》（视频： [http://www.youtube.com/watch?v=srOgpXECblk](http://www.youtube.com/watch?v=srOgpXECblk)）
 
-Transaction-Across-DataCenter.jpg
+![img](/static/image/Transaction-Across-DataCenter.jpg)
 
 这个图基本上来说是目前高可用系统中能看得到的所有的解决方案的基础了。M/S、MM实现起来不难，但是会有很多问题，2PC的问题就是性能不行，而Paxos的问题就是太复杂，实现难度太大。
 
