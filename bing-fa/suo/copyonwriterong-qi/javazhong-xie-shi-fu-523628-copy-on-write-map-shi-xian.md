@@ -24,11 +24,11 @@ import java.util.Set;
 public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable{
 
     private volatile Map<K, V> internalMap;
-    
+
     public CopyOnWriteMap() {
         internalMap = new HashMap<K, V>(100);//初始大小应根据实际应用来指定
     }
-    
+
     @Override
     public V put(K key, V value) {
         synchronized (this) {
@@ -38,7 +38,7 @@ public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable{
             return val;
         }
     }
-    
+
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
         synchronized (this) {
@@ -46,9 +46,9 @@ public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable{
             newMap.putAll(m);
             internalMap = newMap;
         }
-        
+
     }
-    
+
     @Override
     public V get(Object key) {
         V result = internalMap.get(key);
@@ -58,5 +58,29 @@ public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable{
 }
 ```
 
+从上可以看出，对于put\(\) 和 putAll\(\) 而言，需要加锁。而读操作则不需要，如get\(Object key\)。这样，当一个线程需要put一个新元素时，它先锁住当前CopyOnWriteMap对象，并复制一个新HashMap，而其他的读线程因为不需要加锁，则可继续访问原来的HashMap。
 
+
+
+## 4，应用场景
+
+CopyOnWrite容器适用于读多写少的场景。因为写操作时，需要复制一个容器，造成内存开销很大，也需要根据实际应用把握初始容器的大小。
+
+不适合于数据的强一致性场合。若要求数据修改之后立即能被读到，则不能用写时复制技术。因为它是最终一致性。
+
+总结：写时复制技术是一种很好的提高并发性的手段。
+
+
+
+## ５，为什么会出现COW？
+
+集合类\(ArrayList、HashMap\)上的常用操作是：向集合中添加元素、删除元素、遍历集合中的元素然后进行某种操作。当多个线程并发地对一个集合对象执行这些操作时就会引发ConcurrentModificationException，比如线程A在for-each中遍历ArrayList，而线程B同时又在删除ArrayList中的元素，就可能会抛出ConcurrentModificationException，可以在线程A遍历ArrayList时加锁，但由于遍历操作是一种常见的操作，加锁之后会影响程序的性能，因此for-each遍历选择了不对ArrayList加锁而是当有多个线程修改ArrayList时抛出ConcurrentModificationException，因此，这是一种设计上的权衡。
+
+为了应对多线程并发修改这种情况，一种策略就是本文的主题“写时复制”机制；另一种策略是：线程安全的容器类：
+
+ArrayList---&gt;CopyOnWriteArrayList
+
+HashMap---&gt;ConcurrentHashMap
+
+而ConcurrentHashMap并不是从“复制”这个角度来应对多线程并发修改，而是引入了分段锁\(JDK7\)；CAS、锁\(JDK11\)解决多线程并发修改的问题。
 
