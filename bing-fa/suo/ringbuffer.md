@@ -6,7 +6,7 @@
 
 代码的基本原理如下。
 
-221217446878287 \(1\).png
+![img](/static/image/221217446878287.png)
 
 如图所示，假定buffer的长度是bufferSize. 我们设置两个指针。head指向的是下一次读的位置，而tail指向的是下一次写的位置。由于这里是环形buffer \(ring buffer\)，这里就有一个问题，怎样判断buffer是满或者空。这里采用的规则是，buffer的最后一个单元不存储数据。所以，如果head == tail，那么说明buffer为空。如果 head == tail + 1 \(mod bufferSize\)，那么说明buffer满了。
 
