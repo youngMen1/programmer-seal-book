@@ -53,3 +53,11 @@ public final int incrementAndGet() {
 
 而compareAndSet利用JNI来完成CPU指令的操作。
 
+```
+public final boolean compareAndSet(int expect, int update) {   
+    return unsafe.compareAndSwapInt(this, valueOffset, expect, update);
+}
+```
+
+
+
