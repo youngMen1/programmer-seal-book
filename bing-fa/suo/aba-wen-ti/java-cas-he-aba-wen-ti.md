@@ -30,3 +30,11 @@ private volatile int value;
 
 这样才获取变量的值的时候才能直接读取。
 
+```
+public final int get() {
+    return value;
+}
+```
+
+
+
