@@ -22,3 +22,18 @@ unsafe类：java不能直接访问操作系统底层，而是通过本地方法�
 
 [http://www.cnblogs.com/mickole/articles/3757278.html](http://www.cnblogs.com/mickole/articles/3757278.html)
 
+```
+public class Counter{
+    private Lock lock = new Lock();
+    private int count = 0;
+    public int inc(){
+        lock.lock();
+        this.count++;
+        lock.unlock();
+        return count;
+    }
+}
+```
+
+
+
