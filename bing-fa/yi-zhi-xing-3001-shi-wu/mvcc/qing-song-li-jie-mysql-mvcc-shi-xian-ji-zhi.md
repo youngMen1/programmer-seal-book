@@ -96,5 +96,19 @@ insert into yang values(NULL,'tian');
 commit;
 ```
 
+这时表中的数据如下:
+
+
+
+id	name	创建时间\(事务ID\)	删除时间\(事务ID\)
+
+1	yang	1	undefined
+
+2	long	1	undefined
+
+3	fei	1	undefined
+
+4	tian	3	undefined
+
 
 
