@@ -311,13 +311,5 @@ private void unparkSuccessor(Node node) {
 }
 ```
 
-这个函数并不复杂。一句话概括：**用unpark\(\)唤醒等待队列中最前边的那个未放弃线程**，这里我们也用s来表示吧。此时，再和acquireQueued\(\)联系起来，s被唤醒后，进入if \(p == head && tryAcquire\(arg\)\)的判断（即使p!=head也没关系，它会再进入shouldParkAfterFailedAcquire\(\)寻找一个安全点。这里既然s已经是等待队列中最前边的那个未放弃线程了，那么通过shouldParkAfterFailedAcquire\(\)的调整，s也必然会跑到head的next结点，下一次自旋p==head就成立啦），然后s把自己设置成head标杆结点，表示自己已经获取到资源了，acquire\(\)也返回了！！And then, DO what you WANT!
 
-### 3.2.3 小结
-
-　　release\(\)是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。
-
-## 3.3 acquireShared\(int\)
-
-　　此方法是共享模式下线程获取共享资源的顶层入口。它会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止，整个过程忽略中断。下面是acquireShared\(\)的源码：
 
