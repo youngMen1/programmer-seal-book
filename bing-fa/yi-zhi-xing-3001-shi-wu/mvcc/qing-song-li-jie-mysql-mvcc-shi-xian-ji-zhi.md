@@ -50,9 +50,5 @@ insert into yang values(NULL,'fei');
 commit;
 ```
 
-————————————————
-
-版权声明：本文为CSDN博主「杨龙飞的博客」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：[https://blog.csdn.net/whoamiyang/article/details/51901888](https://blog.csdn.net/whoamiyang/article/details/51901888)
+对应在数据中的表如下\(后面两列是隐藏列,我们通过查询语句并看不到\)
 
