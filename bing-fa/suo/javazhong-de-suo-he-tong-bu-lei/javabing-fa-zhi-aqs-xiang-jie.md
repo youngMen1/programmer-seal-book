@@ -396,11 +396,11 @@ doReleaseShared\(\)我们留着下一小节的releaseShared\(\)里来讲。
 
 OK，至此，acquireShared\(\)也要告一段落了。让我们再梳理一下它的流程：
 
-1. 
-2. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
-   2. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
+1. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
 
-其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
+   1. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
+
+　　其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
 
 ## 3.4 releaseShared\(\)
 
@@ -522,5 +522,5 @@ class Mutex implements Lock, java.io.Serializable {
 
 同步类在实现时一般都将自定义同步器（sync）定义为内部类，供自己使用；而同步类自己（Mutex）则实现某个接口，对外服务。当然，接口的实现要直接依赖sync，它们在语义上也存在某种对应关系！！而sync只用实现资源state的获取-释放方式tryAcquire-tryRelelase，至于线程的排队、等待、唤醒等，上层的AQS都已经实现好了，我们不用关心。
 
-　　除了Mutex，ReentrantLock/CountDownLatch/Semphore这些同步类的实现方式都差不多，不同的地方就在获取-释放资源的方式tryAcquire-tryRelelase。掌握了这点，AQS的核心便被攻破了！
+除了Mutex，ReentrantLock/CountDownLatch/Semphore这些同步类的实现方式都差不多，不同的地方就在获取-释放资源的方式tryAcquire-tryRelelase。掌握了这点，AQS的核心便被攻破了！
 
