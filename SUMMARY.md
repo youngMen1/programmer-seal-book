@@ -56,6 +56,7 @@
       * [MySQL的InnoDB的幻读问题](bing-fa/yi-zhi-xing-3001-shi-wu/mysqlde-innodb-de-huan-du-wen-ti.md)
     * [MVCC](bing-fa/yi-zhi-xing-3001-shi-wu/mvcc.md)
       * [关于innodb中MVCC的一些理解](bing-fa/yi-zhi-xing-3001-shi-wu/mvcc/guanyu-innodb-zhong-mvcc-de-yi-xie-li-jie.md)
+      * 轻松理解MYSQL MVCC 实现机制
   * [锁](bing-fa/suo.md)
     * Java中的锁和同步类
 * [操作系统](cao-zuo-xi-tong.md)
