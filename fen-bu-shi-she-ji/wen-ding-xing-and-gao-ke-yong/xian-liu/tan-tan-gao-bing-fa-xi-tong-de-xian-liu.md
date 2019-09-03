@@ -241,7 +241,7 @@ limit_conn perserver 1;
 \#区域名称为one，大小为10m，平均处理的请求频率不能超过每秒一次。
 
 ```
-
+limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 ```
 
 在server{}中配置
