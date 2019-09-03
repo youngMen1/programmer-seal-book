@@ -16,3 +16,28 @@
 
 默认状态，使用的ReentrantLock\(\)就是非公平锁。再参考如下代码，我们知道ReentrantLock的获取锁的操作是通过装饰模式代理给sync的。
 
+```
+/**
+     * Acquires the lock.
+     *
+     * <p>Acquires the lock if it is not held by another thread and returns
+     * immediately, setting the lock hold count to one.
+     *
+     * <p>If the current thread already holds the lock then the hold
+     * count is incremented by one and the method returns immediately.
+     *
+     * <p>If the lock is held by another thread then the
+     * current thread becomes disabled for thread scheduling
+     * purposes and lies dormant until the lock has been acquired,
+     * at which time the lock hold count is set to one.
+     */
+    public void lock() {
+        sync.lock();
+    }
+————————————————
+版权声明：本文为CSDN博主「EthanPark」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/EthanWhite/article/details/55508357
+```
+
+
+
