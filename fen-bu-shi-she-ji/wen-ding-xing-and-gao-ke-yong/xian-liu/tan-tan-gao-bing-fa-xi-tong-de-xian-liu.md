@@ -165,5 +165,25 @@ System.out.println\(r.acquire\(1\)\);
 
 等了两秒钟之后，令牌桶里面就积累了3个令牌，可以连续不花时间的获取出来。处理突发其实也就是在单位时间内输出恒定。这两种方式都是使用的RateLimiter的子类SmoothBursty。另一个子类是SmoothWarmingUp，它提供的有一定缓冲的流量输出方案。
 
+```
+/**
+* 创建一个限流器，设置每秒放置的令牌数：2个。速率是每秒可以210的消息。
+* 返回的RateLimiter对象可以保证1秒内不会给超过2个令牌，并且是固定速率的放置。达到平滑输出的效果
+* 设置缓冲时间为3秒
+*/
+RateLimiter r = RateLimiter.create(2,3,TimeUnit.SECONDS);
+
+while (true) {
+    /**
+     * acquire()获取一个令牌，并且返回这个获取这个令牌所需要的时间。如果桶里没有令牌则等待，直到有令牌。
+     * acquire(N)可以获取多个令牌。
+     */
+    System.out.println(r.acquire(1));
+    System.out.println(r.acquire(1));
+    System.out.println(r.acquire(1));
+    System.out.println(r.acquire(1));
+}
+```
+
 
 
