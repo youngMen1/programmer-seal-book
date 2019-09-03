@@ -50,3 +50,5 @@ Transaction-Across-DataCenter.jpg
 
 下面，我们来看一下MySQL的高可用的方案的SLA（下图下面红色的标识表示了这个方案有几个9）：
 
+mysql-high-availability-solutions-feb-2015-webinar-9-638.jpg
+
