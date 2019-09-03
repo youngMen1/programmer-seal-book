@@ -138,5 +138,14 @@ public void test()
 
 15700-20170501174041070-1981680853.png
 
+2. 突发流量：
 
+突发流量可以是突发的多，也可以是突发的少。首先来看个突发多的例子。还是上面例子的流量，每秒2个数据令牌。如下代码使用acquire方法，指定参数。
+
+System.out.println\(r.acquire\(2\)\);  
+System.out.println\(r.acquire\(1\)\);  
+System.out.println\(r.acquire\(1\)\);  
+System.out.println\(r.acquire\(1\)\);
+
+得到如下类似的输出。
 
