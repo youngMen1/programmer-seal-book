@@ -117,7 +117,7 @@
 
 下面这张图，是漏桶的示意图。漏桶算法思路很简单，水（请求）先进入到漏桶里，漏桶以一定的速度出水，当水流入速度过大时，会直接溢出，可以看出漏桶算法能强行限制数据的传输速率。漏桶算法\(Leaky Bucket\)是网络世界中流量整形（Traffic Shaping）或速率限制（Rate Limiting）时经常使用的一种算法，它的主要目的是控制数据注入到网络的速率，平滑网络上的突发流量。
 
-2019060710410867.png
+![img](static/image/2019060710410867.png)
 
 **漏桶算法可以使用 Redis 队列来实现，生产者发送消息前先检查队列长度是否超过阈值，超过阈值则丢弃消息，否则发送消息到 Redis 队列中；消费者以固定速率从 Redis 队列中取消息。Redis 队列在这里起到了一个缓冲池的作用，起到削峰填谷、流量整形的作用。**
 
@@ -125,7 +125,7 @@
 
 对于很多应用场景来说，除了要求能够限制数据的平均传输速率外，还要求允许某种程度的突发传输。这时候漏桶算法可能就不合适了，令牌桶算法更为适合。令牌桶算法的原理是系统会以一个恒定的速度往桶里放入令牌，而如果请求需要被处理，则需要先从桶里获取一个令牌，当桶里没有令牌可取时，则拒绝服务。桶里能够存放令牌的最高数量，就是允许的突发传输量。
 
-20190607104016976.png
+![img](static/image/20190607104016976.png)
 
 **Guava 中的限流工具 RateLimiter，其原理就是令牌桶算法。**
 
@@ -133,7 +133,7 @@
 
 计数法是限流算法里最容易理解的一种，该方法统计最近一段时间的请求量，如果超过一定的阈值，就开始限流。在 TCP 网络协议中，也用到了滑动窗口来限制数据传输速率。
 
-lhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtMDllMGRhZGVjNDJmZjdkZC5wbmc.jpg
+![img](static/image/lhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtMDllMGRhZGVjNDJmZjdkZC5wbmc.jpg)
 
 滑动窗口计数有两个关键的因素：窗口时长、滚动时间间隔。滚动时间间隔一般等于上图中的一个桶 bucket，窗口时长除以滚动时间间隔，就是一个窗口所包含的 bucket 数目。
 
@@ -143,7 +143,7 @@ lhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtMDllMGRhZGVjNDJmZjdkZC5wbmc.jpg
 
 一般情况下的限流，都需要我们手动设定限流阈值，不仅繁琐，而且容易因系统的发布升级而过时。为此，我们考虑根据系统负载来动态决定是否限流，动态计算限流阈值。可以参考的系统负载参数有：Load、CPU、接口响应时间等。
 
-20190413235437737.png
+![img](static/image/20190413235437737.png)
 
 详细内容请看：基于系统负载的动态限流 dynamic-limiter。
 
@@ -171,7 +171,7 @@ lhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtMDllMGRhZGVjNDJmZjdkZC5wbmc.jpg
 
 当进入 Open 状态一段时间后，进入 Half-Open状态，需要去尝试调用几次服务，检查故障的服务是否恢复。如果成功则熔断器关闭，如果失败，则再次进入 Open 状态。
 
-C1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtNzA1M2UwMmE4ZTA3MGIyMi5wbmc.jpg
+![img](static/image/C1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzc2ODcwNDYtNzA1M2UwMmE4ZTA3MGIyMi5wbmc.jpg)
 
 目前比较流行的降级熔断框架，是由 Netflix 开源的 Hystrix 框架。
 
