@@ -125,5 +125,26 @@ AQS在判断状态时，通过用waitStatus&gt;0表示取消状态，而waitStat
 
 #### 3.1.2.1 enq\(Node\)
 
- 　　此方法用于将node加入队尾。源码如下：
+此方法用于将node加入队尾。源码如下：
+
+```
+private Node enq(final Node node) {
+    //CAS"自旋"，直到成功加入队尾
+    for (;;) {
+        Node t = tail;
+        if (t == null) { // 队列为空，创建一个空的标志结点作为head结点，并将tail也指向它。
+            if (compareAndSetHead(new Node()))
+                tail = head;
+        } else {//正常流程，放入队尾
+            node.prev = t;
+            if (compareAndSetTail(t, node)) {
+                t.next = node;
+                return t;
+            }
+        }
+    }
+}
+```
+
+
 
