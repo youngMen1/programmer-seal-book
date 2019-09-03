@@ -211,7 +211,7 @@
       * [谈谈高并发系统的限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu/tan-tan-gao-bing-fa-xi-tong-de-xian-liu.md)
     * [应用层容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai.md)
       * [防雪崩利器：熔断器 Hystrix 的原理与使用](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai/fang-xue-beng-liqi-ff1a-rong-duan-qi-hystrix-de-yuan-li-yu-shi-yong.md)
-      * 缓存穿透，缓存击穿，缓存雪崩解决方案分析
+      * [缓存穿透，缓存击穿，缓存雪崩解决方案分析](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai/huan-cun-chuan-tou-ff0c-huan-cun-ji-chuan-ff0c-huan-cun-xue-beng-jie-jue-fang-an-fen-xi.md)
     * [跨机房容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai.md)
     * 容灾演练流程
     * 平滑启动
