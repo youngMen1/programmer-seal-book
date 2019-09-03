@@ -35,7 +35,6 @@
 SETNX，是「SET if Not eXists」的缩写，也就是只有不存在的时候才设置，可以利用它来实现锁的效果。在redis2.6.1之前版本未实现setnx的过期时间，所以这里给出两种版本代码参考：
 
 ```
-
 //2.6.1前单机版本锁
 String get(String key) {  
    String value = redis.get(key);  
@@ -53,9 +52,7 @@ String get(String key) {
     }  
   }  
 
-————————————————
-版权声明：本文为CSDN博主「zeb_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/zeb_perfect/article/details/54135506
+
 ```
 
 
