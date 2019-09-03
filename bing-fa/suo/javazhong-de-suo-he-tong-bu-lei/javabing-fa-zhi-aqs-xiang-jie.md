@@ -278,8 +278,6 @@ public final boolean release(int arg) {
 
 ### 3.2.1 tryRelease\(int\)
 
-
-
 此方法尝试去释放指定量的资源。下面是tryRelease\(\)的源码：
 
 ```
@@ -292,9 +290,26 @@ protected boolean tryRelease(int arg) {
 
 ### 3.2.2 unparkSuccessor\(Node\)
 
-　　此方法用于唤醒等待队列中下一个线程。下面是源码：
+此方法用于唤醒等待队列中下一个线程。下面是源码：
 
+```
+private void unparkSuccessor(Node node) {
+    //这里，node一般为当前线程所在的结点。
+    int ws = node.waitStatus;
+    if (ws < 0)//置零当前线程所在的结点状态，允许失败。
+        compareAndSetWaitStatus(node, ws, 0);
 
+    Node s = node.next;//找到下一个需要唤醒的结点s
+    if (s == null || s.waitStatus > 0) {//如果为空或已取消
+        s = null;
+        for (Node t = tail; t != null && t != node; t = t.prev)
+            if (t.waitStatus <= 0)//从这里可以看出，<=0的结点，都是还有效的结点。
+                s = t;
+    }
+    if (s != null)
+        LockSupport.unpark(s.thread);//唤醒
+}
+```
 
 
 
