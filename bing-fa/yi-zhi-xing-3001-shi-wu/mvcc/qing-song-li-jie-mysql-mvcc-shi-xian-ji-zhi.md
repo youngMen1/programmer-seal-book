@@ -30,6 +30,10 @@ id int primary key auto\_increment,
 
 name varchar\(20\)\);
 
+```
+假设系统的版本号从1开始.
+```
+
 假设系统的版本号从1开始.
 
 INSERT
