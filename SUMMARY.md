@@ -221,6 +221,7 @@
       * MySQL Cluster 方式
     * [分片模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi.md)
       * 分库分表需要考虑的问题及方案
+      * MySql分表和表分区详解
   * 服务治理
   * 分布式一致
   * 分布式文件系统
