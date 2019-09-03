@@ -99,3 +99,39 @@ ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting trans
 
 在开发中，经常会做这类的判断需求：根据字段值查询（有索引），如果不存在，则插入；否则更新。
 
+```
+以id为主键为例，目前还没有id=22的行
+
+Session1:
+
+select * from t3 where id=22 for update;
+
+Empty set (0.00 sec)
+
+ 
+
+session2:
+
+select * from t3 where id=23  for update;
+
+Empty set (0.00 sec)
+
+ 
+
+Session1:
+
+insert into t3 values(22,'ac','a',now());
+
+锁等待中……
+
+ 
+
+Session2:
+
+insert into t3 values(23,'bc','b',now());
+
+ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
+```
+
+
+
