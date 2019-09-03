@@ -98,6 +98,18 @@ commit;
 
 这时表中的数据如下:
 
+id    name    创建时间\(事务ID\)    删除时间\(事务ID\)
+
+1    yang    1    undefined
+
+2    long    1    undefined
+
+3    fei    1    undefined
+
+4    tian    3    undefined
+
+然后接着执行事务2中的\(2\),由于id=4的数据的创建时间\(事务ID为3\),执行当前事务的ID为2,而InnoDB只会查找事务ID小于等于当前事务ID的数据行,所以id=4的数据行并不会在执行事务2中的\(2\)被检索出来,在事务2中的两条select 语句检索出来的数据都只会下表:
+
 
 
 id	name	创建时间\(事务ID\)	删除时间\(事务ID\)
@@ -108,7 +120,7 @@ id	name	创建时间\(事务ID\)	删除时间\(事务ID\)
 
 3	fei	1	undefined
 
-4	tian	3	undefined
+————————————————
 
 
 
