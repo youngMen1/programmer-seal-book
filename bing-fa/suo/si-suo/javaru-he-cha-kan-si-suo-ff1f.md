@@ -86,17 +86,19 @@ Thread-0：持有java.lang.Class@1694ce18，需要java.lang.Class@1feb0edd，但
 
 Thread-1：持有java.lang.Class@1feb0edd，需要java.lang.Class@1694ce18，但是java.lang.Class@1694ce18却被Thread-0持有，然后陷入等待。
 
-
-
 4、Jstack查看死锁：
-
-
 
 同样，也是进入jdk安装目录的bin下面，输入jps，先查看我们要检测死锁的进程：
 
-————————————————
+20160829115959999.png
 
-版权声明：本文为CSDN博主「ZK\_小姜」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+然后可以看到进程Test的进程号：8384，然后执行：Jstack -l 8384
 
-原文链接：https://blog.csdn.net/u014039577/article/details/52351626
+20160829124553194.png
+
+查看死锁信息：
+
+20160829124600437.png
+
+
 
