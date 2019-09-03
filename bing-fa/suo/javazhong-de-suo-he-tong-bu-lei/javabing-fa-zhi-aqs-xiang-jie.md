@@ -74,12 +74,10 @@ public final void acquire(int arg) {
 
 此方法尝试去获取独占资源。如果获取成功，则直接返回true，否则直接返回false。这也正是tryLock\(\)的语义，还是那句话，当然不仅仅只限于tryLock\(\)。如下是tryAcquire\(\)的源码：
 
-$$x = y$$
-
 ```
 protected boolean tryAcquire(int arg) {
-        throw new UnsupportedOperationException();
-3     }
+         throw new UnsupportedOperationException();
+     }
 ```
 
 
