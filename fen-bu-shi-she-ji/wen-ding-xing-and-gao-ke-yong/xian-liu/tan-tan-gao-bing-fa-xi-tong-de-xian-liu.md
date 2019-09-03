@@ -244,3 +244,5 @@ limit_conn perserver 1;
 
 ```
 
+在server{}中配置
+
