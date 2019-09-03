@@ -8,5 +8,19 @@
 
 * 改善人机界面，向用户提供友好的工作环境。
 
+### CPU {#articleHeader2}
+
+![](https://static.segmentfault.com/v-5d5e3c1d/global/img/squares.svg)
+
+（Central Processing Unit）是一块超大规模的集成电路，主要解释计算机指令以及处理计算机软件中的数据，包括
+
+* 运算器\(算术逻辑运算单元，ALU，Arithmetic Logic Unit\)
+
+* 高速缓冲存储器\(Cache\)
+
+* 数据\(Data\)
+
+* 总线\(Bus\)
+
 
 
