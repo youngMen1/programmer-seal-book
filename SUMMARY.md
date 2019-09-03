@@ -87,7 +87,8 @@
 * [操作系统](cao-zuo-xi-tong.md)
   * [计算机原理](cao-zuo-xi-tong/ji-suan-ji-yuan-li.md)
     * [操作系统基础知识——操作系统的原理，类型和结构](cao-zuo-xi-tong/ji-suan-ji-yuan-li/cao-zuo-xi-tong-ji-chu-zhi-shi-2014-2014-cao-zuo-xi-tong-de-yuan-li-ff0c-lei-xing-he-jie-gou.md)
-  * CPU
+  * [CPU](cao-zuo-xi-tong/cpu.md)
+    * 从Java视角理解CPU缓存和伪共享
   * 进程
   * 线程
   * 协程
