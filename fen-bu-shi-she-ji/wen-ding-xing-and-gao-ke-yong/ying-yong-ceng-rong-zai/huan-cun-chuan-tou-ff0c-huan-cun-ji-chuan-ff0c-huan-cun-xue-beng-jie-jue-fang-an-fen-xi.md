@@ -60,7 +60,7 @@ public String get(key) {
       String value = redis.get(key);
       if (value == null) { //代表缓存值过期
           //设置3min的超时，防止del操作失败的时候，下次缓存过期一直不能load db
-		  if (redis.setnx(key_mutex, 1, 3 * 60) == 1) {  //代表设置成功
+          if (redis.setnx(key_mutex, 1, 3 * 60) == 1) {  //代表设置成功
                value = db.get(key);
                       redis.set(key, value, expire_secs);
                       redis.del(key_mutex);
@@ -72,10 +72,8 @@ public String get(key) {
               return value;      
           }
  }
-————————————————
-版权声明：本文为CSDN博主「zeb_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/zeb_perfect/article/details/54135506
+
 ```
 
-
+memcache代码：
 
