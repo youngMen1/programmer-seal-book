@@ -85,3 +85,5 @@ head.compareAndSet\(A,B\);
 
 ABA-2.png
 
+此时轮到线程T1执行CAS操作，检测发现栈顶仍为A，所以CAS成功，栈顶变为B，但实际上B.next为null，所以此时的情况变为：
+
