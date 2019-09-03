@@ -22,3 +22,9 @@ CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当�
 
 拿出AtomicInteger来研究在没有锁的情况下是如何做到数据正确性的。
 
+```
+private volatile int value;
+```
+
+
+
