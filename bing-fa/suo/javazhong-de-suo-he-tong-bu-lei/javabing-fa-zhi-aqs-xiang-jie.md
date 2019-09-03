@@ -315,9 +315,22 @@ private void unparkSuccessor(Node node) {
 
 ### 3.2.3 小结
 
-　　release\(\)是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。
+release\(\)是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。
 
 ## 3.3 acquireShared\(int\)
 
-　　此方法是共享模式下线程获取共享资源的顶层入口。它会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止，整个过程忽略中断。下面是acquireShared\(\)的源码：
+此方法是共享模式下线程获取共享资源的顶层入口。它会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止，整个过程忽略中断。下面是acquireShared\(\)的源码：
+
+```
+1 public final void acquireShared(int arg) {
+2     if (tryAcquireShared(arg) < 0)
+3         doAcquireShared(arg);
+4 }
+```
+
+
+
+
+
+
 
