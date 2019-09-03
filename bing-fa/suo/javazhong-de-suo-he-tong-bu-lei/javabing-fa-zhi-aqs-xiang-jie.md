@@ -148,7 +148,38 @@ private Node enq(final Node node) {
 
 如果你看过AtomicInteger.getAndIncrement\(\)函数源码，那么相信你一眼便看出这段代码的精华。**CAS自旋volatile变量**，是一种很经典的用法。还不太了解的，自己去百度一下吧。
 
-### 3.1.3 acquireQueued\(Node, int\)
+### 3.1.3 acquireQueued\(Node, int\)
 
-　　OK，通过tryAcquire\(\)和addWaiter\(\)，该线程获取资源失败，已经被放入等待队列尾部了。聪明的你立刻应该能想到该线程下一部该干什么了吧：**进入等待状态休息，直到其他线程彻底释放资源后唤醒自己，自己再拿到资源，然后就可以去干自己想干的事了**。没错，就是这样！是不是跟医院排队拿号有点相似~~acquireQueued\(\)就是干这件事：**在等待队列中排队拿号（中间没其它事干可以休息），直到拿到号后再返回**。这个函数非常关键，还是上源码吧：
+OK，通过tryAcquire\(\)和addWaiter\(\)，该线程获取资源失败，已经被放入等待队列尾部了。聪明的你立刻应该能想到该线程下一部该干什么了吧：**进入等待状态休息，直到其他线程彻底释放资源后唤醒自己，自己再拿到资源，然后就可以去干自己想干的事了**。没错，就是这样！是不是跟医院排队拿号有点相似~~acquireQueued\(\)就是干这件事：**在等待队列中排队拿号（中间没其它事干可以休息），直到拿到号后再返回**。这个函数非常关键，还是上源码吧：
+
+```
+final boolean acquireQueued(final Node node, int arg) {
+    boolean failed = true;//标记是否成功拿到资源
+    try {
+        boolean interrupted = false;//标记等待过程中是否被中断过
+        
+        //又是一个“自旋”！
+        for (;;) {
+            final Node p = node.predecessor();//拿到前驱
+            //如果前驱是head，即该结点已成老二，那么便有资格去尝试获取资源（可能是老大释放完资源唤醒自己的，当然也可能被interrupt了）。
+            if (p == head && tryAcquire(arg)) {
+                setHead(node);//拿到资源后，将head指向该结点。所以head所指的标杆结点，就是当前获取到资源的那个结点或null。
+                p.next = null; // setHead中node.prev已置为null，此处再将head.next置为null，就是为了方便GC回收以前的head结点。也就意味着之前拿完资源的结点出队了！
+                failed = false;
+                return interrupted;//返回等待过程中是否被中断过
+            }
+            
+            //如果自己可以休息了，就进入waiting状态，直到被unpark()
+            if (shouldParkAfterFailedAcquire(p, node) &&
+                parkAndCheckInterrupt())
+                interrupted = true;//如果等待过程中被中断过，哪怕只有那么一次，就将interrupted标记为true
+        }
+    } finally {
+        if (failed)
+            cancelAcquire(node);
+    }
+}
+```
+
+
 
