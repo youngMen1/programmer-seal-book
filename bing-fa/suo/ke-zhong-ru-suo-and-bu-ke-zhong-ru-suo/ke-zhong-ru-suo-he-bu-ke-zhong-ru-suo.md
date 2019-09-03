@@ -55,3 +55,21 @@ public class Lock{
 
 这其实是个不可重入锁，举个例子
 
+```
+public class Count{
+    Lock lock = new Lock();
+    public void print(){
+        lock.lock();
+        doAdd();
+        lock.unlock();
+    }
+    public void doAdd(){
+        lock.lock();
+        //do something
+        lock.unlock();
+    }
+}
+```
+
+
+
