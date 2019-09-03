@@ -262,21 +262,17 @@ public final void acquire(int arg) {
 
 上一小节已经把acquire\(\)说完了，这一小节就来讲讲它的反操作release\(\)吧。此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。这也正是unlock\(\)的语义，当然不仅仅只限于unlock\(\)。下面是release\(\)的源码：
 
-public final boolean release\(int arg\) {
-
-    if \(tryRelease\(arg\)\) {
-
+```
+public final boolean release(int arg) {
+    if (tryRelease(arg)) {
         Node h = head;//找到头结点
-
-        if \(h != null && h.waitStatus != 0\)
-
-            unparkSuccessor\(h\);//唤醒等待队列里的下一个线程
-
+        if (h != null && h.waitStatus != 0)
+            unparkSuccessor(h);//唤醒等待队列里的下一个线程
         return true;
-
     }
-
     return false;
-
 }
+```
+
+
 
