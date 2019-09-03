@@ -8,8 +8,6 @@
 
 首先，我们需要理解什么是高可用，英文叫High Availability（[Wikipedia词条](https://en.wikipedia.org/wiki/High_availability)），基本上来说，就是要让我们的计算环境（包括软硬件）做到full-time的可用性。在设计上一般来说，需要做好如下的设计：
 
-
-
 1. 对软硬件的冗余，以消除单点故障。任何系统都会有一个或多个冗余系统做standby
 2. 对故障的检测和恢复。检测故障以及用备份的结点接管故障点。这也就是failover
 3. 需要很可靠的交汇点（CrossOver）。这是一些不容易冗余的结点，比如域名解析，负载均衡器等。
@@ -31,7 +29,7 @@
 
 #### 高可用系统的技术解决方案
 
-我在《[分布式系统的事务处理](https://coolshell.cn/articles/10910.html)》中引用过下面这个图：这个图来自来自：Google App Engine的co-founder Ryan Barrett在2009年的Google I/O上的演讲《[Transaction Across DataCenter](http://snarfed.org/transactions_across_datacenters_io.html)》（视频： [http://www.youtube.com/watch?v=srOgpXECblk](http://www.youtube.com/watch?v=srOgpXECblk)）
+我在《[分布式系统的事务处理](https://coolshell.cn/articles/10910.html)》中引用过下面这个图：这个图来自来自：Google App Engine的co-founder Ryan Barrett在2009年的Google I/O上的演讲《[Transaction Across DataCenter](http://snarfed.org/transactions_across_datacenters_io.html)》（视频： [http://www.youtube.com/watch?v=srOgpXECblk](http://www.youtube.com/watch?v=srOgpXECblk)）
 
-
+Transaction-Across-DataCenter.jpg
 
