@@ -55,7 +55,7 @@
       * [数据库事务的四大特性及事务隔离级别](bing-fa/yi-zhi-xing-3001-shi-wu/shi-wu-de-ge-li-ji-bie/li-jie-shi-wu-de-4-zhong-ge-li-ji-bie/shu-ju-ku-shi-wu-de-si-da-te-xing-ji-shi-wu-ge-li-ji-bie.md)
       * [MySQL的InnoDB的幻读问题](bing-fa/yi-zhi-xing-3001-shi-wu/mysqlde-innodb-de-huan-du-wen-ti.md)
     * [MVCC](bing-fa/yi-zhi-xing-3001-shi-wu/mvcc.md)
-      * 关于innodb中MVCC的一些理解
+      * [关于innodb中MVCC的一些理解](bing-fa/yi-zhi-xing-3001-shi-wu/mvcc/guanyu-innodb-zhong-mvcc-de-yi-xie-li-jie.md)
   * [锁](bing-fa/suo.md)
     * Java中的锁和同步类
 * [操作系统](cao-zuo-xi-tong.md)
