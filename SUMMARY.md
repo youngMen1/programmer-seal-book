@@ -89,8 +89,9 @@
     * [操作系统基础知识——操作系统的原理，类型和结构](cao-zuo-xi-tong/ji-suan-ji-yuan-li/cao-zuo-xi-tong-ji-chu-zhi-shi-2014-2014-cao-zuo-xi-tong-de-yuan-li-ff0c-lei-xing-he-jie-gou.md)
   * [CPU](cao-zuo-xi-tong/cpu.md)
     * [从Java视角理解CPU缓存和伪共享](cao-zuo-xi-tong/cpu/cong-java-shi-jiao-li-jie-cpu-huan-cun-he-wei-gong-xiang.md)
-  * 进程
-  * 线程
+  * [进程](cao-zuo-xi-tong/jin-cheng.md)
+  * [线程](cao-zuo-xi-tong/xian-cheng.md)
+    * 线程的生命周期及状态转换详解
   * 协程
   * Linux
 * [设计模式](she-ji-mo-shi.md)
