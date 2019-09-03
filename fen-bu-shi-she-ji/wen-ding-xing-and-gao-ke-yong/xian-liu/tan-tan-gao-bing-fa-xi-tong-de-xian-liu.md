@@ -246,3 +246,10 @@ limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
 在server{}中配置
 
+```
+#设置每个IP桶的数量为5
+limit_req zone=one burst=5;
+```
+
+
+
