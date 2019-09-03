@@ -209,6 +209,7 @@
       * [几种负载均衡算法](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/ji-zhong-fu-zai-jun-heng-suan-fa.md)
     * 限流
     * 应用层容灾
+    * 跨机房容灾
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
