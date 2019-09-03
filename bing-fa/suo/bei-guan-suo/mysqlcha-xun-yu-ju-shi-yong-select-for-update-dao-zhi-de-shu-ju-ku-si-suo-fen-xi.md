@@ -28,5 +28,7 @@ commit;
 update table1 a set IsSuccess=0 where id =400000;
 ```
 
+第一条sql语句先不commit，则第二条sql语句将只能等待，因此第二条sql语句把IsSuccess修改为0，IsSuccess非主键索引锁了值为0的索引数据，第二条sql语句将无法把数据更新到被锁的行里。
 
+再执行下面的sql语句
 
