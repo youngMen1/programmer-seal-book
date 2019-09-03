@@ -210,7 +210,7 @@
     * [限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu.md)
       * [谈谈高并发系统的限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu/tan-tan-gao-bing-fa-xi-tong-de-xian-liu.md)
     * [应用层容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai.md)
-      * 防雪崩利器：熔断器 Hystrix 的原理与使用
+      * [防雪崩利器：熔断器 Hystrix 的原理与使用](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai/fang-xue-beng-liqi-ff1a-rong-duan-qi-hystrix-de-yuan-li-yu-shi-yong.md)
     * 跨机房容灾
     * 容灾演练流程
     * 平滑启动
