@@ -83,6 +83,7 @@
     * [死锁](bing-fa/suo/si-suo.md)
       * [“死锁”四个必要条件的合理解释](bing-fa/suo/si-suo/201c-si-suo-201d-si-ge-bi-yao-tiao-jian-de-he-li-jie-shi.md)
       * [Java如何查看死锁？](bing-fa/suo/si-suo/javaru-he-cha-kan-si-suo-ff1f.md)
+      *  java多线程系列：死锁及检测
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
