@@ -60,7 +60,7 @@
   * [锁](bing-fa/suo.md)
     * [Java中的锁和同步类](bing-fa/suo/javazhong-de-suo-he-tong-bu-lei.md)
       * [Java中的锁分类](bing-fa/suo/javazhong-de-suo-he-tong-bu-lei/javazhong-de-suo-fen-lei.md)
-      * Java并发之AQS详解
+      * [Java并发之AQS详解](bing-fa/suo/javazhong-de-suo-he-tong-bu-lei/javabing-fa-zhi-aqs-xiang-jie.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
