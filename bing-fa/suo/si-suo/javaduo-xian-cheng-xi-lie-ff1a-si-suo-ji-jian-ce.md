@@ -35,5 +35,81 @@ Transaction 1, request 2, tries to lock record 2 for update.
 Transaction 2, request 2, tries to lock record 1 for update.
 ```
 
+因为锁发生在不同的请求中，并且对于一个事务来说不可能提前知道所有它需要的锁，因此很难检测和避免数据库事务中的死锁。
+
+死锁demo：
+
+```
+package thread;
+/**
+ * 
+ * @author zhangliang
+ *
+ * 2016年4月12日 下午5:51:54
+ */
+public class DeadLocakTest {
+	final static Object obj1 = new Object();
+	final static Object obj2 = new Object();
+ 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DeadLocakTest test = new DeadLocakTest();
+		Thread t1 = new Thread(test.new DeadThread1());
+		Thread t2 = new Thread(test.new DeadThread2());
+		
+		t1.start();
+		t2.start();
+	}
+ 
+ 
+	class DeadThread1 implements Runnable {
+ 
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			synchronized(obj1){
+				
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(Thread.currentThread().getName()+"loack obj1");
+				synchronized(obj2){
+					System.out.println(Thread.currentThread().getName()+"is running");
+				}
+				
+			}
+		}  
+		 
+	 }
+	
+	 class DeadThread2 implements Runnable {
+ 
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				synchronized(obj2){
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println(Thread.currentThread().getName()+"loack obj2");
+					synchronized(obj1){
+						System.out.println(Thread.currentThread().getName()+"is running");
+					}
+					
+				}
+			}  
+			 
+		 }
+ 
+}
+```
+
 
 
