@@ -59,7 +59,7 @@
       * [轻松理解MYSQL MVCC 实现机制](bing-fa/yi-zhi-xing-3001-shi-wu/mvcc/qing-song-li-jie-mysql-mvcc-shi-xian-ji-zhi.md)
   * [锁](bing-fa/suo.md)
     * [Java中的锁和同步类](bing-fa/suo/javazhong-de-suo-he-tong-bu-lei.md)
-      * Java中的锁分类
+      * [Java中的锁分类](bing-fa/suo/javazhong-de-suo-he-tong-bu-lei/javazhong-de-suo-fen-lei.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
