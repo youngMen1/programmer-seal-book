@@ -49,5 +49,7 @@ public final int incrementAndGet() {
 }
 ```
 
+在这里采用了CAS操作，每次从内存中读取数据然后将此数据和+1后的结果进行CAS操作，如果成功就返回结果，否则重试直到成功为止。
 
+而compareAndSet利用JNI来完成CPU指令的操作。
 
