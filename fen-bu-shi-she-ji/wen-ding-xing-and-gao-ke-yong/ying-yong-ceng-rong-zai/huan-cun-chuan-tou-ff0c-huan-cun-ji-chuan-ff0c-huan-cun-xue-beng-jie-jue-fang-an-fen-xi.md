@@ -88,10 +88,16 @@ if (memcache.get(key) == null) {
         retry();  
     }  
 }
-————————————————
-版权声明：本文为CSDN博主「zeb_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/zeb_perfect/article/details/54135506
+
 ```
 
+2. "提前"使用互斥锁\(mutex key\)：
 
+在value内部设置1个超时值\(timeout1\), timeout1比实际的memcache timeout\(timeout2\)小。当从cache读取到timeout1发现它已经过期时候，马上延长timeout1并重新设置到cache。然后再从数据库加载数据并设置到cache中。伪代码如下：
+
+————————————————
+
+版权声明：本文为CSDN博主「zeb\_perfect」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/zeb\_perfect/article/details/54135506
 
