@@ -91,3 +91,7 @@ mysql-high-availability-solutions-feb-2015-webinar-9-638.jpg
 
 unplaned\_downtime.gif
 
+##### 有计划的宕机原因
+
+下图来自Oracle的 《[High Availability Concepts and Best Practices](https://docs.oracle.com/cd/A91202_01/901_doc/rac.901/a89867/pshavdtl.htm)》
+
