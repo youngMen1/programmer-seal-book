@@ -91,7 +91,7 @@
     * [从Java视角理解CPU缓存和伪共享](cao-zuo-xi-tong/cpu/cong-java-shi-jiao-li-jie-cpu-huan-cun-he-wei-gong-xiang.md)
   * [进程](cao-zuo-xi-tong/jin-cheng.md)
   * [线程](cao-zuo-xi-tong/xian-cheng.md)
-    * 线程的生命周期及状态转换详解
+    * [线程的生命周期及状态转换详解](cao-zuo-xi-tong/xian-cheng/xian-cheng-de-sheng-ming-zhou-qi-ji-zhuang-tai-zhuan-huan-xiang-jie.md)
   * 协程
   * Linux
 * [设计模式](she-ji-mo-shi.md)
