@@ -6,56 +6,57 @@ Java中当我们的开发涉及到多线程的时候，这个时候就很容易�
 
 Java中jdk 给我们提供了很便利的工具，帮助我们定位和分析死锁问题：
 
-1、死锁产生原因：当两个或者多个线程互相持有一定资源，并互相等待其他线程释放资源而形成的一
+1、死锁产生原因：当两个或者多个线程互相持有一定资源，并互相等待其他线程释放资源而形成的一种僵局，就是死锁。
+
+2、构建一个死锁的场景：
 
 ```
-
 public class Test {
- 
-	public static void main(String[] args) {
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				synchronized (B.class) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					synchronized (A.class) {
-						
-					}
-				}
-			}
-		}).start();
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				synchronized (A.class) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					synchronized (B.class) {
-						
-					}
-				}
-				
-			}
-		}).start();
-	}
-	
+
+    public static void main(String[] args) {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                synchronized (B.class) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    synchronized (A.class) {
+
+                    }
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                synchronized (A.class) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    synchronized (B.class) {
+
+                    }
+                }
+
+            }
+        }).start();
+    }
+
 }
 class A {
-	
+
 }
- 
+
 class B {
-	
+
 }
 
 ————————————————
