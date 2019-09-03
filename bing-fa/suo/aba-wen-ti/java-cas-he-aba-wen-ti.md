@@ -83,3 +83,5 @@ head.compareAndSet\(A,B\);
 
 在T1执行上面这条指令之前，线程T2介入，将A、B出栈，再pushD、C、A，此时堆栈结构如下图，而对象B此时处于游离状态：
 
+ABA-2.png
+
