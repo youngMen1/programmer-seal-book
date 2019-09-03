@@ -449,9 +449,9 @@ private void doReleaseShared() {
 
 # 四、简单应用
 
-　　通过前边几个章节的学习，相信大家已经基本理解AQS的原理了。这里再将“框架”一节中的一段话复制过来：
+通过前边几个章节的学习，相信大家已经基本理解AQS的原理了。这里再将“框架”一节中的一段话复制过来：
 
-　　不同的自定义同步器争用共享资源的方式也不同。**自定义同步器在实现时只需要实现共享资源state的获取与释放方式即可**，至于具体线程等待队列的维护（如获取资源失败入队/唤醒出队等），AQS已经在顶层实现好了。自定义同步器实现时主要实现以下几种方法：
+不同的自定义同步器争用共享资源的方式也不同。**自定义同步器在实现时只需要实现共享资源state的获取与释放方式即可**，至于具体线程等待队列的维护（如获取资源失败入队/唤醒出队等），AQS已经在顶层实现好了。自定义同步器实现时主要实现以下几种方法：
 
 * isHeldExclusively\(\)：该线程是否正在独占资源。只有用到condition才需要去实现它。
 * tryAcquire\(int\)：独占方式。尝试获取资源，成功则返回true，失败则返回false。
@@ -459,11 +459,11 @@ private void doReleaseShared() {
 * tryAcquireShared\(int\)：共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。
 * tryReleaseShared\(int\)：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回true，否则返回false。
 
-　　OK，下面我们就以AQS源码里的Mutex为例，讲一下AQS的简单应用。
+OK，下面我们就以AQS源码里的Mutex为例，讲一下AQS的简单应用。
 
 ## 4.1 Mutex（互斥锁）
 
-　　Mutex是一个不可重入的互斥锁实现。锁资源（AQS里的state）只有两种状态：0表示未锁定，1表示锁定。下边是Mutex的核心源码：
+Mutex是一个不可重入的互斥锁实现。锁资源（AQS里的state）只有两种状态：0表示未锁定，1表示锁定。下边是Mutex的核心源码：
 
 ```
 class Mutex implements Lock, java.io.Serializable {
@@ -520,5 +520,7 @@ class Mutex implements Lock, java.io.Serializable {
 }
 ```
 
+同步类在实现时一般都将自定义同步器（sync）定义为内部类，供自己使用；而同步类自己（Mutex）则实现某个接口，对外服务。当然，接口的实现要直接依赖sync，它们在语义上也存在某种对应关系！！而sync只用实现资源state的获取-释放方式tryAcquire-tryRelelase，至于线程的排队、等待、唤醒等，上层的AQS都已经实现好了，我们不用关心。
 
+　　除了Mutex，ReentrantLock/CountDownLatch/Semphore这些同步类的实现方式都差不多，不同的地方就在获取-释放资源的方式tryAcquire-tryRelelase。掌握了这点，AQS的核心便被攻破了！
 
