@@ -167,7 +167,7 @@ String get(final String key) {
 
 四种解决方案：没有最佳只有最合适
 
-微信截图\_20190903172328.png
+![img](/static/image/微信截图_20190903172328.png)
 
 ## 总结
 
