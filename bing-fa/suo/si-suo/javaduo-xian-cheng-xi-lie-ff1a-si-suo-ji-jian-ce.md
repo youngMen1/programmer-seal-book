@@ -129,63 +129,63 @@ public class DeadLocakTest {
 jstack -l 6081
 2016-04-12 02:25:29
 Full thread dump Java HotSpot(TM) 64-Bit Server VM (24.60-b09 mixed mode):
- 
+
 "Attach Listener" daemon prio=10 tid=0x00007fe8a4001000 nid=0x181e waiting on condition [0x0000000000000000]
    java.lang.Thread.State: RUNNABLE
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "DestroyJavaVM" prio=10 tid=0x00007fe8c0008800 nid=0x17c2 waiting on condition [0x0000000000000000]
    java.lang.Thread.State: RUNNABLE
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "Thread-1" prio=10 tid=0x00007fe8c00a0800 nid=0x17cc waiting for monitor entry [0x00007fe8c5031000]
    java.lang.Thread.State: BLOCKED (on object monitor)
         at DeadLocakTest$DeadThread2.run(DeadLocakTest.java:61)
         - waiting to lock <0x00000000af24b248> (a java.lang.Object)
         - locked <0x00000000af24b258> (a java.lang.Object)
         at java.lang.Thread.run(Thread.java:745)
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "Thread-0" prio=10 tid=0x00007fe8c009e800 nid=0x17cb waiting for monitor entry [0x00007fe8c5132000]
    java.lang.Thread.State: BLOCKED (on object monitor)
         at DeadLocakTest$DeadThread1.run(DeadLocakTest.java:38)
         - waiting to lock <0x00000000af24b258> (a java.lang.Object)
         - locked <0x00000000af24b248> (a java.lang.Object)
         at java.lang.Thread.run(Thread.java:745)
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "Service Thread" daemon prio=10 tid=0x00007fe8c008a800 nid=0x17c9 runnable [0x0000000000000000]
    java.lang.Thread.State: RUNNABLE
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "C2 CompilerThread1" daemon prio=10 tid=0x00007fe8c0088000 nid=0x17c8 waiting on condition [0x0000000000000000]
    java.lang.Thread.State: RUNNABLE
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "C2 CompilerThread0" daemon prio=10 tid=0x00007fe8c0085800 nid=0x17c7 waiting on condition [0x0000000000000000]
    java.lang.Thread.State: RUNNABLE
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "Signal Dispatcher" daemon prio=10 tid=0x00007fe8c0084000 nid=0x17c6 runnable [0x0000000000000000]
    java.lang.Thread.State: RUNNABLE
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "Finalizer" daemon prio=10 tid=0x00007fe8c0064800 nid=0x17c5 in Object.wait() [0x00007fe8c5738000]
    java.lang.Thread.State: WAITING (on object monitor)
         at java.lang.Object.wait(Native Method)
@@ -194,10 +194,10 @@ Full thread dump Java HotSpot(TM) 64-Bit Server VM (24.60-b09 mixed mode):
         - locked <0x00000000af205630> (a java.lang.ref.ReferenceQueue$Lock)
         at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:151)
         at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "Reference Handler" daemon prio=10 tid=0x00007fe8c0062800 nid=0x17c4 in Object.wait() [0x00007fe8c5839000]
    java.lang.Thread.State: WAITING (on object monitor)
         at java.lang.Object.wait(Native Method)
@@ -205,17 +205,17 @@ Full thread dump Java HotSpot(TM) 64-Bit Server VM (24.60-b09 mixed mode):
         at java.lang.Object.wait(Object.java:503)
         at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:133)
         - locked <0x00000000af2051b8> (a java.lang.ref.Reference$Lock)
- 
+
    Locked ownable synchronizers:
         - None
- 
+
 "VM Thread" prio=10 tid=0x00007fe8c005e000 nid=0x17c3 runnable 
- 
+
 "VM Periodic Task Thread" prio=10 tid=0x00007fe8c0095800 nid=0x17ca waiting on condition 
- 
+
 JNI global references: 106
- 
- 
+
+
 Found one Java-level deadlock:
 =============================
 "Thread-1":
@@ -224,7 +224,7 @@ Found one Java-level deadlock:
 "Thread-0":
   waiting to lock monitor 0x00007fe8b00062c8 (object 0x00000000af24b258, a java.lang.Object),
   which is held by "Thread-1"
- 
+
 Java stack information for the threads listed above:
 ===================================================
 "Thread-1":
@@ -237,9 +237,24 @@ Java stack information for the threads listed above:
         - waiting to lock <0x00000000af24b258> (a java.lang.Object)
         - locked <0x00000000af24b248> (a java.lang.Object)
         at java.lang.Thread.run(Thread.java:745)
- 
+
 Found 1 deadlock.
 ```
 
+可以看到发生了死锁。
 
+## 如何避免死锁：
+
+在有些情况下死锁是可以避免的。  
+
+
+
+
+#### 加锁顺序 {#ordering}
+
+
+
+当多个线程需要相同的一些锁，但是按照不同的顺序加锁，死锁就很容易发生。
+
+如果能确保所有的线程都是按照相同的顺序获得锁，那么死锁就不会发生。看下面这个例子：
 
