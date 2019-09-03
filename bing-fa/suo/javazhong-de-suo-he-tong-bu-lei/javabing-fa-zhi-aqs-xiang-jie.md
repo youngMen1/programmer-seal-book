@@ -55,10 +55,10 @@ AQS定义两种资源共享方式：Exclusive（独占，只有一个线程能�
 
 ```
 public final void acquire(int arg) {
-2     if (!tryAcquire(arg) &&
-3         acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
-4         selfInterrupt();
-5 }
+     if (!tryAcquire(arg) &&
+         acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+         selfInterrupt();
+ }
 ```
 
 
