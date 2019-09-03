@@ -274,5 +274,9 @@ public final boolean release(int arg) {
 }
 ```
 
+逻辑并不复杂。它调用tryRelease\(\)来释放资源。有一点需要注意的是，**它是根据tryRelease\(\)的返回值来判断该线程是否已经完成释放掉资源了！所以自定义同步器在设计tryRelease\(\)的时候要明确这一点！！**
 
+### 3.2.1 tryRelease\(int\)
+
+　　此方法尝试去释放指定量的资源。下面是tryRelease\(\)的源码：
 
