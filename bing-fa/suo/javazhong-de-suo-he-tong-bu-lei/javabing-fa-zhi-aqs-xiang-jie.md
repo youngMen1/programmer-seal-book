@@ -258,9 +258,25 @@ public final void acquire(int arg) {
 
 至此，acquire\(\)的流程终于算是告一段落了。这也就是ReentrantLock.lock\(\)的流程，不信你去看其lock\(\)源码吧，整个函数就是一条acquire\(1\)！！！
 
-
-
 ## 3.2 release\(int\)
 
- 　　上一小节已经把acquire\(\)说完了，这一小节就来讲讲它的反操作release\(\)吧。此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。这也正是unlock\(\)的语义，当然不仅仅只限于unlock\(\)。下面是release\(\)的源码：
+上一小节已经把acquire\(\)说完了，这一小节就来讲讲它的反操作release\(\)吧。此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。这也正是unlock\(\)的语义，当然不仅仅只限于unlock\(\)。下面是release\(\)的源码：
+
+public final boolean release\(int arg\) {
+
+    if \(tryRelease\(arg\)\) {
+
+        Node h = head;//找到头结点
+
+        if \(h != null && h.waitStatus != 0\)
+
+            unparkSuccessor\(h\);//唤醒等待队列里的下一个线程
+
+        return true;
+
+    }
+
+    return false;
+
+}
 
