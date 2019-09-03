@@ -56,7 +56,7 @@ commit;
 | :--- |
 
 
-|  | name | 创建时间\(事务ID\) | 删除时间\(事务ID\) |
+| id | name | 创建时间\(事务ID\) | 删除时间\(事务ID\) |
 | :--- | :--- | :--- | :--- |
 | 1 | yang | 1 | undefined |
 | 2 | long | 1 | undefined |
