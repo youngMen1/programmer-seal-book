@@ -62,37 +62,67 @@ B用户金额随机分为2份，分给借款人2，1
 **在in里面的列表值mysql是会自动从小到大排序，加锁也是一条条从小到大加的锁**
 
 ```
-以id为主键为例，目前还没有id=22的行
+例如（以下会话id为主键）：
 
 Session1:
 
-select * from t3 where id=22 for update;
+mysql> select * from t3 where id in (8,9) for update;
 
-Empty set (0.00 sec)
++----+--------+------+---------------------+
 
+| id | course | name | ctime               |
 
++----+--------+------+---------------------+
 
-session2:
+|  8 | WA     | f    | 2016-03-02 11:36:30 |
 
-select * from t3 where id=23  for update;
+|  9 | JX     | f    | 2016-03-01 11:36:30 |
 
-Empty set (0.00 sec)
++----+--------+------+---------------------+
+rows in set (0.04 sec)
 
+ 
 
-
-Session1:
-
-insert into t3 values(22,'ac','a',now());
-
-锁等待中……
-
-
+ 
 
 Session2:
 
-insert into t3 values(23,'bc','b',now());
+select * from t3 where id in (10,8,5) for update;
 
-ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
+锁等待中……
+
+其实这个时候id=10这条记录没有被锁住的，但id=5的记录已经被锁住了，锁的等待在id=8的这里。
+
+ 
+
+不信请看
+
+Session3:
+
+mysql> select * from t3 where id=5 for update;
+
+锁等待中
+
+ 
+
+Session4:
+
+mysql> select * from t3 where id=10 for update;
+
++----+--------+------+---------------------+
+
+| id | course | name | ctime               |
+
++----+--------+------+---------------------+
+
+| 10 | JB     | g    | 2016-03-10 11:45:05 |
+
++----+--------+------+---------------------+
+row in set (0.00 sec)
+
+ 
+
+在其它session中id=5是加不了锁的，但是id=10是可以加上锁的。
 ```
 
 **案例2：**
@@ -137,15 +167,9 @@ ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting trans
 
 当对未存在的行进行锁的时候\(即使条件为主键\)，mysql是会锁住一段范围（有gap锁）
 
-
-
-
-
 锁住的范围为：
 
 \(无穷小或小于表中锁住id的最大值，无穷大或大于表中锁住id的最小值\)
-
-
 
 如：如果表中目前有已有的id为（11 ， 12）
 
@@ -155,13 +179,9 @@ ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting trans
 
 那么就锁住（11，30）
 
-
-
 **对于这种死锁的解决办法是：**
 
 **insert into t3\(xx,xx\) on duplicate key update \`xx\`='XX';**
-
-
 
 用mysql特有的语法来解决此问题。因为insert语句对于主键来说，插入的行不管有没有存在，都会只有行锁。
 
