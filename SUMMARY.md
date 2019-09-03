@@ -75,7 +75,7 @@
       * [JAVA中写时复制\(Copy-On-Write\)Map实现](bing-fa/suo/copyonwriterong-qi/javazhong-xie-shi-fu-523628-copy-on-write-map-shi-xian.md)
       * [聊聊并发-Java中的Copy-On-Write容器](bing-fa/suo/copyonwriterong-qi/liao-liao-bing-53d1-java-zhong-de-copy-on-write-rong-qi.md)
     * RingBuffer
-    * 可重入锁 & 不可重入锁
+    * [可重入锁 & 不可重入锁](bing-fa/suo/ke-zhong-ru-suo-and-bu-ke-zhong-ru-suo.md)
 * [操作系统](cao-zuo-xi-tong.md)
   * 计算机原理
 * [设计模式](she-ji-mo-shi.md)
