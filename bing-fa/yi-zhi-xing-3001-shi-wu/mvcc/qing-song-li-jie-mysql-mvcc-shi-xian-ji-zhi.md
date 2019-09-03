@@ -80,8 +80,11 @@ InnoDB会为删除的每一行保存当前系统的版本号\(事务的ID\)作�
 start transaction;
 select * from yang;  //(1)
 select * from yang;  //(2)
-commit; 
+commit;
 ```
 
+#### 假设1 {#假设1}
 
+假设在执行这个事务ID为2的过程中,刚执行到\(1\),这时,有另一个事务ID为3往这个表里插入了一条数据;  
+第三个事务ID为3;
 
