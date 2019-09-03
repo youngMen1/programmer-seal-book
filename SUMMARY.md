@@ -202,6 +202,7 @@
   * [稳定性 & 高可用](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong.md)
     * [系统设计：关于高可用系统的一些技术方案](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xi-tong-she-ji-ff1a-guan-yu-gao-ke-yong-xi-tong-de-yi-xie-ji-zhu-fang-an.md)
     * [关于高可用的系统](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/guan-yu-gao-ke-yong-de-xi-tong.md)
+  * 硬件负载均衡
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
