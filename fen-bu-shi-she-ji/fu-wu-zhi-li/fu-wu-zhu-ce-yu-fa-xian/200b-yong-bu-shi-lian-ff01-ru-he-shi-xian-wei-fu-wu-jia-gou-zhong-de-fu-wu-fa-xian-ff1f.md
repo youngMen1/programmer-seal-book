@@ -74,8 +74,11 @@ Eureka客户端（服务和服务客户端）查询DNS去寻找Eureka服务器�
 
 **Netflix OSS Eureka客户端是这种方式的一个好例子。**Eureka客户端处理服务实例注册和注销的所有问题。Spring Cloud实现包括服务发现在内的多种模式，简化了Eureka的服务实例自动注册。仅仅通过@EnableEurekaClient注释就可以注释Java的配置类
 
-  
-
-
 self-registration模式同样也是优劣并存。**优势之一在于简单**，不需要其它组件。缺点是服务实例和服务注册表相对应，必须要为服务中用到的每种编程语言和框架实现注册代码。
+
+
+
+## **The Third-Party Registration Pattern**
+
+在third-party registration模式中，服务实例不会自己在服务注册表中注册，由另一个系统组件service registrar负责。service registrar通过轮询部署环境或订阅事件去跟踪运行中的实例的变化。当它注意到一个新的可用的服务实例时，就会到注册表中去注册。service registrar也会将停止的服务实例注销，下图展示了这种模式的架构。
 
