@@ -260,7 +260,7 @@
   * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
     * [服务注册与发现](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian.md)
       * [​永不失联！如何实现微服务架构中的服务发现？](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian/200b-yong-bu-shi-lian-ff01-ru-he-shi-xian-wei-fu-wu-jia-gou-zhong-de-fu-wu-fa-xian-ff1f.md)
-      * SpringCloud服务注册中心比较:Consul vs Zookeeper vs Etcd vs Eureka
+      * [SpringCloud服务注册中心比较:Consul vs Zookeeper vs Etcd vs Eureka](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian/springcloudfu-wu-zhu-ce-zhong-xin-bi-8f833a-consul-vs-zookeeper-vs-etcd-vs-eureka.md)
     * 服务路由控制
   * [分布式一致](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi.md)
   * 分布式文件系统
