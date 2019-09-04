@@ -86,3 +86,14 @@ upstream app_group {
 
 自定义 Hash 策略：前面介绍的回话保持策略通过客户端IP计算Hash只，自定义 Hash 策略可以根据用户自己定的主键计算hash值，比如使用 uri 作为 key 计算hash，例如：
 
+```
+upstream app_group {
+          hash $request_uri consistent;
+        server 192.168.56.102;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+```
+
+
+
