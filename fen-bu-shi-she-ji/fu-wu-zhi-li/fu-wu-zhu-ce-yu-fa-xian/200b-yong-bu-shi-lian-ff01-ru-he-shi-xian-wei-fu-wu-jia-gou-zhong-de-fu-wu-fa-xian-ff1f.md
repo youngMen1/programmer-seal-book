@@ -10,11 +10,9 @@
 
 有两种主要的服务发现模式：客户端服务发现（client-side discovery）和服务器端服务发现（server-side discovery）。我们首先来看下客户端服务发现。
 
-![](http://mmbiz.qpic.cn/mmbiz/CiaJxoTn5FwrPtaEibEr6eHvJVuVhviaTic7xdW7Dzu3qaWKxVyLZnicBr2yLeoicuxiapt8TtQ8oKQdbn0iaFNyaygjmg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-**客户端服务发现模式**
 
-![](http://mmbiz.qpic.cn/mmbiz/CiaJxoTn5FwrPtaEibEr6eHvJVuVhviaTic7AYMJNqNJSt27sMmIUib7KUCOib0ltrwVOoeJFDqybygPz08EbU1dwZpw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+## **客户端服务发现模式**
 
 当使用客户端服务发现的时候，客户端负责决定可用的服务实例的网络地址，以及围绕他们的负载均衡。客户端向服务注册表（service registry）发送一个请求，服务注册表是一个可用服务实例的数据库。客户端使用一个负载均衡算法，去选择一个可用的服务实例，来响应这个请求，下图展示了这种模式的架构：
 
