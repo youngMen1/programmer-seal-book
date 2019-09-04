@@ -30,33 +30,15 @@ Netflix OSS提供了一个客户端服务发现的好例子。Netflix Eureka是�
 
 客户端通过负载均衡器向一个服务发送请求，这个负载均衡器会查询服务注册表，并将请求路由到可用的服务实例上。通过客户端的服务发现，服务实例在服务注册表上被注册和注销。
 
-  
-
-
 AWS的ELB（Elastic Load Blancer）就是一个服务器端服务发现路由器。一个ELB通常被用来均衡来自互联网的外部流量，也可以用ELB去均衡流向VPC（Virtual Private Cloud）的流量。一个客户端通过ELB发送请求（HTTP或TCP）时，使用的是DNS，ELB会均衡这些注册的EC2实例或ECS（EC2 Container Service）容器的流量。没有另外的服务注册表，EC2实例和ECS容器也只会在ELB上注册。
-
-  
-
 
 HTTP服务器和类似Nginx、Nginx Plus的负载均衡器也可以被用做服务器端服务发现负载均衡器。例如，Consul Template可以用来动态配置Nginx的反向代理。
 
-  
-
-
 Consul Template定期从存储在Consul服务注册表的数据中，生成任意的配置文件。每当文件变化时，会运行一个shell命令。比如，Consul Template可以生成一个配置反向代理的nginx.conf文件，然后运行一个命令告诉Nginx去重新加载配置。还有一个更复杂的实现，通过HTTP API或DNS去动态地重新配置Nginx Plus。
-
-  
-
 
 有些部署环境，比如Kubernetes和Marathon会在集群中的每个host上运行一个代理。这个代理承担了服务器端服务发现负载均衡器的角色。为了向一个服务发送一个请求，一个客户端使用host的IP地址和服务分配的端口，通过代理路由这个请求。这个代理会直接将请求发送到集群上可用的服务实例。
 
-  
-
-
 服务器端服务发现模式也是优势和缺陷并存。最大的好处在于服务发现的细节被从客户端中抽象出来，客户端只需要向负载均衡器发送请求，不需要为服务客户端使用的每一种语言和框架，实现服务发现逻辑；另外，这种模式也有一些问题，除非这个负载均衡器是由部署环境提供的，又是另一个高需要启动和管理的可用的系统组件。
-
-  
-
 
 ![](http://mmbiz.qpic.cn/mmbiz/CiaJxoTn5FwrPtaEibEr6eHvJVuVhviaTic7xdW7Dzu3qaWKxVyLZnicBr2yLeoicuxiapt8TtQ8oKQdbn0iaFNyaygjmg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -66,28 +48,13 @@ Consul Template定期从存储在Consul服务注册表的数据中，生成任�
 
 服务注册表是服务发现的关键部分，是一个包含了服务实例的网络地址的数据库，必须是高可用和最新的。客户端可以缓存从服务注册表处获得的网络地址。但是，这些信息最终会失效，客户端会找不到服务实例。所以，服务注册表由一个服务器集群组成，通过应用协议来保持一致性。
 
-  
-
-
 正如上面提到的，Netflix Eureka是一个服务注册表的好例子。它提供了一个REST API用来注册和查询服务实例。一个服务实例通过POST请求来注册自己的网络位置，每隔30秒要通过一个PUT请求重新注册。注册表中的一个条目会因为一个HTTP DELETE请求或实例注册超时而被删除，客户端通过一个HTTP GET请求来检索注册的服务实例。
 
-  
-
-
-Netflix通过在每个EC2的可用区中，运行一个或多个Eureka服务器实现高可用。每个运行在EC2实例上的Eureka服务器都有一个弹性的IP地址。DNS TEXT records用来存储Eureka集群配置，实际上是从可用区到Eureka服务器网络地址的列表的映射。当一个Eureka服务器启动时，会向DNS发送请求，检索Eureka集群的配置，定位节点，并为自己分配一个未占用的弹性IP地址。
-
-  
-
+Netflix通过在每个EC2的可用区中，运行一个或多个Eureka服务器实现高可用。每个运行在EC2实例上的Eureka服务器都有一个弹性的IP地址。DNS TEXT records用来存储Eureka集群配置，实际上是从可用区到Eureka服务器网络地址的列表的映射。当一个Eureka服务器启动时，会向DNS发送请求，检索Eureka集群的配置，定位节点，并为自己分配一个未占用的弹性IP地址。
 
 Eureka客户端（服务和服务客户端）查询DNS去寻找Eureka服务器的网络地址。客户端更想使用这个可用区内的Eureka服务器，如果没有可用的Eureka服务器，客户端会用另一个可用区内的Eureka服务器。
 
-  
-
-
 其它服务注册的例子包括：
-
-  
-
 
 * Etcd：一个高可用，分布式，一致的key-value存储，用来共享配置和服务发现。Kubernetes和Cloudfoundry都使用了etcd；
 
@@ -95,18 +62,9 @@ Eureka客户端（服务和服务客户端）查询DNS去寻找Eureka服务器�
 
 * Apache Zookeeper：一个常用的，为分布式应用设计的高可用协调服务，最开始Zookeeper是Hadoop的子项目，现在已经顶级项目了。
 
-  
-
-
 一些系统，比如Kubernetes，Marathon和AWS没有一个明确的服务注册组件，这项功能是内置在基础设置中的。
 
-  
-
-
 下面我们来看看服务实例如何在注册表中注册。
-
-  
-
 
 ![](http://mmbiz.qpic.cn/mmbiz/CiaJxoTn5FwrPtaEibEr6eHvJVuVhviaTic7xdW7Dzu3qaWKxVyLZnicBr2yLeoicuxiapt8TtQ8oKQdbn0iaFNyaygjmg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -116,14 +74,13 @@ Eureka客户端（服务和服务客户端）查询DNS去寻找Eureka服务器�
 
 前面提到了，服务实例必须要从注册表中注册和注销，有很多种方式来处理注册和注销的过程。一个选择是服务实例自己注册，即self-registration模式。另一种选择是其它的系统组件管理服务实例的注册，即第third-party registration模式。
 
-  
-
-
 ![](http://mmbiz.qpic.cn/mmbiz/CiaJxoTn5FwrPtaEibEr6eHvJVuVhviaTic7xdW7Dzu3qaWKxVyLZnicBr2yLeoicuxiapt8TtQ8oKQdbn0iaFNyaygjmg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 **The Self-Registration Pattern**
 
 ![](http://mmbiz.qpic.cn/mmbiz/CiaJxoTn5FwrPtaEibEr6eHvJVuVhviaTic7AYMJNqNJSt27sMmIUib7KUCOib0ltrwVOoeJFDqybygPz08EbU1dwZpw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-在self-registration模式中，服务实例负责从服务注册表中注册和注销。如果需要的话，一个服务实例发送心跳请求防止注册过期。下图展示了这种模式的架构：644.webp
+在self-registration模式中，服务实例负责从服务注册表中注册和注销。如果需要的话，一个服务实例发送心跳请求防止注册过期。下图展示了这种模式的架构：
+
+644.webp
 
