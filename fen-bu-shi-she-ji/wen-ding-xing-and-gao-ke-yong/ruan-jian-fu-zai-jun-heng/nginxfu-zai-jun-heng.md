@@ -45,5 +45,14 @@ Nginx 自带多种转发策略：
 
 * 最少连接（Least-connected）策略，在该策略下 Nginx 会尝试避繁忙的机器，将请转到有减少连接较少的机器上，该策略可以环节呢后端服务器负载冷热不均的问题，使用`least_conn`配置该策略，例如：
 
+```
+upstream app_group {
+          least_conn;
+        server 192.168.56.102;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+```
+
 
 
