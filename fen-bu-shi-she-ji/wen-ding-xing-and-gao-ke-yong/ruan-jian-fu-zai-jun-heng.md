@@ -1,6 +1,6 @@
 ### 软件负载均衡
 
-* [《几种负载均衡算法》](https://www.cnblogs.com/tianzhiliang/articles/2317808.html)轮寻、权重、负载、最少连接、QoS
+* [《几种负载均衡算法》](https://www.cnblogs.com/tianzhiliang/articles/2317808.html)轮询、权重、负载、最少连接、QoS
 
 * [《DNS负载均衡》](https://coderxing.gitbooks.io/architecture-evolution/di-san-pian-ff1a-bu-luo/611-dns-fang-shi.html)
 
