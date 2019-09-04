@@ -92,11 +92,13 @@ public static void main(String[] args) throws Exception {
     System.out.println("Enter mutex");
     //完成业务流程, 释放锁
     mutex.release();
-    
+
     //关闭客户端
     client.close();
 }
 ```
 
+可以看到关键的核心操作就只有mutex.acquire\(\)和mutex.release\(\)，简直太方便了！
 
+下面来分析下获取锁的源码实现。acquire的方法如下：
 
