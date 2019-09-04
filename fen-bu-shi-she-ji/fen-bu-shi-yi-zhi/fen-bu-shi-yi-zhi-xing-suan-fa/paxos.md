@@ -218,11 +218,17 @@ FastLeaderElection算法通过异步的通信方式来收集其它节点的选�
 
 20130902214757203.png
 
-### 2.4.3 AuthFastLeaderElection选举算法
+### 2.4.3 AuthFastLeaderElection选举算法
 
 AuthFastLeaderElection算法同FastLeaderElection算法基本一致，只是在消息中加入了认证信息，该算法在最新的Zookeeper中也建议弃用。
 
-## 2.5 Zookeeper的API
+## 2.5 Zookeeper的API
 
 微信截图\_20190904161008.png
+
+## 2.6 Zookeeper中的请求处理流程
+
+### 2.6.1 Follower节点处理用户的读写请求
+
+
 
