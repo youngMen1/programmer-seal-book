@@ -272,7 +272,8 @@
       * [jedisLock—redis分布式锁实现](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/jedislockredisfen-bu-shi-suo-shi-xian.md)
       * [Memcached 和 Redis 分布式锁方案](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/memcached-he-redis-fen-bu-shi-suo-fang-an.md)
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
-      * PAXOS
+      * [PAXOS](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos.md)
+        * Paxos算法与Zookeeper分析
       * Zab
       * Raft
       * Gossip
