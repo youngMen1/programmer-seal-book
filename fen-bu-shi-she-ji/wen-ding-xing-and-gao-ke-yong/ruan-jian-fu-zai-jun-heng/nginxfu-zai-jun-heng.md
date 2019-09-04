@@ -152,3 +152,32 @@ Server 指令常用的参数如下：
 
 ​ 在 Nginx 商用版本（Nginx Plus）中，可以定期主动发送健康检查请求，通过后端应用程序的响应结果来判断服务是否可用，开启主动健康检查需要在 location 块中包含 health\_check 指令，同时还用使用 zone 指定定义共享内存区（在Nginx多个worker进程中共享），用来记录中间状态，例如：
 
+```
+http {
+    upstream app_group {
+        zone backend 64k;
+        server 192.168.56.102;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+
+    server {
+        listen 80;
+        server_name  www.example.com;
+
+        location / {
+              health_check interval=5s uri=/test.od match=statusok;
+            proxy_pass http://app_group;
+        }
+        match statusok {
+            # Used for /test.php health check
+            status 200;
+            header Content-Type = text/html;
+            body ~ "Server[0-9]+ is alive";
+        }
+    }
+}
+```
+
+
+
