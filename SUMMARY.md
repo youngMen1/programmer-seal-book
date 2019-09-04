@@ -270,7 +270,7 @@
       * [分布式锁的几种实现方式](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/fen-bu-shi-suo-de-ji-zhong-shi-xian-fang-shi.md)
       * [基于Zookeeper的分布式锁](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/ji-yu-zookeeper-de-fen-bu-shi-suo.md)
       * [jedisLock—redis分布式锁实现](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/jedislockredisfen-bu-shi-suo-shi-xian.md)
-      * Memcached 和 Redis 分布式锁方案
+      * [Memcached 和 Redis 分布式锁方案](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/memcached-he-redis-fen-bu-shi-suo-fang-an.md)
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * PAXOS
       * Zab
