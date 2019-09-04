@@ -126,7 +126,9 @@ Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要
 
 \(4\). Leader/Follower/Observer一个QuorumPeer节点应该完成的核心职责;
 
-## 2.3 QuorumPeer工作流程
+## 2.3 QuorumPeer工作流程
+
+20130902214130031.png
 
 
 
