@@ -286,7 +286,9 @@ vrrp_instance VI_1 {
 
 （2）Web服务器发生故障时：
 
-　　①A发生故障后，只从B获取服务；
+①A发生故障后，只从B获取服务；
 
-　　这里模拟192.168.80.102发生故障，暂停其http服务：service httpd stop
+这里模拟192.168.80.102发生故障，暂停其http服务：service httpd stop
+
+100004250583535.jpg
 
