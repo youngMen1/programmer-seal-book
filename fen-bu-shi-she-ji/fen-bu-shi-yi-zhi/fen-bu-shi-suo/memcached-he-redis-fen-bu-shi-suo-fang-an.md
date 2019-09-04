@@ -4,15 +4,37 @@
 
 Memcached 和 Redis 是常用的分布式缓存构建方案，下面列举下基于Memcached 和 Redis 分布式锁的实现方法。
 
-**Memcached 分布式锁**
+**Memcached 分布式锁**
 
-**Memcached** 可以使用 **add** 命令，该命令只有KEY**不存在**时，才进行添加，或者不会处理。Memcached 所有命令都是原子性的，并发下add 同一个KEY ，只会一个会成功。
+**Memcached** 可以使用 **add** 命令，该命令只有KEY**不存在**时，才进行添加，或者不会处理。Memcached 所有命令都是原子性的，并发下add 同一个KEY ，只会一个会成功。
 
 利用这个原理，可以先定义一个 锁 LockKEY ，add 成功的认为是得到锁。并且设置\[**过期超时**\] 时间，保证**宕机**后，也不会**死锁**。
 
 在具体操作完后，判断是否此次操作已超时。如果超时则不删除锁，如果不超时则删除锁。
 
 伪代码：
+
+```
+ 1          if (mc.Add("LockKey", "Value", expiredtime))
+ 2             {
+ 3                 //得到锁
+ 4                 try
+ 5                 {
+ 6                     //do business  function
+ 7 
+ 8                     //检查超时
+ 9                     if (!CheckedTimeOut())
+10                     {
+11                         mc.Delete("LockKey");
+12                     }
+13                 }
+14                 catch (Exception e)
+15                 {
+16                     mc.Delete("LockKey");
+17                 }
+18                
+19             }
+```
 
 
 
