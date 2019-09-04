@@ -266,7 +266,8 @@
   * [分布式一致](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi.md)
     * CAP 与 BASE 理论
     * 分布式锁
-    * 分布式一致性算法
+    * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
+      * PAXOS
   * 分布式文件系统
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
     * 全局唯一ID
