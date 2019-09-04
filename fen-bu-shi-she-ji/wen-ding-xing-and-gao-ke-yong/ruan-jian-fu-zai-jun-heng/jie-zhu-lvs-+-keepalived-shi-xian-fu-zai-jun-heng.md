@@ -255,9 +255,28 @@ service keepalived start
 
 ## 3.5 配置从负载服务器
 
-　　从负载服务器与主负载服务器大致相同，只是在keepalived的配置文件中需要改以下两处：
+从负载服务器与主负载服务器大致相同，只是在keepalived的配置文件中需要改以下两处：
 
-　　（1）将state由MASTER改为BACKUP
+（1）将state由MASTER改为BACKUP
 
-　　（2）将priority由100改为99
+（2）将priority由100改为99
+
+```
+vrrp_instance VI_1 {  
+    state BACKUP # 这里改为BACKUP
+    interface eth1  
+    virtual_router_id 51  
+    priority 99 # 这里改为99，master优先级是100
+    advert_int 1  
+    authentication {  
+        auth_type PASS  
+        auth_pass 1111  
+    }  
+    virtual_ipaddress {  
+        192.168.80.200  
+    }  
+}
+```
+
+
 
