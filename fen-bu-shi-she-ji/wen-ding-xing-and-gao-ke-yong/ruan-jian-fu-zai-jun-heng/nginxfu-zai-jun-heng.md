@@ -75,3 +75,14 @@ upstream app_group {
 
 配置该指令，例如：
 
+```
+ upstream app_group {
+          ip_hash;
+        server 192.168.56.102;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+```
+
+
+
