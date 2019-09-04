@@ -231,7 +231,7 @@
       * [软/硬件负载均衡产品 你知多少？](fen-bu-shi-she-ji/ying-jian-fu-zai-jun-heng/8f6f-ying-jian-fu-zai-jun-heng-chan-pin-ni-zhi-duo-shao-ff1f.md)
     * [软件负载均衡](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng.md)
       * [几种负载均衡算法](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/ji-zhong-fu-zai-jun-heng-suan-fa.md)
-      * DNS负载均衡
+      * [DNS负载均衡](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/dnsfu-zai-jun-heng.md)
     * [限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu.md)
       * [谈谈高并发系统的限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu/tan-tan-gao-bing-fa-xi-tong-de-xian-liu.md)
     * [应用层容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai.md)
