@@ -132,7 +132,6 @@
   * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
-  * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
