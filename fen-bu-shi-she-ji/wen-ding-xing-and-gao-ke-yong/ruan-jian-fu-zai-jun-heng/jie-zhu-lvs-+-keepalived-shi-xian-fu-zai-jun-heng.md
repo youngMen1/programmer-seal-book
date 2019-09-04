@@ -184,5 +184,13 @@ exit 0
 yum install -y keepalived
 ```
 
+在CentOS下，通过yum install命令可以很方便地安装软件包，但是前提是你的虚拟机要联网；
 
+　　（2）编辑keepalived.conf配置文件
+
+　　①进入keepalived.conf所在目录：cd /etc/keepalived
+
+　　②首先清除掉keepalived原有配置：&gt; keepalived.conf
+
+　　③重新编辑keepalived配置文件：vi keepalived.conf
 
