@@ -103,7 +103,8 @@
   * 持续集成\(CI/CD\)
   * 自动化运维
   * 测试
-  * 虚拟化
+  * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
+    * KVM
   * 容器技术
   * 云技术
   * DevOps
