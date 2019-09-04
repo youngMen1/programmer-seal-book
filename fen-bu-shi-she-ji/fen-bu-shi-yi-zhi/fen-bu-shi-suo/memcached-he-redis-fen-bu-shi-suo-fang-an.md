@@ -36,5 +36,11 @@ Memcached 和 Redis 是常用的分布式缓存构建方案，下面列举下基
 19             }
 ```
 
+**Redis 分布式锁**
 
+**Redis  **没有add 命令，但有**SETNX**（SET if Not eXists）若给定的 key 已经存在，则 SETNX不做任何动作。设置成功，返回 1 。设置失败，返回 0 。
+
+SETNX 命令不能设置过期时间，需要再使用 EXPIRE 命令设置过期时间。
+
+伪代码：
 
