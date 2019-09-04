@@ -43,5 +43,5 @@
       UNIQUE KEY `uidx_method_name` (`method_name `) USING BTREE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='锁定中的方法';
 
-
+当我们想要锁住某个方法时，执行以下SQL：
 
