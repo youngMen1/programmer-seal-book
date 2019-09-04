@@ -259,7 +259,7 @@
       * MySql分表和表分区详解
   * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
     * [服务注册与发现](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian.md)
-      * ​永不失联！如何实现微服务架构中的服务发现？
+      * [​永不失联！如何实现微服务架构中的服务发现？](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian/200b-yong-bu-shi-lian-ff01-ru-he-shi-xian-wei-fu-wu-jia-gou-zhong-de-fu-wu-fa-xian-ff1f.md)
     * 服务路由控制
   * [分布式一致](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi.md)
   * 分布式文件系统
