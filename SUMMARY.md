@@ -264,7 +264,8 @@
     * [服务路由控制](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-lu-you-kong-zhi.md)
       * [分布式服务框架学习笔记4 服务路由](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-lu-you-kong-zhi/fen-bu-shi-fu-wu-kuang-jia-xue-xi-bi-ji-4-fu-wu-lu-you.md)
   * [分布式一致](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi.md)
-    * CAP 与 BASE 理论
+    * [CAP 与 BASE 理论](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/cap-yu-base-li-lun.md)
+      * 从分布式一致性谈到CAP理论、BASE理论
     * [分布式锁](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo.md)
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * PAXOS
