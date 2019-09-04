@@ -102,3 +102,20 @@ public static void main(String[] args) throws Exception {
 
 下面来分析下获取锁的源码实现。acquire的方法如下：
 
+```
+/*
+ * 获取锁，当锁被占用时会阻塞等待，这个操作支持同线程的可重入（也就是重复获取锁），acquire的次数需要与release的次数相同。
+ * @throws Exception ZK errors, connection interruptions
+ */
+@Override
+public void acquire() throws Exception
+{
+    if ( !internalLock(-1, null) )
+    {
+        throw new IOException("Lost connection while trying to acquire lock: " + basePath);
+    }
+}
+```
+
+
+
