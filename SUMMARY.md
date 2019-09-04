@@ -138,6 +138,7 @@
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
   * [RPC](zhong-jian-jian/rpc.md)
     * Dubbo
+    * Thrift
   * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
