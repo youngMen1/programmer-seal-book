@@ -98,8 +98,8 @@
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
-  * APM
-  * 统计分析
+  * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
+  * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
   * 持续集成\(CI/CD\)
   * 自动化运维
   * 测试
