@@ -141,6 +141,7 @@
     * Thrift
     * gRPC
   * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
+    * Sharding Jdbc
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
 * [网络](wang-luo.md)
