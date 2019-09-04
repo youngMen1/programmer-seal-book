@@ -226,9 +226,11 @@ AuthFastLeaderElection算法同FastLeaderElection算法基本一致，只是在�
 
 微信截图\_20190904161008.png
 
-## 2.6 Zookeeper中的请求处理流程
+## 2.6 Zookeeper中的请求处理流程
 
-### 2.6.1 Follower节点处理用户的读写请求
+### 2.6.1 Follower节点处理用户的读写请求
+
+20130902214928640.png
 
 
 
