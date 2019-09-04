@@ -111,3 +111,14 @@ upstream app_group {
 
 ​ 除了按照IP地址指定主机意外，server 指令支持多种配置形式，可以按照域名进行配置，也可以按照unix 套接字指定，也可以指定端口号，例如：
 
+```
+ upstream app_group {
+        server vm1.example.com
+        server 192.168.56.103:80;
+        server 192.168.56.104:8080;
+          server unix:/tmp/backend.socks;
+    }
+```
+
+
+
