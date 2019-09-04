@@ -249,3 +249,9 @@ virtual_server 192.168.80.200 80 {
 
 （3）开启keepalived服务
 
+```
+service keepalived start
+```
+
+
+
