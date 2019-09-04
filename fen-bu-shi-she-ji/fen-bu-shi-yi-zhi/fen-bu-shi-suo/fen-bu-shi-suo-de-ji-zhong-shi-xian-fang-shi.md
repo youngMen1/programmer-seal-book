@@ -53,3 +53,9 @@ insert into methodLock(method_name,desc) values (‘method_name’,‘desc’)
 
 当方法执行完毕之后，想要释放锁的话，需要执行以下Sql:
 
+```
+delete from methodLock where method_name ='method_name'
+```
+
+
+
