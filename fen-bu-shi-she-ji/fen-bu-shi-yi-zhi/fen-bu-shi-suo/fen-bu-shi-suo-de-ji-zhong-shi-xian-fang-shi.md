@@ -84,3 +84,23 @@ delete from methodLock where method_name ='method_name'
 
 我们还用刚刚创建的那张数据库表。可以通过数据库的排他锁来实现分布式锁。 基于MySql的InnoDB引擎，可以使用以下方法来实现加锁操作：
 
+```
+public boolean lock(){
+    connection.setAutoCommit(false)
+    while(true){
+        try{
+            result = select * from methodLock where method_name=xxx for update;
+            if(result==null){
+                return true;
+            }
+        }catch(Exception e){
+
+        }
+        sleep(1000);
+    }
+    return false;
+}
+```
+
+
+
