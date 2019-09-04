@@ -128,8 +128,7 @@
     * [单机定时调度](zhong-jian-jian/ding-shi-diao-du/dan-ji-ding-shi-diao-du.md)
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
   * [RPC](zhong-jian-jian/rpc.md)
-  * 数据库中间件
-  * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
+  * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
   * [配置中心](zhong-jian-jian/pei-zhi-zhong-xin.md)
