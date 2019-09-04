@@ -259,6 +259,7 @@
       * MySql分表和表分区详解
   * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
     * 服务注册与发现
+    * 服务路由控制
   * 分布式一致
   * 分布式文件系统
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
