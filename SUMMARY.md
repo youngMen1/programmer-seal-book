@@ -107,7 +107,7 @@
     * KVM
   * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
   * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
-  * DevOps
+  * [DevOps](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/devops.md)
   * [文档管理](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/wen-dang-guan-li.md)
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
