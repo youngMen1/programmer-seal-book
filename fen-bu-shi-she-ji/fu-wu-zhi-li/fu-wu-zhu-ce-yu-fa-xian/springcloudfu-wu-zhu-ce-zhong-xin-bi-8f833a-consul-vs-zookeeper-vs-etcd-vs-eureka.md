@@ -2,11 +2,7 @@
 
 这里就平时经常用到的服务发现的产品进行下特性的对比，首先看下结论:
 
-| Feature |
-| :--- |
-
-
-| 4 | Consul | zookeeper | etcd | euerka |
+| Feature | Consul | zookeeper | etcd | euerka |
 | :--- | :--- | :--- | :--- | :--- |
 | 服务健康检查 | 服务状态，内存，硬盘等 | \(弱\)长连接，keepalive | 连接心跳 | 可配支持 |
 | 多数据中心 | 支持 | — | — | — |
