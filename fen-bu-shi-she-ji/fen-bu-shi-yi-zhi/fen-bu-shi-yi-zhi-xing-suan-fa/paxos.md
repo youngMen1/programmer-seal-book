@@ -230,7 +230,7 @@ AuthFastLeaderElection算法同FastLeaderElection算法基本一致，只是在�
 
 ### 2.6.1 Follower节点处理用户的读写请求
 
-20130902214928640.png
+![img](/static/image/20130902214928640.png)
 
 ### 2.6.2 Leader节点处理写请求
 
