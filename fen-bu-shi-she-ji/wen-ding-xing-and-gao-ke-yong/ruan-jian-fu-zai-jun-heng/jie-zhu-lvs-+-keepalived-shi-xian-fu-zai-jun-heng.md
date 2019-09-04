@@ -170,5 +170,13 @@ esac
 exit 0
 ```
 
+　这里我们设置虚拟IP为：192.168.80.200
 
+　　③保存脚本文件后更改该文件权限：chmod 755 realserver
+
+　　④开启realserver服务：service realserver start
+
+## 3.4 配置主负载服务器
+
+　　（1）安装Keepalived相关包
 
