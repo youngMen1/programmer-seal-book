@@ -236,5 +236,10 @@ AuthFastLeaderElection算法同FastLeaderElection算法基本一致，只是在�
 
 20130902214958015.png
 
+值得注意的是， Follower/Leader上的读操作时并行的，读写操作是串行的，当CommitRequestProcessor处理一个写请求时，会阻塞之后所有的读写请求。
 
+  
+
+
+通信不可靠: 消息延迟、消息重复传递、消息丢失
 
