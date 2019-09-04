@@ -26,7 +26,7 @@ Netflix OSS提供了一个客户端服务发现的好例子。Netflix Eureka是�
 
 下图展示了这种模式的架构
 
-642.webp
+![img](/static/image/642.webp)
 
 客户端通过负载均衡器向一个服务发送请求，这个负载均衡器会查询服务注册表，并将请求路由到可用的服务实例上。通过客户端的服务发现，服务实例在服务注册表上被注册和注销。
 
@@ -70,7 +70,7 @@ Eureka客户端（服务和服务客户端）查询DNS去寻找Eureka服务器�
 
 在self-registration模式中，服务实例负责从服务注册表中注册和注销。如果需要的话，一个服务实例发送心跳请求防止注册过期。下图展示了这种模式的架构：
 
-644.webp
+![img](/static/image/644.webp)
 
 **Netflix OSS Eureka客户端是这种方式的一个好例子。**Eureka客户端处理服务实例注册和注销的所有问题。Spring Cloud实现包括服务发现在内的多种模式，简化了Eureka的服务实例自动注册。仅仅通过@EnableEurekaClient注释就可以注释Java的配置类
 
@@ -80,7 +80,7 @@ self-registration模式同样也是优劣并存。**优势之一在于简单**�
 
 在third-party registration模式中，服务实例不会自己在服务注册表中注册，由另一个系统组件service registrar负责。service registrar通过轮询部署环境或订阅事件去跟踪运行中的实例的变化。当它注意到一个新的可用的服务实例时，就会到注册表中去注册。service registrar也会将停止的服务实例注销，下图展示了这种模式的架构。
 
-645.webp
+![img](/static/image/645.webp)
 
 **service registrar的一个例子是开源的Registrator项目。**它会自动注册和注销像Docker容器一样部署的服务。Registrator支持etcd和Consul等服务注册。
 
