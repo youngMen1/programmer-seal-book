@@ -134,3 +134,9 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 092331330897815.jpg
 
+（3）编辑realserver脚本文件
+
+　　①进入指定文件夹：cd /etc/init.d/
+
+　　②编辑脚本文件：vim realserver
+
