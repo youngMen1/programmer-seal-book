@@ -49,5 +49,7 @@
 insert into methodLock(method_name,desc) values (‘method_name’,‘desc’)
 ```
 
+因为我们对`method_name`做了唯一性约束，这里如果有多个请求同时提交到数据库的话，数据库会保证只有一个操作可以成功，那么我们就可以认为操作成功的那个线程获得了该方法的锁，可以执行方法体内容。
 
+当方法执行完毕之后，想要释放锁的话，需要执行以下Sql:
 
