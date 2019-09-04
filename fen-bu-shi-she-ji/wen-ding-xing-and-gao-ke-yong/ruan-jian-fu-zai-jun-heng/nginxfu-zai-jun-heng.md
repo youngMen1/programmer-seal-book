@@ -4,3 +4,24 @@ Nginx 以其优异的性能，不仅作为 web 服务器使用，也常被作为
 
 Nginx 负载均衡的基本配置如下：
 
+```
+http {
+    upstream app_group {
+        server 192.168.56.102;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+
+    server {
+        listen 80;
+        server_name  www.example.com;
+
+        location / {
+            proxy_pass http://app_group;
+        }
+    }
+}
+```
+
+
+
