@@ -68,3 +68,13 @@ z2eU3eJ.png!web
 
 我们只需要引入下面这个包（基于maven）：
 
+```
+<dependency>
+    <groupId>org.apache.curator</groupId>
+    <artifactId>curator-recipes</artifactId>
+    <version>4.0.0</version>
+</dependency>
+```
+
+
+
