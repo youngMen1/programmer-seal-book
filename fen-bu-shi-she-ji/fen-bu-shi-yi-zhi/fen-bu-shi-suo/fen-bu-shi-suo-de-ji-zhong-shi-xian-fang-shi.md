@@ -69,5 +69,5 @@ delete from methodLock where method_name ='method_name'
 4、这把锁是非重入的，同一个线程在没有释放锁之前无法再次获得该锁。因为数据中数据已经存在了。
 ```
 
-
+当然，我们也可以有其他方式解决上面的问题。
 
