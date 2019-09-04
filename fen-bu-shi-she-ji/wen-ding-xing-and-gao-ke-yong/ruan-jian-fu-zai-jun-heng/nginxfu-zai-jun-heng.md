@@ -101,5 +101,13 @@ upstream app_group {
 
 * 基于权重策略：Nginx 可以为不同的主机配置不同的权重，按照权重比例转发流量，比如下面的配置会按照 3:1:1 的比例分配流量：
 
+```
+ upstream app_group {
+        server 192.168.56.102 weight=3;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+```
+
 
 
