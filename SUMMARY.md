@@ -265,10 +265,11 @@
       * [分布式服务框架学习笔记4 服务路由](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-lu-you-kong-zhi/fen-bu-shi-fu-wu-kuang-jia-xue-xi-bi-ji-4-fu-wu-lu-you.md)
   * [分布式一致](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi.md)
     * CAP 与 BASE 理论
-    * 分布式锁
+    * [分布式锁](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo.md)
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * PAXOS
       * Zab
+      * Raft
   * 分布式文件系统
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
     * 全局唯一ID
