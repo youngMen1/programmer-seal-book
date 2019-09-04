@@ -45,3 +45,9 @@
 
 当我们想要锁住某个方法时，执行以下SQL：
 
+```
+insert into methodLock(method_name,desc) values (‘method_name’,‘desc’)
+```
+
+
+
