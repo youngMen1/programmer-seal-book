@@ -268,6 +268,7 @@
       * [从分布式一致性谈到CAP理论、BASE理论](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/cap-yu-base-li-lun/cong-fen-bu-shi-yi-zhi-xing-tan-dao-cap-li-lun-3001-base-li-lun.md)
     * [分布式锁](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo.md)
       * 分布式锁的几种实现方式
+      * 基于Zookeeper的分布式锁
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * PAXOS
       * Zab
