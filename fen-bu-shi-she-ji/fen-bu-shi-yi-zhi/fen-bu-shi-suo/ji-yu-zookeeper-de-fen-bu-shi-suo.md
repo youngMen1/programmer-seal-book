@@ -199,3 +199,62 @@ String attemptLock(long time, TimeUnit unit, byte[] lockNodeBytes) throws Except
 
 看下internalLockLoop是怎么判断锁以及阻塞等待的，这里删除了一些无关代码，只保留主流程：
 
+```
+//自旋直至获得锁
+while ( (client.getState() == CuratorFrameworkState.STARTED) && !haveTheLock )
+{
+    //获取所有的子节点列表，并且按序号从小到大排序
+    List<String>        children = getSortedChildren();
+    
+    //根据序号判断当前子节点是否为最小子节点
+    String              sequenceNodeName = ourPath.substring(basePath.length() + 1); // +1 to include the slash
+    PredicateResults    predicateResults = driver.getsTheLock(client, children, sequenceNodeName, maxLeases);
+    if ( predicateResults.getsTheLock() )
+    {
+        //如果为最小子节点则认为获得锁
+        haveTheLock = true;
+    }
+    else
+    {
+        //否则获取前一个子节点
+        String  previousSequencePath = basePath + "/" + predicateResults.getPathToWatch();
+
+        //这里使用对象监视器做线程同步，当获取不到锁时监听前一个子节点删除消息并且进行wait()，当前一个子节点删除（也就是锁释放）时，回调会通过notifyAll唤醒此线程，此线程继续自旋判断是否获得锁
+        synchronized(this)
+        {
+            try 
+            {
+                //这里使用getData()接口而不是checkExists()是因为，如果前一个子节点已经被删除了那么会抛出异常而且不会设置事件监听器，而checkExists虽然也可以获取到节点是否存在的信息但是同时设置了监听器，这个监听器其实永远不会触发，对于zookeeper来说属于资源泄露
+                client.getData().usingWatcher(watcher).forPath(previousSequencePath);
+
+                //如果设置了阻塞等待的时间
+                if ( millisToWait != null )
+                {
+                    millisToWait -= (System.currentTimeMillis() - startMillis);
+                    startMillis = System.currentTimeMillis();
+                    if ( millisToWait <= 0 )
+                    {
+                        doDelete = true;    // 等待时间到达，删除对应的子节点
+                        break;
+                    }
+                    
+                    //等待相应的时间
+                    wait(millisToWait);
+                }
+                else
+                {
+                   //永远等待
+                    wait();
+                }
+            }
+            catch ( KeeperException.NoNodeException e ) 
+            {
+                //上面使用getData来设置监听器时，如果前一个子节点已经被删除那么会抛出NoNodeException，只需要自旋一次即可，无需额外处理
+            }
+        }
+    }
+}
+```
+
+
+
