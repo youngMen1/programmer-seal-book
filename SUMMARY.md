@@ -102,6 +102,7 @@
   * 统计分析
   * 持续集成\(CI/CD\)
   * 自动化运维
+  * 测试
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
