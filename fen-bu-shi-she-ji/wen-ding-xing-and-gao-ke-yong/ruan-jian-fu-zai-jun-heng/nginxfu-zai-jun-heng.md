@@ -144,8 +144,6 @@ Server 指令常用的参数如下：
 
   ​
 
-  ​
-
 ​ 社区版的 Nginx 靠 max\_fails 和 fail\_timeout 进行监控检查。Nginx 的商用版提供更加强大的监控检查机制。
 
 主动健康检查:
