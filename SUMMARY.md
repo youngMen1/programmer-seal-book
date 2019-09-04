@@ -233,6 +233,7 @@
       * [几种负载均衡算法](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/ji-zhong-fu-zai-jun-heng-suan-fa.md)
       * [DNS负载均衡](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/dnsfu-zai-jun-heng.md)
       * [Nginx负载均衡](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ruan-jian-fu-zai-jun-heng/nginxfu-zai-jun-heng.md)
+      * 借助LVS+Keepalived实现负载均衡
     * [限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu.md)
       * [谈谈高并发系统的限流](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xian-liu/tan-tan-gao-bing-fa-xi-tong-de-xian-liu.md)
     * [应用层容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai.md)
