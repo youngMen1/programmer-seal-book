@@ -110,11 +110,11 @@ Leader将用户的请求转化为对应的paxos实例，当然，它可以并发
 
 \(3\). Observer 直接为客户端服务但并不参与提案的投票，同时也与Leader进行数据交换\(同步\);
 
-20130902213637765.png
+![img](/static/image/20130902213637765.png)
 
 ## 2.2 QuorumPeer的基本设计
 
-20130902213801484.png
+![img](/static/image/20130902213801484.png)
 
 Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要包括四个组件：客户端请求接收器\(ServerCnxnFactory\)、数据引擎\(ZKDatabase\)、选举器\(Election\)、核心功能组件\(Leader/Follower/Observer\)。其中：
 
@@ -128,11 +128,11 @@ Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要
 
 ## 2.3 QuorumPeer工作流程
 
-20130902214130031.png
+![img](/static/image/20130902214130031.png)
 
 ### 2.3.1 Leader职责
 
-20130902214225640.png
+![img](/static/image/20130902214225640.png)
 
 Follower
 
@@ -152,7 +152,7 @@ Follower
 
 ### 2.3.2 Follower职责
 
-20130902214457125.png
+![img](/static/image/20130902214457125.png)
 
 选举线程由当前Server发起选举的线程担任，他主要的功能对投票结果进行统计，并选出推荐的Server。选举线程首先向所有Server发起一次询问\(包括自己\)，被询问方，根据自己当前的状态作相应的回复，选举线程收到回复后，验证是否是自己发起的询问\(验证xid 是否一致\)，然后获取对方的id\(myid\)，并存储到当前询问对象列表中，最后获取对方提议 的
 
@@ -165,10 +165,7 @@ leader 相关信息\(id,zxid\)，并将这些 信息存储到当次选举的投�
 收集选票: 使用UDP协议尽量收集所有quorum节点当前的选票\(单线程/同步方式\)，超时设置200ms;
 
 统计选票: 1\).每个quorum节点的票数;
-
-```
-     2\).为自己产生一张新选票\(zxid、myid均最大\);
-```
+2\).为自己产生一张新选票\(zxid、myid均最大\);
 
 选举成功: 某一个quorum节点的票数超过半数;
 
@@ -216,7 +213,7 @@ FastLeaderElection算法通过异步的通信方式来收集其它节点的选�
 
 将收到的消息转换成Notification消息放入接收队列中，如果对方Server的epoch小于logicalclock则向其发送一个消息\(让其更新epoch\)；如果对方Server处于Looking状态，自己则处于Following或Leading状态，则也发送一个消息\(当前Leader已产生，让其尽快收敛\)。
 
-20130902214757203.png
+![img](/static/image/20130902214757203.png)
 
 ### 2.4.3 AuthFastLeaderElection选举算法
 
