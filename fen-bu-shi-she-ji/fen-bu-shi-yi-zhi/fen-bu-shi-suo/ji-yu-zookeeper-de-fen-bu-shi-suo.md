@@ -150,3 +150,47 @@ private boolean internalLock(long time, TimeUnit unit) throws Exception
 
 代码中增加了具体注释，不做展开。看下zookeeper获取锁的具体实现：
 
+```
+String attemptLock(long time, TimeUnit unit, byte[] lockNodeBytes) throws Exception
+{
+    //参数初始化，此处省略
+    //...
+   
+    //自旋获取锁
+    while ( !isDone )
+    {
+        isDone = true;
+
+        try
+        {
+            //在锁空间下创建临时且有序的子节点
+            ourPath = driver.createsTheLock(client, path, localLockNodeBytes);
+            //判断是否获得锁（子节点序号最小），获得锁则直接返回，否则阻塞等待前一个子节点删除通知
+            hasTheLock = internalLockLoop(startMillis, millisToWait, ourPath);
+        }
+        catch ( KeeperException.NoNodeException e )
+        {
+            //对于NoNodeException，代码中确保了只有发生session过期才会在这里抛出NoNodeException，因此这里根据重试策略进行重试
+            if ( client.getZookeeperClient().getRetryPolicy().allowRetry(retryCount++, System.currentTimeMillis() - startMillis, RetryLoop.getDefaultRetrySleeper()) )
+            {
+                isDone = false;
+            }
+            else
+            {
+                throw e;
+            }
+        }
+    }
+
+    //如果获得锁则返回该子节点的路径
+    if ( hasTheLock )
+    {
+        return ourPath;
+    }
+
+    return null;
+}
+```
+
+
+
