@@ -70,29 +70,29 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 （1）本次基于VMware Workstation搭建一个四台Linux（CentOS 6.4）系统所构成的一个服务器集群，其中两台负载均衡服务器（一台为主机，另一台为备机），另外两台作为真实的Web服务器（向外部提供http服务，这里仅仅使用了CentOS默认自带的http服务，没有安装其他的类似Tomcat、Jexus服务）。
 
-　　（2）本次实验基于DR负载均衡模式，设置了一个VIP（Virtual IP）为192.168.80.200，用户只需要访问这个IP地址即可获得网页服务。其中，负载均衡主机为192.168.80.100，备机为192.168.80.101。Web服务器A为192.168.80.102，Web服务器B为192.168.80.103。
+（2）本次实验基于DR负载均衡模式，设置了一个VIP（Virtual IP）为192.168.80.200，用户只需要访问这个IP地址即可获得网页服务。其中，负载均衡主机为192.168.80.100，备机为192.168.80.101。Web服务器A为192.168.80.102，Web服务器B为192.168.80.103。
 
 ## 3.2 基础准备工作
 
-　　以下工作针对所有服务器，也就是说要在四台服务器中都要进行配置：
+以下工作针对所有服务器，也就是说要在四台服务器中都要进行配置：
 
-　　（1）绑定静态IP地址
+（1）绑定静态IP地址
 
-　　命令模式下可以执行setup命令进入设置界面配置静态IP地址；x-window界面下可以右击网络图标配置；配置完成后执行service network restart重新启动网络服务；
+命令模式下可以执行setup命令进入设置界面配置静态IP地址；x-window界面下可以右击网络图标配置；配置完成后执行service network restart重新启动网络服务；
 
-　　验证：执行命令**ifconfig**
+验证：执行命令**ifconfig**
 
-　　（2）设定主机名
+（2）设定主机名
 
-　　①修改当前会话中的主机名，执行命令hostname xxxx \(这里xxxx为你想要改为的名字\)
+①修改当前会话中的主机名，执行命令hostname xxxx \(这里xxxx为你想要改为的名字\)
 
-　　②修改配置文件中的主机名，执行命令vi /etc/sysconfig/network \(√一般需要进行此步凑才能永久更改主机名\)
+②修改配置文件中的主机名，执行命令vi /etc/sysconfig/network \(√一般需要进行此步凑才能永久更改主机名\)
 
-　　验证：重启系统**reboot**
+验证：重启系统**reboot**
 
-　　（3）IP地址与主机名的绑定
+（3）IP地址与主机名的绑定
 
-　　执行命令vi /etc/hosts,增加一行内容，如下\(下面的从节点以你自己的为主，本实验搭建了两个从节点\)：
+执行命令vi /etc/hosts,增加一行内容，如下\(下面的从节点以你自己的为主，本实验搭建了两个从节点\)：
 
 **　　192.168.80.100 lvs-master**
 
@@ -104,29 +104,33 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 **　　192.168.80.103 lvs-webserver2**
 
-　　保存后退出
+保存后退出
 
-　　验证：**ping lvs-master**
+验证：**ping lvs-master**
 
-　　（4）关闭防火墙
+（4）关闭防火墙
 
-　　①执行关闭防火墙命令：**service iptables stop**
+①执行关闭防火墙命令：**service iptables stop**
 
-      验证：**service iptables stauts**
+```
+  验证：**service iptables stauts**
+```
 
-　　②执行关闭防火墙自动运行命令：**chkconfig iptables off**
+②执行关闭防火墙自动运行命令：**chkconfig iptables off**
 
-　　验证：**chkconfig --list \| grep iptables**
+验证：**chkconfig --list \| grep iptables**
 
 ## 3.3 配置两台Web服务器
 
-　　以下操作需要在角色为Web服务器的两台中进行，不需要在负载均衡服务器中进行操作：
+以下操作需要在角色为Web服务器的两台中进行，不需要在负载均衡服务器中进行操作：
 
-　　（1）开启http服务
+（1）开启http服务
 
-　　命令：service httpd start
+命令：service httpd start
 
-　　补充：chkconfig httpd on --&gt;将httpd设为自启动服务
+补充：chkconfig httpd on --&gt;将httpd设为自启动服务
 
-　　（2）在宿主机访问Web网页，并通过FTP工具上传自定义网页：这里上传一个静态网页，并通过更改其中的html来区别两台Web服务器，以下图所示为例，其中一台显示from 192.168.80.102，而另一台显示from 192.168.80.103；
+（2）在宿主机访问Web网页，并通过FTP工具上传自定义网页：这里上传一个静态网页，并通过更改其中的html来区别两台Web服务器，以下图所示为例，其中一台显示from 192.168.80.102，而另一台显示from 192.168.80.103；
+
+092331330897815.jpg
 
