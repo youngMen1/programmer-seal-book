@@ -14,9 +14,5 @@ Redis客户端对服务端的每次调用都经历了发送命令，执行命令
 
 （4）Redis采用单线程模型，每条命令执行如果占用大量时间，会造成其他线程阻塞，对于Redis这种高性能服务是致命的，所以Redis是面向高速执行的数据库。
 
-————————————————
 
-版权声明：本文为CSDN博主「大道化简」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：[https://blog.csdn.net/sunhuiliang85/article/details/73656830](https://blog.csdn.net/sunhuiliang85/article/details/73656830)
 
