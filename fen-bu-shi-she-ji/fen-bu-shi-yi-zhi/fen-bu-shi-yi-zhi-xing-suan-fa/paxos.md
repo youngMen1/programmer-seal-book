@@ -134,5 +134,19 @@ Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要
 
 20130902214225640.png
 
+Follower
 
+确认
+
+: 
+
+等待所有的
+
+Follower
+
+连接注册，若在规定的时间内收到合法的
+
+Follower
+
+注册数量，则确认成功；否则，确认失败。
 
