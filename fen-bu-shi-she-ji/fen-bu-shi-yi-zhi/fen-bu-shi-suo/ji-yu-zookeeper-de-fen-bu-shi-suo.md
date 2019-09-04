@@ -205,7 +205,7 @@ while ( (client.getState() == CuratorFrameworkState.STARTED) && !haveTheLock )
 {
     //获取所有的子节点列表，并且按序号从小到大排序
     List<String>        children = getSortedChildren();
-    
+
     //根据序号判断当前子节点是否为最小子节点
     String              sequenceNodeName = ourPath.substring(basePath.length() + 1); // +1 to include the slash
     PredicateResults    predicateResults = driver.getsTheLock(client, children, sequenceNodeName, maxLeases);
@@ -237,7 +237,7 @@ while ( (client.getState() == CuratorFrameworkState.STARTED) && !haveTheLock )
                         doDelete = true;    // 等待时间到达，删除对应的子节点
                         break;
                     }
-                    
+
                     //等待相应的时间
                     wait(millisToWait);
                 }
@@ -256,5 +256,5 @@ while ( (client.getState() == CuratorFrameworkState.STARTED) && !haveTheLock )
 }
 ```
 
-
+具体逻辑见注释，不再赘述。代码中设置的事件监听器，在事件发生回调时只是简单的notifyAll唤醒当前线程以重新自旋判断，比较简单不再展开。
 
