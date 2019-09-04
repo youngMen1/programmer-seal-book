@@ -148,5 +148,5 @@ private boolean internalLock(long time, TimeUnit unit) throws Exception
 }
 ```
 
-
+代码中增加了具体注释，不做展开。看下zookeeper获取锁的具体实现：
 
