@@ -132,6 +132,7 @@
     * ActiveMQ
     * Kafka
     * Redis 消息推送
+    * ZeroMQ
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
     * [单机定时调度](zhong-jian-jian/ding-shi-diao-du/dan-ji-ding-shi-diao-du.md)
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
