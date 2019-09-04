@@ -106,3 +106,11 @@ public boolean lock(){
 
 我们可以认为获得排它锁的线程即可获得分布式锁，当获取到锁之后，可以执行方法的业务逻辑，执行完方法之后，再通过以下方法解锁：
 
+```
+public void unlock(){
+    connection.commit();
+}
+```
+
+
+
