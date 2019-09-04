@@ -120,7 +120,7 @@
   * [服务端缓存](zhong-jian-jian/fu-wu-duan-huan-cun.md)
     * [Memcached](zhong-jian-jian/fu-wu-duan-huan-cun/memcached.md)
     * [Redis](zhong-jian-jian/fu-wu-duan-huan-cun/redis.md)
-      * 回收策略
+      * [回收策略](zhong-jian-jian/fu-wu-duan-huan-cun/redis/hui-shou-ce-lve.md)
       * 架构
     * [Web缓存](zhong-jian-jian/webhuan-cun.md)
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
