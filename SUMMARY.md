@@ -136,6 +136,7 @@
     * 基于zookeeper实现统一配置管理
     * Spring Cloud Config 分布式配置中心使用教程
     * servlet3.0 新特性——异步处理
+  * 消息队列
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
