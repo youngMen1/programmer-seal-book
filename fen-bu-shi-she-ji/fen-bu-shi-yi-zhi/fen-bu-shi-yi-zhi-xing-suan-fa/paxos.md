@@ -234,7 +234,7 @@ AuthFastLeaderElection算法同FastLeaderElection算法基本一致，只是在�
 
 ### 2.6.2 Leader节点处理写请求
 
-20130902214958015.png
+![img](/static/image/20130902214958015.png)
 
 值得注意的是， Follower/Leader上的读操作时并行的，读写操作是串行的，当CommitRequestProcessor处理一个写请求时，会阻塞之后所有的读写请求。
 
