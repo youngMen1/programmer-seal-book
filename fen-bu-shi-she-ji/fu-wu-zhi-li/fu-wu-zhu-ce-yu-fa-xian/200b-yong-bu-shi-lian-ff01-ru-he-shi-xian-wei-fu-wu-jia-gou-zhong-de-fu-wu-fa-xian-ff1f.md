@@ -26,5 +26,5 @@ Netflix OSS提供了一个客户端服务发现的好例子。Netflix Eureka是�
 
 下图展示了这种模式的架构
 
-
+642.webp
 
