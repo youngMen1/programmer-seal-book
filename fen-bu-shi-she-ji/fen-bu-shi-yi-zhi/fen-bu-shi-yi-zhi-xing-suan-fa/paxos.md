@@ -224,7 +224,7 @@ AuthFastLeaderElection算法同FastLeaderElection算法基本一致，只是在�
 
 ## 2.5 Zookeeper的API
 
-微信截图\_20190904161008.png
+![img](/static/image/微信截图_20190904161008.png)
 
 ## 2.6 Zookeeper中的请求处理流程
 
