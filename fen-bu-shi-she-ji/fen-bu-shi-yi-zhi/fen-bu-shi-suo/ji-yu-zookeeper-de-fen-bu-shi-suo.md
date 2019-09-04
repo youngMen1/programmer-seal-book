@@ -117,5 +117,5 @@ public void acquire() throws Exception
 }
 ```
 
-
+这里有个地方需要注意，当与zookeeper通信存在异常时，acquire会直接抛出异常，需要使用者自身做重试策略。代码中调用了internalLock\(-1, null\)，参数表明在锁被占用时永久阻塞等待。internalLock的代码如下：
 
