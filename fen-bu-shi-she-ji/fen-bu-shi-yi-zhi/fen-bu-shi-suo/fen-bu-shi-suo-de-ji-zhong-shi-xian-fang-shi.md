@@ -222,3 +222,26 @@ public boolean unlock(String key) {
 
 可以直接使用zookeeper第三方库[Curator](https://curator.apache.org/)客户端，这个客户端中封装了一个可重入的锁服务。
 
+```
+public boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException {
+    try {
+        return interProcessMutex.acquire(timeout, unit);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return true;
+}
+public boolean unlock() {
+    try {
+        interProcessMutex.release();
+    } catch (Throwable e) {
+        log.error(e.getMessage(), e);
+    } finally {
+        executorService.schedule(new Cleaner(client, path), delayTimeForClean, TimeUnit.MILLISECONDS);
+    }
+    return true;
+}
+```
+
+
+
