@@ -129,16 +129,14 @@
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
   * [RPC](zhong-jian-jian/rpc.md)
   * 数据库中间件
-  * 日志系统
+  * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
+  * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
+  * [API 网关](zhong-jian-jian/api-wang-guan.md)
   * [配置中心](zhong-jian-jian/pei-zhi-zhong-xin.md)
     * Apollo - 携程开源的配置中心应用
     * 基于zookeeper实现统一配置管理
     * Spring Cloud Config 分布式配置中心使用教程
     * servlet3.0 新特性——异步处理
-  * 数据库中间件
-  * 日志系统
-  * 日志系统
-  * API 网关
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
