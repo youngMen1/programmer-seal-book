@@ -50,7 +50,7 @@ Netflix通过在每个EC2的可用区中，运行一个或多个Eureka服务器�
 
 Eureka客户端（服务和服务客户端）查询DNS去寻找Eureka服务器的网络地址。客户端更想使用这个可用区内的Eureka服务器，如果没有可用的Eureka服务器，客户端会用另一个可用区内的Eureka服务器。
 
-其它服务注册的例子包括：
+#### 其它服务注册的例子包括：
 
 * Etcd：一个高可用，分布式，一致的key-value存储，用来共享配置和服务发现。Kubernetes和Cloudfoundry都使用了etcd；
 
