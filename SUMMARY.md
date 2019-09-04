@@ -241,11 +241,11 @@
       * [缓存穿透，缓存击穿，缓存雪崩解决方案分析](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai/huan-cun-chuan-tou-ff0c-huan-cun-ji-chuan-ff0c-huan-cun-xue-beng-jie-jue-fang-an-fen-xi.md)
       * [缓存击穿、失效以及热点key问题](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai/huan-cun-ji-chuan-3001-shi-xiao-yi-ji-re-dian-key-wen-ti.md)
     * [跨机房容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai.md)
-      * “异地多活”多机房部署经验谈
+      * [“异地多活”多机房部署经验谈](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai/201c-yi-di-duo-huo-201d-duo-ji-fang-bu-shu-jing-yan-tan.md)
       * 异地多活（异地双活）实践经验
       * 容灾技术及建设经验介绍
     * [容灾演练流程](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/rong-zai-yan-lian-liu-cheng.md)
-      * 依赖治理、灰度发布、故障演练，阿里电商故障演练系统的设计与实战经验
+      * [依赖治理、灰度发布、故障演练，阿里电商故障演练系统的设计与实战经验](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/rong-zai-yan-lian-liu-cheng/yi-lai-zhi-li-3001-hui-du-fa-bu-3001-gu-zhang-yan-lian-ff0c-a-li-dian-shang-gu-zhang-yan-lian-xi-tong-de-she-ji-yu-shi-zhan-jing-yan.md)
     * [平滑启动](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ping-hua-qi-dong.md)
   * [数据库扩展](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan.md)
     * [读写分离模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi.md)
@@ -257,7 +257,8 @@
     * [分片模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi.md)
       * 分库分表需要考虑的问题及方案
       * MySql分表和表分区详解
-  * 服务治理
+  * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
+    * 服务注册与发现
   * 分布式一致
   * 分布式文件系统
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
