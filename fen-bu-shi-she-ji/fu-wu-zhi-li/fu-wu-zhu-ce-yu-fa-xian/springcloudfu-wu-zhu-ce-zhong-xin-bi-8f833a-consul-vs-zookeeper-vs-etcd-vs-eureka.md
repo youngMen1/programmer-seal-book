@@ -6,7 +6,7 @@
 | :--- |
 
 
-|  | Consul | zookeeper | etcd | euerka |
+| 4 | Consul | zookeeper | etcd | euerka |
 | :--- | :--- | :--- | :--- | :--- |
 | 服务健康检查 | 服务状态，内存，硬盘等 | \(弱\)长连接，keepalive | 连接心跳 | 可配支持 |
 | 多数据中心 | 支持 | — | — | — |
