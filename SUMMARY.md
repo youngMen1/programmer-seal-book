@@ -139,6 +139,7 @@
   * [RPC](zhong-jian-jian/rpc.md)
     * Dubbo
     * Thrift
+    * gRPC
   * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
