@@ -155,7 +155,7 @@ String attemptLock(long time, TimeUnit unit, byte[] lockNodeBytes) throws Except
 {
     //参数初始化，此处省略
     //...
-   
+
     //自旋获取锁
     while ( !isDone )
     {
@@ -192,5 +192,10 @@ String attemptLock(long time, TimeUnit unit, byte[] lockNodeBytes) throws Except
 }
 ```
 
+上面代码中主要有两步操作：
 
+* driver.createsTheLock：创建临时且有序的子节点，里面实现比较简单不做展开，主要关注几种节点的模式：1）PERSISTENT（永久）；2）PERSISTENT\_SEQUENTIAL（永久且有序）；3）EPHEMERAL（临时）；4）EPHEMERAL\_SEQUENTIAL（临时且有序）。
+* internalLockLoop：阻塞等待直到获得锁。
+
+看下internalLockLoop是怎么判断锁以及阻塞等待的，这里删除了一些无关代码，只保留主流程：
 
