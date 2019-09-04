@@ -99,7 +99,7 @@ if (lockResult == 1)
 else
 {
     string curExpiredtime = rd.GET("LockKey");
- 
+
     //检查锁超时
     if (CheckedLockTimeOut(expiredtime))
     {
@@ -117,7 +117,7 @@ if (getLock)
     try
     {
         //do business  function
- 
+
         //检查超时
         if (!CheckedTimeOut())
         {
