@@ -98,3 +98,7 @@ Leader将用户的请求转化为对应的paxos实例，当然，它可以并发
 
 \(4\).如何动态的扩展Acceptor
 
+# 2. Zookeeper
+
+
+
