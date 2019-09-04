@@ -116,5 +116,23 @@ Leader将用户的请求转化为对应的paxos实例，当然，它可以并发
 
 20130902213801484.png
 
+Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要包括四个组件：客户端请求接收器\(ServerCnxnFactory\)、数据引擎\(ZKDatabase\)、选举器\(Election\)、核心功能组件\(Leader/Follower/Observer\)。其中：
+
+
+
+\(1\). ServerCnxnFactory负责维护与客户端的连接\(接收客户端的请求并发送相应的响应\);
+
+
+
+\(2\). ZKDatabase负责存储/加载/查找数据\(基于目录树结构的KV+操作日志+客户端Session\);
+
+
+
+\(3\). Election负责选举集群的一个Leader节点;
+
+
+
+\(4\). Leader/Follower/Observer一个QuorumPeer节点应该完成的核心职责;
+
 
 
