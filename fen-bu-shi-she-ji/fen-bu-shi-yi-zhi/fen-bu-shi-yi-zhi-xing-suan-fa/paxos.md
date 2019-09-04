@@ -128,7 +128,7 @@ Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要
 
 ## 2.3 QuorumPeer工作流程
 
-![img](/static/image/20130902214130031.png.png)
+![img](/static/image/20130902214130031.png)
 
 ### 2.3.1 Leader职责
 
