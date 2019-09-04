@@ -258,7 +258,7 @@
       * 分库分表需要考虑的问题及方案
       * MySql分表和表分区详解
   * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
-    * 服务注册与发现
+    * [服务注册与发现](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian.md)
     * 服务路由控制
   * 分布式一致
   * 分布式文件系统
