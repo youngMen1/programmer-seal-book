@@ -102,7 +102,7 @@
   * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
   * [持续集成\(CI/CD\)](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chi-xu-ji-621028-ci-cd.md)
   * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
-  * 测试
+  * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * KVM
   * 容器技术
