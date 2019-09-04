@@ -128,8 +128,7 @@
     * 消息总线
     * 消息的顺序
     * RabbitMQ
-    * RocketMQ
-    * RocketMQ
+    * [RocketMQ](zhong-jian-jian/xiao-xi-dui-lie/rocketmq.md)
     * ActiveMQ
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
     * [单机定时调度](zhong-jian-jian/ding-shi-diao-du/dan-ji-ding-shi-diao-du.md)
