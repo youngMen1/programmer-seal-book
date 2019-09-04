@@ -130,5 +130,7 @@ Zookeeper对于每个节点QuorumPeer的设计相当的灵活，QuorumPeer主要
 
 20130902214130031.png
 
+### 2.3.1 Leader职责
+
 
 
