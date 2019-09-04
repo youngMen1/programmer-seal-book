@@ -66,5 +66,5 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 # 三、构建实战：LVS+Keepalived实现负载均衡
 
-
+092307196049297.png
 
