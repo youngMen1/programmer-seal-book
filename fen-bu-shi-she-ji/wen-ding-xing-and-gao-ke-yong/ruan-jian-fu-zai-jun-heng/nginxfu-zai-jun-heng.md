@@ -60,3 +60,14 @@ upstream app_group {
 
 配置该策略，例如：
 
+```
+upstream app_group {
+          least_time;
+        server 192.168.56.102;
+        server 192.168.56.103;
+        server 192.168.56.104;
+    }
+```
+
+
+
