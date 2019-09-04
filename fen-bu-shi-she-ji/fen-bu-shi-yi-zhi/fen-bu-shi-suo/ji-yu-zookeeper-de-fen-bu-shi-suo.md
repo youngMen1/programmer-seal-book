@@ -119,3 +119,34 @@ public void acquire() throws Exception
 
 这里有个地方需要注意，当与zookeeper通信存在异常时，acquire会直接抛出异常，需要使用者自身做重试策略。代码中调用了internalLock\(-1, null\)，参数表明在锁被占用时永久阻塞等待。internalLock的代码如下：
 
+```
+private boolean internalLock(long time, TimeUnit unit) throws Exception
+{
+
+    //这里处理同线程的可重入性，如果已经获得锁，那么只是在对应的数据结构中增加acquire的次数统计，直接返回成功
+    Thread currentThread = Thread.currentThread();
+    LockData lockData = threadData.get(currentThread);
+    if ( lockData != null )
+    {
+        // re-entering
+        lockData.lockCount.incrementAndGet();
+        return true;
+    }
+
+    //这里才真正去zookeeper中获取锁
+    String lockPath = internals.attemptLock(time, unit, getLockNodeBytes());
+    if ( lockPath != null )
+    {
+        //获得锁之后，记录当前的线程获得锁的信息，在重入时只需在LockData中增加次数统计即可
+        LockData newLockData = new LockData(currentThread, lockPath);
+        threadData.put(currentThread, newLockData);
+        return true;
+    }
+
+    //在阻塞返回时仍然获取不到锁，这里上下文的处理隐含的意思为zookeeper通信异常
+    return false;
+}
+```
+
+
+
