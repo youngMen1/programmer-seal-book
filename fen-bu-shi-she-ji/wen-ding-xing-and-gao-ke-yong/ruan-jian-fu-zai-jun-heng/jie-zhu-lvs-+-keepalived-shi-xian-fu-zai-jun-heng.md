@@ -296,3 +296,7 @@ vrrp_instance VI_1 {
 
 100005512455970.gif
 
+（3）主负载均衡服务器发生故障时，备机立即充当主机角色提供请求转发服务：
+
+　　这里模拟192.168.80.100发生故障，暂停其keepalived服务：service keepalived stop
+
