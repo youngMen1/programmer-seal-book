@@ -126,6 +126,7 @@
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
   * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
     * 消息总线
+    * 消息的顺序
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
     * [单机定时调度](zhong-jian-jian/ding-shi-diao-du/dan-ji-ding-shi-diao-du.md)
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
