@@ -275,6 +275,7 @@
       * 幂等
       * 分布式一致方案
       * 分布式 Leader 节点选举
+      * TCC\(Try/Confirm/Cancel\) 柔性事务
   * 分布式文件系统
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
     * 全局唯一ID
