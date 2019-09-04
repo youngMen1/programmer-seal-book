@@ -105,6 +105,7 @@
   * 测试
   * 虚拟化
   * 容器技术
+  * 云技术
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
