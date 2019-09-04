@@ -75,15 +75,61 @@ if (lockResult == 1)
 
 所以不推荐用这种做法，应该用其它方式来实现锁的超时过期策略：
 
-     1：**SETNX  **value 值=当前时间+过期超时时间，返回1 则获得锁，返回0则没有获得锁。转2。
+```
+ 1：**SETNX  **value 值=当前时间+过期超时时间，返回1 则获得锁，返回0则没有获得锁。转2。
 
-     2：**GET** 获取 value 的值 。判断锁是否过期超时。如果超时，转3。
+ 2：**GET** 获取 value 的值 。判断锁是否过期超时。如果超时，转3。
 
-     3：**GETSET（**将给定 key 的值设为 value ，并返回 key 的旧值**），GETSET ** value 值=当前时间+过期超时时间， 判断得到的value 如果仍然是超时的，那就说明得到锁，否则没有得到锁。
+ 3：**GETSET（**将给定 key 的值设为 value ，并返回 key 的旧值**），GETSET ** value 值=当前时间+过期超时时间， 判断得到的value 如果仍然是超时的，那就说明得到锁，否则没有得到锁。
+```
 
 从2并发进到3 的操作，会多次改写超时时间，但这个不会有什么影响。
 
 伪代码：
+
+```
+string expiredtime = DateTime.Now.AddMinutes(LockTimeoutMinutes).ToString();
+int lockResult = rd.SETNX("LockKey", expiredtime);
+bool getLock = false;
+if (lockResult == 1)
+{
+    //得到锁
+    getLock = true;
+}
+else
+{
+    string curExpiredtime = rd.GET("LockKey");
+ 
+    //检查锁超时
+    if (CheckedLockTimeOut(expiredtime))
+    {
+        expiredtime = DateTime.Now.AddMinutes(LockTimeoutMinutes).ToString();
+        string newExpiredTime = GETSET(expiredtime);
+        if (CheckedLockTimeOut(newExpiredTime))
+        {
+            //得到锁
+            getLock = true;
+        }
+    }
+}
+if (getLock)
+{
+    try
+    {
+        //do business  function
+ 
+        //检查超时
+        if (!CheckedTimeOut())
+        {
+            rd.DEL("LockKey");
+        }
+    }
+    catch (Exception e)
+    {
+        rd.DEL("LockKey");
+    }
+}
+```
 
 
 
