@@ -124,6 +124,7 @@
       * [架构](zhong-jian-jian/fu-wu-duan-huan-cun/redis/jia-gou.md)
     * [Web缓存](zhong-jian-jian/webhuan-cun.md)
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
+  * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
     * [单机定时调度](zhong-jian-jian/ding-shi-diao-du/dan-ji-ding-shi-diao-du.md)
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
@@ -131,12 +132,7 @@
   * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
-  * [配置中心](zhong-jian-jian/pei-zhi-zhong-xin.md)
-    * Apollo - 携程开源的配置中心应用
-    * 基于zookeeper实现统一配置管理
-    * Spring Cloud Config 分布式配置中心使用教程
-    * servlet3.0 新特性——异步处理
-  * 消息队列
+  * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
 * [网络](wang-luo.md)
   * [协议](wang-luo/xie-yi.md)
     * [OSI 七层协议](wang-luo/xie-yi/osi-qi-ceng-xie-yi.md)
