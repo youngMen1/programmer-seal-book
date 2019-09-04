@@ -136,7 +136,39 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 （3）编辑realserver脚本文件
 
-　　①进入指定文件夹：cd /etc/init.d/
+①进入指定文件夹：cd /etc/init.d/
 
-　　②编辑脚本文件：vim realserver
+②编辑脚本文件：vim realserver
+
+```
+SNS_VIP=192.168.80.200
+/etc/rc.d/init.d/functions
+case "$1" in
+start)
+       ifconfig lo:0 $SNS_VIP netmask 255.255.255.255 broadcast $SNS_VIP
+       /sbin/route add -host $SNS_VIP dev lo:0
+       echo "1" >/proc/sys/net/ipv4/conf/lo/arp_ignore
+       echo "2" >/proc/sys/net/ipv4/conf/lo/arp_announce
+       echo "1" >/proc/sys/net/ipv4/conf/all/arp_ignore
+       echo "2" >/proc/sys/net/ipv4/conf/all/arp_announce
+       sysctl -p >/dev/null 2>&1
+       echo "RealServer Start OK"
+       ;;
+stop)
+       ifconfig lo:0 down
+       route del $SNS_VIP >/dev/null 2>&1
+       echo "0" >/proc/sys/net/ipv4/conf/lo/arp_ignore
+       echo "0" >/proc/sys/net/ipv4/conf/lo/arp_announce
+       echo "0" >/proc/sys/net/ipv4/conf/all/arp_ignore
+       echo "0" >/proc/sys/net/ipv4/conf/all/arp_announce
+       echo "RealServer Stoped"
+       ;;
+*)
+       echo "Usage: $0 {start|stop}"
+       exit 1
+esac
+exit 0
+```
+
+
 
