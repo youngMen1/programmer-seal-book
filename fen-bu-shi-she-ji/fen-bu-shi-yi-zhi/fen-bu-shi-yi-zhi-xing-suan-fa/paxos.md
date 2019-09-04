@@ -196,41 +196,25 @@ leader 相关信息\(id,zxid\)，并将这些 信息存储到当次选举的投�
 
 Leader的选举是保证只产生一个公认的Leader的，而且Follower重新选举与旧Leader恢复并退出基本上是同时发生的，当Follower无法ping同Leader是就认为Leader已经出问题开始重新选举，Leader收到Follower的ping没有达到半数以上则要退出Leader重新选举。
 
-2.4.2 FastLeaderElection选举算法
+2.4.2 FastLeaderElection选举算法
 
-FastLeaderElection是标准的fast paxos的实现，它首先向所有Server提议自己要成为leader，当其它Server收到提议以后，解决 epoch 和 zxid 的冲突，并接受对方的提议，然后向对方发送接受提议完成的消息。
-
-
+FastLeaderElection是标准的fast paxos的实现，它首先向所有Server提议自己要成为leader，当其它Server收到提议以后，解决 epoch 和 zxid 的冲突，并接受对方的提议，然后向对方发送接受提议完成的消息。
 
 FastLeaderElection算法通过异步的通信方式来收集其它节点的选票，同时在分析选票时又根据投票者的当前状态来作不同的处理，以加快Leader的选举进程。
 
+每个Server都一个接收线程池和一个发送线程池, 在没有发起选举时，这两个线程池处于阻塞状态，直到有消息到来时才解除阻塞并处理消息，同时每个Serve r都有一个选举线程\(可以发起选举的线程担任\)。
 
+1\). 主动发起选举端\(选举线程\)的处理
 
-每个Server都一个接收线程池和一个发送线程池, 在没有发起选举时，这两个线程池处于阻塞状态，直到有消息到来时才解除阻塞并处理消息，同时每个Serve r都有一个选举线程\(可以发起选举的线程担任\)。
-
-
-
-1\). 主动发起选举端\(选举线程\)的处理
-
-
-
-首先自己的 logicalclock加1，然后生成notification消息，并将消息放入发送队列中， 系统中配置有几个Server就生成几条消息，保证每个Server都能收到此消息，如果当前Server 的状态是LOOKING就一直循环检查接收队列是否有消息，如果有消息，根据消息中对方的状态进行相应的处理。
-
-
+首先自己的 logicalclock加1，然后生成notification消息，并将消息放入发送队列中， 系统中配置有几个Server就生成几条消息，保证每个Server都能收到此消息，如果当前Server 的状态是LOOKING就一直循环检查接收队列是否有消息，如果有消息，根据消息中对方的状态进行相应的处理。
 
 2\).主动发送消息端\(发送线程池\)的处理
 
-
-
 将要发送的消息由Notification消息转换成ToSend消息，然后发送对方，并等待对方的回复。
 
-
-
-3\). 被动接收消息端\(接收线程池\)的处理
-
-
+3\). 被动接收消息端\(接收线程池\)的处理
 
 将收到的消息转换成Notification消息放入接收队列中，如果对方Server的epoch小于logicalclock则向其发送一个消息\(让其更新epoch\)；如果对方Server处于Looking状态，自己则处于Following或Leading状态，则也发送一个消息\(当前Leader已产生，让其尽快收敛\)。
 
-
+20130902214757203.png
 
