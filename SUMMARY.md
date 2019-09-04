@@ -106,7 +106,7 @@
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * KVM
   * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
-  * 云技术
+  * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
   * DevOps
   * 文档管理
 * [中间件](zhong-jian-jian.md)
