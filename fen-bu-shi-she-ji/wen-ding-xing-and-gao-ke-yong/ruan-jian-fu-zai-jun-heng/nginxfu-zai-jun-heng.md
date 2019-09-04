@@ -31,7 +31,7 @@ http {
 
 `app_group`
 
-，该组中包含三台主机。当用户通过 HTTP 访问 www.example.com 域名时，请求会按照轮询（轮询是默认的转发策略）的方式转到 app\_group 对应的后端服务器上。
+，该组中包含三台主机。当用户通过 HTTP 访问 www.example.com 域名时，请求会按照轮询（**轮询是默认的转发策略**）的方式转到 app\_group 对应的后端服务器上。
 
 Nginx 中使用负载均衡功能需要依赖 ngx\_http\_upstream\_module 模块。可以通过
 
