@@ -15,5 +15,13 @@
 
 * [《分布式缓存--序列3--原子操作与CAS乐观锁》](https://blog.csdn.net/chunlongyu/article/details/53346436)
 
+#### 架构
+
+* [《Redis单线程架构》](https://blog.csdn.net/sunhuiliang85/article/details/73656830)
+
+#### 回收策略
+
+* [《redis的回收策略》](https://blog.csdn.net/qq_29108585/article/details/63251491)
+
 
 

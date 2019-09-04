@@ -121,7 +121,7 @@
     * [Memcached](zhong-jian-jian/fu-wu-duan-huan-cun/memcached.md)
     * [Redis](zhong-jian-jian/fu-wu-duan-huan-cun/redis.md)
       * [回收策略](zhong-jian-jian/fu-wu-duan-huan-cun/redis/hui-shou-ce-lve.md)
-      * 架构
+      * [架构](zhong-jian-jian/fu-wu-duan-huan-cun/redis/jia-gou.md)
     * [Web缓存](zhong-jian-jian/webhuan-cun.md)
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
