@@ -267,9 +267,9 @@
     * [CAP 与 BASE 理论](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/cap-yu-base-li-lun.md)
       * [从分布式一致性谈到CAP理论、BASE理论](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/cap-yu-base-li-lun/cong-fen-bu-shi-yi-zhi-xing-tan-dao-cap-li-lun-3001-base-li-lun.md)
     * [分布式锁](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo.md)
+      * [基于Zookeeper的分布式锁](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/ji-yu-zookeeper-de-fen-bu-shi-suo.md)
       * [分布式锁的几种实现方式](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/fen-bu-shi-suo-de-ji-zhong-shi-xian-fang-shi.md)
-      * 基于Zookeeper的分布式锁
-      * jedisLock—redis分布式锁实现
+      * [jedisLock—redis分布式锁实现](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/jedislockredisfen-bu-shi-suo-shi-xian.md)
       * Memcached 和 Redis 分布式锁方案
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * PAXOS
