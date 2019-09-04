@@ -104,7 +104,8 @@
   * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
   * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
-    * KVM
+    * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
+    * Xen
   * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
   * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
   * [DevOps](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/devops.md)
