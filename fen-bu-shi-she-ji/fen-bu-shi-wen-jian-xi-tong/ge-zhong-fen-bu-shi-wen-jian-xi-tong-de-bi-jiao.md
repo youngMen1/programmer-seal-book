@@ -71,19 +71,10 @@ system-config-cluster, system-config-lvm\)
 
 ## OCFS2
 
-————————————————
+GFS 的 Oracle 翻版，据说性能比 GFS2 好 \(Debian: aptitude install ocfs2-tools, 图形配置工具包 ocfs2console\)
 
-版权声明：本文为CSDN博主「JeanCheng」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：[https://blog.csdn.net/gatieme/article/details/](https://blog.csdn.net/gatieme/article/details/44982961)
+  
 
 
-
-
-
-
-
-
-
-
+不支持 ACL、flock，只是为了 Oracle database 设计
 
