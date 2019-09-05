@@ -53,5 +53,7 @@ Proposer可以提出（propose）提案；Acceptor可以接受（accept）提案
 * Acceptor：只要Acceptor接受了某个提案，Acceptor就任务该提案里的value被选定了。
 * Learner：Acceptor告诉Learner哪个value被选定，Learner就认为那个value被选定。
 
+1752522-6980ffa6b43c16d2.png
+
 
 
