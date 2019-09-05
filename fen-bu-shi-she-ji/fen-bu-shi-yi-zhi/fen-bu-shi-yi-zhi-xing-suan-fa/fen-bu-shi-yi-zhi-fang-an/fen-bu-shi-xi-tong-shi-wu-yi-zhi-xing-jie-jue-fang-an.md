@@ -186,3 +186,25 @@ RocketMQ第一阶段发送Prepared消息时，会拿到消息的地址，第二�
 
 434101-20180414164101496-2129088918.png
 
+各大知名的电商平台和互联网公司，几乎都是采用类似的设计思路来实现“最终一致性”的。这种方式适合的业务场景广泛，而且比较可靠。不过这种方式技术实现的难度比较大。目前主流的开源MQ（ActiveMQ、RabbitMQ、Kafka）均未实现对事务消息的支持，所以需二次开发，可参考RocketMQ的事务消息（[transactional message](https://rocketmq.apache.org/docs/transaction-example/)）。
+
+总结：
+
+阅读了不少这方面的文章，在此基础上，总结一下分布式事务一致性的解决方案。分布式系统的事务一致性本身就是一个技术难题，目前没有一种很简单很完美的方案能够应对所有场景。分布式系统的一个难点就是因为“网络通信的不可靠”，只能通过“确认机制”、“重试机制”、“补偿机制”等各方面来解决一些问题。在综合考虑可用性、性能、实现复杂度等各方面的情况上，比较好的选择是“异步确保最终一致性”，只是具体实现方式上有一些差异。
+
+
+
+参考：
+
+[分布式系统的事务处理](https://coolshell.cn/articles/10910.html)
+
+[分布式系统事务一致性解决方案](http://www.infoq.com/cn/articles/solution-of-distributed-system-transaction-consistency)
+
+[理性撕逼！分布式事务：不过是在一致性、吞吐量和复杂度之间，做一个选择](http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=2650994325&idx=1&sn=afe66f9cf65ec61aaaf8422a12618fb2&chksm=bdbf0ec68ac887d03544af86e02ac6f9daf38e22a92ebbfb42df581fd3d924dc2c403e382c21&scene=0#rd)
+
+知乎：[常用的分布式事务解决方案介绍有多少种？](https://www.zhihu.com/question/64921387/answer/225784480)
+
+[一次给女朋友转账引发我对分布式事务的思考](https://www.cnblogs.com/sujing/p/11006424.html)
+
+[用消息队列和消息应用状态表来消除分布式事务](https://my.oschina.net/picasso/blog/35306)
+
