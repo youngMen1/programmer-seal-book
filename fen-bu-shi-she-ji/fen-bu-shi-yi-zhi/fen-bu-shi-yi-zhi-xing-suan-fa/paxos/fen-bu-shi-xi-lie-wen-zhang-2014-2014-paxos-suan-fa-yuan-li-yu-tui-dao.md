@@ -90,3 +90,5 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 多个Acceptor的情况如下图。那么，如何保证在多个Proposer和多个Acceptor的情况下选定一个value呢？
 
+1752522-a85c9965be9d1671.png
+
