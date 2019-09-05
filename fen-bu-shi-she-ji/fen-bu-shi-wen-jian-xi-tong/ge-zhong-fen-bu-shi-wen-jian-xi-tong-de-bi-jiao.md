@@ -174,5 +174,14 @@ Linux
 依赖 PostgreSQL
 ```
 
+# xtreemfs {#xtreemfs}
+
+---
+
+```
+* 服务端是 Java 实现的
+- 性能不高
+```
+
 
 
