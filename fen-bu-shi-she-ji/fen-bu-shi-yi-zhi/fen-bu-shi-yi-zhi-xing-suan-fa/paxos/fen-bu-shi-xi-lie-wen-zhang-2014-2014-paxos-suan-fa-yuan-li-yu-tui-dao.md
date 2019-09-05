@@ -204,5 +204,7 @@ Paxos算法分为**两个阶段**。具体如下：
 
 1752522-44c5a422f917bfc5.jpg
 
+## Learner学习被选定的value {#learner学习被选定的value}
 
+Learner学习（获取）被选定的value有如下三种方案：
 
