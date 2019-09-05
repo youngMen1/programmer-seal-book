@@ -105,7 +105,6 @@ public class ConsistentHashingTest {
 另外，前文提到的（TODO 章节）Guava Cache 框架支持一致性哈希，实例代码如下：
 
 ```
-
 //实体缓存服务器
 String[]cacheServers = { "192.168.56.101:11211", "192.168.56.102:11211", "192.168.56.103:11211" };
 
@@ -119,5 +118,5 @@ HashCode hashCode = Hashing.murmur3_32().newHasher().putString(key, Charsets.UTF
 int bucket = Hashing.consistentHash(hashCode, cacheServers.length);
 ```
 
-
+D2CFEC7D-5ACB-49C3-B67F-12BA52254454 \(1\).png
 
