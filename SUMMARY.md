@@ -280,7 +280,8 @@
         * [Zookeeper 中的分布式一致性协议介绍](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/zab/zookeeper-zhong-de-fen-bu-shi-yi-zhi-xing-xie-yi-jie-shao.md)
       * [Raft](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/raft.md)
         * [Raft 为什么是更易理解的分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/raft/raft-wei-shi-yao-shi-geng-yi-li-jie-de-fen-bu-shi-yi-zhi-xing-suan-fa.md)
-      * Gossip
+      * [Gossip](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/gossip.md)
+        * Gossip算法
       * 两阶段提交、多阶段提交
       * 幂等
       * 分布式一致方案
