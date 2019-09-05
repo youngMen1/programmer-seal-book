@@ -102,5 +102,5 @@ public class ConsistentHashingTest {
 }
 ```
 
-
+另外，前文提到的（TODO 章节）Guava Cache 框架支持一致性哈希，实例代码如下：
 
