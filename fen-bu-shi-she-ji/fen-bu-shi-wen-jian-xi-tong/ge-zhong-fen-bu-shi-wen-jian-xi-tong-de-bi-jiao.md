@@ -47,5 +47,18 @@ Key-Value型元文件系统，不支持FUSE，应用程序访问它时需要API�
 
 # GFS2 {#gfs2}
 
+```
+http://sourceware.org/cluster/wiki/DRBD_Cookbook
+http://www.smop.co.uk/blog/index.php/2008/02/11/gfs-goodgrief-wheres-the-documentation-file-system/
+http://wiki.debian.org/kristian_jerpetjoen
+http://longvnit.com/blog/?p=941
+http://blog.chinaunix.net/u1/53728/showart_1073271.html (基于红帽RHEL5U2 GFS2+ISCSI+XEN+Cluster 的高可性解决方案)
+http://www.yubo.org/blog/?p=27 (iscsi+clvm+gfs2+xen+Cluster)
+http://linux.chinaunix.net/bbs/thread-777867-1-1.html
+————————————————
+版权声明：本文为CSDN博主「JeanCheng」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/gatieme/article/details/44982961
+```
+
 
 
