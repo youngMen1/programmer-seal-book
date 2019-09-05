@@ -192,8 +192,6 @@ RocketMQ第一阶段发送Prepared消息时，会拿到消息的地址，第二�
 
 阅读了不少这方面的文章，在此基础上，总结一下分布式事务一致性的解决方案。分布式系统的事务一致性本身就是一个技术难题，目前没有一种很简单很完美的方案能够应对所有场景。分布式系统的一个难点就是因为“网络通信的不可靠”，只能通过“确认机制”、“重试机制”、“补偿机制”等各方面来解决一些问题。在综合考虑可用性、性能、实现复杂度等各方面的情况上，比较好的选择是“异步确保最终一致性”，只是具体实现方式上有一些差异。
 
-
-
 参考：
 
 [分布式系统的事务处理](https://coolshell.cn/articles/10910.html)
@@ -207,4 +205,6 @@ RocketMQ第一阶段发送Prepared消息时，会拿到消息的地址，第二�
 [一次给女朋友转账引发我对分布式事务的思考](https://www.cnblogs.com/sujing/p/11006424.html)
 
 [用消息队列和消息应用状态表来消除分布式事务](https://my.oschina.net/picasso/blog/35306)
+
+https://www.infoq.cn/article/solution-of-distributed-system-transaction-consistency/
 
