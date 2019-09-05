@@ -326,9 +326,7 @@ private class LeaderOneThread extends Thread {
 [2017-11-30 17:07:27] 线程: [5] 是主节点
 [2017-11-30 17:07:32] 线程: [5] 是主节点
 [2017-11-30 17:07:37] 线程: [5] 是主节点
-————————————————
-版权声明：本文为CSDN博主「johnson_moon」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/johnson_moon/article/details/78809995
+
 ```
 
 
