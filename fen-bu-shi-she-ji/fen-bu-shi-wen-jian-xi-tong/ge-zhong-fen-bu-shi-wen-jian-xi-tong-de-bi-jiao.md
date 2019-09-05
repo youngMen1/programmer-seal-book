@@ -183,5 +183,17 @@ Linux
 - 性能不高
 ```
 
+# CloudStore \(KosmosFS\) {#cloudstore-kosmosfs}
+
+---
+
+```
++ 被 Hadoop 作为分布式文件系统后端之一
+- 不支持文件元信息
+- kfs_fuse 太慢，不可用
+- 编译依赖多，文档落后，脚本简陋
+- 开发不活跃
+```
+
 
 
