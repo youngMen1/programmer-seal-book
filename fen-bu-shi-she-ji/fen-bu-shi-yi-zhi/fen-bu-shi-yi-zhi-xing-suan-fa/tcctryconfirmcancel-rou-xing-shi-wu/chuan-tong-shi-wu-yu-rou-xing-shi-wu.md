@@ -108,8 +108,6 @@ where id=#{id} and version=#{version}
 
 ## 参考
 
-资料
-
 《spring攻略》
 
 《企业应用架构模式》
