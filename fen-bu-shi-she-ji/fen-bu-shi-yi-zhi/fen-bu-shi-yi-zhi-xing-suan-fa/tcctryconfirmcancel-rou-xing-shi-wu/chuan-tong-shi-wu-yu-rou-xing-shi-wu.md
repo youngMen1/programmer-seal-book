@@ -108,13 +108,11 @@ where id=#{id} and version=#{version}
 
 ## 参考
 
-资料《spring攻略》《企业应用架构模式》《企业IT架构转型之道》
+资料
 
-  
+《spring攻略》
 
+《企业应用架构模式》
 
-  
-
-
-
+《企业IT架构转型之道》
 
