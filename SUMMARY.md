@@ -274,6 +274,7 @@
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * [PAXOS](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos.md)
         * [Paxos算法与Zookeeper分析](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos/paxossuan-fa-yu-zookeeper-fen-xi.md)
+        * 分布式系列文章——Paxos算法原理与推导
       * Zab
       * Raft
       * Gossip
