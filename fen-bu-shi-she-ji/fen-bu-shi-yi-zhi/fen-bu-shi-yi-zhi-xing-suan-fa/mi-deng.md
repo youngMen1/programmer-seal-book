@@ -8,6 +8,9 @@ WEB资源或API方法的幂等性是指一次和多次请求某一个资源应�
 　　多版本并发控制，该策略主要使用update with condition（更新带条件来防止）来保证多次外部请求调用对系统的影响是一致的。在系统设计的过程中，合理的使用乐观锁，通过version或者updateTime（timestamp）等其他条件，来做乐观锁的判断条件，这样保证更新操作即使在并发的情况下，也不会有太大的问题。例如
 
 ```
-
+select * from tablename where condition=#condition# //取出要跟新的对象，带有版本versoin
+update tableName set name=#name#,version=version+1 where version=#version#
 ```
+
+
 
