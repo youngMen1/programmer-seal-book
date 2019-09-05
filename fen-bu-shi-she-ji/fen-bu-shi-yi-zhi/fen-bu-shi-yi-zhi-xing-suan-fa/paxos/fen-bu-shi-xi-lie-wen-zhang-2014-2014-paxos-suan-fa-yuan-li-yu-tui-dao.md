@@ -102,3 +102,5 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 但是，这又会引出另一个问题：如果每个Proposer分别提出不同的value，发给不同的Acceptor。根据P1，Acceptor分别接受自己收到的value，就导致不同的value被选定。出现了不一致。如下图：
 
+1752522-a2449c74a784bd87.png
+
