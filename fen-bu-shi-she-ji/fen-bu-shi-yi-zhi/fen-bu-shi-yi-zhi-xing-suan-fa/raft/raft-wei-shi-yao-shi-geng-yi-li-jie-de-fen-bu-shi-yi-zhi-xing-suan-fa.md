@@ -113,3 +113,27 @@ Raft 协议强依赖 Leader 节点的可用性来确保集群数据的一致性�
 
 815275-20160301175637220-1693295968.png
 
+综上穷举分析了最小集群（3 节点）面临的所有情况，可以看出 Raft 协议都能很好的应对一致性问题，并且很容易理解。
+
+## 总结 {#总结}
+
+就引用 Raft 论文最后的一节的综述来总结本文吧。
+
+> 算法以正确性、高效性、简洁性作为主要设计目标。  
+> 虽然这些都是很有价值的目标，但这些目标都不会达成直到开发者写出一个可用的实现。  
+> 所以我们相信可理解性同样重要。
+
+深以为然，想想 Paxos 算法是 Leslie Lamport 在 1990 年就公开发表在了自己的网站上，想想我们是什么时候才听说的？什么时候才有一个可用的实现？而 Raft 算法是 2013 年发表的，大家在参考\[5\]上面可以看到有多少个不同语言开源的实现库了，这就是可理解性的重要性。
+
+## 参考 {#参考}
+
+\[1\]. LESLIE LAMPORT, ROBERT SHOSTAK, MARSHALL PEASE.[The Byzantine General Problem](http://research.microsoft.com/en-us/um/people/lamport/pubs/byz.pdf). 1982  
+\[2\]. Leslie Lamport.[The Part-Time Parliament](http://research.microsoft.com/en-us/um/people/lamport/pubs/lamport-paxos.pdf). 1998  
+\[3\]. Leslie Lamport.[Paxos Made Simple](http://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf). 2001  
+\[4\]. Diego Ongaro and John Ousterhout.[Raft Paper](https://ramcloud.stanford.edu/raft.pdf). 2013  
+\[5\]. Raft Website.[The Raft Consensus Algorithm](https://raft.github.io/#implementations)  
+\[6\]. Raft Demo.[Raft Animate Demo](http://thesecretlivesofdata.com/raft/)
+
+  
+
+
