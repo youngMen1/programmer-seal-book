@@ -652,12 +652,11 @@ private class LeaderTwoThread extends Thread {
 [2017-11-30 16:50:06] 线程: [5] 是主节点
 [2017-11-30 16:50:11] 线程: [5] 是主节点
 [2017-11-30 16:50:16] 线程: [5] 是主节点
-
 ```
 
-方案二优劣
+## 方案二优劣
 
-优点
+### 优点
 
 实现对子节点变动状态\(排序在本进程对应节点之前的一个节点\)的监听
 
@@ -665,35 +664,27 @@ private class LeaderTwoThread extends Thread {
 
 相对于父节点监听方式，子节点监听方式在每一次锁释放\(或者节点变动\)时，ZK仅通知到一个进程的watcher，节省了大量的网络消耗和资源占用
 
-劣势
+### 劣势
 
 实现方式与程序逻辑较父节点监听来说比较繁琐
 
-总结比较
+## 总结比较
 
-程序复杂度： 
+### 程序复杂度：
 
 父节点监听方式 &lt; 子节点监听方式
 
-
-
-网络资源消耗： 
+### 网络资源消耗：
 
 父节点监听方式 &gt;&gt; 子节点监听方式
 
-
-
-程序可靠性 
+### 程序可靠性
 
 父节点监听方式 &lt; 子节点监听方式
 
-
-
-轻量Zookeeper客户端实现
+### 轻量Zookeeper客户端实现
 
 github地址：
 
-https://github.com/johnsonmoon/zk-client
-
-
+[https://github.com/johnsonmoon/zk-client](https://github.com/johnsonmoon/zk-client)
 
