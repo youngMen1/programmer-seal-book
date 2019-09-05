@@ -47,8 +47,5 @@ Zab 协议分为两大块：
 
 如图 1-1，消息 1 的 COMMIT 命令 Server1（leader）和 Server2（follower） 上执行了，但是 Server3 还没有收到消息 1 的 COMMIT 命令，此时 leader Server1 已经挂了，客户端很可能已经收到消息 1 已经成功执行的回复，经过恢复模式后需要保证所有机器都执行了消息 1。
 
-  
-
-
-
+2717543-a72e06ea1cade94f.png
 
