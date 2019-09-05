@@ -49,3 +49,40 @@ Zab 协议分为两大块：
 
 2717543-a72e06ea1cade94f.png
 
+为了实现已经被处理的消息不能丢这个目的，Zab 的恢复模式使用了以下的策略：
+
+1. 选举拥有 proposal 最大值（即 zxid 最大） 的节点作为新的 leader：由于所有提案被 COMMIT 之前必须有合法数量的 follower ACK，即必须有合法数量的服务器的事务日志上有该提案的 proposal，因此，只要有合法数量的节点正常工作，就必然有一个节点保存了所有被 COMMIT 消息的 proposal 状态。
+2. 新的 leader 将自己事务日志中 proposal 但未 COMMIT 的消息处理。
+3. 新的 leader 与 follower 建立先进先出的队列， 先将自身有而 follower 没有的 proposal 发送给 follower，再将这些 proposal 的 COMMIT 命令发送给 follower，以保证所有的 follower 都保存了所有的 proposal、所有的 follower 都处理了所有的消息。
+ 
+    通过以上策略，能保证已经被处理的消息不会丢
+
+#### 被丢弃的消息不能再次出现
+
+这一情况会出现在以下场景：当 leader 接收到消息请求生成 proposal 后就挂了，其他 follower 并没有收到此 proposal，因此经过恢复模式重新选了 leader 后，这条消息是被跳过的。 此时，之前挂了的 leader 重新启动并注册成了 follower，他保留了被跳过消息的 proposal 状态，与整个系统的状态是不一致的，需要将其删除。
+
+如图 1-2 ，在 Server1 挂了后系统进入新的正常工作状态后，消息 3被跳过，此时 Server1 中的 P3 需要被清除。
+
+  
+
+
+  
+
+
+作者：两棵橘树
+
+  
+
+
+链接：https://www.jianshu.com/p/fb527a64deee
+
+  
+
+
+来源：简书
+
+  
+
+
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+
