@@ -154,15 +154,15 @@ P2a是对Acceptor接受的提案约束，但其实提案是Proposer提出来的�
 
 于是我们得到了如下的**提案生成算法**：
 
-1. Proposer选择一个
-   **新的提案编号N**
-   ，然后向
-   **某个Acceptor集合**
-   （半数以上）发送请求，要求该集合中的每个Acceptor做出如下响应（response）。 \(a\) 向Proposer承诺保证
-   **不再接受**
-   任何编号
-   **小于N的提案**
-   。
+1. Proposer选择一个  
+   **新的提案编号N**  
+   ，然后向  
+   **某个Acceptor集合**  
+   （半数以上）发送请求，要求该集合中的每个Acceptor做出如下响应（response）。 \(a\) 向Proposer承诺保证  
+   **不再接受**  
+   任何编号  
+   **小于N的提案**  
+   。  
    \(b\) 如果Acceptor已经接受过提案，那么就向Proposer响应**已经接受过**的编号小于N的**最大编号的提案**。
 
    我们将该请求称为**编号为N**的**Prepare请求**。
@@ -181,4 +181,6 @@ Acceptor**可以忽略任何请求**（包括Prepare请求和Accept请求）而�
 如果Acceptor收到一个编号为N的Prepare请求，在此之前它已经响应过编号大于N的Prepare请求。根据P1a，该Acceptor不可能接受编号为N的提案。因此，该Acceptor可以忽略编号为N的Prepare请求。当然，也可以回复一个error，让Proposer尽早知道自己的提案不会被接受。
 
 因此，一个Acceptor**只需记住**：1. 已接受的编号最大的提案 2. 已响应的请求的最大编号。
+
+1752522-09a81e90de7f722b.png
 
