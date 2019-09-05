@@ -195,5 +195,14 @@ Linux
 - 开发不活跃
 ```
 
+# NFSv4 Referrals {#nfsv4-referrals}
+
+---
+
+```
++ 简单
+- 没有负载均衡，容错
+```
+
 
 
