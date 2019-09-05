@@ -89,3 +89,7 @@ Raft 协议强依赖 Leader 节点的可用性来确保集群数据的一致性�
 
 815275-20160301175419501-326023047.png
 
+#### 4. 数据到达 Leader 节点，成功复制到 Follower 部分节点，但还未向 Leader 响应接收 {#数据到达-leader-节点成功复制到-follower-部分节点但还未向-leader-响应接收}
+
+这个阶段 Leader 挂掉，数据在 Follower 节点处于未提交状态（Uncommitted）且不一致，Raft 协议要求投票只能投给拥有最新数据的节点。所以拥有最新数据的节点会被选为 Leader 再强制同步数据到 Follower，数据不会丢失并最终一致。
+
