@@ -118,3 +118,12 @@ eBay 的架构师Dan Pritchett，曾在一篇解释BASE 原理的论文《
 
 第一步伪代码如下，扣款100，通过本地事务保证了凭证消息插入到消息表中：
 
+```
+begin transaction:
+　　update User set account = account - 100 where userId = 'A'
+　　insert into message(msgId, userId, amount, status) values('123','A', 100, 1)
+commit transaction
+```
+
+
+
