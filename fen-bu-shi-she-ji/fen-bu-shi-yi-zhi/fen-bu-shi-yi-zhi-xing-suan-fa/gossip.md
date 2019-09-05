@@ -1,10 +1,10 @@
-#  Gossip算法
+# Gossip算法
+
+# Gossip算法
 
 在公司的某关于Pub/Sub的项目中，使用到了Gossip算法。 为方便使用， 网上找的资料。具体如下：
 
-
-
-Gossip算法因为Cassandra而名声大噪，Gossip看似简单，但要真正弄清楚其本质远没看起来那么容易。为了寻求Gossip的本质，下面的内容主要参考Gossip的原始论文：&lt;&lt;Efficient Reconciliation and Flow Control for Anti-Entropy Protocols&gt;&gt;。
+Gossip算法因为Cassandra而名声大噪，Gossip看似简单，但要真正弄清楚其本质远没看起来那么容易。为了寻求Gossip的本质，下面的内容主要参考Gossip的原始论文：&lt;&lt;Efficient Reconciliation and Flow Control for Anti-Entropy Protocols&gt;&gt;。
 
 ### 1. Gossip背景
 
@@ -36,7 +36,7 @@ Gossip是一个带冗余的容错算法，更进一步，Gossip是一个最终�
 
 如果把两个节点数据同步一次定义为一个周期，则在一个周期内，push需通信1次，pull需2次，push/pull则需3次，从效果上来讲，push/pull最好，理论上一个周期内可以使两个节点完全一致。直观上也感觉，push/pull的收敛速度是最快的。
 
-假设每个节点通信周期都能选择（感染）一个新节点，则Gossip算法退化为一个二分查找过程，每个周期构成一个平衡二叉树，收敛速度为O\(n2 \)，对应的时间开销则为O\(logn \)。这也是Gossip理论上最优的收敛速度。但在实际情况中最优收敛速度是很难达到的，假设某个节点在第i个周期被感染的概率为pi ,第i+1个周期被感染的概率为pi+1 ，则pull的方式:
+假设每个节点通信周期都能选择（感染）一个新节点，则Gossip算法退化为一个二分查找过程，每个周期构成一个平衡二叉树，收敛速度为O\(n2 \)，对应的时间开销则为O\(logn \)。这也是Gossip理论上最优的收敛速度。但在实际情况中最优收敛速度是很难达到的，假设某个节点在第i个周期被感染的概率为pi ,第i+1个周期被感染的概率为pi+1 ，则pull的方式:
 
 ![](http://hi.csdn.net/p_w_upload/201103/24/411087_1300980169Ite8.jpg "pull")
 
