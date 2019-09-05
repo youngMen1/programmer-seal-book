@@ -1,6 +1,4 @@
-# Gossip算法
-
-# Gossip算法
+## Gossip算法
 
 在公司的某关于Pub/Sub的项目中，使用到了Gossip算法。 为方便使用， 网上找的资料。具体如下：
 
