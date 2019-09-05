@@ -92,3 +92,13 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 1752522-a85c9965be9d1671.png
 
+下面开始寻找解决方案。
+
+如果我们希望即使只有一个Proposer提出了一个value，该value也最终被选定。
+
+那么，就得到下面的约束：
+
+> P1：一个Acceptor必须接受它收到的第一个提案。
+
+但是，这又会引出另一个问题：如果每个Proposer分别提出不同的value，发给不同的Acceptor。根据P1，Acceptor分别接受自己收到的value，就导致不同的value被选定。出现了不一致。如下图：
+
