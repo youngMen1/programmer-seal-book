@@ -164,7 +164,7 @@ BASE 的可用性是通过**支持局部故障**而不是系统全局故障来�
 
 以下是分布式事务框架的流程图
 
-006kbv1Jgw1f31xfuizhpj30a70b7q3x.jpg
+![img](/static/image/006kbv1Jgw1f31xfuizhpj30a70b7q3x.jpg)
 
 **实现**
 
