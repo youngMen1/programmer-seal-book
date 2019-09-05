@@ -297,7 +297,7 @@
     * [说说分布式文件存储系统-基本架构](fen-bu-shi-she-ji/fen-bu-shi-wen-jian-xi-tong/shuo-shuo-fen-bu-shi-wen-jian-cun-chu-xi-7edf-ji-ben-jia-gou.md)
     * [各种分布式文件系统的比较](fen-bu-shi-she-ji/fen-bu-shi-wen-jian-xi-tong/ge-zhong-fen-bu-shi-wen-jian-xi-tong-de-bi-jiao.md)
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
-    * 全局唯一ID
+    * [全局唯一ID](fen-bu-shi-she-ji/weiyi-id-sheng-cheng/quan-ju-wei-yi-id.md)
   * [一致性Hash算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa.md)
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
