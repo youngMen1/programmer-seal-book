@@ -200,7 +200,7 @@ BASE 的可用性是通过**支持局部故障**而不是系统全局故障来�
 
 具体的流程是先调用积分平台增加用户积分，再调用支付平台进行支付处理，如果处理失败，catch 方法调用积分平台的回撤方法，将本次处理的积分订单回撤。
 
-006kbv1Jgw1f31xgmb4wrj30hl09rgmn.jpg
+![img](/static/image/006kbv1Jgw1f31xgmb4wrj30hl09rgmn.jpg)
 
 **2. 用户信息变更**
 
