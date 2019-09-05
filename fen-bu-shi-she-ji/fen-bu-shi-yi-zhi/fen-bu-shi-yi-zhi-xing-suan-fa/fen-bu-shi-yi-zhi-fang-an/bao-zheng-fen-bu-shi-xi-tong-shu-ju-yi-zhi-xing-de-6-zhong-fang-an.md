@@ -64,7 +64,7 @@ BASE 的可用性是通过**支持局部故障**而不是系统全局故障来�
 
 来记录已经处理过的消息。
 
-006kbv1Jgw1f31xaq6ex2j30ct082wev.jpg
+![img](/static/image/006kbv1Jgw1f31xaq6ex2j30ct082wev.jpg)
 
 006kbv1Jgw1f31xa82oomj30j30iawgc.jpg
 
