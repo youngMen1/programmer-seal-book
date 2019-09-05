@@ -65,3 +65,9 @@ Proposer可以提出（propose）提案；Acceptor可以接受（accept）提案
 
 我们不去精确地定义其**活性（liveness）**要求。我们的目标是保证**最终有一个提出的value被选定**。当一个value被选定后，进程最终也能学习到这个value。
 
+```
+Paxos的目标：保证最终有一个value会被选定，当value被选定后，进程最终也能获取到被选定的value。
+```
+
+
+
