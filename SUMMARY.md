@@ -295,6 +295,7 @@
         * [传统事务与柔性事务](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/tcctryconfirmcancel-rou-xing-shi-wu/chuan-tong-shi-wu-yu-rou-xing-shi-wu.md)
   * [分布式文件系统](fen-bu-shi-she-ji/fen-bu-shi-wen-jian-xi-tong.md)
     * 说说分布式文件存储系统-基本架构
+    * 各种分布式文件系统的比较
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
     * 全局唯一ID
   * 一致性Hash算法
