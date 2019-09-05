@@ -218,5 +218,77 @@ public class ZKLeader {
 
 ### 测试程序 {#测试程序}
 
+```
+private void zkLeaderOneTestWithMultiThread() throws Exception {
+    List<LeaderOneThread> leaderOneThreads = new ArrayList<>();
+    for (int i = 0; i < 10; i++) {
+        leaderOneThreads.add(new LeaderOneThread(ZKLeader.create("127.0.0.1", "2181"), i));
+    }
+    leaderOneThreads.forEach(LeaderOneThread::start);
+
+    //线程0断连
+    Thread.sleep(20000);
+    leaderOneThreads.get(0).getZkLeader().close();
+    Thread.sleep(2000);
+    System.out.println(String.format("线程: [%s] 断开连接", 0));
+
+    //线程1断连
+    Thread.sleep(20000);
+    leaderOneThreads.get(1).getZkLeader().close();
+    System.out.println(String.format("线程: [%s] 断开连接", 1));
+
+    //线程3断连
+    Thread.sleep(20000);
+    leaderOneThreads.get(3).getZkLeader().close();
+    System.out.println(String.format("线程: [%s] 断开连接", 3));
+
+    //线程4断连
+    Thread.sleep(20000);
+    leaderOneThreads.get(4).getZkLeader().close();
+    System.out.println(String.format("线程: [%s] 断开连接", 4));
+
+    //线程2断连
+    Thread.sleep(20000);
+    leaderOneThreads.get(2).getZkLeader().close();
+    System.out.println(String.format("线程: [%s] 断开连接", 2));
+
+    Thread.sleep(60000);
+}
+
+private class LeaderOneThread extends Thread {
+    private ZKLeader zkLeader;
+    private int threadNum;
+
+    public ZKLeader getZkLeader() {
+        return zkLeader;
+    }
+
+    LeaderOneThread(ZKLeader zkLeader, int threadNum) {
+        this.zkLeader = zkLeader;
+        this.threadNum = threadNum;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(5000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Date dt = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentTime = sdf.format(dt);
+            if (zkLeader.leader()) {
+                System.out.println(String.format("[%s] 线程: [%s] 是主节点", currentTime, threadNum));
+            }
+        }
+    }
+}
+————————————————
+版权声明：本文为CSDN博主「johnson_moon」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/johnson_moon/article/details/78809995
+```
+
 
 
