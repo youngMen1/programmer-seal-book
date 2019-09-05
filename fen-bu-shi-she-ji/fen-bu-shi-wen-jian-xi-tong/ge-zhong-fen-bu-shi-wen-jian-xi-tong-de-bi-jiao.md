@@ -27,5 +27,31 @@ Key-Value型元文件系统，不支持FUSE，应用程序访问它时需要API�
 
 > 不适合做通用文件系统，适合存储静态只读小文件，比如图片
 
+GlusterFS
 
+支持FUSE，比mooseFS庞大，感觉广告宣传做的比产品本身好。
+
+
+
+    + 无单点故障问题
+
+    + 支持回收站
+
+    + 模块化堆叠式架构
+
+    - 对文件系统格式有要求，ext3/ext4/zfs 被正式支持，xfs/jfs 可能可以，reiserfs 经测试可以
+
+
+
+    - 需要以 root 用户身份运行（用了 trusted xattr，mount 时加 user\_xattr 选项是没用的，官方说法是glusterfsd 需要创建不同属主的文件，所以必需 root 权限\)
+
+    - 不能在线扩容\(不 umount 时增加存储节点\)，计划在 3.1 里实现
+
+    - 分布存储以文件为单位，条带化分布存储不成熟
+
+————————————————
+
+版权声明：本文为CSDN博主「JeanCheng」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/gatieme/article/details/44982961
 
