@@ -84,5 +84,5 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 因此，必须要有**多个Acceptor**！
 
-
+1752522-a902b09159405eab.png
 
