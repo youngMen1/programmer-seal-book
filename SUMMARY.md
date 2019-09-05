@@ -278,7 +278,8 @@
         * [【分布式】Zookeeper与Paxos](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos/3010-fen-bu-shi-3011-zookeeper-yu-paxos.md)
       * [Zab](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/zab.md)
         * [Zookeeper 中的分布式一致性协议介绍](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/zab/zookeeper-zhong-de-fen-bu-shi-yi-zhi-xing-xie-yi-jie-shao.md)
-      * Raft
+      * [Raft](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/raft.md)
+        * Raft 为什么是更易理解的分布式一致性算法
       * Gossip
       * 两阶段提交、多阶段提交
       * 幂等
