@@ -285,7 +285,7 @@
       * [两阶段提交、多阶段提交](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/liang-jie-duan-ti-jiao-3001-duo-jie-duan-ti-jiao.md)
         * 关于分布式事务、两阶段提交协议、三阶提交协议
       * [幂等](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/mi-deng.md)
-        * 分布式系统---幂等性设计
+        * [分布式系统---幂等性设计](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/mi-deng/fen-bu-shi-xi-7edf-mi-deng-xing-she-ji.md)
       * 分布式一致方案
       * 分布式 Leader 节点选举
       * TCC\(Try/Confirm/Cancel\) 柔性事务
