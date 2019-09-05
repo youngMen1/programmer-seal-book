@@ -111,5 +111,25 @@ Linux
  内核和 ext3 文件系统
 ```
 
+PVFS2
 
+http://blog.csdn.net/yfw418/archive/2007/07/06/1680930.aspx 
+
+搭配定制应用会很好，据说曙光的并行文件系统就是基于 PVFS。　　fastDFS：国人在mogileFS的基础上进行改进的key-value型文件系统，同样不支持FUSE，提供比mogileFS更好的性能。
+
+
+
+    \* 高性能
+
+    - 没有锁机制，不符合 POSIX 语意，需要应用的配合，不适合做通用文件系统
+
+      \(See pvfs2-guide chaper 5:  PVFS2 User APIs and Semantics\)
+
+    - 静态配置，不能动态扩展
+
+————————————————
+
+版权声明：本文为CSDN博主「JeanCheng」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/gatieme/article/details/44982961
 
