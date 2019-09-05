@@ -273,7 +273,7 @@
       * [Memcached 和 Redis 分布式锁方案](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-suo/memcached-he-redis-fen-bu-shi-suo-fang-an.md)
     * [分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * [PAXOS](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos.md)
-        * Paxos算法与Zookeeper分析
+        * [Paxos算法与Zookeeper分析](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos/paxossuan-fa-yu-zookeeper-fen-xi.md)
       * Zab
       * Raft
       * Gossip
