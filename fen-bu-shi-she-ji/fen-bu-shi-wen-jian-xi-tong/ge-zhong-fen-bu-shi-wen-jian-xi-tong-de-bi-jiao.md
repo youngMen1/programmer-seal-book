@@ -27,7 +27,7 @@ Key-Value型元文件系统，不支持FUSE，应用程序访问它时需要API�
 
 > 不适合做通用文件系统，适合存储静态只读小文件，比如图片
 
-GlusterFS
+## GlusterFS
 
 支持FUSE，比mooseFS庞大，感觉广告宣传做的比产品本身好。
 
