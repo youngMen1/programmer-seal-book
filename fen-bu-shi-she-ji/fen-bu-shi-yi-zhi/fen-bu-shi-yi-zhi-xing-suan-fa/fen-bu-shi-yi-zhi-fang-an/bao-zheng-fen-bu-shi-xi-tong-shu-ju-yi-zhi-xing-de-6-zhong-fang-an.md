@@ -210,3 +210,22 @@ BASE 的可用性是通过**支持局部故障**而不是系统全局故障来�
 
 006kbv1Jgw1f31xhl94fyj30hu08qt9j.jpg
 
+**总结**
+
+分布式服务对衍生的配套系统要求比较多，特别是我们基于消息、日志的最终一致性方案，需要考虑消息的积压、消费情况、监控、报警等。
+
+**参考资料**
+
+* **Base: An Acid Alternative \(eBay 方案\)**
+
+In partitioned databases, trading some consistency for availability can lead to dramatic improvements in scalability.
+
+英文版 ：[http://queue.acm.org/detail.cfm?id=1394128](http://queue.acm.org/detail.cfm?id=1394128%20)  
+
+
+中文版：[http://article.yeeyan.org/view/167444/125572](http://article.yeeyan.org/view/167444/125572%20%20)
+
+* **分布式事务服务 \(DTS\) **[**https://www.cloud.alipay.com/docs/middleware/xts/index.html**](https://www.cloud.alipay.com/docs/middleware/xts/index.html)
+
+
+
