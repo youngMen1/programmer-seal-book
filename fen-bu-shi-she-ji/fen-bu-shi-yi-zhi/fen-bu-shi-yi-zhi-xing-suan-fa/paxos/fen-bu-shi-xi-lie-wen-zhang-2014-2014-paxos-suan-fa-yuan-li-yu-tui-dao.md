@@ -53,7 +53,8 @@ Proposer可以提出（propose）提案；Acceptor可以接受（accept）提案
 * Acceptor：只要Acceptor接受了某个提案，Acceptor就任务该提案里的value被选定了。
 * Learner：Acceptor告诉Learner哪个value被选定，Learner就认为那个value被选定。
 
-1752522-6980ffa6b43c16d2.png
+
+![img](/static/image/1752522-6980ffa6b43c16d2.png)
 
 ## 问题描述 {#问题描述}
 
@@ -91,7 +92,8 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 多个Acceptor的情况如下图。那么，如何保证在多个Proposer和多个Acceptor的情况下选定一个value呢？
 
-1752522-a85c9965be9d1671.png
+
+![img](/static/image/1752522-a85c9965be9d1671.png)
 
 下面开始寻找解决方案。
 
@@ -103,7 +105,8 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 但是，这又会引出另一个问题：如果每个Proposer分别提出不同的value，发给不同的Acceptor。根据P1，Acceptor分别接受自己收到的value，就导致不同的value被选定。出现了不一致。如下图：
 
-1752522-a2449c74a784bd87.png
+
+![img](/static/image/1752522-a2449c74a784bd87.png)
 
 刚刚是因为『一个提案只要被一个Acceptor接受，则该提案的value就被选定了』才导致了出现上面不一致的问题。因此，我们需要加一个规定：
 
