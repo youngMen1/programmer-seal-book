@@ -19,5 +19,13 @@
     - master server 很耗内存
 ```
 
+# MogileFS {#mogilefs}
+
+---
+
+Key-Value型元文件系统，不支持FUSE，应用程序访问它时需要API，主要用在web领域处理海量小图片，效率相比mooseFS高很多，据说对于 Web 2.0 应用存储图片啥的很好。
+
+> 不适合做通用文件系统，适合存储静态只读小文件，比如图片
+
 
 
