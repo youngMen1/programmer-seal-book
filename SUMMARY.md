@@ -275,7 +275,7 @@
       * [PAXOS](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos.md)
         * [Paxos算法与Zookeeper分析](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos/paxossuan-fa-yu-zookeeper-fen-xi.md)
         * [分布式系列文章——Paxos算法原理与推导](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos/fen-bu-shi-xi-lie-wen-zhang-2014-2014-paxos-suan-fa-yuan-li-yu-tui-dao.md)
-        * 【分布式】Zookeeper与Paxos
+        * [【分布式】Zookeeper与Paxos](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/paxos/3010-fen-bu-shi-3011-zookeeper-yu-paxos.md)
       * Zab
       * Raft
       * Gossip
