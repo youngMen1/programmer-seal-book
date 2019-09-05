@@ -129,5 +129,7 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 1. Acceptor1认为V2被选定，Acceptor2~5和Proposer2认为V1被选定。出现了不一致。
 2. V1被选定了，但是编号更高的被Acceptor1接受的提案\[M2,V2\]的value为V2，且V2≠V1。这就跟P2a（如果某个value为v的提案被选定了，那么每个编号更高的被Acceptor接受的提案的value必须也是v）矛盾了。
 
+1752522-e517a6fd3d55e2c0.png
+
 
 
