@@ -136,3 +136,15 @@ commit transaction
 
 解决了通知的问题，又有新的问题了。万一这消息有重复被消费，往用户帐号上多加了钱，那岂不是后果很严重？其实我们可以消息消费方也通过一个“消费状态表”来记录消费状态。在执行“加款”操作之前，检测下该消息（提供标识）是否已经消费过，消费完成后，通过本地事务控制来更新这个“消费状态表”。这样子就避免重复消费的问题：
 
+```
+get msgId = '123';
+check if mgsId is in message_applied(msgId);
+if not applied:
+    begin transaction:
+        update User set account = account + 100 where userId = 'B'
+        insert into message_applied(msgId) values('123')
+    commit transaction
+```
+
+
+
