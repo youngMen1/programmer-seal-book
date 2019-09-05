@@ -210,3 +210,7 @@ Learner学习（获取）被选定的value有如下三种方案：
 
 1752522-0fab48ed2bdf358a.png
 
+## 如何保证Paxos算法的活性 {#如何保证paxos算法的活性}
+
+
+
