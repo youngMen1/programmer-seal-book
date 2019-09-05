@@ -292,7 +292,7 @@
       * [分布式 Leader 节点选举](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/fen-bu-shi-leader-jie-dian-xuan-ju.md)
         * [利用zookeeper实现分布式leader节点选举](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/fen-bu-shi-leader-jie-dian-xuan-ju/li-yong-zookeeper-shi-xian-fen-bu-shi-leader-jie-dian-xuan-ju.md)
       * [TCC\(Try/Confirm/Cancel\) 柔性事务](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/tcctryconfirmcancel-rou-xing-shi-wu.md)
-        * 传统事务与柔性事务
+        * [传统事务与柔性事务](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/tcctryconfirmcancel-rou-xing-shi-wu/chuan-tong-shi-wu-yu-rou-xing-shi-wu.md)
   * [分布式文件系统](fen-bu-shi-she-ji/fen-bu-shi-wen-jian-xi-tong.md)
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
     * 全局唯一ID
