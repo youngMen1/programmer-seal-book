@@ -88,5 +88,9 @@ GFS 的 Oracle 翻版，据说性能比 GFS2 好 \(Debian: aptitude install ocfs
  性能不够好
 ```
 
+# ceph {#ceph}
 
+---
+
+支持FUSE，客户端已经进入了linux-2.6.34内核，也就是说可以像ext3/rasierFS一样，选择ceph为文件系统。彻底的分布式，没有单点依赖，用C编写，性能较好。基于不成熟的btrfs，其本身也非常不成熟
 
