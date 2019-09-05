@@ -282,7 +282,8 @@
         * [Raft 为什么是更易理解的分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/raft/raft-wei-shi-yao-shi-geng-yi-li-jie-de-fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * [Gossip](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/gossip.md)
         * Gossip算法
-      * 两阶段提交、多阶段提交
+      * [两阶段提交、多阶段提交](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/liang-jie-duan-ti-jiao-3001-duo-jie-duan-ti-jiao.md)
+        * 关于分布式事务、两阶段提交协议、三阶提交协议
       * 幂等
       * 分布式一致方案
       * 分布式 Leader 节点选举
