@@ -131,5 +131,54 @@ Paxos的目标：保证最终有一个value会被选定，当value被选定后�
 
 1752522-e517a6fd3d55e2c0.png
 
+所以我们要对P2a约束进行强化！
 
+P2a是对Acceptor接受的提案约束，但其实提案是Proposer提出来的，所有我们可以对Proposer提出的提案进行约束。得到P2b：
+
+> P2b：如果某个value为v的提案被选定了，那么之后任何Proposer提出的编号更高的提案的value必须也是v。
+
+由P2b可以推出P2a进而推出P2。
+
+那么，如何确保在某个value为v的提案被选定后，Proposer提出的编号更高的提案的value都是v呢？
+
+只要满足P2c即可：
+
+> P2c：对于任意的N和V，如果提案\[N, V\]被提出，那么存在一个半数以上的Acceptor组成的集合S，满足以下两个条件中的任意一个：
+
+* S中每个Acceptor都没有接受过编号小于N的提案。
+* S中Acceptor接受过的最大编号的提案的value为V。
+
+### Proposer生成提案 {#proposer生成提案}
+
+为了满足P2b，这里有个比较重要的思想：Proposer生成提案之前，应该先去**『学习』**已经被选定或者可能被选定的value，然后以该value作为自己提出的提案的value。如果没有value被选定，Proposer才可以自己决定value的值。这样才能达成一致。这个学习的阶段是通过一个**『Prepare请求』**实现的。
+
+于是我们得到了如下的**提案生成算法**：
+
+1. Proposer选择一个
+   **新的提案编号N**
+   ，然后向
+   **某个Acceptor集合**
+   （半数以上）发送请求，要求该集合中的每个Acceptor做出如下响应（response）。 \(a\) 向Proposer承诺保证
+   **不再接受**
+   任何编号
+   **小于N的提案**
+   。
+   \(b\) 如果Acceptor已经接受过提案，那么就向Proposer响应**已经接受过**的编号小于N的**最大编号的提案**。
+
+   我们将该请求称为**编号为N**的**Prepare请求**。
+
+2. 如果Proposer收到了**半数以上**的Acceptor的**响应**，那么它就可以生成编号为N，Value为V的**提案\[N,V\]**。这里的V是所有的响应中**编号最大的提案的Value**。如果所有的响应中**都没有提案**，那 么此时V就可以由Proposer**自己选择**。  
+   生成提案后，Proposer将该**提案**发送给**半数以上**的Acceptor集合，并期望这些Acceptor能接受该提案。我们称该请求为**Accept请求**。（注意：此时接受Accept请求的Acceptor集合**不一定**是之前响应Prepare请求的Acceptor集合）
+
+### Acceptor接受提案 {#acceptor接受提案}
+
+Acceptor**可以忽略任何请求**（包括Prepare请求和Accept请求）而不用担心破坏算法的**安全性**。因此，我们这里要讨论的是什么时候Acceptor可以响应一个请求。
+
+我们对Acceptor接受提案给出如下约束：
+
+> P1a：一个Acceptor只要尚**未响应过**任何**编号大于N**的**Prepare请求**，那么他就可以**接受**这个**编号为N的提案**。
+
+如果Acceptor收到一个编号为N的Prepare请求，在此之前它已经响应过编号大于N的Prepare请求。根据P1a，该Acceptor不可能接受编号为N的提案。因此，该Acceptor可以忽略编号为N的Prepare请求。当然，也可以回复一个error，让Proposer尽早知道自己的提案不会被接受。
+
+因此，一个Acceptor**只需记住**：1. 已接受的编号最大的提案 2. 已响应的请求的最大编号。
 
