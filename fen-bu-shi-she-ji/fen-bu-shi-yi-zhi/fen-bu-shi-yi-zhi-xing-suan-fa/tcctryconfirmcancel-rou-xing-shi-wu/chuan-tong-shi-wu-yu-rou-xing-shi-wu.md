@@ -92,5 +92,13 @@ ACID是传统数据库常用的设计思想，它追求的是强一致性。BASE
  3、“无锁”设计  
  放弃锁是一个解决问题的思路。比如通过乐观锁，大多数是基于版本号来实现。
 
+```
+update goods
+set name=#{name},
+remaining_number=#{remainingNumber},
+version=version+1
+where id=#{id} and version=#{version}
+```
+
 
 
