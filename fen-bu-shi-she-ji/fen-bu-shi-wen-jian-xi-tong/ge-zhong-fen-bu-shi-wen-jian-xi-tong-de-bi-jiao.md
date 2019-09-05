@@ -57,5 +57,23 @@ http://www.yubo.org/blog/?p=27 (iscsi+clvm+gfs2+xen+Cluster)
 http://linux.chinaunix.net/bbs/thread-777867-1-1.html
 ```
 
+并不是 distributed file system, 而是 shared disk cluster file system，需要某种机制在机器 
 
+之间共享磁盘，以及加锁机制，因此需要 drbd/iscsi/clvm/ddraid/gnbd 做磁盘共享，以及 dlm 做锁管理\) 
+
+- 依赖 Red Hat Cluster Suite \(Debian: aptitude install redhat-cluster-suite， 图形配置工具包 
+
+system-config-cluster, system-config-lvm\) 
+
+- 适合不超过约 30 个节点左右的小型集群，规模越大，dlm 的开销越大，默认配置 8 个节点
+
+
+
+OCFS2
+
+————————————————
+
+版权声明：本文为CSDN博主「JeanCheng」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/gatieme/article/details/44982961
 
