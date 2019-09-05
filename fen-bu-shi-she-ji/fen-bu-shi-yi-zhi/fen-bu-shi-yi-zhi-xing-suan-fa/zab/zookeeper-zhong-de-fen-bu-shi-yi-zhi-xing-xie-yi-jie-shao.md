@@ -30,8 +30,5 @@ Zab 协议分为两大块：
 4. 当 leader 接收到合法数量的 ACKs 后，leader 就向所有 follower 发送 COMMIT 命令，同事会在本地执行该消息。
 5. 当 follower 收到消息的 COMMIT 命令时，就会执行该消息
 
-  
-
-
-
+2717543-03f77d9b25184821.webp
 
