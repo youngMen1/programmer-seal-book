@@ -1,3 +1,5 @@
+# 各种分布式文件系统的比较
+
 GFS 的 Oracle 翻版，据说性能比 GFS2 好 \(Debian: aptitude install ocfs2-tools, 图形配置工具包 ocfs2console\)
 
 不支持 ACL、flock，只是为了 Oracle各种分布式文件系统的比较
@@ -220,9 +222,10 @@ Linux
 * pNFS 在 Linux 上的一个实现
 ```
 
-Ceph \([http://ceph.newdream.net/](http://ceph.newdream.net/)\)  
-- 开发初期，不稳定  
-- 依赖 btrfs
+Ceph \([http://ceph.newdream.net/](http://ceph.newdream.net/)\)
+
+* 开发初期，不稳定  
+* 依赖 btrfs
 
 # GFarm {#gfarm}
 
