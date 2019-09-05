@@ -94,3 +94,22 @@ GFS 的 Oracle 翻版，据说性能比 GFS2 好 \(Debian: aptitude install ocfs
 
 支持FUSE，客户端已经进入了linux-2.6.34内核，也就是说可以像ext3/rasierFS一样，选择ceph为文件系统。彻底的分布式，没有单点依赖，用C编写，性能较好。基于不成熟的btrfs，其本身也非常不成熟
 
+# Lustre {#lustre}
+
+---
+
+Oracle公司的企业级产品，非常庞大，对内核和ext3深度依赖  
+复杂，高效，适合大型集群。
+
+```
+    * 适合大型集群
+    + 很高性能
+    + 支持动态扩展
+    -
+ 需要对内核打补丁，深度依赖 
+Linux
+ 内核和 ext3 文件系统
+```
+
+
+
