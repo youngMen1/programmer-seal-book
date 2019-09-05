@@ -73,8 +73,20 @@ system-config-cluster, system-config-lvm\)
 
 GFS 的 Oracle 翻版，据说性能比 GFS2 好 \(Debian: aptitude install ocfs2-tools, 图形配置工具包 ocfs2console\)
 
-  
-
-
 不支持 ACL、flock，只是为了 Oracle database 设计
+
+# OpenAFS/Coda {#openafscoda}
+
+---
+
+是很有特色的东西。
+
+```
+     + 成熟稳定
+    + 开发活跃，支持 Unix/Linux/MacOS X/Windows
+    -
+ 性能不够好
+```
+
+
 
