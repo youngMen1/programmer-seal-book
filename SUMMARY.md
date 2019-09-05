@@ -299,6 +299,7 @@
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
     * [全局唯一ID](fen-bu-shi-she-ji/weiyi-id-sheng-cheng/quan-ju-wei-yi-id.md)
   * [一致性Hash算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa.md)
+    * 一致性哈希算法
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * DDD\(Domain-driven Design - 领域驱动设计\)
 * [项目管理](xiang-mu-guan-li.md)
