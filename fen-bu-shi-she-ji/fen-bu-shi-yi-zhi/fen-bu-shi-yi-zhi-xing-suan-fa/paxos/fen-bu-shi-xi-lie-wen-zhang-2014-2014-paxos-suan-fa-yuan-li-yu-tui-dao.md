@@ -182,7 +182,8 @@ Acceptor**可以忽略任何请求**（包括Prepare请求和Accept请求）而�
 
 因此，一个Acceptor**只需记住**：1. 已接受的编号最大的提案 2. 已响应的请求的最大编号。
 
-1752522-09a81e90de7f722b.png
+
+![img](/static/image/1752522-09a81e90de7f722b.png)
 
 ### Paxos算法描述 {#paxos算法描述}
 
