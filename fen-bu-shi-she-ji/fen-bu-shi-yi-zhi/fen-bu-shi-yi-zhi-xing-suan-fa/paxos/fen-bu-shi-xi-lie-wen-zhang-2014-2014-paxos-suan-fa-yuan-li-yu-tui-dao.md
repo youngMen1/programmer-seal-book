@@ -20,3 +20,38 @@ Google Chubby的作者Mike Burrows说过这个世界上**只有一种**一致性
 
 1752522-d2136179b456e13e.png
 
+## 相关概念 {#相关概念}
+
+在Paxos算法中，有三种角色：
+
+* **Proposer**
+* **Acceptor**
+* **Learners**
+
+在具体的实现中，一个进程可能**同时充当多种角色**。比如一个进程可能**既是Proposer又是Acceptor又是Learner**。
+
+还有一个很重要的概念叫**提案（Proposal）**。最终要达成一致的value就在提案里。
+
+**注：**
+
+* **暂且**
+  认为『
+  **提案=value**
+  』，即提案只包含value。在我们接下来的推导过程中会发现如果提案只包含value，会有问题，于是我们再对提案
+  **重新设计**
+  。
+* **暂且**
+  认为『
+  **Proposer可以直接提出提案**
+  』。在我们接下来的推导过程中会发现如果Proposer直接提出提案会有问题，需要增加一个学习提案的过程。
+
+Proposer可以提出（propose）提案；Acceptor可以接受（accept）提案；如果某个提案被选定（chosen），那么该提案里的value就被选定了。
+
+回到刚刚说的『对某个数据的值达成一致』，指的是Proposer、Acceptor、Learner都认为同一个value被选定（chosen）。那么，Proposer、Acceptor、Learner分别在什么情况下才能认为某个value被选定呢？
+
+* Proposer：只要Proposer发的提案被Acceptor接受（刚开始先认为只需要一个Acceptor接受即可，在推导过程中会发现需要半数以上的Acceptor同意才行），Proposer就认为该提案里的value被选定了。
+* Acceptor：只要Acceptor接受了某个提案，Acceptor就任务该提案里的value被选定了。
+* Learner：Acceptor告诉Learner哪个value被选定，Learner就认为那个value被选定。
+
+
+
