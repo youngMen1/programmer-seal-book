@@ -55,5 +55,13 @@ Proposer可以提出（propose）提案；Acceptor可以接受（accept）提案
 
 1752522-6980ffa6b43c16d2.png
 
+## 问题描述 {#问题描述}
 
+假设有一组可以**提出（propose）value**（value在提案Proposal里）的**进程集合**。一个一致性算法需要保证提出的这么多value中，**只有一个**value被选定（chosen）。如果没有value被提出，就不应该有value被选定。如果一个value被选定，那么所有进程都应该能**学习（learn）**到这个被选定的value。对于一致性算法，**安全性（safaty）**要求如下：
+
+* 只有被提出的value才能被选定。
+* 只有一个value被选定，并且
+* 如果某个进程认为某个value被选定了，那么这个value必须是真的被选定的那个。
+
+我们不去精确地定义其**活性（liveness）**要求。我们的目标是保证**最终有一个提出的value被选定**。当一个value被选定后，进程最终也能学习到这个value。
 
