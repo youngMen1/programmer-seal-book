@@ -118,5 +118,5 @@ HashCode hashCode = Hashing.murmur3_32().newHasher().putString(key, Charsets.UTF
 int bucket = Hashing.consistentHash(hashCode, cacheServers.length);
 ```
 
-D2CFEC7D-5ACB-49C3-B67F-12BA52254454 \(1\).png
+![img](/static/image/D2CFEC7D-5ACB-49C3-B67F-12BA52254454 \(1\).png)
 
