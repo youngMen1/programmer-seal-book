@@ -210,11 +210,11 @@ Amoeba并不是一个代理层的Proxy程序，而是一个开发数据库代理
 
 AmoebaForMySQL主要是专门针对MySQL数据库的解决方案，前端应用程序请求的协议以及后端连接的数据源数据库都必须是MySQL。对于客户端的任何应用程序来说，AmoebaForMySQL和一个MySQL数据库没有什么区别，任何使用MySQL协议的客户端请求，都可以被AmoebaForMySQL解析并进行相应的处理。下如可以告诉我们AmoebaForMySQL的架构信息（出自Amoeba开发者博客）：
 
-201211132252156453.jpg
+![img](/static/image/201211132252156453.jpg)
 
 AmoebaForAladin则是一个适用更为广泛，功能更为强大的Proxy程序。他可以同时连接不同数据库的数据源为前端应用程序提供服务，但是仅仅接受符合MySQL协议的客户端应用程序请求。也就是说，只要前端应用程序通过MySQL协议连接上来之后，AmoebaForAladin会自动分析Query语句，根据Query语句中所请求的数据来自动识别出该所Query的数据源是在什么类型数据库的哪一个物理主机上面。下图展示了AmoebaForAladin的架构细节（出自Amoeba开发者博客）：
 
-201211132252172158.jpg
+![img](/static/image/201211132252172158.jpg)
 
 咋一看，两者好像完全一样嘛。细看之后，才会发现两者主要的区别仅在于通过MySQLProtocalAdapter处理之后，根据分析结果判断出数据源数据库，然后选择特定的JDBC驱动和相应协议连接后端数据库。
 
@@ -250,7 +250,7 @@ HiveDB的实现机制与MySQLProxy和Amoeba有一定的差异，他并不是借�
 
 下面是HiveDB官方网站上面一章图片，描述了HiveDB如何来组织数据的基本信息，虽然不能详细的表现出太多架构方面的信息，但是也基本可以展示出其在数据切分方面独特的一面了。
 
-201211132254467111.jpg
+![img](/static/image/201211132254467111.jpg)
 
 其他实现数据切分及整合的解决方案
 
