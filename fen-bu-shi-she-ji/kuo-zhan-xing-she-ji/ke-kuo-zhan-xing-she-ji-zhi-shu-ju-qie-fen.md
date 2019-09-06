@@ -212,3 +212,5 @@ AmoebaForMySQL主要是专门针对MySQL数据库的解决方案，前端应用�
 
 201211132252156453.jpg
 
+AmoebaForAladin则是一个适用更为广泛，功能更为强大的Proxy程序。他可以同时连接不同数据库的数据源为前端应用程序提供服务，但是仅仅接受符合MySQL协议的客户端应用程序请求。也就是说，只要前端应用程序通过MySQL协议连接上来之后，AmoebaForAladin会自动分析Query语句，根据Query语句中所请求的数据来自动识别出该所Query的数据源是在什么类型数据库的哪一个物理主机上面。下图展示了AmoebaForAladin的架构细节（出自Amoeba开发者博客）：
+
