@@ -210,3 +210,5 @@ Amoeba并不是一个代理层的Proxy程序，而是一个开发数据库代理
 
 AmoebaForMySQL主要是专门针对MySQL数据库的解决方案，前端应用程序请求的协议以及后端连接的数据源数据库都必须是MySQL。对于客户端的任何应用程序来说，AmoebaForMySQL和一个MySQL数据库没有什么区别，任何使用MySQL协议的客户端请求，都可以被AmoebaForMySQL解析并进行相应的处理。下如可以告诉我们AmoebaForMySQL的架构信息（出自Amoeba开发者博客）：
 
+201211132252156453.jpg
+
