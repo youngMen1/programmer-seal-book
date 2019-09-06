@@ -188,3 +188,25 @@ MySQLProxy实际上是在客户端请求与MySQLServer之间建立了一个连�
 
 201211132252155274.jpg
 
+通过上面的架构简图，我们可以很清晰的看出MySQLProxy在实际应用中所处的位置，以及能做的基本事情。关于MySQLProxy更为详细的实施细则在MySQL官方文档中有非常详细的介绍和示例，感兴趣的读者朋友可以直接从MySQL官方网站免费下载或者在线阅读，我这里就不累述浪费纸张了。
+
+利用Amoeba实现数据切分及整合
+
+Amoeba是一个基于Java开发的，专注于解决分布式数据库数据源整合Proxy程序的开源框架，基于GPL3开源协议。目前，Amoeba已经具有Query路由，Query过滤，读写分离，负载均衡以及HA机制等相关内容。
+
+Amoeba 主要解决的以下几个问题：
+
+1. 数据切分后复杂数据源整合；
+
+2. 提供数据切分规则并降低数据切分规则给数据库带来的影响；
+
+3. 降低数据库与客户端的连接数；
+
+4. 读写分离路由；
+
+我们可以看出，Amoeba所做的事情，正好就是我们通过数据切分来提升数据库的扩展性所需要的。
+
+Amoeba并不是一个代理层的Proxy程序，而是一个开发数据库代理层Proxy程序的开发框架，目前基于Amoeba所开发的Proxy程序有AmoebaForMySQL和AmoebaForAladin两个。
+
+AmoebaForMySQL主要是专门针对MySQL数据库的解决方案，前端应用程序请求的协议以及后端连接的数据源数据库都必须是MySQL。对于客户端的任何应用程序来说，AmoebaForMySQL和一个MySQL数据库没有什么区别，任何使用MySQL协议的客户端请求，都可以被AmoebaForMySQL解析并进行相应的处理。下如可以告诉我们AmoebaForMySQL的架构信息（出自Amoeba开发者博客）：
+
