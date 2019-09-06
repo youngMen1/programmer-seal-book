@@ -94,7 +94,7 @@
 
 Web Service 曾经是企业应用系统在开发领域中最时髦的词汇之一，它用于整合异构系统以及构建分布式系统：
 
-11543726-7d945ac4828997ff.webp
+![imag](/static/image/11543726-7d945ac4828997ff.webp)
 
 服务提供者通过 WSDL（Web Services Description Language，Web 服务描述语言）向注册中心（Service Broker）描述自身所能提供的服务接口内容，然后注册中心使用 UDDI（Universal Description, Discovery, and Integration，统一描述、发现和集成）发布服务提供者提供的服务。服务请求者从注册中心检索到服务后，通过 SOAP（Simple Object Access Protocol ，简单对象访问协议）与服务提供者通信，使用该服务。
 
