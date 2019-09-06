@@ -220,7 +220,8 @@
   * 用户隐私信息保护
   * 序列化漏洞
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
-  * 开源协议
+  * [开源协议](chang-yong-kai-yuan-kuang-jia/kai-yuan-xie-yi.md)
+    * 开源协议的选择
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
