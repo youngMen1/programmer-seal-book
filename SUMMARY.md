@@ -223,6 +223,7 @@
   * 开源协议
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
+    * 可扩展性设计之数据切分
   * [稳定性 & 高可用](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong.md)
     * [系统设计：关于高可用系统的一些技术方案](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/xi-tong-she-ji-ff1a-guan-yu-gao-ke-yong-xi-tong-de-yi-xie-ji-zhu-fang-an.md)
     * [关于高可用的系统](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/guan-yu-gao-ke-yong-de-xi-tong.md)
