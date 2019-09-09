@@ -46,5 +46,5 @@
 </dependency>
 ```
 
-
+**Spring集成配置方式**
 
