@@ -502,5 +502,5 @@ pcsTestcase.setId(UUIDUtils.generate());
 select * FROM pm_testcase pt where pt.Name = 'ay'
 ```
 
-
+正确的做法是SQL语句全部大写或者全部小写。如下：
 
