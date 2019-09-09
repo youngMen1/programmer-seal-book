@@ -552,5 +552,17 @@ order by pt.created_time desc
 --->  Seq Scan on pm_testcase pt  (cost=0.00..134087.85 rows=1529885 width=1920)
 ```
 
+cost=说明： 
 
+第一个数字4103259.72表示启动cost，这是执行到返回第一行时需要的cost值。 
+
+第二个数字4107084.44表示执行整个SQL的cost。
+
+
+
+该语句总共耗时 4107084.44
+
+
+
+这里我们创建 created\_time 索引，对相同语句执行 程序清单 2-1 的SQL，得到的执行计划结果为：
 
