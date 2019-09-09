@@ -212,7 +212,8 @@
   * [连接池](xing-neng/lian-jie-chi.md)
     * [主流Java数据库连接池比较与开发配置实战](xing-neng/lian-jie-chi/zhu-liu-java-shu-ju-ku-lian-jie-chi-bi-jiao-yu-kai-fa-pei-zhi-shi-zhan.md)
     * [九大Java性能调试工具，必备至少一款](xing-neng/lian-jie-chi/jiu-dajava-xing-neng-diao-shi-gong-ju-ff0c-bi-bei-zhi-shao-yi-kuan.md)
-  * 性能调优
+  * [性能调优](xing-neng/xing-neng-diao-you.md)
+    * 九大Java性能调试工具，必备至少一款
 * [大数据](da-shu-ju.md)
   * 流式计算
 * [安全](an-quan.md)
