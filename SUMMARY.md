@@ -204,7 +204,7 @@
     * [15天的性能优化工作，5方面的调优经验](xing-neng/xing-neng-you-hua-fang-fa-lun/15tian-de-xing-neng-you-hua-gong-zuo-ff0c-5-fang-mian-de-diao-you-jing-yan.md)
     * [系统性能优化的几个方面](xing-neng/xing-neng-you-hua-fang-fa-lun/xi-tong-xing-neng-you-hua-de-ji-ge-fang-mian.md)
   * [容量评估](xing-neng/rong-liang-ping-gu.md)
-    * 联网性能与容量评估的方法论和典型案例
+    * [联网性能与容量评估的方法论和典型案例](xing-neng/rong-liang-ping-gu/lian-wang-xing-neng-yu-rong-liang-ping-gu-de-fang-fa-lun-he-dian-xing-an-li.md)
 * [大数据](da-shu-ju.md)
   * 流式计算
 * [安全](an-quan.md)
