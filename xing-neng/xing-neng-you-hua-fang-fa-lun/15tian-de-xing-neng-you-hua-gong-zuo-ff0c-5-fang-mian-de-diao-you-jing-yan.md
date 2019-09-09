@@ -51,3 +51,13 @@ public void test(){
 
 对于 StringBuffer（线程安全）或者 StringBuilder（非线程安全），都有相应的构造方法：
 
+```
+程序清单 1-1
+
+public StringBuilder(int capacity) {
+    super(capacity);
+}
+```
+
+
+
