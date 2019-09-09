@@ -189,113 +189,69 @@ System.arraycopy &gt; clone &gt; Arrays.copyOf &gt; for
 
 实现字符串的分割的方法有很多种，常用的是 split ，StringTokenizer ，indexOf 和 substring 的配合，以及一些开源工具类，如：StringUtils。它们各有优缺。
 
+```
 @Test
-
-public void test\(\){
-
+public void test(){
     //数据初始化
-
-    StringBuffer sb = new StringBuffer\(\);
-
-    for\(int i=0;i&lt;10000;i++\){
-
-        sb.append\(i\).append\(";"\);
-
+    StringBuffer sb = new StringBuffer();
+    for(int i=0;i<10000;i++){
+        sb.append(i).append(";");
     }
-
-    String originStr = sb.toString\(\);
-
+    String originStr = sb.toString();
     //第一种分隔字符方法
+    long startTime = System.nanoTime();
 
-    long startTime = System.nanoTime\(\);
-
-
-
-    String\[\] splitArray =  originStr.split\(";"\);
-
-    for\(int i=0,len = splitArray.length;i&lt;len;i++\){
-
-        String temp = splitArray\[i\];
-
+    String[] splitArray =  originStr.split(";");
+    for(int i=0,len = splitArray.length;i<len;i++){
+        String temp = splitArray[i];
     }
-
-    long endTime = System.nanoTime\(\);
-
-    System.out.println\("the cost of split is :" + \(endTime - startTime\)\);
-
+    long endTime = System.nanoTime();
+    System.out.println("the cost of split is :" + (endTime - startTime));
     //第二种分隔字符方法
-
-    System.out.println\("--------------------------------------------"\);
-
-    originStr = sb.toString\(\);for\(int i=0;i
-
-&lt;
-
-10;i++\){ try{ }catch \(Exception e\){ } }
-
-    startTime = System.nanoTime\(\);
-
-    StringTokenizer st = new StringTokenizer\(originStr,";"\);
-
-    while\(st.hasMoreTokens\(\)\){
-
-        st.nextToken\(\);
-
+    System.out.println("--------------------------------------------");
+    originStr = sb.toString();
+    startTime = System.nanoTime();
+    StringTokenizer st = new StringTokenizer(originStr,";");
+    while(st.hasMoreTokens()){
+        st.nextToken();
     }
-
-    endTime = System.nanoTime\(\);
-
-    System.out.println\("the cost of stringTokenizer is :" + \(endTime - startTime\)\);
-
+    endTime = System.nanoTime();
+    System.out.println("the cost of stringTokenizer is :" + (endTime - startTime));
     //第三种分隔字符的方法
-
-    System.out.println\("--------------------------------------------"\);
-
-    originStr = sb.toString\(\);
-
-    startTime = System.nanoTime\(\);
-
-    while \(true\){
-
-        int index = originStr.indexOf\(";"\);
-
-        if\(index &lt; 0\) break;
-
-        String origin = originStr.substring\(0,index\);
-
-        originStr = originStr.substring\(index + 1\);
-
+    System.out.println("--------------------------------------------");
+    originStr = sb.toString();
+    startTime = System.nanoTime();
+    while (true){
+        int index = originStr.indexOf(";");
+        if(index < 0) break;
+        String origin = originStr.substring(0,index);
+        originStr = originStr.substring(index + 1);
     }
-
-    endTime = System.nanoTime\(\);
-
-    System.out.println\("the cost of indexOf is :" + \(endTime - startTime\)\);
-
-
+    endTime = System.nanoTime();
+    System.out.println("the cost of indexOf is :" + (endTime - startTime));
 
     //第四种分隔字符的方法
-
-    System.out.println\("--------------------------------------------"\);
-
-    originStr = sb.toString\(\);
-
-    startTime = System.nanoTime\(\);
-
-    String\[\] utilSplit = StringUtils.split\(originStr,';'\);
-
-    for\(int i=0,len = utilSplit.length;i&lt;len;i++\){
-
-        String temp = utilSplit\[i\];
-
+    System.out.println("--------------------------------------------");
+    originStr = sb.toString();
+    startTime = System.nanoTime();
+    String[] utilSplit = StringUtils.split(originStr,';');
+    for(int i=0,len = utilSplit.length;i<len;i++){
+        String temp = utilSplit[i];
     }
-
-    endTime = System.nanoTime\(\);
-
-    System.out.println\("the cost of StringUtils.split is :" + \(endTime - startTime\)\);
-
-
+    endTime = System.nanoTime();
+    System.out.println("the cost of StringUtils.split is :" + (endTime - startTime));
 
 }
+————————————————
+版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
+```
+
+
+
+
+
+
 
 运行结果：
 
@@ -316,6 +272,4 @@ the cost of StringUtils.split is :59026333
 try-catch语句本身性能不高，如果再放到循环体中，无非是雪上加霜。因此在开发中，我们要极力避免。
 
 例：
-
-
 
