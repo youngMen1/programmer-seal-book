@@ -179,5 +179,19 @@ arraysCopyOf cost 119946 nanosecond
 systemArraycopy cost 39712 nanosecond
 ```
 
+多运行几次，我们得出数组复制效率：
 
+
+
+System.arraycopy &gt; clone &gt; Arrays.copyOf &gt; for
+
+
+
+综上所述，当复制大量数据时，使用System.arraycopy\(\)命令。
+
+
+
+8.实现高性能的字符串分割
+
+实现字符串的分割的方法有很多种，常用的是 split ，StringTokenizer ，indexOf 和 substring 的配合，以及一些开源工具类，如：StringUtils。它们各有优缺。
 
