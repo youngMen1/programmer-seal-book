@@ -626,8 +626,6 @@ in 和 not in 也要慎用。对于连续的数值，能用 between 就不要用
 
 服务器的调优，就得根据客户提供的真实环境的配置。如服务器是几核几个CPU等等。服务器的硬件指标确定下来后，根据指标调整Tomcat，JDK，数据库，Apatch等配置参数。让整个环境达到最优的效果。这块工作一般不是开发人员进行的。但是我们要了解清楚一些配置参数
 
-
-
 ## Tomcat && JDK
 
 **tomcat 配置**
@@ -656,8 +654,11 @@ ubuntu@ubuntu:~$ dmesg | tail
 [38495.064487] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
 [38607.910407] IPv6: ADDRCONF(NETDEV_UP): eno16777736: link is not ready
 [38607.978329] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
-
 ```
 
+该命令会输出系统日志的最后10行。这些日志可以帮助排查性能问题。
 
+##### **top命令** {#top命令}
+
+top命令是进行性能分析最常使用的命令，也是最重要的命令。每个参数代表什么意思，都必须非常清楚。
 
