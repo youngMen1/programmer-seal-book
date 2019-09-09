@@ -471,3 +471,12 @@ for (int j = sheet.getFirstRowNum() + 1,len = sheet.getLastRowNum(); j <= len;j+
 
 对于问题二，我们可以把所有数据，每500条进行一次批量保存操作，速度会比一次性批量保存好。具体如下：
 
+```
+if(j % 500 == 0 || j == len){
+    this.batchCreate(pcsTestcases);
+    pcsTestcases = new ArrayList<>();
+}
+```
+
+
+
