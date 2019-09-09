@@ -207,8 +207,8 @@
     * [联网性能与容量评估的方法论和典型案例](xing-neng/rong-liang-ping-gu/lian-wang-xing-neng-yu-rong-liang-ping-gu-de-fang-fa-lun-he-dian-xing-an-li.md)
     * [互联网架构，如何进行容量设计？](xing-neng/rong-liang-ping-gu/hu-lian-wang-jia-gou-ff0c-ru-he-jin-xing-rong-liang-she-ji-ff1f.md)
   * [CDN 网络](xing-neng/cdn-wang-luo.md)
-    * CDN加速原理
-    * 国内有哪些比较好的 CDN
+    * [CDN加速原理](xing-neng/cdn-wang-luo/cdnjia-su-yuan-li.md)
+    * [国内有哪些比较好的 CDN](xing-neng/cdn-wang-luo/guo-nei-you-na-xie-bi-jiao-hao-de-cdn.md)
 * [大数据](da-shu-ju.md)
   * 流式计算
 * [安全](an-quan.md)
