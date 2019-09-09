@@ -209,7 +209,8 @@
   * [CDN 网络](xing-neng/cdn-wang-luo.md)
     * [CDN加速原理](xing-neng/cdn-wang-luo/cdnjia-su-yuan-li.md)
     * [国内有哪些比较好的 CDN](xing-neng/cdn-wang-luo/guo-nei-you-na-xie-bi-jiao-hao-de-cdn.md)
-  * 连接池
+  * [连接池](xing-neng/lian-jie-chi.md)
+    * [主流Java数据库连接池比较与开发配置实战](xing-neng/lian-jie-chi/zhu-liu-java-shu-ju-ku-lian-jie-chi-bi-jiao-yu-kai-fa-pei-zhi-shi-zhan.md)
   * 性能调优
 * [大数据](da-shu-ju.md)
   * 流式计算
