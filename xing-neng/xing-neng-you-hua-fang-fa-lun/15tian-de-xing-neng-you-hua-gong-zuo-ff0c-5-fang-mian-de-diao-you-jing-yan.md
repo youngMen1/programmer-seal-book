@@ -566,5 +566,7 @@ cost=说明：
 Index Scan Backward using idx_create_time on pm_testcase pt  (cost=0.43..384739.28 rows=1530024 width=1920)
 ```
 
+很明显，执行整个SQL的 cost 由 4107084.44 减少到 384739.28
 
+因此，为了避免全表扫描，建议在考虑在 where 及 order by 涉及的列上建立索引。
 
