@@ -256,5 +256,5 @@ the cost of indexOf is :323050471
 the cost of StringUtils.split is :59026333
 ```
 
-
+从上面例子可以看出，字符分割的性能，由高到低的排序为：StringTokenizer &gt; split ，StringUtils.split &gt; indexOf 。有些书籍写着 indexOf 的性能是最高的，但是按照我的测试，index的性能是最差的。但是事物都有两面性，从上面的例子也可以看出，虽然 StringTokenizer 的性能高，但是代码量多，可读性差，而 split 代码相对就整洁多了。
 
