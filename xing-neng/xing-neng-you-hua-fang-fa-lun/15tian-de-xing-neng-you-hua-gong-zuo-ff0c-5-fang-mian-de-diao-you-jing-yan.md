@@ -103,5 +103,11 @@ Collections.EMPTY_SET
 Collections.EMPTY_MAP
 ```
 
+**返回Boolean：**
+
+```
+Boolean.TRUE
+```
+
 
 
