@@ -618,11 +618,46 @@ in 和 not in 也要慎用。对于连续的数值，能用 between 就不要用
 
 #### **优化子查询** {#优化子查询}
 
-子查询很灵活可以极大的节省查询的步骤，但是子查询的执行效率不高。执行子查询时数据库需要为内部嵌套的语句查询的结果建立一个临时表，然后再使用临时表中的数据进行查询。查询完成后再删除这个临时表，所以子查询的速度会慢一点。 
+子查询很灵活可以极大的节省查询的步骤，但是子查询的执行效率不高。执行子查询时数据库需要为内部嵌套的语句查询的结果建立一个临时表，然后再使用临时表中的数据进行查询。查询完成后再删除这个临时表，所以子查询的速度会慢一点。
 
 我们可以使用join语句来替换掉子查询，来提高效率。join语句不需要建立临时表，所以其查询速度会优于子查询。大部分的不是很复杂的子查询都可以替换成join语句。
 
+## 服务器层面
 
+服务器的调优，就得根据客户提供的真实环境的配置。如服务器是几核几个CPU等等。服务器的硬件指标确定下来后，根据指标调整Tomcat，JDK，数据库，Apatch等配置参数。让整个环境达到最优的效果。这块工作一般不是开发人员进行的。但是我们要了解清楚一些配置参数
+
+
+
+## Tomcat && JDK
+
+**tomcat 配置**
+
+**JDK垃圾回收机制**
+
+**垃圾回收机制算法选择**
+
+**JVM内存模型**
+
+## Postgresql数据库配置
+
+### Linux服务器
+
+### 输出系统日志最后10行 dmesg \| tail
+
+```
+ubuntu@ubuntu:~$ dmesg | tail
+[38060.138072] e1000: eno16777736 NIC Link is Down
+[38068.362442] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+[38070.366445] e1000: eno16777736 NIC Link is Down
+[38076.376947] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+[38084.386812] e1000: eno16777736 NIC Link is Down
+[38090.411818] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+[38480.597723] e1000: eno16777736 NIC Link is Down
+[38495.064487] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+[38607.910407] IPv6: ADDRCONF(NETDEV_UP): eno16777736: link is not ready
+[38607.978329] e1000: eno16777736 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+
+```
 
 
 
