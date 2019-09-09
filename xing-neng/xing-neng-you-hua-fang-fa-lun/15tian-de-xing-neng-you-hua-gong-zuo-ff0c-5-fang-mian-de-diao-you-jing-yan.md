@@ -498,3 +498,9 @@ pcsTestcase.setId(UUIDUtils.generate());
 
 我们在写SQL的时候，通常会出现大小写混用的情况。如下：
 
+```
+select * FROM pm_testcase pt where pt.Name = 'ay'
+```
+
+
+
