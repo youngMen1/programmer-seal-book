@@ -22,5 +22,10 @@ public void test(){
 }
 ```
 
+具体解决方法如下：
+
+* 根据具体的业务场景，使用 StringBuffer（线程安全）或者 StringBuilder（非线程安全）
+* 使用数组
+
 
 
