@@ -172,5 +172,12 @@ public class AyTest {
 
 运行结果：
 
+```
+forCopy cost 711576 nanosecond
+cloneCopy cost 53490 nanosecond
+arraysCopyOf cost 119946 nanosecond
+systemArraycopy cost 39712 nanosecond
+```
+
 
 
