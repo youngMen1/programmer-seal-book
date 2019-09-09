@@ -254,9 +254,6 @@ the cost of stringTokenizer is :11992643
 the cost of indexOf is :323050471
 --------------------------------------------
 the cost of StringUtils.split is :59026333
-————————————————
-版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
 ```
 
 
