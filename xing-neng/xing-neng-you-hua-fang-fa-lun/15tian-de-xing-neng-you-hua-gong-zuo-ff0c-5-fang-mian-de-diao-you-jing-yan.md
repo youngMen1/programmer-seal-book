@@ -793,7 +793,14 @@ Iostat提供三个报告：CPU利用率、设备利用率和网络文件系统�
 
 ##### **内存分析命令：free m** {#内存分析命令free-m}
 
+```
+ubuntu@ubuntu:~$ free -m
+             total       used       free     shared    buffers     cached
+Mem:          1992        672       1320          6         22        209
+-/+ buffers/cache:        440       1552
+Swap:         3068        403       2665
 
+```
 
 
 
