@@ -512,5 +512,7 @@ select * from pm_testcase pt where pt.name = 'ay'
 SELECT * FROM PM_TESTCASE PT WHERE PT.NAME = 'ay'
 ```
 
+#### **PostgreSQL执行计划** {#postgresql执行计划}
 
+PostgreSQL的执行计划，做为数据库性能调优的利器，有必要在开头简单的介绍下。
 
