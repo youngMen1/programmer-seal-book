@@ -516,3 +516,16 @@ SELECT * FROM PM_TESTCASE PT WHERE PT.NAME = 'ay'
 
 PostgreSQL的执行计划，做为数据库性能调优的利器，有必要在开头简单的介绍下。
 
+```
+explain analyse select * from pm_testcase pt
+--执行计划
+Seq Scan on pm_testcase pt  (cost=0.00..5237.11 rows=60011 width=2020) (actual time=37.347..435.601 rows=60012 loops=1)
+Planning time: 0.426 ms
+Execution time: 438.442 ms
+————————————————
+版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
+```
+
+
+
