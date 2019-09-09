@@ -27,5 +27,28 @@ public void test(){
 * 根据具体的业务场景，使用 StringBuffer（线程安全）或者 StringBuilder（非线程安全）
 * 使用数组
 
+```
+程序清单 1-1
+
+@Test
+public void test(){
+    //第一种解决方法
+    StringBuilder stringBuilder = new StringBuilder(Integer.MAX_VALUE);
+    //第二种解决方法
+    String[] strArray = new String[Integer.MAX_VALUE + 1];
+    stringBuilder.append("ay");
+    strArray[0] = "ay";
+    for(int i=0;i<Integer.MAX_VALUE + 1;i++){
+        stringBuilder.append("al");
+        strArray[i + 1] = "al";
+    }
+    System.out.println(stringBuilder.toString());
+    System.out.println(ArrayUtils.toString(strArray));
+}
+————————————————
+版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
+```
+
 
 
