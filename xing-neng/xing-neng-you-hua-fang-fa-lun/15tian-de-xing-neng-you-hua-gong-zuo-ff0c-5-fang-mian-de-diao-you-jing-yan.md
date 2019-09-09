@@ -592,15 +592,7 @@ Bitmap Heap Scan on pm_testcase pt  (cost=4.82..206.29 rows=51 width=11)
 
 通过上面的例子可以看出，!= 操作符使得索引失效。
 
-
-
 避免建立太多的索引
 
 索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 和 update 的效率，因为 insert 或 update 时有可能会重建索引，所以视具体情况而定。一个表的索引数最好不要超过7个，若太多则应考虑一些不常使用到的列上建的索引是否有必要.
-
-————————————————
-
-版权声明：本文为CSDN博主「阿\_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
 
