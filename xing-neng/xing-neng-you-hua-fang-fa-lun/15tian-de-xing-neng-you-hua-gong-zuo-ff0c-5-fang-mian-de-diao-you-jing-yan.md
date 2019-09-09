@@ -45,8 +45,9 @@ public void test(){
     System.out.println(stringBuilder.toString());
     System.out.println(ArrayUtils.toString(strArray));
 }
-
 ```
 
+#### **设置容量参数提高系统性能** {#设置容量参数提高系统性能}
 
+对于 StringBuffer（线程安全）或者 StringBuilder（非线程安全），都有相应的构造方法：
 
