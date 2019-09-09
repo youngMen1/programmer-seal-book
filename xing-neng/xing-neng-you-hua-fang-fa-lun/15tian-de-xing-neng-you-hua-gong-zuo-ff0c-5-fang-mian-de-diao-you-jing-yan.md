@@ -305,6 +305,71 @@ try{
 我们应该确保我们只在必要的地方加锁，将锁从方法声明移到方法体中会延迟锁的加载，进而降低了锁竞争的可能性。先看下面的实例：
 
 ```
+class SynObj {
 
+    //方法锁/或者对象锁
+    public synchronized void methodA() {
+        System.out.println("methodA.....");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public  void methodB() {
+        //对代码块进行锁，降低锁的竞争
+        synchronized(this) {
+            System.out.println("methodB.....");
+        }
+    }
+
+    public void methodC() {
+        String str = "sss";
+        //这里锁的是 str 这个对象，而不是 SynObj 对象
+        synchronized (str) {
+            System.out.println("methodC.....");
+        }
+    }
+}
+
+/**
+ * Created by Ay on 2017/3/26.
+ */
+public class AyTest {
+
+    public static void main(String[] args) {
+        final SynObj obj = new SynObj();
+
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                obj.methodA();
+            }
+        });
+        t1.start();
+
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                obj.methodB();
+            }
+        });
+        t2.start();
+
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                obj.methodC();
+            }
+        });
+        t3.start();
+    }
+}
+————————————————
+版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
 ```
+
+
 
