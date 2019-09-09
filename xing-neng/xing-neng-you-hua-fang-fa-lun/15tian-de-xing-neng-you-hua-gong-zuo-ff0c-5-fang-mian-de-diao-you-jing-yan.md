@@ -129,7 +129,6 @@ Boolean.TRUE
 
 /**
  * 测试4种数组复制效率比较
- * @author 阿毅
  * @date 2017/2/7.
  */
 public class AyTest {
