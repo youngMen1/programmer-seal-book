@@ -34,7 +34,17 @@
 
 下面针对每一种连接池的使用方法，在开发中如何配置给出spring集成配置和在tomcat的conf/context.xml文件中配置2种方式，限于篇幅只给出基本参数，详细参数可自行研究。
 
-#### **3.1 阿里Druid连接池     Maven依赖**
+#### **3.1 阿里Druid连接池    **
+
+#### ** Maven依赖**
+
+```
+<dependency>
+  <groupId>com.alibaba</groupId>
+  <artifactId>druid</artifactId>
+  <version>1.0.28</version>
+</dependency>
+```
 
 
 
