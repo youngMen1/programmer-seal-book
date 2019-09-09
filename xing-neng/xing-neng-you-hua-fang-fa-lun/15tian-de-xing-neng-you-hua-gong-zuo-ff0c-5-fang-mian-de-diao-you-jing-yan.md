@@ -73,5 +73,7 @@ StringBuilder stringBuilder = new StringBuilder(Integer.MAX_VALUE);
 for (int i = 0, int length = list.size(); i < length; i++)
 ```
 
+##### **方法的返回值** {#方法的返回值}
 
+**返回List：**
 
