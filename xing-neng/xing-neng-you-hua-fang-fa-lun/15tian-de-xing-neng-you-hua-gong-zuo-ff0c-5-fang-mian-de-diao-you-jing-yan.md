@@ -766,5 +766,14 @@ z    Flags   任务标志，参考 sched.h
 
 ##### **查询登录当前系统的用户信息：w命令** {#查询登录当前系统的用户信息w命令}
 
+```
+ubuntu@ubuntu:~$ w
+ 20:15:44 up 11:17,  3 users,  load average: 0.21, 0.16, 0.16
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ubuntu   :0       :0               Thu00   ?xdm?  30:09   1.63s /sbin/upstart --user
+ubuntu   pts/7    :0               Thu23   45:01m 42:57   8.80s /home/ubuntu/inno/idea-IU-162.2032.8/bin/fsnotifier64
+ubuntu   pts/18   :0               06:47    0.00s  0.47s  0.05s w
+```
+
 
 
