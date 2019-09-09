@@ -443,3 +443,12 @@ public class Grocery {
 
 直接批量保存3万多条数据。
 
+```
+List<PcsTestcase> pcsTestcases = new ArrayList<>();
+// ......
+//直接调用批量保存  
+this.batchCreate(pcsTestcases);
+```
+
+
+
