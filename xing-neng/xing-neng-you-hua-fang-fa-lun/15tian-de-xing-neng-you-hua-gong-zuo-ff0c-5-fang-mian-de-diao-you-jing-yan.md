@@ -787,5 +787,11 @@ The program 'iostat' is currently not installed. You can install it by typing:
 sudo apt-get install sysstat
 ```
 
+执行下 sudo apt-get install sysstat 即可。
+
+Iostat提供三个报告：CPU利用率、设备利用率和网络文件系统利用率，使用-c，-d和-h参数可以分别独立显示这三个报告。
+
+##### **内存分析命令：free m** {#内存分析命令free-m}
+
 
 
