@@ -450,5 +450,25 @@ List<PcsTestcase> pcsTestcases = new ArrayList<>();
 this.batchCreate(pcsTestcases);
 ```
 
+#### **1.2 问题二** {#12-问题二}
+
+批量保存时，利用UUID生成工具，给主键设置Id。找出Hibernate的先查询后更新的机制触发，造成不必要的查询损耗。
+
+```
+List<PcsTestcase> pcsTestcases = new ArrayList<>();
+PcsTestcase pcsTestcase = null;
+for (int j = sheet.getFirstRowNum() + 1,len = sheet.getLastRowNum(); j <= len;j++) {
+    Row row = sheet.getRow(j);
+    if (row == null) continue;
+    pcsTestcase = new PcsTestcase();
+    //看这里，重要：这里在插入数据时，设置主键Id
+    pcsTestcase.setId(UUIDUtils.generate());
+    pcsTestcase.setPmMilestoneId(pcsMainTask.getId());
+}
+————————————————
+版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
+```
+
 
 
