@@ -534,9 +534,26 @@ cost说明：
 
 更多执行计划 Explain，可网上搜索。
 
-### 建立索引避免全表扫描
+## 建立索引避免全表扫描
 
 首先，在数据库里有一张表 pm\_testcase，里面有150万条数据。
 
 如下SQL，我们利用执行计划，对创建时间（created\_time）进行排序，输出执行计划结果。
+
+```
+程序清单 2-1
+
+explain 
+select * from pm_testcase pt
+order by pt.created_time desc
+
+--Sort  (cost=4103259.72..4107084.44 rows=1529885 width=1920)
+--Sort Key: created_time
+--->  Seq Scan on pm_testcase pt  (cost=0.00..134087.85 rows=1529885 width=1920)
+————————————————
+版权声明：本文为CSDN博主「阿_毅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/huangwenyi1010/article/details/72673447
+```
+
+
 
