@@ -413,6 +413,27 @@ public class Grocery {
 优化后：
 
 ```
-
+public class Grocery {
+    private final ArrayList fruits = new ArrayList();
+    private final ArrayList vegetables = new ArrayList();
+    public void addFruit(int index, String fruit) {
+        //水果锁 
+        synchronized(fruits) fruits.add(index, fruit);
+    }
+    public void removeFruit(int index) {
+        //水果锁 
+        synchronized(fruits) {fruits.remove(index);}
+    }
+    public void addVegetable(int index, String vegetable) {
+        //蔬菜锁
+        synchronized(vegetables) vegetables.add(index, vegetable);
+    }
+    public void removeVegetable(int index) {
+        //蔬菜锁
+        synchronized(vegetables) vegetables.remove(index);
+    }
+}
 ```
+
+
 
