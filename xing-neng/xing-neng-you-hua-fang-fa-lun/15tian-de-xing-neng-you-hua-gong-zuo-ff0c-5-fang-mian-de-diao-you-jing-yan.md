@@ -370,7 +370,12 @@ public class AyTest {
 
 打印结果:
 
-
+```
+methodA.....
+methodC.....
+//methodB会隔一段时间才会打印出来
+methodB.....
+```
 
 
 
