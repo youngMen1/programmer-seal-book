@@ -387,3 +387,28 @@ methodB.....
 
 还有就是网上一个高手写的一个例子：
 
+```
+public class Grocery {
+    private final ArrayList fruits = new ArrayList();
+    private final ArrayList vegetables = new ArrayList();
+    //对象锁，不好，效率低
+    public synchronized void addFruit(int index, String fruit) {
+        fruits.add(index, fruit);
+    }
+    //对象锁，不好，效率低
+    public synchronized void removeFruit(int index) {
+        fruits.remove(index);
+    }
+    //对象锁，不好，效率低
+    public synchronized void addVegetable(int index, String vegetable) {
+        vegetables.add(index, vegetable);
+    }
+    //对象锁，不好，效率低
+    public synchronized void removeVegetable(int index) {
+        vegetables.remove(index);
+    }
+}
+```
+
+
+
