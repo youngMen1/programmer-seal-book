@@ -69,17 +69,9 @@ StringBuilder stringBuilder = new StringBuilder(Integer.MAX_VALUE);
 
 #### **for循环建议写法** {#for循环建议写法}
 
-
-
-
-
-
-
-
-
-
-
-
+```
+for (int i = 0, int length = list.size(); i < length; i++)
+```
 
 
 
