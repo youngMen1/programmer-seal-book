@@ -504,3 +504,13 @@ select * FROM pm_testcase pt where pt.Name = 'ay'
 
 正确的做法是SQL语句全部大写或者全部小写。如下：
 
+```
+-- 全部小写
+select * from pm_testcase pt where pt.name = 'ay'
+
+-- 全部大写
+SELECT * FROM PM_TESTCASE PT WHERE PT.NAME = 'ay'
+```
+
+
+
