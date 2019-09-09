@@ -662,3 +662,22 @@ ubuntu@ubuntu:~$ dmesg | tail
 
 top命令是进行性能分析最常使用的命令，也是最重要的命令。每个参数代表什么意思，都必须非常清楚。
 
+```
+top - 07:01:15 up 10:57,  3 users,  load average: 0.00, 0.04, 0.13
+Tasks: 238 total,   1 running, 237 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  3.4 us,  3.8 sy,  0.0 ni, 92.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:   2040024 total,  2020312 used,    19712 free,    11220 buffers
+KiB Swap:  3142652 total,   927204 used,  2215448 free.   121276 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                   
+ 6844 root      20   0  333020  20520   3600 S   6.0  1.0  29:48.44 Xorg                                                                      
+61687 ubuntu    20   0 1635056  43716  18108 S   3.6  2.1   5:00.27 compiz                                                                    
+ 5444 ubuntu    20   0 3765292 875688  10020 S   2.7 42.9  42:13.69 java                                                                      
+ 6788 root      20   0  293028   9284   1112 S   2.3  0.5   0:51.92 dockerd                                                                   
+ 5175 ubuntu    20   0  578736  22496  14888 S   1.7  1.1   0:04.60 gnome-terminal-                                                           
+   27 root      39  19       0      0      0 S   0.7  0.0   0:09.02 khugepaged                                                                
+ 7932 ubuntu    20   0 3060636  16560 
+```
+
+
+
