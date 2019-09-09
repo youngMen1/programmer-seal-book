@@ -24,5 +24,12 @@ JProfiler是由ej-technologies GmbH开发的商业的Java分析工具，主要�
 
 243a00015cbf5dcceb95.jpg
 
+GC查看器的截图
+
+GC Viewer可以免费下载，并且开源。可用来可视化JVM的数据（使用vmflags -verbose:gc和-Xloggc:配置）GC Viewer可用于计算与垃圾回收相关的性能指标，包括吞吐量，累积暂停，最长暂停等。当通过更改生成大小或设置初始堆大小来调整应用程序的垃圾回收时，这非常有用。
+
+# VisualVM
+
+  
 
 
