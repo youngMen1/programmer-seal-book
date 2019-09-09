@@ -781,3 +781,11 @@ ubuntu   pts/18   :0               06:47    0.00s  0.47s  0.05s w
 
 运行时，如果出现下面的提示信息
 
+```
+ubuntu@ubuntu:~$ iostat
+The program 'iostat' is currently not installed. You can install it by typing:
+sudo apt-get install sysstat
+```
+
+
+
