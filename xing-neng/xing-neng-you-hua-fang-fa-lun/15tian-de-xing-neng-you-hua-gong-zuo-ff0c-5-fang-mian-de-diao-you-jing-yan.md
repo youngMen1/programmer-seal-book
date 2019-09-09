@@ -264,3 +264,15 @@ try-catch语句本身性能不高，如果再放到循环体中，无非是雪�
 
 例：
 
+```
+for(int i=0;i<10;i++){
+    try{
+
+    }catch (Exception e){
+
+    }
+}
+```
+
+
+
