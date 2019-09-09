@@ -59,5 +59,5 @@ public StringBuilder(int capacity) {
 }
 ```
 
-
+如果我们可以事先知道需要拼接的字符串长度，设置容量参数，防止 StringBuffer 在源码内部进行一系列复杂的内存复制操作，影响性能。
 
