@@ -10,3 +10,17 @@
 
 在循环次数比较多的for循环中，我们也不要利用 + 号去拼接字符串。具体例子如下：
 
+```
+程序清单 1-1
+
+@Test
+public void test(){
+    String str = "ay";
+    for(int i=0;i<Integer.MAX_VALUE;i++){
+         str = str + i;
+    }
+}
+```
+
+
+
