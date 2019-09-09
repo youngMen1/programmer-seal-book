@@ -42,5 +42,39 @@ Visual VM可以执行CPU分析，内存分析，运行垃圾收集，快照等�
 
 24360005929aa8ddf13b.jpg
 
+Patty在行动（图片最初来自http://patty.sourceforge.net。）
 
+“Patty”项目是可从Source Forge的开源项目，旨在为Java 1.5.0及更高版本的虚拟机提供分析工具。Patty非常重视目标分析，这是与其他分析器的区别，还允许用户在运行时切换分析功能。
+
+目前它处于beta状态，但是关于方法执行的分析，代码覆盖，线程争用等一些强大的功能可用于分析开销（内存CPU等）。可以把信息通过TCP / IP套接字发送到其他计算机。有一个易于使用的GUI界面，可用于堆的分析。
+
+# JRockit - 任务控制
+
+24390002259a66cfd1d6.jpg
+
+JRockit是一个专有的Java虚拟机（JVM）。最初由Appeal Virtual Machines开发，并于2002年被BEA Systems收购，后来通过Sun Microsystems成为Oracle的一部分。
+
+Oracle JRockit是Java SE的完整解决方案，包括高性能JVM，分析，监控和诊断工具，可用于预测Java应用程序中的延迟。
+
+JRockit的当前迭代版本与一组名为JRockit Mission Control的工具捆绑在一起。这些工具能够可视化垃圾回收和其他性能统计信息，还有用于管理的控制台，。也可以用作运行时性能分析工具，称为运行时分析器，也可以分析内存问题。
+
+# Eclipse内存分析器
+
+24360005929e7ae87d80.jpg
+
+内存分析器（MAT）在Eclipse IDE中找到。
+
+Eclipse内存分析器是一个Java堆分析器，可帮助你查找内存泄漏并减少内存消耗。它更适合作为分析Java堆转储和计算其大小的通用工具包。它也可以用来报告泄漏嫌疑和内存消耗的反模式。
+
+# Java Interactive Profiler
+
+![](http://p3.pstatp.com/large/24360005929d3b85677e "九大Java性能调试工具，必备至少一款")
+
+JIP是一种高性能，低开销的分析器。它目前根据BSD许可证发行 ，可从Source Forge下载 。对于使用JIP的开发人员，可以在VM运行时打开和关闭分析器，可以过滤类和包，并控制输出。
+
+# Profiler4J
+
+![](http://p3.pstatp.com/large/24390002259ce97a3e90 "九大Java性能调试工具，必备至少一款")
+
+Profiler4j是专用的CPU分析器。界面友好，支持远程分析，并可以“即时”配置。值得注意的功能包括基于动态字节码的检测，它不需要本地库，也不需要可执行文件。Profilter4J可以提供带有调用图，调用树，内存监视器和类列表的图形信息，支持细粒度的配置。它目前在Apache许可证v2.0下发布， 可从Source Forge 下载 。
 
