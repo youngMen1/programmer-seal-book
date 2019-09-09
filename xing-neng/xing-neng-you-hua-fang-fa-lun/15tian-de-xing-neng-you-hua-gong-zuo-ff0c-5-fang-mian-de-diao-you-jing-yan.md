@@ -63,3 +63,9 @@ public StringBuilder(int capacity) {
 
 如上面的
 
+```
+StringBuilder stringBuilder = new StringBuilder(Integer.MAX_VALUE);
+```
+
+
+
