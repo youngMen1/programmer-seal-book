@@ -576,3 +576,19 @@ Index Scan Backward using idx_create_time on pm_testcase pt  (cost=0.43..384739.
 
 如下例子，我们在 pm\_testcase 的 code 上添加了索引：
 
+```
+explain select pt.code from pm_testcase pt
+where pt.code != 'case005510'
+
+--执行计划，Seq Scan 全表扫描
+Seq Scan on pm_testcase pt  (cost=0.00..137914.30 rows=1529973 width=11)
+
+explain select pt.code from pm_testcase pt
+where pt.code = 'case005510'
+
+--执行计划，Bitmap Heap Scan 索引扫描
+Bitmap Heap Scan on pm_testcase pt  (cost=4.82..206.29 rows=51 width=11)
+```
+
+
+
