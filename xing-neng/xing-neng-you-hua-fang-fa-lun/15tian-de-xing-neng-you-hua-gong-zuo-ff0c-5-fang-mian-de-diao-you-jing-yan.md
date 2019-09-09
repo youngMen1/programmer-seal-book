@@ -570,3 +570,9 @@ Index Scan Backward using idx_create_time on pm_testcase pt  (cost=0.43..384739.
 
 因此，为了避免全表扫描，建议在考虑在 where 及 order by 涉及的列上建立索引。
 
+#### **防止索引失效** {#防止索引失效}
+
+我们应尽量避免在 where 子句中使用 != 或 &lt;&gt; 操作符，否则引擎将放弃使用索引而进行全表扫描。
+
+如下例子，我们在 pm\_testcase 的 code 上添加了索引：
+
