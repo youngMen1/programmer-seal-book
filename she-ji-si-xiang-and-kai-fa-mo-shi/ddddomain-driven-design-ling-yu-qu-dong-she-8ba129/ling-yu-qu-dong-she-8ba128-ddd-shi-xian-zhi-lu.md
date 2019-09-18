@@ -130,7 +130,9 @@ public class BlogApplicatioinService {
 
 在上例中，业务用例通过BlogApplicationService应用服务完成，在用例方法createBlog\(\)中，首先通过User的资源库得到一个User，然后调用User中的工厂方法createBlog\(\)方法创建一个Blog，最后通过BlogRepository对Blog进行持久化。整个过程构成了一次事务，因此createBlog\(\)方法标记有@Transactional作为事务边界。
 
-
-
 使用聚合的首要原则为在一次事务中，最多只能更改一个聚合的状态。如果一次业务操作涉及到了对多个聚合状态的更改，那么应该采用发布领域事件（参考下文）的方式通知相应的聚合。此时的数据一致性便从事务一致性变成了最终一致性（Eventual Consistency）。
+
+### 领域服务（Domain Service）
+
+
 
