@@ -320,7 +320,7 @@
     * [一致性哈希算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa/yi-zhi-xing-ha-xi-suan-fa.md)
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * [DDD\(Domain-driven Design - 领域驱动设计\)](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129.md)
-    * 浅谈我对DDD领域驱动设计的理解
+    * [浅谈我对DDD领域驱动设计的理解](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/qian-tan-wo-dui-ddd-ling-yu-qu-dong-she-ji-de-li-jie.md)
     * 领域驱动设计的基础知识总结
     * 领域驱动设计\(DDD\)实现之路
     * 领域驱动设计系列（2）浅析VO、DTO、DO、PO的概念、区别和用处
