@@ -154,5 +154,5 @@ public interface CollectionOrientedUserRepository {
 }
 ```
 
-
+对于面向持久化的资源库来说，在对聚合进行修改之后，我们需要显式地调用sava\(\)方法将其更新到资源库中。依然是User，此时的资源库如下：
 
