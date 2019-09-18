@@ -144,9 +144,15 @@ public class BlogApplicatioinService {
 
 资源库用于保存和获取聚合对象，在这一点上，资源库与DAO多少有些相似之处。但是，资源库和DAO是存在显著区别的。DAO只是对数据库的一层很薄的封装，而资源库则更加具有领域特征。另外，所有的实体都可以有相应的DAO，但并不是所有的实体都有资源库，只有聚合才有相应的资源库。
 
-
-
 资源库分为两种，一种是基于集合的，一种是基于持久化的。顾名思义，基于集合的资源库具有编程语言中集合的特征。举个例子，Java中的List，我们从一个List中取出一个元素，在对该元素进行修改之后，我们并不用显式地将该元素重新保存到List里面。因此，面向集合的资源库并不存在save\(\)方法。比如，对于上文中的User，其资源库可以设计为：
+
+```
+public interface CollectionOrientedUserRepository {
+    public void add(User user);
+    public User userById(String userId);
+    public List allUsers();     public void remove(User user); 
+}
+```
 
 
 
