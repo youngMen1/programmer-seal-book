@@ -321,6 +321,7 @@
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * [DDD\(Domain-driven Design - 领域驱动设计\)](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129.md)
     * 浅谈我对DDD领域驱动设计的理解
+    * 领域驱动设计的基础知识总结
 * [项目管理](xiang-mu-guan-li.md)
   * 架构评审
 
