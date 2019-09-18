@@ -320,7 +320,7 @@
     * [一致性哈希算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa/yi-zhi-xing-ha-xi-suan-fa.md)
 * [设计思想 & 开发模式](she-ji-si-xiang-and-kai-fa-mo-shi.md)
   * [DDD\(Domain-driven Design - 领域驱动设计\)](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129.md)
-    * 命令查询职责分离\(CQRS\)
+    * [命令查询职责分离\(CQRS\)](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs.md)
 * [项目管理](xiang-mu-guan-li.md)
   * 架构评审
 
