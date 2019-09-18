@@ -74,5 +74,11 @@ DDD并不要求采用特定的架构风格，因为它是对架构中立的。�
 
 ### 行为饱满的领域对象
 
+我们希望领域对象能够准确地表达出业务意图，但是多数时候，我们所看到的却是充满getter和setter的领域对象，此时的领域对象已经不是领域对象了，而是Martin Fowler所称之为的[贫血对象](http://martinfowler.com/bliki/AnemicDomainModel.html)。
+
+
+
+放到Java世界中，多年以来，Java Bean规范都引诱着程序员们以“自然而然又合乎情理”的方式创建着无数的贫血对象，而一些框架也规定对象必须提供getter和setter方法，比如Hibernate的早期版本。那么，贫血对象到底有什么坏处呢？来看一个例子：要修改一个客户（Customer）的邮箱地址，在使用setter方法时为：
+
 
 
