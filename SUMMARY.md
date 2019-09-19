@@ -327,7 +327,7 @@
   * [命令查询职责分离\(CQRS\)](she-ji-si-xiang-and-kai-fa-mo-shi/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs.md)
     * [领域驱动设计系列 \(六\)：CQRS](she-ji-si-xiang-and-kai-fa-mo-shi/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs/ling-yu-qu-dong-she-ji-xi-lie-516d29-ff1a-cqrs.md)
     * [DDD CQRS架构和传统架构的优缺点比较](she-ji-si-xiang-and-kai-fa-mo-shi/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs/ddd-cqrsjia-gou-he-chuan-tong-jia-gou-de-you-que-dian-bi-jiao.md)
-    * CQRS架构简介
+    * [CQRS架构简介](she-ji-si-xiang-and-kai-fa-mo-shi/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs/cqrsjia-gou-jian-jie.md)
 * [项目管理](xiang-mu-guan-li.md)
   * 架构评审
 
