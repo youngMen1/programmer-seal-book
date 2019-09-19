@@ -8,5 +8,5 @@ CRUD \(Create, Read, Update, Delete\) 增查改删，我们很多系统都是对
 
 但是，系统规模稍微大一点，我们都知道我们的数据库里的数据模型很难和我们业务层需要的模型一致。 于是我们引入了Domain Model, Repository里就会做Domain Model的来回转换
 
-
+o\_1.png
 
