@@ -325,6 +325,7 @@
     * [领域驱动设计\(DDD\)实现之路](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/ling-yu-qu-dong-she-8ba128-ddd-shi-xian-zhi-lu.md)
     * [领域驱动设计系列（2）浅析VO、DTO、DO、PO的概念、区别和用处](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/ling-yu-qu-dong-she-ji-xi-lie-ff08-2-ff09-qian-xi-vo-dto-do-po-de-gai-nian-3001-qu-bie-he-yong-chu.md)
   * [命令查询职责分离\(CQRS\)](she-ji-si-xiang-and-kai-fa-mo-shi/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs.md)
+    * 领域驱动设计系列 \(六\)：CQRS
 * [项目管理](xiang-mu-guan-li.md)
   * 架构评审
 
