@@ -63,7 +63,8 @@ CRUD \(Create, Read, Update, Delete\) 增查改删，我们很多系统都是对
 
 ![img](/static/image/o\_2.png)
 
-o\_3.png
+
+![img](/static/image/o\_3.png)
 
 #### 使用的Event后 {#使用的event后}
 
