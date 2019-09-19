@@ -323,7 +323,7 @@
     * [浅谈我对DDD领域驱动设计的理解](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/qian-tan-wo-dui-ddd-ling-yu-qu-dong-she-ji-de-li-jie.md)
     * [领域驱动设计的基础知识总结](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/ling-yu-qu-dong-she-ji-de-ji-chu-zhi-shi-zong-jie.md)
     * [领域驱动设计\(DDD\)实现之路](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/ling-yu-qu-dong-she-8ba128-ddd-shi-xian-zhi-lu.md)
-    * 领域驱动设计系列（2）浅析VO、DTO、DO、PO的概念、区别和用处
+    * [领域驱动设计系列（2）浅析VO、DTO、DO、PO的概念、区别和用处](she-ji-si-xiang-and-kai-fa-mo-shi/ddddomain-driven-design-ling-yu-qu-dong-she-8ba129/ling-yu-qu-dong-she-ji-xi-lie-ff08-2-ff09-qian-xi-vo-dto-do-po-de-gai-nian-3001-qu-bie-he-yong-chu.md)
 * [项目管理](xiang-mu-guan-li.md)
   * 架构评审
 
