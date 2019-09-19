@@ -68,7 +68,8 @@ CRUD \(Create, Read, Update, Delete\) 增查改删，我们很多系统都是对
 
 #### 使用的Event后 {#使用的event后}
 
-o\_4.png
+
+![img](/static/image/o\_4.png)
 
 #### 使用了Event Source 和Service bus后 {#使用了event-source-和service-bus后}
 
