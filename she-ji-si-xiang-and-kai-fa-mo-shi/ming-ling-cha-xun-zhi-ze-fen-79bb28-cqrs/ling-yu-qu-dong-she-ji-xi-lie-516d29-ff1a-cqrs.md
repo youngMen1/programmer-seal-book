@@ -4,5 +4,9 @@ CQRS是Command Query Responsibility Seperation（命令查询职责分离）的�
 
 ## CRUD {#crud}
 
+CRUD \(Create, Read, Update, Delete\) 增查改删，我们很多系统都是对数据的增查改删。过去我们很多系统比较简单，基本上增加的数据就是你要查询的数据，所以很多时候其实一个简单的Excel就能搞定。 而且增删改查也足够的简单，所以我们很多系统分层后在数据层Repository里仍是对单表的增删改查，这样对不少的系统都符合。
+
+但是，系统规模稍微大一点，我们都知道我们的数据库里的数据模型很难和我们业务层需要的模型一致。 于是我们引入了Domain Model, Repository里就会做Domain Model的来回转换
+
 
 
