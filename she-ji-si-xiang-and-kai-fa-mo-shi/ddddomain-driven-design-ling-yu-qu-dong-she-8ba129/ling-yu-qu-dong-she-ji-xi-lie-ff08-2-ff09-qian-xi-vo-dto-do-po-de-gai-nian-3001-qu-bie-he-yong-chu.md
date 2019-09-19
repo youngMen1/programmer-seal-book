@@ -1,3 +1,5 @@
+# [Java中 VO、 PO、DO、DTO、 BO、 QO、DAO、POJO的概念](https://www.hollischuang.com/archives/553)
+
 ## PO\(persistant object\) 持久对象
 
 在 o/r 映射的时候出现的概念，如果没有 o/r 映射，没有这个概念存在了。通常对应数据模型 \( 数据库 \), 本身还有部分业务逻辑的处理。可以看成是与数据库中的表相映射的 java 对象。最简单的 PO 就是对应数据库中某个表中的一条记录，多个记录可以用 PO 的集合。 PO 中应该不包含任何对数据库的操作。
@@ -9,10 +11,6 @@
 ## TO\(Transfer Object\) ，数据传输对象
 
 在应用程序不同 tie\( 关系 \) 之间传输的对象
-
-
-
-
 
 ## DTO（Data Transfer Object）数据传输对象
 
