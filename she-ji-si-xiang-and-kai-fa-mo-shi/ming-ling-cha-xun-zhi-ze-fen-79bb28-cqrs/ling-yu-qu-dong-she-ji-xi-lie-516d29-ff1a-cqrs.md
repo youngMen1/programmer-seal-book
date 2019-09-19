@@ -60,7 +60,8 @@ CRUD \(Create, Read, Update, Delete\) 增查改删，我们很多系统都是对
 
 #### 简单的实现 {#简单的实现}
 
-o\_2.png
+
+![img](/static/image/o\_2.png)
 
 o\_3.png
 
