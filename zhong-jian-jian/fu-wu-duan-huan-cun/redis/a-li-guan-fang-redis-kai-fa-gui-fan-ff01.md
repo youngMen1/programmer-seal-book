@@ -60,3 +60,9 @@ set user:1:favor football
 
 正例:
 
+```
+hmset user:1 name tom age 19 favor football
+```
+
+
+
