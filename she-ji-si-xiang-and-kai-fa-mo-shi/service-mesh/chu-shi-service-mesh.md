@@ -34,7 +34,7 @@ Phil Calçado 在他的这篇博客 Pattern: Service Mesh 中详细解释了 Ser
 
 Service Mesh 的架构如下图所示
 
-725534-80533b9cd65bfbd8.webp
+![img](/static/image/725534-80533b9cd65bfbd8.webp)
 
 ### 3. 方案
 
