@@ -330,6 +330,7 @@
     * [CQRS架构简介](she-ji-si-xiang-and-kai-fa-mo-shi/ming-ling-cha-xun-zhi-ze-fen-79bb28-cqrs/cqrsjia-gou-jian-jie.md)
   * [Service Mesh](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh.md)
     * [什么是Service Mesh？](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh/shi-yao-shi-service-mesh.md)
+    * 初识 Service Mesh
 * [项目管理](xiang-mu-guan-li.md)
   * 架构评审
 
