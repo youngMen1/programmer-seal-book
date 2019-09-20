@@ -48,3 +48,21 @@ Istio是由Google、IBM和Lyft开源的微服务管理、保护和监控框架�
 
 725534-727a0823531b6597.webp
 
+Istio架构分为控制层和数据层。
+
+1. 数据层：由一组智能代理（Envoy）作为sidecar部署，协调和控制所有microservices之间的网络通信。
+2. 控制层：负责管理和配置代理路由流量，以及在运行时执行的政策。
+
+Istio架构各个组成部分。
+
+* Envoy：Istio使用Envoy代理的扩展版本，该代理是以C++开发的高性能代理，用于调解service mesh中所有服务的所有入站和出站流量。
+* Mixer：Mixer负责在service mesh上执行访问控制和使用策略，并收集Envoy代理和其他服务的遥测数据。
+* Istio Manager：Istio-Manager用作用户和Istio之间的接口，收集和验证配置，并将其传播到各种Istio组件。
+* Istio-auth：Istio-Auth提供强大的服务间和最终用户认证，使用相互TLS，内置身份和凭据管理。
+
+#### 3.2 Linkerd 介绍
+
+Linkerd 是开源网络代理，设计为以服务网格部署：用于管理，控制和监控应用程序内的服务与服务间通讯的专用层。
+
+**Linkerd 架构图**
+
