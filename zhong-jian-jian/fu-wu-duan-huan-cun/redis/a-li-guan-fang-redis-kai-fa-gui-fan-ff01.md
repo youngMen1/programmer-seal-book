@@ -260,5 +260,9 @@ jedis.del(bigSetKey);
 
 ##### **4、SortedSet删除: zscan + zrem**
 
+```
+public void delBigZset(String host, int port, String password, String bigZsetKey) {Jedis jedis = new Jedis(host, port);if (password != null && !"".equals(password)) {jedis.auth(password);}ScanParams scanParams = new ScanParams().count(100);String cursor = "0";do {ScanResult<Tuple> scanResult = jedis.zscan(bigZsetKey, cursor, scanParams);List<Tuple> tupleList = scanResult.getResult();if (tupleList != null && !tupleList.isEmpty()) {for (Tuple tuple : tupleList) {jedis.zrem(bigZsetKey, tuple.getElement());}}cursor = scanResult.getStringCursor();} while (!"0".equals(cursor));//删除bigkeyjedis.del(bigZsetKey);}
+```
+
 
 
