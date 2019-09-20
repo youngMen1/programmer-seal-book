@@ -258,7 +258,7 @@ jedis.del(bigSetKey);
 }
 ```
 
-##### **SortedSet删除: zscan + zrem**
+##### **4、SortedSet删除: zscan + zrem**
 
 
 
