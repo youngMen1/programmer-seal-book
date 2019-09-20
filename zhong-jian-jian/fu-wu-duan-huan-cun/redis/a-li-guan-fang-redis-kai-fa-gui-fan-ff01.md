@@ -234,5 +234,9 @@ jedis.del(bigListKey);
 
 ##### **3、Set删除: sscan + srem**
 
+```
+public void delBigSet(String host, int port, String password, String bigSetKey) {Jedis jedis = new Jedis(host, port);if (password != null && !"".equals(password)) {jedis.auth(password);}ScanParams scanParams = new ScanParams().count(100);String cursor = "0";do {ScanResult<String> scanResult = jedis.sscan(bigSetKey, cursor, scanParams);List<String> memberList = scanResult.getResult();if (memberList != null && !memberList.isEmpty()) {for (String member : memberList) {jedis.srem(bigSetKey, member);}}cursor = scanResult.getStringCursor();} while (!"0".equals(cursor));//删除bigkeyjedis.del(bigSetKey);}
+```
+
 
 
