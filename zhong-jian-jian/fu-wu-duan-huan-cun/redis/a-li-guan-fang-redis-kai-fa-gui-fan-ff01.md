@@ -186,8 +186,30 @@ redis大key搜索工具
 ##### **1、Hash删除: hscan + hdel**
 
 ```
-public void delBigHash(String host, int port, String password, String bigHashKey) {Jedis jedis = new Jedis(host, port);if (password != null && !"".equals(password)) {jedis.auth(password);}ScanParams scanParams = new ScanParams().count(100);String cursor = "0";do {ScanResult<Entry<String, String>> scanResult = jedis.hscan(bigHashKey, cursor, scanParams);List<Entry<String, String>> entryList = scanResult.getResult();if (entryList != null && !entryList.isEmpty()) {for (Entry<String, String> entry : entryList) {jedis.hdel(bigHashKey, entry.getKey());}}cursor = scanResult.getStringCursor();} while (!"0".equals(cursor));//删除bigkeyjedis.del(bigHashKey);}
+public void delBigHash(String host, int port, String password, String bigHashKey) {
+Jedis jedis = new Jedis(host, port);
+if (password != null && !"".equals(password)) {
+jedis.auth(password);
+}
+ScanParams scanParams = new ScanParams().count(100);
+String cursor = "0";
+do {
+ScanResult<Entry<String, String>> scanResult = jedis.hscan(bigHashKey, cursor, scanParams);
+List<Entry<String, String>> entryList = scanResult.getResult();
+if (entryList != null && !entryList.isEmpty()) {
+for (Entry<String, String> entry : entryList) {
+jedis.hdel(bigHashKey, entry.getKey());
+}
+}
+cursor = scanResult.getStringCursor();
+} while (!"0".equals(cursor));
+
+//删除bigkey
+jedis.del(bigHashKey);
+}
 ```
+
+##### **2、List删除: ltrim**
 
 
 
