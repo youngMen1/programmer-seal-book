@@ -46,3 +46,5 @@ Istio是由Google、IBM和Lyft开源的微服务管理、保护和监控框架�
 
 **Istio架构图**：
 
+725534-727a0823531b6597.webp
+
