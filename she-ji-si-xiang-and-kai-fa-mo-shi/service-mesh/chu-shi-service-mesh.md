@@ -46,7 +46,7 @@ Istio是由Google、IBM和Lyft开源的微服务管理、保护和监控框架�
 
 **Istio架构图**：
 
-725534-727a0823531b6597.webp
+![img](/static/image/725534-727a0823531b6597.webp)
 
 Istio架构分为控制层和数据层。
 
@@ -66,9 +66,9 @@ Linkerd 是开源网络代理，设计为以服务网格部署：用于管理，
 
 **Linkerd 架构图**
 
-725534-b1496de21542a733.webp
+![img](/static/image/725534-b1496de21542a733.webp)
 
-725534-fe5a642dd27e1a5c.webp
+![img](/static/image/725534-fe5a642dd27e1a5c.webp)
 
 **Linkerd 基本功能**[原文链接](https://link.jianshu.com/?t=https%3A%2F%2Flinkerd.io%2Ffeatures%2F)
 
