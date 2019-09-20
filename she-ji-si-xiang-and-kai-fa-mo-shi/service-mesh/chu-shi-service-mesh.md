@@ -36,3 +36,13 @@ Service Mesh 的架构如下图所示
 
 725534-80533b9cd65bfbd8.webp
 
+### 3. 方案
+
+目前社区Service Mesh的开源解决方案有：Buoyant 公司推出的 Linkerd 和 Google、IBM 等厂商牵头的 Istio。Linkerd 更加成熟稳定些，Istio 功能更加丰富、设计上更为强大，社区相对也更加强大一些。所以普遍认为 Istio 的前景会更好，但是毕竟还处于项目的早期，问题还很多。
+
+#### 3.1 Istio 介绍
+
+Istio是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。官方中文文档地址：[https://istio.doczh.cn](https://link.jianshu.com/?t=https%3A%2F%2Fistio.doczh.cn)
+
+**Istio架构图**：
+
