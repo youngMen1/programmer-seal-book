@@ -122,3 +122,9 @@ Redis的事务功能较弱\(不支持回滚\)，而且集群版本\(自研和官
 
 可以有效控制连接，同时提高效率，标准使用方式：
 
+```
+执行命令如下：Jedis jedis = null;try {jedis = jedisPool.getResource();//具体的命令jedis.executeCommand()} catch (Exception e) {logger.error("op key {} error: " + e.getMessage(), key, e);} finally {//注意这里不是关闭连接，在JedisPool模式下，Jedis会被归还给资源池。if (jedis != null)jedis.close();}
+```
+
+
+
