@@ -70,3 +70,42 @@ Linkerd 是开源网络代理，设计为以服务网格部署：用于管理，
 
 725534-fe5a642dd27e1a5c.webp
 
+**Linkerd 基本功能**[原文链接](https://link.jianshu.com/?t=https%3A%2F%2Flinkerd.io%2Ffeatures%2F)
+
+1. Load balancing：负载均衡算法，它们使用实时性能指标来分配负载并减少整个应用程序的尾部延迟。
+2. Circuit breaking：自动熔断，将停止将流量发送到被认为不健康的实例，从而使他们有机会恢复并避免连锁反应故障。
+3. Service discovery：服务发现后端集成，通过删除特定的\(ad-hoc\)服务发现实现来帮助您降低代码的复杂性。
+4. Dynamic request routing：动态请求路由和重新路由，允许您使用最少量的配置来设置分段服务\(staging service\)，金丝雀\(canaries\)，蓝绿部署\(blue-green deploy\)，跨DC故障切换和黑暗流量\(dark traffic\)。
+5. Retries and deadlines：在某些故障时自动重试请求，并且可以在指定的时间段之后让请求超时。
+6. TLS：可以配置为使用 TLS 发送和接收请求，您可以使用它来加密跨主机边界的通信，而不用修改现有的应用程序代码。
+7. HTTP proxy integration：可以作为 HTTP 代理，几乎所有现代 HTTP 客户端都广泛支持，使其易于集成到现有应用程序中。
+8. Transparent Proxying：在主机上使用 iptables 规则，设置通过 linkerd 的透明代理
+9. gRPC： 支持 HTTP/2 和 TLS，允许它路由 gRPC 请求，支持高级 RPC 机制，如双向流，流程控制和结构化数据负载。
+10. Distributed tracing：分布式跟踪和度量仪器，可以提供跨越所有服务的统一的可观察性。
+11. Instrumentation：支持分布式跟踪和度量仪器，可以提供跨越所有服务的统一的可观察性。
+
+### 4. 扩展阅读
+
+* [极客时间：什么是Service Mesh](https://link.jianshu.com/?t=https%3A%2F%2Ftime.geekbang.org%2Farticle%2F2355)
+* [极客时间：Service Mesh深度解析](https://link.jianshu.com/?t=https%3A%2F%2Ftime.geekbang.org%2Farticle%2F2360)
+* [极客时间：解读2017之Service Mesh：群雄逐鹿烽烟起](https://link.jianshu.com/?t=https%3A%2F%2Ftime.geekbang.org%2Farticle%2F2362)
+* [kubernetes-handbook](https://link.jianshu.com/?t=https%3A%2F%2Fjimmysong.io%2Fkubernetes-handbook)
+* [Jimmy Song](https://link.jianshu.com/?t=https%3A%2F%2Fjimmysong.io%2F)
+* [Service Mesh 在华为公有云的实践](https://link.jianshu.com/?t=http%3A%2F%2Fgitbook.cn%2Fbooks%2F5a1e7dca387c5b4ee351790b%2Findex.html)
+
+### 5. 参考资料
+
+* [Service Mesh 服务网格](https://link.jianshu.com/?t=https%3A%2F%2Fjimmysong.io%2Fkubernetes-handbook%2Fusecases%2Fservice-mesh.html)
+* [Pattern: Service Mesh](https://link.jianshu.com/?t=http%3A%2F%2Fphilcalcado.com%2F2017%2F08%2F03%2Fpattern_service_mesh.html)
+* [What’s a service mesh? And why do I need one?](https://link.jianshu.com/?t=https%3A%2F%2Fbuoyant.io%2F2017%2F04%2F25%2Fwhats-a-service-mesh-and-why-do-i-need-one%2F)
+* [linkerd.io](https://link.jianshu.com/?t=https%3A%2F%2Flinkerd.io%2F)
+* [Linkerd官方文档中文版](https://link.jianshu.com/?t=https%3A%2F%2Fwww.gitbook.com%2Fbook%2Fdoczhcn%2Flinkerd%2Fdetails)
+* [Istio官方文档中文版](https://link.jianshu.com/?t=http%3A%2F%2Fistio.doczh.cn%2F)
+
+78人点赞
+
+[技术笔记](https://www.jianshu.com/nb/14286560)
+
+  
+
+
