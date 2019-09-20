@@ -1,4 +1,6 @@
-## 阿里官方Redis开发规范！ {#activity-name}
+```
+阿里官方Redis开发规范！
+```
 
 本文主要介绍在使用阿里云Redis的开发规范，从下面几个方面进行说明。
 
@@ -210,6 +212,10 @@ jedis.del(bigHashKey);
 ```
 
 ##### **2、List删除: ltrim**
+
+```
+public void delBigList(String host, int port, String password, String bigListKey) {Jedis jedis = new Jedis(host, port);if (password != null && !"".equals(password)) {jedis.auth(password);}long llen = jedis.llen(bigListKey);int counter = 0;int left = 100;while (counter < llen) {//每次从左侧截掉100个jedis.ltrim(bigListKey, left, llen);counter += left;}//最终删除keyjedis.del(bigListKey);}
+```
 
 
 
