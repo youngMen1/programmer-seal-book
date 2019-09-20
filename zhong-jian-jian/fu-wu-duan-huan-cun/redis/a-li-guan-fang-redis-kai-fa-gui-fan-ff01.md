@@ -123,8 +123,67 @@ Redis的事务功能较弱\(不支持回滚\)，而且集群版本\(自研和官
 可以有效控制连接，同时提高效率，标准使用方式：
 
 ```
-执行命令如下：Jedis jedis = null;try {jedis = jedisPool.getResource();//具体的命令jedis.executeCommand()} catch (Exception e) {logger.error("op key {} error: " + e.getMessage(), key, e);} finally {//注意这里不是关闭连接，在JedisPool模式下，Jedis会被归还给资源池。if (jedis != null)jedis.close();}
+执行命令如下：
+Jedis jedis = null;
+try {
+jedis = jedisPool.getResource();
+//具体的命令
+jedis.executeCommand()
+} catch (Exception e) {
+logger.error("op key {} error: " + e.getMessage(), key, e);
+} finally {
+//注意这里不是关闭连接，在JedisPool模式下，Jedis会被归还给资源池。
+if (jedis != null)
+jedis.close();
+}
 ```
+
+##### **3、熔断功能**
+
+高并发下建议客户端添加熔断功能\(例如netflix hystrix\)
+
+##### **4、合理的加密**
+
+设置合理的密码，如有必要可以使用SSL加密访问（阿里云Redis支持）
+
+##### **5、淘汰策略**
+
+根据自身业务类型，选好maxmemory-policy\(最大内存淘汰策略\)，设置好过期时间。
+
+默认策略是volatile-lru，即超过最大内存后，在过期键中使用lru算法进行key的剔除，保证不过期数据不被删除，但是可能会出现OOM问题。
+
+**其他策略如下：**
+
+* allkeys-lru：根据LRU算法删除键，不管数据有没有设置超时属性，直到腾出足够空间为止。
+
+* allkeys-random：随机删除所有键，直到腾出足够空间为止。
+
+* volatile-random:随机删除过期键，直到腾出足够空间为止。
+
+* volatile-ttl：根据键值对象的ttl属性，删除最近将要过期数据。如果没有，回退到noeviction策略。
+
+* noeviction：不会剔除任何数据，拒绝所有写入操作并返回客户端错误信息"\(error\) OOM command not allowed when used memory"，此时Redis只响应读操作。
+
+### **四、相关工具**
+
+##### **1、数据同步**
+
+redis间数据同步可以使用：redis-port
+
+##### **2、big key搜索**
+
+redis大key搜索工具
+
+##### **3、热点key寻找**
+
+内部实现使用monitor，所以建议短时间使用facebook的redis-faina 阿里云Redis已经在内核层面解决热点key问题
+
+### **五、删除bigkey**
+
+* 下面操作可以使用pipeline加速。
+* redis 4.0已经支持key的异步删除，欢迎使用。
+
+##### **1、Hash删除: hscan + hdel**
 
 
 
