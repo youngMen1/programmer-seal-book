@@ -53,8 +53,10 @@ user:{uid}:friends:messages:{mid}简化为u:{uid}:fr:m:{mid}。
 反例：
 
 ```
-set user:1:name tomset user:1:age 19set user:1:favor football
+set user:1:name tom
+set user:1:age 19
+set user:1:favor football
 ```
 
-
+正例:
 
