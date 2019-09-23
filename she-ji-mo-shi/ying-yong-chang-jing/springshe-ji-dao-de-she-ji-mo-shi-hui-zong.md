@@ -46,3 +46,7 @@ Spring中用到的包装器模式在类名上有两种表现：一种是类名�
 
 从结构上来看和Decorator模式类似，但Proxy是控制，更像是一种对功能的限制，而Decorator是增加职责。
 
+172223379049538.png
+
+Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。
+
