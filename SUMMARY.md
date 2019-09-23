@@ -334,6 +334,6 @@
     * [初识 Service Mesh](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh/chu-shi-service-mesh.md)
 * [项目管理](xiang-mu-guan-li.md)
   * [架构评审](xiang-mu-guan-li/jia-gou-ping-shen.md)
-    * 人人都是架构师
+    * [人人都是架构师](xiang-mu-guan-li/jia-gou-ping-shen/ren-ren-du-shi-jia-gou-shi.md)
   * [重构](xiang-mu-guan-li/zhong-gou.md)
 
