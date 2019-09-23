@@ -98,6 +98,7 @@
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
   * [23种常见设计模式](she-ji-mo-shi/23zhong-chang-jian-she-ji-mo-shi.md)
   * [应用场景](she-ji-mo-shi/ying-yong-chang-jing.md)
+  * 单例模式
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
   * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
