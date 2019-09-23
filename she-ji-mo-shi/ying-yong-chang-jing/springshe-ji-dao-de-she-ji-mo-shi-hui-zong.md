@@ -80,7 +80,7 @@ Template Method模式一般是需要继承的。这里想要探讨另一种对Te
 
 JdbcTemplate中的execute方法：
 
-172224551864583.png
+![img](/static/image/172224551864583.png)
 
 JdbcTemplate执行execute方法：
 
