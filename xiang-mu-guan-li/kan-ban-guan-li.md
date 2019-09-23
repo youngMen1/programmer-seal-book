@@ -27,3 +27,19 @@
 
 以下是一个简单的瀑布流程例子：
 
+成员	时间1	时间2	时间3	时间4
+
+产品	doing	-	-	-
+
+设计	waiting	doing	-	-
+
+程序	waiting	waiting	doing	-
+
+测试	waiting	waiting	waiting	doing
+
+————————————————
+
+版权声明：本文为CSDN博主「石瞳禅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/tkchen/article/details/51637643
+
