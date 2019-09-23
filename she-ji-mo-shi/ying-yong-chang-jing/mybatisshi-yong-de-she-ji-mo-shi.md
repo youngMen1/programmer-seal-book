@@ -49,5 +49,5 @@ Plugin 见7图
 7、责任链模式
 
 Interceptor、InterceptorChain
-![img](/static/image/20170628212721188)
+![img](/static/image/20170628212721189.png)
 
