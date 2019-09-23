@@ -14,7 +14,7 @@ _Spring中的BeanFactory就是简单工厂模式的体现，根据传入一个�
 
 _Spring中的FactoryBean就是典型的工厂方法模式_。如下图：
 
-172221089043885.png
+![img](/static/image/172221089043885.png)
 
 **3. 单例（Singleton）**
 
