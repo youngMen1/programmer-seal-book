@@ -40,3 +40,12 @@ Log、LogFactory
 
 BaseExecutor、SimpleExecutor
 
+六、动态代理
+
+Plugin 见7图  
+
+
+7、责任链模式
+
+Interceptor、InterceptorChain
+
