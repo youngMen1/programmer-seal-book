@@ -68,7 +68,7 @@ Spring中在实例化对象的时候用到Strategy模式，见如下图：
 
 在SimpleInstantiationStrategy中有如下代码说明了策略模式的使用情况：
 
-172224414206242.png
+![img](/static/image/172224414206242.png)
 
 **9.模板方法（Template Method）**
 
