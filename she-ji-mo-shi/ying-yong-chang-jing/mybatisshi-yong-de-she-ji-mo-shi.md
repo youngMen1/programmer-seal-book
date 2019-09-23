@@ -10,7 +10,7 @@ Cahe、LoggingCache、LruCache、TransactionalCahe...等
 
 ![img](/static/image/20170628210545089.png)
 
-20170628210109123.png
+![img](/static/image/20170628210109123.png)
 
 ```
 Cache cache  = new LoggingCache(new PerpetualCache("cacheid"));
