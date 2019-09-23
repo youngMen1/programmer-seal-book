@@ -56,3 +56,5 @@ Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopPro
 
 172224113421820.png
 
+Spring中Observer模式常用的地方是listener的实现。如ApplicationListener。
+
