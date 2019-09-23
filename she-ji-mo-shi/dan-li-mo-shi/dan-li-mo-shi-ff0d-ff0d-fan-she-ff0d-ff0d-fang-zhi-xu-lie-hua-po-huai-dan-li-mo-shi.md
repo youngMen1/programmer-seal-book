@@ -128,42 +128,46 @@ public class LazyInitHolderSingleton {
 ```
 public enum SingletonClass {
 INSTANCE;
- 
+
 private String name;
 public void test() {
 System.out.println("The Test!");
 }
- 
+
 public void setName(String name){
- 
+
 this.name= name;
 }
- 
+
 public String getName(){
- 
+
 return name;
 }
 }
- 
+
 public class TestMain {
- 
+
 public static void main(String[] args) {
- 
+
 SingletonClass one = SingletonClass.INSTANCE;
 SingletonClass two = SingletonClass.INSTANCE;
- 
- 
+
+
 one.test();
 one.setName("I am a SingletonClass Instance");
 System.out.println(one.getName());
- 
+
 if (one == two) {
- 
+
 System.out.println("There are same");
 }
 }
 }
 ```
 
+**反射**
 
+反射是如何破坏单例模式的，单例模式的目标是，任何时候该类都只有唯一的一个对象
+
+比如，实现一个单例:
 
