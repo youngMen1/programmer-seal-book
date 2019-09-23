@@ -30,3 +30,7 @@ SqlSessionFactory
 
 20170628213853842.png
 
+四、适配器模式
+
+Log、LogFactory
+
