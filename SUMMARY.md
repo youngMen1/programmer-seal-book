@@ -101,7 +101,7 @@
     * [Spring-涉及到的设计模式汇总](she-ji-mo-shi/ying-yong-chang-jing/springshe-ji-dao-de-she-ji-mo-shi-hui-zong.md)
   * [单例模式](she-ji-mo-shi/dan-li-mo-shi.md)
   * [MVC](she-ji-mo-shi/mvc.md)
-  * IOC
+  * [IOC](she-ji-mo-shi/ioc.md)
   * [AOP](she-ji-mo-shi/aop.md)
   * [UML](she-ji-mo-shi/uml.md)
   * [微服务思想](she-ji-mo-shi/wei-fu-wu-si-xiang.md)
