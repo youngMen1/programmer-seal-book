@@ -34,7 +34,7 @@ SqlSessionFactory
 
 Log、LogFactory
 
-20170628213948664.png
+![img](/static/image/20170628213948664.png)
 
 五、模板方法
 
