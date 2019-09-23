@@ -333,5 +333,6 @@
     * [什么是Service Mesh？](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh/shi-yao-shi-service-mesh.md)
     * [初识 Service Mesh](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh/chu-shi-service-mesh.md)
 * [项目管理](xiang-mu-guan-li.md)
-  * 架构评审
+  * [架构评审](xiang-mu-guan-li/jia-gou-ping-shen.md)
+  * 重构
 
