@@ -70,7 +70,7 @@ JVM能够根据CPU的特性\(CPU的多级缓存系统、多核处理器等\)适�
 如果没有volatile修饰符则可能出现一个线程t1的B操作和另一线程t2的C操作之间对instance的读写没有happens-before，可能会造成的现象是t1的B操作还没有完全构造成功，但t2的C已经看到instance为非空，这样t2就直接返回了未完全构造的instance的引用，t2想对instance进行操作就会出问题.
 
 ```
-volatile 的功能:  
+volatile 的功能:
 ```
 
 1. 避免编译器将变量缓存在寄存器里    
@@ -83,10 +83,10 @@ public class DoubleCheckedLockingSingleton {
         // java中使用双重检查锁定机制,由于Java编译器和JIT的优化的原因系统无法保证我们期望的执行次序。    
         // 在java5.0修改了内存模型,使用volatile声明的变量可以强制屏蔽编译器和JIT的优化工作    
         private volatile static DoubleCheckedLockingSingleton uniqueInstance;    
-    
+
         private DoubleCheckedLockingSingleton() {    
         }    
-    
+
         public static DoubleCheckedLockingSingleton getInstance() {    
                 if (uniqueInstance == null) {    
                         synchronized (DoubleCheckedLockingSingleton.class) {    
@@ -96,6 +96,23 @@ public class DoubleCheckedLockingSingleton {
                         }    
                 }    
                 return uniqueInstance;    
+        }    
+}
+```
+
+4\)Lazy initialization holder class 满足所有 Double-Checked Locking 满足的条件，并且没有显示的同步操作
+
+```
+public class LazyInitHolderSingleton {    
+        private LazyInitHolderSingleton() {    
+        }    
+    
+        private static class SingletonHolder {    
+                private static final LazyInitHolderSingleton INSTANCE = new LazyInitHolderSingleton();    
+        }    
+    
+        public static LazyInitHolderSingleton getInstance() {    
+                return SingletonHolder.INSTANCE;    
         }    
 }    
 ```
