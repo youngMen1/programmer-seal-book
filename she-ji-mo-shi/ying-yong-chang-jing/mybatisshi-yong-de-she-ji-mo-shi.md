@@ -24,3 +24,7 @@ BaseBuilder、XMLMapperBuilder
 
 20170628214707239.png
 
+三、工厂方法
+
+SqlSessionFactory
+
