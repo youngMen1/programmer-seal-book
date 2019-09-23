@@ -175,25 +175,25 @@ System.out.println("There are same");
 public class Elvis  
 {  
     private static boolean flag = false;  
-  
+
     private Elvis(){  
     }  
-  
+
     private  static class SingletonHolder{  
         private static final Elvis INSTANCE = new Elvis();  
     }  
-  
+
     public static Elvis getInstance()  
     {  
         return SingletonHolder.INSTANCE;  
     }  
-  
+
     public void doSomethingElse()  
     {  
-  
+
     }  
-}  
+}
 ```
 
-
+使用反射的方式来实例化该类
 
