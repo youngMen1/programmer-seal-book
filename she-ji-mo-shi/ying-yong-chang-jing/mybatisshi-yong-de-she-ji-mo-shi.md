@@ -12,3 +12,9 @@ Cahe、LoggingCache、LruCache、TransactionalCahe...等
 
 20170628210109123.png
 
+```
+Cache cache  = new LoggingCache(new PerpetualCache("cacheid"));
+```
+
+
+
