@@ -18,12 +18,9 @@ Cache cache  = new LoggingCache(new PerpetualCache("cacheid"));
 
 一层层包装就使得默认cache实现PerpetualCache具有附加的功能，比如上面的log功能。
 
-  
-
-
-
-
 二、建造者模式
 
 BaseBuilder、XMLMapperBuilder
+
+20170628214707239.png
 
