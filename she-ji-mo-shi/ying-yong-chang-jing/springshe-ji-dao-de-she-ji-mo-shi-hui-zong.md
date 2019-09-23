@@ -32,3 +32,7 @@ Spring中在对于AOP的处理中有Adapter模式的例子，见如下图：
 
 由于Advisor链需要的是MethodInterceptor（拦截器）对象，所以每一个Advisor中的Advice都要适配成对应的MethodInterceptor对象。
 
+**5.包装器（Decorator）**
+
+动态地给一个对象添加一些额外的职责。就增加功能来说，Decorator模式相比生成子类更为灵活。
+
