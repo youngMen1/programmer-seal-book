@@ -22,7 +22,7 @@ Cache cache  = new LoggingCache(new PerpetualCache("cacheid"));
 
 BaseBuilder、XMLMapperBuilder
 
-20170628214707239.png
+![img](/static/image/20170628214707239.png)
 
 三、工厂方法
 
