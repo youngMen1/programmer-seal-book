@@ -336,4 +336,5 @@
   * [架构评审](xiang-mu-guan-li/jia-gou-ping-shen.md)
     * [人人都是架构师](xiang-mu-guan-li/jia-gou-ping-shen/ren-ren-du-shi-jia-gou-shi.md)
   * [重构](xiang-mu-guan-li/zhong-gou.md)
+  * 看板管理
 
