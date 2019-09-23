@@ -53,21 +53,17 @@
 
 以下是一个简单的迭代流程例子：
 
+成员    迭代1    迭代2    迭代3    迭代4    …    迭代N
 
+产品    doing sub1    doing sub2    doing sub3    doing sub4    …    doing subN
 
-成员	迭代1	迭代2	迭代3	迭代4	…	迭代N
+设计    doing sub1    doing sub2    doing sub3    doing sub4    …    doing subN
 
-产品	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+程序    doing sub1    doing sub2    doing sub3    doing sub4    …    doing subN
 
-设计	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+测试    doing sub1    doing sub2    doing sub3    doing sub4    …    doing subN
 
-程序	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+项目管理把整个项目分成N个子过程，这里的子过程就是我们所说的一个迭代，每个迭代固定在1周或者2周内。当然，迭代的目标可以在项目初期制定好，也可以在开发的过程中不断产出。
 
-测试	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
-
-————————————————
-
-版权声明：本文为CSDN博主「石瞳禅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-
-原文链接：https://blog.csdn.net/tkchen/article/details/51637643
+迭代开发的优势在于，试错性强，如果某个迭代出现了问题，则可以在下一个迭代中解决它。
 
