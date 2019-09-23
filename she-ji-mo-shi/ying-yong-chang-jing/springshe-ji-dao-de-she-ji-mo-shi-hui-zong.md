@@ -50,3 +50,7 @@ Spring中用到的包装器模式在类名上有两种表现：一种是类名�
 
 Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。
 
+**7.观察者（Observer）**
+
+定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+
