@@ -8,7 +8,7 @@ Cahe、LoggingCache、LruCache、TransactionalCahe...等
 
 以LoggingCache为例，UML图
 
-20170628210545089.png
+![img](/static/image/20170628210545089.png)
 
 20170628210109123.png
 
