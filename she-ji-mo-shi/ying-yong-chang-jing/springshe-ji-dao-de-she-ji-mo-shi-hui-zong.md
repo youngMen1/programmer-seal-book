@@ -58,3 +58,9 @@ Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopPro
 
 Spring中Observer模式常用的地方是listener的实现。如ApplicationListener。
 
+**8. 策略（Strategy）**
+
+定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。
+
+Spring中在实例化对象的时候用到Strategy模式，见如下图：
+
