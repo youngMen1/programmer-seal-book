@@ -28,7 +28,7 @@ Spring中的单例模式完成了后半句话，即提供了全局的访问点Be
 
 Spring中在对于AOP的处理中有Adapter模式的例子，见如下图：
 
-172222151238548.png
+![img](/static/image/172222151238548.png)
 
 由于Advisor链需要的是MethodInterceptor（拦截器）对象，所以每一个Advisor中的Advice都要适配成对应的MethodInterceptor对象。
 
