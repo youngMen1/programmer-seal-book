@@ -338,7 +338,7 @@
   * [重构](xiang-mu-guan-li/zhong-gou.md)
   * 看板管理
   * [SCRUM](xiang-mu-guan-li/scrum.md)
-  * 敏捷开发
+  * [敏捷开发](xiang-mu-guan-li/min-jie-kai-fa.md)
   * 极限编程（XP）
   * 结对编程
   * PDCA 循环质量管理
