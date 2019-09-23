@@ -30,3 +30,5 @@ Spring中在对于AOP的处理中有Adapter模式的例子，见如下图：
 
 172222151238548.png
 
+由于Advisor链需要的是MethodInterceptor（拦截器）对象，所以每一个Advisor中的Advice都要适配成对应的MethodInterceptor对象。
+
