@@ -340,6 +340,6 @@
   * [SCRUM](xiang-mu-guan-li/scrum.md)
   * [敏捷开发](xiang-mu-guan-li/min-jie-kai-fa.md)
   * 极限编程（XP）
-  * 结对编程
+  * [结对编程](xiang-mu-guan-li/jie-dui-bian-cheng.md)
   * PDCA 循环质量管理
 
