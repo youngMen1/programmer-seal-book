@@ -51,3 +51,23 @@
 
 迭代流程应该算是瀑布流程的升级版，唯一的区别在于，**瀑布流程里每个人只在一个时间段干活，而迭代，是把一个项目分成很多个子过程，每个成员在每个子过程中都需要干活。**
 
+以下是一个简单的迭代流程例子：
+
+
+
+成员	迭代1	迭代2	迭代3	迭代4	…	迭代N
+
+产品	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+
+设计	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+
+程序	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+
+测试	doing sub1	doing sub2	doing sub3	doing sub4	…	doing subN
+
+————————————————
+
+版权声明：本文为CSDN博主「石瞳禅」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+
+原文链接：https://blog.csdn.net/tkchen/article/details/51637643
+
