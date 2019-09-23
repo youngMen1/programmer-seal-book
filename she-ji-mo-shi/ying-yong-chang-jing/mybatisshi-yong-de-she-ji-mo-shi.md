@@ -40,7 +40,7 @@ Log、LogFactory
 
 BaseExecutor、SimpleExecutor
 
-20170628212637781.png
+![img](/static/image/20170628212637781.png)
 
 六、动态代理
 
