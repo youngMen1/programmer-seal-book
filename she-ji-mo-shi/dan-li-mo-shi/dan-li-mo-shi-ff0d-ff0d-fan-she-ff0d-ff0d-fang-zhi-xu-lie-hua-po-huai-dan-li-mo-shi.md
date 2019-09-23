@@ -171,3 +171,29 @@ System.out.println("There are same");
 
 比如，实现一个单例:
 
+```
+public class Elvis  
+{  
+    private static boolean flag = false;  
+  
+    private Elvis(){  
+    }  
+  
+    private  static class SingletonHolder{  
+        private static final Elvis INSTANCE = new Elvis();  
+    }  
+  
+    public static Elvis getInstance()  
+    {  
+        return SingletonHolder.INSTANCE;  
+    }  
+  
+    public void doSomethingElse()  
+    {  
+  
+    }  
+}  
+```
+
+
+
