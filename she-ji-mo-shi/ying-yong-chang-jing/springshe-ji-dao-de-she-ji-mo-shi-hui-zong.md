@@ -64,3 +64,5 @@ Spring中Observer模式常用的地方是listener的实现。如ApplicationListe
 
 Spring中在实例化对象的时候用到Strategy模式，见如下图：
 
+172224299513506.png
+
