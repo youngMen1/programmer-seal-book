@@ -337,7 +337,7 @@
     * [人人都是架构师](xiang-mu-guan-li/jia-gou-ping-shen/ren-ren-du-shi-jia-gou-shi.md)
   * [重构](xiang-mu-guan-li/zhong-gou.md)
   * 看板管理
-  * SCRUM
+  * [SCRUM](xiang-mu-guan-li/scrum.md)
   * 敏捷开发
   * 极限编程（XP）
   * 结对编程
