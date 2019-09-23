@@ -341,5 +341,5 @@
   * [敏捷开发](xiang-mu-guan-li/min-jie-kai-fa.md)
   * [极限编程（XP）](xiang-mu-guan-li/ji-xian-bian-cheng-ff08-xp.md)
   * [结对编程](xiang-mu-guan-li/jie-dui-bian-cheng.md)
-  * PDCA 循环质量管理
+  * [PDCA 循环质量管理](xiang-mu-guan-li/pdca-xun-huan-zhi-liang-guan-li.md)
 
