@@ -103,7 +103,7 @@
   * IOC
   * [AOP](she-ji-mo-shi/aop.md)
   * [UML](she-ji-mo-shi/uml.md)
-  * 微服务思想
+  * [微服务思想](she-ji-mo-shi/wei-fu-wu-si-xiang.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
   * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
