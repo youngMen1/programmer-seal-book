@@ -299,5 +299,7 @@ System.out.println("模拟记录日志功能 ...");
 }
 ```
 
+上面 Aspect 类使用了 @Aspect 修饰，这样 Spring 会将它当成一个方面 Bean 进行处理。其中程序中粗体字代码指定将会在调用 org.crazyit.app.service.impl 包下的所有类的所有方法之后织入 log\(Object rvt\) 方法。
 
+再看 Around 增强处理代码：
 
