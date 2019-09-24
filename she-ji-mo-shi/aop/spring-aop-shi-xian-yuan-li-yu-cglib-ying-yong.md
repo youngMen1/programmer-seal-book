@@ -147,3 +147,34 @@ Hello AspectJ!
 
 为什么在对 Hello 类没有任何修改的前提下，而 Hello 类能不断地、动态增加新功能呢？这看上去并不符合 Java 基本语法规则啊。实际上我们可以使用 Java 的反编译工具来反编译前面程序生成的 Hello.class 文件，发现 Hello.class 文件的代码如下：
 
+```
+package lee; 
+ 
+import java.io.PrintStream; 
+import org.aspectj.runtime.internal.AroundClosure; 
+ 
+public class Hello 
+{ 
+ public void sayHello() 
+ { 
+   try 
+   { 
+     System.out.println("Hello AspectJ!"); } catch (Throwable localThrowable) { 
+     LogAspect.aspectOf().ajc$after$lee_LogAspect$1$9fd5dd97(); throw localThrowable; } 
+     LogAspect.aspectOf().ajc$after$lee_LogAspect$1$9fd5dd97(); 
+ } 
+ 
+ ... 
+ 
+ private static final void sayHello_aroundBody1$advice(Hello target, 
+            TxAspect ajc$aspectInstance, AroundClosure ajc$aroundClosure) 
+ { 
+   System.out.println("开始事务 ..."); 
+   AroundClosure localAroundClosure = ajc$aroundClosure; sayHello_aroundBody0(target); 
+   System.out.println("事务结束 ..."); 
+ } 
+}
+```
+
+
+
