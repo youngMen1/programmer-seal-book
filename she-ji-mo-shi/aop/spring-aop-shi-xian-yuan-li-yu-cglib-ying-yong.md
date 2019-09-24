@@ -239,3 +239,15 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 使用 @Aspect 标注一个 Java 类，该 Java 类将会作为方面 Bean，如下面代码片段所示：
 
+```
+// 使用 @Aspect 定义一个方面类
+@Aspect 
+public class LogAspect 
+{ 
+// 定义该类的其他内容
+... 
+}
+```
+
+
+
