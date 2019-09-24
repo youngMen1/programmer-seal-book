@@ -149,10 +149,10 @@ Hello AspectJ!
 
 ```
 package lee; 
- 
+
 import java.io.PrintStream; 
 import org.aspectj.runtime.internal.AroundClosure; 
- 
+
 public class Hello 
 { 
  public void sayHello() 
@@ -163,9 +163,9 @@ public class Hello
      LogAspect.aspectOf().ajc$after$lee_LogAspect$1$9fd5dd97(); throw localThrowable; } 
      LogAspect.aspectOf().ajc$after$lee_LogAspect$1$9fd5dd97(); 
  } 
- 
+
  ... 
- 
+
  private static final void sayHello_aroundBody1$advice(Hello target, 
             TxAspect ajc$aspectInstance, AroundClosure ajc$aroundClosure) 
  { 
@@ -176,5 +176,9 @@ public class Hello
 }
 ```
 
+不难发现这个 Hello.class 文件不是由原来的 Hello.java 文件编译得到的，该 Hello.class 里新增了很多内容——这表明 AspectJ 在编译时“自动”编译得到了一个新类，这个新类增强了原有的 Hello.java 类的功能，因此 AspectJ 通常被称为编译时增强的 AOP 框架。
 
+提示：与 AspectJ 相对的还有另外一种 AOP 框架，它们不需要在编译时对目标类进行增强，而是运行时生成目标类的代理类，该代理类要么与目标类实现相同的接口，要么是目标类的子类——总之，代理类的实例可作为目标类的实例来使用。一般来说，编译时增强的 AOP 框架在性能上更有优势——因为运行时动态增强的 AOP 框架需要每次运行时都进行动态增强。
+
+实际上，AspectJ 允许同时为多个方法添加新功能，只要我们定义 Pointcut 时指定匹配更多的方法即可。如下片段：
 
