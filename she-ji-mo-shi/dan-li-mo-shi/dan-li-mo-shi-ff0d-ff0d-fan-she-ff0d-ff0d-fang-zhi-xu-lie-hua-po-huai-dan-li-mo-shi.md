@@ -281,3 +281,7 @@ public class SerSingleton implements Serializable
 
 如何避免单例模式被破坏
 
+1.反射
+
+第二次实例化的时候，抛出异常
+
