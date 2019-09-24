@@ -98,6 +98,32 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 对于微服务安全认证授权机制一块，目前业界虽然有 OAuth 和 OpenID connect 等标准协议，但是各家具体实现的做法都不太一样，企业一般有很多特殊的定制需求，整个社区还没有形成通用生产级开箱即用的产品。有一些开源授权服务器产品，比较知名的如 Apereo CAS\[附录 12.37\]（GitHub 3.6k stars），JBoss 开源的 keycloak\[附录 12.38\]（GitHub 1.9 stars），spring cloud security\[附录 12.39\] 等，大都是 opinionated（一家观点和做法）的产品，同时因支持太多协议造成产品复杂，也缺乏足够灵活性。个人建议基于 OAuth 和 OpenID connect 标准，在参考一些开源产品的基础上（例如 Mitre 开源的 OpenID-Connect-Java-Spring-Server\[附录 12.40\]，GitHub 0.62k stars），定制自研轻量级授权服务器。Wso2 提出了一种微服务安全的参考方案 \[附录 12.45\]，建议参考，该方案的关键步骤如下：
 
-[  b70992e5727d45726ba7fcfb2b645f2a.png  
+[  b70992e5727d45726ba7fcfb2b645f2a.png  ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)
+
+使用支持 OAuth 2.0 和 OpenID Connect 标准协议的授权服务器（个人建议定制自研）；
+
+1. 使用 API 网关作为单一访问入口，统一实现安全治理；
+2. 客户在访问微服务之前，先通过授权服务器登录获取 access token，然后将 access token 和请求一起发送到网关；
+3. 网关获取 access token，通过授权服务器校验 token，同时做 token 转换获取 JWT token。
+4. 网关将 JWT Token 和请求一起转发到后台微服务；
+5. JWT 中可以存储用户会话信息，该信息可以传递给后台的微服务，也可以在微服务之间传递，用作认证授权等用途；
+6. 每个微服务包含 JWT 客户端，能够解密 JWT 并获取其中的用户会话信息。
+7. 整个方案中，access token 是一种 by reference token，不包含用户信息可以直接暴露在公网上；JWT token 是一种 by value token，可以包含用户信息但不暴露在公网上。
+
+## 十、服务部署平台选型
+
+容器已经被社区接受为交付微服务的一种理想手段，可以实现不可变（immutable）发布模式。一个轻量级的基于容器的服务部署平台主要包括容器资源调度，发布系统，镜像治理，资源治理和 IAM 等模块。
+
+**集群资源调度系统**：屏蔽容器细节，将整个集群抽象成容器资源池，支持按需申请和释放容器资源，物理机发生故障时能够实现自动故障迁移 \(fail over\)。目前 Google 开源的 Kubernetes\[附录 12.41\]，在 Google 背书和社区的强力推动下，基本已经形成市场领导者地位，GitHub 上有 31.8k 星，社区的活跃度已经远远超过了 mesos\[附录 12.42\]（GitHub 3.5k stars）和 swarm 等竞争产品，所以容器资源调度建议首选 K8s。当然如果你的团队有足够定制自研能力，想深度把控底层调度算法，也可以基于 Mesos 做定制自研。
+
+**镜像治理**：基于 Docker Registry，封装一些轻量级的治理功能。VMware 开源的 harbor\[附录 12.43\] \(GitHub 3.5k stars\) 是目前社区比较成熟的企业级产品，在 Docker Registry 基础上扩展了权限控制，审计，镜像同步，管理界面等治理能力，可以考虑采用。
+
+**资源治理**：类似于 CMDB 思路，在容器云环境中，企业仍然需要对应用 app，组织 org，容器配额和数量等相关信息进行轻量级的治理。目前这块还没有生产级的开源产品，一般企业需要根据自己的场景定制自研。
+
+**发布平台**：面向用户的发布管理控制台，支持发布流程编排。它和其它子系统对接交互，实现基本的应用发布能力，也实现如蓝绿，金丝雀和灰度等高级发布机制。目前这块生产级的开源产品很少，Netflix 开源的 spinnaker\[附录 12.44\]（github 4.2k stars）是一个，但是这个产品比较复杂重量（因为它既要支持适配对接各种 CI 系统，同时还要适配对接各种公有云和容器云，使得整个系统异常复杂），一般企业建议根据自己的场景定制自研轻量级的解决方案。
+
+**IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 Apereo CAS（GitHub 3.6k stars），JBoss 开源的 keycloak（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
+
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[  
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)
 
