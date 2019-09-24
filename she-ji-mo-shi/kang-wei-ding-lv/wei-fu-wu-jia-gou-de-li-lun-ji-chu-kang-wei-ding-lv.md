@@ -8,5 +8,5 @@
 
 可能出乎很多人意料之外的一个事实是，微服务很多核心理念其实在半个世纪前的一篇文章中就被阐述过了，而且这篇文章中的很多论点在软件开发飞速发展的这半个世纪中竟然一再被验证，这就是[康威定律（Conway's Law）](https://yq.aliyun.com/go/articleRenderRedirect?url=http%3A%2F%2Fwww.melconway.com%2FHome%2FConways_Law.html)。
 
-
+3fa834ea8c880a97d00f187f67962a8218b16f22.png
 
