@@ -443,7 +443,7 @@ AOP 代理所包含的方法与目标对象的方法示意图如图 3 所示。
 
 ##### 图 3.AOP 代理的方法与目标对象的方法 {#fig3}
 
-image007.gif
+![img](/static/image/image007.gif)
 
 Spring 的 AOP 代理由 Spring 的 IoC 容器负责生成、管理，其依赖关系也由 IoC 容器负责管理。因此，AOP 代理可以直接使用容器中的其他 Bean 实例作为目标，这种关系可由 IoC 容器的依赖注入提供。
 
