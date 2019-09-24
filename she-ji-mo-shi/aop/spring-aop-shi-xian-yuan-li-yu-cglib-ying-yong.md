@@ -489,5 +489,7 @@ return rvt + " 新增的内容";
 }
 ```
 
+上面这个 AroundAdvice.java 的作用就像前面介绍的 Around Advice，它可以在调用目标方法之前、调用目标方法之后织入增强处理。
 
+接下来程序提供一个 ChineseProxyFactory 类，这个 ChineseProxyFactory 类会通过 CGLIB 来为 Chinese 生成代理类：
 
