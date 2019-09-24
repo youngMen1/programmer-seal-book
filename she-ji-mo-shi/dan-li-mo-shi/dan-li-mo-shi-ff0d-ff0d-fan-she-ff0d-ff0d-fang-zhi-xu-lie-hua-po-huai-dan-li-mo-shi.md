@@ -416,38 +416,38 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
- 
+
 public class SerSingleton implements Serializable {
- 
+
 private static final long serialVersionUID = 1L;
 String name;
- 
+
 private SerSingleton() {
 System.out.println("Singleton is create");
 name = "SerSingleton";
 }
- 
+
 private static SerSingleton instance = new SerSingleton();
- 
+
 public static SerSingleton getInstance() {
 return instance;
 }
- 
+
 public static void createString() {
 System.out.println("createString in Singleton");
 }
 private Object readResolve(){
 return instance;
 }
- 
- 
+
+
 public static void main(String[] args) throws IOException, ClassNotFoundException {
 SerSingleton s1 = null;
 SerSingleton s = SerSingleton.getInstance();
- 
+
 FileOutputStream fos = null;
 ObjectOutputStream oos = null;
- 
+
 FileInputStream fis = null;
 ObjectInputStream ois = null;
 try {
@@ -459,7 +459,7 @@ oos.flush();
 oos.close();
 fos.close();
 }
- 
+
 try{
 fis = new FileInputStream("SerSingleton.obj");
 ois = new ObjectInputStream(fis);
@@ -470,9 +470,13 @@ fis.close();
 }
 System.out.println(s == s1);
 }
- 
+
 }
- 
+```
+
+```
+总结，实现单例模式的唯一推荐方法，使用枚举类来实现。使用枚举类实现单例模式，在对枚举类进行序列化时，还不需要添加readRsolve方法就可以避免单例模式被破坏。
+使用枚举类来实现
 ```
 
 
