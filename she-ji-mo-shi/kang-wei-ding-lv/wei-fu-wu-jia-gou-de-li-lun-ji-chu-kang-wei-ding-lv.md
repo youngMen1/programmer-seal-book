@@ -77,5 +77,5 @@ Mike还举了一个非常有意思的理论，叫“Dunbar Number”，这是一
 * 酒肉（close）朋友: 35
 * 照面（casual）朋友: 150
 
-
+a63beac73c8d217c71aba36c4a6e270a3fa18603.png
 
