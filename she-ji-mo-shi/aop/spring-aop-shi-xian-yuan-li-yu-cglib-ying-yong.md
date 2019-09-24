@@ -225,3 +225,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 如果不打算使用 Spring 的 XML Schema 配置方式，则应该在 Spring 配置文件中增加如下片段来启用 @AspectJ 支持。
 
+```
+<!-- 启动 @AspectJ 支持 -->
+<bean class="org.springframework.aop.aspectj.annotation. 
+    AnnotationAwareAspectJAutoProxyCreator"/>
+```
+
+
+
