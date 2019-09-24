@@ -329,3 +329,28 @@ return rvt + " 新增的内容";
 
 本示例采用了 Spring 的零配置来开启 Spring AOP，因此上面 Chinese 类使用了 @Component 修饰，而方面 Bean 则使用了 @Aspect 修饰，方面 Bean 中的 Advice 则分别使用了 @AfterReturning、@Around 修饰。接下来只要为 Spring 提供如下配置文件即可：
 
+```
+<?xml version="1.0" encoding="GBK"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> 
+<!-- 指定自动搜索 Bean 组件、自动搜索方面类 -->
+<context:component-scan base-package="org.crazyit.app.service 
+,org.crazyit.app.advice"> 
+<context:include-filter type="annotation"
+expression="org.aspectj.lang.annotation.Aspect"/> 
+</context:component-scan> 
+<!-- 启动 @AspectJ 支持 -->
+<aop:aspectj-autoproxy/> 
+</beans>
+```
+
+
+
