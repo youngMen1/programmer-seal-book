@@ -1,4 +1,22 @@
 # Spring AOP 实现原理与 CGLIB 应用 {#ibm-pagetitle-h1}
 
+[Weibo](https://service.weibo.com/share/share.php?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Fjava%2Fj-lo-springaopcglib%2Findex.html%&title=Spring%20AOP%20%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%20CGLIB%20%E5%BA%94%E7%94%A8&language=zh_cn)[Google+](https://plus.google.com/share?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Fjava%2Fj-lo-springaopcglib%2Findex.html&t=Spring%20AOP%20%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%20CGLIB%20%E5%BA%94%E7%94%A8)[用电子邮件发送本页面](mailto:?subject=Spring%20AOP%20%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%B8%8E%20CGLIB%20%E5%BA%94%E7%94%A8&body=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Fjava%2Fj-lo-springaopcglib%2Findex.html)
+
+[![](https://dw1.s81c.com/developerworks/i/v18/article/dw-article-cmt-icon.png "Comments")](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/#icomments)
+
+[12](https://www.ibm.com/developerworks/cn/java/j-lo-springaopcglib/#icomments)
+
+AOP（Aspect Orient Programming），作为面向对象编程的一种补充，广泛应用于处理一些具有横切性质的系统级服务，如事务管理、安全检查、缓存、对象池管理等。AOP 实现的关键就在于 AOP 框架自动创建的 AOP 代理，AOP 代理则可分为静态代理和动态代理两大类，其中静态代理是指使用 AOP 框架提供的命令进行编译，从而在编译阶段就可生成 AOP 代理类，因此也称为编译时增强；而动态代理则在运行时借助于 JDK 动态代理、CGLIB 等在内存中“临时”生成 AOP 动态代理类，因此也被称为运行时增强。
+
+## AOP 的存在价值 {#major11}
+
+在传统 OOP 编程里以对象为核心，整个软件系统由系列相互依赖的对象所组成，而这些对象将被抽象成一个一个的类，并允许使用类继承来管理类与类之间一般到特殊的关系。随着软件规模的增大，应用的逐渐升级，慢慢出现了一些 OOP 很难解决的问题。
+
+我们可以通过分析、抽象出一系列具有一定属性与行为的对象，并通过这些对象之间的协作来形成一个完整的软件功能。由于对象可以继承，因此我们可以把具有相同功能或相同特性的属性抽象到一个层次分明的类结构体系中。随着软件规范的不断扩大，专业化分工越来越系列，以及 OOP 应用实践的不断增多，随之也暴露出了一些 OOP 无法很好解决的问题。
+
+现在假设系统中有 3 段完全相似的代码，这些代码通常会采用“复制”、“粘贴”方式来完成，通过这种“复制”、“粘贴”方式开发出来的软件如图 1 所示。
+
+##### 图 1.多个地方包含相同代码的软件 {#fig1}
+
 
 
