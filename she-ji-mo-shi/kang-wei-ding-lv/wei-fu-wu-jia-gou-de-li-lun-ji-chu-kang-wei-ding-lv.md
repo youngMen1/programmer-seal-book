@@ -22,3 +22,36 @@ ad8ba09ed2350c2a8c2f067d80197e74aefcef8d.png
 
 这里的系统按原作者的意思并不局限于软件系统。据说这篇文章最初投的哈佛商业评论，结果程序员屌丝的文章不入商业人士的法眼，无情被拒，康威就投到了一个编程相关的杂志，所以被误解为是针对软件开发的。最初这篇文章显然不敢自称定律（law），只是描述了作者自己的发现和总结。后来，在Brooks Law著名的人月神话中，引用这个论点，并将其“吹捧”成了现在我们熟知“康威定律”。
 
+### 康威定律详细介绍 {#2}
+
+Mike从他的角度归纳这篇论文中的其他一些核心观点，如下：
+
+* 第一定律
+
+  * Communication dictates design
+  * 组织沟通方式会通过系统设计表达出来
+
+* 第二定律
+
+  * There is never enough time to do something right, but there is always enough time to do it over
+  * 时间再多一件事情也不可能做的完美，但总有时间做完一件事情
+
+* 第三定律
+
+  * There is a homomorphism from the linear graph of a system to the linear graph of its design organization
+  * 线型系统和线型组织架构间有潜在的异质同态特性
+
+* 第四定律
+
+  * The structures of large systems tend to disintegrate during development, qualitatively more so than with small systems
+  * 大的系统组织总是比小系统更倾向于分解
+
+#### 人是复杂社会动物 {#3}
+
+* 第一定律
+
+  * Communication dictates design
+  * 组织沟通方式决定系统设计
+
+组织的沟通和系统设计之间的紧密联系，在很多别的领域有类似的阐述。对于复杂的系统，聊设计就离不开聊人与人的沟通，解决好人与人的沟通问题，才能有一个好的系统设计。相信几乎每个程序员都读过的《人月神话》（1975年，感觉都是老古董了，经典的就是经得起时间考验）里面许多观点都和这句话有异曲同工之妙。
+
