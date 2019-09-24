@@ -174,9 +174,11 @@ c827db7a12d730140d4c0e6947535e168902a73e.png
 
 ### 参考资料 {#8}
 
+https://static.geekbang.org/PDF-%E4%BF%AE%E6%94%B9%E7%89%88-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E5%9B%BE%E7%89%87-%E6%9D%A8%E6%B3%A2-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.pdf
+
 * [远距离条件下的康威定律——分布式世界中实现团队构建](https://yq.aliyun.com/go/articleRenderRedirect?url=http%3A%2F%2Fwww.infoq.com%2Fcn%2Fpresentations%2Fteam-building-implementation-in-distributed-world)
-  ，本文图片来源该ppt截图
-* [Conway‘s Law in wiki](https://yq.aliyun.com/go/articleRenderRedirect?url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FConway%2527s_law)
+* ，本文图片来源该ppt截图
+* [Conway‘s Law in wiki](https://yq.aliyun.com/go/articleRenderRedirect?url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FConway%27s_law)
 * [Conway's Law Homepage](https://yq.aliyun.com/go/articleRenderRedirect?url=http%3A%2F%2Fwww.melconway.com%2FHome%2FConways_Law.html)
 
 
