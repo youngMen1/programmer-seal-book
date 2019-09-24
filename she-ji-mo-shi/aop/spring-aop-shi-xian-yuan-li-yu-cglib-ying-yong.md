@@ -43,7 +43,7 @@ AspectJ 是 Java 语言的一个 AOP 实现，其主要包括两个部分：第�
 
 AspectJ 是最早、功能比较强大的 AOP 实现之一，对整套 AOP 机制都有较好的实现，很多其他语言的 AOP 实现，也借鉴或采纳了 AspectJ 中很多设计。在 Java 领域，AspectJ 中的很多语法结构基本上已成为 AOP 领域的标准。
 
-下载、安装 AspectJ 比较简单，读者登录 AspectJ 官网（http://www.eclipse.org/aspectj），即可下载到一个可执行的 JAR 包，使用 java -jar aspectj-1.x.x.jar 命令、多次单击“Next”按钮即可成功安装 AspectJ。
+下载、安装 AspectJ 比较简单，读者登录 AspectJ 官网（[http://www.eclipse.org/aspectj），即可下载到一个可执行的](http://www.eclipse.org/aspectj），即可下载到一个可执行的) JAR 包，使用 java -jar aspectj-1.x.x.jar 命令、多次单击“Next”按钮即可成功安装 AspectJ。
 
 成功安装了 AspectJ 之后，将会在 E:\Java\AOP\aspectj1.6 路径下（AspectJ 的安装路径）看到如下文件结构：
 
@@ -59,4 +59,20 @@ AspectJ 是最早、功能比较强大的 AOP 实现之一，对整套 AOP 机�
 实际上，AspectJ 的用法非常简单，就像我们使用 JDK 编译、运行 Java 程序一样。下面通过一个简单的程序来示范 AspectJ 的用法，并分析 AspectJ 如何在编译时进行增强。
 
 首先编写一个简单的 Java 类，这个 Java 类用于模拟一个业务组件。
+
+```
+public class Hello 
+{ 
+// 定义一个简单方法，模拟应用中的业务逻辑方法
+public void sayHello(){System.out.println("Hello AspectJ!");}
+// 主方法，程序的入口
+public static void main(String[] args) 
+{ 
+Hello h = new Hello(); 
+h.sayHello(); 
+} 
+}
+```
+
+
 
