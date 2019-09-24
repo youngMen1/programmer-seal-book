@@ -116,5 +116,7 @@ a7fab1b350cd8c03d5e9ddded183c7bda114c326.png
   * There is a homomorphism from the linear graph of a system to the linear graph of its design organization
   * 线型系统和线型组织架构间有潜在的异质同态特性
 
+  3810f88633a55bdf59bb7757cedc827ab425538e.png
+
 
 
