@@ -285,3 +285,53 @@ public class SerSingleton implements Serializable
 
 第二次实例化的时候，抛出异常
 
+```
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+ 
+public class Elvis {
+private static boolean flag = false;
+ 
+private Elvis() {
+synchronized (Elvis.class) {
+System.out.println(" try to instance");
+if (flag == false) {
+System.out.println("first time instance");
+flag = !flag;
+} else {
+throw new RuntimeException("单例模式被侵犯！");
+}
+}
+}
+ 
+private static class SingletonHolder {
+// jvm保证在任何线程访问INSTANCE静态变量之前一定先创建了此实例
+private static final Elvis INSTANCE = new Elvis();
+}
+ 
+public static Elvis getInstance() {
+System.out.println("in getInstance");
+return SingletonHolder.INSTANCE;
+}
+ 
+public void doSomethingElse() {
+ 
+}
+ 
+public static void main(String[] args) throws InstantiationException, IllegalAccessException,
+IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+ 
+Class<?> classType = Elvis.class;
+Constructor<?> c = classType.getDeclaredConstructor(null);
+c.setAccessible(true);
+Elvis e1 = (Elvis) c.newInstance();
+ 
+Elvis e2 = Elvis.getInstance();
+ 
+System.out.println(e1 == e2);
+}
+}
+```
+
+
+
