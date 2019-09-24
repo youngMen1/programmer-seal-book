@@ -30,3 +30,9 @@ void foo() {
 
 然后你想在函数执行前（当成也可以加到执行后，或前后都加，原理是一样）加一句：
 
+```
+System.out.println("before execute foo()");
+```
+
+
+
