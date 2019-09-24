@@ -482,33 +482,33 @@ System.out.println(s == s1);
 
 ```
 public enum SingletonClass implements Serializable {
- 
+
 INSTANCE;
 private static final long serialVersionUID = 1L;
- 
+
 private String name;
- 
+
 public void test() {
 System.out.println("The Test!");
 }
- 
+
 public void setName(String name) {
- 
+
 this.name = name;
 }
- 
+
 public String getName() {
- 
+
 return name;
 }
- 
+
 public static void main(String[] args) throws IOException, ClassNotFoundException {
 SingletonClass s1 = null;
 SingletonClass s = SingletonClass.INSTANCE;
- 
+
 FileOutputStream fos = null;
 ObjectOutputStream oos = null;
- 
+
 FileInputStream fis = null;
 ObjectInputStream ois = null;
 try {
@@ -520,7 +520,7 @@ oos.flush();
 oos.close();
 fos.close();
 }
- 
+
 try {
 fis = new FileInputStream("SingletonClass.obj");
 ois = new ObjectInputStream(fis);
@@ -534,5 +534,17 @@ System.out.println(s == s1);
 }
 ```
 
+输出:
 
+true
+
+引用:
+
+[http://blog.csdn.net/u013256816/article/details/50427061](http://blog.csdn.net/u013256816/article/details/50427061)
+
+[http://blog.csdn.net/u013256816/article/details/50474678](http://blog.csdn.net/u013256816/article/details/50474678)
+
+[http://blog.csdn.net/u013256816/article/details/50525335](http://blog.csdn.net/u013256816/article/details/50525335)
+
+[http://blog.csdn.net/zhang\_yanye/article/details/50344447](http://blog.csdn.net/zhang_yanye/article/details/50344447)
 
