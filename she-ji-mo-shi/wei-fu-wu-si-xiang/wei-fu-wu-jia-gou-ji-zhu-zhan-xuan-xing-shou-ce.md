@@ -70,3 +70,34 @@ ELK 目前可以认为是日志监控的标配，功能完善开箱即用，Elas
 
 bafa1b0f1e10e2de708c40590a8eb629.png
 
+Metrics 监控主要依赖于时间序列数据库 \(TSDB\)，目前较成熟的产品是 StumbleUpon 公司开源的基于 HBase 的 OpenTSDB\[附录 12.15\]（基于 Cassandra 的 KariosDB\[附录 12.16\] 也是一个选择，GitHub 1.1k stars，它基本上是 OpenTSDB 针对 Cassandra 的一个改造版），OpenTSDB 具有分布式能力可以横向扩展，但是相对较重，适用于中大规模企业，OpenTSDB 目前在 GitHub 上有近 2.9k 星。
+
+OpenTSDB 本身不提供告警模块，Argus\[附录 12.17\]（GitHub 0.29k 星）是 Salesforce 开源的基于 OpenTSDB 的统一监控告警平台，支持丰富的告警函数和灵活的告警配置，可以作为 OpenTSDB 的告警补充。近年也出现一些轻量级的 TSDB，如 InfluxDB\[附录 12.18\]（GitHub 12.4k stars）和 Prometheus\[附录 12.19\]（GitHub 14.3k stars），这些产品函数报表能力丰富，自带告警模块，但是分布式能力不足，适用于中小规模企业。Grafana\[附录 12.20\]（GitHub 19.9k stars）是 Metrics 报表展示的社区标配。
+
+社区还有一些通用的健康检查和告警产品，例如 Sensu\[附录 12.21\]（GitHub 2.7k stars），能够对各种服务（例如 Spring Boot 暴露的健康检查端点，时间序列数据库中的 metrics，ELK 中的错误日志等）定制灵活的健康检查 \(check\)，然后用户可以针对 check 结果设置灵活的告警通知策略。Sensu 在 Yelp 等公司有落地案例。其它类似产品还有 Esty 开源的 411\[附录 12.22\]（GitHub 0.74k 星）和 Zalando 的 ZMon\[附录 12.23\] \(GitHub 0.15k 星\)，它们是分别在 Esty 和 Zalando 落地的产品，但是定制 check 和告警配置的使用门槛比较高，社区不热，建议有定制自研能力的团队试用。ZMon 后台采用 KairosDB 存储，如果企业已经采用 KariosDB 作为时间序列数据库，则可以考虑 ZMon 作为告警通知模块。
+
+## 七、服务容错选型
+
+针对 Java 技术栈，Netflix 的 Hystrix\[附录 12.24\]（github 12.4k stars）把熔断、隔离、限流和降级等能力封装成组件，任何依赖调用（数据库，服务，缓存）都可以封装在 Hystrix Command 之内，封装后自动具备容错能力。Hystrix 起源于 Netflix 的弹性工程项目，经过 Netflix 大规模生产验证，目前是容错组件的社区标准，GitHub 上有超 12k 星。其它语言栈也有类似 Hystrix 的简化版本组件。
+
+Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛。对于采用集中式反向代理（边界和内部）做服务路由的公司，则可以集中在反向代理上做熔断限流，例如采用 Nginx\[附录 12.25\]（GitHub 5.1k stars）或者 Kong\[附录 12.7\]（GitHub 11.4k stars）这类反向代理，它们都插件支持灵活的限流容错配置。Zuul 网关也可以集成 Hystrix 实现网关层集中式限流容错。集中式反向代理需要有一定的研发和运维能力，但是可以对限流容错进行集中治理，可以简化客户端。
+
+## 八、后台服务选型
+
+后台服务主要包括消息系统，分布式缓存，分布式数据访问层和任务调度系统。后台服务是一个相对比较成熟的领域，很多开源产品基本可以开箱即用。
+
+消息系统，对于日志等可靠性要求不高的场景，则 Apache 顶级项目 Kafka\[附录 12.26\]（GitHub 7.2k stars）是社区标配。对于可靠性要求较高的业务场景，Kafka 其实也是可以胜任，但企业需要根据具体场景，对 Kafka 的监控和治理能力进行适当定制完善，Allegro 公司开源的 hermes\[附录 12.27\]（GitHub 0.3k stars）是一个可参考项目，它在 Kafka 基础上封装了适合业务场景的企业级治理能力。阿里开源的 RocketMQ\[附录 12.28\]（GitHub 3.5k 星）也是一个不错选择，具备更多适用于业务场景的特性，目前也是 Apache 顶级项目。RabbitMQ\[附录 12.29\]（GitHub 3.6k 星）是老牌经典的 MQ，队列特性和文档都很丰富，性能和分布式能力稍弱，中小规模场景可选。
+
+对于缓存治理，如果倾向于采用客户端直连模式（个人认为缓存直连更简单轻量），则 SohuTv 开源的 cachecloud\[附录 12.30\]（GitHub 2.5k stars）是一款不错的 Redis 缓存治理平台，提供诸如监控统计，一键开启，自动故障转移，在线伸缩，自动化运维等生产级治理能力，另外其文档也比较丰富。如果倾向采用中间层 Proxy 模式，则 Twitter 开源的 twemproxy\[附录 12.31\]（GitHub 7.5k stars）和 CodisLab 开源的 codis\[附录 12.32\]（GitHub 6.9k stars）是社区比较热的选项。
+
+对于分布式数据访问层，如果采用 Java 技术栈，则当当开源的 shardingjdbc\[附录 12.33\]（GitHub 3.5k stars）是一个不错的选项，分库分表逻辑做在客户端 jdbc driver 中，客户端直连数据库比较简单轻量，建议中小规模场景采用。如果倾向采用数据库访问中间层 proxy 模式，则从阿里 Cobar 演化出来的社区开源分库分表中间件 MyCAT\[附录 12.34\]（GitHub 3.6k stars）是一个不错选择 。proxy 模式运维成本较高，建议中大规模场景，有一定框架自研和运维能力的团队采用。
+
+任务调度系统，个人推荐徐雪里开源的 xxl-job\[附录 12.35\]（GitHub 3.4k stars），部署简单轻量，大部分场景够用。当当开源的 elastic-job\[附录 12.36\]（GitHub 3.2k stars）也是一个不错选择，相比 xxl-job 功能更强一些也更复杂。
+
+## 九、服务安全选型
+
+对于微服务安全认证授权机制一块，目前业界虽然有 OAuth 和 OpenID connect 等标准协议，但是各家具体实现的做法都不太一样，企业一般有很多特殊的定制需求，整个社区还没有形成通用生产级开箱即用的产品。有一些开源授权服务器产品，比较知名的如 Apereo CAS\[附录 12.37\]（GitHub 3.6k stars），JBoss 开源的 keycloak\[附录 12.38\]（GitHub 1.9 stars），spring cloud security\[附录 12.39\] 等，大都是 opinionated（一家观点和做法）的产品，同时因支持太多协议造成产品复杂，也缺乏足够灵活性。个人建议基于 OAuth 和 OpenID connect 标准，在参考一些开源产品的基础上（例如 Mitre 开源的 OpenID-Connect-Java-Spring-Server\[附录 12.40\]，GitHub 0.62k stars），定制自研轻量级授权服务器。Wso2 提出了一种微服务安全的参考方案 \[附录 12.45\]，建议参考，该方案的关键步骤如下：
+
+[  
+](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)
+
