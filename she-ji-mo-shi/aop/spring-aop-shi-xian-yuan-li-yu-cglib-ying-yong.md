@@ -413,3 +413,21 @@ void eat(String food);
 
 接下来让 BeanTest 类面向 Person 接口、而不是 Chinese 类编程。即将 BeanTest 类改为如下形式：
 
+```
+public class BeanTest 
+{ 
+public static void main(String[] args) 
+{ 
+// 创建 Spring 容器
+ApplicationContext ctx = new 
+ClassPathXmlApplicationContext("bean.xml"); 
+Person p = ctx.getBean("chinese" ,Person.class);
+System.out.println(p.sayHello("张三")); 
+p.eat("西瓜"); 
+System.out.println(p.getClass()); 
+} 
+}
+```
+
+
+
