@@ -354,3 +354,20 @@ expression="org.aspectj.lang.annotation.Aspect"/>
 
 接下来按传统方式来获取 Spring 容器中 chinese Bean、并调用该 Bean 的两个方法，程序代码如下：
 
+```
+public class BeanTest 
+{ 
+public static void main(String[] args) 
+{ 
+// 创建 Spring 容器
+ApplicationContext ctx = new 
+ClassPathXmlApplicationContext("bean.xml"); 
+Chinese p = ctx.getBean("chinese" ,Chinese.class); 
+System.out.println(p.sayHello("张三")); 
+p.eat("西瓜"); 
+} 
+}
+```
+
+
+
