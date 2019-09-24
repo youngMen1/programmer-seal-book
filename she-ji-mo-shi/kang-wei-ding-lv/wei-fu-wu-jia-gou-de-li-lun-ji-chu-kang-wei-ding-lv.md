@@ -88,3 +88,5 @@ a63beac73c8d217c71aba36c4a6e270a3fa18603.png
 
 Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effectiveness Trade Offs》 一书中解释了类似的论点。
 
+654425008b3a53442a77f32068302b44b51a32da.png
+
