@@ -288,10 +288,10 @@ public class SerSingleton implements Serializable
 ```
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
- 
+
 public class Elvis {
 private static boolean flag = false;
- 
+
 private Elvis() {
 synchronized (Elvis.class) {
 System.out.println(" try to instance");
@@ -303,35 +303,107 @@ throw new RuntimeException("单例模式被侵犯！");
 }
 }
 }
- 
+
 private static class SingletonHolder {
 // jvm保证在任何线程访问INSTANCE静态变量之前一定先创建了此实例
 private static final Elvis INSTANCE = new Elvis();
 }
- 
+
 public static Elvis getInstance() {
 System.out.println("in getInstance");
 return SingletonHolder.INSTANCE;
 }
- 
+
 public void doSomethingElse() {
- 
+
 }
- 
+
 public static void main(String[] args) throws InstantiationException, IllegalAccessException,
 IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
- 
+
 Class<?> classType = Elvis.class;
 Constructor<?> c = classType.getDeclaredConstructor(null);
 c.setAccessible(true);
 Elvis e1 = (Elvis) c.newInstance();
- 
+
 Elvis e2 = Elvis.getInstance();
- 
+
 System.out.println(e1 == e2);
 }
 }
 ```
 
+输出结果
 
+**try to instance**
+
+**first time instance**
+
+in getInstance
+
+ try to instance
+
+Exception in thread "main" java.lang.ExceptionInInitializerError
+
+at chapterOne.Elvis.getInstance\(Elvis.java:28\)
+
+at chapterOne.Elvis.main\(Elvis.java:43\)
+
+Caused by: java.lang.RuntimeException: 单例模式被侵犯！
+
+at chapterOne.Elvis.
+
+&lt;
+
+init
+
+&gt;
+
+\(Elvis.java:16\)
+
+at chapterOne.Elvis.
+
+&lt;
+
+init
+
+&gt;
+
+\(Elvis.java:9\)
+
+at chapterOne.Elvis$SingletonHolder.
+
+&lt;
+
+clinit
+
+&gt;
+
+\(Elvis.java:23\)
+
+... 2 more
+
+分析：
+
+a.因为，反射执行了，会创建一个对象。这时候，是不走静态方法getInstance的
+
+b.然后，我们尝试去获得一个单例，会失败。因为，我们调用静态方法getInstance，会尝试创建一个实例。而此时，实例已经创建过了。
+
+这样，就可以保证只有一个实例。
+
+**是达到效果了，但是，在这种情况下，反射先于静态方法getInstance执行。这导致，我们无法获得已经该实例。**
+
+所以，其实这种方法，是不好的。
+
+除非，你可以保证，你的getInstance方法，一定先于反射代码执行。否则虽然有效果，但是你得不到指向该实例的引用
+
+。
+
+2.序列化
+
+在被序列化的类中添加readResolve方法
+
+    Deserializing an object via readUnshared invalidates the stream handle associated with the returned object. Note that this in itself does not always guarantee that the reference returned by readUnshared is unique; the deserialized object may define a readResolve method which returns an object visible to other parties, or readUnshared may return a Class object or enum constant obtainable elsewhere in the stream or through external means. If the deserialized object defines a readResolve method and the invocation of that method returns an array, then readUnshared returns a shallow clone of that array; this guarantees that the returned
+
+array object is unique and cannot be obtained a second time from an invocation of readObject or readUnshared on the ObjectInputStream, even if the underlying data stream has been manipulated.
 
