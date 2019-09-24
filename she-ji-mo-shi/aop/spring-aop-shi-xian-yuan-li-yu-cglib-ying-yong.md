@@ -205,3 +205,19 @@ Spring 允许使用 AspectJ Annotation 用于定义方面（Aspect）、切入�
 
 为了启用 Spring 对 @AspectJ 方面配置的支持，并保证 Spring 容器中的目标 Bean 被一个或多个方面自动增强，必须在 Spring 配置文件中配置如下片段：
 
+```
+<?xml version="1.0" encoding="GBK"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> 
+<!-- 启动 @AspectJ 支持 -->
+<aop:aspectj-autoproxy/> 
+</beans>
+```
+
+
+
