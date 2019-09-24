@@ -36,3 +36,12 @@ System.out.println("before execute foo()");
 
 你也可以多加几句，通过Spring，你可以把这些代码动态的加到函数前面，而不用改变原来的代码。从而会得到与以下等效的执行码：
 
+```
+void foo() {
+    System.out.println("before execute foo()");
+    System.out.pringln("in foo()");
+}
+```
+
+
+
