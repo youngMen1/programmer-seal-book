@@ -68,3 +68,5 @@ ELK 目前可以认为是日志监控的标配，功能完善开箱即用，Elas
 
 调用链监控目前社区主流是点评 CAT\[附录 12.12\]（GitHub 4.3k stars），Twitter 之前开源现在由 OpenZipkin 社区维护的 Zipkin\[附录 12.13\]（GitHub 7.5k stars）和 Naver 开源的 Pinpoint\[附录 12.14\]（GitHub 5.3k stars）。个人比较推荐点评开源的 CAT，在点评和国内多家互联网公司有落地案例，生产级特性和治理能力较完善，另外 CAT 自带告警模块。下面是我之前对三款产品的评估表，供参考。
 
+bafa1b0f1e10e2de708c40590a8eb629.png
+
