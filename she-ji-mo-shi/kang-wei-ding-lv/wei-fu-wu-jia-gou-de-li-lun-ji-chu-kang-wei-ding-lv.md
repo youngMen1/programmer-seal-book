@@ -79,3 +79,12 @@ Mike还举了一个非常有意思的理论，叫“Dunbar Number”，这是一
 
 a63beac73c8d217c71aba36c4a6e270a3fa18603.png
 
+#### 一口气吃不成胖子，先搞定能搞定的 {#4}
+
+* 第二定律:
+
+  * There is never enough time to do something right, but there is always enough time to do it over
+  * 时间再多一件事情也不可能做的完美，但总有时间做完一件事情
+
+Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effectiveness Trade Offs》 一书中解释了类似的论点。
+
