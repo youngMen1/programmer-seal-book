@@ -278,5 +278,7 @@ public class Chinese
 }
 ```
 
+提供了上面 Chinese 类之后，接下来假设同样需要为上面 Chinese 类的每个方法增加事务控制、日志记录，此时可以考虑使用 Around、AfterReturning 两种增强处理。
 
+先看 AfterReturning 增强处理代码。
 
