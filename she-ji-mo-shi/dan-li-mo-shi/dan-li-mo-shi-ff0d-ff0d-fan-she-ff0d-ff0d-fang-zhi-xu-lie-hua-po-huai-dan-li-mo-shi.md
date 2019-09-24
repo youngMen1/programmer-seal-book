@@ -226,5 +226,5 @@ public class ElvisReflectAttack
 
 **序列化**
 
-使用序列化的方式，单例模式是如何失效s的
+使用序列化的方式，单例模式是如何失效的
 
