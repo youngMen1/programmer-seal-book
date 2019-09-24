@@ -182,3 +182,10 @@ public class Hello
 
 实际上，AspectJ 允许同时为多个方法添加新功能，只要我们定义 Pointcut 时指定匹配更多的方法即可。如下片段：
 
+```
+pointcut xxxPointcut() 
+    :execution(void H*.say*());
+```
+
+
+
