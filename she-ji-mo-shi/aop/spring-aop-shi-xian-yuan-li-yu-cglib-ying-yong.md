@@ -429,5 +429,19 @@ System.out.println(p.getClass());
 }
 ```
 
+原来的程序是将面向 Chinese 类编程，现在将该程序改为面向 Person 接口编程，再次运行该程序，程序运行结果没有发生改变。只是 System.out.println\(p.getClass\(\)\); 将会输出 class $Proxy7，这说明此时的 AOP 代理并不是由 CGLIB 生成的，而是由 JDK 动态代理生成的。
+
+Spring AOP 框架对 AOP 代理类的处理原则是：如果目标对象的实现类实现了接口，Spring AOP 将会采用 JDK 动态代理来生成 AOP 代理类；如果目标对象的实现类没有实现接口，Spring AOP 将会采用 CGLIB 来生成 AOP 代理类——不过这个选择过程对开发者完全透明、开发者也无需关心。
+
+Spring AOP 会动态选择使用 JDK 动态代理、CGLIB 来生成 AOP 代理，如果目标类实现了接口，Spring AOP 则无需 CGLIB 的支持，直接使用 JDK 提供的 Proxy 和 InvocationHandler 来生成 AOP 代理即可。关于如何 Proxy 和 InvocationHandler 来生成动态代理不在本文介绍范围之内，如果读者对 Proxy 和 InvocationHandler 的用法感兴趣则可自行参考 Java API 文档或《疯狂 Java 讲义》。
+
+## Spring AOP 原理剖析 {#major14}
+
+通过前面介绍可以知道：AOP 代理其实是由 AOP 框架动态生成的一个对象，该对象可作为目标对象使用。AOP 代理包含了目标对象的全部方法，但 AOP 代理中的方法与目标对象的方法存在差异：AOP 方法在特定切入点添加了增强处理，并回调了目标对象的方法。
+
+AOP 代理所包含的方法与目标对象的方法示意图如图 3 所示。
+
+##### 图 3.AOP 代理的方法与目标对象的方法 {#fig3}
+
 
 
