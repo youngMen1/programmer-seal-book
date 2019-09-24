@@ -511,3 +511,18 @@ return (Chinese)en.create();
 
 上面粗体字代码就是使用 CGLIB 的 Enhancer 生成代理对象的关键代码，此时的 Enhancer 将以 Chinese 类作为目标类，以 AroundAdvice 对象作为“Advice”，程序将会生成一个 Chinese 的子类，这个子类就是 CGLIB 生成代理类，它可作为 Chinese 对象使用，但它增强了 Chinese 类的方法。
 
+```
+public class Main 
+{ 
+public static void main(String[] args) 
+{ 
+Chinese chin = ChineseProxyFactory.getAuthInstance(); 
+System.out.println(chin.sayHello("孙悟空")); 
+chin.eat("西瓜"); 
+System.out.println(chin.getClass()); 
+} 
+}
+```
+
+
+
