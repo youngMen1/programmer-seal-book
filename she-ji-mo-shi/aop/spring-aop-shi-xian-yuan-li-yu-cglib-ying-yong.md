@@ -88,5 +88,29 @@ void around():call(void Hello.sayHello()){System.out.println("开始事务 ...")
 }
 ```
 
+可能读者已经发现了，上面类文件中不是使用 class、interface、enum 在定义 Java 类，而是使用了 aspect ——难道 Java 语言又新增了关键字？没有！上面的 TxAspect 根本不是一个 Java 类，所以 aspect 也不是 Java 支持的关键字，它只是 AspectJ 才能识别的关键字。
 
+上面粗体字代码也不是方法，它只是指定当程序执行 Hello 对象的 sayHello\(\) 方法时，系统将改为执行粗体字代码的花括号代码块，其中 proceed\(\) 代表回调原来的 sayHello\(\) 方法。
+
+正如前面提到的，Java 无法识别 TxAspect.java 文件的内容，所以我们要使用 ajc.exe 命令来编译上面的 Java 程序。为了能在命令行使用 ajc.exe 命令，需要把 AspectJ 安装目录下的 bin 路径（比如 E:\Java\AOP\aspectj1.6\bin 目录）添加到系统的 PATH 环境变量中。接下来执行如下命令进行编译：
+
+ajc -d . Hello.java TxAspect.java
+
+我们可以把 ajc.exe 理解成 javac.exe 命令，都用于编译 Java 程序，区别是 ajc.exe 命令可识别 AspectJ 的语法；从这个意义上看，我们可以将 ajc.exe 当成一个增强版的 javac.exe 命令。
+
+运行该 Hello 类依然无须任何改变，因为 Hello 类位于 lee 包下。程序使用如下命令运行 Hello 类：
+
+java lee.Hello
+
+运行该程序，将看到一个令人惊喜的结果：
+
+开始事务 ...
+
+Hello AspectJ!
+
+事务结束 ...
+
+从上面运行结果来看，我们完全可以不对 Hello.java 类进行任何修改，同时又可以满足客户的需求：上面程序只是在控制台打印“开始事务 ...”、“结束事务 ...”来模拟了事务操作，实际上我们可用实际的事务操作代码来代替这两行简单的语句，这就可以满足客户需求了。
+
+如果客户再次提出新需求，需要在 sayHello\(\) 方法后增加记录日志的功能，那也很简单，我们再定义一个 LogAspect，程序如下：
 
