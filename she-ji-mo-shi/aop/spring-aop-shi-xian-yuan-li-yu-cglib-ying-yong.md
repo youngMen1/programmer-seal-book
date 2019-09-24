@@ -219,5 +219,9 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 </beans>
 ```
 
+当然，如果我们希望完全启动 Spring 的“零配置”功能，则还需要启用 Spring 的“零配置”支持，让 Spring 自动搜索指定路径下 Bean 类。
 
+所谓自动增强，指的是 Spring 会判断一个或多个方面是否需要对指定 Bean 进行增强，并据此自动生成相应的代理，从而使得增强处理在合适的时候被调用。
+
+如果不打算使用 Spring 的 XML Schema 配置方式，则应该在 Spring 配置文件中增加如下片段来启用 @AspectJ 支持。
 
