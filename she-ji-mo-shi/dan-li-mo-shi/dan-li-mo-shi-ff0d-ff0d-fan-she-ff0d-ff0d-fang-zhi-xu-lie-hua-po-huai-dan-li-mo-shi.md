@@ -341,7 +341,7 @@ System.out.println(e1 == e2);
 
 in getInstance
 
- try to instance
+try to instance
 
 Exception in thread "main" java.lang.ExceptionInInitializerError
 
@@ -403,7 +403,77 @@ b.然后，我们尝试去获得一个单例，会失败。因为，我们调用
 
 在被序列化的类中添加readResolve方法
 
-    Deserializing an object via readUnshared invalidates the stream handle associated with the returned object. Note that this in itself does not always guarantee that the reference returned by readUnshared is unique; the deserialized object may define a readResolve method which returns an object visible to other parties, or readUnshared may return a Class object or enum constant obtainable elsewhere in the stream or through external means. If the deserialized object defines a readResolve method and the invocation of that method returns an array, then readUnshared returns a shallow clone of that array; this guarantees that the returned
+```
+Deserializing an object via readUnshared invalidates the stream handle associated with the returned object. Note that this in itself does not always guarantee that the reference returned by readUnshared is unique; the deserialized object may define a readResolve method which returns an object visible to other parties, or readUnshared may return a Class object or enum constant obtainable elsewhere in the stream or through external means. If the deserialized object defines a readResolve method and the invocation of that method returns an array, then readUnshared returns a shallow clone of that array; this guarantees that the returned
+```
 
 array object is unique and cannot be obtained a second time from an invocation of readObject or readUnshared on the ObjectInputStream, even if the underlying data stream has been manipulated.
+
+```
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+ 
+public class SerSingleton implements Serializable {
+ 
+private static final long serialVersionUID = 1L;
+String name;
+ 
+private SerSingleton() {
+System.out.println("Singleton is create");
+name = "SerSingleton";
+}
+ 
+private static SerSingleton instance = new SerSingleton();
+ 
+public static SerSingleton getInstance() {
+return instance;
+}
+ 
+public static void createString() {
+System.out.println("createString in Singleton");
+}
+private Object readResolve(){
+return instance;
+}
+ 
+ 
+public static void main(String[] args) throws IOException, ClassNotFoundException {
+SerSingleton s1 = null;
+SerSingleton s = SerSingleton.getInstance();
+ 
+FileOutputStream fos = null;
+ObjectOutputStream oos = null;
+ 
+FileInputStream fis = null;
+ObjectInputStream ois = null;
+try {
+fos = new FileOutputStream("SerSingleton.obj");
+oos = new ObjectOutputStream(fos);
+oos.writeObject(s);
+} finally {
+oos.flush();
+oos.close();
+fos.close();
+}
+ 
+try{
+fis = new FileInputStream("SerSingleton.obj");
+ois = new ObjectInputStream(fis);
+s1 = (SerSingleton) ois.readObject();
+}finally{
+ois.close();
+fis.close();
+}
+System.out.println(s == s1);
+}
+ 
+}
+ 
+```
+
+
 
