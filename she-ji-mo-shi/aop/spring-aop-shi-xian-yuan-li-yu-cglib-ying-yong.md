@@ -411,5 +411,5 @@ void eat(String food);
 }
 ```
 
-
+接下来让 BeanTest 类面向 Person 接口、而不是 Chinese 类编程。即将 BeanTest 类改为如下形式：
 
