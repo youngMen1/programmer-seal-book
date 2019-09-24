@@ -106,6 +106,7 @@
   * [MVC](she-ji-mo-shi/mvc.md)
   * [IOC](she-ji-mo-shi/ioc.md)
     * [IOC](she-ji-mo-shi/ioc/ioc.md)
+    * IOC 的理解与解释
   * [AOP](she-ji-mo-shi/aop.md)
   * [UML](she-ji-mo-shi/uml.md)
   * [微服务思想](she-ji-mo-shi/wei-fu-wu-si-xiang.md)
