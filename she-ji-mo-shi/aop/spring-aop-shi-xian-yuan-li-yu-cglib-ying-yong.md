@@ -403,3 +403,13 @@ System.out.println\(p.getClass\(\)\);
 
 如果将上面程序程序稍作修改：只要让上面业务逻辑类 Chinese 类实现一个任意接口——这种做法更符合 Spring 所倡导的“面向接口编程”的原则。假设程序为 Chinese 类提供如下 Person 接口，并让 Chinese 类实现该接口：
 
+```
+public interface Person 
+{ 
+String sayHello(String name); 
+void eat(String food); 
+}
+```
+
+
+
