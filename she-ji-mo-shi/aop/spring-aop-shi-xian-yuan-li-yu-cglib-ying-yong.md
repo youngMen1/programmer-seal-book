@@ -524,5 +524,31 @@ System.out.println(chin.getClass());
 }
 ```
 
+运行上面主程序，看到如下输出结果：
 
+执行目标方法之前，模拟开始事务 ...
+
+-- 正在执行 sayHello 方法 --
+
+执行目标方法之后，模拟结束事务 ...
+
+被改变的参数 Hello , CGLIB 新增的内容
+
+执行目标方法之前，模拟开始事务 ...
+
+我正在吃 : 被改变的参数
+
+执行目标方法之后，模拟结束事务 ...
+
+class lee.Chinese$$EnhancerByCGLIB$$4bd097d9
+
+从上面输出结果来看，CGLIB 生成的代理完全可以作为 Chinese 对象来使用，而且 CGLIB 代理对象的 sayHello\(\)、eat\(\) 两个方法已经增加了事务控制（只是模拟），这个 CGLIB 代理其实就是 Spring AOP 所生成的 AOP 代理。
+
+通过程序最后的输出，不难发现这个代理对象的实现类是 lee.Chinese$$EnhancerByCGLIB$$4bd097d9，这就是 CGLIB 所生成的代理类，这个代理类的格式与前面 Spring AOP 所生成的代理类的格式完全相同。
+
+这就是 Spring AOP 的根本所在：Spring AOP 就是通过 CGLIB 来动态地生成代理对象，这个代理对象就是所谓的 AOP 代理，而 AOP 代理的方法则通过在目标对象的切入点动态地织入增强处理，从而完成了对目标方法的增强。
+
+## 小结 {#major2}
+
+AOP 广泛应用于处理一些具有横切性质的系统级服务，AOP 的出现是对 OOP 的良好补充，它使得开发者能用更优雅的方式处理具有横切性质的服务。不管是那种 AOP 实现，不论是 AspectJ、还是 Spring AOP，它们都需要动态地生成一个 AOP 代理类，区别只是生成 AOP 代理类的时机不同：AspectJ 采用编译时生成 AOP 代理类，因此具有更好的性能，但需要使用特定的编译器进行处理；而 Spring AOP 则采用运行时生成 AOP 代理类，因此无需使用特定编译器进行处理。由于 Spring AOP 需要在每次运行时生成 AOP 代理，因此性能略差一些。
 
