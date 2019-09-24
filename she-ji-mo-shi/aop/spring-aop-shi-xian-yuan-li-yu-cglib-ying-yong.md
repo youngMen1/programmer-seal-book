@@ -129,5 +129,21 @@ System.out.println("记录日志 ...");
 }
 ```
 
+上面程序的粗体字代码定义了一个 Pointcut：logPointcut - 等同于执行 Hello 对象的 sayHello\(\) 方法，并指定在 logPointcut 之后执行简单的代码块，也就是说，在 sayHello\(\) 方法之后执行指定代码块。使用如下命令来编译上面的 Java 程序：
 
+ajc -d . \*.java
+
+再次运行 Hello 类，将看到如下运行结果：
+
+开始事务 ...
+
+Hello AspectJ!
+
+记录日志 ...
+
+事务结束 ...
+
+从上面运行结果来看，通过使用 AspectJ 提供的 AOP 支持，我们可以为 sayHello\(\) 方法不断增加新功能。
+
+为什么在对 Hello 类没有任何修改的前提下，而 Hello 类能不断地、动态增加新功能呢？这看上去并不符合 Java 基本语法规则啊。实际上我们可以使用 Java 的反编译工具来反编译前面程序生成的 Hello.class 文件，发现 Hello.class 文件的代码如下：
 
