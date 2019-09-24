@@ -105,6 +105,7 @@
     * [单例模式－－反射－－防止序列化破坏单例模式](she-ji-mo-shi/dan-li-mo-shi/dan-li-mo-shi-ff0d-ff0d-fan-she-ff0d-ff0d-fang-zhi-xu-lie-hua-po-huai-dan-li-mo-shi.md)
   * [MVC](she-ji-mo-shi/mvc.md)
   * [IOC](she-ji-mo-shi/ioc.md)
+    * [IOC](she-ji-mo-shi/ioc/ioc.md)
   * [AOP](she-ji-mo-shi/aop.md)
   * [UML](she-ji-mo-shi/uml.md)
   * [微服务思想](she-ji-mo-shi/wei-fu-wu-si-xiang.md)
