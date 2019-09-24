@@ -231,5 +231,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     AnnotationAwareAspectJAutoProxyCreator"/>
 ```
 
+上面配置文件中的 AnnotationAwareAspectJAutoProxyCreator 是一个 Bean 后处理器（BeanPostProcessor），该 Bean 后处理器将会为容器中 Bean 生成 AOP 代理，
 
+当启动了 @AspectJ 支持后，只要我们在 Spring 容器中配置一个带 @Aspect 注释的 Bean，Spring 将会自动识别该 Bean，并将该 Bean 作为方面 Bean 处理。
+
+在 Spring 容器中配置方面 Bean（即带 @Aspect 注释的 Bean），与配置普通 Bean 没有任何区别，一样使用 &lt;bean.../&gt; 元素进行配置，一样支持使用依赖注入来配置属性值；如果我们启动了 Spring 的“零配置”特性，一样可以让 Spring 自动搜索，并装载指定路径下的方面 Bean。
+
+使用 @Aspect 标注一个 Java 类，该 Java 类将会作为方面 Bean，如下面代码片段所示：
 
