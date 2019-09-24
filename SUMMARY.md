@@ -97,8 +97,9 @@
 * [设计模式](she-ji-mo-shi.md)
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
   * [23种常见设计模式](she-ji-mo-shi/23zhong-chang-jian-she-ji-mo-shi.md)
-    * 设计模式
-    * 23种设计模式全解析
+    * [设计模式](she-ji-mo-shi/23zhong-chang-jian-she-ji-mo-shi/she-ji-mo-shi.md)
+    * [23种设计模式全解析](she-ji-mo-shi/23zhong-chang-jian-she-ji-mo-shi/23zhong-she-ji-mo-shi-quan-jie-xi.md)
+    * 设计模式类图与示例
   * [应用场景](she-ji-mo-shi/ying-yong-chang-jing.md)
     * [Spring-涉及到的设计模式汇总](she-ji-mo-shi/ying-yong-chang-jing/springshe-ji-dao-de-she-ji-mo-shi-hui-zong.md)
     * [Mybatis使用的设计模式](she-ji-mo-shi/ying-yong-chang-jing/mybatisshi-yong-de-she-ji-mo-shi.md)
