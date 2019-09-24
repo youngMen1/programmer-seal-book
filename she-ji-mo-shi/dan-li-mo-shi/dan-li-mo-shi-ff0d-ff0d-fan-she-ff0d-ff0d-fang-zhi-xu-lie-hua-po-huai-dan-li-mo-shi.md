@@ -199,26 +199,32 @@ public class Elvis
 
 ```
 package com.effective.singleton;  
-  
+
 import java.lang.reflect.Constructor;  
 import java.lang.reflect.InvocationTargetException;  
-  
+
 public class ElvisReflectAttack  
 {  
-  
+
     public static void main(String[] args) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException  
     {  
         Class<?> classType = Elvis.class;  
-  
+
         Constructor<?> c = classType.getDeclaredConstructor(null);  
         c.setAccessible(true);  
         Elvis e1 = (Elvis)c.newInstance();  
         Elvis e2 = Elvis.getInstance();  
         System.out.println(e1==e2);  
     }  
-  
-}  
+
+}
 ```
 
+**输出结果为false，说明e1和e2不是同一个对象，到这里，单例模式不起作用**
 
+。如果e1和e2都是指向同一个对象的，那么它们的引用值相等。
+
+**序列化**
+
+使用序列化的方式，单例模式是如何失效的
 
