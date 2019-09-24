@@ -493,3 +493,21 @@ return rvt + " 新增的内容";
 
 接下来程序提供一个 ChineseProxyFactory 类，这个 ChineseProxyFactory 类会通过 CGLIB 来为 Chinese 生成代理类：
 
+```
+public class ChineseProxyFactory 
+{ 
+public static Chinese getAuthInstance() 
+{ 
+Enhancer en = new Enhancer(); 
+// 设置要代理的目标类
+en.setSuperclass(Chinese.class);
+// 设置要代理的拦截器
+en.setCallback(new AroundAdvice());
+// 生成代理类的实例 
+return (Chinese)en.create();
+} 
+}
+```
+
+
+
