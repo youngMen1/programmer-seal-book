@@ -249,5 +249,13 @@ public class LogAspect
 }
 ```
 
+方面类（用 @Aspect 修饰的类）和其他类一样可以有方法、属性定义，还可能包括切入点、增强处理定义。
 
+当我们使用 @Aspect 来修饰一个 Java 类之后，Spring 将不会把该 Bean 当成组件 Bean 处理，因此负责自动增强的后处理 Bean 将会略过该 Bean，不会对该 Bean 进行任何增强处理。
+
+开发时无须担心使用 @Aspect 定义的方面类被增强处理，当 Spring 容器检测到某个 Bean 类使用了 @Aspect 标注之后，Spring 容器不会对该 Bean 类进行增强。
+
+下面将会考虑采用 Spring AOP 来改写前面介绍的例子：
+
+下面例子使用一个简单的 Chinese 类来模拟业务逻辑组件：
 
