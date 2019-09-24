@@ -323,5 +323,9 @@ return rvt + " 新增的内容";
 }
 ```
 
+与前面的 AfterReturning 增强处理类似的，此处同样使用了 @Aspect 来修饰前面 Bean，其中粗体字代码指定在调用 org.crazyit.app.service.impl 包下的所有类的所有方法的“前后（Around）” 织入 processTx\(ProceedingJoinPoint jp\) 方法
 
+需要指出的是，虽然此处只介绍了 Spring AOP 的 AfterReturning、Around 两种增强处理，但实际上 Spring 还支持 Before、After、AfterThrowing 等增强处理，关于 Spring AOP 编程更多、更细致的编程细节，可以参考《轻量级 Java EE 企业应用实战》一书。
+
+本示例采用了 Spring 的零配置来开启 Spring AOP，因此上面 Chinese 类使用了 @Component 修饰，而方面 Bean 则使用了 @Aspect 修饰，方面 Bean 中的 Advice 则分别使用了 @AfterReturning、@Around 修饰。接下来只要为 Spring 提供如下配置文件即可：
 
