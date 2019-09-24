@@ -352,5 +352,5 @@ expression="org.aspectj.lang.annotation.Aspect"/>
 </beans>
 ```
 
-
+接下来按传统方式来获取 Spring 容器中 chinese Bean、并调用该 Bean 的两个方法，程序代码如下：
 
