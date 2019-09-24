@@ -90,3 +90,5 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 
 654425008b3a53442a77f32068302b44b51a32da.png
 
+a7fab1b350cd8c03d5e9ddded183c7bda114c326.png
+
