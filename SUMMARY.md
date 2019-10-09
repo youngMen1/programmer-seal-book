@@ -6,7 +6,7 @@
 * [常用算法](chang-yong-suan-fa.md)
   * [排序、查找算法](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa.md)
     * [选择排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/xuan-ze-pai-xu.md)
-    * 插入排序
+    * [插入排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/cha-ru-pai-xu.md)
     * 快速排序
     * 归并排序
     * 希尔排序
@@ -94,6 +94,21 @@
     * [线程的生命周期及状态转换详解](cao-zuo-xi-tong/xian-cheng/xian-cheng-de-sheng-ming-zhou-qi-ji-zhuang-tai-zhuan-huan-xiang-jie.md)
   * 协程
   * [Linux](cao-zuo-xi-tong/linux.md)
+* [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
+  * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
+  * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
+  * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
+  * [持续集成\(CI/CD\)](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chi-xu-ji-621028-ci-cd.md)
+  * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
+  * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
+  * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
+    * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
+    * Xen
+    * OpenVZ
+  * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
+  * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
+  * [DevOps](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/devops.md)
+  * [文档管理](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/wen-dang-guan-li.md)
 * [设计模式](she-ji-mo-shi.md)
   * [设计模式的六大原则](she-ji-mo-shi/she-ji-mo-shi-de-liu-da-yuan-ze.md)
   * [23种常见设计模式](she-ji-mo-shi/23zhong-chang-jian-she-ji-mo-shi.md)
@@ -120,21 +135,6 @@
     * [微服务架构技术栈选型手册](she-ji-mo-shi/wei-fu-wu-si-xiang/wei-fu-wu-jia-gou-ji-zhu-zhan-xuan-xing-shou-ce.md)
   * [康威定律](she-ji-mo-shi/kang-wei-ding-lv.md)
     * [微服务架构的理论基础 - 康威定律](she-ji-mo-shi/kang-wei-ding-lv/wei-fu-wu-jia-gou-de-li-lun-ji-chu-kang-wei-ding-lv.md)
-* [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
-  * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
-  * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
-  * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
-  * [持续集成\(CI/CD\)](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chi-xu-ji-621028-ci-cd.md)
-  * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
-  * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
-  * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
-    * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
-    * Xen
-    * OpenVZ
-  * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
-  * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
-  * [DevOps](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/devops.md)
-  * [文档管理](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/wen-dang-guan-li.md)
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
