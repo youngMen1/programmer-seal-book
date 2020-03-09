@@ -90,5 +90,7 @@ NIO是为了弥补IO操作的不足而诞生的，NIO的一些新特性有：非
 
 ## 9、HashMap实现原理，如何保证HashMap的线程安全？ {#9、HashMap实现原理，如何保证HashMap的线程安全？}
 
+![](/assets/hashMap put方法执行流程图.png)
+
 
 
