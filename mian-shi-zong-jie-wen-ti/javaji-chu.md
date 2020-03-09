@@ -102,7 +102,7 @@ Collections.synchronizedMap(map);
 
 ![img](/static/image/JVM.png)
 
-| 名称 |
+|  |
 | :--- |
 
 
