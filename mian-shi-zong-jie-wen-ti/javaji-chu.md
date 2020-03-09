@@ -96,8 +96,9 @@ HashMap是基于哈希表（链地址法）实现的，在JDK8中，当数组中
 
 ```
 Collections.synchronizedMap(map);
-
 ```
+
+## 10、JVM内存结构，为什么需要GC？ {#10、JVM内存结构，为什么需要GC？}
 
 
 
