@@ -88,5 +88,7 @@ NIO是为了弥补IO操作的不足而诞生的，NIO的一些新特性有：非
 
 [Java中NIO和IO区别和适用场景](http://www.php.cn/java-article-361228.html)
 
+## 9、HashMap实现原理，如何保证HashMap的线程安全？ {#9、HashMap实现原理，如何保证HashMap的线程安全？}
+
 
 
