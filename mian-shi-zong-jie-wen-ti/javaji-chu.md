@@ -18,5 +18,13 @@ JDK8前接口里面所有的方法都是抽象的且不允许有静态方法，�
 
 ## 3、常用的集合类有哪些？比如List如何排序？
 
+主要分为三类，Map、Set、List
+
+Map: HashMap、LinkedHashMap、TreeMap
+
+Set：HashSet、LinkedHashSet、TreeSet
+
+List: ArrayList、LinkedList
+
 
 
