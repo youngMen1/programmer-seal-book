@@ -45,5 +45,12 @@ ArrayList查找较快，插入、删除较慢，LinkedList查找较慢，插入�
 
 内存泄漏 memory leak，是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄漏危害可以忽略，但内存泄漏堆积后果很严重，无论多少内存,迟早会被占光。
 
+```
+List<Object> list = new ArrayList<>();
+while (true) {
+  list.add(new Object());
+}
+```
+
 
 
