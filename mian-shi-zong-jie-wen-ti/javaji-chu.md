@@ -16,5 +16,7 @@ JDK8前接口里面所有的方法都是抽象的且不允许有静态方法，�
 
 非运行时异常，如IOException、SQLException,都是Exception及其子类，这些异常是一定需要try catch捕获的
 
+## 3、常用的集合类有哪些？比如List如何排序？
+
 
 
