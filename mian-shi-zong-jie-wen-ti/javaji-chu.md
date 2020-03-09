@@ -90,7 +90,7 @@ NIO是为了弥补IO操作的不足而诞生的，NIO的一些新特性有：非
 
 ## 9、HashMap实现原理，如何保证HashMap的线程安全？ {#9、HashMap实现原理，如何保证HashMap的线程安全？}
 
-![](/assets/hashMap put方法执行流程图.png)
+![](/assets/hashMap put方法执行流程图.png)[java 8 Hashmap深入解析 —— put get 方法源码](https://www.cnblogs.com/jzb-blog/p/6637823.html)
 
-
+HashMap是基于哈希表（链地址法）实现的，在JDK8中，当数组中链表长度大于8会转为红黑树。
 
