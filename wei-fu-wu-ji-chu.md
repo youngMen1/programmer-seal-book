@@ -24,17 +24,25 @@
 
 ### 10、Eureka的基本架构是什么？
 
-11、作为服务注册中心，Eureka比Zookeeper好在哪里?
+### 11、作为服务注册中心，Eureka比Zookeeper好在哪里?
 
-12、什么是 Ribbon负载均衡13、Ribbon负载均衡能干嘛？
+### 12、什么是 Ribbon负载均衡
 
-14、什么是 Feign 负载均衡15、Feign 能干什么
+### 13、Ribbon负载均衡能干嘛？
 
-16、什么是 Hystrix断路器17、Hystrix断路器能干嘛？
+### 14、什么是 Feign 负载均衡
 
-18、什么是 zuul路由网关
+### 15、Feign 能干什么
 
-19、什么是SpringCloud Config分布式配置中心
+### 16、什么是 Hystrix断路器
 
-20、分布式配置中心能干嘛？
+### 17、Hystrix断路器能干嘛？
+
+### 18、什么是 zuul路由网关
+
+### 19、什么是SpringCloud Config分布式配置中心
+
+### 20、分布式配置中心能干嘛？
+
+
 
