@@ -20,15 +20,16 @@ _第一种_：远程过程调用（Remote Procedure Invocation）
 
 优点：
 
-    简单，常见。因为没有中间件代理，系统更简单
+```
+简单，常见。因为没有中间件代理，系统更简单
+```
 
 缺点：
 
-    只支持请求/响应的模式，不支持别的，比如通知、请求/异步响应、发布/订阅、发布/异步响应  
-    降低了可用性，因为客户端和服务端在请求过程中必须都是可用的
-
-  
-
+```
+只支持请求/响应的模式，不支持别的，比如通知、请求/异步响应、发布/订阅、发布/异步响应  
+降低了可用性，因为客户端和服务端在请求过程中必须都是可用的
+```
 
 _第二种_：消息
 
@@ -44,9 +45,39 @@ _第二种_：消息
 
 缺点:
 
-    消息中间件有额外的复杂性
+```
+消息中间件有额外的复杂性
+```
 
 ### 3、springcloud 与dubbo有哪些区别？
+
+相同点：  
+    SpringCloud 和Dubbo可以实现RPC远程调用框架，可以实现服务治理。
+
+不同点:  
+    SpringCloud是一套目前比较网站微服务框架了，整合了分布式常用解决方案遇到了问题注册中心Eureka、负载均衡器Ribbon ，客户端调用工具Rest和Feign，分布式配置中心Config，服务保护Hystrix，网关Zuul Gateway ，服务链路Zipkin，消息总线Bus等。
+
+  
+
+
+Dubbo内部实现功能没有SpringCloud强大（全家桶），只是实现服务治理，缺少分布式配置中心、网关、链路、总线等，如果需要用到这些组件，需要整合其他框架。
+
+  
+
+
+**表 Spring Cloud与Dubbo功能对比**
+
+| 功能名称 | Dubbo | Spring Cloud |
+| :--- | :--- | :--- |
+| 服务注册中心 | ZooKeeper | Spring Cloud Netflix Eureka |
+| 服务调用方式 | RPC | REST API |
+| 服务网关 | 无 | Spring Cloud Netflix Zuul |
+| 断路器 | 不完善 | Spring Cloud Netflix Hystrix |
+| 分布式配置 | 无 | Spring Cloud Config |
+| 服务跟踪 | 无 | Spring Cloud Sleuth |
+| 消息总线 | 无 | Spring Cloud Bus |
+| 数据流 | 无 | Spring Cloud Stream |
+| 批量任务 | 无 | Spring Cloud Task |
 
 ### 4、请谈谈对SpringBoot 和SpringCloud的理解
 
