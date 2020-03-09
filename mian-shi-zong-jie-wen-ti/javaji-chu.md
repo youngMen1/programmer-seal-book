@@ -100,5 +100,5 @@ Collections.synchronizedMap(map);
 
 ## 10、JVM内存结构，为什么需要GC？ {#10、JVM内存结构，为什么需要GC？}
 
-![/static/image/JVM.png]
+![img](static/image/JVM.png]
 
