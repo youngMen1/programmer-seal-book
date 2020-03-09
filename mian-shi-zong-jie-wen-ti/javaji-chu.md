@@ -26,5 +26,7 @@ Set：HashSet、LinkedHashSet、TreeSet
 
 List: ArrayList、LinkedList
 
+## 4、ArrayList和LinkedList内部的实现大致是怎样的？他们之间的区别和优缺点？ {#4、ArrayList和LinkedList内部的实现大致是怎样的？他们之间的区别和优缺点？}
+
 
 
