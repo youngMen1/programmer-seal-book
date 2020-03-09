@@ -52,18 +52,12 @@ _第二种_：消息
 ### 3、springcloud 与dubbo有哪些区别？
 
 相同点：  
-    SpringCloud 和Dubbo可以实现RPC远程调用框架，可以实现服务治理。
+    SpringCloud 和Dubbo可以实现RPC远程调用框架，可以实现服务治理。
 
 不同点:  
-    SpringCloud是一套目前比较网站微服务框架了，整合了分布式常用解决方案遇到了问题注册中心Eureka、负载均衡器Ribbon ，客户端调用工具Rest和Feign，分布式配置中心Config，服务保护Hystrix，网关Zuul Gateway ，服务链路Zipkin，消息总线Bus等。
-
-  
-
+    SpringCloud是一套目前比较网站微服务框架了，整合了分布式常用解决方案遇到了问题注册中心Eureka、负载均衡器Ribbon ，客户端调用工具Rest和Feign，分布式配置中心Config，服务保护Hystrix，网关Zuul Gateway ，服务链路Zipkin，消息总线Bus等。
 
 Dubbo内部实现功能没有SpringCloud强大（全家桶），只是实现服务治理，缺少分布式配置中心、网关、链路、总线等，如果需要用到这些组件，需要整合其他框架。
-
-  
-
 
 **表 Spring Cloud与Dubbo功能对比**
 
@@ -80,6 +74,16 @@ Dubbo内部实现功能没有SpringCloud强大（全家桶），只是实现服�
 | 批量任务 | 无 | Spring Cloud Task |
 
 ### 4、请谈谈对SpringBoot 和SpringCloud的理解
+
+SpringBoot专注于快速方便的开发单个个体微服务。
+
+* SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一个个单体微服务整合并管理起来，
+ 
+  为各个微服务之间提供，配置管理、服务发现、断路器、路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等集成服务
+* SpringBoot可以离开SpringCloud独立使用开发项目，但是SpringCloud离不开SpringBoot，属于依赖的关系.
+* SpringBoot专注于快速、方便的开发单个微服务个体，SpringCloud关注全局的服务治理框架。
+
+Spring Boot可以离开Spring Cloud独立使用开发项目，但是Spring Cloud离不开Spring Boot，属于依赖的关系。
 
 ### 5、分布式系统面临的问题
 
