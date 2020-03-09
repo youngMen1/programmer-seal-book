@@ -94,3 +94,10 @@ NIO是为了弥补IO操作的不足而诞生的，NIO的一些新特性有：非
 
 HashMap是基于哈希表（链地址法）实现的，在JDK8中，当数组中链表长度大于8会转为红黑树。
 
+```
+Collections.synchronizedMap(map);
+
+```
+
+
+
