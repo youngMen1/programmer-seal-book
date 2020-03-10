@@ -241,5 +241,7 @@ TreeNode Deserialize(String str) {
 }
 ```
 
+## 21、String s = new String\(“abc”\);创建了几个 String Object? {#21、String-s-new-String-“abc”-创建了几个-String-Object}
+
 
 
