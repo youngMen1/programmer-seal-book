@@ -64,5 +64,9 @@ notify唤醒一个处于wait状态的线程，notifyAll唤醒所有处于wait状
 
 ## 15、可以运行时kill掉一个线程吗？ {#15、可以运行时kill掉一个线程吗？}
 
+不可以，线程有5种状态，新建（new）、可运行（runnable）、运行中（running）、阻塞（block）、死亡（dead）。
+
+只有当线程run方法或者主线程main方法结束，又或者抛出异常时，线程才会结束生命周期。
+
 
 
