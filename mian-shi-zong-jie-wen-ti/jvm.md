@@ -2,7 +2,7 @@
 
 在JVM中堆空间划分如下图所示
 
-JVM堆.png
+![img](/static/image/JVM堆.png)
 
 
 
