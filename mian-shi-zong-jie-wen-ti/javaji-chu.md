@@ -154,5 +154,5 @@ finalize是Object的一个方法，在对象被虚拟机回收时会判断是否
 
 ## 15、Session/Cookie的区别？ {#15、Session-Cookie的区别？}
 
-
+Session存储在服务器端，类型可以是任意的Java对象，Cookie存储在客户端，类型只能为字符串
 
