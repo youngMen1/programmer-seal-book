@@ -138,5 +138,11 @@ select，poll，epoll都是IO多路复用的机制。I/O多路复用就通过一
 
 ## 13、创建一个类的实例都有哪些办法？ {#13、创建一个类的实例都有哪些办法？}
 
+```
+Object o = new Object();
+Object o = oo.clone();
+Object o = Class.forName("xxx").newInstance();
+```
+
 
 
