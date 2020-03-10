@@ -50,5 +50,7 @@ ThreadLocal：线程局部变量。为每一个使用该变量的线程都提供
 
 调用sleep方法不会释放锁，调用wait方法会释放锁
 
+## 12、notify和notifyAll区别 {#12、notify和notifyAll区别}
+
 
 
