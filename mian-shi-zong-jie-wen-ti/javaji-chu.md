@@ -146,5 +146,11 @@ Object o = Class.forName("xxx").newInstance();
 
 ## 14、final/finally/finalize的区别？ {#14、final-finally-finalize的区别？}
 
+final是定义类、方法、字段的修饰符，表示类不可被继承，方法不能被重写，字段值不能被修改
+
+finally是异常处理机制的关键字，表示最后执行
+
+finalize是Object的一个方法，在对象被虚拟机回收时会判断是否执行该方法，当对象没有覆盖finalize方法，或者finalize方法已经被虚拟机调用过，虚拟机将这两种情况都视为“没有必要执行”
+
 
 
