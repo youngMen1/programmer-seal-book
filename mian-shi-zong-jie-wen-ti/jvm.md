@@ -155,3 +155,12 @@ java启动参数共分为三类；
 
 内存泄露，比如下面这段代码，list持有o的引用，o暂时是无法被JVM垃圾回收的，只有当list被垃圾回收或者o从对象list删除掉后，o才能被JVM垃圾回收。
 
+```
+List<Object> list = new ArrayList<>();
+Object o = new Object();
+list.add(o);
+o = null;
+```
+
+
+
