@@ -36,5 +36,7 @@ start\(\)
 
 ## 8、Java里面的Threadlocal是怎样实现的？ {#8、Java里面的Threadlocal是怎样实现的？}
 
+ThreadLocal：线程局部变量。为每一个使用该变量的线程都提供一个变量值的副本，是每一个线程都可以独立地改变自己的副本，而不会和其它线程的副本冲突。从线程的角度看，就好像每一个线程都完全拥有该变量。
 
+每个运行的线程都会有一个类型为ThreadLocal.ThreadLocalMap的map,这个map就是用来存储与这个线程绑定的变量。
 
