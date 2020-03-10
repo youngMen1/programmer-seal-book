@@ -52,5 +52,5 @@ ThreadLocal：线程局部变量。为每一个使用该变量的线程都提供
 
 ## 12、notify和notifyAll区别 {#12、notify和notifyAll区别}
 
-
+notify唤醒一个处于wait状态的线程，notifyAll唤醒所有处于wait状态的线程，它们的相同点是最终只会有一个线程获得锁
 
