@@ -147,7 +147,5 @@ java启动参数共分为三类；
 
 ## 4、如何查看JVM的内存使用情况？ {#4、如何查看JVM的内存使用情况？}
 
-
-
-
+可以使用JDK自带的JConsole、JVisualVM、JMap、JHat等工具，或者使用第三方工具，比如 Eclipse Memory Analyzer
 
