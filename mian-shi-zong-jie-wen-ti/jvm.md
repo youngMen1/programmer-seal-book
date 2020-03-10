@@ -149,5 +149,7 @@ java启动参数共分为三类；
 
 可以使用JDK自带的JConsole、JVisualVM、JMap、JHat等工具，或者使用第三方工具，比如 Eclipse Memory Analyzer
 
+## 5、Java程序是否会内存溢出，内存泄漏情况发生？举几个例子。 {#5、Java程序是否会内存溢出，内存泄漏情况发生？举几个例子。}
+
 
 
