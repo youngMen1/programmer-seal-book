@@ -11,5 +11,12 @@
 
 ## 2、JVM的垃圾算法有哪几种？CMS垃圾回收的基本流程？ {#2、JVM的垃圾算法有哪几种？CMS垃圾回收的基本流程？}
 
+四种：标记-清除算法、复制算法、标记-整理算法、分代收集算法
 
+垃圾收集器有七种：Serial、ParNew、Parallel Scavenge、CMS、Serial Old、Parrallel Old、G1
+
+CMS全称为Concurrent Mark Sweep，是一款并发、使用标记-清除算法的gc收集器。
+
+总体来说CMS的执行过程可以分为以下几个阶段：  
+初始标记 -&gt; 并发标记 -&gt; 重新标记 -&gt; 并发清理 -&gt; 重置
 
