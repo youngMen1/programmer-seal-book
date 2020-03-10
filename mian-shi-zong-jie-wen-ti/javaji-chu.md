@@ -184,7 +184,11 @@ Servlet初始化阶段：
 
 2、在Servlet容器启动后，客户首次向Servlet发送请求
 
-　　　　3、Servlet类文件被更新后，重新装载Servlet
+3、Servlet类文件被更新后，重新装载Servlet
 
-　　Servlet被装载后，Servlet容器创建一个Servlet实例并且调用Servlet的init\(\)方法进行初始化。在Servlet的整个生命周期内，init\(\)方法只被调用一次。
+Servlet被装载后，Servlet容器创建一个Servlet实例并且调用Servlet的init\(\)方法进行初始化。在Servlet的整个生命周期内，init\(\)方法只被调用一次。
+
+## 18、如何用Java分配一段连续的1G的内存空间？需要注意些什么？ {#18、如何用Java分配一段连续的1G的内存空间？需要注意些什么？}
+
+
 
