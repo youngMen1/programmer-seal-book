@@ -215,3 +215,31 @@ Java序列化就是把对象扁平化成一组数据，通过这组数据可以�
 
 例：序列化二叉树
 
+```
+private int index = -1;
+String Serialize(TreeNode root) {
+    StringBuilder sb = new StringBuilder();
+    if (root == null) {
+        sb.append("#,");
+        return sb.toString();
+    }
+    sb.append(root.val + ",");
+    sb.append(Serialize(root.left));
+    sb.append(Serialize(root.right));
+    return sb.toString();
+}
+TreeNode Deserialize(String str) {
+    index++;
+    String[] strs = str.split(",");
+    if (index > strs.length || strs[index].equals("#")) {
+        return null;
+    }
+    TreeNode root = new TreeNode(Integer.parseInt(strs[index]));
+    root.left = Deserialize(str);
+    root.right = Deserialize(str);
+    return root;
+}
+```
+
+
+
