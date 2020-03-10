@@ -144,5 +144,7 @@ Object o = oo.clone();
 Object o = Class.forName("xxx").newInstance();
 ```
 
+## 14、final/finally/finalize的区别？ {#14、final-finally-finalize的区别？}
+
 
 
