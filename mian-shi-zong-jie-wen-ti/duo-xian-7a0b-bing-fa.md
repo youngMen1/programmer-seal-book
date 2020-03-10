@@ -46,3 +46,7 @@ ThreadLocal：线程局部变量。为每一个使用该变量的线程都提供
 
 附：[深入浅出CAS](https://www.jianshu.com/p/fb6e91b013cc)
 
+## 10、sleep和wait区别 {#10、sleep和wait区别}
+
+
+
