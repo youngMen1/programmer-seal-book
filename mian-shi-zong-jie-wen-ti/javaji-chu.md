@@ -156,3 +156,7 @@ finalize是Object的一个方法，在对象被虚拟机回收时会判断是否
 
 Session存储在服务器端，类型可以是任意的Java对象，Cookie存储在客户端，类型只能为字符串
 
+## 16、String/StringBuffer/StringBuilder的区别，扩展再问他们的实现？ {#16、String-StringBuffer-StringBuilder的区别，扩展再问他们的实现？}
+
+
+
