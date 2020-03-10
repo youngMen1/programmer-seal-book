@@ -158,5 +158,9 @@ Session存储在服务器端，类型可以是任意的Java对象，Cookie存储
 
 ## 16、String/StringBuffer/StringBuilder的区别，扩展再问他们的实现？ {#16、String-StringBuffer-StringBuilder的区别，扩展再问他们的实现？}
 
+String、StringBuffer是线程安全的，StringBuilder不是
+
+String不继承任何类，StringBuffer、StringBuilder继承自AbstractStringBuilder
+
 
 
