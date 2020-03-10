@@ -326,20 +326,13 @@ LB，即负载均衡\(Load Balance\)，在微服务或分布式集群中经常�
 
 Feign是一个声明式WebService客户端。使用Feign能让编写Web Service客户端更加简单, 它的使用方法是定义一个接口，然后在上面添加注解，同时也支持JAX-RS标准的注解。
 
-  
-
-
 Feign也支持可拔插式的编码器和解码器。Spring Cloud对Feign进行了封装，使其支持了Spring MVC标准注解和HttpMessageConverters。Feign可以与Eureka和Ribbon组合使用以支持负载均衡。
-
-  
-
 
 Feign是一个声明式的Web服务客户端，使得编写Web服务客户端变得非常容易，只需要创建一个接口，然后在上面添加注解即可。
 
-  
-
-
 ### 15、Feign 能干什么
+
+
 
 ### 16、什么是 Hystrix断路器
 
