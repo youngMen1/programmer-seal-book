@@ -126,5 +126,7 @@ select，poll，epoll都是IO多路复用的机制。I/O多路复用就通过一
 
 [select、poll、epoll之间的区别总结\[整理\]](http://www.cnblogs.com/Anker/p/3265058.html)
 
+## 12、Java中一个字符占多少个字节，扩展再问int, long, double占多少字节 {#12、Java中一个字符占多少个字节，扩展再问int-long-double占多少字节}
+
 
 
