@@ -190,5 +190,11 @@ Servlet被装载后，Servlet容器创建一个Servlet实例并且调用Servlet�
 
 ## 18、如何用Java分配一段连续的1G的内存空间？需要注意些什么？ {#18、如何用Java分配一段连续的1G的内存空间？需要注意些什么？}
 
+```
+	
+ByteBuffer.allocateDirect(1024*1024*1024);
+
+```
+
 
 
