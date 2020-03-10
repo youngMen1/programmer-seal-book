@@ -164,5 +164,19 @@ String不继承任何类，StringBuffer、StringBuilder继承自AbstractStringBu
 
 ## 17、Servlet的生命周期？ {#17、Servlet的生命周期？}
 
+Servlet生命周期分为三个阶段：
+
+　　1、初始化阶段 调用init\(\)方法
+
+　　2、响应客户请求阶段　　调用service\(\)方法
+
+　　3、终止阶段　　调用destroy\(\)方法
+
+Servlet初始化阶段：
+
+　　在下列时刻Servlet容器装载Servlet：
+
+　　　　1、Servlet容器启动时自动装载某些Servlet，实现它只需要在web.XML文件中的之间添加如下代码：
+
 
 
