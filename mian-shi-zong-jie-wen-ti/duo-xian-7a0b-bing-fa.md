@@ -40,3 +40,7 @@ ThreadLocal：线程局部变量。为每一个使用该变量的线程都提供
 
 每个运行的线程都会有一个类型为ThreadLocal.ThreadLocalMap的map,这个map就是用来存储与这个线程绑定的变量。
 
+## 9、ConcurrentHashMap的实现原理是？ {#9、ConcurrentHashMap的实现原理是？}
+
+
+
