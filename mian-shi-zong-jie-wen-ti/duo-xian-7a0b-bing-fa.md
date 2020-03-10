@@ -70,5 +70,9 @@ notify唤醒一个处于wait状态的线程，notifyAll唤醒所有处于wait状
 
 ## 16、什么是条件锁、读写锁、自旋锁、可重入锁？ {#16、什么是条件锁、读写锁、自旋锁、可重入锁？}
 
+[https://www.cnblogs.com/my376908915/p/6758681.html](https://www.cnblogs.com/my376908915/p/6758681.html)
+
+[http://blog.csdn.net/a314773862/article/details/54095819](http://blog.csdn.net/a314773862/article/details/54095819)
+
 
 
