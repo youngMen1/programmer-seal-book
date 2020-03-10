@@ -243,5 +243,5 @@ TreeNode Deserialize(String str) {
 
 ## 21、String s = new String\(“abc”\);创建了几个 String Object? {#21、String-s-new-String-“abc”-创建了几个-String-Object}
 
-
+2个，会创建String对象存放在字符串常量池跟堆中。
 
