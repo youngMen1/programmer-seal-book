@@ -376,5 +376,5 @@
   * [框架使用](mian-shi-zong-jie-wen-ti/kuang-jia-shi-yong.md)
   * [网络协议和网络编程](mian-shi-zong-jie-wen-ti/wang-luo-xie-yi-he-wang-luo-bian-cheng.md)
   * [Redis等缓存系统/中间件/NoSQL/一致性Hash等](mian-shi-zong-jie-wen-ti/redisdeng-huan-cun-xi-7edf-zhong-jian-4ef6-nosql-yi-zhi-xing-hash-deng.md)
-  * 设计模式与重构
+  * [设计模式与重构](mian-shi-zong-jie-wen-ti/she-ji-mo-shi-yu-zhong-gou.md)
 
