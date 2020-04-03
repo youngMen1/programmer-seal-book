@@ -254,10 +254,10 @@
     * [脚本注入](an-quan/web-an-quan/jiao-ben-zhu-ru.md)
       * [上传文件漏洞原理及防范](an-quan/web-an-quan/jiao-ben-zhu-ru/shang-chuan-wen-jian-lou-dong-yuan-li-ji-fang-fan.md)
     * 漏洞扫描工具
-    * 验证码
-    * DDoS 防范
-  * 用户隐私信息保护
-  * 序列化漏洞
+    * [验证码](an-quan/web-an-quan/yan-zheng-ma.md)
+    * [DDoS 防范](an-quan/web-an-quan/ddos-fang-fan.md)
+  * [用户隐私信息保护](an-quan/yong-hu-yin-si-xin-xi-bao-hu.md)
+  * [序列化漏洞](an-quan/xu-lie-hua-lou-dong.md)
 * [常用开源框架](chang-yong-kai-yuan-kuang-jia.md)
   * [开源协议](chang-yong-kai-yuan-kuang-jia/kai-yuan-xie-yi.md)
     * 开源协议的选择
