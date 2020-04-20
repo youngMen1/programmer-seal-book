@@ -26,7 +26,7 @@
 
 ## 4.java基础
 
-3、从浏览器输入一个URL（www.baidu.com）的全过程
+### 3、从浏览器输入一个URL（www.baidu.com）的全过程
 
 1.根据域名到DNS中找到IP
 
@@ -42,7 +42,7 @@
 
 7.浏览器渲染页面
 
-4、HashMap机制
+### 4、HashMap机制
 
 5、HashMap扩容过程以及安全问题
 
