@@ -103,7 +103,7 @@
   * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
-    * Xen
+    * [Xen](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/xen.md)
     * OpenVZ
   * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
   * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
@@ -381,4 +381,6 @@
   * [携程旅游网岗位要求和面试题](du-jiao-shou-gong-si/xi-cheng-lv-you-wang-gang-wei-yao-qiu-he-mian-shi-ti.md)
   * [优剪岗位要求和面试题](du-jiao-shou-gong-si/you-jian-gang-wei-yao-qiu-he-mian-shi-ti.md)
   * [超级猩猩岗位要求和面试题](du-jiao-shou-gong-si/chao-ji-xing-xing-gang-wei-yao-qiu-he-mian-shi-ti.md)
+  * [深圳虾皮信息科技有限公司\(Shopee\)](du-jiao-shou-gong-si/shopee.md)
+    * 面试题
 
