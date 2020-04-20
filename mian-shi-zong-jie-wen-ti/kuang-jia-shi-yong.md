@@ -35,7 +35,7 @@ detached\(离线状态\)：对象在数据库中存在，hibernate session不存
 ## 4、Spring事务的传播属性是怎么回事？它会影响什么？ {#5、Spring事务的传播属性是怎么回事？它会影响什么？}
 
 七个事务传播属性：  
-　PROPAGATION\_REQUIRED – 支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。
+PROPAGATION\_REQUIRED – 支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。
 
 PROPAGATION\_SUPPORTS – 支持当前事务，如果当前没有事务，就以非事务方式执行。
 
