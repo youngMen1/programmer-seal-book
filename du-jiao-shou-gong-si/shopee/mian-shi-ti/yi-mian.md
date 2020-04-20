@@ -26,6 +26,8 @@
 
 ## 4.java基础
 
+1.从浏览器输入一个URL（www.baidu.com）的全过程
+
 4、HashMap机制
 
 5、HashMap扩容过程以及安全问题
