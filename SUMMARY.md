@@ -8,10 +8,10 @@
     * [选择排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/xuan-ze-pai-xu.md)
     * [插入排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/cha-ru-pai-xu.md)
     * [快速排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/kuai-su-pai-xu.md)
-    * 归并排序
-    * 希尔排序
-    * 堆排序
-    * 计数排序
+    * [归并排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/gui-bing-pai-xu.md)
+    * [希尔排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/xi-er-pai-xu.md)
+    * [堆排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/dui-pai-xu.md)
+    * [计数排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/ji-shu-pai-xu.md)
     * 桶排序
     * 基数排序
     * 二分查找
