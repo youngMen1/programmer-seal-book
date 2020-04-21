@@ -7,7 +7,7 @@
   * [排序、查找算法](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa.md)
     * [选择排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/xuan-ze-pai-xu.md)
     * [插入排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/cha-ru-pai-xu.md)
-    * 快速排序
+    * [快速排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/kuai-su-pai-xu.md)
     * 归并排序
     * 希尔排序
     * 堆排序
@@ -385,6 +385,7 @@
     * [面试题](du-jiao-shou-gong-si/shopee/mian-shi-ti.md)
       * [一面](du-jiao-shou-gong-si/shopee/mian-shi-ti/yi-mian.md)
       * [二面](du-jiao-shou-gong-si/shopee/mian-shi-ti/er-mian.md)
-* 历任公司
+* [历任公司](li-ren-gong-si.md)
   * [古德菲力健康科技有限公司](gu-de-fei-li-jian-kang-ke-ji.md)
+  * 优利科技有限公司
 
