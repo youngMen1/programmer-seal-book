@@ -12,7 +12,7 @@ https://github.com/sorenduan/awesome-java-books
 https://github.com/youngMen1/architect-awesome
 ```
 
-[https://github.com/CyC2018/CS-Notes/](https://github.com/CyC2018/CS-Notes/)
+https://github.com/CyC2018/CS-Notes/
 
 https://snailclimb.gitee.io/javaguide/\#/
 
