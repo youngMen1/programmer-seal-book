@@ -5,7 +5,6 @@
 ---
 #### 悲观锁（Pessimistic Lock）
 
----
 
 悲观锁的特点是先获取锁，再进行业务操作，即“悲观”的认为获取锁是非常有可能失败的，因此要先确保获取锁成功再进行业务操作。通常所说的“一锁二查三更新”即指的是使用悲观锁。通常来讲在数据库上的悲观锁需要数据库本身提供支持，即通过常用的select … for update操作来实现悲观锁。当数据库执行select for update时会获取被select中的数据行的行锁，因此其他并发执行的select for update如果试图选中同一行则会发生排斥（需要等待行锁被释放），因此达到锁的效果。select for update获取的行锁会在当前事务结束时自动释放，因此必须在事务中使用。
 
@@ -19,7 +18,7 @@
 select * from tbl_user where id=1 for update;
 ```
 
---
+---
 
 #### 乐观锁（Optimistic Lock）
 
