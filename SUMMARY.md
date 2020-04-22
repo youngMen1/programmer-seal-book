@@ -17,7 +17,7 @@
     * 二分查找
     * java中的排序工具
   * 布隆过滤器
-  * 时间复杂度
+  * [时间复杂度](chang-yong-suan-fa/shi-jian-fu-za-du.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
