@@ -10,6 +10,14 @@
 
 这里需要注意的一点是不同的数据库对select for update的实现和支持都是有所区别的，例如oracle支持select for update no wait，表示如果拿不到锁立刻报错，而不是等待，mysql就没有no wait这个选项。另外mysql还有个问题是select for update语句执行中所有扫描过的行都会被锁上，这一点很容易造成问题。因此如果在mysql中用悲观锁务必要确定走了索引，而不是全表扫描。
 
+### 如何使用悲观锁
+
+用法：SELECT … FOR UPDATE;
+
+```
+select * from tbl_user where id=1 for update;
+```
+
 #### 乐观锁（Optimistic Lock）
 
 ---
