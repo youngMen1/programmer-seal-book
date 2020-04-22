@@ -1,6 +1,4 @@
-
-
-# [时间复杂度o\(1\), o\(n\), o\(logn\), o\(nlogn\)](https://www.cnblogs.com/biehongli/p/11672380.html)
+# 1.[时间复杂度o\(1\), o\(n\), o\(logn\), o\(nlogn\)](https://www.cnblogs.com/biehongli/p/11672380.html)
 
 1、时间复杂度o\(1\), o\(n\), o\(logn\), o\(nlogn\)。算法时间复杂度有的时候说o\(1\), o\(n\), o\(logn\), o\(nlogn\)，这是算法的时空复杂度的表示。不仅仅用于表示时间复杂度，也用于表示空间复杂度。O后面的括号中有一个函数，指明某个算法的耗时/耗空间与数据增长量之间的关系。其中的n代表输入数据的量。
 
@@ -26,11 +24,7 @@
 　　就是n乘以logn，当数据增大256倍时，耗时增大256\*8=2048倍。这个复杂度高于线性低于平方。  
 归并排序就是O\(nlogn\)的时间复杂度。
 
-
-
 # 参考
 
 [https://www.cnblogs.com/biehongli/p/11672380.html](#)
-
-
 
