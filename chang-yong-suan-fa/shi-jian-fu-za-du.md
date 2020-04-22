@@ -25,7 +25,7 @@
 
 # 参考
 
-# [时间复杂度o\(1\), o\(n\), o\(logn\), o\(nlogn\)](https://www.cnblogs.com/biehongli/p/11672380.html)
+[时间复杂度o\(1\), o\(n\), o\(logn\), o\(nlogn\)](https://www.cnblogs.com/biehongli/p/11672380.html)：
 
 [https://www.cnblogs.com/biehongli/p/11672380.html](#)
 
