@@ -75,7 +75,6 @@ public class DeadLockDemo {
 
     }
 }
-
 ```
 
 在上面的这个demo中，开启了两个线程threadA, threadB,其中threadA占用了resource\_a, 并等待被threadB释放的resource \_b。threadB占用了resource \_b正在等待被threadA释放的resource \_a。因此threadA,threadB出现线程安全的问题，形成死锁。同样可以通过jps,jstack证明这种推论：
@@ -110,7 +109,6 @@ Java stack information for the threads listed above:
         at java.lang.Thread.run(Thread.java:722)
 
 Found 1 deadlock.
-
 ```
 
 如上所述，完全可以看出当前死锁的情况。
@@ -132,7 +130,7 @@ Found 1 deadlock.
 
 ## 3.2 并发与并行
 
-并发和并行是十分容易混淆的概念。并发指的是多个任务交替进行，而并行则是指真正意义上的“同时进行”。实际上，如果系统内只有一个CPU，而使用多线程时，那么真实系统环境下不能并行，只能通过切换时间片的方式交替进行，而成为并发执行任务。真正的并行也只能出现在拥有多个CPU的系统中。
+并发和并行是十分容易混淆的概念。**并发指的是多个任务交替进行**，**而并行则是指真正意义上的“同时进行”**。实际上，如果系统内只有一个CPU，而使用多线程时，那么真实系统环境下不能并行，只能通过切换时间片的方式交替进行，而成为并发执行任务。真正的并行也只能出现在拥有多个CPU的系统中。
 
 ## 3.3 阻塞和非阻塞
 
@@ -141,6 +139,4 @@ Found 1 deadlock.
 ## 3.4 临界区
 
 临界区用来表示一种公共资源或者说是共享数据，可以被多个线程使用。但是每个线程使用时，一旦临界区资源被一个线程占有，那么其他线程必须等待。
-
-
 
