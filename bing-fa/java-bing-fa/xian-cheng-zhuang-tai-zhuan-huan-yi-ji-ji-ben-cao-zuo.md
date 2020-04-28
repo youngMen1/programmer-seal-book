@@ -276,7 +276,7 @@ public class DaemonDemo {
 
 线程可以通过setDaemon\(true\)的方法将线程设置为守护线程。并且需要注意的是设置守护线程要先于start\(\)方法，否则会报
 
-&gt; Exception in thread "main" java.lang.IllegalThreadStateException
+&gt;    Exception in thread "main" java.lang.IllegalThreadStateException
 
 &gt;     at java.lang.Thread.setDaemon\(Thread.java:1365\)
 
