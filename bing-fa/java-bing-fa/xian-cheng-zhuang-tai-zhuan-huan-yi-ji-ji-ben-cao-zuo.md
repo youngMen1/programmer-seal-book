@@ -1,4 +1,4 @@
-## 新建线程
+## 1.新建线程
 
 一个java程序从main\(\)方法开始执行，然后按照既定的代码逻辑执行，看似没有其他线程参与，但实际上java程序天生就是一个多线程程序，包含了：
 
@@ -274,17 +274,13 @@ public class DaemonDemo {
 
 上面的例子中daemodThread run方法中是一个while死循环，会一直打印,但是当main线程结束后daemonThread就会退出所以不会出现死循环的情况。main线程先睡眠800ms保证daemonThread能够拥有一次时间片的机会，也就是说可以正常执行一次打印“i am alive”操作和一次finally块中"finally block"操作。紧接着main 线程结束后，daemonThread退出，这个时候只打印了"i am alive"并没有打印finnal块中的。因此，这里需要注意的是\*\*守护线程在退出的时候并不会执行finnaly块中的代码，所以将释放资源等操作不要放在finnaly块中执行，这种操作是不安全的\*\*
 
-
-
 线程可以通过setDaemon\(true\)的方法将线程设置为守护线程。并且需要注意的是设置守护线程要先于start\(\)方法，否则会报
 
 &gt; Exception in thread "main" java.lang.IllegalThreadStateException
 
-&gt; 	at java.lang.Thread.setDaemon\(Thread.java:1365\)
+&gt;     at java.lang.Thread.setDaemon\(Thread.java:1365\)
 
-&gt; 	at learn.DaemonDemo.main\(DaemonDemo.java:19\)
-
-
+&gt;     at learn.DaemonDemo.main\(DaemonDemo.java:19\)
 
 这样的异常，但是该线程还是会执行，只不过会当做正常的用户线程执行。
 
