@@ -212,7 +212,7 @@ public class JoinDemo {
 
 public static native void sleep\(long millis\)方法显然是Thread的静态方法，很显然它是让当前线程按照指定的时间休眠，其休眠时间的精度取决于处理器的计时器和调度器。需要注意的是如果当前线程获得了锁，sleep方法并不会失去锁。sleep方法经常拿来与Object.wait\(\)方法进行比价，这也是面试经常被问的地方。
 
-&gt; \*\*sleep\(\) VS wait\(\)\*\*
+&gt; **sleep\(\) VS wait\(\)**
 
 **两者主要的区别：**
 
