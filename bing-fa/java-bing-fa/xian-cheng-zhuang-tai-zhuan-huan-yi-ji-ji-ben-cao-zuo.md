@@ -214,7 +214,7 @@ public static native void sleep\(long millis\)方法显然是Thread的静态方�
 
 &gt; \*\*sleep\(\) VS wait\(\)\*\*
 
-两者主要的区别：
+**两者主要的区别：**
 
 1. sleep\(\)方法是Thread的静态方法，而wait是Object实例方法
 
