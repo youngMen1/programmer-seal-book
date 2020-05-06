@@ -131,20 +131,16 @@ java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 4. 在每个volatile读操作的****后面****插入一个LoadStore屏障。
 
 需要注意的是：volatile写是在前面和后面****分别插入内存屏障****，而volatile读操作是在****后面插入两个内存屏障****
-
-\*\***StoreStore屏障**\*\*：禁止上面的普通写和下面的volatile写重排序；
-
-\*\***StoreLoad屏障**\*\*：防止上面的volatile写与下面可能有的volatile读/写重排序
-
-\*\***LoadLoad屏障**\*\*：禁止下面所有的普通读操作和上面的volatile读重排序
-
-\*\***LoadStore屏障**\*\*：禁止下面所有的普通写操作和上面的volatile读重排序
+****StoreStore屏障****：禁止上面的普通写和下面的volatile写重排序；
+****StoreLoad屏障****：防止上面的volatile写与下面可能有的volatile读/写重排序
+****LoadLoad屏障****：禁止下面所有的普通读操作和上面的volatile读重排序
+****LoadStore屏障****：禁止下面所有的普通写操作和上面的volatile读重排序
 
 下面以两个示意图进行理解，图片摘自相当好的一本书《java并发编程的艺术》。
 
 ![](/assets/volatile写插入内存屏障示意图.png)
 
-!\[volatile写插入内存屏障示意图\]\([http://upload-images.jianshu.io/upload\_images/2615789-a31dbae587e8a946.png?imageMogr2/auto-orient/strip\|imageView2/2/w/620\](http://upload-images.jianshu.io/upload_images/2615789-a31dbae587e8a946.png?imageMogr2/auto-orient/strip|imageView2/2/w/620%29\)
+![volatile写插入内存屏障示意图]([http://upload-images.jianshu.io/upload\_images/2615789-a31dbae587e8a946.png?imageMogr2/auto-orient/strip\|imageView2/2/w/620\](http://upload-images.jianshu.io/upload_images/2615789-a31dbae587e8a946.png?imageMogr2/auto-orient/strip|imageView2/2/w/620%29\)
 
 ![](/assets/volatile读插入内存屏障示意图.png)
 
@@ -176,11 +172,11 @@ public class VolatileDemo {
     }
 ```
 
-注意不同点，现在已经\*\***将isOver设置成了volatile变量**\*\*，这样在main线程中将isOver改为了true后，thread的工作内存该变量值就会失效，从而需要再次从主内存中读取该值，现在能够读出isOver最新值为true从而能够结束在thread里的死循环，从而能够顺利停止
+注意不同点，现在已经****将isOver设置成了volatile变量****，这样在main线程中将isOver改为了true后，thread的工作内存该变量值就会失效，从而需要再次从主内存中读取该值，现在能够读出isOver最新值为true从而能够结束在thread里的死循环，从而能够顺利停止
 
 掉thread线程。现在问题也解决了，知识也学到了：）。（如果觉得还不错，请点赞，是对我的一个鼓励。）
 
-&gt; 参考文献
+## 参考文献
 
 《java并发编程的艺术》
 
