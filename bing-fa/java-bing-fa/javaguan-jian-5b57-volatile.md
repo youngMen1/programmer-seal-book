@@ -50,7 +50,7 @@ JMM内存模型（主内存和工作内存）
 
 三条性质：原子性，可见性，有序性（关于三大性质的总结在以后得文章会和大家共同探讨）。废话不多说，先来看两个核心之一：volatile的happens-before关系。
 
-在六条\[happens-before规则\]\([https://juejin.im/post/5ae6d309518825673123fd0e\)中有一条是：\*\*volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。\*\*下面我们结合具体的代码，我们利用这条规则推导下：](https://juejin.im/post/5ae6d309518825673123fd0e%29中有一条是：**volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。**下面我们结合具体的代码，我们利用这条规则推导下：)
+在六条[happens-before规则]([https://juejin.im/post/5ae6d309518825673123fd0e\)中有一条是：**volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。**下面我们结合具体的代码，我们利用这条规则推导下：](https://juejin.im/post/5ae6d309518825673123fd0e%29中有一条是：**volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。**下面我们结合具体的代码，我们利用这条规则推导下：)
 
 ```
 public class VolatileExample {
