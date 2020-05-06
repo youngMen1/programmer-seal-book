@@ -1,6 +1,6 @@
-```
-1. synchronized简介
-```
+
+# 1.synchronized简介
+
 
 在学习知识前，我们先来看一个现象：
 
