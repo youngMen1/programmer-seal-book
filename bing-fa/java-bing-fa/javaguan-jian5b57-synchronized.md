@@ -196,11 +196,11 @@ HotSpot的作者经过研究发现，大多数情况下，锁不仅不存在多�
 
 ![](/assets/偏向锁的获取和撤销流程.png)
 
-!\[偏向锁获取和撤销流程\]\([https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223%29\)
+![偏向锁获取和撤销流程]([https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223\](https://user-gold-cdn.xitu.io/2018/4/30/16315cb9175365f5?w=630&h=703&f=png&s=160223%29\)
 
-&gt; \*\***如何关闭偏向锁**\*\*
+&gt; ****如何关闭偏向锁****
 
-偏向锁在Java 6和Java 7里是默认启用的，但是它在应用程序启动几秒钟之后才激活，如有必要可以使用JVM参数来关闭延迟：\*\*-XX:BiasedLockingStartupDelay=0\*\*。如果你确定应用程序里所有的锁通常情况下处于竞争状态，可以通过JVM参数关闭偏向锁：\*\*-XX:-UseBiasedLocking=false\*\*，那么程序默认会进入轻量级锁状态
+偏向锁在Java 6和Java 7里是默认启用的，但是它在应用程序启动几秒钟之后才激活，如有必要可以使用JVM参数来关闭延迟：**-XX:BiasedLockingStartupDelay=0**。如果你确定应用程序里所有的锁通常情况下处于竞争状态，可以通过JVM参数关闭偏向锁：**-XX:-UseBiasedLocking=false**，那么程序默认会进入轻量级锁状态
 
 ### 3.3 轻量级锁
 
