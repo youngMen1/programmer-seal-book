@@ -72,9 +72,9 @@ public class VolatileExample {
 
 ![](/assets/VolatileExample的happens-before关系推导.png)
 
-!\[VolatileExample的happens-before关系推导\]\([http://upload-images.jianshu.io/upload\_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
+![VolatileExample的happens-before关系推导]([http://upload-images.jianshu.io/upload\_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-c9c291d6c0b3e0f1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
-加锁线程A先执行writer方法，然后线程B执行reader方法图中每一个箭头两个节点就代码一个happens-before关系，黑色的代表根据\*\***程序顺序规则**\*\*推导出来，红色的是根据\*\***volatile变量的写happens-before 于任意后续对volatile变量的读**\*\*，而蓝色的就是根据传
+加锁线程A先执行writer方法，然后线程B执行reader方法图中每一个箭头两个节点就代码一个happens-before关系，黑色的代表根据****程序顺序规则****推导出来，红色的是根据****volatile变量的写happens-before 于任意后续对volatile变量的读****，而蓝色的就是根据传
 
 递性规则推导出来的。这里的2 happen-before 3，同样根据happens-before规则定义：如果A happens-before B,则A的执行结果对B可见，并且A的执行顺序先于B的执行顺序，我们可以知道操作2执行结果对操作3来说是可见的，也就是说当线程A将volatile变量 flag更
 
@@ -82,55 +82,55 @@ public class VolatileExample {
 
 ## 4. volatile的内存语义
 
-还是按照\*\***两个核心**\*\*的分析方式，分析完happens-before关系后我们现在就来进一步分析volatile的内存语义（按照这种方式去学习，会不会让大家对知识能够把握的更深，而不至于不知所措，如果大家认同我的这种方式，不妨给个赞，小弟在此谢过，对我是个鼓励
+还是按照****两个核心****的分析方式，分析完happens-before关系后我们现在就来进一步分析volatile的内存语义（按照这种方式去学习，会不会让大家对知识能够把握的更深，而不至于不知所措，如果大家认同我的这种方式，不妨给个赞，小弟在此谢过，对我是个鼓励
 
 ）。还是以上面的代码为例，假设线程A先执行writer方法，线程B随后执行reader方法，初始时线程的本地内存中flag和a都是初始状态，下图是线程A执行volatile写后的状态图。
 
 ![](/assets/线程A执行volatile写后的内存状态图.png)
 
-!\[线程A执行volatile写后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
+![线程A执行volatile写后的内存状态图]([http://upload-images.jianshu.io/upload\_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-9e5098f09d5ad065.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 当volatile变量写后，线程中本地内存中共享变量就会置为失效的状态，因此线程B再需要读取从主内存中去读取该变量的最新值。下图就展示了线程B读取同一个volatile变量的内存变化示意图。
 
 ![](/assets/线程B读volatile后的内存状态图.png)
 
-!\[线程B读volatile后的内存状态图\]\([http://upload-images.jianshu.io/upload\_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
+![线程B读volatile后的内存状态图]([http://upload-images.jianshu.io/upload\_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-606771789255958f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 从横向来看，线程A和线程B之间进行了一次通信，线程A在写volatile变量时，实际上就像是给B发送了一个消息告诉线程B你现在的值都是旧的了，然后线程B读这个volatile变量时就像是接收了线程A刚刚发送的消息。既然是旧的了，那线程B该怎么办了？自然而然就只
 
 能去主内存去取啦。
 
-好的，我们现在\*\***两个核心**\*\*：happens-before以及内存语义现在已经都了解清楚了。是不是还不过瘾，突然发现原来自己会这么爱学习（微笑脸），那我们下面就再来一点干货----volatile内存语义的实现。
+好的，我们现在****两个核心****：happens-before以及内存语义现在已经都了解清楚了。是不是还不过瘾，突然发现原来自己会这么爱学习（微笑脸），那我们下面就再来一点干货----volatile内存语义的实现。
 
 ## 4.1 volatile的内存语义实现
 
 我们都知道，为了性能优化，JMM在不改变正确语义的前提下，会允许编译器和处理器对指令序列进行重排序，那如果想阻止重排序要怎么办了？答案是可以添加内存屏障。
 
-&gt; \*\***内存屏障**\*\*
+&gt; ****内存屏障****
 
 JMM内存屏障分为四类见下图，
 
 ![](/assets/内存屏障分类表.png)
 
-!\[内存屏障分类表\]\([http://upload-images.jianshu.io/upload\_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip\|imageView2/2/w/680\](http://upload-images.jianshu.io/upload_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip|imageView2/2/w/680%29\)
+![内存屏障分类表]([http://upload-images.jianshu.io/upload\_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip\|imageView2/2/w/680\](http://upload-images.jianshu.io/upload_images/2615789-27cf04634cbdf284.png?imageMogr2/auto-orient/strip|imageView2/2/w/680%29\)
 
 java编译器会在生成指令系列时在适当的位置会插入内存屏障指令来禁止特定类型的处理器重排序。为了实现volatile的内存语义，JMM会限制特定类型的编译器和处理器重排序，JMM会针对编译器制定volatile重排序规则表：
 
 ![](/assets/volatile重排序规则表.png)
 
-!\[volatile重排序规则表\]\([http://upload-images.jianshu.io/upload\_images/2615789-fa62c72e7ec4ccb0.png?imageMogr2/auto-orient/strip\|imageView2/2/w/680\](http://upload-images.jianshu.io/upload_images/2615789-fa62c72e7ec4ccb0.png?imageMogr2/auto-orient/strip|imageView2/2/w/680%29\)
+![volatile重排序规则表]([http://upload-images.jianshu.io/upload\_images/2615789-fa62c72e7ec4ccb0.png?imageMogr2/auto-orient/strip\|imageView2/2/w/680\](http://upload-images.jianshu.io/upload_images/2615789-fa62c72e7ec4ccb0.png?imageMogr2/auto-orient/strip|imageView2/2/w/680%29\)
 
-"NO"表示禁止重排序。为了实现volatile内存语义时，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的\*\***处理器重排序**\*\*。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM采取了保守策略：
+"NO"表示禁止重排序。为了实现volatile内存语义时，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的****处理器重排序****。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM采取了保守策略：
 
-1. 在每个volatile写操作的\*\***前面**\*\*插入一个StoreStore屏障；
+1. 在每个volatile写操作的**前面****插入一个StoreStore屏障；
 
-2. 在每个volatile写操作的\*\***后面**\*\*插入一个StoreLoad屏障；
+2. 在每个volatile写操作的**后面**插入一个StoreLoad屏障；
 
-3. 在每个volatile读操作的\*\***后面**\*\*插入一个LoadLoad屏障；
+3. 在每个volatile读操作的****后面****插入一个LoadLoad屏障；
 
-4. 在每个volatile读操作的\*\***后面**\*\*插入一个LoadStore屏障。
+4. 在每个volatile读操作的****后面****插入一个LoadStore屏障。
 
-需要注意的是：volatile写是在前面和后面\*\***分别插入内存屏障**\*\*，而volatile读操作是在\*\***后面插入两个内存屏障**\*\*
+需要注意的是：volatile写是在前面和后面****分别插入内存屏障****，而volatile读操作是在****后面插入两个内存屏障****
 
 \*\***StoreStore屏障**\*\*：禁止上面的普通写和下面的volatile写重排序；
 
