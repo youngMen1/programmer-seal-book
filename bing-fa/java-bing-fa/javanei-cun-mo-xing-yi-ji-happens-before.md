@@ -134,7 +134,15 @@ happens-before的概念最初由Leslie Lamport在其一篇影响深远的论文�
 
 下面以一个**具体的例子来讲下如何使用这些规则进行推论**：
 
-依旧以上面计算圆面积的进行描述。利用程序顺序规则（规则1）存在三个happens-before关系：1. A happens-before B；2. B happens-before C;3. A happens-before C。这里的第三个关系是利用传递性进行推论的。A happens-before B,定义1要求A执行结果对B可见，并且A操作的执行顺序在B操作之前，但与此同时利用定义中的第二条，A,B操作彼此不存在数据依赖性，两个操作的执行顺序对最终结果都不会产生影响，在不改变最终结果的前提下，允许A，B两个操作重排序，即happens-before关系并不代表了最终的执行顺序。
+依旧以上面计算圆面积的进行描述。利用程序顺序规则（规则1）存在三个happens-before关系：
+
+1. A happens-before B；
+
+2. B happens-before C;
+
+3. A happens-before C。
+
+这里的第三个关系是利用传递性进行推论的。A happens-before B,定义1要求A执行结果对B可见，并且A操作的执行顺序在B操作之前，但与此同时利用定义中的第二条，A,B操作彼此不存在数据依赖性，两个操作的执行顺序对最终结果都不会产生影响，在不改变最终结果的前提下，允许A，B两个操作重排序，即happens-before关系并不代表了最终的执行顺序。
 
 # 5. 总结
 
