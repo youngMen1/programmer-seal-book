@@ -223,6 +223,7 @@
       * [myisam和innodb索引实现的不同](shu-ju-ku/mysql/yuan-li/myisamhe-innodb-suo-yin-shi-xian-de-bu-tong.md)
     * [InnoDB](shu-ju-ku/mysql/innodb.md)
       * [『浅入浅出』MySQL 和 InnoDB](shu-ju-ku/mysql/innodb/300e-qian-ru-qianchu-300f-mysql-he-innodb.md)
+    * 数据库常见死锁原因及处理
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
