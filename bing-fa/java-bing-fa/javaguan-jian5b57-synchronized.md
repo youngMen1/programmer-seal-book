@@ -81,7 +81,7 @@ public class SynchronizedDemo {
 
 ## 2.2 synchronized的happens-before关系
 
-在上一篇文章中讨论过[happens-before]([https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29\)\]\([https://juejin.im/post/5ae6d309518825673123fd0e\)规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：\)\)\)\)](https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29%29%29\)\)
+在上一篇文章中讨论过[happens-before]([https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29%29]%28[https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29%29\)\]\([https://juejin.im/post/5ae6d309518825673123fd0e\)规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：\)\)\)\)\)\](https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：%29%29%29%29%29\)\)
 
 ```
 public class MonitorDemo {
@@ -137,7 +137,7 @@ public class MonitorDemo {
 
 ### 3.1.2 CAS的操作过程
 
-CAS比较交换的过程可以通俗的理解为CAS\(V,O,N\)，包含三个值分别为：**V 内存地址存放的实际值；O 预期的值（旧值）；N 更新的新值**。当V和O相同时，也就是说旧值和内存中实际的值相同表明该值没有被其他线程更改过，即该旧值O就是目前来说最新的值了，自然而然可以将新值N赋值给V。反之，V和O不相同，表明该值已经被其他线程改过了则该旧值O不是最新版本的值了，所以不能将新值N赋给V，返回V即可。当多个线程使用CAS操作一个变量是，只有一个线程会成功，并成功更新，其余会失败。失败的线程会重新尝试，当然也可以选择挂起线程
+CAS比较交换的过程可以通俗的理解为CAS\(V,O,N\)，包含三个值分别为：**V 内存地址存放的实际值；O 预期的值（旧值）；N 更新的新值**。当V和O相同时，也就是说旧值和内存中实际的值相同表明该值没有被其他线程更改过，即该旧值O就是目前来说最新的值了，自然而然可以将新值N赋值给V。反之，V和O不相同，表明该值已经被其他线程改过了则该旧值O不是最新版本的值了，所以不能将新值N赋给V，返回V即可。当多个线程使用CAS操作一个变量时，只有一个线程会成功，并成功更新，其余会失败。失败的线程会重新尝试，当然也可以选择挂起线程
 
 CAS的实现需要硬件指令集的支撑，在JDK1.5后虚拟机才可以使用处理器提供的**CMPXCHG**指令实现。
 
