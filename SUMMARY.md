@@ -142,8 +142,8 @@
       * [Ngnix的基本学习-多进程和Apache的比较](zhong-jian-jian/web-server/nginx/ngnixde-ji-ben-xue-4e60-duo-jin-cheng-he-apache-de-bi-jiao.md)
       * [Nginx与Apache的对比以及优缺点](zhong-jian-jian/web-server/nginx/nginxyu-apache-de-dui-bi-yi-ji-you-que-dian.md)
     * [OpenResty](zhong-jian-jian/web-server/openresty.md)
-    * Tengine
-    * Apache Httpd
+    * [Tengine](zhong-jian-jian/web-server/tengine.md)
+    * [Apache Httpd](zhong-jian-jian/web-server/apache-httpd.md)
     * Tomcat
     * [Jetty](zhong-jian-jian/web-server/jetty.md)
       * [Jetty 的工作原理以及与 Tomcat 的比较](zhong-jian-jian/web-server/jetty/jetty-de-gong-zuoyuan-li-yi-ji-yu-tomcat-de-bi-jiao.md)
