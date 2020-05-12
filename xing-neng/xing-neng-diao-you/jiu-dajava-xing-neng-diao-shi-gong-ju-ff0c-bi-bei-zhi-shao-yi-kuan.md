@@ -30,7 +30,7 @@ GC Viewer可以免费下载，并且开源。可用来可视化JVM的数据（�
 
 # VisualVM
 
-24390002259b562d3346.jpg
+![](/static/image/24390002259b562d3346.jpg)
 
 VisualVM是从NetBeans平台派生的工具，模块化架构，意味着它可以通过使用插件来扩展。
 
