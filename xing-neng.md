@@ -1,4 +1,4 @@
-# 1.[性能](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#性能)
+# [性能](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#性能)
 
 * [性能优化方法论](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#性能优化方法论)
 * [容量评估](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#容量评估)
