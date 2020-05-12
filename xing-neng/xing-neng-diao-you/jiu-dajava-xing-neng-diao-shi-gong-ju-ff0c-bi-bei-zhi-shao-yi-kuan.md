@@ -50,7 +50,7 @@ Patty在行动（图片最初来自[http://patty.sourceforge.net。）](http://p
 
 # JRockit - 任务控制
 
-24390002259a66cfd1d6.jpg
+![](/static/image/24390002259a66cfd1d6.jpg)
 
 JRockit是一个专有的Java虚拟机（JVM）。最初由Appeal Virtual Machines开发，并于2002年被BEA Systems收购，后来通过Sun Microsystems成为Oracle的一部分。
 
