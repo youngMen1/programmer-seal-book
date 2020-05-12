@@ -105,7 +105,7 @@
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
     * [Xen](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/xen.md)
-    * OpenVZ
+    * [OpenVZ](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/openvz.md)
   * [容器技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/rong-qi-ji-zhu.md)
   * [云技术](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/yun-ji-zhu.md)
   * [DevOps](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/devops.md)
