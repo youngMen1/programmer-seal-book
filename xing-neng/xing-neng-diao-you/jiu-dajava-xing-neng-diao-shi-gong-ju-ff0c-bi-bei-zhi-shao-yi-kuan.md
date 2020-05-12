@@ -60,7 +60,7 @@ JRockit的当前迭代版本与一组名为JRockit Mission Control的工具捆�
 
 # Eclipse内存分析器
 
-![](/static/image/24360005929e7ae87d80.jpg）
+![](/static/image/24360005929e7ae87d80.jpg)
 
 内存分析器（MAT）在Eclipse IDE中找到。
 
