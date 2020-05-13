@@ -92,15 +92,35 @@ MyISAM基于ISAM存储引擎，并对其进行扩展。它是在Web、数据仓�
 
 使用MyISAM引擎创建数据库，将产生3个文件。文件的名字以表名字开始，扩展名之处文件类型：frm文件存储表定义、数据文件的扩展名为.MYD（MYData）、索引文件的扩展名时.MYI（MYIndex）
 
-  
-
-
-  
-
-
-
-
 ## **MEMORY存储引擎**
+
+MEMORY存储引擎将表中的数据存储到内存中，未查询和引用其他表数据提供快速访问。MEMORY主要特性有：
+
+1、MEMORY表的每个表可以有多达32个索引，每个索引16列，以及500字节的最大键长度
+
+2、MEMORY存储引擎执行HASH和BTREE缩影
+
+3、可以在一个MEMORY表中有非唯一键值
+
+4、MEMORY表使用一个固定的记录长度格式
+
+5、MEMORY不支持BLOB或TEXT列
+
+6、MEMORY支持AUTO\_INCREMENT列和对可包含NULL值的列的索引
+
+7、MEMORY表在所由客户端之间共享（就像其他任何非TEMPORARY表）
+
+8、MEMORY表内存被存储在内存中，内存是MEMORY表和服务器在查询处理时的空闲中，创建的内部表共享
+
+9、当不再需要MEMORY表的内容时，要释放被MEMORY表使用的内存，应该执行DELETE FROM或TRUNCATE TABLE，或者删除整个表（使用DROP TABLE）
+
+  
+
+
+  
+
+
+
 
 **存储引擎的选择**
 
