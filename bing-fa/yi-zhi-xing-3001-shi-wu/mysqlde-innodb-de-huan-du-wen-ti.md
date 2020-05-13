@@ -1,4 +1,4 @@
-## [ ](http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html)MySQL的InnoDB的幻读问题
+# MySQL的InnoDB的幻读问题
 
 [MySQL InnoDB事务的隔离级别](http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html)有四级，默认是“可重复读”（REPEATABLE READ）。
 
