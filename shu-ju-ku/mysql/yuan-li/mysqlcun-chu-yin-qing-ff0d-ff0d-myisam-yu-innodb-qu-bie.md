@@ -42,9 +42,13 @@ InnoDB和MyISAM是许多人在使用MySQL时最常用的两个表类型，这两
 
 # Mysql四种常见数据库引擎
 
+**InnoDB、 MyISAM、Memory、 Archive **
+
 ## **InnoDB存储引擎**
 
-InnoDB是事务型数据库的首选引擎，支持事务安全表（ACID），支持行锁定和外键，上图也看到了，InnoDB是默认的MySQL引擎。**InnoDB主要特性有：**
+InnoDB是事务型数据库的首选引擎，支持事务安全表（ACID），支持行锁定和外键，上图也看到了，InnoDB是默认的MySQL引擎。
+
+**InnoDB主要特性有：**
 
 1、InnoDB给MySQL提供了具有提交、回滚和崩溃恢复能力的事物安全（ACID兼容）存储引擎。InnoDB锁定在行级并且也在SELECT语句中提供一个类似[**Oracle**](http://lib.csdn.net/base/oracle)的非锁定读。这些功能增加了多用户部署和性能。在SQL查询中，可以自由地将InnoDB类型的表和其他MySQL的表类型混合起来，甚至在同一个查询中也可以混合
 
