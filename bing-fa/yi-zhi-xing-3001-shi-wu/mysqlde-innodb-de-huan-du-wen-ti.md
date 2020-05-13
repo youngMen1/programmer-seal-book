@@ -270,9 +270,9 @@ If you want to see the “freshest” state of the database, you should use eith
 SELECT * FROM t_bitfly LOCK IN SHARE MODE;
 ```
 
-------
+---
 
-结论：MySQL InnoDB的可重复读并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁度使用到的机制就是next-key locks。
+# 结论
 
-
+MySQL InnoDB的可重复读并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁度使用到的机制就是next-key locks。
 
