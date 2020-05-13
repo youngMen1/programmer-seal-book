@@ -16,7 +16,7 @@
     * 基数排序
     * 二分查找
     * java中的排序工具
-  * 布隆过滤器
+  * [布隆过滤器](chang-yong-suan-fa/bu-long-guo-lv-qi.md)
   * [时间复杂度](chang-yong-suan-fa/shi-jian-fu-za-du.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
