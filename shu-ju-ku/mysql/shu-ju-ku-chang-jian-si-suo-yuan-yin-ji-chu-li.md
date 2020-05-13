@@ -75,8 +75,7 @@ SQL语句中不要使用太复杂的关联多表的查询；使用“执行计�
 
 四.事务封锁范围大且相互等待
 
-可参考我这篇文章  
-:[https://blog.csdn.net/qq\_16681169/article/details/73359670](https://blog.csdn.net/qq_16681169/article/details/73359670)
+可参考我这篇文章:[https://blog.csdn.net/qq\_16681169/article/details/73359670](https://blog.csdn.net/qq_16681169/article/details/73359670)
 
 ## 参考
 
