@@ -1,7 +1,4 @@
-
 ## ACID特性
-
-
 ```
 数据库管理系统中事务(transaction)的四个特性（分析时根据首字母缩写依次解释）：
 原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）
