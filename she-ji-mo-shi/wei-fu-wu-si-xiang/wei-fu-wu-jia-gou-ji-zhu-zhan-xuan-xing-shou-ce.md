@@ -98,7 +98,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 对于微服务安全认证授权机制一块，目前业界虽然有 OAuth 和 OpenID connect 等标准协议，但是各家具体实现的做法都不太一样，企业一般有很多特殊的定制需求，整个社区还没有形成通用生产级开箱即用的产品。有一些开源授权服务器产品，比较知名的如 Apereo CAS\[附录 12.37\]（GitHub 3.6k stars），JBoss 开源的 keycloak\[附录 12.38\]（GitHub 1.9 stars），spring cloud security\[附录 12.39\] 等，大都是 opinionated（一家观点和做法）的产品，同时因支持太多协议造成产品复杂，也缺乏足够灵活性。个人建议基于 OAuth 和 OpenID connect 标准，在参考一些开源产品的基础上（例如 Mitre 开源的 OpenID-Connect-Java-Spring-Server\[附录 12.40\]，GitHub 0.62k stars），定制自研轻量级授权服务器。Wso2 提出了一种微服务安全的参考方案 \[附录 12.45\]，建议参考，该方案的关键步骤如下：
 
-[  b70992e5727d45726ba7fcfb2b645f2a.png  ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)
+![](/static/image/b70992e5727d45726ba7fcfb2b645f2a.png)(https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)
 
 使用支持 OAuth 2.0 和 OpenID Connect 标准协议的授权服务器（个人建议定制自研）；
 
