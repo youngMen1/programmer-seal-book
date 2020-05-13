@@ -1,4 +1,4 @@
-## MySQL存储引擎－－MyISAM与InnoDB区别
+# MySQL存储引擎－－MyISAM与InnoDB区别
 
 ## MyISAM 和InnoDB 讲解
 
@@ -42,7 +42,17 @@ InnoDB和MyISAM是许多人在使用MySQL时最常用的两个表类型，这两
 
 # Mysql四种常见数据库引擎
 
-**InnoDB存储引擎**
+## **InnoDB存储引擎**
+
+## **MyISAM存储引擎**
+
+## **MEMORY存储引擎**
+
+**存储引擎的选择**
+
+11464886-82267cb5926d26fb.webp
+
+
 
 
 
