@@ -44,6 +44,30 @@
 
 例子如下:
 
+```
+T1:
+begin tran
+select * from table(updlock) (加更新锁)
+update table set column1='hello'
+T2:
+begin tran
+select * from table(updlock)
+update table set column1='world'
+
+```
+
+更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁（用来更新）的资格”。一个事物只能有一个更新锁获此资格。 
+
+T1执行select，加更新锁。 
+
+T2运行，准备加更新锁，但发现已经有一个更新锁在那儿了，只好等。 
+
+当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询,提高了效率。
+
+
+
+## 
+
 ## 参考
 
 [https://blog.csdn.net/qq\_16681169/article/details/74784193](https://blog.csdn.net/qq_16681169/article/details/74784193)
