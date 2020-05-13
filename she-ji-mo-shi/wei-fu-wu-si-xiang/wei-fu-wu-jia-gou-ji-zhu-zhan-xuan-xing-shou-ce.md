@@ -34,7 +34,7 @@ GitHub 上的 stars 的数量是一个重要指标，同时会参考其代码和
 
 下图是我近期工作总结和参考的一个微服务技术体系，我想同时分享给一线架构师或者工程师参考，其中粉红色标注的模块是和微服务关系最密切的模块，大家在做技术选型时，可以同时对照这个体系。
 
-7d7baf3c1e15265d1b576ca9b029a8a8.png
+![](/static/image/7d7baf3c1e15265d1b576ca9b029a8a8.png)
 
 ## 四、服务框架选型
 
@@ -68,7 +68,7 @@ ELK 目前可以认为是日志监控的标配，功能完善开箱即用，Elas
 
 调用链监控目前社区主流是点评 CAT\[附录 12.12\]（GitHub 4.3k stars），Twitter 之前开源现在由 OpenZipkin 社区维护的 Zipkin\[附录 12.13\]（GitHub 7.5k stars）和 Naver 开源的 Pinpoint\[附录 12.14\]（GitHub 5.3k stars）。个人比较推荐点评开源的 CAT，在点评和国内多家互联网公司有落地案例，生产级特性和治理能力较完善，另外 CAT 自带告警模块。下面是我之前对三款产品的评估表，供参考。
 
-bafa1b0f1e10e2de708c40590a8eb629.png
+![](/static/image/bafa1b0f1e10e2de708c40590a8eb629.png)
 
 Metrics 监控主要依赖于时间序列数据库 \(TSDB\)，目前较成熟的产品是 StumbleUpon 公司开源的基于 HBase 的 OpenTSDB\[附录 12.15\]（基于 Cassandra 的 KariosDB\[附录 12.16\] 也是一个选择，GitHub 1.1k stars，它基本上是 OpenTSDB 针对 Cassandra 的一个改造版），OpenTSDB 具有分布式能力可以横向扩展，但是相对较重，适用于中大规模企业，OpenTSDB 目前在 GitHub 上有近 2.9k 星。
 
