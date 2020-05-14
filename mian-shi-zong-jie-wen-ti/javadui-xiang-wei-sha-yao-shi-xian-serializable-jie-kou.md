@@ -8,5 +8,7 @@
 
 # 2.**Serializable接口概述**
 
-实现了Serializable接口的类可以被ObjectOutputStream转换为字节流，同时也可以通过ObjectInputStream再将其解析为对象。
+实现了Serializable接口的类可以被ObjectOutputStream转换为字节流，
+
+同时也可以通过ObjectInputStream再将其解析为对象。
 
