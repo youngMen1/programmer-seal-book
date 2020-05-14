@@ -8,7 +8,9 @@
 
 # 2.**Serializable接口概述**
 
-Serializable是java.io包中定义的、用于实现Java类的序列化操作而提供的一个语义级别的接口。Serializable序列化接口没有任何方法或者字段，只是用于标识可序列化的语义。
+Serializable是java.io包中定义的、用于实现Java类的序列化操作而提供的一个语义级别的接口。
+
+Serializable序列化接口没有任何方法或者字段，只是用于标识可序列化的语义。
 
 实现了Serializable接口的类可以被ObjectOutputStream转换为字节流，
 
