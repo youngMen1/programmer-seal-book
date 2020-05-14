@@ -6,7 +6,9 @@
 
 * 为什么一定要序列化，序列化又是什么?
 
-## 
+# 2.
+
+实现了Serializable接口的类可以被ObjectOutputStream转换为字节流，同时也可以通过ObjectInputStream再将其解析为对象。
 
 
 
