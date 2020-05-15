@@ -34,7 +34,7 @@
 
 ## 3.Redis的回收策略
 
-* * volatile-lru：从已设置过期时间的数据集（server.db\[i\].expires）中挑选最近最少使用的数据淘汰
+  * volatile-lru：从已设置过期时间的数据集（server.db\[i\].expires）中挑选最近最少使用的数据淘汰
 
   * volatile-ttl：从已设置过期时间的数据集（server.db\[i\].expires）中挑选将要过期的数据淘汰
 
