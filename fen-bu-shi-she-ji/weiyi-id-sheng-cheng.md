@@ -2,7 +2,7 @@
 
 ### 全局唯一ID
 
-* [《高并发分布式系统中生成全局唯一Id汇总》](https://www.cnblogs.com/baiwa/p/5318432.html)
+* [《高并发分布式系统中生成全局唯一Id汇总》](https://blog.csdn.net/hemin1003/article/details/80921615)
 
   * Twitter 方案（Snowflake 算法）：41位时间戳+10位机器标识（比如IP，服务器名称等）+12位序列号\(本地计数器\)
   * Flicker 方案：MySQL自增ID + "REPLACE INTO XXX:SELECT LAST\_INSERT\_ID\(\);"
