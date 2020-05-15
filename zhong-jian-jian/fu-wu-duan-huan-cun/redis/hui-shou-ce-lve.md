@@ -32,7 +32,7 @@
 
 这样的结构方便解决单点故障问题，实现Slave对Master的替换。如果Master挂了，可以立刻启用Slave1做Master，其他不变。
 
-## （10）Redis的回收策略
+## 3.Redis的回收策略
 
 * * volatile-lru：从已设置过期时间的数据集（server.db\[i\].expires）中挑选最近最少使用的数据淘汰
 
