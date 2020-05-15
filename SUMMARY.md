@@ -180,7 +180,7 @@
     * [Thrift](zhong-jian-jian/rpc/thrift.md)
     * [gRPC](zhong-jian-jian/rpc/grpc.md)
   * [数据库中间件](zhong-jian-jian/shu-ju-ku-zhong-jian-jian.md)
-    * Sharding Jdbc
+    * [Sharding Jdbc](zhong-jian-jian/shu-ju-ku-zhong-jian-jian/sharding-jdbc.md)
   * [日志系统](zhong-jian-jian/ri-zhi-xi-tong.md)
     * [日志](zhong-jian-jian/ri-zhi-xi-tong/ri-zhi.md)
   * [API 网关](zhong-jian-jian/api-wang-guan.md)
