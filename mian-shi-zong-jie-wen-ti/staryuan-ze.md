@@ -26,7 +26,7 @@
 
 # 参考
 
-http://kuaibao.qq.com/s/20180725B1CSPM00?refer=spider
+应用STAR原则，四步介绍项目经验
 
-
+[http://kuaibao.qq.com/s/20180725B1CSPM00?refer=spider](http://kuaibao.qq.com/s/20180725B1CSPM00?refer=spider)
 
