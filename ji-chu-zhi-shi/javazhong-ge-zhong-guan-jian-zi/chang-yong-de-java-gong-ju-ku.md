@@ -1,11 +1,11 @@
 # 1.常用的Java工具库
-* `commons.lang`
+* commons.lang
 
-* `commons.*...`
+* commons.*...
 
-* `guava-libraries`
+* guava-libraries
 
-* `netty`
+* netty
 
 * fastjson
 
