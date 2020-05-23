@@ -16,6 +16,8 @@
 https://hutool.cn/docs/#/
 ```
 
+1.7.weixin-popular
+
 # 2.测试框架
 
 .
