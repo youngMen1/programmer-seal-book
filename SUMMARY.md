@@ -361,6 +361,7 @@
   * [Service Mesh](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh.md)
     * [什么是Service Mesh？](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh/shi-yao-shi-service-mesh.md)
     * [初识 Service Mesh](she-ji-si-xiang-and-kai-fa-mo-shi/service-mesh/chu-shi-service-mesh.md)
+* [基础知识](ji-chu-zhi-shi.md)
 * [项目管理](xiang-mu-guan-li.md)
   * [架构评审](xiang-mu-guan-li/jia-gou-ping-shen.md)
     * [人人都是架构师](xiang-mu-guan-li/jia-gou-ping-shen/ren-ren-du-shi-jia-gou-shi.md)
@@ -397,5 +398,4 @@
 * [历任公司](li-ren-gong-si.md)
   * [古德菲力健康科技有限公司](gu-de-fei-li-jian-kang-ke-ji.md)
   * [优利科技有限公司](you-li-ke-ji-you-xian-gong-si.md)
-* 基础知识
 
