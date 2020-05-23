@@ -22,6 +22,12 @@ https://hutool.cn/docs/#/
 https://github.com/liyiorg/weixin-popular
 ```
 
+1.8.[**pay**](https://github.com/yansongda/pay)
+
+```
+https://pay.yanda.net.cn/docs/2.x/overview
+```
+
 # 2.测试框架
 
 
