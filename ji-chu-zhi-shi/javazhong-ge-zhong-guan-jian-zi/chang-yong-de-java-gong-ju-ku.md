@@ -6,6 +6,7 @@
 * `guava-libraries`
 
 * `netty`
+* fastjson
 
 
 
