@@ -5,7 +5,7 @@
 * [基础知识](ji-chu-zhi-shi.md)
   * [Java中各种关键字](ji-chu-zhi-shi/javazhong-ge-zhong-guan-jian-zi.md)
   * [泛型](ji-chu-zhi-shi/fan-xing.md)
-    * 泛型中K T V E ？ object等的含义
+    * [泛型中K T V E ？ object等的含义](ji-chu-zhi-shi/fan-xing/fan-xing-zhong-k-t-v-e-object-deng-de-han-yi.md)
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
 * [常用算法](chang-yong-suan-fa.md)
