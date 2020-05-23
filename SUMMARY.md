@@ -4,6 +4,7 @@
   * [技术路线](ji-zhu-lu-xian.md)
 * [基础知识](ji-chu-zhi-shi.md)
   * [Java中各种关键字](ji-chu-zhi-shi/javazhong-ge-zhong-guan-jian-zi.md)
+  * 泛型
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
 * [常用算法](chang-yong-suan-fa.md)
