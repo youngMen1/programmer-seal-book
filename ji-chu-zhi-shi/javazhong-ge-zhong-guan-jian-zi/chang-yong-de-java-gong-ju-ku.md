@@ -1,13 +1,13 @@
 # 1.常用的Java工具库
-* commons.lang
+1.1. commons.lang
 
-* commons.*...
+1.2. commons.*...
 
-* guava-libraries
+1.3. guava-libraries
 
-* netty
+1.4. netty
 
-* fastjson
+1.5. fastjson
 
 # 2.测试框架
 
