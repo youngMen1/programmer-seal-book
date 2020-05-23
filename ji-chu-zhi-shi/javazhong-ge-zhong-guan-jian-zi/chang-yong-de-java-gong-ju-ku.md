@@ -32,7 +32,15 @@ https://github.com/kongzhidea/pay
 
 # 2.测试框架
 
+junit
 
+* junit 和Spring 的结合
+
+* mock
+
+* mockito
+
+* 内存数据库（h2）
 
 
 
