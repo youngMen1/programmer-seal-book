@@ -25,7 +25,7 @@ https://github.com/liyiorg/weixin-popular
 1.8.pay\(Alipay 和 WeChat 的支付 SDK\)
 
 ```
-https://pay.yanda.net.cn/docs/2.x/overview
+https://github.com/kongzhidea/pay
 ```
 
 # 2.测试框架
