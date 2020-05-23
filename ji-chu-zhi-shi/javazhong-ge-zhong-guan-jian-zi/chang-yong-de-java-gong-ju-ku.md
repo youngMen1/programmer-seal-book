@@ -16,7 +16,7 @@
 https://hutool.cn/docs/#/
 ```
 
-1.7.weixin-popular
+1.7.weixin-popular\(微信api公共包\)
 
 # 2.测试框架
 
