@@ -9,7 +9,7 @@
 
 1.5. fastjson
 
-1.6.
+1.6. hutool
 https://hutool.cn/docs/#/
 # 2.测试框架
 
