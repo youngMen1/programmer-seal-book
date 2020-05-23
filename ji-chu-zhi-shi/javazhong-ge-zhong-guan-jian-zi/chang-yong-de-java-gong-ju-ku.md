@@ -28,7 +28,11 @@ https://github.com/liyiorg/weixin-popular
 https://github.com/kongzhidea/pay
 ```
 
+1.9.jackson
+
 # 2.测试框架
+
+
 
 
 
