@@ -1,4 +1,44 @@
-# [Spring常用注解](http://hollischuang.gitee.io/tobetopjavaer/#/basics/java-basic/annotation-in-spring?id=spring%e5%b8%b8%e7%94%a8%e6%b3%a8%e8%a7%a3) {#spring常用注解}
+# [Spring常用注解](http://hollischuang.gitee.io/tobetopjavaer/#/basics/java-basic/annotation-in-spring?id=spring常用注解) {#spring常用注解}
+
+@Configuration把一个类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。
+
+@Scope注解 作用域
+
+@Lazy\(true\) 表示延迟初始化
+
+@Service用于标注业务层组件、
+
+@Controller用于标注控制层组件@Repository用于标注数据访问组件，即DAO组件。
+
+@Component泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
+
+@Scope用于指定scope作用域的（用在类上）
+
+@PostConstruct用于指定初始化方法（用在方法上）
+
+@PreDestory用于指定销毁方法（用在方法上）
+
+@DependsOn：定义Bean初始化及销毁时的顺序
+
+@Primary：自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常
+
+@Autowired 默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用。如下：
+
+@Autowired @Qualifier\("personDaoBean"\) 存在多个实例配合使用
+
+@Resource默认按名称装配，当找不到与名称匹配的bean才会按类型装配。
+
+@PostConstruct 初始化注解
+
+@PreDestroy 摧毁注解 默认 单例 启动就加载
+
+### [Spring中的这几个注解有什么区别：@Component 、@Repository、@Service、@Controller](http://hollischuang.gitee.io/tobetopjavaer/#/basics/java-basic/annotation-in-spring?id=spring%e4%b8%ad%e7%9a%84%e8%bf%99%e5%87%a0%e4%b8%aa%e6%b3%a8%e8%a7%a3%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab%ef%bc%9acomponent-%e3%80%81repository%e3%80%81service%e3%80%81controller) {#spring中的这几个注解有什么区别：component-、repository、service、controller}
+
+1. @Component指的是组件，
+
+@Controller，@Repository和@Service 注解都被@Component修饰，用于代码中区分表现层，持久层和业务层的组件，代码中组件不好归类时可以使用@Component来标注
+
+1. 当前版本只有区分的作用，未来版本可能会添加更丰富的功能
 
 
 
