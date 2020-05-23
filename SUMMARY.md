@@ -4,9 +4,9 @@
   * [技术路线](ji-zhu-lu-xian.md)
 * [基础知识](ji-chu-zhi-shi.md)
   * [Java中各种关键字](ji-chu-zhi-shi/javazhong-ge-zhong-guan-jian-zi.md)
-    * 常用的Java工具库
   * [泛型](ji-chu-zhi-shi/fan-xing.md)
     * [泛型中K T V E ？ object等的含义](ji-chu-zhi-shi/fan-xing/fan-xing-zhong-k-t-v-e-object-deng-de-han-yi.md)
+    * [常用的Java工具库](ji-chu-zhi-shi/javazhong-ge-zhong-guan-jian-zi/chang-yong-de-java-gong-ju-ku.md)
   * [注解](ji-chu-zhi-shi/zhu-jie.md)
     * [Spring常用注解](ji-chu-zhi-shi/zhu-jie/springchang-yong-zhu-jie.md)
 * [数据结构](shu-ju-jie-gou.md)
