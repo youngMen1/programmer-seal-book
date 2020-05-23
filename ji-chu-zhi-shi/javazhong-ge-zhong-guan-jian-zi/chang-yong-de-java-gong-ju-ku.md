@@ -22,7 +22,7 @@ https://hutool.cn/docs/#/
 https://github.com/liyiorg/weixin-popular
 ```
 
-1.8.pay
+1.8.pay\(Alipay 和 WeChat 的支付 SDK\)
 
 ```
 https://pay.yanda.net.cn/docs/2.x/overview
