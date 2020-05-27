@@ -271,7 +271,7 @@ MutexDemo：
 
 而对AQS来说，只需要同步组件返回的true和false即可，因为AQS会对true和false会有不同的操作，true会认为当前线程获取同步组件成功直接返回，而false的话就AQS也会将当前线程插入同步队列等一系列的方法。总的来说，同步组件通过重写AQS的方法实现自己想要表达的同步语义，而AQS只需要同步组件表达的true和false即可，AQS会针对true和false不同的情况做不同的处理，至于底层实现，可以\[看这篇文章\]\([http://www.jianshu.com/p/cc308d82cc71\)。](http://www.jianshu.com/p/cc308d82cc71%29。)
 
-&gt; 参考文献
+# 参考文献
 
 《java并发编程的艺术》
 
