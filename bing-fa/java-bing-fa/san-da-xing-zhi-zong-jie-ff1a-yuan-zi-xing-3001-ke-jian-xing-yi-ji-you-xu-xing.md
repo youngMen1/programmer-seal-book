@@ -142,7 +142,7 @@ public class Singleton {
 
 &gt; \*\***volatile：具有有序性和可见性**\*\*
 
-&gt; 参考文献
+# 参考文献
 
 《java并发编程的艺术》
 
