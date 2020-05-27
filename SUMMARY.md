@@ -24,8 +24,8 @@
     * [计数排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/ji-shu-pai-xu.md)
     * 桶排序
     * 基数排序
-    * 二分查找
-    * java中的排序工具
+    * [二分查找](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/er-fen-cha-zhao.md)
+    * [java中的排序工具](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/javazhong-de-pai-xu-gong-ju.md)
   * [布隆过滤器](chang-yong-suan-fa/bu-long-guo-lv-qi.md)
   * [时间复杂度](chang-yong-suan-fa/shi-jian-fu-za-du.md)
 * [并发](bing-fa.md)
