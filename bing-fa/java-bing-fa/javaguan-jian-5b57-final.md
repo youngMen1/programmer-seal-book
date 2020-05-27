@@ -327,11 +327,11 @@ JMM可以确保线程C至少能看到写线程A对final引用的对象的成员�
 
 额外增加约束：禁止在构造函数对\*\***一个final修饰的对象的成员域的写入**\*\***与随后将**\*\***这个被构造的对象的引用赋值给引用变量**\*\* 重排序
 
-## 5.final的实现原理 
+## 5.final的实现原理
 
 上面我们提到过，写final域会要求编译器在final域写之后，构造函数返回前插入一个StoreStore屏障。读final域的重排序规则会要求编译器在读final域的操作前插入一个LoadLoad屏障。很有意思的是，如果以X86处理为例，X86不会对写-写重排序，所以\*\***StoreStore屏障可以省略\*\*。由于\*\*不会对有间接依赖性的操作重排序**\*\*，所以在X86处理器中，读final域需要的\*\***LoadLoad屏障也会被省略掉**\*\*。也就是说，\*\***以X86为例的话，对final域的读/写的内存屏障都会被省略**\*\*！具体是否插入还是得看是什么处理器
 
-## 6. 为什么final引用不能从构造函数中“溢出” 
+## 6. 为什么final引用不能从构造函数中“溢出”
 
 这里还有一个比较有意思的问题：上面对final域写重排序规则可以确保我们在使用一个对象引用的时候该对象的final域已经在构造函数被初始化过了。但是这里其实是有一个前提条件的，也就是：\*\***在构造函数，不能让这个被构造的对象被其他线程可见，也就是说该对象引用不能在构造函数中“逸出”**\*\*。以下面的例子来说：
 
@@ -361,9 +361,7 @@ public class FinalReferenceEscapeDemo {
 
 ![](/assets/final域引用可能的执行时序.png)
 
-!\[final域引用可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-e020492056ee1242.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-e020492056ee1242.png?imageMogr2/auto-)
-
-orient/strip%7CimageView2/2/w/1240\)
+!\[final域引用可能的执行时序\]\([http://upload-images.jianshu.io/upload\_images/2615789-e020492056ee1242.png?imageMogr2/auto-](http://upload-images.jianshu.io/upload_images/2615789-e020492056ee1242.png?imageMogr2/auto-)orient/strip%7CimageView2/2/w/1240\)
 
 假设一个线程A执行writer方法另一个线程执行reader方法。因为构造函数中操作1和2之间没有数据依赖性，1和2可以重排序，先执行了2，
 
