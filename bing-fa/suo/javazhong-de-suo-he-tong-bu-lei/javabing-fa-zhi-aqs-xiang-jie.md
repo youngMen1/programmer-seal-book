@@ -21,9 +21,9 @@
 
 它维护了一个volatile int state（代表共享资源）和一个FIFO线程等待队列（多线程争用资源被阻塞时会进入此队列）。这里volatile是核心关键词，具体volatile的语义，在此不述。state的访问方式有三种:
 
-* getState\(\)
-* setState\(\)
-* compareAndSetState\(\)
+* getState()
+* setState()
+* compareAndSetState()
 
 AQS定义两种资源共享方式：Exclusive（独占，只有一个线程能执行，如ReentrantLock）和Share（共享，多个线程可同时执行，如Semaphore/CountDownLatch）。
 
