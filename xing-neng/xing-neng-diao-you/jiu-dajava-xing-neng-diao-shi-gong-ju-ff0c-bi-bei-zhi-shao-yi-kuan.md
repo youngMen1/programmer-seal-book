@@ -22,7 +22,7 @@ JProfiler是由ej-technologies GmbH开发的商业的Java分析工具，主要�
 
 # GC查看器
 
-243a00015cbf5dcceb95.jpg
+![](/static/image/243a00015cbf5dcceb95.jpg)
 
 GC查看器的截图
 
