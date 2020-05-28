@@ -2,7 +2,8 @@
 
 * [《分库分表需要考虑的问题及方案》](https://www.jianshu.com/p/32b3e91aa22c)
 
-  * 中间件： 轻量级：sharding-jdbc、TSharding；重量级：Atlas、MyCAT、Vitess等。
+  * 中间件： 轻量级：sharding-jdbc、TSharding；
+  * 重量级：Atlas、MyCAT、Vitess等。
   * 问题：事务、Join、迁移、扩容、ID、分页等。
   * 事务补偿：对数据进行对帐检查;基于日志进行比对;定期同标准数据来源进行同步等。
   * 分库策略：数值范围；取模；日期等。
