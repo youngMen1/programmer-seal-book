@@ -8,10 +8,10 @@
 
 以下是本文的目录大纲：
 
-1. 1. 概述
-   2. 框架
-   3. 源码详解
-   4. 简单应用
+1. 概述
+2. 框架
+3. 源码详解
+4. 简单应用
 
 手机版可访问：[https://mp.weixin.qq.com/s/eyZyzk8ZzjwzZYN4a4H5YA](https://mp.weixin.qq.com/s/eyZyzk8ZzjwzZYN4a4H5YA)
 
@@ -59,14 +59,14 @@ public final void acquire(int arg) {
 
 函数流程如下：
 
-1. 1. tryAcquire\(\)尝试直接去获取资源，如果成功则直接返回；
-   2. addWaiter\(\)将该线程加入等待队列的尾部，并标记为独占模式；
-   3. acquireQueued\(\)使线程在等待队列中获取资源，一直获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。
-   4. 如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt\(\)，将中断补上。
+1. tryAcquire\(\)尝试直接去获取资源，如果成功则直接返回；
+2. addWaiter\(\)将该线程加入等待队列的尾部，并标记为独占模式；
+3. acquireQueued\(\)使线程在等待队列中获取资源，一直获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。
+4. 如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt\(\)，将中断补上。
 
 这时单凭这4个抽象的函数来看流程还有点朦胧，不要紧，看完接下来的分析后，你就会明白了。就像《大话西游》里唐僧说的：等你明白了舍生取义的道理，你自然会回来和我唱这首歌的。
 
-### 3.1.1 tryAcquire\(int\)
+### 3.1.1 tryAcquire(int)
 
 此方法尝试去获取独占资源。如果获取成功，则直接返回true，否则直接返回false。这也正是tryLock\(\)的语义，还是那句话，当然不仅仅只限于tryLock\(\)。如下是tryAcquire\(\)的源码：
 
@@ -80,7 +80,7 @@ protected boolean tryAcquire(int arg) {
 
 这里之所以没有定义成abstract，是因为独占模式下只用实现tryAcquire-tryRelease，而共享模式下只用实现tryAcquireShared-tryReleaseShared。如果都定义成abstract，那么每个模式也要去实现另一模式下的接口。说到底，Doug Lea还是站在咱们开发者的角度，尽量减少不必要的工作量。
 
-### 3.1.2 addWaiter\(Node\)
+### 3.1.2 addWaiter(Node)
 
 此方法用于将当前线程加入到等待队列的队尾，并返回当前线程所在的结点。还是上源码吧：
 
@@ -111,7 +111,7 @@ private Node addWaiter(Node mode) {
 
 * SIGNAL：值为-1，被标识为该等待唤醒状态的后继结点，当其前继结点的线程释放了同步锁或被取消，将会通知该后继结点的线程执行。说白了，就是处于唤醒状态，只要前继结点释放锁，就会通知标识为SIGNAL状态的后继结点的线程执行。
 
-* CONDITION：值为-2，与Condition相关，该标识的结点处于**等待队列**中，结点的线程等待在Condition上，当其他线程调用了Condition的signal\(\)方法后，CONDITION状态的结点将**从等待队列转移到同步队列中**，等待获取同步锁。
+* CONDITION：值为-2，与Condition相关，该标识的结点处于**等待队列**中，结点的线程等待在Condition上，当其他线程调用了Condition的signal()方法后，CONDITION状态的结点将**从等待队列转移到同步队列中**，等待获取同步锁。
 
 * PROPAGATE：值为-3，与共享模式相关，在共享模式中，该状态标识结点的线程处于可运行状态。
 
@@ -119,7 +119,7 @@ private Node addWaiter(Node mode) {
 
 AQS在判断状态时，通过用waitStatus&gt;0表示取消状态，而waitStatus&lt;0表示有效状态。
 
-#### 3.1.2.1 enq\(Node\)
+#### 3.1.2.1 enq(Node)
 
 此方法用于将node加入队尾。源码如下：
 
@@ -144,9 +144,9 @@ private Node enq(final Node node) {
 
 如果你看过AtomicInteger.getAndIncrement\(\)函数源码，那么相信你一眼便看出这段代码的精华。**CAS自旋volatile变量**，是一种很经典的用法。还不太了解的，自己去百度一下吧。
 
-### 3.1.3 acquireQueued\(Node, int\)
+### 3.1.3 acquireQueued(Node, int)
 
-OK，通过tryAcquire\(\)和addWaiter\(\)，该线程获取资源失败，已经被放入等待队列尾部了。聪明的你立刻应该能想到该线程下一部该干什么了吧：**进入等待状态休息，直到其他线程彻底释放资源后唤醒自己，自己再拿到资源，然后就可以去干自己想干的事了**。没错，就是这样！是不是跟医院排队拿号有点相似~~acquireQueued\(\)就是干这件事：**在等待队列中排队拿号（中间没其它事干可以休息），直到拿到号后再返回**。这个函数非常关键，还是上源码吧：
+OK，通过tryAcquire()和addWaiter()，该线程获取资源失败，已经被放入等待队列尾部了。聪明的你立刻应该能想到该线程下一部该干什么了吧：**进入等待状态休息，直到其他线程彻底释放资源后唤醒自己，自己再拿到资源，然后就可以去干自己想干的事了**。没错，就是这样！是不是跟医院排队拿号有点相似~~acquireQueued()就是干这件事：**在等待队列中排队拿号（中间没其它事干可以休息），直到拿到号后再返回**。这个函数非常关键，还是上源码吧：
 
 ```
 final boolean acquireQueued(final Node node, int arg) {
@@ -177,9 +177,9 @@ final boolean acquireQueued(final Node node, int arg) {
 }
 ```
 
-到这里了，我们先不急着总结acquireQueued\(\)的函数流程，先看看shouldParkAfterFailedAcquire\(\)和parkAndCheckInterrupt\(\)具体干些什么。
+到这里了，我们先不急着总结acquireQueued()的函数流程，先看看shouldParkAfterFailedAcquire()和parkAndCheckInterrupt()具体干些什么。
 
-#### 3.1.3.1 shouldParkAfterFailedAcquire\(Node, Node\)
+#### 3.1.3.1 shouldParkAfterFailedAcquire(Node, Node)
 
 此方法主要用于检查状态，看看自己是否真的可以去休息了（进入waiting状态，如果线程状态转换不熟，可以参考本人上一篇写的[Thread详解](http://www.cnblogs.com/waterystone/p/4920007.html)），万一队列前边的线程都放弃了只是瞎站着，那也说不定，对吧！
 
@@ -250,7 +250,7 @@ public final void acquire(int arg) {
 
 由于此函数是重中之重，我再用流程图总结一下：
 
-721070-20151102145743461-623794326.png
+![](/static/image/721070-20151102145743461-623794326.png)
 
 至此，acquire\(\)的流程终于算是告一段落了。这也就是ReentrantLock.lock\(\)的流程，不信你去看其lock\(\)源码吧，整个函数就是一条acquire\(1\)！！！
 
