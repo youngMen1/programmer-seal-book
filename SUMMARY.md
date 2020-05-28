@@ -338,9 +338,9 @@
       * [Raft](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/raft.md)
         * [Raft 为什么是更易理解的分布式一致性算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/raft/raft-wei-shi-yao-shi-geng-yi-li-jie-de-fen-bu-shi-yi-zhi-xing-suan-fa.md)
       * [Gossip](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/gossip.md)
-        * Gossip算法
+        * [Gossip算法](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/gossip/gossipsuan-fa.md)
       * [两阶段提交、多阶段提交](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/liang-jie-duan-ti-jiao-3001-duo-jie-duan-ti-jiao.md)
-        * 关于分布式事务、两阶段提交协议、三阶提交协议
+        * [关于分布式事务、两阶段提交协议、三阶提交协议](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/liang-jie-duan-ti-jiao-3001-duo-jie-duan-ti-jiao/guan-yu-fen-bu-shi-shi-wu-3001-liang-jie-duan-ti-jiao-xie-yi-3001-san-jie-ti-jiao-xie-yi.md)
       * [幂等](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/mi-deng.md)
         * [分布式系统---幂等性设计](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/mi-deng/fen-bu-shi-xi-7edf-mi-deng-xing-she-ji.md)
       * [分布式一致方案](fen-bu-shi-she-ji/fen-bu-shi-yi-zhi/fen-bu-shi-yi-zhi-xing-suan-fa/fen-bu-shi-yi-zhi-fang-an.md)
