@@ -313,7 +313,7 @@
       * [MySQL Cluster 方式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi/mysql-cluster-fang-shi.md)
     * [分片模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi.md)
       * [分库分表需要考虑的问题及方案](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi/fen-ku-fen-biao-xu-yao-kao-lv-de-wen-ti-ji-fang-an.md)
-      * MySql分表和表分区详解
+      * [MySql分表和表分区详解](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi/mysqlfen-biao-he-biao-fen-qu-xiang-jie.md)
   * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
     * [服务注册与发现](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian.md)
       * [​永不失联！如何实现微服务架构中的服务发现？](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian/200b-yong-bu-shi-lian-ff01-ru-he-shi-xian-wei-fu-wu-jia-gou-zhong-de-fu-wu-fa-xian-ff1f.md)
