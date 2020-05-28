@@ -8,9 +8,9 @@
 
 可能出乎很多人意料之外的一个事实是，微服务很多核心理念其实在半个世纪前的一篇文章中就被阐述过了，而且这篇文章中的很多论点在软件开发飞速发展的这半个世纪中竟然一再被验证，这就是[康威定律（Conway's Law）](https://yq.aliyun.com/go/articleRenderRedirect?url=http%3A%2F%2Fwww.melconway.com%2FHome%2FConways_Law.html)。
 
-3fa834ea8c880a97d00f187f67962a8218b16f22.png
+![](/static/image/3fa834ea8c880a97d00f187f67962a8218b16f22.png)
 
-ad8ba09ed2350c2a8c2f067d80197e74aefcef8d.png
+![](/static/image/ad8ba09ed2350c2a8c2f067d80197e74aefcef8d.png)
 
 在康威的这篇文章中，最有名的一句话就是：
 
@@ -55,7 +55,7 @@ Mike从他的角度归纳这篇论文中的其他一些核心观点，如下：
 
 组织的沟通和系统设计之间的紧密联系，在很多别的领域有类似的阐述。对于复杂的系统，聊设计就离不开聊人与人的沟通，解决好人与人的沟通问题，才能有一个好的系统设计。相信几乎每个程序员都读过的《人月神话》（1975年，感觉都是老古董了，经典的就是经得起时间考验）里面许多观点都和这句话有异曲同工之妙。
 
-fb215be9fe9232ccda1fc8817b4af6e8da6abcd0.png
+![](/static/image/fb215be9fe9232ccda1fc8817b4af6e8da6abcd0.png)
 
 比如《人月神话》中最著名的一句话就是
 
@@ -77,7 +77,7 @@ Mike还举了一个非常有意思的理论，叫“Dunbar Number”，这是一
 * 酒肉（close）朋友: 35
 * 照面（casual）朋友: 150
 
-a63beac73c8d217c71aba36c4a6e270a3fa18603.png
+![](/static/image/a63beac73c8d217c71aba36c4a6e270a3fa18603.png)
 
 #### 一口气吃不成胖子，先搞定能搞定的 {#4}
 
@@ -88,7 +88,7 @@ a63beac73c8d217c71aba36c4a6e270a3fa18603.png
 
 Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effectiveness Trade Offs》 一书中解释了类似的论点。
 
-654425008b3a53442a77f32068302b44b51a32da.png
+![](/static/image/654425008b3a53442a77f32068302b44b51a32da.png)
 
 系统越做越复杂，功能越来越多，外部市场的竞争越来越剧烈，投资人的期待越来越高。但人的智力是有上限的，即使再牛逼的人，融到钱再多也不一定招到足够多合适的人。对于一个巨复杂的系统，我们永远无法考虑周全。Eric认为，这个时候最好的解决办法竟然是——“破罐子破摔”。
 
@@ -103,7 +103,7 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 
 下面的图很好的解释了这个过程：
 
-a7fab1b350cd8c03d5e9ddded183c7bda114c326.png
+![](/static/image/a7fab1b350cd8c03d5e9ddded183c7bda114c326.png)
 
 听着很耳熟不是吗？这不就是**持续集成**和敏捷开发吗？的确就是。
 
@@ -116,15 +116,15 @@ a7fab1b350cd8c03d5e9ddded183c7bda114c326.png
   * There is a homomorphism from the linear graph of a system to the linear graph of its design organization
   * 线型系统和线型组织架构间有潜在的异质同态特性
 
-  3810f88633a55bdf59bb7757cedc827ab425538e.png
+  ![](/static/image/3810f88633a55bdf59bb7757cedc827ab425538e.png)
 
 这是康威第一定律组织和设计间内在关系的一个具体应用。更直白的说，你想要什么样的系统，就搭建什么样的团队。如果你的团队分成前端团队，Java后台开发团队，DBA团队，运维团队，你的系统就会长成下面的样子：
 
-f4c2d4a8f8390ca6be19b54a524c8272aced3e34.png
+![](/static/image/f4c2d4a8f8390ca6be19b54a524c8272aced3e34.png)
 
 相反，如果你的系统是按照业务边界划分的，大家按照一个业务目标去把自己的模块做出小系统，小产品的话，你的大系统就会长成下面的样子，即微服务的架构
 
-c827db7a12d730140d4c0e6947535e168902a73e.png
+![](/static/image/c827db7a12d730140d4c0e6947535e168902a73e.png)
 
 微服务的理念团队间应该是
 
