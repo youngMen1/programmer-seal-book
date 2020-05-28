@@ -204,5 +204,5 @@ String get(final String key) {
 
 **双11万亿流量下的分布式缓存：**[https://yq.aliyun.com/articles/290865](https://yq.aliyun.com/articles/290865)
 
-https://blog.csdn.net/zhanshenzhi2008/article/details/105181686?utm\_source=app
+**Redis缓存雪崩、缓存穿透、缓存击穿：**[https://blog.csdn.net/zhanshenzhi2008/article/details/105181686?utm\_source=app](https://blog.csdn.net/zhanshenzhi2008/article/details/105181686?utm_source=app)
 
