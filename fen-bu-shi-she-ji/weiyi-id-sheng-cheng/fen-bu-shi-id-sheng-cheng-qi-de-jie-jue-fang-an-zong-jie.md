@@ -71,16 +71,11 @@ https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md
 
 Leaf是美团开源的分布式ID生成器，能保证全局唯一性、趋势递增、单调递增、信息安全，里面也提到了几种分布式方案的对比，但也需要依赖关系数据库、Zookeeper等中间件。具体可以参考官网说明：
 
+[Leaf——美团点评分布式ID生成系统](https://tech.meituan.com/2017/04/21/mt-leaf.html)
+
 ```
 https://tech.meituan.com/2017/04/21/mt-leaf.html
 ```
-
-
-
-  
-
-
-
 
 ## 参考
 
