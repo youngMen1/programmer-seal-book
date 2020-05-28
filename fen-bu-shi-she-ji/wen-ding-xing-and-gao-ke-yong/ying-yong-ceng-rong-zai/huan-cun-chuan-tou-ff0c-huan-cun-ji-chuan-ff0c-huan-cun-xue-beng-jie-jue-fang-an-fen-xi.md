@@ -98,7 +98,7 @@ if (memcache.get(key) == null) {
 }
 ```
 
-#### 2."提前"使用互斥锁\(mutex key\)：
+#### 2."提前"使用互斥锁(mutex key)：
 
 在value内部设置1个超时值\(timeout1\), timeout1比实际的memcache timeout\(timeout2\)小。当从cache读取到timeout1发现它已经过期时候，马上延长timeout1并重新设置到cache。然后再从数据库加载数据并设置到cache中。伪代码如下：
 
