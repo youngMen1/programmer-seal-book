@@ -77,7 +77,7 @@ Leaf是美团开源的分布式ID生成器，能保证全局唯一性、趋势�
 https://tech.meituan.com/2017/04/21/mt-leaf.html
 ```
 
-## 参考
+## 2.参考
 
 分布式ID生成器的解决方案总结
 
