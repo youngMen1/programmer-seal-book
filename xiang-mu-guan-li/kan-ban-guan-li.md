@@ -99,11 +99,11 @@
 
 既然有实体工具，当然也有软件化的工具。国内外的项目管理工具非常多，但是能实现敏捷开发的工具却不多，而能像看板一样展示的工具更不多。以下介绍几款我接触到的看板工具：
 
-\* Trello：有网页端也有移动端，网址是 [https://trello.com/](https://trello.com/)
+*  Trello：有网页端也有移动端，网址是 [https://trello.com/](https://trello.com/)
 
-\* WeKan：参考Trello实现的开源版。与Trello最大的区别在于每个任务没有Deadline，且没有移动端。网址 [https://wekan.io/](https://wekan.io/)
+* WeKan：参考Trello实现的开源版。与Trello最大的区别在于每个任务没有Deadline，且没有移动端。网址 [https://wekan.io/](https://wekan.io/)
 
-\* leangoo：国人开发，没有使用过，有兴趣的小伙伴们可以访问网址 [https://www.leangoo.com/](https://www.leangoo.com/) 试用
+* leangoo：国人开发，没有使用过，有兴趣的小伙伴们可以访问网址 [https://www.leangoo.com/](https://www.leangoo.com/) 试用
 
 拿Trello操作举例来说，跟实体白板的操作基本一致，只是在某些元素名称上有些出入，名称对比如下：
 
