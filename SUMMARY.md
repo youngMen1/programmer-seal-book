@@ -267,7 +267,7 @@
     * [Hash Dos](an-quan/web-an-quan/hash-dos.md)
     * [脚本注入](an-quan/web-an-quan/jiao-ben-zhu-ru.md)
       * [上传文件漏洞原理及防范](an-quan/web-an-quan/jiao-ben-zhu-ru/shang-chuan-wen-jian-lou-dong-yuan-li-ji-fang-fan.md)
-    * 漏洞扫描工具
+    * [漏洞扫描工具](an-quan/web-an-quan/lou-dong-sao-miao-gong-ju.md)
     * [验证码](an-quan/web-an-quan/yan-zheng-ma.md)
     * [DDoS 防范](an-quan/web-an-quan/ddos-fang-fan.md)
   * [用户隐私信息保护](an-quan/yong-hu-yin-si-xin-xi-bao-hu.md)
