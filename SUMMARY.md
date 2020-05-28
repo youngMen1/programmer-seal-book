@@ -299,8 +299,8 @@
       * [缓存击穿、失效以及热点key问题](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ying-yong-ceng-rong-zai/huan-cun-ji-chuan-3001-shi-xiao-yi-ji-re-dian-key-wen-ti.md)
     * [跨机房容灾](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai.md)
       * [“异地多活”多机房部署经验谈](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai/201c-yi-di-duo-huo-201d-duo-ji-fang-bu-shu-jing-yan-tan.md)
-      * 异地多活（异地双活）实践经验
-      * 容灾技术及建设经验介绍
+      * [异地多活（异地双活）实践经验](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai/yi-di-duo-huo-ff08-yi-di-shuang-huo-ff09-shi-jian-jing-yan.md)
+      * [容灾技术及建设经验介绍](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/kua-ji-fang-rong-zai/rong-zai-ji-zhu-ji-jian-she-jing-yan-jie-shao.md)
     * [容灾演练流程](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/rong-zai-yan-lian-liu-cheng.md)
       * [依赖治理、灰度发布、故障演练，阿里电商故障演练系统的设计与实战经验](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/rong-zai-yan-lian-liu-cheng/yi-lai-zhi-li-3001-hui-du-fa-bu-3001-gu-zhang-yan-lian-ff0c-a-li-dian-shang-gu-zhang-yan-lian-xi-tong-de-she-ji-yu-shi-zhan-jing-yan.md)
     * [平滑启动](fen-bu-shi-she-ji/wen-ding-xing-and-gao-ke-yong/ping-hua-qi-dong.md)
