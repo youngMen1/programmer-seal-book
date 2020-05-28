@@ -219,14 +219,14 @@ private final boolean parkAndCheckInterrupt() {
  }
 ```
 
-park\(\)会让当前线程进入waiting状态。在此状态下，有两种途径可以唤醒该线程：1）被unpark\(\)；2）被interrupt\(\)。（再说一句，如果线程状态转换不熟，可以参考本人写的[Thread详解](http://www.cnblogs.com/waterystone/p/4920007.html)）。需要注意的是，Thread.interrupted\(\)会清除当前线程的中断标记位。
+park()会让当前线程进入waiting状态。在此状态下，有两种途径可以唤醒该线程：1）被unpark()；2）被interrupt()。（再说一句，如果线程状态转换不熟，可以参考本人写的[Thread详解](http://www.cnblogs.com/waterystone/p/4920007.html)）。需要注意的是，Thread.interrupted()会清除当前线程的中断标记位。
 
 #### 3.1.3.3 小结
 
-OK，看了shouldParkAfterFailedAcquire\(\)和parkAndCheckInterrupt\(\)，现在让我们再回到acquireQueued\(\)，总结下该函数的具体流程：
+OK，看了shouldParkAfterFailedAcquire()和parkAndCheckInterrupt()，现在让我们再回到acquireQueued()，总结下该函数的具体流程：
 
 1. 结点进入队尾后，检查状态，找到安全休息点；
-2. 调用park\(\)进入waiting状态，等待unpark\(\)或interrupt\(\)唤醒自己；
+2. 调用park()进入waiting状态，等待unpark()或interrupt()唤醒自己；
 3. 被唤醒后，看自己是不是有资格能拿到号。如果拿到，head指向当前结点，并返回从入队到拿到号的整个过程中是否被中断过；如果没拿到，继续流程1。
 
 ### 3.1.4 小结
@@ -243,20 +243,20 @@ public final void acquire(int arg) {
 
 再来总结下它的流程吧：
 
-1. 调用自定义同步器的tryAcquire\(\)尝试直接去获取资源，如果成功则直接返回；
-2. 没成功，则addWaiter\(\)将该线程加入等待队列的尾部，并标记为独占模式；
-3. acquireQueued\(\)使线程在等待队列中休息，有机会时（轮到自己，会被unpark\(\)）会去尝试获取资源。获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。
-4. 如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt\(\)，将中断补上。
+1. 调用自定义同步器的tryAcquire()尝试直接去获取资源，如果成功则直接返回；
+2. 没成功，则addWaiter()将该线程加入等待队列的尾部，并标记为独占模式；
+3. acquireQueued()使线程在等待队列中休息，有机会时（轮到自己，会被unpark()）会去尝试获取资源。获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。
+4. 如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt()，将中断补上。
 
 由于此函数是重中之重，我再用流程图总结一下：
 
 ![](/static/image/721070-20151102145743461-623794326.png)
 
-至此，acquire\(\)的流程终于算是告一段落了。这也就是ReentrantLock.lock\(\)的流程，不信你去看其lock\(\)源码吧，整个函数就是一条acquire\(1\)！！！
+至此，acquire()的流程终于算是告一段落了。这也就是ReentrantLock.lock()的流程，不信你去看其lock()源码吧，整个函数就是一条acquire(1)！！！
 
-## 3.2 release\(int\)
+## 3.2 release(int)
 
-上一小节已经把acquire\(\)说完了，这一小节就来讲讲它的反操作release\(\)吧。此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。这也正是unlock\(\)的语义，当然不仅仅只限于unlock\(\)。下面是release\(\)的源码：
+上一小节已经把acquire()说完了，这一小节就来讲讲它的反操作release()吧。此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。这也正是unlock()的语义，当然不仅仅只限于unlock()。下面是release()的源码：
 
 ```
 public final boolean release(int arg) {
@@ -270,11 +270,11 @@ public final boolean release(int arg) {
 }
 ```
 
-逻辑并不复杂。它调用tryRelease\(\)来释放资源。有一点需要注意的是，**它是根据tryRelease\(\)的返回值来判断该线程是否已经完成释放掉资源了！所以自定义同步器在设计tryRelease\(\)的时候要明确这一点！！**
+逻辑并不复杂。它调用tryRelease()来释放资源。有一点需要注意的是，**它是根据tryRelease()的返回值来判断该线程是否已经完成释放掉资源了！所以自定义同步器在设计tryRelease()的时候要明确这一点！！**
 
-### 3.2.1 tryRelease\(int\)
+### 3.2.1 tryRelease(int)
 
-此方法尝试去释放指定量的资源。下面是tryRelease\(\)的源码：
+此方法尝试去释放指定量的资源。下面是tryRelease()的源码：
 
 ```
 protected boolean tryRelease(int arg) {
@@ -318,16 +318,16 @@ release\(\)是独占模式下线程释放共享资源的顶层入口。它会释
 此方法是共享模式下线程获取共享资源的顶层入口。它会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止，整个过程忽略中断。下面是acquireShared\(\)的源码：
 
 ```
-1 public final void acquireShared(int arg) {
-2     if (tryAcquireShared(arg) < 0)
-3         doAcquireShared(arg);
-4 }
+public final void acquireShared(int arg) {
+     if (tryAcquireShared(arg) < 0)
+         doAcquireShared(arg);
+ }
 ```
 
 这里tryAcquireShared\(\)依然需要自定义同步器去实现。但是AQS已经把其返回值的语义定义好了：负值代表获取失败；0代表获取成功，但没有剩余资源；正数表示获取成功，还有剩余资源，其他线程还可以去获取。所以这里acquireShared\(\)的流程就是：
 
-1. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
-   2. 失败则通过doAcquireShared\(\)进入等待队列，直到获取到资源为止才返回。
+1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
+2. 失败则通过doAcquireShared\(\)进入等待队列，直到获取到资源为止才返回。
 
 ### 3.3.1 doAcquireShared\(int\)
 
@@ -392,9 +392,9 @@ doReleaseShared\(\)我们留着下一小节的releaseShared\(\)里来讲。
 
 OK，至此，acquireShared\(\)也要告一段落了。让我们再梳理一下它的流程：
 
-1. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
+1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
 
-   2. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
+2. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
 
 其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
 
