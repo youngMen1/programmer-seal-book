@@ -1,6 +1,6 @@
 # 传统事务与柔性事务
 
-4098122-b2201aecff0ac46f.webp
+![](/static/image/4098122-b2201aecff0ac46f.webp)
 
 柔性事务之前我们先来回归传统事务
 
