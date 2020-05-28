@@ -309,10 +309,10 @@
       * [Mysql主从方案的实现](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi/mysqlzhu-cong-fang-an-de-shi-xian.md)
       * 搭建MySQL主从复制经典架构
       * Haproxy+多台MySQL从服务器\(Slave\) 实现负载均衡
-      * DRBD+Heartbeat+Mysql高可用读写分离架构
-      * MySQL Cluster 方式
+      * [DRBD+Heartbeat+Mysql高可用读写分离架构](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi/drbd+heartbeat+mysqlgao-ke-yong-du-xie-fen-li-jia-gou.md)
+      * [MySQL Cluster 方式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/du-xie-fen-li-mo-shi/mysql-cluster-fang-shi.md)
     * [分片模式](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi.md)
-      * 分库分表需要考虑的问题及方案
+      * [分库分表需要考虑的问题及方案](fen-bu-shi-she-ji/shu-ju-ku-kuo-zhan/fen-pian-mo-shi/fen-ku-fen-biao-xu-yao-kao-lv-de-wen-ti-ji-fang-an.md)
       * MySql分表和表分区详解
   * [服务治理](fen-bu-shi-she-ji/fu-wu-zhi-li.md)
     * [服务注册与发现](fen-bu-shi-she-ji/fu-wu-zhi-li/fu-wu-zhu-ce-yu-fa-xian.md)
