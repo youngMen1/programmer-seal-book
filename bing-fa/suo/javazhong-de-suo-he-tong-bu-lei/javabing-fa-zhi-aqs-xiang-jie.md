@@ -13,15 +13,11 @@
    3. 源码详解
    4. 简单应用
 
-若有不正之处，请谅解和批评指正，不胜感激。
-
-请尊重作者劳动成果，转载请标明原文链接：[http://www.cnblogs.com/waterystone/p/4920797.html](http://www.cnblogs.com/waterystone/p/4920797.html)
-
 手机版可访问：[https://mp.weixin.qq.com/s/eyZyzk8ZzjwzZYN4a4H5YA](https://mp.weixin.qq.com/s/eyZyzk8ZzjwzZYN4a4H5YA)
 
 # 二、框架
 
-721070-20170504110246211-10684485.png
+![](/static/image/721070-20170504110246211-10684485.png)
 
 它维护了一个volatile int state（代表共享资源）和一个FIFO线程等待队列（多线程争用资源被阻塞时会进入此队列）。这里volatile是核心关键词，具体volatile的语义，在此不述。state的访问方式有三种:
 
@@ -398,9 +394,9 @@ OK，至此，acquireShared\(\)也要告一段落了。让我们再梳理一下�
 
 1. 1. tryAcquireShared\(\)尝试获取资源，成功则直接返回；
 
-   1. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
+   2. 失败则通过doAcquireShared\(\)进入等待队列park\(\)，直到被unpark\(\)/interrupt\(\)并成功获取到资源才返回。整个等待过程也是忽略中断的。
 
-　　其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
+其实跟acquire\(\)的流程大同小异，只不过多了个**自己拿到资源后，还会去唤醒后继队友的操作（这才是共享嘛）**。
 
 ## 3.4 releaseShared\(\)
 
