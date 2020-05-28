@@ -354,7 +354,6 @@
     * [说说分布式文件存储系统-基本架构](fen-bu-shi-she-ji/fen-bu-shi-wen-jian-xi-tong/shuo-shuo-fen-bu-shi-wen-jian-cun-chu-xi-7edf-ji-ben-jia-gou.md)
     * [各种分布式文件系统的比较](fen-bu-shi-she-ji/fen-bu-shi-wen-jian-xi-tong/ge-zhong-fen-bu-shi-wen-jian-xi-tong-de-bi-jiao.md)
   * [唯一ID 生成](fen-bu-shi-she-ji/weiyi-id-sheng-cheng.md)
-    * [全局唯一ID](fen-bu-shi-she-ji/weiyi-id-sheng-cheng/quan-ju-wei-yi-id.md)
     * [分布式ID生成器的解决方案总结](fen-bu-shi-she-ji/weiyi-id-sheng-cheng/fen-bu-shi-id-sheng-cheng-qi-de-jie-jue-fang-an-zong-jie.md)
   * [一致性Hash算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa.md)
     * [一致性哈希算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa/yi-zhi-xing-ha-xi-suan-fa.md)
