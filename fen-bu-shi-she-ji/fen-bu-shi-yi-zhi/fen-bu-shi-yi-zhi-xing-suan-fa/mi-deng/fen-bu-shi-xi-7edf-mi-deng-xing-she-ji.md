@@ -10,7 +10,6 @@ WEB资源或API方法的幂等性是指一次和多次请求某一个资源应�
 
 ```
 // 取出要跟新的对象，带有版本versoin
-
 select * from tablename where condition=#condition# 
 update tableName set name=#name#,version=version+1 where version=#version#
 ```
