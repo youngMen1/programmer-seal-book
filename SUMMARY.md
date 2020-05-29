@@ -117,7 +117,7 @@
   * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
     * Dapper，大规模分布式系统的跟踪系统
   * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
-    * 流量统计的基础：埋点
+    * [流量统计的基础：埋点](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi/liu-liang-tong-ji-de-ji-chu-ff1a-mai-dian.md)
     * APP埋点常用的统计工具、埋点目标和埋点内容
     * 美团点评前端无痕埋点实践
   * [持续集成\(CI/CD\)](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chi-xu-ji-621028-ci-cd.md)
