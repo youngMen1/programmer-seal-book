@@ -8,7 +8,7 @@ Spring 的 IOC 其实很复杂，因为它支持的情况，种类，以及开�
 
 # 参考
 
-[https://mp.weixin.qq.com/s/kcpPshj3nj3Sd-a-qVJRWg](https://mp.weixin.qq.com/s/kcpPshj3nj3Sd-a-qVJRWg)
+再战 Spring IOC：[https://mp.weixin.qq.com/s/kcpPshj3nj3Sd-a-qVJRWg](https://mp.weixin.qq.com/s/kcpPshj3nj3Sd-a-qVJRWg)
 
 卧槽！原来 IOC 这么简单：[https://mp.weixin.qq.com/s/0lfsfxE3mD2rI0fo5E7qkg](https://mp.weixin.qq.com/s/0lfsfxE3mD2rI0fo5E7qkg)
 
