@@ -107,6 +107,13 @@
   * [Linux](cao-zuo-xi-tong/linux.md)
 * [运维 & 统计 & 技术支持](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi.md)
   * [常规监控](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong.md)
+    * 腾讯业务系统监控的修炼之路
+    * 开源还是商用？十大云运维监控工具横评
+    * 监控报警系统搭建及二次开发经验
+    * 常用命令行监控工具
+    * 20个命令行工具监控 Linux 系统性能
+    * JVM性能调优监控工具jps、jstack、jmap、jhat、jstat、hprof使用详解
+    * 命令行监控工具
   * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
     * Dapper，大规模分布式系统的跟踪系统
   * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
