@@ -1,8 +1,6 @@
 ## [利用zookeeper实现分布式leader节点选举](https://blog.csdn.net/johnson_moon/article/details/78809995)
 
-```
-依赖原理
-```
+## 依赖原理
 
 在ZK中添加基本节点，路径程序定义，节点类型为持久节点\(PERSISTENT\)。  
 对需要竞选leader的每个进程，在ZK中分别添加基本节点的子节点，类型为临时自编号节点\(EPHEMERAL\_SEQUENTIAL\)，并保存创建返回的实际节点路径。  
