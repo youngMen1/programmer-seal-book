@@ -8,7 +8,7 @@
 
 # 2.合作商
 
-http://www.pinchain.com/article/174186
+[Travelport:全球首家提供NDC内容GDS运营商](http://www.pinchain.com/article/174186)：
 
-
+[http://www.pinchain.com/article/174186](http://www.pinchain.com/article/174186)
 
