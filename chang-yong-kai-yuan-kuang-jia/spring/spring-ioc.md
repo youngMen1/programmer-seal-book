@@ -1,7 +1,6 @@
-## Spring IOC {#activity-name}
+# Spring IOC {#activity-name}
 
-前段时间发布了一个 Spring IOC 相关的文章，[原来 IOC 这么简单](http://mp.weixin.qq.com/s?__biz=Mzg2MjEwMjI1Mg==&mid=2247494025&idx=1&sn=222a31fdfe0206d24049ee9a7dbb5874&chksm=ce0e5e0af979d71cae6433729f2e8d57dd75d612f4606e9a8acebeb9d53858dad4acd3cceb8d&scene=21#wechat_redirect)，反响不错。今天再战 Spring IOC ，根据 Spring 源码写一个带有三级缓存的 IOC。  
-
+前段时间发布了一个 Spring IOC 相关的文章，[原来 IOC 这么简单](http://mp.weixin.qq.com/s?__biz=Mzg2MjEwMjI1Mg==&mid=2247494025&idx=1&sn=222a31fdfe0206d24049ee9a7dbb5874&chksm=ce0e5e0af979d71cae6433729f2e8d57dd75d612f4606e9a8acebeb9d53858dad4acd3cceb8d&scene=21#wechat_redirect)，反响不错。今天再战 Spring IOC ，根据 Spring 源码写一个带有三级缓存的 IOC。
 
 ## **Spring 中的 IOC**
 
