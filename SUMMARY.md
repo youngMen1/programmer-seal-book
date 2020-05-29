@@ -112,8 +112,8 @@
     * 监控报警系统搭建及二次开发经验
     * 常用命令行监控工具
     * 20个命令行工具监控 Linux 系统性能
-    * JVM性能调优监控工具jps、jstack、jmap、jhat、jstat、hprof使用详解
-    * 命令行监控工具
+    * [JVM性能调优监控工具jps、jstack、jmap、jhat、jstat、hprof使用详解](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong/jvmxing-neng-diao-you-jian-kong-gong-ju-jps-jstack-jmap-jhat-jstat-hprof-shi-yong-xiang-jie.md)
+    * [命令行监控工具](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong/ming-ling-xing-jian-kong-gong-ju.md)
   * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
     * Dapper，大规模分布式系统的跟踪系统
   * [统计分析](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/tong-ji-fen-xi.md)
