@@ -104,11 +104,7 @@
 
 **核心思想：**
 
-eBay 的架构师Dan Pritchett，曾在一篇解释BASE 原理的论文《
-
-[Base：An Acid Alternative](https://queue.acm.org/detail.cfm?id=1394128)
-
-》中提到一个eBay 分布式系统一致性问题的解决方案。它的核心思想是将需要分布式处理的任务通过消息或者日志的方式来异步执行，消息或日志可以存到本地文件、数据库或消息队列，再通过业务规则进行失败重试，它要求各服务的接口是幂等的。
+eBay 的架构师Dan Pritchett，曾在一篇解释BASE 原理的论文《[Base：An Acid Alternative](https://queue.acm.org/detail.cfm?id=1394128)》中提到一个eBay 分布式系统一致性问题的解决方案。它的核心思想是将需要分布式处理的任务通过消息或者日志的方式来异步执行，消息或日志可以存到本地文件、数据库或消息队列，再通过业务规则进行失败重试，它要求各服务的接口是幂等的。
 
 **本地消息表**
 
