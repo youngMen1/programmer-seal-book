@@ -90,13 +90,31 @@ $r = mysql_query("SELECT company_name FROM users
 ```
 // 千万不要这样做：
 $r = mysql_query("SELECT username FROM user ORDER BY RAND() LIMIT 1");
- 
+
 // 这要会更好：
 $r = mysql_query("SELECT count(*) FROM user");
 $d = mysql_fetch_row($r);
 $rand = mt_rand(0,$d[0] - 1);
- 
+
 $r = mysql_query("SELECT username FROM user LIMIT $rand, 1");
+```
+
+#### 7. 避免 SELECT \*
+
+从数据库里读出越多的数据，那么查询就会变得越慢。并且，如果你的数据库服务器和WEB服务器是两台独立的服务器的话，这还会增加网络传输的负载。
+
+所以，你应该养成一个需要什么就取什么的好的习惯。
+
+```
+// 不推荐
+$r = mysql_query("SELECT * FROM user WHERE user_id = 1");
+$d = mysql_fetch_assoc($r);
+echo "Welcome {$d['username']}";
+ 
+// 推荐
+$r = mysql_query("SELECT username FROM user WHERE user_id = 1");
+$d = mysql_fetch_assoc($r);
+echo "Welcome {$d['username']}";
 ```
 
 
