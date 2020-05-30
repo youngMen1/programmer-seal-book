@@ -208,11 +208,11 @@ SELECT user.id,user.nick_name FROM(SELECT user_idFROM user_groupWHERE user_group
 
 合理设计并利用索引
 
-B-Tree索引
+### 1.6.1.B-Tree索引
 
 一般来说，MySQL中的B-Tree索引的物理文件大多都是以BalanceTree的结构来存储的，也就是所有实际需要的数据都存放于Tree的LeafNode，而且到任何一个LeafNode的最短路径的长度都是完全相同的，所以我们大家都称之为B-Tree索引当然，可能各种数据库（或MySQL的各种存储引擎）在存放自己的B-Tree索引的时候会对存储结构稍作改造。如Innodb存储引擎的B-Tree索引实际使用的存储结构实际上是B+Tree，也就是在B-Tree数据结构的基础上做了很小的改造，在每一个LeafNode上面出了存放索引键的相关信息之外，还存储了指向与该LeafNode相邻的后一个LeafNode的指针信息，这主要是为了加快检索多个相邻LeafNode的效率考虑。
 
-2）Hash索引
+### 1.6.2.Hash索引
 
 Hash索引在MySQL中使用的并不是很多，目前主要是Memory存储引擎使用，而且在Memory存储引擎中将Hash索引作为默认的索引类型。所谓Hash索引，实际上就是通过一定的Hash算法，将需要索引的键值进行Hash运算，然后将得到的Hash值存入一个Hash表中。然后每次需要检索的时候，都会将检索条件进行相同算法的Hash运算，然后再和Hash表中的Hash值进行比较并得出相应的信息。
 
@@ -226,7 +226,7 @@ Hash索引在任何时候都不能避免表扫面；
 
 Hash索引遇到大量Hash值相等的情况后性能并不一定就会比B-Tree索引高；
 
-3）Full-text索引
+### 1.6.3.Full-text索引
 
 Full-text索引也就是我们常说的全文索引，目前在MySQL中仅有MyISAM存储引擎支持，而且也并不是所有的数据类型都支持全文索引。目前来说，仅有CHAR，VARCHAR和TEXT这三种数据类型的列可以建Full-text索引。
 
