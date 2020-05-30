@@ -3,10 +3,8 @@
 MySQL 提供了一个 EXPLAIN 命令, 它可以对 SELECT 语句进行分析, 并输出 SELECT 执行的详细信息, 以供开发人员针对性优化.  
 EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以了, 例如:
 
-```
-EXPLAIN SELECT * from user_info WHERE id < 300;
-EXPLAIN SELECT * FROM `process_info` where id='1e2c4584-0043-487d-86ba-9d2b907e4771';
-```
+    EXPLAIN SELECT * from user_info WHERE id < 300;
+    EXPLAIN SELECT * FROM `process_info` where id='1e2c4584-0043-487d-86ba-9d2b907e4771';
 
 ![](/static/image/微信截图_20200530173918.png)
 
@@ -50,7 +48,17 @@ EXPLAIN SELECT * FROM `process_info` where id='1e2c4584-0043-487d-86ba-9d2b907e4
 
 * SUBQUERY, 子查询中的第一个 SELECT
 
-* DEPENDENT SUBQUERY: 子查询中的第一个 SELECT, 取决于外面的查询. 即子查询依赖于外层查询的结果.
+* DEPENDENT SUBQUERY: 子查询中的第一个 SELECT, 取决于外面的查询. 即子查询依赖于外层查询的结果
+
+### table {#item-3-2}
+
+表示查询涉及的表或衍生表
+
+### type {#item-3-3}
+
+`type`字段比较重要, 它提供了判断查询是否高效的重要依据依据. 通过`type`字段, 我们判断此次查询是`全表扫描`还是`索引扫描`等.
+
+
 
 # 2.参考
 
