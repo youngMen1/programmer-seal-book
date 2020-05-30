@@ -99,9 +99,11 @@ select from user where passwd=?
 
 不能命中索引，不满足复合索引最左前缀
 
+#### 1.2.4.使用 ENUM 而不是字符串
+
+
+
 ## 1.3.小众但有用的 SQL 实践
-
-
 
 
 
