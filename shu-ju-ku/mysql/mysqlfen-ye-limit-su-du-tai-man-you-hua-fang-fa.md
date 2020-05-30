@@ -56,21 +56,19 @@ left join wl_tagindex b on a.id=b.id
 
 当一个数据库表过于庞大，LIMIT offset, length中的offset值过大，则SQL查询语句会非常缓慢，你需增加order by，**并且order by字段需要建立索引。**  
 如果使用子查询去优化LIMIT的话，则子查询必须是连续的，某种意义来讲，子查询不应该有where条件，where会过滤数据，使数据失去连续性。  
-如果你查询的记录比较大，并且数据传输量比较大，比如包含了text类型的field，则可以通过建立子查询。  
-
+如果你查询的记录比较大，并且数据传输量比较大，比如包含了text类型的field，则可以通过建立子查询。
 
 ```
 SELECT id,title,content FROM items WHERE id IN (SELECT id FROM items ORDER BY id limit 900000, 10);
 ```
 
-  
 如果limit语句的offset较大，你可以通过传递pk键值来减小offset = 0，这个主键最好是int类型并且auto\_increment  
 SELECT \* FROM users WHERE uid &gt; 456891 ORDER BY uid LIMIT 0, 10;  
 这条语句，大意如下:  
 SELECT \* FROM users WHERE uid &gt;= \(SELECT uid FROM users ORDER BY uid limit 895682, 1\) limit 0, 10;  
 如果limit的offset值过大，用户也会翻页疲劳，你可以设置一个offset最大的，超过了可以另行处理，一般连续翻页过大，用户体验很差，则应该提供更优的用户体验给用户。
 
-limit 分页优化方法
+### 2.1.limit 分页优化方法
 
 1.子查询优化法  
 先找出第一条数据，然后大于等于这条数据的id就是要获取的数据  
