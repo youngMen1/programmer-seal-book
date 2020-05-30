@@ -34,7 +34,25 @@ EXPLAIN 的查询结果还会告诉你你的索引主键被如何利用的，你
 
 #### 3. 当只要一行数据时使用 LIMIT 1
 
+当你查询表的有些时候，你已经知道结果只会有一条结果，但因为你可能需要去fetch游标，或是你也许会去检查返回的记录数。
 
+在这种情况下，加上 LIMIT 1 可以增加性能。这样一样，MySQL数据库引擎会在找到一条数据后停止搜索，而不是继续往后查少下一条符合记录的数据。
+
+下面的示例，只是为了找一下是否有“中国”的用户，很明显，后面的会比前面的更有效率。（请注意，第一条中是Select \*，第二条是Select 1）
+
+```
+// 没有效率的：
+$r = mysql_query("SELECT * FROM user WHERE country = 'China'");
+if (mysql_num_rows($r) > 0) {
+    // ...
+}
+ 
+// 有效率的：
+$r = mysql_query("SELECT 1 FROM user WHERE country = 'China' LIMIT 1");
+if (mysql_num_rows($r) > 0) {
+    // ...
+}
+```
 
 
 
