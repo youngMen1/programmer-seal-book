@@ -19,3 +19,7 @@ $r = mysql_query("SELECT username FROM user WHERE signup_date >= '$today'");
 
 上面两条SQL语句的差别就是 CURDATE\(\) ，MySQL的查询缓存对这个函数不起作用。所以，像 NOW\(\) 和 RAND\(\) 或是其它的诸如此类的SQL函数都不会开启查询缓存，因为这些函数的返回是会不定的易变的。所以，你所需要的就是用一个变量来代替MySQL的函数，从而开启缓存。
 
+#### 2. EXPLAIN 你的 SELECT 查询
+
+
+
