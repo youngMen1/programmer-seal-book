@@ -46,13 +46,15 @@ $r = mysql_query("SELECT * FROM user WHERE country = 'China'");
 if (mysql_num_rows($r) > 0) {
     // ...
 }
- 
+
 // 有效率的：
 $r = mysql_query("SELECT 1 FROM user WHERE country = 'China' LIMIT 1");
 if (mysql_num_rows($r) > 0) {
     // ...
 }
 ```
+
+#### 4. 为搜索字段建索引
 
 
 
