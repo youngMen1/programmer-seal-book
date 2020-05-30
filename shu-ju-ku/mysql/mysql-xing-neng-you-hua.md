@@ -390,7 +390,7 @@ SERIALIZABLE隔离级别是标准事务隔离级别中的最高级别。设置�
 
 通过引入Search（Lucene、Solr、ElasticSearch），利用搜索引擎高效的全文索引和分词算法，以及高效的数据检索实现，来解决数据库和传统的Cache软件完全无法解决的全文模糊搜索、分类统计查询等功能。
 
-可扩展性设计之Cache与Search的利用.webp
+![](/static/image/可扩展性设计之Cache与Search的利用.webp)
 
 # 2.参考
 
