@@ -63,9 +63,21 @@ SELECT id,title,content FROM items WHERE id IN (SELECT id FROM items ORDER BY id
 ```
 
 如果limit语句的offset较大，你可以通过传递pk键值来减小offset = 0，这个主键最好是int类型并且auto\_increment  
-SELECT \* FROM users WHERE uid &gt; 456891 ORDER BY uid LIMIT 0, 10;  
-这条语句，大意如下:  
-SELECT \* FROM users WHERE uid &gt;= \(SELECT uid FROM users ORDER BY uid limit 895682, 1\) limit 0, 10;  
+
+
+```
+SELECT * FROM users WHERE uid > 456891 ORDER BY uid LIMIT 0, 10;
+```
+
+  
+这条语句，大意如下:
+
+```
+SELECT * FROM users WHERE uid >= (SELECT uid FROM users ORDER BY uid limit 895682, 1) limit 0, 10;
+```
+
+  
+  
 如果limit的offset值过大，用户也会翻页疲劳，你可以设置一个offset最大的，超过了可以另行处理，一般连续翻页过大，用户体验很差，则应该提供更优的用户体验给用户。
 
 ### 2.1.limit 分页优化方法
