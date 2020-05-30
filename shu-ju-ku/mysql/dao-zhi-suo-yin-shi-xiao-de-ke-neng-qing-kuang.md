@@ -58,14 +58,13 @@ mysql 会一直向右匹配直到遇到范围查询（&gt;、&lt;、between、li
 
 当按照索引中所有列进行精确匹配（“=” 或 “IN”）时，索引可以被用到，并且 type 为 const。理论上索引对顺序是敏感的，但是由于 MySQL 的查询优化器会自动调整 where 子句的条件顺序以使用适合的索引，所以 MySQL 不存在 where 子句的顺序问题而造成索引失效
 
-  
-
-
-
-
 # 5.参考
 
 导致索引失效的可能情况：
 
 [https://blog.csdn.net/monkey\_d\_feilong/article/details/52291556](https://blog.csdn.net/monkey_d_feilong/article/details/52291556)
+
+MySQL 最左前缀原则：
+
+https://www.jianshu.com/p/9b3406bcb199
 
