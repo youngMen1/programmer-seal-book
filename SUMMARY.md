@@ -251,7 +251,7 @@
       * [数据库常见死锁原因及处理](shu-ju-ku/mysql/shu-ju-ku-chang-jian-si-suo-yuan-yin-ji-chu-li.md)
       * [MySQL 性能优化](shu-ju-ku/mysql/mysql-xing-neng-you-hua.md)
       * MYSQL性能优化的最佳20+条经验
-      * SQL优化之道
+      * [SQL优化之道](shu-ju-ku/mysql/sqlyou-hua-zhi-dao.md)
       * [导致索引失效的可能情况](shu-ju-ku/mysql/dao-zhi-suo-yin-shi-xiao-de-ke-neng-qing-kuang.md)
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
