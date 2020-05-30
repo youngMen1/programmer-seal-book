@@ -120,6 +120,15 @@ SELECT id,nick_name FROM user,user_group WHERE user_group.group_id=1 and user_gr
 
 解决方案二：
 
+```
+SELECT user.id,user.nick_name FROM(SELECT user_idFROM user_groupWHERE user_group.group_id=1ORDER BY gmt_create desclimit 100,20)t,userWHERE t.user_id=u
+```
+
+通过比较两个解决方案的执行计划，我们可以看到第一中解决方案中需要和user表参与Join的记录数MySQL通过统计数据估算出来是31156，也就是通过user\_group表返回的所有满足group\_id=1的记录数（系统中的实际数据是20000）。而第二种解决方案的执行计划中，user表参与Join的数据就只有20条，两者相差很大，我们认为第二中解决方案应该明显优于第一种解决方案。
+
+  
+
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
