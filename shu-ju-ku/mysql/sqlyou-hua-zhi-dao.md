@@ -64,7 +64,9 @@ select from user where uid=?
 select from user where login_name=?
 ```
 
-原因：B-Tree 索引的时间复杂度是 O\(log\(n\)\)；Hash 索引的时间复杂度是 O\(1\)
+原因：B-Tree 索引的时间复杂度是 O\(log\(n\)\)；Hash 索引的时间复杂度是 O\(1\)
+
+
 
 ## 1.3.小众但有用的 SQL 实践
 
