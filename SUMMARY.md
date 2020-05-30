@@ -247,7 +247,7 @@
     * [InnoDB](shu-ju-ku/mysql/innodb.md)
       * [『浅入浅出』MySQL 和 InnoDB](shu-ju-ku/mysql/innodb/300e-qian-ru-qianchu-300f-mysql-he-innodb.md)
     * [优化](shu-ju-ku/mysql/you-hua.md)
-      * MySQL36条军规
+      * [MySQL36条军规](shu-ju-ku/mysql/mysql36tiao-jun-gui.md)
       * [数据库常见死锁原因及处理](shu-ju-ku/mysql/shu-ju-ku-chang-jian-si-suo-yuan-yin-ji-chu-li.md)
       * [MySQL 性能优化](shu-ju-ku/mysql/mysql-xing-neng-you-hua.md)
   * [NoSQL](shu-ju-ku/nosql.md)
