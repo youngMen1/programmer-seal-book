@@ -66,15 +66,36 @@ select from user where login_name=?
 
 原因：B-Tree 索引的时间复杂度是 O\(log\(n\)\)；Hash 索引的时间复杂度是 O\(1\)
 
-#### 1.2.2.允许为 null 的列，查询有潜在大坑
+#### 1.2.2.允许为 null 的列，查询有潜在大坑
 
-单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为 null，可能会得到“不符合预期”的结果集
+单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为 null，可能会得到“不符合预期”的结果集
 
 ```
 select from user where name != 'shenjian'
 ```
 
+如果 name 允许为 null，索引不存储 null 值，结果集中不会包含这些记录。所以，请使用 not null 约束以及默认值。
 
+#### 1.2.3.复合索引最左前缀，并不是值 SQL 语句的 where 顺序要和复合索引一致
+
+用户中心建立了\(login\_name, passwd\)的复合索引
+
+```
+select from user where login_name=? and passwd=?
+select from user where passwd=? and login_name=?
+```
+
+都能够命中索引
+
+```
+select from user where login_name=?
+```
+
+也能命中索引，满足复合索引最左前缀
+
+```
+select from user where passwd=?
+```
 
 ## 1.3.小众但有用的 SQL 实践
 
