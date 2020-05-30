@@ -254,7 +254,7 @@
       * [SQL优化](shu-ju-ku/mysql/sqlyou-hua-zhi-dao.md)
       * [导致索引失效的可能情况](shu-ju-ku/mysql/dao-zhi-suo-yin-shi-xiao-de-ke-neng-qing-kuang.md)
       * [MYSQL分页limit速度太慢优化方法](shu-ju-ku/mysql/mysqlfen-ye-limit-su-du-tai-man-you-hua-fang-fa.md)
-      * explain
+      * [Explain 使用分析](shu-ju-ku/mysql/explain.md)
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
