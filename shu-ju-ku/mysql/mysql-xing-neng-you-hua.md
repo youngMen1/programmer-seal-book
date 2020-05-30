@@ -384,6 +384,14 @@ SERIALIZABLE隔离级别是标准事务隔离级别中的最高级别。设置�
 
 从多个数据源并行的取数据，然后应用程序汇总处理。
 
+## 1.9.**可扩展性设计之Cache与Search的利用**
+
+通过引入Cache（Redis、Memcached），减少数据库的访问，增加性能。
+
+通过引入Search（Lucene、Solr、ElasticSearch），利用搜索引擎高效的全文索引和分词算法，以及高效的数据检索实现，来解决数据库和传统的Cache软件完全无法解决的全文模糊搜索、分类统计查询等功能。
+
+可扩展性设计之Cache与Search的利用.webp
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
