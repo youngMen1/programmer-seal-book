@@ -252,7 +252,7 @@
       * [MySQL 性能优化](shu-ju-ku/mysql/mysql-xing-neng-you-hua.md)
       * MYSQL性能优化的最佳20+条经验
       * SQL优化之道
-      * 导致索引失效的可能情况
+      * [导致索引失效的可能情况](shu-ju-ku/mysql/dao-zhi-suo-yin-shi-xiao-de-ke-neng-qing-kuang.md)
   * [NoSQL](shu-ju-ku/nosql.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
