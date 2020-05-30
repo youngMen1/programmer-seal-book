@@ -2,7 +2,7 @@
 
 ## 1.1.一些常见的 SQL 实践
 
-负向条件查询不能使用索引
+#### 1.1.1.负向条件查询不能使用索引
 
 ```
 select from order where status!=0 and status!=1
