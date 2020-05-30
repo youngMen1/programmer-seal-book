@@ -184,6 +184,31 @@ SELECT user.id,user.nick_name FROM(SELECT user_idFROM user_groupWHERE user_group
 
 ## 1.6.**MySQL Query的优化**
 
+Query语句的优化思路和原则主要提现在以下几个方面：
+
+  
+
+
+1. 优化更需要优化的Query；
+
+2. 定位优化对象的性能瓶颈；
+
+3. 明确的优化目标；
+
+4. 从Explain入手；
+
+5. 多使用profile
+
+6. 永远用小结果集驱动大的结果集；
+
+7. 尽可能在索引中完成排序；
+
+8. 只取出自己需要的Columns；
+
+9. 仅仅使用最有效的过滤条件；
+
+10.尽可能避免复杂的Join和子查询；
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
