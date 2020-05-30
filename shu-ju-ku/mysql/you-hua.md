@@ -58,7 +58,7 @@ if (mysql_num_rows($r) > 0) {
 
 索引并不一定就是给主键或是唯一的字段。如果在你的表中，有某个字段你总要会经常用来做搜索，那么，请为其建立索引吧。
 
-search\_index.jpg
+![](/static/image/search_index.jpg)
 
 从上图你可以看到那个搜索字串 “last\_name LIKE ‘a%'”，一个是建了索引，一个是没有索引，性能差了4倍左右。
 
