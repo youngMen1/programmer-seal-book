@@ -64,7 +64,9 @@ mysql 会一直向右匹配直到遇到范围查询（&gt;、&lt;、between、li
 
 [https://blog.csdn.net/monkey\_d\_feilong/article/details/52291556](https://blog.csdn.net/monkey_d_feilong/article/details/52291556)
 
+https://www.cnblogs.com/wl889490/p/12659370.html
+
 MySQL 最左前缀原则：
 
-https://www.jianshu.com/p/9b3406bcb199
+[https://www.jianshu.com/p/9b3406bcb199](https://www.jianshu.com/p/9b3406bcb199)
 
