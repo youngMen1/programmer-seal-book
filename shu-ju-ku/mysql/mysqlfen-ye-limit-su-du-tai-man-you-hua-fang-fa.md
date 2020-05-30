@@ -7,26 +7,29 @@
 如 select \* from table limit 0,10 这个没有问题 当 limit 200000,10 的时候数据读取就很慢，可以按照一下方法解决  
 第一页会很快
 
-PERCONA PERFORMANCE CONFERENCE 2009上，来自雅虎的几位工程师带来了一篇”EfficientPagination Using MySQL”的报告
+**PERCONA PERFORMANCE CONFERENCE 2009上，来自雅虎的几位工程师带来了一篇”EfficientPagination Using MySQL”的报告**
 
-limit10000,20的意思扫描满足条件的10020行，扔掉前面的10000行，返回最后的20行，问题就在这里。
+**limit10000,20的意思扫描满足条件的10020行，扔掉前面的10000行，返回最后的20行，问题就在这里。**
 
-LIMIT 451350 , 30 扫描了45万多行，怪不得慢的都堵死了。
+**LIMIT 451350 , 30 扫描了45万多行，怪不得慢的都堵死了。**
 
 但是
 
 limit 30 这样的语句仅仅扫描30行。
 
-那么如果我们之前记录了最大ID，就可以在这里做文章
+**那么如果我们之前记录了最大ID，就可以在这里做文章**
 
-举个例子
+**举个例子**
 
-日常分页SQL语句  
+日常分页SQL语句
+
+```
 select id,name,content from users order by id asc limit 100000,20
+```
 
 扫描100020行
 
-如果记录了上次的最大ID
+**如果记录了上次的最大ID**
 
 select id,name,content from users where id&gt;100073 order by id asc limit 20  
 扫描20行。
@@ -37,22 +40,30 @@ select id,name,content from users where id&gt;100073 order by id asc limit 20
 
 优化后：
 
-select \* from \(  
-select id from wl\_tagindex  
-where byname=’f’ order by id limit 300000,10  
-\) a  
-left join wl\_tagindex b on a.id=b.id
+```
+select * from (
+select id from wl_tagindex
+where byname=’f’ order by id limit 300000,10
+) a
+left join wl_tagindex b on a.id=b.id
+```
 
 执行时间为 0.11s 速度明显提升
 
-这里需要说明的是 我这里用到的字段是 byname ,id 需要把这两个字段做复合索引，否则的话效果提升不明显
+**这里需要说明的是 我这里用到的字段是 byname ,id 需要把这两个字段做复合索引，否则的话效果提升不明显**
 
-总结
+# 2.总结
 
-当一个数据库表过于庞大，LIMIT offset, length中的offset值过大，则SQL查询语句会非常缓慢，你需增加order by，并且order by字段需要建立索引。  
+当一个数据库表过于庞大，LIMIT offset, length中的offset值过大，则SQL查询语句会非常缓慢，你需增加order by，**并且order by字段需要建立索引。**  
 如果使用子查询去优化LIMIT的话，则子查询必须是连续的，某种意义来讲，子查询不应该有where条件，where会过滤数据，使数据失去连续性。  
 如果你查询的记录比较大，并且数据传输量比较大，比如包含了text类型的field，则可以通过建立子查询。  
-SELECT id,title,content FROM items WHERE id IN \(SELECT id FROM items ORDER BY id limit 900000, 10\);  
+
+
+```
+SELECT id,title,content FROM items WHERE id IN (SELECT id FROM items ORDER BY id limit 900000, 10);
+```
+
+  
 如果limit语句的offset较大，你可以通过传递pk键值来减小offset = 0，这个主键最好是int类型并且auto\_increment  
 SELECT \* FROM users WHERE uid &gt; 456891 ORDER BY uid LIMIT 0, 10;  
 这条语句，大意如下:  
