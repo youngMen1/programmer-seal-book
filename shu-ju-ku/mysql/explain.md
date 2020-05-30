@@ -7,6 +7,8 @@ EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以�
 EXPLAIN SELECT * from user_info WHERE id < 300;
 ```
 
+微信截图\_20200530173918.png
+
 ## 1.1.各列的含义如下
 
 * id: SELECT 查询的标识符. 每个 SELECT 都会自动分配一个唯一的标识符.
@@ -35,7 +37,5 @@ EXPLAIN SELECT * from user_info WHERE id < 300;
 
 MySQL 性能优化神器 Explain 使用分析：
 
-https://segmentfault.com/a/1190000008131735
-
-
+[https://segmentfault.com/a/1190000008131735](https://segmentfault.com/a/1190000008131735)
 
