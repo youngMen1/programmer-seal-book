@@ -111,7 +111,7 @@
     * 开源还是商用？十大云运维监控工具横评
     * 监控报警系统搭建及二次开发经验
     * 常用命令行监控工具
-    * 20个命令行工具监控 Linux 系统性能
+    * [20个命令行工具监控 Linux 系统性能](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong/20ge-ming-ling-xing-gong-ju-jian-kong-linux-xi-tong-xing-neng.md)
     * [JVM性能调优监控工具jps、jstack、jmap、jhat、jstat、hprof使用详解](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong/jvmxing-neng-diao-you-jian-kong-gong-ju-jps-jstack-jmap-jhat-jstat-hprof-shi-yong-xiang-jie.md)
     * [命令行监控工具](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chang-gui-jian-kong/ming-ling-xing-jian-kong-gong-ju.md)
   * [APM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/apm.md)
