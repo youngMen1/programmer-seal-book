@@ -157,3 +157,7 @@ MySQL也有一个“建议”（见第十条）告诉你怎么去重新组织你
 
 下面摘自MySQL自己的文档：
 
+#### 12. Prepared Statements
+
+
+
