@@ -66,6 +66,14 @@ select from user where login_name=?
 
 原因：B-Tree 索引的时间复杂度是 O\(log\(n\)\)；Hash 索引的时间复杂度是 O\(1\)
 
+#### 1.2.2.允许为 null 的列，查询有潜在大坑
+
+单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为 null，可能会得到“不符合预期”的结果集
+
+```
+select from user where name != 'shenjian'
+```
+
 
 
 ## 1.3.小众但有用的 SQL 实践
