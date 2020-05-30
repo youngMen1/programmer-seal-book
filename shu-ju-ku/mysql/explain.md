@@ -31,5 +31,11 @@ EXPLAIN SELECT * from user_info WHERE id < 300;
 
 * extra: 额外的信息
 
+# 2.参考
+
+MySQL 性能优化神器 Explain 使用分析：
+
+https://segmentfault.com/a/1190000008131735
+
 
 
