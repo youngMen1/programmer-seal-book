@@ -8,5 +8,14 @@
 
 这里最主要的问题是，对于程序员来说，这个事情是很容易被忽略的。因为，我们某些查询语句会让MySQL不使用缓存。请看下面的示例：
 
+```
+// 查询缓存不开启
+$r = mysql_query("SELECT username FROM user WHERE signup_date >= CURDATE()");
+ 
+// 开启查询缓存
+$today = date("Y-m-d");
+$r = mysql_query("SELECT username FROM user WHERE signup_date >= '$today'");
+```
+
 
 
