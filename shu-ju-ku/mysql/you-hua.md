@@ -143,7 +143,7 @@ MySQL也有一个“建议”（见第十条）告诉你怎么去重新组织你
 
 在phpmyadmin里，你可以在查看表时，点击 “Propose table structure” 来查看这些建议
 
-suggestions.jpg
+![](/static/image/suggestions.jpg)
 
 一定要注意，这些只是建议，只有当你的表里的数据越来越多时，这些建议才会变得准确。一定要记住，你才是最终做决定的人。
 
