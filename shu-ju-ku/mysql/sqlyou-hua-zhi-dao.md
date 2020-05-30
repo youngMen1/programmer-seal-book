@@ -74,9 +74,9 @@ select from user where login_name=?
 select from user where name != 'shenjian'
 ```
 
-如果 name 允许为 null，索引不存储 null 值，结果集中不会包含这些记录。所以，请使用 not null 约束以及默认值。
+如果 name 允许为 null，索引不存储 null 值，结果集中不会包含这些记录。所以，请使用 not null 约束以及默认值。
 
-#### 1.2.3.复合索引最左前缀，并不是值 SQL 语句的 where 顺序要和复合索引一致
+#### 1.2.3.复合索引最左前缀，并不是值 SQL 语句的 where 顺序要和复合索引一致
 
 用户中心建立了\(login\_name, passwd\)的复合索引
 
@@ -97,7 +97,11 @@ select from user where login_name=?
 select from user where passwd=?
 ```
 
+不能命中索引，不满足复合索引最左前缀
+
 ## 1.3.小众但有用的 SQL 实践
+
+
 
 
 
