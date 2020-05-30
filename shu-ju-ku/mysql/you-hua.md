@@ -75,8 +75,28 @@ if (mysql_num_rows($r) > 0) {
 $r = mysql_query("SELECT company_name FROM users
     LEFT JOIN companies ON (users.state = companies.state)
     WHERE users.id = $user_id");
- 
+
 // 两个 state 字段应该是被建过索引的，而且应该是相当的类型，相同的字符集。
+```
+
+#### 6. 千万不要 ORDER BY RAND\(\)
+
+想打乱返回的数据行？随机挑一个数据？真不知道谁发明了这种用法，但很多新手很喜欢这样用。但你确不了解这样做有多么可怕的性能问题。
+
+如果你真的想把返回的数据行打乱了，你有N种方法可以达到这个目的。这样使用只让你的数据库的性能呈指数级的下降。这里的问题是：MySQL会不得不去执行RAND\(\)函数（很耗CPU时间），而且这是为了每一行记录去记行，然后再对其排序。就算是你用了Limit 1也无济于事（因为要排序）
+
+下面的示例是随机挑一条记录
+
+```
+// 千万不要这样做：
+$r = mysql_query("SELECT username FROM user ORDER BY RAND() LIMIT 1");
+ 
+// 这要会更好：
+$r = mysql_query("SELECT count(*) FROM user");
+$d = mysql_fetch_row($r);
+$rand = mt_rand(0,$d[0] - 1);
+ 
+$r = mysql_query("SELECT username FROM user LIMIT $rand, 1");
 ```
 
 
