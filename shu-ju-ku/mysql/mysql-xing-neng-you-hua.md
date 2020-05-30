@@ -174,7 +174,16 @@ SELECT user.id,user.nick_name FROM(SELECT user_idFROM user_groupWHERE user_group
 
 ## 1.5.**MySQL 锁定机制简介**
 
+行级锁定（row-level）
 
+表级锁定（table-level）
+
+页级锁定（page-level）
+
+  
+
+
+在MySQL数据库中，使用表级锁定的主要是MyISAM，Memory，CSV等一些非事务性存储引擎，而使用行级锁定的主要是Innodb存储引擎和NDBCluster存储引擎，页级锁定主要是BerkeleyDB存储引擎的锁定方式。
 
 # 2.参考
 
