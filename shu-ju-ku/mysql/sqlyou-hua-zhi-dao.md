@@ -101,13 +101,51 @@ select from user where passwd=?
 
 #### 1.2.4.使用 ENUM 而不是字符串
 
-ENUM 保存的是 TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。
-
-
+ENUM 保存的是 TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。
 
 ## 1.3.小众但有用的 SQL 实践
 
-#### 1.3.1.如果明确知道只有一条结果返回，limit 1 能够提高效率
+#### 1.3.1.如果明确知道只有一条结果返回，limit 1 能够提高效率
+
+```
+select from user where login_name=?
+```
+
+可以优化为：
+
+```
+select from user where login_name=? limit 1
+```
+
+原因：你知道只有一条结果，但数据库并不知道，明确告诉它，让它主动停止游标移动
+
+#### 1.3.2.把计算放到业务层而不是数据库层，除了节省数据的 CPU，还有意想不到的查询缓存优化效果
+
+```
+select from order where date < = CURDATE()
+```
+
+这不是一个好的SQL实践，应该优化为：
+
+```
+$curDate = date('Y-m-d');
+$res = mysqlquery('select from order where date < = $curDate');
+```
+
+原因：释放了数据库的 CPU，多次调用，传入的SQL相同，才可以利用查询缓存
+
+#### 1.3.3.强制类型转换会全表扫描
+
+```
+select from user where phone=13800001234
+```
+
+你以为会命中 phone 索引么？大错特错了，这个语句究竟要怎么改？
+
+末了，再加一条，不要使用 `select *（潜台词，文章的 SQL 都不合格 ==）`，只返回需要的列，能够大大的节省数据传输量，与数据库的内存使用量哟。
+
+  
+
 
 
 
