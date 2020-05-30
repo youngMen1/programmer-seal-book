@@ -14,6 +14,8 @@
 
 ![](/static/image/mysql架构图.webp)
 
+## 1.3.MySQL存储引擎概述
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
