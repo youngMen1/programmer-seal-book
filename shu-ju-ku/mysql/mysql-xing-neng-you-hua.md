@@ -172,6 +172,10 @@ SELECT user.id,user.nick_name FROM(SELECT user_idFROM user_groupWHERE user_group
 
 虽然应用与数据库交互量非常大，但是每次交互数据较少，总体流量虽然也会较大，但是一般来说普通的千兆网卡已经足够了。
 
+## 1.5.**MySQL 锁定机制简介**
+
+
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
