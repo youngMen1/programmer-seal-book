@@ -80,79 +80,69 @@ SELECT * FROM users WHERE uid >= (SELECT uid FROM users ORDER BY uid limit 89568
 
 #### 2.1.子查询优化法
 
-  
 先找出第一条数据，然后大于等于这条数据的id就是要获取的数据  
 缺点：数据必须是连续的，可以说不能有where条件，where条件会筛选数据，导致数据失去连续性
 
-实验下
+**实验下**
 
-mysql&gt; set profi=1;  
-Query OK, 0 rows affected \(0.00 sec\)
-
-mysql&gt; select count\(\*\) from Member;  
-+———-+  
-\| count\(\*\) \|  
-+———-+  
-\| 169566 \|  
-+———-+  
-1 row in set \(0.00 sec\)
-
-mysql&gt; pager grep !~-  
+```
+mysql> set profi=1;
+Query OK, 0 rows affected (0.00 sec)
+mysql> select count(*) from Member;
++———-+
+| count(*) |
++———-+
+| 169566 |
++———-+
+1 row in set (0.00 sec)
+mysql> pager grep !~-
 PAGER set to ‘grep !~-‘
-
-mysql&gt; select \* from Member limit 10, 100;  
-100 rows in set \(0.00 sec\)
-
-mysql&gt; select \* from Member where MemberID &gt;= \(select MemberID from Member limit 10,1\) limit 100;  
-100 rows in set \(0.00 sec\)
-
-mysql&gt; select \* from Member limit 1000, 100;  
-100 rows in set \(0.01 sec\)
-
-mysql&gt; select \* from Member where MemberID &gt;= \(select MemberID from Member limit 1000,1\) limit 100;  
-100 rows in set \(0.00 sec\)
-
-mysql&gt; select \* from Member limit 100000, 100;  
-100 rows in set \(0.10 sec\)
-
-mysql&gt; select \* from Member where MemberID &gt;= \(select MemberID from Member limit 100000,1\) limit 100;  
-100 rows in set \(0.02 sec\)
-
-mysql&gt; nopager  
+mysql> select * from Member limit 10, 100;
+100 rows in set (0.00 sec)
+mysql> select * from Member where MemberID >= (select MemberID from Member limit 10,1) limit 100;
+100 rows in set (0.00 sec)
+mysql> select * from Member limit 1000, 100;
+100 rows in set (0.01 sec)
+mysql> select * from Member where MemberID >= (select MemberID from Member limit 1000,1) limit 100;
+100 rows in set (0.00 sec)
+mysql> select * from Member limit 100000, 100;
+100 rows in set (0.10 sec)
+mysql> select * from Member where MemberID >= (select MemberID from Member limit 100000,1) limit 100;
+100 rows in set (0.02 sec)
+mysql> nopager
 PAGER set to stdout
+mysql> show profilesG
+*************************** 1. row ***************************
+Query_ID: 1
+Duration: 0.00003300
+Query: select count(*) from Member
+*************************** 2. row ***************************
+Query_ID: 2
+Duration: 0.00167000
+Query: select * from Member limit 10, 100
+*************************** 3. row ***************************
+Query_ID: 3
+Duration: 0.00112400
+Query: select * from Member where MemberID >= (select MemberID from Member limit 10,1) limit 100
+*************************** 4. row ***************************
+Query_ID: 4
+Duration: 0.00263200
+Query: select * from Member limit 1000, 100
+*************************** 5. row ***************************
+Query_ID: 5
+Duration: 0.00134000
+Query: select * from Member where MemberID >= (select MemberID from Member limit 1000,1) limit 100
+*************************** 6. row ***************************
+Query_ID: 6
+Duration: 0.09956700
+Query: select * from Member limit 100000, 100
+*************************** 7. row ***************************
+Query_ID: 7
+Duration: 0.02447700
+Query: select * from Member where MemberID >= (select MemberID from Member limit 100000,1) limit 100
+```
 
-mysql&gt; show profilesG  
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 1. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 1  
-Duration: 0.00003300  
-Query: select count\(\*\) from Member
 
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 2. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 2  
-Duration: 0.00167000  
-Query: select \* from Member limit 10, 100  
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 3. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 3  
-Duration: 0.00112400  
-Query: select \* from Member where MemberID &gt;= \(select MemberID from Member limit 10,1\) limit 100
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 4. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 4  
-Duration: 0.00263200  
-Query: select \* from Member limit 1000, 100  
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 5. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 5  
-Duration: 0.00134000  
-Query: select \* from Member where MemberID &gt;= \(select MemberID from Member limit 1000,1\) limit 100
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 6. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 6  
-Duration: 0.09956700  
-Query: select \* from Member limit 100000, 100  
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* 7. row \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*  
-Query\_ID: 7  
-Duration: 0.02447700  
-Query: select \* from Member where MemberID &gt;= \(select MemberID from Member limit 100000,1\) limit 100
 
 从结果中可以得知，当偏移1000以上使用子查询法可以有效的提高性能。
 
