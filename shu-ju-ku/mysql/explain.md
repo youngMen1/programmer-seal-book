@@ -5,6 +5,7 @@ EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以�
 
 ```
 EXPLAIN SELECT * from user_info WHERE id < 300;
+EXPLAIN SELECT * FROM `process_info` where id='1e2c4584-0043-487d-86ba-9d2b907e4771';
 ```
 
 ![](/static/image/微信截图_20200530173918.png)
