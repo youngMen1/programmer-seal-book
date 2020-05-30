@@ -248,6 +248,52 @@ Join语句的优化
 
 ORDER BY，GROUP BY和DISTINCT优化
 
+ORDER BY，GROUP BY和DISTINCT优化
+
+  
+
+
+1）ORDER BY的实现与优化
+
+  
+
+
+优化Query语句中的ORDER BY的时候，尽可能利用已有的索引来避免实际的排序计算，可以很大幅度的提升ORDER BY操作的性能。
+
+  
+
+
+优化排序：
+
+  
+
+
+1.加大max\_length\_for\_sort\_data参数的设置；
+
+2.去掉不必要的返回字段；
+
+3.增大sort\_buffer\_size参数设置；
+
+  
+
+
+2）GROUP BY的实现与优化
+
+  
+
+
+由于GROUP BY实际上也同样需要进行排序操作，而且与ORDER BY相比，GROUP BY主要只是多了排序之后的分组操作。当然，如果在分组的时候还使用了其他的一些聚合函数，那么还需要一些聚合函数的计算。所以，在GROUP BY的实现过程中，与ORDER BY一样也可以利用到索引。
+
+  
+
+
+3）DISTINCT的实现与优化
+
+  
+
+
+DISTINCT实际上和GROUP BY的操作非常相似，只不过是在GROUP BY之后的每组中只取出一条记录而已。所以，DISTINCT的实现和GROUP BY的实现也基本差不多，没有太大的区别。同样可以通过松散索引扫描或者是紧凑索引扫描来实现，当然，在无法仅仅使用索引即能完成DISTINCT的时候，MySQL只能通过临时表来完成。但是，和GROUP BY有一点差别的是，DISTINCT并不需要进行排序。也就是说，在仅仅只是DISTINCT操作的Query如果无法仅仅利用索引完成操作的时候，MySQL会利用临时表来做一次数据的“缓存”，但是不会对临时表中的数据进行filesort操作。
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
