@@ -110,12 +110,22 @@ $r = mysql_query("SELECT username FROM user LIMIT $rand, 1");
 $r = mysql_query("SELECT * FROM user WHERE user_id = 1");
 $d = mysql_fetch_assoc($r);
 echo "Welcome {$d['username']}";
- 
+
 // 推荐
 $r = mysql_query("SELECT username FROM user WHERE user_id = 1");
 $d = mysql_fetch_assoc($r);
 echo "Welcome {$d['username']}";
 ```
+
+#### 8. 永远为每张表设置一个ID
+
+我们应该为数据库里的每张表都设置一个ID做为其主键，而且最好的是一个INT型的（推荐使用UNSIGNED），并设置上自动增加的AUTO\_INCREMENT标志。
+
+就算是你 users 表有一个主键叫 “email”的字段，你也别让它成为主键。使用 VARCHAR 类型来当主键会使用得性能下降。另外，在你的程序中，你应该使用表的ID来构造你的数据结构。
+
+而且，在MySQL数据引擎下，还有一些操作需要使用主键，在这些情况下，主键的性能和设置变得非常重要，比如，集群，分区……
+
+在这里，只有一个情况是例外，那就是“关联表”的“外键”，也就是说，这个表的主键，通过若干个别的表的主键构成。我们把这个情况叫做“外键”。比如：有一个“学生表”有学生的ID，有一个“课程表”有课程ID，那么，“成绩表”就是“关联表”了，其关联了学生表和课程表，在成绩表中，学生ID和课程ID叫“外键”其共同组成主键。
 
 
 
