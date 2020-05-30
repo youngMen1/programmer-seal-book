@@ -66,5 +66,18 @@ if (mysql_num_rows($r) > 0) {
 
 #### 5. 在Join表的时候使用相当类型的例，并将其索引
 
+如果你的应用程序有很多 JOIN 查询，你应该确认两个表中Join的字段是被建过索引的。这样，MySQL内部会启动为你优化Join的SQL语句的机制。
+
+而且，这些被用来Join的字段，应该是相同的类型的。例如：如果你要把 DECIMAL 字段和一个 INT 字段Join在一起，MySQL就无法使用它们的索引。对于那些STRING类型，还需要有相同的字符集才行。（两个表的字符集有可能不一样）
+
+```
+// 在state中查找company
+$r = mysql_query("SELECT company_name FROM users
+    LEFT JOIN companies ON (users.state = companies.state)
+    WHERE users.id = $user_id");
+ 
+// 两个 state 字段应该是被建过索引的，而且应该是相当的类型，相同的字符集。
+```
+
 
 
