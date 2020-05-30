@@ -37,6 +37,24 @@ select from user where sex=1
 
 经验上，能过滤80%数据时就可以使用索引。对于订单状态，如果状态值很少，不宜使用索引，如果状态值很多，能够过滤大量数据，则应该建立索引。
 
+#### 1.1.4.在属性上进行计算不能命中索引
+
+```
+select from order where YEAR(date) < = '2017'
+```
+
+即使date上建立了索引，也会全表扫描，可优化为值计算：
+
+```
+select from order where date < = CURDATE()
+```
+
+或者：
+
+```
+select from order where date < = '2017-01-01'
+```
+
 ## 1.2.并非周知的 SQL 实践
 
 ## 1.3.小众但有用的 SQL 实践
