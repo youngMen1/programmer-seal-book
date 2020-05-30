@@ -71,7 +71,10 @@ type 常用的取值有:
 
 * `ref`: 此类型通常出现在多表的 join 查询, 针对于非唯一或非主键索引, 或者是使用了`最左前缀`规则索引的查询.
 
-* range: 表示使用索引范围查询, 通过索引字段范围获取表中部分数据记录. 这个类型通常出现在 =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IS NULL, &lt;=&gt;, BETWEEN, IN\(\) 操作中.  当 type 是 range 时, 那么 EXPLAIN 输出的 ref 字段为 NULL, 并且 key\_len 字段是此次查询中使用到的索引的最长的那个.
+* range: 表示使用索引范围查询, 通过索引字段范围获取表中部分数据记录. 这个类型通常出现在 =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IS NULL, &lt;=&gt;, BETWEEN, IN\(\) 操作中.  
+  当 type 是 range 时, 那么 EXPLAIN 输出的 ref 字段为 NULL, 并且 key\_len 字段是此次查询中使用到的索引的最长的那个.
+
+* index: 表示全索引扫描\(full index scan\), 和 ALL 类型类似, 只不过 ALL 类型是全表扫描, 而 index 类型则仅仅扫描所有的索引, 而不扫描数据.  index 类型通常出现在: 所要查询的数据直接在索引树中就可以获取到, 而不需要扫描数据. 当是这种情况时, Extra 字段 会显示 Using index.
 
 # 2.参考
 
