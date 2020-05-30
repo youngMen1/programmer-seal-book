@@ -4,7 +4,7 @@
 
 当一个表数据有几百万的数据的时候成了问题！
 
-如 \* from table limit 0,10 这个没有问题 当 limit 200000,10 的时候数据读取就很慢，可以按照一下方法解决  
+如 select \* from table limit 0,10 这个没有问题 当 limit 200000,10 的时候数据读取就很慢，可以按照一下方法解决  
 第一页会很快
 
 PERCONA PERFORMANCE CONFERENCE 2009上，来自雅虎的几位工程师带来了一篇”EfficientPagination Using MySQL”的报告
