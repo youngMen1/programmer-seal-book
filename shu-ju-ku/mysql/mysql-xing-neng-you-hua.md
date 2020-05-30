@@ -302,7 +302,45 @@ CHAR\[\(M\)\]类型属于静态长度类型，存放长度完全以字符数来�
 
 3.幻读：是指当事务不是独立执行时发生的一种现象，例如第一个事务对一个表中的数据进行了修改，这种修改涉及到表中的全部数据行。同时，第二个事务也修改这个表中的数据，这种修改是向表中插入一行新数据。那么，以后就会发生操作第一个事务的用户发现表中还有没有修改的数据行，就好象发生了幻觉一样。
 
+### 1.7.2.Innodb在事务隔离级别方面支持的信息如下：
 
+  
+1.READ UNCOMMITTED
+
+  
+
+
+常被成为Dirty Reads（脏读），可以说是事务上的最低隔离级别：在普通的非锁定模式下SELECT的执行使我们看到的数据可能并不是查询发起时间点的数据，因而在这个隔离度下是非Consistent Reads（一致性读）；
+
+  
+
+
+2.READ COMMITTED
+
+  
+
+
+这一隔离级别下，不会出现DirtyRead，但是可能出现Non-RepeatableReads\(不可重复读\)和PhantomReads（幻读）。
+
+  
+
+
+3. REPEATABLE READ
+
+  
+
+
+REPEATABLE READ隔离级别是InnoDB默认的事务隔离级。在REPEATABLE READ隔离级别下，不会出现DirtyReads，也不会出现Non-Repeatable Read，但是仍然存在PhantomReads的可能性。
+
+  
+
+
+4.SERIALIZABLE
+
+  
+
+
+SERIALIZABLE隔离级别是标准事务隔离级别中的最高级别。设置为SERIALIZABLE隔离级别之后，在事务中的任何时候所看到的数据都是事务启动时刻的状态，不论在这期间有没有其他事务已经修改了某些数据并提交。所以，SERIALIZABLE事务隔离级别下，PhantomReads也不会出现。
 
 # 2.参考
 
