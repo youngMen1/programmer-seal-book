@@ -57,6 +57,15 @@ select from order where date < = '2017-01-01'
 
 ## 1.2.并非周知的 SQL 实践
 
+#### 1.2.1.如果业务大部分是单条查询，使用Hash索引性能更好，例如用户中心
+
+```
+select from user where uid=?
+select from user where login_name=?
+```
+
+原因：B-Tree 索引的时间复杂度是 O\(log\(n\)\)；Hash 索引的时间复杂度是 O\(1\)
+
 ## 1.3.小众但有用的 SQL 实践
 
 
