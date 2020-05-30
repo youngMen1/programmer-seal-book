@@ -33,6 +33,24 @@ EXPLAIN SELECT * from user_info WHERE id < 300;
 
 * extra: 额外的信息
 
+### select\_type {#item-3-1}
+
+`select_type`表示了查询的类型, 它的常用取值有:
+
+* SIMPLE, 表示此查询不包含 UNION 查询或子查询
+
+* PRIMARY, 表示此查询是最外层的查询
+
+* UNION, 表示此查询是 UNION 的第二或随后的查询
+
+* DEPENDENT UNION, UNION 中的第二个或后面的查询语句, 取决于外面的查询
+
+* UNION RESULT, UNION 的结果
+
+* SUBQUERY, 子查询中的第一个 SELECT
+
+* DEPENDENT SUBQUERY: 子查询中的第一个 SELECT, 取决于外面的查询. 即子查询依赖于外层查询的结果.
+
 # 2.参考
 
 MySQL 性能优化神器 Explain 使用分析：
