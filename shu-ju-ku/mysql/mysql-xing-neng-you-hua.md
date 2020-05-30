@@ -320,6 +320,8 @@ REPEATABLE READ隔离级别是InnoDB默认的事务隔离级。在REPEATABLE REA
 
 SERIALIZABLE隔离级别是标准事务隔离级别中的最高级别。设置为SERIALIZABLE隔离级别之后，在事务中的任何时候所看到的数据都是事务启动时刻的状态，不论在这期间有没有其他事务已经修改了某些数据并提交。所以，SERIALIZABLE事务隔离级别下，PhantomReads也不会出现。
 
+## 1.8.**可扩展性设计之数据切分**
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
