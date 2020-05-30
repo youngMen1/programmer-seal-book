@@ -9,7 +9,7 @@ EXPLAIN SELECT * from user_info WHERE id < 300;
 
 ## 1.1.各列的含义如下
 
-id: SELECT 查询的标识符. 每个 SELECT 都会自动分配一个唯一的标识符.
+* id: SELECT 查询的标识符. 每个 SELECT 都会自动分配一个唯一的标识符.
 
 * select\_type: SELECT 查询的类型.
 
