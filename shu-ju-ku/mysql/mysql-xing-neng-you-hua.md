@@ -182,6 +182,8 @@ SELECT user.id,user.nick_name FROM(SELECT user_idFROM user_groupWHERE user_group
 
 在MySQL数据库中，使用表级锁定的主要是MyISAM，Memory，CSV等一些非事务性存储引擎，而使用行级锁定的主要是Innodb存储引擎和NDBCluster存储引擎，页级锁定主要是BerkeleyDB存储引擎的锁定方式。
 
+## 1.6.**MySQL Query的优化**
+
 # 2.参考
 
 MySQL 性能优化的那点事儿：
