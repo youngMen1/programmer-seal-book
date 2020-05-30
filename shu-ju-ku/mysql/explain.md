@@ -7,7 +7,7 @@ EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以�
 EXPLAIN SELECT * from user_info WHERE id < 300;
 ```
 
-微信截图\_20200530173918.png
+![](/static/image/微信截图_20200530173918.png)
 
 ## 1.1.各列的含义如下
 
