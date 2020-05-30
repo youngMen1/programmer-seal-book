@@ -12,7 +12,7 @@
 
 ## 1.2.**MySQL架构图**
 
-mysql架构图.webp
+![](/static/image/mysql架构图.webp)
 
 # 2.参考
 
