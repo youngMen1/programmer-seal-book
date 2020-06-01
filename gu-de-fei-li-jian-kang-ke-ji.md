@@ -6,6 +6,8 @@
 | order-service | 订单服务 |
 | information-service | 数据中心 |
 | payment-service | 支付服务 |
+| 1 |  |
+|  |  |
 
 ## 1.1.全能袋鼠
 
