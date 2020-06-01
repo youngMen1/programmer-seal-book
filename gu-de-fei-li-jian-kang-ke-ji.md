@@ -9,7 +9,7 @@
 | ai-service-parent | 智能硬件服务 |
 | gpush-sms-ms | 短信服务 |
 | sso | 统一登录服务 |
-|  |  |
+| 1 |  |
 
 ## 1.1.全能袋鼠
 
