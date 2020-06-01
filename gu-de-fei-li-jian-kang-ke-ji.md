@@ -2,7 +2,7 @@
 
 | 名称 | 描述 |
 | :--- | :--- |
-| goods-service |  |
+| goods-service | 商品服务 |
 |  |  |
 |  |  |
 
