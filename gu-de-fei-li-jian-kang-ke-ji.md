@@ -4,7 +4,7 @@
 | :--- | :--- |
 | goods-service | 商品服务 |
 | order-service | 订单服务 |
-|  |  |
+| information-service |  |
 
 ## 1.1.全能袋鼠
 
