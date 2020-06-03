@@ -1,4 +1,4 @@
-# 轻松理解MYSQL MVCC 实现机制
+# 1.轻松理解MYSQL MVCC 实现机制
 
 ## MVCC简介
 
