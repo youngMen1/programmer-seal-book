@@ -129,6 +129,9 @@
     * [环境分离](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chi-xu-ji-621028-ci-cd/huan-jing-fen-li.md)
   * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
   * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
+    * A/B 、灰度、蓝绿测试
+    * 全链路压测
+    * 压力测试
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
     * [Xen](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/xen.md)
