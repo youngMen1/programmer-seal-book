@@ -60,7 +60,7 @@ public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable{
 
 从上可以看出，对于put\(\) 和 putAll\(\) 而言，需要加锁。而读操作则不需要，如get\(Object key\)。这样，当一个线程需要put一个新元素时，它先锁住当前CopyOnWriteMap对象，并复制一个新HashMap，而其他的读线程因为不需要加锁，则可继续访问原来的HashMap。
 
-## 4，应用场景
+## 4.应用场景
 
 CopyOnWrite容器适用于读多写少的场景。因为写操作时，需要复制一个容器，造成内存开销很大，也需要根据实际应用把握初始容器的大小。
 
@@ -68,7 +68,7 @@ CopyOnWrite容器适用于读多写少的场景。因为写操作时，需要复
 
 总结：写时复制技术是一种很好的提高并发性的手段。
 
-## ５，为什么会出现COW？
+## ５.为什么会出现COW？
 
 集合类\(ArrayList、HashMap\)上的常用操作是：向集合中添加元素、删除元素、遍历集合中的元素然后进行某种操作。当多个线程并发地对一个集合对象执行这些操作时就会引发ConcurrentModificationException，比如线程A在for-each中遍历ArrayList，而线程B同时又在删除ArrayList中的元素，就可能会抛出ConcurrentModificationException，可以在线程A遍历ArrayList时加锁，但由于遍历操作是一种常见的操作，加锁之后会影响程序的性能，因此for-each遍历选择了不对ArrayList加锁而是当有多个线程修改ArrayList时抛出ConcurrentModificationException，因此，这是一种设计上的权衡。
 
