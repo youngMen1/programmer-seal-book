@@ -131,9 +131,9 @@
   * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
   * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
     * A/B 、灰度、蓝绿测试
-    * 全链路压测
-    * 压力测试
-    * TDD 理论
+    * [全链路压测](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/quan-lian-lu-ya-ce.md)
+    * [压力测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/ya-li-ce-shi.md)
+    * [TDD 理论](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/tdd-li-lun.md)
     * 单元测试
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
