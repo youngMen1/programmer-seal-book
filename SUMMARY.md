@@ -5,7 +5,7 @@
   * [基础篇](ji-chu-pian.md)
 * [工具](gong-ju.md)
   * Scrum开发流程
-  * Phabricator代码评审工具
+  * [Phabricator代码评审工具](gong-ju/phabricatordai-ma-ping-shen-gong-ju.md)
   * [Google 企业套件 \(Google Doc，Google Mail，Google Calendar \)](gong-ju/google-qi-ye-taojian-google-doc-google-mail-google-calendar.md)
 * [基础知识](ji-chu-zhi-shi.md)
   * [Java中各种关键字](ji-chu-zhi-shi/javazhong-ge-zhong-guan-jian-zi.md)
