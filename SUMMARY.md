@@ -266,6 +266,7 @@
   * [NoSQL](shu-ju-ku/nosql.md)
     * MongoDB
     * Hbase
+    * Elasticsearch
 * [搜索引擎](sou-suo-yin-qing.md)
   * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
 * [性能](xing-neng.md)
