@@ -173,13 +173,13 @@ select @@tx_isolation;
 在MySQL数据库中设置事务的隔离 级别：
 
 ```
- set  [glogal | session]  transaction isolation level 隔离级别名称; //设置全部连接或当前连接的事务隔离级别
+set  [glogal | session]  transaction isolation level 隔离级别名称; 
 
-    set tx_isolation=’隔离级别名称; //设置当前连接的事务隔离级别
+//设置全部连接或当前连接的事务隔离级别
+set tx_isolation=’隔离级别名称; //设置当前连接的事务隔离级别
 ```
 
 例1：查看当前事务的隔离级别：
-
 
 ![img](/static/image/787876-20160313202200007-1111796802.png)
 
