@@ -99,6 +99,7 @@
       * [“死锁”四个必要条件的合理解释](bing-fa/suo/si-suo/201c-si-suo-201d-si-ge-bi-yao-tiao-jian-de-he-li-jie-shi.md)
       * [Java如何查看死锁？](bing-fa/suo/si-suo/javaru-he-cha-kan-si-suo-ff1f.md)
       * [java多线程系列：死锁及检测](bing-fa/suo/si-suo/javaduo-xian-cheng-xi-lie-ff1a-si-suo-ji-jian-ce.md)
+  * 超线程
 * [操作系统](cao-zuo-xi-tong.md)
   * [计算机原理](cao-zuo-xi-tong/ji-suan-ji-yuan-li.md)
     * [操作系统基础知识——操作系统的原理，类型和结构](cao-zuo-xi-tong/ji-suan-ji-yuan-li/cao-zuo-xi-tong-ji-chu-zhi-shi-2014-2014-cao-zuo-xi-tong-de-yuan-li-ff0c-lei-xing-he-jie-gou.md)
@@ -266,7 +267,7 @@
       * [Explain 使用分析](shu-ju-ku/mysql/explain.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
-    * Hbase
+    * [Hbase](shu-ju-ku/nosql/hbase.md)
 * [搜索引擎](sou-suo-yin-qing.md)
   * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
   * Elasticsearch
