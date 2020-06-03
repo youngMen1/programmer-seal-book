@@ -1,16 +1,16 @@
 # [JAVA中写时复制\(Copy-On-Write\)Map实现](https://www.cnblogs.com/hapjin/p/4840107.html)
 
-## 1，什么是写时复制\(Copy-On-Write\)容器？
+## 1.什么是写时复制\(Copy-On-Write\)容器？
 
 写时复制是指：在并发访问的情景下，当需要修改JAVA中Containers的元素时，不直接修改该容器，而是先复制一份副本，在副本上进行修改。修改完成之后，将指向原来容器的引用指向新的容器\(副本容器\)。
 
-## 2，写时复制带来的影响
+## 2.写时复制带来的影响
 
 ①由于不会修改原始容器，只修改副本容器。因此，可以对原始容器进行并发地读。其次，实现了读操作与写操作的分离，读操作发生在原始容器上，写操作发生在副本容器上。
 
 ②数据一致性问题：读操作的线程可能不会立即读取到新修改的数据，因为修改操作发生在副本上。但最终修改操作会完成并更新容器，因此这是最终一致性。
 
-## 3，在JDK中提供了CopyOnWriteArrayList类和CopyOnWriteArraySet类，但是并没有提供CopyOnWriteMap的实现。因此，可以参考CopyOnWriteArrayList自己实现一个CopyOnWriteHashMap
+## 3.在JDK中提供了CopyOnWriteArrayList类和CopyOnWriteArraySet类，但是并没有提供CopyOnWriteMap的实现。因此，可以参考CopyOnWriteArrayList自己实现一个CopyOnWriteHashMap
 
 这里主要是实现 在写操作时，如何保证线程安全。
 
@@ -60,8 +60,6 @@ public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable{
 
 从上可以看出，对于put\(\) 和 putAll\(\) 而言，需要加锁。而读操作则不需要，如get\(Object key\)。这样，当一个线程需要put一个新元素时，它先锁住当前CopyOnWriteMap对象，并复制一个新HashMap，而其他的读线程因为不需要加锁，则可继续访问原来的HashMap。
 
-
-
 ## 4，应用场景
 
 CopyOnWrite容器适用于读多写少的场景。因为写操作时，需要复制一个容器，造成内存开销很大，也需要根据实际应用把握初始容器的大小。
@@ -69,8 +67,6 @@ CopyOnWrite容器适用于读多写少的场景。因为写操作时，需要复
 不适合于数据的强一致性场合。若要求数据修改之后立即能被读到，则不能用写时复制技术。因为它是最终一致性。
 
 总结：写时复制技术是一种很好的提高并发性的手段。
-
-
 
 ## ５，为什么会出现COW？
 
