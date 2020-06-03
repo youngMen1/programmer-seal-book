@@ -22,7 +22,7 @@
 
 那怎么解决可能的不可重复读问题？Repeatable read ！
 
-### Repeatable read
+### Repeatable read\(重复读\)
 
 重复读，就是在开始读取数据（事务开启）时，不再允许修改操作
 
