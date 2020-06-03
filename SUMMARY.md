@@ -134,6 +134,7 @@
     * 全链路压测
     * 压力测试
     * TDD 理论
+    * 单元测试
   * [虚拟化](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua.md)
     * [KVM](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/kvm.md)
     * [Xen](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/xu-ni-hua/xen.md)
@@ -432,5 +433,4 @@
 * [历任公司](li-ren-gong-si.md)
   * [古德菲力健康科技有限公司](gu-de-fei-li-jian-kang-ke-ji.md)
   * [优利科技有限公司](you-li-ke-ji-you-xian-gong-si.md)
-* 单元测试
 
