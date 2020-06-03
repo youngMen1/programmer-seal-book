@@ -12,7 +12,7 @@
 
 那怎么解决脏读呢？Read committed！读提交，能解决脏读问题。
 
-### Read committed
+### Read committed\(读提交\)
 
 读提交，顾名思义，就是一个事务要等另一个事务提交后才能读取数据。
 
