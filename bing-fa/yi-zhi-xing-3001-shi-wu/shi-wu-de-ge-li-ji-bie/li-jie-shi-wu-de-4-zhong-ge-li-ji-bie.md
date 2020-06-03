@@ -1,8 +1,8 @@
-# 理解事务的4种隔离级别
+# 1.理解事务的4种隔离级别
 
 数据库事务的隔离级别有4种，由低到高分别为Read uncommitted 、Read committed 、Repeatable read 、Serializable 。而且，在事务的并发操作中可能会出现脏读，不可重复读，幻读。下面通过事例一一阐述它们的概念与联系。
 
-### Read uncommitted
+### Read uncommitted\(读未提交\)
 
 读未提交，顾名思义，就是一个事务可以读取另一个未提交事务的数据。
 
