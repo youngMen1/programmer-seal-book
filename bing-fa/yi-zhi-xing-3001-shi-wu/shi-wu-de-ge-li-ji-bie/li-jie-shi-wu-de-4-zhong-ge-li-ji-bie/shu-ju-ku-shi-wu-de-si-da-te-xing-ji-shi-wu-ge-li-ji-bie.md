@@ -150,7 +150,7 @@ update account set money=money - 100 where name=’A’;
 
 以上四种隔离级别最高的是Serializable级别，最低的是Read uncommitted级别，当然级别越高，数据完整性越好，但执行效率就越低。像Serializable这样的级别，就是以锁表的方式\(类似于Java多线程中的锁\)使得其他的线程只能在锁外等待，所以平时选用何种隔离级别应该根据实际情况。
 
-# 3、常见数据库的事务隔离 {#blogTitle12}
+## 1.5.常见数据库的事务隔离 {#blogTitle12}
 
 | 数据库 | 默认级别 |
 | :--- | :--- |
