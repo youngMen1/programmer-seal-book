@@ -265,7 +265,7 @@
       * [MYSQL分页limit速度太慢优化方法](shu-ju-ku/mysql/mysqlfen-ye-limit-su-du-tai-man-you-hua-fang-fa.md)
       * [Explain 使用分析](shu-ju-ku/mysql/explain.md)
   * [NoSQL](shu-ju-ku/nosql.md)
-    * MongoDB
+    * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * Hbase
 * [搜索引擎](sou-suo-yin-qing.md)
   * [搜索引擎原理](sou-suo-yin-qing/sou-suo-yin-qing-yuan-li.md)
