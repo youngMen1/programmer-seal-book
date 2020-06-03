@@ -1,4 +1,4 @@
-# MySQL的InnoDB的幻读问题
+# 1.MySQL的InnoDB的幻读问题
 
 [MySQL InnoDB事务的隔离级别](http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html)有四级，默认是“可重复读”（REPEATABLE READ）。
 
@@ -272,7 +272,7 @@ SELECT * FROM t_bitfly LOCK IN SHARE MODE;
 
 ---
 
-# 结论
+# 2.结论
 
 MySQL InnoDB的可重复读并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁度使用到的机制就是next-key locks。
 
