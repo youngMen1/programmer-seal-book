@@ -163,7 +163,7 @@
     * [Spring AOP的实现原理](she-ji-mo-shi/aop/spring-aopde-shi-xian-yuan-li.md)
     * [Spring AOP 实现原理与 CGLIB 应用](she-ji-mo-shi/aop/spring-aop-shi-xian-yuan-li-yu-cglib-ying-yong.md)
   * [UML](she-ji-mo-shi/uml.md)
-    * UML教程
+    * [UML教程](she-ji-mo-shi/uml/umljiao-cheng.md)
   * [微服务思想](she-ji-mo-shi/wei-fu-wu-si-xiang.md)
     * [微服务架构技术栈选型手册](she-ji-mo-shi/wei-fu-wu-si-xiang/wei-fu-wu-jia-gou-ji-zhu-zhan-xuan-xing-shou-ce.md)
   * [康威定律](she-ji-mo-shi/kang-wei-ding-lv.md)
