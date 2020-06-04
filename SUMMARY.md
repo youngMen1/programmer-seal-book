@@ -170,6 +170,7 @@
     * [微服务架构技术栈选型手册](she-ji-mo-shi/wei-fu-wu-si-xiang/wei-fu-wu-jia-gou-ji-zhu-zhan-xuan-xing-shou-ce.md)
   * [康威定律](she-ji-mo-shi/kang-wei-ding-lv.md)
     * [微服务架构的理论基础 - 康威定律](she-ji-mo-shi/kang-wei-ding-lv/wei-fu-wu-jia-gou-de-li-lun-ji-chu-kang-wei-ding-lv.md)
+* [JVM](jvm.md)
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
@@ -433,5 +434,4 @@
 * [历任公司](li-ren-gong-si.md)
   * [古德菲力健康科技有限公司](gu-de-fei-li-jian-kang-ke-ji.md)
   * [优利科技有限公司](you-li-ke-ji-you-xian-gong-si.md)
-* JVM
 
