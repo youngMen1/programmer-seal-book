@@ -24,3 +24,11 @@
 
 **方法未找到异常：NoSuchMethodException**
 
+# 2.参考
+
+Java常见异常大全：
+
+https://blog.csdn.net/xieyunc/article/details/103107984
+
+
+
