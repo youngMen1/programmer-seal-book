@@ -175,7 +175,8 @@
   * [日均百万级商城如何JVM性能调优](jvm/ri-jun-bai-wan-ji-shang-cheng-ru-he-jvm-xing-neng-diao-you.md)
   * JVM虚拟机运行时数据区
   * [周志明&lt;&lt;深入理解java虚拟机&gt;&gt;](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e.md)
-    * 自动内存管理机制
+    * [自动内存管理机制](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi.md)
+      * java内存区域与内存溢出异常
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
