@@ -174,6 +174,7 @@
   * [亿级流量电商系统JVM参数设置优化](jvm/yi-ji-liu-liang-dian-shang-xi-tong-jvm-can-shu-she-zhi-you-hua.md)
   * [日均百万级商城如何JVM性能调优](jvm/ri-jun-bai-wan-ji-shang-cheng-ru-he-jvm-xing-neng-diao-you.md)
   * JVM虚拟机运行时数据区
+  * 周志明&lt;&lt;深入理解java虚拟机&gt;&gt;
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
