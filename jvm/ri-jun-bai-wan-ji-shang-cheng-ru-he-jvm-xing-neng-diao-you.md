@@ -63,15 +63,26 @@ public static StringBuffer craeteStringBuffer(String s1, String s2) {
     sb.append(s2);
     return sb;
 }
- 
+
 public static String createStringBuffer(String s1, String s2) {
     StringBuffer sb = new StringBuffer();
     sb.append(s1);
     sb.append(s2);
     return sb.toString();
 }
-
 ```
+
+第一段代码中的sb就逃逸了，而第二段代码中的sb就没有逃逸。
+
+  
+
+
+使用逃逸分析，编译器可以对代码做如下优化：
+
+  
+
+
+将堆分配转化为栈分配。如果一个对象在子程序中被分配，要使指向该对象的指针永远不会逃逸，对象可能是栈分配的候选，而不是堆分配。
 
 # 2.参考
 
