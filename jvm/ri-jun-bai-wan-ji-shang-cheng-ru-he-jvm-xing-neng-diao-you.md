@@ -56,6 +56,23 @@ JVM进程就会分配4-5G的内存空间，堆内存会分配到3-4G，于是年
 
 逃逸分析的基本行为就是分析对象动态作用域：当一个对象在方法中被定义后，它可能被外部方法所引用，例如作为调用参数传递到其他地方中，称为方法逃逸
 
+```
+public static StringBuffer craeteStringBuffer(String s1, String s2) {
+    StringBuffer sb = new StringBuffer();
+    sb.append(s1);
+    sb.append(s2);
+    return sb;
+}
+ 
+public static String createStringBuffer(String s1, String s2) {
+    StringBuffer sb = new StringBuffer();
+    sb.append(s1);
+    sb.append(s2);
+    return sb.toString();
+}
+
+```
+
 # 2.参考
 
 日均百万级商城如何JVM性能调优：
