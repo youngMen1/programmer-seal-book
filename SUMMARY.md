@@ -178,7 +178,8 @@
     * [自动内存管理机制](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi.md)
       * [java内存区域与内存溢出异常](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/javanei-cun-qu-yu-yu-nei-cun-yi-chu-yi-chang.md)
       * [垃圾收集器与内存分配策略](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve.md)
-        * 垃圾收集算法
+        * [垃圾收集算法](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve/la-ji-shou-ji-suan-fa.md)
+        * [垃圾收集器](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve/la-ji-shou-ji-qi.md)
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
