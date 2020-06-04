@@ -398,7 +398,7 @@
     * [分布式ID生成器的解决方案总结](fen-bu-shi-she-ji/weiyi-id-sheng-cheng/fen-bu-shi-id-sheng-cheng-qi-de-jie-jue-fang-an-zong-jie.md)
   * [一致性Hash算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa.md)
     * [一致性哈希算法](fen-bu-shi-she-ji/yi-zhi-xing-hash-suan-fa/yi-zhi-xing-ha-xi-suan-fa.md)
-  * 分布式事务
+  * [分布式事务](fen-bu-shi-she-ji/fen-bu-shi-shi-wu.md)
 * [项目管理](xiang-mu-guan-li.md)
   * [架构评审](xiang-mu-guan-li/jia-gou-ping-shen.md)
     * [人人都是架构师](xiang-mu-guan-li/jia-gou-ping-shen/ren-ren-du-shi-jia-gou-shi.md)
