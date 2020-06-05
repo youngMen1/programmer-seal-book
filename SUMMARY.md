@@ -448,7 +448,4 @@
       * [一面](du-jiao-shou-gong-si/shopee/mian-shi-ti/yi-mian.md)
       * [二面](du-jiao-shou-gong-si/shopee/mian-shi-ti/er-mian.md)
   * [阿里巴巴](du-jiao-shou-gong-si/a-li-ba-ba.md)
-* [历任公司](li-ren-gong-si.md)
-  * [古德菲力健康科技有限公司](gu-de-fei-li-jian-kang-ke-ji.md)
-  * [优利科技有限公司](you-li-ke-ji-you-xian-gong-si.md)
 
