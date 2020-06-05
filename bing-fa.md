@@ -1,4 +1,4 @@
-[并发](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#并发)
+# 1.[并发](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#并发)
 
 * [Java 并发](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#java-并发)
 * [多线程](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#多线程)
@@ -18,6 +18,12 @@
   * [可重入锁 & 不可重入锁](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#可重入锁--不可重入锁)
   * [互斥锁 & 共享锁](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#互斥锁--共享锁)
   * [死锁](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#死锁)
+
+# 2.图
+
+微信图片\_20200605173316.jpg
+
+
 
 
 
