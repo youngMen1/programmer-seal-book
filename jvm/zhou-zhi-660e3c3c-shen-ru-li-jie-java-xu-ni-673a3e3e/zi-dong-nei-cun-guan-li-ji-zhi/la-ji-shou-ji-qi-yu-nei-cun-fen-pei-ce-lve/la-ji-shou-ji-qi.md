@@ -98,6 +98,10 @@ GCRatio：直接设置吞吐量的大小
 
 ### 1.3.1.Parallel Scavenge的自适应调节策略
 
+Parallel Scavenge收集器有一个参数- XX：+UseAdaptiveSizePolicy当这个参数打开之后，就不需要手动指定新生代的大小，Eden和Survivor区的比例，晋升老年代对象等细节参数了，虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或者最大吞吐量，这种调节方式成为GC自适应的调节策略。
+
+
+
 ## 1.4.Serial Old收集器
 
 ## 1.5.Parallel Old收集器
