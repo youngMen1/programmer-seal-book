@@ -83,22 +83,7 @@ CMS作为老年代收集器，但却无法与JDK1.4已经存在的新生代收�
 
 ## 1.3.Parallel Scavenge收集器
 
-Parallel Scavenge收集器是一个
-
-**新生代收集器**
-
-，使用
-
-**复制算法**
-
-的
-
-**并行收集器**
-
-  
-
-
-Parallel Scavenge 收集器使用两个参数控制吞吐量
+Parallel Scavenge收集器是一个**新生代收集器**，使用**复制算法**的**并行收集器**Parallel Scavenge 收集器使用两个参数控制吞吐量
 
 ## 1.4.Serial Old收集器
 
