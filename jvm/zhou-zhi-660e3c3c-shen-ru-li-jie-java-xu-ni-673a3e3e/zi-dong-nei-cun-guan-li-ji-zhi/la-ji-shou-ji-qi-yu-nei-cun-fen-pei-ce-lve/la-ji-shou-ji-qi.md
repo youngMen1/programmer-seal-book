@@ -141,7 +141,7 @@ JDK1.6以及之后 Parallel Scavenge + Parallel Old
 
 ## 1.6.CMS收集器
 
-### 1.6.1特性
+### 1.6.1.特性
 
 ### 1.6.2.优点
 
