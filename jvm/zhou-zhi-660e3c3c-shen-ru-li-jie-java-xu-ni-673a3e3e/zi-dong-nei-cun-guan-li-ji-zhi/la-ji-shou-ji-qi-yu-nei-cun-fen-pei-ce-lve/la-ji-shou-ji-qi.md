@@ -200,4 +200,7 @@ G1垃圾回收器回收region的时候基本不会Stop The World，从整体来�
 最终标记（CMS中的remark阶段） 同CMS垃圾收集器重新标记阶段一样，但是采用的算法不一样，G1采用了一种叫做STAB(snapshot-at-the-begining)的算法能够在Remark阶段更快的标记可达对象。
 筛选回收（clean up/Copy） 在G1中，没有CMS对于的Sweep阶段。相反，它有一个Clean up/Copy阶段，在这个阶段中，G1会挑选出那么对象存活率低的region进行回收，这个阶段也是和minor gc一同完成的。
 ![](/static/image/20190323150903133.png)
+G1是一款面向服务端应用的垃圾收集器，Hotspot开发团队赋予它的使命是未来可以替换掉JDK1.5中发布的CMS收集器
+你想追求低停顿、想让用户有更好的体验用G1
+如果你的应用追求吞吐量，G1并不能带来很明显的好处。
 
