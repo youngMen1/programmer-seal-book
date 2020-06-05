@@ -145,7 +145,7 @@ JDK1.6以及之后 Parallel Scavenge + Parallel Old
 
 ### 1.6.2.优点
 
-### 1.6.3缺点
+### 1.6.3.缺点
 
 ## 1.7.G1收集器
 
