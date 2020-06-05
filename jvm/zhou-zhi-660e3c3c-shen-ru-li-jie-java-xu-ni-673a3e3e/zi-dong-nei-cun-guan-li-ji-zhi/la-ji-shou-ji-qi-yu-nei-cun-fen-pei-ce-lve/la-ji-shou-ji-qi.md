@@ -125,19 +125,19 @@ Serial Old是Serial收集器的老年代版本，同样是**单线程收集器**
 
 Parallel Old是Parallel Scavenge收集器的老年代版本，使用**多线程**和**标记-整理**算法。
 
-![](/static/image/20190323111322489.png)
-
 ### 应用场景
 
 在注意吞吐量以及CPU资源敏感的场合，都可以优先考虑Parallel Scavenge加 Parallel Old收集器
 
-  这个收集器是在JDK1.6中才开始提供的，在此之前Parallel Scavenge一直处于尴尬的状态。原因是如果新生代选择了Parallel Scavenge收集器，老年代除了Serial Old别无选择，由于老年代Serial Old性能上的拖累，使用了Parallel Scavenge收集器也未必能在整体应用上获得吞吐量的最大化效果，直到Parallel Old收集器出现后，"吞吐量优先"收集器终于有了名副其实的应用组合
+这个收集器是在JDK1.6中才开始提供的，在此之前Parallel Scavenge一直处于尴尬的状态。原因是如果新生代选择了Parallel Scavenge收集器，老年代除了Serial Old别无选择，由于老年代Serial Old性能上的拖累，使用了Parallel Scavenge收集器也未必能在整体应用上获得吞吐量的最大化效果，直到Parallel Old收集器出现后，"吞吐量优先"收集器终于有了名副其实的应用组合
 
 JDK1.6之前 Parallel Scavenge + Serial Old
 
 JDK1.6以及之后 Parallel Scavenge + Parallel Old
 
+![](/static/image/20190323111322489.png)
 
+### 
 
 ## 1.6.CMS收集器
 
