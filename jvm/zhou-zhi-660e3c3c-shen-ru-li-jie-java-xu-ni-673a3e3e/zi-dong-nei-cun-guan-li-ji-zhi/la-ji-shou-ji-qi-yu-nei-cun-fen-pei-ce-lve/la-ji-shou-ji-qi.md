@@ -8,11 +8,11 @@
 
 #### 3.Parallel Scavenge收集器
 
+## 老年代收集器
+
 #### 4.Serial Old收集器
 
 #### 5.Parallel Old收集器
-
-## 老年代收集器
 
 #### 6.CMS收集器
 
@@ -109,13 +109,13 @@ Parallel Scavenge收集器有一个参数- XX：+UseAdaptiveSizePolicy当这个�
 
 ### 1.3.2.Parallel Scavenge和ParNew的对比分析
 
-  停顿时间越短就越适合需要与用户交互的程序，良好的响应速度能提升用户体验，而高吞吐量则可以高效地利用CPU时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。
+停顿时间越短就越适合需要与用户交互的程序，良好的响应速度能提升用户体验，而高吞吐量则可以高效地利用CPU时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。
 
-  Parallel Scavenge收集器与ParNew收集器的一个重要区别是它具有自适应调节策略。
-
-
+Parallel Scavenge收集器与ParNew收集器的一个重要区别是它具有自适应调节策略。
 
 ## 1.4.Serial Old收集器
+
+
 
 ## 1.5.Parallel Old收集器
 
