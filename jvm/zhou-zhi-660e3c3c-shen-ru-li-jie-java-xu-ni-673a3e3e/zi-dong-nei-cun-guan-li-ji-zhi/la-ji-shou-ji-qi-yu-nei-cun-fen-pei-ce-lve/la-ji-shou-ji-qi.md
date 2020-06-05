@@ -34,7 +34,7 @@
   Serial/Serial Old组合收集器运行示意图如下：
 ```
 
-20180611160921828.png
+![](/static/image/20180611160921828.png)
 
 ## 1.2.ParNew收集器
 
