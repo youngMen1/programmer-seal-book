@@ -19,7 +19,7 @@
   * [互斥锁 & 共享锁](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#互斥锁--共享锁)
   * [死锁](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#死锁)
 
-# 2.图
+# 2.并发包
 
 ![](/static/image/微信图片_20200605173316.jpg)
 
