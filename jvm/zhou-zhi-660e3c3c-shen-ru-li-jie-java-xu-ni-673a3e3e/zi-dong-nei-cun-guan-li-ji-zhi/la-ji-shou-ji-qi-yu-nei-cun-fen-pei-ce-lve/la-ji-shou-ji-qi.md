@@ -60,7 +60,7 @@ JVM在后台自动发起和自动完成的，在用户不可见的情况下，�
 
 ## 1.2.ParNew收集器
 
-ParNew垃圾收集器是Serial收集器的多线程版本。
+ParNew垃圾收集器是Serial收集器的多线程版本。2018061116094429.png
 
 ## 1.3.Parallel Scavenge收集器
 
