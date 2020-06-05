@@ -171,6 +171,12 @@ CMS收集器会产生大量的空间碎片，CMS是一款基于"标记-清除" �
 
 ![](/static/image/20190323132658126.png)
 
+### 1.6.4. Parallel Scavenge收集器 VS CMS收集器
+
+CMS关注点是尽可能的缩短垃圾收集时用户线程的停顿时间，而Parallel Scavenge收集器的目标则是达到一个可控制的吞吐量，由于与吞吐量密切相关，Parallel Scavenge收集器也经常称为"吞吐量优先"收集器
+
+
+
 ## 1.7.G1收集器
 
 
