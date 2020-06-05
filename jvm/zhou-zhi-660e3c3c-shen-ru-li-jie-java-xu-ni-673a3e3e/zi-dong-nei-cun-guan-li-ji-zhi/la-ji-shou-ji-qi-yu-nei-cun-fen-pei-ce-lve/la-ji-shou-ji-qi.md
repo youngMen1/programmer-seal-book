@@ -59,18 +59,24 @@ JVM在后台自动发起和自动完成的，在用户不可见的情况下，�
 从JDK1.3到现在，从Serial收集器-》Parallel收集器-》CMS-》G1，用户线程停顿时间不断缩短，但仍然无法完全消除；
 
 ## 1.2.ParNew收集器
-
 ParNew垃圾收集器是Serial收集器的多线程版本。
-
-1、特点
+### 1.2.1.特点
 除了多线程外，其余的行为、特点和Serial收集器一样；
 如Serial收集器可用控制参数、收集算法、Stop The World、内存分配规则、回收策略等；
 两个收集器共用了不少代码；
 ParNew/Serial Old组合收集器运行示意图如下：
-
-
-
 ![](/static/image/2018061116094429.png)
+2、应用场景
+在Server模式下，ParNew收集器是一个非常重要的收集器，因为除Serial外，目前只有它能与CMS收集器配合工作；
+但在单个CPU环境中，不会比Serail收集器有更好的效果，因为存在线程交互开销。
+3、设置参数
+"-XX:+UseConcMarkSweepGC"：指定使用CMS后，会默认使用ParNew作为新生代收集器；
+"-XX:+UseParNewGC"：强制指定使用ParNew；    
+"-XX:ParallelGCThreads"：指定垃圾收集的线程数量，ParNew默认开启的收集线程与CPU的数量相同；
+4、为什么只有ParNew能与CMS收集器配合
+CMS是HotSpot在JDK1.5推出的第一款真正意义上的并发（Concurrent）收集器，第一次实现了让垃圾收集线程与用户线程（基本上）同时工作；
+CMS作为老年代收集器，但却无法与JDK1.4已经存在的新生代收集器Parallel Scavenge配合工作；
+因为Parallel Scavenge（以及G1）都没有使用传统的GC收集器代码框架，而另外独立实现；而其余几种收集器则共用了部分的框架代码；
 
 ## 1.3.Parallel Scavenge收集器
 
