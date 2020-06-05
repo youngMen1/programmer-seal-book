@@ -4,8 +4,6 @@
 
 ## 2.参考
 
-## Java技术书籍大全
-
 ```
 // Java 技术书籍大全
 https://github.com/sorenduan/awesome-java-books
