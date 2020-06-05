@@ -117,7 +117,7 @@ Parallel Scavenge收集器与ParNew收集器的一个重要区别是它具有自
 
 Serial Old是Serial收集器的老年代版本，同样是**单线程收集器**，使用**标记-整理**算法。
 
-20190323111147624.png
+![](/static/image/20190323111147624.png)
 
 ### 应用场景
 
@@ -125,7 +125,7 @@ Serial Old是Serial收集器的老年代版本，同样是**单线程收集器**
 
 Parallel Old是Parallel Scavenge收集器的老年代版本，使用**多线程**和**标记-整理**算法。
 
-20190323111322489.png
+![](/static/image/20190323111322489.png)
 
 ### 应用场景
 
