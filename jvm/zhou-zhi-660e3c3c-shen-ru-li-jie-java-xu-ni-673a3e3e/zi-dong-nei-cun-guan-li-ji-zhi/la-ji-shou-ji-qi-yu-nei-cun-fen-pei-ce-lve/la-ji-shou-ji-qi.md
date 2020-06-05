@@ -183,7 +183,7 @@ G1垃圾回收器在清除实例所占用的内存后，还会做内存压缩。
 
 G1垃圾回收器回收region的时候基本不会Stop The World，从整体来看是基于标记-整理算法，从局部（两个region之间）来看基于复制算法。
 
-20190323141749762.png
+![](/static/image/20190323141749762.png)
 
 一个region有可能属于Eden、Survivor或者Tenured内存，图中的E表示Eden区，S表示Survivor区、T表示Tenured区、空白就是未使用的空间。G1垃圾收集器还增加了一种新的内存区域，叫做Humongous内存区域，如图中的H块。这种内存区域主要用于存储大对象-即大小超出一个region大小的50%的对象
 
