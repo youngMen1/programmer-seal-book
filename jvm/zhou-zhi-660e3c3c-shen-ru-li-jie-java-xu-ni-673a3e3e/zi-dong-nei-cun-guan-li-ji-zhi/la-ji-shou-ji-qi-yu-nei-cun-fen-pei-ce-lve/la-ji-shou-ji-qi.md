@@ -187,5 +187,8 @@ G1垃圾回收器回收region的时候基本不会Stop The World，从整体来�
 
 一个region有可能属于Eden、Survivor或者Tenured内存，图中的E表示Eden区，S表示Survivor区、T表示Tenured区、空白就是未使用的空间。G1垃圾收集器还增加了一种新的内存区域，叫做Humongous内存区域，如图中的H块。这种内存区域主要用于存储大对象-即大小超出一个region大小的50%的对象
 
+### 1.7.1 年轻代垃圾收集
 
+在G1垃圾收集器中，年轻代的垃圾回收过程使用复制算法  
+，把Eden区和Survivor区的对象复制到新的Survivor区域
 
