@@ -74,7 +74,7 @@ ParNew垃圾收集器是Serial收集器的多线程版本。
 
 
 
-2018061116094429.png
+![](/static/image/2018061116094429.png)
 
 ## 1.3.Parallel Scavenge收集器
 
