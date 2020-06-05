@@ -119,7 +119,7 @@ Serial Old是Serial收集器的老年代版本，同样是**单线程收集器**
 
 ## 1.5.Parallel Old收集器
 
-Parallel Old是Parallel Scavenge收集器的老年代版本，使用**多线程**和**标记-整理**算法
+Parallel Old是Parallel Scavenge收集器的老年代版本，使用**多线程**和**标记-整理**算法。
 
 ## 1.6.CMS收集器
 
