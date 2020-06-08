@@ -1,3 +1,5 @@
+## 1.基本介绍
+
 ## 微服务架构的理论基础 - 康威定律
 
 ### 概述 {#1}
@@ -174,11 +176,11 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 
 ### 参考资料 {#8}
 
-https://static.geekbang.org/PDF-%E4%BF%AE%E6%94%B9%E7%89%88-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E5%9B%BE%E7%89%87-%E6%9D%A8%E6%B3%A2-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.pdf
+[https://static.geekbang.org/PDF-修改版-极客时间-图片-杨波-微服务架构.pdf](https://static.geekbang.org/PDF-修改版-极客时间-图片-杨波-微服务架构.pdf)
 
 * [远距离条件下的康威定律——分布式世界中实现团队构建](https://yq.aliyun.com/go/articleRenderRedirect?url=http%3A%2F%2Fwww.infoq.com%2Fcn%2Fpresentations%2Fteam-building-implementation-in-distributed-world)
 * ，本文图片来源该ppt截图
-* [Conway‘s Law in wiki](https://yq.aliyun.com/go/articleRenderRedirect?url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FConway%27s_law)
+* [Conway‘s Law in wiki](https://yq.aliyun.com/go/articleRenderRedirect?url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FConway's_law)
 * [Conway's Law Homepage](https://yq.aliyun.com/go/articleRenderRedirect?url=http%3A%2F%2Fwww.melconway.com%2FHome%2FConways_Law.html)
 
 
