@@ -1,6 +1,6 @@
 # 1.MySQL的InnoDB的幻读问题
 
-[MySQL InnoDB事务的隔离级别](http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html)有四级，默认是“可重复读”（REPEATABLE READ）。
+[MySQL InnoDB事务的隔离级别](http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html)有四级，**默认是“可重复读”（REPEATABLE READ）**。
 
 * 未提交读（READ UNCOMMITTED）。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据（脏读）。
 * 提交读（READ COMMITTED）。本事务读取到的是最新的数据（其他事务提交后的）。问题是，在同一个事务里，前后两次相同的SELECT会读到不同的结果（不重复读）。
