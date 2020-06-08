@@ -169,7 +169,7 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 * **分布式服务组成的系统**
 * **按照业务而不是技术来划分组织**
 * **做有生命的产品而不是项目**
-* Smart endpoints and dumb pipes（我的理解是强服务个体和弱通信）
+* **Smart endpoints and dumb pipes（我的理解是强服务个体和弱通信）**
 * 自动化运维（DevOps）
 * 容错
 * 快速演化
