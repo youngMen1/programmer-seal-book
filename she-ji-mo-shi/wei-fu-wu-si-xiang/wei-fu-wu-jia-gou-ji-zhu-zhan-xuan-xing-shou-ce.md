@@ -110,7 +110,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 ## 任务调度系统
 
-任务调度系统，个人推荐徐雪里开源的 xxl-job\[附录 12.35\]（GitHub 3.4k stars），部署简单轻量，大部分场景够用。当当开源的 elastic-job\[附录 12.36\]（GitHub 3.2k stars）也是一个不错选择，相比 xxl-job 功能更强一些也更复杂。
+任务调度系统，个人推荐徐雪里开源的 xxl-job\[附录 12.35\]（GitHub 3.4k stars），部署简单轻量，大部分场景够用。当当开源的 **elastic-job**\[附录 12.36\]（GitHub 3.2k stars）也是一个不错选择，相比 **xxl-job **功能更强一些也更复杂。
 
 ## 九、服务安全选型
 
@@ -142,7 +142,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 **IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 Apereo CAS（GitHub 3.6k stars），JBoss 开源的 keycloak（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
 
-考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                                    
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                                      
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)  
 ![](/static/image/e7266888cb698cab36eba57d5c0d9815.png)
 
