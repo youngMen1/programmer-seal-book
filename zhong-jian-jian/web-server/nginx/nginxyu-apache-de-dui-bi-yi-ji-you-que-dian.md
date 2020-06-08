@@ -1,6 +1,6 @@
 本文来自其他文章。如有好的问题，希望各位大神多多分享， 谢谢了.....
 
-今天准备较详细的对比一下apache httpd与nginx两个web服务器的异同点、优缺点。由于我并不是做web开发的，所以有什么理解错误还请指出，想要了解它们是因为工作中有时候会用到它，有系统中用到了nginx+apache。本文绝大多数资料都是摘抄网上，自己做的只就是整合网上零散的资源然后加上自己的一点见解。简单的说apache httpd和nginx都是web服务器，但两者适应的场景不同，也就是两者专注于解决不同的问题。apache httpd:稳定、对动态请求处理强，但同时高并发时性能较弱，耗费资源多。nginx：高并发处理能力强、擅长处理静态请求、反向代理、均衡负载。在 [这篇文章](http://www.phpzixue.cn/detail1174.shtml)详细列出了apache与nginx的13个异同点，下面我们来一一分析其原理。 
+今天准备较详细的对比一下apache httpd与nginx两个web服务器的异同点、优缺点。由于我并不是做web开发的，所以有什么理解错误还请指出，想要了解它们是因为工作中有时候会用到它，有系统中用到了nginx+apache。本文绝大多数资料都是摘抄网上，自己做的只就是整合网上零散的资源然后加上自己的一点见解。简单的说apache httpd和nginx都是web服务器，但两者适应的场景不同，也就是两者专注于解决不同的问题。apache httpd:稳定、对动态请求处理强，但同时高并发时性能较弱，耗费资源多。nginx：高并发处理能力强、擅长处理静态请求、反向代理、均衡负载。在 [这篇文章](http://www.phpzixue.cn/detail1174.shtml)详细列出了apache与nginx的13个异同点，下面我们来一一分析其原理。
 
 **1、**nginx相对于apache的优点： 轻量级，同样起web 服务，比apache 占用更少的内存及资源 ，抗并发，nginx 处理请求是异步非阻塞的，而apache 则是阻塞型的，在高并发下nginx 能保持低资源低消耗高性能，高度模块化的设计，编写模块相对简单 ，社区活跃，各种高性能模块出品迅速啊
 
@@ -34,7 +34,7 @@ apache 相对于nginx 的优点： rewrite ，比nginx 的rewrite 强大 ，模�
 
 **8、**從我個人的經驗來看，nginx是很不錯的前端服務器，負載性能很好，在老奔上開nginx，用webbench模擬10000個靜態文件請求毫不吃力。apache對php等語言的支持很好，此外apache有強大的支持網路，發展時間相對nginx更久，bug少但是apache有先天不支持多核心處理負載雞肋的缺點，建議使用nginx做前端，後端用apache。大型網站建議用nginx自代的集群功能
 
-\#\# 这个还是在说nginx+apache结合是一个不错的选择。
+这个还是在说nginx+apache结合是一个不错的选择。
 
 **9、**Nginx优于apache的主要两点：1.Nginx本身就是一个反向代理服务器 2.Nginx支持7层负载均衡；其他的当然，Nginx可能会比apache支持更高的并发，但是根据NetCraft的统计，2011年4月的统计数据，Apache依然占有62.71%，而Nginx是7.35%，因此总得来说，Aapche依然是大部分公司的首先，因为其成熟的技术和开发社区已经也是非常不错的性能。
 
@@ -44,15 +44,15 @@ apache 相对于nginx 的优点： rewrite ，比nginx 的rewrite 强大 ，模�
 
 \#\#apache的缺陷，抗压不行，且由于线程数飙升，资源需求量也是极大
 
-**11、**可以看一下nginx lua模块：https://github.com/chaoslaw...apache比nginx多的模块，可直接用lua实现apache是最流行的，why？大多数人懒得更新到nginx或者学新事物   
-\#\#... 
+**11、**可以看一下nginx lua模块：[https://github.com/chaoslaw...apache比nginx多的模块，可直接用lua实现apache是最流行的，why？大多数人懒得更新到nginx或者学新事物](https://github.com/chaoslaw...apache比nginx多的模块，可直接用lua实现apache是最流行的，why？大多数人懒得更新到nginx或者学新事物)  
+\#\#...
 
 **12、**对于nginx，我喜欢它配置文件写的很简洁，正则配置让很多事情变得简单运行效率高，占用资源少，代理功能强大，很适合做前端响应服务器
 
 \#\#看了一下，nginx的配置文件确实更简洁，也容易理解
 
-**13、**Apache在处理动态有优势，Nginx并发性比较好，CPU内存占用低，如果rewrite频繁，那还是Apache吧   
-\#\#rewrite这点不是很了解，不多说   
-  
+**13、**Apache在处理动态有优势，Nginx并发性比较好，CPU内存占用低，如果rewrite频繁，那还是Apache吧  
+\#\#rewrite这点不是很了解，不多说
+
 上面这13点都是出自网上一篇apache与nginx的对比文章，"\#\#"后面的部分是根据自己的理解进行了简单的分析，希望对于刚接触apahce和nginx的人有一定的帮助。使用一个产品不能糊里糊涂的使用，我们需要了解其优点和缺点，这样才能更好的使用它们。
 

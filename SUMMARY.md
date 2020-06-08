@@ -177,14 +177,14 @@
 * [JVM](jvm.md)
   * [亿级流量电商系统JVM参数设置优化](jvm/yi-ji-liu-liang-dian-shang-xi-tong-jvm-can-shu-she-zhi-you-hua.md)
   * [日均百万级商城如何JVM性能调优](jvm/ri-jun-bai-wan-ji-shang-cheng-ru-he-jvm-xing-neng-diao-you.md)
-  * JVM虚拟机运行时数据区
+  * [JVM虚拟机运行时数据区](jvm/jvmxu-ni-ji-yun-xing-shi-shu-ju-qu.md)
   * [周志明&lt;&lt;深入理解java虚拟机&gt;&gt;](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e.md)
     * [自动内存管理机制](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi.md)
       * [java内存区域与内存溢出异常](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/javanei-cun-qu-yu-yu-nei-cun-yi-chu-yi-chang.md)
       * [垃圾收集器与内存分配策略](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve.md)
         * [垃圾收集算法](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve/la-ji-shou-ji-suan-fa.md)
         * [垃圾收集器](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve/la-ji-shou-ji-qi.md)
-        * 内存分配与回收策略
+        * [内存分配与回收策略](jvm/zhou-zhi-660e3c3c-shen-ru-li-jie-java-xu-ni-673a3e3e/zi-dong-nei-cun-guan-li-ji-zhi/la-ji-shou-ji-qi-yu-nei-cun-fen-pei-ce-lve/nei-cun-fen-pei-yu-hui-shou-ce-lve.md)
 * [中间件](zhong-jian-jian.md)
   * [Web Server](zhong-jian-jian/web-server.md)
     * [Nginx](zhong-jian-jian/web-server/nginx.md)
