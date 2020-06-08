@@ -102,6 +102,8 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 消息系统，对于日志等可靠性要求不高的场景，则 Apache 顶级项目 Kafka\[附录 12.26\]（GitHub 7.2k stars）是社区标配。对于可靠性要求较高的业务场景，**Kafka** 其实也是可以胜任，但企业需要根据具体场景，对 Kafka 的监控和治理能力进行适当定制完善，Allegro 公司开源的 hermes\[附录 12.27\]（GitHub 0.3k stars）是一个可参考项目，它在 Kafka 基础上封装了适合业务场景的企业级治理能力。阿里开源的** RocketMQ**\[附录 12.28\]（GitHub 3.5k 星）也是一个不错选择，具备更多适用于业务场景的特性，目前也是 Apache 顶级项目。**RabbitMQ**\[附录 12.29\]（GitHub 3.6k 星）是老牌经典的 MQ，队列特性和文档都很丰富，性能和分布式能力稍弱，中小规模场景可选。
 
+## 缓存治理
+
 对于缓存治理，如果倾向于采用客户端直连模式（个人认为缓存直连更简单轻量），则 SohuTv 开源的 cachecloud\[附录 12.30\]（GitHub 2.5k stars）是一款不错的 Redis 缓存治理平台，提供诸如监控统计，一键开启，自动故障转移，在线伸缩，自动化运维等生产级治理能力，另外其文档也比较丰富。如果倾向采用中间层 Proxy 模式，则 Twitter 开源的 twemproxy\[附录 12.31\]（GitHub 7.5k stars）和 CodisLab 开源的 codis\[附录 12.32\]（GitHub 6.9k stars）是社区比较热的选项。
 
 对于分布式数据访问层，如果采用 Java 技术栈，则当当开源的 shardingjdbc\[附录 12.33\]（GitHub 3.5k stars）是一个不错的选项，分库分表逻辑做在客户端 jdbc driver 中，客户端直连数据库比较简单轻量，建议中小规模场景采用。如果倾向采用数据库访问中间层 proxy 模式，则从阿里 Cobar 演化出来的社区开源分库分表中间件 MyCAT\[附录 12.34\]（GitHub 3.6k stars）是一个不错选择 。proxy 模式运维成本较高，建议中大规模场景，有一定框架自研和运维能力的团队采用。
@@ -138,7 +140,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 **IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 Apereo CAS（GitHub 3.6k stars），JBoss 开源的 keycloak（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
 
-考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                                
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                                  
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)  
 ![](/static/image/e7266888cb698cab36eba57d5c0d9815.png)
 
