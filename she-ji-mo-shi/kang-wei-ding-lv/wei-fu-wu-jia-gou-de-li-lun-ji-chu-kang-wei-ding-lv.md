@@ -157,7 +157,7 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 * 如果子系统是内聚的，和外部的沟通边界是明确的，能降低沟通成本，对应的设计也会更合理高效
 * 复杂的系统需要通过容错弹性的方式持续优化，不要指望一个大而全的设计或架构，好的架构和设计都是慢慢迭代出来的
 
-带来的具体的实践建议是：
+**带来的具体的实践建议是：**
 
 * 我们要用一切手段提升沟通效率，比如slack，github，wiki。能2个人讲清楚的事情，就不要拉更多人，每个人每个系统都有明确的分工，出了问题知道马上找谁，避免踢皮球的问题。
 * 通过MVP的方式来设计系统，通过不断的迭代来验证优化，系统应该是弹性设计的。
@@ -178,8 +178,6 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 
 [https://static.geekbang.org/PDF-修改版-极客时间-图片-杨波-微服务架构.pdf](https://static.geekbang.org/PDF-修改版-极客时间-图片-杨波-微服务架构.pdf)
 
-远距离条件下的康威定律——分布式世界中实现团队构建：
-https://yq.aliyun.com/articles/8611?spm=a2c4e.11163080.searchblog.9.d0412ec1iwEwak
-
-
+远距离条件下的康威定律——分布式世界中实现团队构建：  
+[https://yq.aliyun.com/articles/8611?spm=a2c4e.11163080.searchblog.9.d0412ec1iwEwak](https://yq.aliyun.com/articles/8611?spm=a2c4e.11163080.searchblog.9.d0412ec1iwEwak)
 
