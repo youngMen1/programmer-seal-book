@@ -54,11 +54,17 @@ gRPC\[附录 12.3\] 是谷歌近年新推的一套 RPC 框架，基于 protobuf 
 
 运行时支撑服务主要包括服务注册中心，服务路由网关和集中式配置中心三个产品。
 
-服务注册中心，如果采用 Spring Cloud 体系，则选择 Eureka\[附录 12.4\] 是最佳搭配，Eureka 在 Netflix 经过大规模生产验证，支持跨数据中心，客户端配合 Ribbon 可以实现灵活的客户端软负载，Eureka 目前在 GitHub 上有超过 4.7k 星；Consul\[附录 12.5\] 也是不错选择，天然支持跨数据中心，还支持 KV 模型存储和灵活健康检查能力，目前在 GitHub 上有超过 11k 星。
+**服务注册中心**，如果采用 Spring Cloud 体系，
 
-服务网关也是一个比较成熟的领域，有很多可选项。如果采用 Spring Cloud 体系，则选择 Zuul\[附录 12.6\] 是最佳搭配，Zuul 在 Netflix 经过大规模生产验证，支持灵活的动态过滤器脚本机制，异步性能不足（基于 Netty 的异步 Zuul 迟迟未能推出正式版）。Zuul 网关目前在 github 上有超过 3.7k 星。基于 Nginx/OpenResty 的 API 网关 Kong\[附录 12.7\] 目前在 github 上比较火，有超过 14.1k 星。因为采用 Nginx 内核，Kong 的异步性能较强，另外基于 lua 的插件机制比较灵活，社区插件也比较丰富，从安全到限流熔断都有，还有不少开源的管理界面，能够集中管理 Kong 集群。
+则选择 Eureka\[附录 12.4\] 是最佳搭配，Eureka 在 Netflix 经过大规模生产验证，支持跨数据中心，客户端配合 Ribbon 可以实现灵活的客户端软负载，Eureka 目前在 GitHub 上有超过 4.7k 星；
 
-配置中心，Spring Cloud 自带 Spring Cloud Config\[附录 12.8\]（GitHub 0.75k stars），个人认为算不上生产级，很多治理能力缺失，小规模场景可以试用。个人比较推荐携程的 Apollo\[附录 12.9\] 配置中心，在携程经过生产级验证，具备高可用，配置实时生效（推拉结合），配置审计和版本化，多环境多集群支持等生产级特性，建议中大规模需要对配置集中进行治理的企业采用。Apollo 目前在 github 上有超过 3.4k 星。
+Consul\[附录 12.5\] 也是不错选择，天然支持跨数据中心，还支持 KV 模型存储和灵活健康检查能力，目前在 GitHub 上有超过 11k 星。
+
+**服务网关**也是一个比较成熟的领域，有很多可选项。如果采用 Spring Cloud 体系，则选择 Zuul\[附录 12.6\] 是最佳搭配，Zuul 在 Netflix 经过大规模生产验证，支持灵活的动态过滤器脚本机制，异步性能不足（基于 Netty 的异步 Zuul 迟迟未能推出正式版）。Zuul 网关目前在 github 上有超过 3.7k 星。基于 Nginx/OpenResty 的 API 网关 Kong\[附录 12.7\] 目前在 github 上比较火，有超过 14.1k 星。因为采用 Nginx 内核，Kong 的异步性能较强，另外基于 lua 的插件机制比较灵活，社区插件也比较丰富，从安全到限流熔断都有，还有不少开源的管理界面，能够集中管理 Kong 集群。
+
+**配置中心**，Spring Cloud 自带 Spring Cloud Config\[附录 12.8\]（GitHub 0.75k stars），个人认为算不上生产级，很多治理能力缺失，小规模场景可以试用。
+
+个人比较推荐携程的 Apollo\[附录 12.9\] 配置中心，在携程经过生产级验证，具备高可用，配置实时生效（推拉结合），配置审计和版本化，多环境多集群支持等生产级特性，建议中大规模需要对配置集中进行治理的企业采用。Apollo 目前在 github 上有超过 3.4k 星。
 
 ## 六、服务监控选型
 
@@ -98,7 +104,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 对于微服务安全认证授权机制一块，目前业界虽然有 OAuth 和 OpenID connect 等标准协议，但是各家具体实现的做法都不太一样，企业一般有很多特殊的定制需求，整个社区还没有形成通用生产级开箱即用的产品。有一些开源授权服务器产品，比较知名的如 Apereo CAS\[附录 12.37\]（GitHub 3.6k stars），JBoss 开源的 keycloak\[附录 12.38\]（GitHub 1.9 stars），spring cloud security\[附录 12.39\] 等，大都是 opinionated（一家观点和做法）的产品，同时因支持太多协议造成产品复杂，也缺乏足够灵活性。个人建议基于 OAuth 和 OpenID connect 标准，在参考一些开源产品的基础上（例如 Mitre 开源的 OpenID-Connect-Java-Spring-Server\[附录 12.40\]，GitHub 0.62k stars），定制自研轻量级授权服务器。Wso2 提出了一种微服务安全的参考方案 \[附录 12.45\]，建议参考，该方案的关键步骤如下：
 
-![](/static/image/b70992e5727d45726ba7fcfb2b645f2a.png)(https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)
+![](/static/image/b70992e5727d45726ba7fcfb2b645f2a.png)\([https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)\)
 
 使用支持 OAuth 2.0 和 OpenID Connect 标准协议的授权服务器（个人建议定制自研）；
 
@@ -124,7 +130,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 **IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 Apereo CAS（GitHub 3.6k stars），JBoss 开源的 keycloak（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
 
-考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[          
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[            
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)e7266888cb698cab36eba57d5c0d9815.png
 
 简化发布流程如下：
