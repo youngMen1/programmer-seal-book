@@ -157,7 +157,7 @@
     * [Mybatis使用的设计模式](she-ji-mo-shi/ying-yong-chang-jing/mybatisshi-yong-de-she-ji-mo-shi.md)
   * [单例模式](she-ji-mo-shi/dan-li-mo-shi.md)
     * [单例模式的三种实现 以及各自的优缺点](she-ji-mo-shi/dan-li-mo-shi/dan-li-mo-shi-de-san-zhong-shi-xian-yi-ji-ge-zi-de-you-que-dian.md)
-    * [单例模式－－反射－－防止序列化破坏单例模式](she-ji-mo-shi/dan-li-mo-shi/dan-li-mo-shi-ff0d-ff0d-fan-she-ff0d-ff0d-fang-zhi-xu-lie-hua-po-huai-dan-li-mo-shi.md)
+    * [单例模式－反射－防止序列化破坏单例模式](she-ji-mo-shi/dan-li-mo-shi/dan-li-mo-shi-ff0d-ff0d-fan-she-ff0d-ff0d-fang-zhi-xu-lie-hua-po-huai-dan-li-mo-shi.md)
   * [MVC](she-ji-mo-shi/mvc.md)
   * [IOC](she-ji-mo-shi/ioc.md)
     * [IOC](she-ji-mo-shi/ioc/ioc.md)
