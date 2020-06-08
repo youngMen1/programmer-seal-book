@@ -173,6 +173,7 @@
     * [微服务架构技术栈选型手册](she-ji-mo-shi/wei-fu-wu-si-xiang/wei-fu-wu-jia-gou-ji-zhu-zhan-xuan-xing-shou-ce.md)
   * [康威定律](she-ji-mo-shi/kang-wei-ding-lv.md)
     * [微服务架构的理论基础 - 康威定律](she-ji-mo-shi/kang-wei-ding-lv/wei-fu-wu-jia-gou-de-li-lun-ji-chu-kang-wei-ding-lv.md)
+  * 领域驱动设计\(DDD\)
 * [JVM](jvm.md)
   * [亿级流量电商系统JVM参数设置优化](jvm/yi-ji-liu-liang-dian-shang-xi-tong-jvm-can-shu-she-zhi-you-hua.md)
   * [日均百万级商城如何JVM性能调优](jvm/ri-jun-bai-wan-ji-shang-cheng-ru-he-jvm-xing-neng-diao-you.md)
