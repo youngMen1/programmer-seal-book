@@ -80,6 +80,8 @@ ELK 目前可以认为是日志监控的标配，功能完善开箱即用，Elas
 
 ![](/static/image/bafa1b0f1e10e2de708c40590a8eb629.png)
 
+### **Metrics 监控**
+
 Metrics 监控主要依赖于时间序列数据库 \(TSDB\)，目前较成熟的产品是 StumbleUpon 公司开源的基于 HBase 的 OpenTSDB\[附录 12.15\]（基于 Cassandra 的 KariosDB\[附录 12.16\] 也是一个选择，GitHub 1.1k stars，它基本上是 OpenTSDB 针对 Cassandra 的一个改造版），OpenTSDB 具有分布式能力可以横向扩展，但是相对较重，适用于中大规模企业，OpenTSDB 目前在 GitHub 上有近 2.9k 星。
 
 OpenTSDB 本身不提供告警模块，Argus\[附录 12.17\]（GitHub 0.29k 星）是 Salesforce 开源的基于 OpenTSDB 的统一监控告警平台，支持丰富的告警函数和灵活的告警配置，可以作为 OpenTSDB 的告警补充。近年也出现一些轻量级的 TSDB，如 InfluxDB\[附录 12.18\]（GitHub 12.4k stars）和 Prometheus\[附录 12.19\]（GitHub 14.3k stars），这些产品函数报表能力丰富，自带告警模块，但是分布式能力不足，适用于中小规模企业。Grafana\[附录 12.20\]（GitHub 19.9k stars）是 Metrics 报表展示的社区标配。
@@ -134,7 +136,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 **IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 Apereo CAS（GitHub 3.6k stars），JBoss 开源的 keycloak（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
 
-考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                      
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                        
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)  
 ![](/static/image/e7266888cb698cab36eba57d5c0d9815.png)
 
