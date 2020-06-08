@@ -68,7 +68,7 @@ gRPC\[附录 12.3\] 是谷歌近年新推的一套 RPC 框架，基于 protobuf 
 
 ## 六、服务监控选型
 
-主要包括日志监控，调用链监控，Metrics 监控，健康检查和告警通知等产品。
+**主要包括日志监控，调用链监控，Metrics 监控，健康检查和告警通知等产品。**
 
 ELK 目前可以认为是日志监控的标配，功能完善开箱即用，ElasticSearch\[附录 12.10\] 目前在 GitHub 上有超过 28.4k 星。Elastalert\[附录 12.11\] \(GitHub 4k stars\) 是 Yelp 开源的针对 ELK 的告警通知模块。
 
@@ -130,7 +130,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 **IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 Apereo CAS（GitHub 3.6k stars），JBoss 开源的 keycloak（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
 
-考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                  
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                    
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)  
 ![](/static/image/e7266888cb698cab36eba57d5c0d9815.png)
 
