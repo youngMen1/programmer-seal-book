@@ -178,7 +178,7 @@ Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effecti
 
 [https://static.geekbang.org/PDF-修改版-极客时间-图片-杨波-微服务架构.pdf](https://static.geekbang.org/PDF-修改版-极客时间-图片-杨波-微服务架构.pdf)
 
-* [远距离条件下的康威定律——分布式世界中实现团队构建]
+远距离条件下的康威定律——分布式世界中实现团队构建：
 https://yq.aliyun.com/go/articleRenderRedirect
 
 
