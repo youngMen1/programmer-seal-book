@@ -46,14 +46,13 @@ Spring 核心容器 – 该层基本上是 Spring Framework 的核心。它包�
 
 数据访问/集成 – 该层提供与数据库交互的支持。它包含以下模块：
 
-* * JDBC \(Java DataBase Connectivity\)
-  * ORM \(Object Relational Mapping\)
-  * OXM \(Object XML Mappers\)
-  * JMS \(Java Messaging Service\)
-  * Transaction
+* JDBC \(Java DataBase Connectivity\)
+* ORM \(Object Relational Mapping\)
+* OXM \(Object XML Mappers\)
+* JMS \(Java Messaging Service\)
+* Transaction
 
 Web – 该层提供了创建 Web 应用程序的支持。它包含以下模块：
-
 * Web
 * Web – Servlet
 * Web – Socket
