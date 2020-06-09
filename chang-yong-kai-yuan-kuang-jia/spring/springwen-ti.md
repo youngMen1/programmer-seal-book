@@ -37,7 +37,7 @@
 
 ![](/static/image/20190804193644516.png)
 
-Spring 核心容器（Core Container） – 该层基本上是 Spring Framework 的核心。它包含以下模块：
+1.5.1.Spring 核心容器（Core Container） – 该层基本上是 Spring Framework 的核心。它包含以下模块：
 
 * Spring Core
 * Spring Bean
