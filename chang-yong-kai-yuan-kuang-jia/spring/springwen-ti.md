@@ -336,6 +336,17 @@ Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。
 
   例如：
 
+```
+@Configuration
+public class StudentConfig {
+    @Bean
+    public StudentBean myStudent() {
+        return new StudentBean();
+    }
+}
+
+```
+
 ## 5. 数据访问
 
 ## 6. AOP
