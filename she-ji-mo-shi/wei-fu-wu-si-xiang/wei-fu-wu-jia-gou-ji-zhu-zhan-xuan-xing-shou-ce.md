@@ -60,7 +60,7 @@ gRPC\[附录 12.3\] 是谷歌近年新推的一套 RPC 框架，基于 protobuf 
 
 **Consul**\[附录 12.5\] 也是不错选择，天然支持跨数据中心，还支持 KV 模型存储和灵活健康检查能力，目前在 GitHub 上有超过 11k 星。
 
-**服务网关**也是一个比较成熟的领域，有很多可选项。如果采用 Spring Cloud 体系，则选择 Zuul\[附录 12.6\] 是最佳搭配，Zuul 在 Netflix 经过大规模生产验证，支持灵活的动态过滤器脚本机制，异步性能不足（基于 Netty 的异步 Zuul 迟迟未能推出正式版）。Zuul 网关目前在 github 上有超过 3.7k 星。现在升级成gateway，基于 Nginx/OpenResty 的 API 网关 Kong\[附录 12.7\] 目前在 github 上比较火，有超过 14.1k 星。因为采用 Nginx 内核，Kong 的异步性能较强，另外基于 lua 的插件机制比较灵活，社区插件也比较丰富，从安全到限流熔断都有，还有不少开源的管理界面，能够集中管理 Kong 集群。
+**服务网关**也是一个比较成熟的领域，有很多可选项。如果采用 Spring Cloud 体系，则选择 Zuul\[附录 12.6\] 是最佳搭配，Zuul 在 Netflix 经过大规模生产验证，支持灵活的动态过滤器脚本机制，异步性能不足（基于 Netty 的异步 Zuul 迟迟未能推出正式版）。Zuul 网关目前在 github 上有超过 3.7k 星。现在升级成gateway，基于 Nginx/OpenResty 的 API 网关 Kong\[附录 12.7\] 目前在 github 上比较火，有超过 14.1k 星。因为采用 Nginx 内核，**Kong** 的异步性能较强，另外基于 lua 的插件机制比较灵活，社区插件也比较丰富，从安全到限流熔断都有，还有不少开源的管理界面，能够集中管理 Kong 集群。
 
 **配置中心**，Spring Cloud 自带 Spring Cloud Config\[附录 12.8\]（GitHub 0.75k stars），个人认为算不上生产级，很多治理能力缺失，小规模场景可以试用。
 
@@ -142,7 +142,7 @@ Hystrix 一般需要在应用端或者框架内埋点，有一定的使用门槛
 
 **IAM**：是 identity & access management 的简称，对发布平台各个组件进行身份认证和安全访问控制。社区有不少开源的 IAM 产品，比较知名的有 **Apereo CAS**（GitHub 3.6k stars），JBoss 开源的 **keycloak**（GitHub 1.9 stars）等。但是这些产品一般都比较复杂重量，很多企业考虑到内部各种系统灵活对接的需求，都会考虑定制自研轻量级的解决方案。
 
-考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                                            
+考虑到服务部署平台目前还没有端到端生产级解决方案，企业一般需要定制集成，下面给出一个可以参考的具备轻量级治理能力的发布体系：[                                              
 ](https://s3.amazonaws.com/infoq.content.live.0/articles/micro-service-technology-stack/zh/resources/1646-1518281425481.png)  
 ![](/static/image/e7266888cb698cab36eba57d5c0d9815.png)
 
