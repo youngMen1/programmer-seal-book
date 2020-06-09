@@ -124,6 +124,10 @@ Spring 框架的核心是 Spring 容器。容器创建对象，将它们装配�
 
 ## 2.5. spring 中有多少种 IOC 容器？
 
+* BeanFactory - BeanFactory 就像一个包含 bean 集合的工厂类。它会在客户端要求时实例化 bean。
+
+* ApplicationContext - ApplicationContext 接口扩展了 BeanFactory 接口。它在 BeanFactory 基础上提供了一些额外的功能。
+
 # 3.Beans
 
 ## 4. 注解
