@@ -477,6 +477,11 @@ Spring DAO 使得 JDBC，Hibernate 或 JDO 这样的数据访问技术更容易�
 
 ## 6. AOP
 
+## 6.1. 什么是 AOP？
+
+AOP\(Aspect-Oriented Programming\), 即 面向切面编程, 它与 OOP\( Object-Oriented Programming, 面向对象编程\) 相辅相成, 提供了与 OOP 不同的抽象软件结构的视角.  
+在 OOP 中, 我们以类\(class\)作为我们的基本单元, 而 AOP 中的基本单元是 Aspect\(切面\)
+
 ## 7. MVC
 
 # 8.参考
