@@ -150,6 +150,44 @@ IoC 的一些好处是：
 
 Spring 中的 IoC 的实现原理就是工厂模式加反射机制。
 
+```
+
+interface Fruit {
+     public abstract void eat();
+}
+class Apple implements Fruit {
+    public void eat(){
+        System.out.println("Apple");
+    }
+}
+class Orange implements Fruit {
+    public void eat(){
+        System.out.println("Orange");
+    }
+}
+class Factory {
+    public static Fruit getInstance(String ClassName) {
+        Fruit f=null;
+        try {
+            f=(Fruit)Class.forName(ClassName).newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
+}
+class Client {
+    public static void main(String[] a) {
+        Fruit f=Factory.getInstance("io.github.dunwu.spring.Apple");
+        if(f!=null){
+            f.eat();
+        }
+    }
+}
+
+
+```
+
 # 3.Beans
 
 ## 4. 注解
