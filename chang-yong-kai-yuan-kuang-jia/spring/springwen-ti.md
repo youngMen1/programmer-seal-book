@@ -307,8 +307,6 @@ bean.xml
 
 Spring 容器能够自动装配 bean。也就是说，可以通过检查 BeanFactory 的内容让 Spring 自动解析 bean 的协作者。
 
-Spring 容器能够自动装配 bean。也就是说，可以通过检查 BeanFactory 的内容让 Spring 自动解析 bean 的协作者。
-
 自动装配的不同模式：
 
 * no - 这是默认设置，表示没有自动装配。应使用显式 bean 引用进行装配。
