@@ -2,11 +2,11 @@
 
 ## 1.1. 不同版本的 Spring Framework 有哪些主要功能？
 
-| Version |
+|  |
 | :--- |
 
 
-| 1 | Feature |
+| Version | Feature |
 | :--- | :--- |
 | Spring 2.5 | 发布于 2007 年。这是第一个支持注解的版本。 |
 | Spring 3.0 | 发布于 2009 年。它完全利用了 Java5 中的改进，并为 JEE6 提供了支持。 |
