@@ -151,7 +151,6 @@ IoC 的一些好处是：
 Spring 中的 IoC 的实现原理就是工厂模式加反射机制。
 
 ```
-
 interface Fruit {
      public abstract void eat();
 }
@@ -184,11 +183,16 @@ class Client {
         }
     }
 }
-
-
 ```
 
 # 3.Beans
+
+### 3.1. 什么是 spring bean？
+
+* 它们是构成用户应用程序主干的对象。
+* Bean 由 Spring IoC 容器管理。
+* 它们由 Spring IoC 容器实例化，配置，装配和管理。
+* Bean 是基于用户提供给容器的配置元数据创建。
 
 ## 4. 注解
 
