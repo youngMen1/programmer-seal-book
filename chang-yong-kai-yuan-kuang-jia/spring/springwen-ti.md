@@ -533,6 +533,10 @@ cross-cutting concern 是一个适用于整个应用的行为，这会影响整�
 * Spring AOP 基于动态代理方式实现；AspectJ 基于静态代理方式实现。
 * Spring AOP 仅支持方法级别的 PointCut；提供了完全的 AOP 支持，它还支持属性级别的 PointCut。
 
+## 6.9. 如何理解 Spring 中的代理？
+
+将 Advice 应用于目标对象后创建的对象称为代理。在客户端对象的情况下，目标对象和代理对象是相同的。
+
 ## 7. MVC
 
 # 8.参考
