@@ -482,6 +482,15 @@ Spring DAO 使得 JDBC，Hibernate 或 JDO 这样的数据访问技术更容易�
 AOP\(Aspect-Oriented Programming\), 即 面向切面编程, 它与 OOP\( Object-Oriented Programming, 面向对象编程\) 相辅相成, 提供了与 OOP 不同的抽象软件结构的视角.  
 在 OOP 中, 我们以类\(class\)作为我们的基本单元, 而 AOP 中的基本单元是 Aspect\(切面\)
 
+## 6.2. 什么是 Aspect？
+
+aspect 由 pointcount 和 advice 组成, 它既包含了横切逻辑的定义, 也包括了连接点的定义. Spring AOP 就是负责实施切面的框架, 它将切面所定义的横切逻辑编织到切面所指定的连接点中.  
+AOP 的工作重心在于如何将增强编织目标对象的连接点上, 这里包含两个工作:
+
+* 如何通过 pointcut 和 advice 定位到特定的 joinpoint 上
+* 如何在 advice 中编写切面代码.
+* 可以简单地认为, 使用 @Aspect 注解的类就是切面.
+
 ## 7. MVC
 
 # 8.参考
