@@ -40,5 +40,5 @@
 
 Serializable 是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。
 
-值得一提的是：大多数数据库默认的事务隔离级别是Read committed，比如Sql Server , Oracle。Mysql的默认隔离级别是Repeatable read。
+值得一提的是：大多数数据库默认的事务隔离级别是Read committed，比如Sql Server , Oracle。**Mysql的默认隔离级别是Repeatable read。**
 
