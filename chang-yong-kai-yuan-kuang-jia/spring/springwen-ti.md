@@ -303,6 +303,10 @@ bean.xml
 
 当 bean 在 Spring 容器中组合在一起时，它被称为装配或 bean 装配。 Spring 容器需要知道需要什么 bean 以及容器应该如何使用依赖注入来将 bean 绑定在一起，同时装配 bean。
 
+### 3.7. 自动装配有哪些方式？
+
+Spring 容器能够自动装配 bean。也就是说，可以通过检查 BeanFactory 的内容让 Spring 自动解析 bean 的协作者。
+
 ## 4. 注解
 
 ## 5. 数据访问
