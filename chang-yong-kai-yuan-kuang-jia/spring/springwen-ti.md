@@ -1,6 +1,6 @@
 # 1.一般问题
 
-### 1.1. 不同版本的 Spring Framework 有哪些主要功能？
+## 1.1. 不同版本的 Spring Framework 有哪些主要功能？
 
 # 2.依赖注入（Ioc）
 
