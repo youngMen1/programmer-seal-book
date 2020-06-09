@@ -53,6 +53,7 @@
 * Transaction
 
 Web – 该层提供了创建 Web 应用程序的支持。它包含以下模块：
+
 * Web – Socket
 * Web
 * Web – Servlet
@@ -67,6 +68,10 @@ Test – 该层为使用 JUnit 和 TestNG 进行测试提供支持。
 Messaging – 该模块为 STOMP 提供支持。它还支持注解编程模型，该模型用于从 WebSocket 客户端路由和处理 STOMP 消息。
 
 Aspects – 该模块为与 AspectJ 的集成提供支持。
+
+## 1.6. 什么是 Spring 配置文件？
+
+Spring 配置文件是 XML 文件。该文件主要包含类信息。它描述了这些类是如何配置以及相互引入的。但是，XML 配置文件冗长且更加干净。如果没有正确规划和编写，那么在大项目中管理变得非常困难。
 
 # 2.依赖注入（Ioc）
 
