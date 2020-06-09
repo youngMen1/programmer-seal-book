@@ -323,13 +323,6 @@ Spring 容器能够自动装配 bean。也就是说，可以通过检查 BeanFac
 
 * 令人困惑的性质 - 总是喜欢使用明确的装配，因为自动装配不太精确。
 
-## 4.3. @Component, @Controller, @Repository, @Service 有何区别？
-
-* @Component：这将 java 类标记为 bean。它是任何 Spring 管理组件的通用构造型。spring 的组件扫描机制现在可以将其拾取并将其拉入应用程序环境中。
-* @Controller：这将一个类标记为 Spring Web MVC 控制器。标有它的 Bean 会自动导入到 IoC 容器中。
-* @Service：此注解是组件注解的特化。它不会对 @Component 注解提供任何其他行为。您可以在服务层类中使用 @Service 而不是 @Component，因为它以更好的方式指定了意图。
-* @Repository：这个注解是具有类似用途和功能的 @Component 注解的特化。它为 DAO 提供了额外的好处。它将 DAO 导入 IoC 容器，并使未经检查的异常有资格转换为 Spring DataAccessException。
-
 ## 4. 注解
 
 ## 4.1. 什么是基于注解的容器配置
