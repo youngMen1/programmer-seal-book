@@ -537,6 +537,11 @@ cross-cutting concern 是一个适用于整个应用的行为，这会影响整�
 
 将 Advice 应用于目标对象后创建的对象称为代理。在客户端对象的情况下，目标对象和代理对象是相同的。
 
+```
+Advice + Target Object = Proxy
+
+```
+
 ## 7. MVC
 
 # 8.参考
