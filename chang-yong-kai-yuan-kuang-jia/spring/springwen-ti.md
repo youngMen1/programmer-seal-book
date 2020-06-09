@@ -235,9 +235,9 @@ public class StudentConfig {
         return new StudentBean();
     }
 }
-
-
 ```
+
+## 3.3. spring 支持集中 bean scope？
 
 ## 4. 注解
 
