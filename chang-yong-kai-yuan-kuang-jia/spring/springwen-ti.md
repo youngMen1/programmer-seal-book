@@ -83,6 +83,15 @@ Spring 应用一般有以下组件：
 * Bean 配置文件 - 包含类的信息以及如何配置它们。
 * 用户程序 - 它使用接口。
 
+## 1.8. 使用 Spring 有哪些方式？
+
+使用 Spring 有以下方式：
+
+* 作为一个成熟的 Spring Web 应用程序。
+* 作为第三方 Web 框架，使用 Spring Frameworks 中间层。
+* 用于远程使用。
+* 作为企业级 Java Bean，它可以包装现有的 POJO（Plain Old Java Objects）。
+
 # 2.依赖注入（Ioc）
 
 # 3.Beans
