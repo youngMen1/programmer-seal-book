@@ -557,7 +557,7 @@ Spring Web MVC 框架提供 模型-视图-控制器 架构和随时可用的组�
 
 DispatcherServlet 的工作流程可以用一幅图来说明：
 
-20190804194038351.png
+![](/static/image/20190804194038351.png)
 
 向服务器发送 HTTP 请求，请求被前端控制器 DispatcherServlet 捕获。
 
