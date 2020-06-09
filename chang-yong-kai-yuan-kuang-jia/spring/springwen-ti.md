@@ -130,11 +130,11 @@ Spring 框架的核心是 Spring 容器。容器创建对象，将它们装配�
 
 ## 2.6. 区分 BeanFactory 和 ApplicationContext。
 
-| BeanFactory |
+|  |
 | :--- |
 
 
-| 1. | ApplicationContext |
+| BeanFactory | ApplicationContext |
 | :--- | :--- |
 | 它使用懒加载 | 它使用即时加载 |
 | 它使用语法显式提供资源对象 | 它自己创建和管理资源对象 |
