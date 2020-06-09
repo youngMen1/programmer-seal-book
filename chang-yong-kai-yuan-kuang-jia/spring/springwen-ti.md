@@ -307,6 +307,16 @@ bean.xml
 
 Spring 容器能够自动装配 bean。也就是说，可以通过检查 BeanFactory 的内容让 Spring 自动解析 bean 的协作者。
 
+Spring 容器能够自动装配 bean。也就是说，可以通过检查 BeanFactory 的内容让 Spring 自动解析 bean 的协作者。
+
+自动装配的不同模式：
+
+* no - 这是默认设置，表示没有自动装配。应使用显式 bean 引用进行装配。
+* byName - 它根据 bean 的名称注入对象依赖项。它匹配并装配其属性与 XML 文件中由相同名称定义的 bean。
+* byType - 它根据类型注入对象依赖项。如果属性的类型与 XML 文件中的一个 bean 名称匹配，则匹配并装配属性。
+* 构造函数 - 它通过调用类的构造函数来注入依赖项。它有大量的参数。
+* autodetect - 首先容器尝试通过构造函数使用 autowire 装配，如果不能，则尝试通过 byType 自动装配。
+
 ## 4. 注解
 
 ## 5. 数据访问
