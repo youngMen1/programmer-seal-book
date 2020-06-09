@@ -265,6 +265,30 @@ spring bean 容器的生命周期流程如下：
 
 20190804193840470.png
 
+## 3.5. 什么是 spring 的内部 bean？
+
+只有将 bean 用作另一个 bean 的属性时，才能将 bean 声明为内部 bean。为了定义 bean，Spring 的基于 XML 的配置元数据在 或 中提供了 元素的使用。内部 bean 总是匿名的，它们总是作为原型。
+
+例如，假设我们有一个 Student 类，其中引用了 Person 类。这里我们将只创建一个 Person 类实例并在 Student 中使用它。
+
+```
+
+Student.java
+
+public class Student {
+    private Person person;
+    //Setters and Getters
+}
+public class Person {
+    private String name;
+    private String address;
+    //Setters and Getters
+}
+
+
+
+```
+
 ## 4. 注解
 
 ## 5. 数据访问
