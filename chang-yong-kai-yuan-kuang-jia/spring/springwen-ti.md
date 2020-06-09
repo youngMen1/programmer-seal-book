@@ -297,12 +297,13 @@ bean.xml
         </bean>
     </property>
 </bean>
-
 ```
 
+## 3.6. 什么是 spring 装配
+
+当 bean 在 Spring 容器中组合在一起时，它被称为装配或 bean 装配。 Spring 容器需要知道需要什么 bean 以及容器应该如何使用依赖注入来将 bean 绑定在一起，同时装配 bean。
+
 ## 4. 注解
-
-
 
 ## 5. 数据访问
 
