@@ -424,9 +424,14 @@ public class EmpAccount {
         System.out.println(“Employee name : ”+emp.getName);
     }
 }
-
-
 ```
+
+## 4.7. @RequestMapping 注解有什么用？
+
+@RequestMapping 注解用于将特定 HTTP 请求方法映射到将处理相应请求的控制器中的特定类/方法。此注释可应用于两个级别：
+
+* 类级别：映射请求的 URL
+* 方法级别：映射 URL 以及 HTTP 请求方法
 
 ## 5. 数据访问
 
