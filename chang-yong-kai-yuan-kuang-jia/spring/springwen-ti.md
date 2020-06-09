@@ -263,7 +263,7 @@ spring bean 容器的生命周期流程如下：
 * 如果 bean 实现 DisposableBean 接口，当 spring 容器关闭时，会调用 destory\(\)。
 * 如果为 bean 指定了 destroy 方法（ 的 destroy-method 属性），那么将调用它。
 
-20190804193840470.png
+![](/static/image/20190804193840470.png)
 
 ## 3.5. 什么是 spring 的内部 bean？
 
