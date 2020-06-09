@@ -389,9 +389,15 @@ public class Employee {
         return name;
     }
 }
-
-
 ```
+
+## 4.6. @Qualifier 注解有什么用？
+
+当您创建多个相同类型的 bean 并希望仅使用属性装配其中一个 bean 时，您可以使用@Qualifier 注解和 @Autowired 通过指定应该装配哪个确切的 bean 来消除歧义。
+
+例如，这里我们分别有两个类，Employee 和 EmpAccount。在 EmpAccount 中，使用@Qualifier 指定了必须装配 id 为 emp1 的 bean。
+
+Employee.java
 
 ## 5. 数据访问
 
