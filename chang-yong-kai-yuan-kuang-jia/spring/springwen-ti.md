@@ -441,7 +441,7 @@ Spring DAO 使得 JDBC，Hibernate 或 JDO 这样的数据访问技术更容易�
 
 ## 5.2. 列举 Spring DAO 抛出的异常。
 
-
+20190804193915634.png
 
 ## 6. AOP
 
