@@ -545,6 +545,8 @@ Advice + Target Object = Proxy
 
 为了创建一个 advice 对象而链接一个 aspect 和其它应用类型或对象，称为编织（Weaving）。在 Spring AOP 中，编织在运行时执行。请参考下图：
 
+20190804194002754.png
+
 ## 7. MVC
 
 # 8.参考
