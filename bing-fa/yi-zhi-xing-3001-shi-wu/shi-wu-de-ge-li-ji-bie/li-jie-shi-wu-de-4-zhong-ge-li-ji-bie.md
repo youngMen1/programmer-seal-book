@@ -2,7 +2,7 @@
 
 数据库事务的隔离级别有4种，由低到高分别为Read uncommitted 、Read committed 、Repeatable read 、Serializable 。而且，在事务的并发操作中可能会出现脏读，不可重复读，幻读。下面通过事例一一阐述它们的概念与联系。
 
-### 1.1.Read uncommitted\(读未提交\)
+## 1.1.Read uncommitted\(读未提交\)
 
 读未提交，顾名思义，就是一个事务可以读取另一个未提交事务的数据。
 
@@ -12,7 +12,7 @@
 
 那怎么解决脏读呢？Read committed！读提交，能解决脏读问题。
 
-### 1.2.Read committed\(读提交\)
+## 1.2.Read committed\(读提交\)
 
 读提交，顾名思义，就是一个事务要等另一个事务提交后才能读取数据。
 
@@ -22,7 +22,7 @@
 
 那怎么解决可能的不可重复读问题？Repeatable read ！
 
-### 1.3.Repeatable read\(重复读\)
+## 1.3.Repeatable read\(重复读\)
 
 重复读，就是在开始读取数据（事务开启）时，不再允许修改操作
 
@@ -36,7 +36,7 @@
 
 那怎么解决幻读问题？Serializable！
 
-### 1.4.Serializable 序列化
+## 1.4.Serializable 序列化
 
 Serializable 是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。
 
