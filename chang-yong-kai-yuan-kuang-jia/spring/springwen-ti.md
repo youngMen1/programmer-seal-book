@@ -361,6 +361,21 @@ public class StudentConfig {
 
 @Required 应用于 bean 属性 setter 方法。此注解仅指示必须在配置时使用 bean 定义中的显式属性值或使用自动装配填充受影响的 bean 属性。如果尚未填充受影响的 bean 属性，则容器将抛出 BeanInitializationException。
 
+```
+public class Employee {
+    private String name;
+    @Required
+    public void setName(String name){
+        this.name=name;
+    }
+    public string getName(){
+        return name;
+    }
+}
+
+
+```
+
 ## 5. 数据访问
 
 ## 6. AOP
