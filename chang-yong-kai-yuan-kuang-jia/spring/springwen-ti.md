@@ -65,11 +65,9 @@ Instrumentation – 该层为类检测和类加载器实现提供支持。
 
 Test – 该层为使用 JUnit 和 TestNG 进行测试提供支持。
 
-几个杂项模块:
+Messaging – 该模块为 STOMP 提供支持。它还支持注解编程模型，该模型用于从 WebSocket 客户端路由和处理 STOMP 消息。
 
-* Messaging – 该模块为 STOMP 提供支持。它还支持注解编程模型，该模型用于从 WebSocket 客户端路由和处理 STOMP 消息。
-
-* Aspects – 该模块为与 AspectJ 的集成提供支持。
+Aspects – 该模块为与 AspectJ 的集成提供支持。
 
 # 2.依赖注入（Ioc）
 
