@@ -134,7 +134,7 @@ Spring 框架的核心是 Spring 容器。容器创建对象，将它们装配�
 | :--- |
 
 
-|  | ApplicationContext |
+| 1. | ApplicationContext |
 | :--- | :--- |
 | 它使用懒加载 | 它使用即时加载 |
 | 它使用语法显式提供资源对象 | 它自己创建和管理资源对象 |
