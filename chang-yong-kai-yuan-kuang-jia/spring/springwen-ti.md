@@ -7,7 +7,7 @@
 | Spring 2.5 | 发布于 2007 年。这是第一个支持注解的版本。 |
 | Spring 3.0 | 发布于 2009 年。它完全利用了 Java5 中的改进，并为 JEE6 提供了支持。 |
 | Spring 4.0 | 发布于 2013 年。这是第一个完全支持 JAVA8 的版本。 |
-| Spring5.0 | 1 |
+| Spring5.0 | Spring Framework 5.0的最大特点之一是**响应式编程（Reactive Programming）** |  |
 
 # 2.依赖注入（Ioc）
 
