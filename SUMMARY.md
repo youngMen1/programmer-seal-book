@@ -3,7 +3,7 @@
 * [Introduction](README.md)
   * [技术路线](ji-zhu-lu-xian.md)
   * [基础篇](ji-chu-pian.md)
-  * 后端架构师技术图谱
+  * [后端架构师技术图谱](hou-duan-jia-gou-shi-ji-zhu-tu-pu.md)
 * [工具](gong-ju.md)
   * [Scrum开发流程](gong-ju/scrumkai-fa-liu-cheng.md)
   * [Phabricator代码评审工具](gong-ju/phabricatordai-ma-ping-shen-gong-ju.md)
