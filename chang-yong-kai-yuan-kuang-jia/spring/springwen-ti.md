@@ -399,6 +399,20 @@ public class Employee {
 
 Employee.java
 
+```
+public class Employee {
+    private String name;
+    @Autowired
+    public void setName(String name) {
+        this.name=name;
+    }
+    public string getName() {
+        return name;
+    }
+}
+
+```
+
 ## 5. 数据访问
 
 ## 6. AOP
