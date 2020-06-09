@@ -357,6 +357,17 @@ public class StudentConfig {
 
 默认情况下，Spring 容器中未打开注解装配。因此，要使用基于注解装配，我们必须通过配置&lt;context：annotation-config /&gt; 元素在 Spring 配置文件中启用它。
 
+## 4.3. @Component, @Controller, @Repository, @Service 有何区别？
+
+* @Component：这将 java 类标记为 bean。它是任何 Spring 管理组件的通用构造型。spring 的组件扫描机制现在可以将其拾取并将其拉入应用程序环境中。
+* @Controller：这将一个类标记为 Spring Web MVC 控制器。标有它的 Bean 会自动导入到 IoC 容器中。
+* @Service：此注解是组件注解的特化。它不会对 @Component 注解提供任何其他行为。您可以在服务层类中使用 @Service 而不是 @Component，因为它以更好的方式指定了意图。
+* @Repository：这个注解是具有类似用途和功能的 @Component 注解的特化。它为 DAO 提供了额外的好处。它将 DAO 导入 IoC 容器，并使未经检查的异常有资格转换为 Spring DataAccessException。
+
+## 4.4. @Required 注解有什么用？
+
+@Required 应用于 bean 属性 setter 方法。此注解仅指示必须在配置时使用 bean 定义中的显式属性值或使用自动装配填充受影响的 bean 属性。如果尚未填充受影响的 bean 属性，则容器将抛出 BeanInitializationException。
+
 ## 5. 数据访问
 
 ## 6. AOP
