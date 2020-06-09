@@ -528,6 +528,11 @@ cross-cutting concern 是一个适用于整个应用的行为，这会影响整�
   * JDK 动态代理
   * CGLIB
 
+## 6.8. Spring AOP and AspectJ AOP 有什么区别？
+
+* Spring AOP 基于动态代理方式实现；AspectJ 基于静态代理方式实现。
+* Spring AOP 仅支持方法级别的 PointCut；提供了完全的 AOP 支持，它还支持属性级别的 PointCut。
+
 ## 7. MVC
 
 # 8.参考
