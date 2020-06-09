@@ -539,8 +539,11 @@ cross-cutting concern 是一个适用于整个应用的行为，这会影响整�
 
 ```
 Advice + Target Object = Proxy
-
 ```
+
+## 6.10. 什么是编织（Weaving）？
+
+为了创建一个 advice 对象而链接一个 aspect 和其它应用类型或对象，称为编织（Weaving）。在 Spring AOP 中，编织在运行时执行。请参考下图：
 
 ## 7. MVC
 
