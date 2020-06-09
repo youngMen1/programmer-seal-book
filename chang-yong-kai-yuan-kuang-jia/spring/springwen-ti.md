@@ -493,6 +493,16 @@ AOP 的工作重心在于如何将增强编织目标对象的连接点上, 这�
 
 20190804193931366.png
 
+## 6.3. 什么是切点（JoinPoint）
+
+程序运行中的一些时间点, 例如一个方法的执行, 或者是一个异常的处理.
+
+在 Spring AOP 中, join point 总是方法的执行点。
+
+## 6.4. 什么是通知（Advice）？
+
+特定 JoinPoint 处的 Aspect 所采取的动作称为 Advice。Spring AOP 使用一个 Advice 作为拦截器，在 JoinPoint “周围”维护一系列的拦截器。
+
 ## 7. MVC
 
 # 8.参考
