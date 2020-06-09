@@ -435,6 +435,10 @@ public class EmpAccount {
 
 ## 5. 数据访问
 
+## 5.1. spring DAO 有什么用？
+
+Spring DAO 使得 JDBC，Hibernate 或 JDO 这样的数据访问技术更容易以一种统一的方式工作。这使得用户容易在持久性技术之间切换。它还允许您在编写代码时，无需考虑捕获每种技术不同的异常。
+
 ## 6. AOP
 
 ## 7. MVC
