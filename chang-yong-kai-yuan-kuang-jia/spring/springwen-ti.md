@@ -346,7 +346,7 @@ public class StudentConfig {
 }
 ```
 
-### 4.2. 如何在 spring 中启动注解装配？
+## 4.2. 如何在 spring 中启动注解装配？
 
 默认情况下，Spring 容器中未打开注解装配。因此，要使用基于注解装配，我们必须通过配置&lt;context：annotation-config /&gt; 元素在 Spring 配置文件中启用它。
 
