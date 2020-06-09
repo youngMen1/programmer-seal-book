@@ -197,8 +197,14 @@ class Client {
 ### 3.2. spring 提供了哪些配置方式？
 
 * 基于 xml 配置
- 
+
   bean 所需的依赖项和服务在 XML 格式的配置文件中指定。这些配置文件通常包含许多 bean 定义和特定于应用程序的配置选项。它们通常以 bean 标签开头。例如：
+
+```
+<bean id="studentbean" class="org.edureka.firstSpring.StudentBean">
+ <property name="name" value="Edureka"></property>
+</bean>
+```
 
 ## 4. 注解
 
