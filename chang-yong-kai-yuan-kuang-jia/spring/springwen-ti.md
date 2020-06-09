@@ -443,6 +443,30 @@ Spring DAO 使得 JDBC，Hibernate 或 JDO 这样的数据访问技术更容易�
 
 20190804193915634.png
 
+## 5.3. spring JDBC API 中存在哪些类？
+
+* JdbcTemplate
+* SimpleJdbcTemplate
+* NamedParameterJdbcTemplate
+* SimpleJdbcInsert
+* SimpleJdbcCall
+
+## 5.4. 使用 Spring 访问 Hibernate 的方法有哪些？
+
+我们可以通过两种方式使用 Spring 访问 Hibernate：
+
+* 使用 Hibernate 模板和回调进行控制反转
+
+* 扩展 HibernateDAOSupport 并应用 AOP 拦截器节点
+
+* 5.5. 列举 spring 支持的事务管理类型
+
+* Spring 支持两种类型的事务管理：
+
+* 程序化事务管理：在此过程中，在编程的帮助下管理事务。它为您提供极大的灵活性，但维护起来非常困难。
+
+* 声明式事务管理：在此，事务管理与业务代码分离。仅使用注解或基于 XML 的配置来管理事务。
+
 ## 6. AOP
 
 ## 7. MVC
