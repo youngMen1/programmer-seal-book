@@ -467,6 +467,14 @@ Spring DAO 使得 JDBC，Hibernate 或 JDO 这样的数据访问技术更容易�
 
 * 声明式事务管理：在此，事务管理与业务代码分离。仅使用注解或基于 XML 的配置来管理事务。
 
+## 5.6. spring 支持哪些 ORM 框架
+
+* Hibernate
+* iBatis
+* JPA
+* JDO
+* OJB
+
 ## 6. AOP
 
 ## 7. MVC
