@@ -549,6 +549,16 @@ Advice + Target Object = Proxy
 
 ## 7. MVC
 
+## 7.1. Spring MVC 框架有什么用？
+
+Spring Web MVC 框架提供 模型-视图-控制器 架构和随时可用的组件，用于开发灵活且松散耦合的 Web 应用程序。 MVC 模式有助于分离应用程序的不同方面，如输入逻辑，业务逻辑和 UI 逻辑，同时在所有这些元素之间提供松散耦合。
+
+## 7.2. 描述一下 DispatcherServlet 的工作流程
+
+DispatcherServlet 的工作流程可以用一幅图来说明：
+
+20190804194038351.png
+
 # 8.参考
 
 Spring 面试问题 TOP 50：
