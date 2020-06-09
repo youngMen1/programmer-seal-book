@@ -573,6 +573,10 @@ DispatcherServlet 的工作流程可以用一幅图来说明：
 * ViewResolver 结合Model和View，来渲染视图。
 * 视图负责将渲染结果返回给客户端。
 
+## 7.3. 介绍一下 WebApplicationContext
+
+WebApplicationContext 是 ApplicationContext 的扩展。它具有 Web 应用程序所需的一些额外功能。它与普通的 ApplicationContext 在解析主题和决定与哪个 servlet 关联的能力方面有所不同。
+
 # 8.参考
 
 Spring 面试问题 TOP 50：
