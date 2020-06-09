@@ -378,6 +378,21 @@ public class Employee {
 
 @Autowired 可以更准确地控制应该在何处以及如何进行自动装配。此注解用于在 setter 方法，构造函数，具有任意名称或多个参数的属性或方法上自动装配 bean。默认情况下，它是类型驱动的注入。
 
+```
+public class Employee {
+    private String name;
+    @Autowired
+    public void setName(String name) {
+        this.name=name;
+    }
+    public string getName(){
+        return name;
+    }
+}
+
+
+```
+
 ## 5. 数据访问
 
 ## 6. AOP
