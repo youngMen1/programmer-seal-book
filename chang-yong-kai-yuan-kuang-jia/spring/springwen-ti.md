@@ -128,6 +128,8 @@ Spring 框架的核心是 Spring 容器。容器创建对象，将它们装配�
 
 * ApplicationContext - ApplicationContext 接口扩展了 BeanFactory 接口。它在 BeanFactory 基础上提供了一些额外的功能。
 
+## 2.6. 区分 BeanFactory 和 ApplicationContext。
+
 # 3.Beans
 
 ## 4. 注解
