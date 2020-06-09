@@ -187,14 +187,14 @@ class Client {
 
 # 3.Beans
 
-### 3.1. 什么是 spring bean？
+## 3.1. 什么是 spring bean？
 
 * 它们是构成用户应用程序主干的对象。
 * Bean 由 Spring IoC 容器管理。
 * 它们由 Spring IoC 容器实例化，配置，装配和管理。
 * Bean 是基于用户提供给容器的配置元数据创建。
 
-### 3.2. spring 提供了哪些配置方式？
+## 3.2. spring 提供了哪些配置方式？
 
 * 基于 xml 配置
 
@@ -209,6 +209,13 @@ class Client {
 * 基于注解配置
 
 您可以通过在相关的类，方法或字段声明上使用注解，将 bean 配置为组件类本身，而不是使用 XML 来描述 bean 装配。默认情况下，Spring 容器中未打开注解装配。因此，您需要在使用它之前在 Spring 配置文件中启用它。例如：
+
+```
+<beans>
+<context:annotation-config/>
+<!-- bean definitions go here -->
+</beans>
+```
 
 ## 4. 注解
 
