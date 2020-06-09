@@ -219,19 +219,25 @@ class Client {
 
 * 基于 Java API 配置
 
-Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。
+Spring 的 Java 配置是通过使用 @Bean 和 @Configuration 来实现。
 
 @Bean 注解扮演与 元素相同的角色。
 
-  
-
-
 @Configuration 类允许通过简单地调用同一个类中的其他 @Bean 方法来定义 bean 间依赖关系。
 
-  
-
-
 例如：
+
+```
+@Configuration
+public class StudentConfig {
+    @Bean
+    public StudentBean myStudent() {
+        return new StudentBean();
+    }
+}
+
+
+```
 
 ## 4. 注解
 
