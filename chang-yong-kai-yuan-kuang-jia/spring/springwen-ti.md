@@ -410,6 +410,21 @@ public class Employee {
         return name;
     }
 }
+```
+
+EmpAccount.java
+
+```
+public class EmpAccount {
+    private Employee emp;
+
+    @Autowired
+    @Qualifier(emp1)
+    public void showName() {
+        System.out.println(“Employee name : ”+emp.getName);
+    }
+}
+
 
 ```
 
