@@ -224,5 +224,13 @@ private ConfigurableEnvironment getOrCreateEnvironment() {
 
 #### **6.2. 配置应用环境**
 
+```
+protected void configureEnvironment(ConfigurableEnvironment environment,
+        String[] args) {
+    configurePropertySources(environment, args);
+    configureProfiles(environment, args);
+}
+```
+
 
 
