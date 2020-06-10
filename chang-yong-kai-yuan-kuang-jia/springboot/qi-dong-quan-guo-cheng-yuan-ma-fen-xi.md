@@ -381,5 +381,5 @@ private void refreshContext(ConfigurableApplicationContext context) {
 afterRefresh(context, applicationArguments);
 ```
 
-
+看了下这个方法的源码是空的，目前可以做一些自定义的后置处理操作。
 
