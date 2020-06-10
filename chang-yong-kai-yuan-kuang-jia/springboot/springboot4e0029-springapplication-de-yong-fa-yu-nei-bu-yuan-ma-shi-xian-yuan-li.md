@@ -56,7 +56,9 @@ public SpringApplication(Class... primarySources) {
         this((ResourceLoader)null, primarySources);
     }
 public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) {
+        // 1、资源初始化，资源加载器为 null
         this.sources = new LinkedHashSet();
+        // 
         this.bannerMode = Mode.CONSOLE;
         this.logStartupInfo = true;
         this.addCommandLineProperties = true;
@@ -66,8 +68,12 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
         this.additionalProfiles = new HashSet();
         this.isCustomEnvironment = false;
         this.resourceLoader = resourceLoader;
+        // 2、断言主要加载资源类不能为 null，否则报错
         Assert.notNull(primarySources, "PrimarySources must not be null");
+        // 3、初始化主要加载资源类集合并去重
         this.primarySources = new LinkedHashSet(Arrays.asList(primarySources));
+        
+        // 4、推断当前 WEB 应用类型
         this.webApplicationType = WebApplicationType.deduceFromClasspath();
         this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
         this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
