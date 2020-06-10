@@ -55,6 +55,7 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources, Stri
 public SpringApplication(Class... primarySources) {
         this((ResourceLoader)null, primarySources);
     }
+    
 public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) {
 
         this.sources = new LinkedHashSet();
@@ -90,6 +91,4 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 ```
 
 **可知这个构造器类的初始化包括以下 7 个过程。**
-
-
 
