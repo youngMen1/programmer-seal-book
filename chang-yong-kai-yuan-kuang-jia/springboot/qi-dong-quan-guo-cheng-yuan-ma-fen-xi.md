@@ -45,6 +45,8 @@
           // 9、准备异常报告器
           exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
                 new Class[] { ConfigurableApplicationContext.class }, context);
+
+          // 10、准备应用上下文
           prepareContext(context, environment, listeners, applicationArguments, printedBanner);
           refreshContext(context);
           afterRefresh(context, applicationArguments);
