@@ -35,6 +35,8 @@
           // 6、根据运行监听器和应用参数来准备 Spring 环境
           ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);
           configureIgnoreBeanInfo(environment);
+
+          // 7、创建 Banner 打印类
           Banner printedBanner = printBanner(environment);
           context = createApplicationContext();
           exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
