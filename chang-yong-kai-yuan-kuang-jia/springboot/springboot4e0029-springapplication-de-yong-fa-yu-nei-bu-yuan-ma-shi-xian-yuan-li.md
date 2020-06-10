@@ -189,10 +189,14 @@ void initialize(C applicationContext);
 来看下 `setInitializers` 方法源码，其实就是初始化一个 `ApplicationContextInitializer` 应用上下文初始化器实例的集合。
 
 ```
-public void setInitializers(Collection<? extends ApplicationContextInitializer<?>> initializers) {   
-    this.initializers = new ArrayList<>();   
-    this.initializers.addAll(initializers);
-}
+/** 
+* Sets the {@link ApplicationContextInitializer} that will be applied to the Spring 
+* {@link ApplicationContext}. 
+* @param initializers the initializers to set 
+*/
+public void setInitializers(Collection<? extends ApplicationContextInitializer<?>> initializers) {   
+this.initializers = new ArrayList<>(initializers);
+}
 ```
 
 ### 6.设置监听器
