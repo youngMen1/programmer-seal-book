@@ -52,6 +52,9 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources, Stri
 接着上面的`SpringApplication`构造方法进入以下源码：
 
 ```
+public SpringApplication(Class... primarySources) {
+        this((ResourceLoader)null, primarySources);
+    }
 public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) {
         this.sources = new LinkedHashSet();
         this.bannerMode = Mode.CONSOLE;
