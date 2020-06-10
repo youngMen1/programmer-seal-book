@@ -60,6 +60,7 @@
           if (this.logStartupInfo) {
              new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
           }
+          // 15、发布应用上下文启动完成事件
           listeners.started(context);
           callRunners(context, applicationArguments);
        }
