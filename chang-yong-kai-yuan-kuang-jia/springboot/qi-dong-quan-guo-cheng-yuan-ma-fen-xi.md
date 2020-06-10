@@ -416,5 +416,5 @@ public void stop() throws IllegalStateException {
 }
 ```
 
-
+计时监听器停止，并统计一些任务执行信息。
 
