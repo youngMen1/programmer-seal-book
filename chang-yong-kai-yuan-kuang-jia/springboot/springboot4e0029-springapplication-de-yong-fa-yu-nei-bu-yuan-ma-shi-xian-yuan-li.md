@@ -373,8 +373,22 @@ org.springframework.boot.autoconfigure.BackgroundPreinitializer
 ### 7.推断主入口应用类
 
 ```
-this.mainApplicationClass = deduceMainApplicationClass();private Class<?> deduceMainApplicationClass() {   try {       StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();       for (StackTraceElement stackTraceElement : stackTrace) {           if ("main".equals(stackTraceElement.getMethodName())) {               return Class.forName(stackTraceElement.getClassName());           }       }   }   catch (ClassNotFoundException ex) {       // Swallow and continue   }   return null;}
+this.mainApplicationClass = deduceMainApplicationClass();
+private Class<?> deduceMainApplicationClass() {
+   try {
+       StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
+       for (StackTraceElement stackTraceElement : stackTrace) {
+           if ("main".equals(stackTraceElement.getMethodName())) {
+               return Class.forName(stackTraceElement.getClassName());
+           }
+       }
+   }
+   catch (ClassNotFoundException ex) {
+       // Swallow and continue
+   }
+   return null;
+}
 ```
 
-
+这个推断入口应用类的方式有点特别，通过构造一个运行时异常，再遍历异常栈中的方法名，获取方法名为 main 的栈帧，从来得到入口类的名字再返回该类。
 
