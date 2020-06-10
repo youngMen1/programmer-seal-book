@@ -6,7 +6,7 @@
 
 * main方法所在的类是一个基于Spring的注解，如@Configuration，@ComponentScan等，的配置类。
 
-## 1.2.源码实现分析
+# 2.源码实现分析
 
 ### Spring Boot 的入口类
 
@@ -50,6 +50,4 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources, Stri
 ```
 
 接着上面的`SpringApplication`构造方法进入以下源码：
-
-
 
