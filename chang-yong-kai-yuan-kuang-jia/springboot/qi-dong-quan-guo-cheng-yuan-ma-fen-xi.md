@@ -130,9 +130,9 @@ configureHeadlessProperty();
 
 设置该默认值为：true，Java.awt.headless = true 有什么作用？
 
-```
 对于一个 Java 服务器来说经常要处理一些图形元素，例如地图的创建或者图形和图表等。这些API基本上总是需要运行一个X-server以便能使用AWT（Abstract Window Toolkit，抽象窗口工具集）。然而运行一个不必要的 X-server 并不是一种好的管理方式。有时你甚至不能运行 X-server,因此最好的方案是运行 headless 服务器，来进行简单的图像处理。
 
+```
 参考：www.cnblogs.com/princessd8251/p/4000016.html
 ```
 
