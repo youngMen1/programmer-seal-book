@@ -208,20 +208,39 @@ this.initializers = new ArrayList<>(initializers);
 再来看下这个初始化`getSpringFactoriesInstances`方法和相关的源码：
 
 ```
-private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {  
+private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {
+
  return getSpringFactoriesInstances(type, new Class<?>[] {});
  }
- private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) 
- {   
-  ClassLoader classLoader = getClassLoader();   
-  // Use names and ensure unique to protect against duplicates   
-  Set<String> names = new LinkedHashSet<>(SpringFactoriesLoader.loadFactoryNames(type, classLoader));   
-  List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);   
-  AnnotationAwareOrderComparator.sort(instances);   return instances;
- }
+
+
+private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) 
+ {
+
+  ClassLoader classLoader = getClassLoader();
+
+  // Use names and ensure unique to protect against duplicates
+
+  Set<String> names = new LinkedHashSet<>(SpringFactoriesLoader.loadFactoryNames(type, classLoader));
+
+  List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);
+
+  AnnotationAwareOrderComparator.sort(instances);
+   return instances;
+
+}
 ```
 
+#### 设置应用上下文初始化器可分为以下 5 个步骤。
 
+##### 1.**获取当前线程上下文类加载器**
+
+```
+ClassLoader
+ classLoader = 
+Thread
+.currentThread().getContextClassLoader();
+```
 
 ### 6.设置监听器
 
