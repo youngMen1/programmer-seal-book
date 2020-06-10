@@ -114,7 +114,7 @@ this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
 **4. 推断当前 WEB 应用类型**
 
 ```
-
+this.webApplicationType = deduceWebApplicationType();
 ```
 
 #### 5、设置应用上线文初始化器
