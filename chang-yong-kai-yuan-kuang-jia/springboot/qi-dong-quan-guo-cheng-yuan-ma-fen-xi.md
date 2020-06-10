@@ -462,5 +462,9 @@ private void callRunners(ApplicationContext context, ApplicationArguments args) 
 
 ## 17.发布应用上下文就绪事件
 
+```
+return context;
+```
+
 
 
