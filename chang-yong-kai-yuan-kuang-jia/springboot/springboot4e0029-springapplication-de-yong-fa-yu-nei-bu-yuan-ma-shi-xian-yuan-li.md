@@ -24,6 +24,8 @@ public class SpringBootBestPracticeApplication {
 来看一下这个类的 `run` 方法调用关系源码：
 
 ```
+ // 第一个参数 primarySource：加载的主要资源类
+ // 第二个参数 args：传递给应用的应用参数
  public static ConfigurableApplicationContext run(Class<?> primarySource, String... args) {
         return run(new Class[]{primarySource}, args);
     }
@@ -33,5 +35,9 @@ public class SpringBootBestPracticeApplication {
     }
 ```
 
+第一个参数 `primarySource`：加载的主要资源类
 
+第二个参数 `args`：传递给应用的应用参数
+
+先用主要资源类来实例化一个 `SpringApplication` 对象，再调用这个对象的 `run` 方法，所以我们分两步来分析这个启动源码。
 
