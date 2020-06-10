@@ -12,9 +12,9 @@
 
 ```
 @SpringBootApplication
-public class SpringBootBestPracticeApplication {   
-    public static void main(String[] args) {       
-        SpringApplication.run(SpringBootBestPracticeApplication.class, args);   
+public class SpringBootBestPracticeApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootBestPracticeApplication.class, args);
         }
 }
 ```
