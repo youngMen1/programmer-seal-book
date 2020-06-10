@@ -224,6 +224,7 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
   // 2.获取 ApplicationContextInitializer 的实例名称集合并去重
   Set<String> names = new LinkedHashSet<>(SpringFactoriesLoader.loadFactoryNames(type, classLoader));
 
+  // 3.根据以上类路径创建初始化器实例列表
   List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);
 
   AnnotationAwareOrderComparator.sort(instances);
@@ -300,7 +301,28 @@ org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingL
 ##### 3.**根据以上类路径创建初始化器实例列表**
 
 ```
-List<T> instances = createSpringFactoriesInstances(type, parameterTypes,               classLoader, args, names);private <T> List<T> createSpringFactoriesInstances(Class<T> type,       Class<?>[] parameterTypes, ClassLoader classLoader, Object[] args,       Set<String> names) {   List<T> instances = new ArrayList<>(names.size());   for (String name : names) {       try {           Class<?> instanceClass = ClassUtils.forName(name, classLoader);           Assert.isAssignable(type, instanceClass);           Constructor<?> constructor = instanceClass                   .getDeclaredConstructor(parameterTypes);           T instance = (T) BeanUtils.instantiateClass(constructor, args);           instances.add(instance);       }       catch (Throwable ex) {           throw new IllegalArgumentException(                   "Cannot instantiate " + type + " : " + name, ex);       }   }   return instances;}
+List<T> instances = createSpringFactoriesInstances(type, parameterTypes,
+               classLoader, args, names);
+private <T> List<T> createSpringFactoriesInstances(Class<T> type,
+       Class<?>[] parameterTypes, ClassLoader classLoader, Object[] args,
+       Set<String> names) {
+   List<T> instances = new ArrayList<>(names.size());
+   for (String name : names) {
+       try {
+           Class<?> instanceClass = ClassUtils.forName(name, classLoader);
+           Assert.isAssignable(type, instanceClass);
+           Constructor<?> constructor = instanceClass
+                   .getDeclaredConstructor(parameterTypes);
+           T instance = (T) BeanUtils.instantiateClass(constructor, args);
+           instances.add(instance);
+       }
+       catch (Throwable ex) {
+           throw new IllegalArgumentException(
+                   "Cannot instantiate " + type + " : " + name, ex);
+       }
+   }
+   return instances;
+}
 ```
 
 ### 6.设置监听器
