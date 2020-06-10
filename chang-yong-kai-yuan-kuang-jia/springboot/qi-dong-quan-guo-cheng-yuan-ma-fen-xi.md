@@ -227,7 +227,9 @@ private ConfigurableEnvironment getOrCreateEnvironment() {
 ```
 protected void configureEnvironment(ConfigurableEnvironment environment,
         String[] args) {
+    // 配置 property sources
     configurePropertySources(environment, args);
+    // 配置Profiles
     configureProfiles(environment, args);
 }
 ```
