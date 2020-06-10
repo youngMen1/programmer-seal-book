@@ -120,29 +120,24 @@ this.webApplicationType = deduceWebApplicationType();
 **来看下**`deduceWebApplicationType`**方法和相关的源码：**
 
 ```
+static WebApplicationType deduceFromClasspath() {
+    if (ClassUtils.isPresent("org.springframework.web.reactive.DispatcherHandler", (ClassLoader)null) && !ClassUtils.isPresent("org.springframework.web.servlet.DispatcherServlet", (ClassLoader)null) && !ClassUtils.isPresent("org.glassfish.jersey.servlet.ServletContainer", (ClassLoader)null)) {
+        return REACTIVE;
+    } else {
+        String[] var0 = SERVLET_INDICATOR_CLASSES;
+        int var1 = var0.length;
 
-    static WebApplicationType deduceFromClasspath() {
-        if (ClassUtils.isPresent("org.springframework.web.reactive.DispatcherHandler", (ClassLoader)null) && !ClassUtils.isPresent("org.springframework.web.servlet.DispatcherServlet", (ClassLoader)null) && !ClassUtils.isPresent("org.glassfish.jersey.servlet.ServletContainer", (ClassLoader)null)) {
-            return REACTIVE;
-        } else {
-            String[] var0 = SERVLET_INDICATOR_CLASSES;
-            int var1 = var0.length;
-
-            for(int var2 = 0; var2 < var1; ++var2) {
-                String className = var0[var2];
-                if (!ClassUtils.isPresent(className, (ClassLoader)null)) {
-                    return NONE;
-                }
+        for(int var2 = 0; var2 < var1; ++var2) {
+            String className = var0[var2];
+            if (!ClassUtils.isPresent(className, (ClassLoader)null)) {
+                return NONE;
             }
-
-            return SERVLET;
         }
+
+        return SERVLET;
     }
+}
 ```
-
-
-
-
 
 ### 5.设置应用上线文初始化器
 
