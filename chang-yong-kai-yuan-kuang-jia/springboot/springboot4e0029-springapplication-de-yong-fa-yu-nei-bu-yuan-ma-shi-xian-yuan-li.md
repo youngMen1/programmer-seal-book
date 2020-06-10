@@ -123,5 +123,7 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 
 #### 6、设置监听器
 
+#### 7、推断主入口应用类
+
 
 
