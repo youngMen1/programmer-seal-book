@@ -102,13 +102,13 @@ this.resourceLoader = resourceLoader;
 **2. 断言主要加载资源类不能为 null，否则报错**
 
 ```
-
+Assert.notNull(primarySources, "PrimarySources must not be null");
 ```
 
 **3. 初始化主要加载资源类集合并去重**
 
 ```
-
+this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
 ```
 
 **4. 推断当前 WEB 应用类型**
