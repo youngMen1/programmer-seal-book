@@ -48,6 +48,8 @@
 
           // 10、准备应用上下文
           prepareContext(context, environment, listeners, applicationArguments, printedBanner);
+
+          // 11、刷新应用上下文
           refreshContext(context);
           afterRefresh(context, applicationArguments);
           stopWatch.stop();
