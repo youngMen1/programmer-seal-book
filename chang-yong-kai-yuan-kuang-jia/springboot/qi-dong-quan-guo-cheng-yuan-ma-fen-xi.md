@@ -145,3 +145,19 @@ listeners.starting();
 
 来看下创建 Spring 运行监听器相关的源码：
 
+```
+private SpringApplicationRunListeners getRunListeners(String[] args) {
+    Class<?>[] types = new Class<?>[] { SpringApplication.class, String[].class };
+    return new SpringApplicationRunListeners(logger, getSpringFactoriesInstances(
+            SpringApplicationRunListener.class, types, this, args));
+}
+
+SpringApplicationRunListeners(Log log,
+        Collection<? extends SpringApplicationRunListener> listeners) {
+    this.log = log;
+    this.listeners = new ArrayList<>(listeners);
+}
+```
+
+
+
