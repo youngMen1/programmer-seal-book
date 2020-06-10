@@ -189,15 +189,39 @@ void initialize(C applicationContext);
 来看下 `setInitializers` 方法源码，其实就是初始化一个 `ApplicationContextInitializer` 应用上下文初始化器实例的集合。
 
 ```
-/** 
-* Sets the {@link ApplicationContextInitializer} that will be applied to the Spring 
-* {@link ApplicationContext}. 
-* @param initializers the initializers to set 
+/**
+
+* Sets the {@link ApplicationContextInitializer} that will be applied to the Spring
+
+* {@link ApplicationContext}.
+
+* @param initializers the initializers to set
+
 */
-public void setInitializers(Collection<? extends ApplicationContextInitializer<?>> initializers) {   
+public void setInitializers(Collection<? extends ApplicationContextInitializer<?>> initializers) {
+
 this.initializers = new ArrayList<>(initializers);
-}
+
+}
 ```
+
+再来看下这个初始化`getSpringFactoriesInstances`方法和相关的源码：
+
+```
+private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {  
+ return getSpringFactoriesInstances(type, new Class<?>[] {});
+ }
+ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) 
+ {   
+  ClassLoader classLoader = getClassLoader();   
+  // Use names and ensure unique to protect against duplicates   
+  Set<String> names = new LinkedHashSet<>(SpringFactoriesLoader.loadFactoryNames(type, classLoader));   
+  List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);   
+  AnnotationAwareOrderComparator.sort(instances);   return instances;
+ }
+```
+
+
 
 ### 6.设置监听器
 
