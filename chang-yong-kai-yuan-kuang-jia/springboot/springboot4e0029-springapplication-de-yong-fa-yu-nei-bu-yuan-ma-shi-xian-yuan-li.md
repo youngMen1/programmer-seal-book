@@ -184,7 +184,7 @@ void initialize(C applicationContext);
 }
 ```
 
-用来初始化指定的 Spring 应用上下文，如注册属性资源、激活 Profiles 等。
+用来初始化指定的 Spring 应用上下文，如**注册属性资源、激活 Profiles** 等。
 
 来看下 `setInitializers` 方法源码，其实就是初始化一个 `ApplicationContextInitializer` 应用上下文初始化器实例的集合。
 
