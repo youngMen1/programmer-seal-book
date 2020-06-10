@@ -418,3 +418,14 @@ public void stop() throws IllegalStateException {
 
 计时监听器停止，并统计一些任务执行信息。
 
+## 14.输出日志记录执行主类名、时间信息
+
+```
+if (this.logStartupInfo) {
+    new StartupInfoLogger(this.mainApplicationClass)
+            .logStarted(getApplicationLog(), stopWatch);
+}
+```
+
+
+
