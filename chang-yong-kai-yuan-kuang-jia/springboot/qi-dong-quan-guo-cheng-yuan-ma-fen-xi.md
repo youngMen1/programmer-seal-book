@@ -248,5 +248,5 @@ protected void configureEnvironment(ConfigurableEnvironment environment,
 Banner printedBanner = printBanner(environment);
 ```
 
-
+这是用来打印 Banner 的处理类，这个没什么好说的。
 
