@@ -340,6 +340,16 @@ return instances;
 
 ### 6.设置监听器
 
+```
+setListeners((
+Collection
+) getSpringFactoriesInstances(
+ApplicationListener
+.
+class
+));
+```
+
 ### 7.推断主入口应用类
 
 
