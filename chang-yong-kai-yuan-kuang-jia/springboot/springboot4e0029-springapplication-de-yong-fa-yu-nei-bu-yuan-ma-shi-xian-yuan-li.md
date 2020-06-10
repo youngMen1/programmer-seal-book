@@ -221,7 +221,7 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
   ClassLoader classLoader = getClassLoader();
 
   // Use names and ensure unique to protect against duplicates
-
+  // 2.获取 ApplicationContextInitializer 的实例名称集合并去重
   Set<String> names = new LinkedHashSet<>(SpringFactoriesLoader.loadFactoryNames(type, classLoader));
 
   List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);
@@ -243,7 +243,8 @@ ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 2.**获取 **`ApplicationContextInitializer`**的实例名称集合并去重**
 
 ```
-Set<String> names = new LinkedHashSet<>(               SpringFactoriesLoader.loadFactoryNames(type, classLoader));
+Set<String> names = new LinkedHashSet<>(
+               SpringFactoriesLoader.loadFactoryNames(type, classLoader));
 ```
 
 ### 6.设置监听器
