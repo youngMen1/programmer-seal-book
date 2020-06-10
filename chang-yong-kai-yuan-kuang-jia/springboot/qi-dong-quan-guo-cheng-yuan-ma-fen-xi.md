@@ -289,5 +289,11 @@ protected ConfigurableApplicationContext createApplicationContext() {
 
 ## 9.准备异常报告器
 
+```
+exceptionReporters = getSpringFactoriesInstances(
+        SpringBootExceptionReporter.class,
+        new Class[] { ConfigurableApplicationContext.class }, context);
+```
+
 
 
