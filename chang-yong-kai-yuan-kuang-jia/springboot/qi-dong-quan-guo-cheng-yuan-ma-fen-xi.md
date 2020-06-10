@@ -118,7 +118,14 @@ public void start(String taskName) throws IllegalStateException {
 ## 2.初始化应用上下文和异常报告集合
 
 ```
-ConfigurableApplicationContext context = null;Collection<SpringBootExceptionReporter> exceptionReporters = new ArrayList<>();
+ConfigurableApplicationContext context = null;
+Collection<SpringBootExceptionReporter> exceptionReporters = new ArrayList<>();
+```
+
+## 3.设置系统属性 \`java.awt.headless\` 的值
+
+```
+configureHeadlessProperty();
 ```
 
 
