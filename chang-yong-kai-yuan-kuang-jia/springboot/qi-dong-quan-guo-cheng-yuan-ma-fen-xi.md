@@ -169,5 +169,7 @@ org.springframework.boot.SpringApplicationRunListener=\
 org.springframework.boot.context.event.EventPublishingRunListener
 ```
 
+##  5.初始化默认应用参数类
+
 
 
