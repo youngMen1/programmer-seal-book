@@ -170,13 +170,23 @@ setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextIniti
 `ApplicationContextInitializer`**的作用是什么？源码如下。**
 
 ```
-public interface ApplicationContextInitializer<C extends ConfigurableApplicationContext> {   
-/**    
-* Initialize the given application context.    
-* @param applicationContext the application to configure    
-*/   
-void initialize(C applicationContext);}
+public interface ApplicationContextInitializer<C extends ConfigurableApplicationContext> {
+
+/**
+
+* Initialize the given application context.
+
+* @param applicationContext the application to configure
+
+*/
+
+void initialize(C applicationContext);
+}
 ```
+
+用来初始化指定的 Spring 应用上下文，如注册属性资源、激活 Profiles 等。
+
+来看下 `setInitializers` 方法源码，其实就是初始化一个 `ApplicationContextInitializer` 应用上下文初始化器实例的集合。
 
 ### 6.设置监听器
 
