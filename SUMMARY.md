@@ -215,7 +215,7 @@
   * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
     * [消息总线](zhong-jian-jian/xiao-xi-dui-lie/xiao-xi-zong-xian.md)
     * 消息的顺序
-    * RabbitMQ
+    * [RabbitMQ](zhong-jian-jian/xiao-xi-dui-lie/rabbitmq.md)
     * [RocketMQ](zhong-jian-jian/xiao-xi-dui-lie/rocketmq.md)
     * ActiveMQ
     * Kafka
