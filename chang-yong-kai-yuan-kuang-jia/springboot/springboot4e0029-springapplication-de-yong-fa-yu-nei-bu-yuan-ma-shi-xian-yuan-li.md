@@ -55,9 +55,8 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources, Stri
 public SpringApplication(Class... primarySources) {
         this((ResourceLoader)null, primarySources);
     }
-    
-public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) {
 
+public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) {
         this.sources = new LinkedHashSet();
         this.bannerMode = Mode.CONSOLE;
         this.logStartupInfo = true;
