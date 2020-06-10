@@ -458,5 +458,9 @@ private void callRunners(ApplicationContext context, ApplicationArguments args) 
 }
 ```
 
-执行所有 `ApplicationRunner`和 `CommandLineRunner`这两种运行器，不详细展开了。
+执行所有 `ApplicationRunner`和 `CommandLineRunner`这两种运行器，不详细展开了。
+
+## 17.发布应用上下文就绪事件
+
+
 
