@@ -57,6 +57,8 @@
 
           // 13、停止计时监控类
           stopWatch.stop();
+
+           // 14、输出日志记录执行主类名、时间信息
           if (this.logStartupInfo) {
              new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
           }
