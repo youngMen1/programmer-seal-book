@@ -232,5 +232,11 @@ protected void configureEnvironment(ConfigurableEnvironment environment,
 }
 ```
 
+这里分为以下两步来配置应用环境。
 
+* 配置 property sources
+
+* 配置 Profiles
+
+这里主要处理所有 property sources 配置和 profiles 配置。
 
