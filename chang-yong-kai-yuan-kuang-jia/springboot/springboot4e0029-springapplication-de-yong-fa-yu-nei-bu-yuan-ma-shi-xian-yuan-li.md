@@ -215,8 +215,9 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {
 
 
 private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) 
- {
-
+ { 
+  
+  // 1.获取当前线程上下文类加载器
   ClassLoader classLoader = getClassLoader();
 
   // Use names and ensure unique to protect against duplicates
@@ -233,11 +234,15 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
 
 #### 设置应用上下文初始化器可分为以下 5 个步骤。
 
-##### 1.**获取当前线程上下文类加载器**
+1.**获取当前线程上下文类加载器**
 
 ```
 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 ```
+
+2.**获取 `ApplicationContextInitializer`的实例名称集合并去重**
+
+
 
 ### 6.设置监听器
 
