@@ -72,14 +72,18 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
         Assert.notNull(primarySources, "PrimarySources must not be null");
         // 3、初始化主要加载资源类集合并去重
         this.primarySources = new LinkedHashSet(Arrays.asList(primarySources));
-        
         // 4、推断当前 WEB 应用类型
         this.webApplicationType = WebApplicationType.deduceFromClasspath();
+        
+// 5、设置应用上下文初始化器
         this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
+        
+// 6、设置监听器
         this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
+        // 7、推断主入口应用类
         this.mainApplicationClass = this.deduceMainApplicationClass();
     }
 ```
 
-
+可知这个构造器类的初始化包括以下 7 个过程。
 
