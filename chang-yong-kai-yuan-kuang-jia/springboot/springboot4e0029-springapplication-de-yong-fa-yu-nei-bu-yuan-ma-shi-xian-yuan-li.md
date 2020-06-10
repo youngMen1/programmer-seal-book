@@ -96,7 +96,8 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 **1. 资源初始化资源加载器为 null**
 
 ```
-
+this
+.resourceLoader = resourceLoader;
 ```
 
 **2. 断言主要加载资源类不能为 null，否则报错**
@@ -124,6 +125,8 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 ```
 
 #### 6、设置监听器
+
+
 
 #### 7、推断主入口应用类
 
