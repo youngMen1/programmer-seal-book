@@ -8,7 +8,7 @@
 
 # 2.源码实现分析
 
-### Spring Boot 的入口类
+### 2.1.Spring Boot 的入口类
 
 ```
 @SpringBootApplication
@@ -41,7 +41,7 @@ public class SpringBootBestPracticeApplication {
 
 先用主要资源类来实例化一个 `SpringApplication` 对象，再调用这个对象的 `run` 方法，所以我们分两步来分析这个启动源码。
 
-### SpringApplication 的实例化过程
+### 2.2.SpringApplication 的实例化过程
 
 ```
 public static ConfigurableApplicationContext run(Class<?>[] primarySources, String[] args) {
