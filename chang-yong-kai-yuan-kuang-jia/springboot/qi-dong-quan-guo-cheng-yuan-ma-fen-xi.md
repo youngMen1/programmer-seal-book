@@ -178,5 +178,11 @@ ApplicationArguments applicationArguments = new DefaultApplicationArguments(
 
 ## 6.根据运行监听器和应用参数来准备 Spring 环境
 
+```
+ConfigurableEnvironment environment = prepareEnvironment(listeners,
+        applicationArguments);
+configureIgnoreBeanInfo(environment);
+```
+
 
 
