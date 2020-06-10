@@ -190,10 +190,10 @@ configureIgnoreBeanInfo(environment);
 private ConfigurableEnvironment prepareEnvironment(
         SpringApplicationRunListeners listeners,
         ApplicationArguments applicationArguments) {
-    // 6.1) 获取（或者创建）应用环境
+    // 6.1获取（或者创建）应用环境
     ConfigurableEnvironment environment = getOrCreateEnvironment();
 
-    // 6.2) 配置应用环境
+    // 6.2配置应用环境
     configureEnvironment(environment, applicationArguments.getSourceArgs());
     listeners.environmentPrepared(environment);
     bindToSpringApplication(environment);
@@ -219,6 +219,10 @@ private ConfigurableEnvironment getOrCreateEnvironment() {
     return new StandardEnvironment();
 }
 ```
+
+这里分为标准 Servlet 环境和标准环境。
+
+#### **6.2. 配置应用环境**
 
 
 
