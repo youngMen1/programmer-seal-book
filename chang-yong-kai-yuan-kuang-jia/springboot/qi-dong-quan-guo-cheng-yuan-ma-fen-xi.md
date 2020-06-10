@@ -90,7 +90,7 @@
 
 # 2.源码实现分析
 
-## 1.创建并启动计时监控类
+## 2.1.创建并启动计时监控类
 
 ```
 StopWatch stopWatch = new StopWatch();
@@ -98,4 +98,20 @@ stopWatch.start();
 ```
 
 来看下这个计时监控类 StopWatch 的相关源码：
+
+```
+public void start() throws IllegalStateException {
+    start("");
+}
+
+public void start(String taskName) throws IllegalStateException {
+    if (this.currentTaskName != null) {
+        throw new IllegalStateException("Can't start StopWatch: it's already running");
+    }
+    this.currentTaskName = taskName;
+    this.startTimeMillis = System.currentTimeMillis();
+}
+```
+
+
 
