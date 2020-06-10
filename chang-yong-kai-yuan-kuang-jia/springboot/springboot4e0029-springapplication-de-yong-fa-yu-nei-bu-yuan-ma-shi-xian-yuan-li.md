@@ -49,5 +49,7 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources, Stri
     }
 ```
 
+接着上面的`SpringApplication`构造方法进入以下源码：
+
 
 
