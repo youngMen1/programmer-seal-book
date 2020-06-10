@@ -332,6 +332,12 @@ private <T> List<T> createSpringFactoriesInstances(Class<T> type,
 AnnotationAwareOrderComparator.sort(instances);
 ```
 
+##### 5.**返回初始化器实例列表**
+
+```
+return instances;
+```
+
 ### 6.设置监听器
 
 ### 7.推断主入口应用类
