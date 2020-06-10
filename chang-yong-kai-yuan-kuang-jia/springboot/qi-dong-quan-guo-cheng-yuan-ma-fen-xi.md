@@ -138,7 +138,10 @@ configureHeadlessProperty();
 
 ## 4.创建所有 Spring 运行监听器并发布应用启动事件
 
-
+```
+SpringApplicationRunListeners listeners = getRunListeners(args);
+listeners.starting();
+```
 
 
 
