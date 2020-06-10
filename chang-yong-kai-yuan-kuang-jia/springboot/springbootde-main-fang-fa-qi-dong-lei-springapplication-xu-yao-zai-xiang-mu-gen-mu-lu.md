@@ -26,5 +26,11 @@
 
 * 工作过程为：扫描项目的所有包，检测项目中是否存在与SpringBoot自动添加的starter包对应功能组件类相同的类，或者实现了相同的接口或者继承了相同的父类的类，有则使用项目自身提供的该功能组件类实现，没有则使用SpringBoot自动添加的该功能组件类。SpringBoot的starter包自动添加的这些功能组件类通常是使用了@Configuration注解和@Conditional注解的，所以可以实现条件化注入。
 
+## 1.3.SpringApplication位于项目根目录的原因
+
+@ComponentScan注解有个特性：如果不指定需要扫描的包或者需要注册的类，则默认是扫描该使用@ComponentScan注解的类所在的包以及子包，所以将使用了@SpringBootApplication注解的包含main方法的启动类放在项目根目录，则会扫描项目的所有包。
+
+除了@ComponentScan注解之外，@EnableAutoConfiguration注解也是扫描使用了这个注解的类所在的包及其子包，故放在项目根目录，则可以扫描项目所有的包，对所有的类（具体为使用Spring容器管理的）进行检测，从而决定是否需要自动创建功能组件类的bean对象到spring的IOC容器中。
+
 
 
