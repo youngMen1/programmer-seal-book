@@ -19,5 +19,19 @@ public class SpringBootBestPracticeApplication {
 }
 ```
 
+做过 Spring Boot 项目的都知道，上面是 Spring Boot 最简单通用的入口类。入口类的要求是最顶层包下面第一个含有 main 方法的类，使用注解 `@SpringBootApplication` 来启用 Spring Boot 特性，使用 `SpringApplication.run` 方法来启动 Spring Boot 项目。
+
+来看一下这个类的 `run` 方法调用关系源码：
+
+```
+ public static ConfigurableApplicationContext run(Class<?> primarySource, String... args) {
+        return run(new Class[]{primarySource}, args);
+    }
+
+    public static ConfigurableApplicationContext run(Class<?>[] primarySources, String[] args) {
+        return (new SpringApplication(primarySources)).run(args);
+    }
+```
+
 
 
