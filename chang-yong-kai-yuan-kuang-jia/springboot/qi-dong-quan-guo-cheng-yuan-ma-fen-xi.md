@@ -51,6 +51,8 @@
 
           // 11、刷新应用上下文
           refreshContext(context);
+
+          // 12、应用上下文刷新后置处理
           afterRefresh(context, applicationArguments);
           stopWatch.stop();
           if (this.logStartupInfo) {
