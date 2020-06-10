@@ -345,6 +345,12 @@ return instances;
 setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 ```
 
+**`ApplicationListener`的作用是什么？源码如下。**
+
+```
+@FunctionalInterfacepublic interface ApplicationListener<E extends ApplicationEvent> extends EventListener {   /**    * Handle an application event.    * @param event the event to respond to    */   void onApplicationEvent(E event);}
+```
+
 ### 7.推断主入口应用类
 
 
