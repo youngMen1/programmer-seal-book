@@ -437,5 +437,26 @@ listeners.started(context);
 
 ## 16.执行所有 Runner 运行器
 
+```
+callRunners(context, applicationArguments);
+```
 
+```
+private void callRunners(ApplicationContext context, ApplicationArguments args) {
+    List<Object> runners = new ArrayList<>();
+    runners.addAll(context.getBeansOfType(ApplicationRunner.class).values());
+    runners.addAll(context.getBeansOfType(CommandLineRunner.class).values());
+    AnnotationAwareOrderComparator.sort(runners);
+    for (Object runner : new LinkedHashSet<>(runners)) {
+        if (runner instanceof ApplicationRunner) {
+            callRunner((ApplicationRunner) runner, args);
+        }
+        if (runner instanceof CommandLineRunner) {
+            callRunner((CommandLineRunner) runner, args);
+        }
+    }
+}
+```
+
+执行所有 `ApplicationRunner`和 `CommandLineRunner`这两种运行器，不详细展开了。
 
