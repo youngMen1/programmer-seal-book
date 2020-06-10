@@ -137,6 +137,21 @@ static WebApplicationType deduceFromClasspath() {
         return SERVLET;
     }
 }
+
+public enum WebApplicationType {   
+/*** 
+非 WEB 项目    
+*/   
+NONE,   
+
+/*** 
+SERVLET WEB 项目    
+*/   
+SERVLET,   
+
+/*** 响应式 WEB 项目    
+*/   
+REACTIVE}
 ```
 
 ### 5.设置应用上线文初始化器
