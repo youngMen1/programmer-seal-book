@@ -143,21 +143,18 @@ public enum WebApplicationType {
 /**
 * 非 WEB 项目
 */
-
 NONE,
 
 
 /**
 * SERVLET WEB 项目
 */
-
 SERVLET,
 
 
 /**
 * 响应式 WEB 项目
 */
-
 REACTIVE
 }
 ```
