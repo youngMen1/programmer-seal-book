@@ -138,21 +138,34 @@ static WebApplicationType deduceFromClasspath() {
     }
 }
 
-public enum WebApplicationType {   
+public enum WebApplicationType {
+
 /*** 
-非 WEB 项目    
-*/   
-NONE,   
+非 WEB 项目
 
-/*** 
-SERVLET WEB 项目    
-*/   
-SERVLET,   
+*/
 
-/*** 响应式 WEB 项目    
-*/   
-REACTIVE}
+NONE,
+
+
+/**
+* 
+SERVLET WEB 项目
+
+*/
+
+SERVLET,
+
+
+/*** 响应式 WEB 项目
+
+*/
+
+REACTIVE
+}
 ```
+
+这个就是根据类路径下是否有对应项目类型的类推断出不同的应用类型。
 
 ### 5.设置应用上线文初始化器
 
