@@ -39,8 +39,10 @@
           // 7、创建 Banner 打印类
           Banner printedBanner = printBanner(environment);
 
-          // // 8、创建应用上下文
+          // 8、创建应用上下文
           context = createApplicationContext();
+
+          // 9、准备异常报告器
           exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
                 new Class[] { ConfigurableApplicationContext.class }, context);
           prepareContext(context, environment, listeners, applicationArguments, printedBanner);
