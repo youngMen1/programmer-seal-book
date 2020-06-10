@@ -8,7 +8,7 @@
 
 * 一个典型的SpringBoot项目结构如下：
 
-![](/static/image/65413168fsfdsfs.png)
+![img](/static/image/65413168fsfdsfs.png)
 
 ## 1.2.注解分析
 
