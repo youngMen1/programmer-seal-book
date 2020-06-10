@@ -88,3 +88,12 @@
 
 所以，我们可以按以下几步来分解 run 方法的启动过程。
 
+#### 1、创建并启动计时监控类
+
+```
+StopWatch stopWatch = new StopWatch();
+stopWatch.start();
+```
+
+
+
