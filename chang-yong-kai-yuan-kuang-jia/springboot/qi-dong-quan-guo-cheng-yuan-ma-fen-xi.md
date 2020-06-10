@@ -82,6 +82,7 @@
           handleRunFailure(context, ex, exceptionReporters, null);
           throw new IllegalStateException(ex);
        }
+       // 18、返回应用上下文
        return context;
     }
 
