@@ -10,5 +10,14 @@
 
 ### Spring Boot 的入口类
 
+```
+@SpringBootApplication
+public class SpringBootBestPracticeApplication {   
+    public static void main(String[] args) {       
+        SpringApplication.run(SpringBootBestPracticeApplication.class, args);   
+        }
+}
+```
+
 
 
