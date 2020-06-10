@@ -286,15 +286,13 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
 }
 ```
 
-根据类路径下的
+根据类路径下的`META-INF/spring.factories`文件解析并获取`ApplicationContextInitializer`接口的所有配置的类路径名称。
 
-`META-INF/spring.factories`
+`spring-boot-autoconfigure-2.0.3.RELEASE.jar!/META-INF/spring.factories`的初始化器相关配置内容如下：
 
-文件解析并获取
-
-`ApplicationContextInitializer`
-
-接口的所有配置的类路径名称。
+```
+# Initializersorg.springframework.context.ApplicationContextInitializer=\org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitializer,\org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener
+```
 
 ##### 3.**根据以上类路径创建初始化器实例列表**
 
