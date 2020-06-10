@@ -93,7 +93,7 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 
 ## 2.3.SpringApplication**构造器类初始化7个过程具体分析**
 
-**1. 资源初始化资源加载器为 null**
+### **1. 资源初始化资源加载器为 null**
 
 ```
 this.resourceLoader = resourceLoader;
