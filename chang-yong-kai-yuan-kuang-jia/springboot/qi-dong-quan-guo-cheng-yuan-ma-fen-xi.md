@@ -143,5 +143,5 @@ SpringApplicationRunListeners listeners = getRunListeners(args);
 listeners.starting();
 ```
 
-
+来看下创建 Spring 运行监听器相关的源码：
 
