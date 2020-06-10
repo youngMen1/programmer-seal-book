@@ -244,5 +244,9 @@ protected void configureEnvironment(ConfigurableEnvironment environment,
 
 ## 7.创建 Banner 打印类
 
+```
+Banner printedBanner = printBanner(environment);
+```
+
 
 
