@@ -218,9 +218,9 @@
     * [RabbitMQ](zhong-jian-jian/xiao-xi-dui-lie/rabbitmq.md)
     * [RocketMQ](zhong-jian-jian/xiao-xi-dui-lie/rocketmq.md)
     * ActiveMQ
-    * Kafka
-    * Redis 消息推送
-    * ZeroMQ
+    * [Kafka](zhong-jian-jian/xiao-xi-dui-lie/kafka.md)
+    * [Redis 消息推送](zhong-jian-jian/xiao-xi-dui-lie/redis-xiao-xi-tui-song.md)
+    * [ZeroMQ](zhong-jian-jian/xiao-xi-dui-lie/zeromq.md)
   * [定时调度](zhong-jian-jian/ding-shi-diao-du.md)
     * [单机定时调度](zhong-jian-jian/ding-shi-diao-du/dan-ji-ding-shi-diao-du.md)
     * [分布式定时调度](zhong-jian-jian/ding-shi-diao-du/fen-bu-shi-ding-shi-diao-du.md)
