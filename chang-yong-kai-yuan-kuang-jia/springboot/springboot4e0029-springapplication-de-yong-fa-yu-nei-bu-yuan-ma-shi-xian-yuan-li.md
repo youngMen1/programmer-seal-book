@@ -115,11 +115,13 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 
 ```
 
-  
+#### 5、设置应用上线文初始化器
 
+```
 
-  
+```
 
+#### 6、设置监听器
 
 
 
