@@ -206,7 +206,7 @@ private ConfigurableEnvironment prepareEnvironment(
 }
 ```
 
-#### 6.1**获取（或者创建）应用环境**
+#### 6.1.**获取（或者创建）应用环境**
 
 
 
