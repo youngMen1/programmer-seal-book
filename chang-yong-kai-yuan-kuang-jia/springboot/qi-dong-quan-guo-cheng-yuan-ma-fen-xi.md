@@ -136,5 +136,9 @@ configureHeadlessProperty();
 参考：www.cnblogs.com/princessd8251/p/4000016.html
 ```
 
+## 4.创建所有 Spring 运行监听器并发布应用启动事件
+
+
+
 
 
