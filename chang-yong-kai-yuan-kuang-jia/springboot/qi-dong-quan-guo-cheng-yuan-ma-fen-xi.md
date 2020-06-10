@@ -353,5 +353,11 @@ private void prepareContext(ConfigurableApplicationContext context,
 }
 ```
 
+## 11.刷新应用上下文
+
+```
+refreshContext(context);
+```
+
 
 
