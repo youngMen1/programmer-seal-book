@@ -216,7 +216,7 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {
 
 private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) 
  { 
-  
+
   // 1.获取当前线程上下文类加载器
   ClassLoader classLoader = getClassLoader();
 
@@ -240,9 +240,11 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 ```
 
-2.**获取 `ApplicationContextInitializer`的实例名称集合并去重**
+2.**获取 **`ApplicationContextInitializer`**的实例名称集合并去重**
 
-
+```
+Set<String> names = new LinkedHashSet<>(               SpringFactoriesLoader.loadFactoryNames(type, classLoader));
+```
 
 ### 6.设置监听器
 
