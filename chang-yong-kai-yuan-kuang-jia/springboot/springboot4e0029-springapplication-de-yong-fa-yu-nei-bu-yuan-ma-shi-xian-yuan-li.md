@@ -236,10 +236,7 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
 ##### 1.**获取当前线程上下文类加载器**
 
 ```
-ClassLoader
- classLoader = 
-Thread
-.currentThread().getContextClassLoader();
+ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 ```
 
 ### 6.设置监听器
