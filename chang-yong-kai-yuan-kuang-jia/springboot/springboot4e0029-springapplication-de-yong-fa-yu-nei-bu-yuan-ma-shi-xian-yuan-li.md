@@ -51,3 +51,26 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources, Stri
 
 接着上面的`SpringApplication`构造方法进入以下源码：
 
+```
+public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) {
+        this.sources = new LinkedHashSet();
+        this.bannerMode = Mode.CONSOLE;
+        this.logStartupInfo = true;
+        this.addCommandLineProperties = true;
+        this.addConversionService = true;
+        this.headless = true;
+        this.registerShutdownHook = true;
+        this.additionalProfiles = new HashSet();
+        this.isCustomEnvironment = false;
+        this.resourceLoader = resourceLoader;
+        Assert.notNull(primarySources, "PrimarySources must not be null");
+        this.primarySources = new LinkedHashSet(Arrays.asList(primarySources));
+        this.webApplicationType = WebApplicationType.deduceFromClasspath();
+        this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
+        this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
+        this.mainApplicationClass = this.deduceMainApplicationClass();
+    }
+```
+
+
+
