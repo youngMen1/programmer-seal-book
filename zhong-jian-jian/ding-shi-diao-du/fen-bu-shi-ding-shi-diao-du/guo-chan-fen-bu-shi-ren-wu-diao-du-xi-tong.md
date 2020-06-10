@@ -16,3 +16,4 @@ LTS，light-task-scheduler，是一款分布式任务调度框架, 支持实时�
 ## 1.3.XXL-JOB
 XXL-JOB 是一个轻量级分布式任务调度框架，支持通过 Web 页面对任务进行 CRUD 操作，支持动态修改任务状态、暂停/恢复任务，以及终止运行中任务，支持在线配置调度任务入参和在线查看调度结果。
 ![](/static/image/1c6600025d23b0125464.jpg)
+github地址：https://github.com/xuxueli/xxl-job
