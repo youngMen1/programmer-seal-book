@@ -75,6 +75,7 @@
        }
 
        try {
+          // 17、发布应用上下文就绪事件
           listeners.running(context);
        }
        catch (Throwable ex) {
