@@ -117,6 +117,10 @@ this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
 this.webApplicationType = deduceWebApplicationType();
 ```
 
+来看下`deduceWebApplicationType`方法和相关的源码：
+
+
+
 ### 5.设置应用上线文初始化器
 
 ```
