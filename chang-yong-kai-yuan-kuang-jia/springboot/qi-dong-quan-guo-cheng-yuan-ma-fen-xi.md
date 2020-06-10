@@ -159,5 +159,7 @@ SpringApplicationRunListeners(Log log,
 }
 ```
 
+创建逻辑和之前实例化初始化器和监听器的一样，一样调用的是 `getSpringFactoriesInstances` 方法来获取配置的监听器名称并实例化所有的类。
 
+SpringApplicationRunListener 所有监听器配置在 `spring-boot-2.0.3.RELEASE.jar!/META-INF/spring.factories` 这个配置文件里面。
 
