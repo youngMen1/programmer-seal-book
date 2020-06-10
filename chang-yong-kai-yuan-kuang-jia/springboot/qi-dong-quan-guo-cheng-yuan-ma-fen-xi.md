@@ -285,5 +285,5 @@ protected ConfigurableApplicationContext createApplicationContext() {
 }
 ```
 
-
+其实就是根据不同的应用类型初始化不同的上下文应用类。
 
