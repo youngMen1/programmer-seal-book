@@ -265,6 +265,8 @@ spring bean 容器的生命周期流程如下：
 
 ![](/static/image/20190804193840470.png)
 
+640.png
+
 ## 3.5. 什么是 spring 的内部 bean？
 
 只有将 bean 用作另一个 bean 的属性时，才能将 bean 声明为内部 bean。为了定义 bean，Spring 的基于 XML 的配置元数据在 或 中提供了 元素的使用。内部 bean 总是匿名的，它们总是作为原型。
@@ -545,7 +547,6 @@ Advice + Target Object = Proxy
 
 为了创建一个 advice 对象而链接一个 aspect 和其它应用类型或对象，称为编织（Weaving）。在 Spring AOP 中，编织在运行时执行。请参考下图：
 
-
 ![](/static/image/20190804194002754.png)
 
 ## 7. MVC
@@ -569,7 +570,7 @@ DispatcherServlet 的工作流程可以用一幅图来说明：
   * 数据转换：对请求消息进行数据转换。如String转换成Integer、Double等。
   * 数据根式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期等。
   * 数据验证： 验证数据的有效性（长度、格式等），验证结果存储到BindingResult或Error中。
-* Handler(Controller)执行完成后，向 DispatcherServlet 返回一个 ModelAndView 对象；
+* Handler\(Controller\)执行完成后，向 DispatcherServlet 返回一个 ModelAndView 对象；
 * 根据返回的ModelAndView，选择一个适合的 ViewResolver（必须是已经注册到 Spring 容器中的ViewResolver\)返回给DispatcherServlet。
 * ViewResolver 结合Model和View，来渲染视图。
 * 视图负责将渲染结果返回给客户端。
