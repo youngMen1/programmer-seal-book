@@ -247,7 +247,7 @@ Set<String> names = new LinkedHashSet<>(
                SpringFactoriesLoader.loadFactoryNames(type, classLoader));
 ```
 
-**`loadFactoryNames`方法相关的源码如下：**
+`loadFactoryNames`**方法相关的源码如下：**
 
 ```
 public static List<String> loadFactoryNames(Class<?> factoryClass, @Nullable ClassLoader classLoader) {
@@ -285,6 +285,16 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
    }
 }
 ```
+
+根据类路径下的
+
+`META-INF/spring.factories`
+
+文件解析并获取
+
+`ApplicationContextInitializer`
+
+接口的所有配置的类路径名称。
 
 ##### 3.**根据以上类路径创建初始化器实例列表**
 
