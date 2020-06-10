@@ -117,7 +117,7 @@ this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
 this.webApplicationType = deduceWebApplicationType();
 ```
 
-来看下`deduceWebApplicationType`方法和相关的源码：
+**来看下`deduceWebApplicationType`方法和相关的源码：**
 
 
 
