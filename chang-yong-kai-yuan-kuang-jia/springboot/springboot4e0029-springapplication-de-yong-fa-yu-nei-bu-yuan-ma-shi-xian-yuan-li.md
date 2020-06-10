@@ -41,3 +41,7 @@ public class SpringBootBestPracticeApplication {
 
 先用主要资源类来实例化一个 `SpringApplication` 对象，再调用这个对象的 `run` 方法，所以我们分两步来分析这个启动源码。
 
+### SpringApplication 的实例化过程
+
+
+
