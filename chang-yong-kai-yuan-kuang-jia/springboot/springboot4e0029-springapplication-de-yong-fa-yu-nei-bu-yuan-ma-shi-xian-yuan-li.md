@@ -8,7 +8,7 @@
 
 # 2.源码实现分析
 
-retlrejtletjmeltmerktgnelrtgner.webp
+![](/static/image/retlrejtletjmeltmerktgnelrtgner.webp)
 
 ### 2.1.Spring Boot 的入口类
 
