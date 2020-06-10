@@ -43,7 +43,11 @@ public class SpringBootBestPracticeApplication {
 
 ### SpringApplication 的实例化过程
 
-
+```
+public static ConfigurableApplicationContext run(Class<?>[] primarySources, String[] args) {
+        return (new SpringApplication(primarySources)).run(args);
+    }
+```
 
 
 
