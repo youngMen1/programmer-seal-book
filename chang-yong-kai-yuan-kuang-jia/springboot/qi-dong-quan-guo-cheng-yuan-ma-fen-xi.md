@@ -54,6 +54,8 @@
 
           // 12、应用上下文刷新后置处理
           afterRefresh(context, applicationArguments);
+
+          // 13、停止计时监控类
           stopWatch.stop();
           if (this.logStartupInfo) {
              new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
