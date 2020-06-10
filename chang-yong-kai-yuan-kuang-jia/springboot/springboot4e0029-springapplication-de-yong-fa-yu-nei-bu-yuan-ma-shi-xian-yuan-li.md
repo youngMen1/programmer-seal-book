@@ -228,6 +228,7 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
   List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);
 
   AnnotationAwareOrderComparator.sort(instances);
+  
    return instances;
 
 }
