@@ -208,5 +208,17 @@ private ConfigurableEnvironment prepareEnvironment(
 
 #### 6.1.**获取（或者创建）应用环境**
 
+```
+private ConfigurableEnvironment getOrCreateEnvironment() {
+    if (this.environment != null) {
+        return this.environment;
+    }
+    if (this.webApplicationType == WebApplicationType.SERVLET) {
+        return new StandardServletEnvironment();
+    }
+    return new StandardEnvironment();
+}
+```
+
 
 
