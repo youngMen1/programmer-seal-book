@@ -359,5 +359,21 @@ private void prepareContext(ConfigurableApplicationContext context,
 refreshContext(context);
 ```
 
+这个主要是刷新 Spring 的应用上下文，源码如下，不详细说明。
+
+```
+private void refreshContext(ConfigurableApplicationContext context) {
+    refresh(context);
+    if (this.registerShutdownHook) {
+        try {
+            context.registerShutdownHook();
+        }
+        catch (AccessControlException ex) {
+            // Not allowed in some environments.
+        }
+    }
+}
+```
+
 
 
