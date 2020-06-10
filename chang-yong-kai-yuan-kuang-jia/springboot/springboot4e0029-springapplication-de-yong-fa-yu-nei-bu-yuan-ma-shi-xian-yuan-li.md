@@ -247,11 +247,43 @@ Set<String> names = new LinkedHashSet<>(
                SpringFactoriesLoader.loadFactoryNames(type, classLoader));
 ```
 
-**`loadFactoryNames`**方法相关的源码如下：
+**`loadFactoryNames`方法相关的源码如下：**
 
 ```
-public static List<String> loadFactoryNames(Class<?> factoryClass, @Nullable ClassLoader classLoader) {   
-String factoryClassName = factoryClass.getName();   return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {   MultiValueMap<String, String> result = cache.get(classLoader);   if (result != null) {       return result;   }   try {       Enumeration<URL> urls = (classLoader != null ?               classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :               ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));       result = new LinkedMultiValueMap<>();       while (urls.hasMoreElements()) {           URL url = urls.nextElement();           UrlResource resource = new UrlResource(url);           Properties properties = PropertiesLoaderUtils.loadProperties(resource);           for (Map.Entry<?, ?> entry : properties.entrySet()) {               List<String> factoryClassNames = Arrays.asList(                       StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));               result.addAll((String) entry.getKey(), factoryClassNames);           }       }       cache.put(classLoader, result);       return result;   }   catch (IOException ex) {       throw new IllegalArgumentException("Unable to load factories from location [" +               FACTORIES_RESOURCE_LOCATION + "]", ex);   }}
+public static List<String> loadFactoryNames(Class<?> factoryClass, @Nullable ClassLoader classLoader) {
+
+String factoryClassName = factoryClass.getName();
+   return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());
+}
+public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
+private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
+   MultiValueMap<String, String> result = cache.get(classLoader);
+   if (result != null) {
+       return result;
+   }
+   try {
+       Enumeration<URL> urls = (classLoader != null ?
+               classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :
+               ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));
+       result = new LinkedMultiValueMap<>();
+       while (urls.hasMoreElements()) {
+           URL url = urls.nextElement();
+           UrlResource resource = new UrlResource(url);
+           Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+           for (Map.Entry<?, ?> entry : properties.entrySet()) {
+               List<String> factoryClassNames = Arrays.asList(
+                       StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));
+               result.addAll((String) entry.getKey(), factoryClassNames);
+           }
+       }
+       cache.put(classLoader, result);
+       return result;
+   }
+   catch (IOException ex) {
+       throw new IllegalArgumentException("Unable to load factories from location [" +
+               FACTORIES_RESOURCE_LOCATION + "]", ex);
+   }
+}
 ```
 
 ##### 3.**根据以上类路径创建初始化器实例列表**
