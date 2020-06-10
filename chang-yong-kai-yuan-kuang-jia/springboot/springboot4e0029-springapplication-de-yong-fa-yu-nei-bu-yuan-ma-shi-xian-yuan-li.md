@@ -99,33 +99,33 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 this.resourceLoader = resourceLoader;
 ```
 
-**2. 断言主要加载资源类不能为 null，否则报错**
+### **2. 断言主要加载资源类不能为 null，否则报错**
 
 ```
 Assert.notNull(primarySources, "PrimarySources must not be null");
 ```
 
-**3. 初始化主要加载资源类集合并去重**
+### **3. 初始化主要加载资源类集合并去重**
 
 ```
 this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
 ```
 
-**4. 推断当前 WEB 应用类型**
+### **4. 推断当前 WEB 应用类型**
 
 ```
 this.webApplicationType = deduceWebApplicationType();
 ```
 
-#### 5、设置应用上线文初始化器
+### 5.设置应用上线文初始化器
 
 ```
 
 ```
 
-#### 6、设置监听器
+### 6.设置监听器
 
-#### 7、推断主入口应用类
+### 7.推断主入口应用类
 
 
 
