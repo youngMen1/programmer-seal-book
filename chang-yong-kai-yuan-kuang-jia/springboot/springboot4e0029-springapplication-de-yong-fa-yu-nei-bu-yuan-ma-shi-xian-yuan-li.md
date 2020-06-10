@@ -227,8 +227,8 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
   // 3.根据以上类路径创建初始化器实例列表
   List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);
 
-  AnnotationAwareOrderComparator.sort(instances);
-  
+   AnnotationAwareOrderComparator.sort(instances);
+
    return instances;
 
 }
