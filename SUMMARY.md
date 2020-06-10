@@ -335,6 +335,7 @@
   * [SpringBoot源码阅读分析](chang-yong-kai-yuan-kuang-jia/springboot.md)
     * [SpringBoot启动全过程源码分析SpringApplication的用法和原理](chang-yong-kai-yuan-kuang-jia/springboot/springboot4e0029-springapplication-de-yong-fa-yu-nei-bu-yuan-ma-shi-xian-yuan-li.md)
     * [SpringBoot启动全过程源码分析Run方法](chang-yong-kai-yuan-kuang-jia/springboot/qi-dong-quan-guo-cheng-yuan-ma-fen-xi.md)
+    * SpringBoot的main方法启动类SpringApplication需要在项目根目录
   * [SpringCloud](chang-yong-kai-yuan-kuang-jia/springcloud.md)
   * [Mybatis](chang-yong-kai-yuan-kuang-jia/mybatis.md)
 * [分布式设计](fen-bu-shi-she-ji.md)
