@@ -128,5 +128,5 @@ Collection<SpringBootExceptionReporter> exceptionReporters = new ArrayList<>();
 configureHeadlessProperty();
 ```
 
-
+设置该默认值为：true，Java.awt.headless = true 有什么作用？
 
