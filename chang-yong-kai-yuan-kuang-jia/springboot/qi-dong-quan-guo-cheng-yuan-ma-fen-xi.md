@@ -307,5 +307,10 @@ org.springframework.boot.diagnostics.FailureAnalyzers
 
 ## 10.准备应用上下文
 
+```
+prepareContext(context, environment, listeners, applicationArguments,
+        printedBanner);
+```
+
 
 
