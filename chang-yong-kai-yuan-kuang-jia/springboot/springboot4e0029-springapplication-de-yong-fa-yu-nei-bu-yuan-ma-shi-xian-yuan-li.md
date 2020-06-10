@@ -234,18 +234,27 @@ private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] 
 
 #### 设置应用上下文初始化器可分为以下 5 个步骤。
 
-1.**获取当前线程上下文类加载器**
+##### 1.**获取当前线程上下文类加载器**
 
 ```
 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 ```
 
-2.**获取 **`ApplicationContextInitializer`**的实例名称集合并去重**
+##### 2.**获取 **`ApplicationContextInitializer`**的实例名称集合并去重**
 
 ```
 Set<String> names = new LinkedHashSet<>(
                SpringFactoriesLoader.loadFactoryNames(type, classLoader));
 ```
+
+**`loadFactoryNames`**方法相关的源码如下：
+
+```
+public static List<String> loadFactoryNames(Class<?> factoryClass, @Nullable ClassLoader classLoader) {   
+String factoryClassName = factoryClass.getName();   return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {   MultiValueMap<String, String> result = cache.get(classLoader);   if (result != null) {       return result;   }   try {       Enumeration<URL> urls = (classLoader != null ?               classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :               ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));       result = new LinkedMultiValueMap<>();       while (urls.hasMoreElements()) {           URL url = urls.nextElement();           UrlResource resource = new UrlResource(url);           Properties properties = PropertiesLoaderUtils.loadProperties(resource);           for (Map.Entry<?, ?> entry : properties.entrySet()) {               List<String> factoryClassNames = Arrays.asList(                       StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));               result.addAll((String) entry.getKey(), factoryClassNames);           }       }       cache.put(classLoader, result);       return result;   }   catch (IOException ex) {       throw new IllegalArgumentException("Unable to load factories from location [" +               FACTORIES_RESOURCE_LOCATION + "]", ex);   }}
+```
+
+##### 3.**根据以上类路径创建初始化器实例列表**
 
 ### 6.设置监听器
 
