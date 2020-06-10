@@ -363,8 +363,12 @@ public interface ApplicationListener<E extends ApplicationEvent> extends EventLi
 设置监听器和设置初始化器调用的方法是一样的，只是传入的类型不一样，设置监听器的接口类型为： `getSpringFactoriesInstances`，对应的 `spring-boot-autoconfigure-2.0.3.RELEASE.jar!/META-INF/spring.factories` 文件配置内容请见下方。
 
 ```
-# Application Listenersorg.springframework.context.ApplicationListener=\org.springframework.boot.autoconfigure.BackgroundPreinitializer
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+org.springframework.boot.autoconfigure.BackgroundPreinitializer
 ```
+
+可以看出目前只有一个`BackgroundPreinitializer`监听器。
 
 ### 7.推断主入口应用类
 
