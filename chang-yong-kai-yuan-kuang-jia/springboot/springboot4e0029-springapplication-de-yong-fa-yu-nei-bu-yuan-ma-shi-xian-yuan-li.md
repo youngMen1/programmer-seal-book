@@ -91,3 +91,35 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 
 **可知这个构造器类的初始化包括以下 7 个过程。**
 
+**1. 资源初始化资源加载器为 null**
+
+```
+
+```
+
+**2. 断言主要加载资源类不能为 null，否则报错**
+
+```
+
+```
+
+**3. 初始化主要加载资源类集合并去重**
+
+```
+
+```
+
+**4. 推断当前 WEB 应用类型**
+
+```
+
+```
+
+  
+
+
+  
+
+
+
+
