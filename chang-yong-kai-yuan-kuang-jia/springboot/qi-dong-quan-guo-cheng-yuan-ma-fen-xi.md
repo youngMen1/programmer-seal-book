@@ -312,9 +312,46 @@ prepareContext(context, environment, listeners, applicationArguments,
         printedBanner);
 ```
 
-来看下 
+来看下`prepareContext()`方法的源码：
 
-`prepareContext()`
+```
+private void prepareContext(ConfigurableApplicationContext context,
+        ConfigurableEnvironment environment, SpringApplicationRunListeners listeners,
+        ApplicationArguments applicationArguments, Banner printedBanner) {
+    // 10.1.绑定环境到上下文
+    context.setEnvironment(environment);
 
- 方法的源码：
+    // 10.2.配置上下文的 bean 生成器及资源加载器
+    postProcessApplicationContext(context);
+
+    // 10.3.为上下文应用所有初始化器
+    applyInitializers(context);
+
+    // 10.4.触发所有 SpringApplicationRunListener 监听器的 contextPrepared 事件方法
+    listeners.contextPrepared(context);
+
+    // 10.5.记录启动日志
+    if (this.logStartupInfo) {
+        logStartupInfo(context.getParent() == null);
+        logStartupProfileInfo(context);
+    }
+
+    // 10.6.注册两个特殊的单例bean
+    context.getBeanFactory().registerSingleton("springApplicationArguments",
+            applicationArguments);
+    if (printedBanner != null) {
+        context.getBeanFactory().registerSingleton("springBootBanner", printedBanner);
+    }
+
+    // 10.7.加载所有资源
+    Set<Object> sources = getAllSources();
+    Assert.notEmpty(sources, "Sources must not be empty");
+    load(context, sources.toArray(new Object[0]));
+
+    // 10.8.触发所有 SpringApplicationRunListener 监听器的 contextLoaded 事件方法
+    listeners.contextLoaded(context);
+}
+```
+
+
 
