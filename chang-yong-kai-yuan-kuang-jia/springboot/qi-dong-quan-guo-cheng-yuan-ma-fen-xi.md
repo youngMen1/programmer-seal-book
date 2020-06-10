@@ -176,5 +176,7 @@ ApplicationArguments applicationArguments = new DefaultApplicationArguments(
         args);
 ```
 
+## 6.根据运行监听器和应用参数来准备 Spring 环境
+
 
 
