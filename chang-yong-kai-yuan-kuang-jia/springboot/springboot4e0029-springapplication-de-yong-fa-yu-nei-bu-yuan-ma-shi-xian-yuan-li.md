@@ -345,11 +345,22 @@ return instances;
 setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 ```
 
-**`ApplicationListener`的作用是什么？源码如下。**
+`ApplicationListener`**的作用是什么？源码如下。**
 
 ```
-@FunctionalInterfacepublic interface ApplicationListener<E extends ApplicationEvent> extends EventListener {   /**    * Handle an application event.    * @param event the event to respond to    */   void onApplicationEvent(E event);}
+@FunctionalInterface
+public interface ApplicationListener<E extends ApplicationEvent> extends EventListener {
+   /**
+    * Handle an application event.
+    * @param event the event to respond to
+    */
+   void onApplicationEvent(E event);
+}
 ```
+
+看源码，这个接口继承了 JDK 的 `java.util.EventListener` 接口，实现了观察者模式，它一般用来定义感兴趣的事件类型，事件类型限定于 ApplicationEvent 的子类，这同样继承了 JDK 的 `java.util.EventObject` 接口。
+
+设置监听器和设置初始化器调用的方法是一样的，只是传入的类型不一样，设置监听器的接口类型为： `getSpringFactoriesInstances`，对应的 `spring-boot-autoconfigure-2.0.3.RELEASE.jar!/META-INF/spring.factories` 文件配置内容请见下方。
 
 ### 7.推断主入口应用类
 
