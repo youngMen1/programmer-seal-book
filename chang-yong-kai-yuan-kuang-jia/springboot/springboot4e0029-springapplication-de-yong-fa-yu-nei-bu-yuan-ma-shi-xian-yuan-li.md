@@ -164,8 +164,12 @@ REACTIVE
 ### 5.设置应用上线文初始化器
 
 ```
-setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
+setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
 ```
+
+**`ApplicationContextInitializer`的作用是什么？源码如下。**
+
+
 
 ### 6.设置监听器
 
