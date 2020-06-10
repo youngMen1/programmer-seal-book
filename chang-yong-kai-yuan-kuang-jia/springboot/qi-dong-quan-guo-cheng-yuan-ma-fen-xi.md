@@ -242,3 +242,7 @@ protected void configureEnvironment(ConfigurableEnvironment environment,
 
 这里主要处理所有 property sources 配置和 profiles 配置。
 
+## 7.创建 Banner 打印类
+
+
+
