@@ -184,9 +184,27 @@ ConfigurableEnvironment environment = prepareEnvironment(listeners,
 configureIgnoreBeanInfo(environment);
 ```
 
-下面我们主要来看下准备环境的 
+下面我们主要来看下准备环境的`prepareEnvironment`源码：
 
-`prepareEnvironment`
+```
+private ConfigurableEnvironment prepareEnvironment(
+        SpringApplicationRunListeners listeners,
+        ApplicationArguments applicationArguments) {
+    // 6.1) 获取（或者创建）应用环境
+    ConfigurableEnvironment environment = getOrCreateEnvironment();
 
- 源码：
+    // 6.2) 配置应用环境
+    configureEnvironment(environment, applicationArguments.getSourceArgs());
+    listeners.environmentPrepared(environment);
+    bindToSpringApplication(environment);
+    if (this.webApplicationType == WebApplicationType.NONE) {
+        environment = new EnvironmentConverter(getClassLoader())
+                .convertToStandardEnvironmentIfNecessary(environment);
+    }
+    ConfigurationPropertySources.attach(environment);
+    return environment;
+}
+```
+
+
 
