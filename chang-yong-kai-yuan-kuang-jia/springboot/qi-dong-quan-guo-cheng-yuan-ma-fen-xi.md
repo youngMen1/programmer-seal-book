@@ -252,5 +252,9 @@ Banner printedBanner = printBanner(environment);
 
 ## 8.创建应用上下文
 
+```
+context = createApplicationContext();
+```
+
 
 
