@@ -291,10 +291,17 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
 `spring-boot-autoconfigure-2.0.3.RELEASE.jar!/META-INF/spring.factories`的初始化器相关配置内容如下：
 
 ```
-# Initializersorg.springframework.context.ApplicationContextInitializer=\org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitializer,\org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener
+# Initializers
+org.springframework.context.ApplicationContextInitializer=\
+org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitializer,\
+org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener
 ```
 
 ##### 3.**根据以上类路径创建初始化器实例列表**
+
+```
+List<T> instances = createSpringFactoriesInstances(type, parameterTypes,               classLoader, args, names);private <T> List<T> createSpringFactoriesInstances(Class<T> type,       Class<?>[] parameterTypes, ClassLoader classLoader, Object[] args,       Set<String> names) {   List<T> instances = new ArrayList<>(names.size());   for (String name : names) {       try {           Class<?> instanceClass = ClassUtils.forName(name, classLoader);           Assert.isAssignable(type, instanceClass);           Constructor<?> constructor = instanceClass                   .getDeclaredConstructor(parameterTypes);           T instance = (T) BeanUtils.instantiateClass(constructor, args);           instances.add(instance);       }       catch (Throwable ex) {           throw new IllegalArgumentException(                   "Cannot instantiate " + type + " : " + name, ex);       }   }   return instances;}
+```
 
 ### 6.设置监听器
 
