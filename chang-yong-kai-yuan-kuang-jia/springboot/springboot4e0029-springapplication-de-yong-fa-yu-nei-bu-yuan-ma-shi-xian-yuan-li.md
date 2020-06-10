@@ -167,9 +167,16 @@ REACTIVE
 setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
 ```
 
-**`ApplicationContextInitializer`的作用是什么？源码如下。**
+`ApplicationContextInitializer`**的作用是什么？源码如下。**
 
-
+```
+public interface ApplicationContextInitializer<C extends ConfigurableApplicationContext> {   
+/**    
+* Initialize the given application context.    
+* @param applicationContext the application to configure    
+*/   
+void initialize(C applicationContext);}
+```
 
 ### 6.设置监听器
 
