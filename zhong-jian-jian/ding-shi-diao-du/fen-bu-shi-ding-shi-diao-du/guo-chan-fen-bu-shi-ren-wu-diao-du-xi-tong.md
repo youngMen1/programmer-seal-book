@@ -11,9 +11,17 @@ opencron 是一个功能完善且通用的开源定时任务调度系统，拥�
 ![](/static/image/1c64000285092dc6b3f8.jpg)
 
 ## 1.2.**LTS**
-LTS，light-task-scheduler，是一款分布式任务调度框架, 支持实时任务、定时任务和 Cron 任务。有较好的伸缩性和扩展性，提供对 Spring 的支持（包括 Xml 和注解），提供业务日志记录器。支持节点监控、任务执行监、JVM 监控，支持动态提交、更改、停止任务。
+
+LTS，light-task-scheduler，是一款分布式任务调度框架, 支持实时任务、定时任务和 Cron 任务。有较好的伸缩性和扩展性，提供对 Spring 的支持（包括 Xml 和注解），提供业务日志记录器。支持节点监控、任务执行监、JVM 监控，支持动态提交、更改、停止任务。  
 ![](/static/image/1c6100056e32c16c07f8.jpg)
+
 ## 1.3.XXL-JOB
-XXL-JOB 是一个轻量级分布式任务调度框架，支持通过 Web 页面对任务进行 CRUD 操作，支持动态修改任务状态、暂停/恢复任务，以及终止运行中任务，支持在线配置调度任务入参和在线查看调度结果。
-![](/static/image/1c6600025d23b0125464.jpg)
-许雪里github地址：https://github.com/xuxueli/xxl-job
+
+XXL-JOB 是一个轻量级分布式任务调度框架，支持通过 Web 页面对任务进行 CRUD 操作，支持动态修改任务状态、暂停/恢复任务，以及终止运行中任务，支持在线配置调度任务入参和在线查看调度结果。  
+![](/static/image/1c6600025d23b0125464.jpg)  
+许雪里github地址：[https://github.com/xuxueli/xxl-job](https://github.com/xuxueli/xxl-job)
+
+## 1.4.**Elastic-Job**
+
+Elastic-Job 是一个分布式调度解决方案，由两个相互独立的子项目 Elastic-Job-Lite 和 Elastic-Job-Cloud 组成。定位为轻量级无中心化解决方案，使用 jar 包的形式提供分布式任务的协调服务。支持分布式调度协调、弹性扩容缩容、失效转移、错过执行作业重触发、并行调度、自诊断和修复等等功能特性。
+
