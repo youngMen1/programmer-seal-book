@@ -113,5 +113,5 @@ public void start(String taskName) throws IllegalStateException {
 }
 ```
 
-
+首先记录了当前任务的名称，默认为空字符串，然后记录当前 Spring Boot 应用启动的开始时间。
 
