@@ -265,7 +265,7 @@ spring bean 容器的生命周期流程如下：
 
 ![](/static/image/20190804193840470.png)
 
-640.png
+![](/static/image/640.png)
 
 ## 3.5. 什么是 spring 的内部 bean？
 
