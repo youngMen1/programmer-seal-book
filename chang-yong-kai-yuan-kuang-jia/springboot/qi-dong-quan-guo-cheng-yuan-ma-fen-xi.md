@@ -184,5 +184,9 @@ ConfigurableEnvironment environment = prepareEnvironment(listeners,
 configureIgnoreBeanInfo(environment);
 ```
 
+下面我们主要来看下准备环境的 
 
+`prepareEnvironment`
+
+ 源码：
 
