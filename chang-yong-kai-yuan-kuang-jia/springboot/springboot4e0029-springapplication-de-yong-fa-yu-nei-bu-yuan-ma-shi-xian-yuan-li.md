@@ -140,25 +140,22 @@ static WebApplicationType deduceFromClasspath() {
 
 public enum WebApplicationType {
 
-/*** 
-非 WEB 项目
-
+/**
+* 非 WEB 项目
 */
 
 NONE,
 
 
 /**
-* 
-SERVLET WEB 项目
-
+* SERVLET WEB 项目
 */
 
 SERVLET,
 
 
-/*** 响应式 WEB 项目
-
+/**
+* 响应式 WEB 项目
 */
 
 REACTIVE
