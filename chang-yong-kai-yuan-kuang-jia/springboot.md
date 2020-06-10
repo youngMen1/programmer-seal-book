@@ -7,6 +7,8 @@
 * SpringBoot启动全过程源码分析SpringApplication的用法和原理
 * SpringBoot启动全过程源码分析Run方法
 
+* 为什么main方法启动类SpringApplication需要在项目根目录
+
 # 2.参考
 
 SpringBoot学习:
