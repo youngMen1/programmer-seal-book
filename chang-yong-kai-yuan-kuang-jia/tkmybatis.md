@@ -25,6 +25,25 @@ _**实体类按照如下规则和数据库表进行转换,注解全部是JPA中�
 
 ## 1.3.所有的mapper继承此类将具有以下通用方法
 
+### 1.3.1.查询方法
+
+###### BaseSelectMapper下的通用方法
+
+| 方法名称 | 作用 |
+| :--- | :--- |
+| List&lt;T&gt; selectAll\(\); | 查询全部数据 |
+| T selectByPrimaryKey\(Object key\); | 通过主键查询 |
+| T selectOne\(T record\); | 通过实体查询单个数据 |
+| List&lt;T&gt; select\(T record\); | 通过实体查询多个数据 |
+| int selectCount\(T record\); | 通过实体查询实体数量 |
+| boolean existsWithPrimaryKey\(Object key\); | 通过主键查询此主键是否存在 |
+
+  
+
+
+  
+
+
 
 
 
