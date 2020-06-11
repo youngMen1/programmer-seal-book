@@ -76,6 +76,12 @@ List<List<Integer>> print(TreeNode root) {
 
 ## 5.倒排一个LinkedList。
 
+```
+	
+Collections.reverse(linkedList);
+
+```
+
 ## 6.用Java写一个递归遍历目录下面的所有文件。
 
 
