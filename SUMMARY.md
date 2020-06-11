@@ -18,6 +18,7 @@
   * [JVM参数及调优](ji-chu-zhi-shi/jvmcan-shu-ji-diao-you.md)
   * [异常](ji-chu-zhi-shi/yi-chang.md)
     * [Java常见异常大全](ji-chu-zhi-shi/yi-chang/javachang-jian-yi-chang-da-quan.md)
+  * 树的名词
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
 * [常用算法](chang-yong-suan-fa.md)
