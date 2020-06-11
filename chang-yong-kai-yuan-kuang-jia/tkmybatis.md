@@ -71,5 +71,23 @@ _**实体类按照如下规则和数据库表进行转换,注解全部是JPA中�
 
 #### 1.3.4.删除方法
 
+###### BaseDeleteMapper下的通用方法
+
+| 方法名称 | 作用 |
+| :--- | :--- |
+| int delete\(T record\); | 按照实体进行删除 |
+| int deleteByPrimaryKey\(Object o\); | 按照主键进行删除 |
+
+###### IdsMapper下的通用方法
+
+| 方法名称 | 作用 |
+| :--- | :--- |
+| int deleteByIds\(String var1\); | 按照主键批量删除 |
+
+  
+
+
+
+
 
 
