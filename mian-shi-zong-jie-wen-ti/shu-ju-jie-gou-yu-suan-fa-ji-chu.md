@@ -82,6 +82,33 @@ Collections.reverse(linkedList);
 
 倒序链表可以借助Stack类或者使用递归
 
+```
+public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+    Stack<Integer> stack = new Stack<Integer>();
+    while (listNode != null) {
+        stack.push(listNode.val);
+        listNode = listNode.next;
+    }
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    while (!stack.isEmpty()) {
+        list.add(stack.pop());
+    }
+    return list;
+}
+public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    ListNode pNode = listNode;
+    if (pNode != null) {
+        if (pNode.next != null) {
+            list = printListFromTailToHead(pNode.next);
+        }
+        list.add(pNode.val);
+    }
+    return list;
+}
+
+```
+
 ## 6.用Java写一个递归遍历目录下面的所有文件。
 
 
