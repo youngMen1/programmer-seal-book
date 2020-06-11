@@ -67,7 +67,7 @@ _**实体类按照如下规则和数据库表进行转换,注解全部是JPA中�
 | 方法名称 | 作用 |
 | :--- | :--- |
 | int updateByPrimaryKey\(T record\); | 按照实体进行修改 |
-| int updateByPrimaryKeySelective\(T record\); | 按照实体进行有选择的修改 |
+| int updateByPrimaryKeySelective\(T record\); | 按照实体进行有选择\(不为null\)的修改 |
 
 
 
