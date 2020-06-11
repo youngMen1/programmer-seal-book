@@ -19,6 +19,7 @@
   * [异常](ji-chu-zhi-shi/yi-chang.md)
     * [Java常见异常大全](ji-chu-zhi-shi/yi-chang/javachang-jian-yi-chang-da-quan.md)
   * [树的名词](ji-chu-zhi-shi/shu-de-ming-ci.md)
+  * 基本数据类型
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
 * [常用算法](chang-yong-suan-fa.md)
