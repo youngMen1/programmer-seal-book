@@ -19,5 +19,7 @@ BST树的搜索，从根结点开始，如果查询的关键字与结点的关�
 
 # 2.参考
 
+BST、AVL、RBT、B-、B+
+
 [https://blog.csdn.net/qq\_36610462/article/details/83303551](https://blog.csdn.net/qq_36610462/article/details/83303551)
 
