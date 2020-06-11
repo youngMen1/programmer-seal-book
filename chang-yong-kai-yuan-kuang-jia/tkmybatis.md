@@ -6,7 +6,13 @@
 <dependency>
     <groupId>tk.mybatis</groupId>
     <artifactId>mapper-spring-boot-starter</artifactId>
-    <version>2.1.5</version>
+    <version>2.0.3-beta1</version>
+</dependency>
+ 
+<dependency>
+    <groupId>tk.mybatis</groupId>
+    <artifactId>mapper</artifactId>
+    <version>4.0.0</version>
 </dependency>
 ```
 
