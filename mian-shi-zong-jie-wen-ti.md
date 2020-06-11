@@ -1,6 +1,6 @@
 # 成为Java顶尖程序员，先过了下面问题！
 
-## 来源:[https://zhuanlan.zhihu.com/p/31552882](https://zhuanlan.zhihu.com/p/31552882)
+## 来源：[https://zhuanlan.zhihu.com/p/31552882](https://zhuanlan.zhihu.com/p/31552882)
 
 ### 一、数据结构与算法基础
 
@@ -163,8 +163,8 @@
 * JDK源码里面都有些什么让你印象深刻的设计模式使用，举例看看？
 
 ---
-![img](/static/image/java整体知识架构详解.jpg)
-三面字节跳动面试题：
-https://www.jianshu.com/p/d6e9b1c211dd
 
+![img](/static/image/java整体知识架构详解.jpg)  
+三面字节跳动面试题：  
+[https://www.jianshu.com/p/d6e9b1c211dd](https://www.jianshu.com/p/d6e9b1c211dd)
 
