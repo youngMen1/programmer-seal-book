@@ -106,10 +106,24 @@ public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
     }
     return list;
 }
-
 ```
 
 ## 6.用Java写一个递归遍历目录下面的所有文件。
+
+```
+void listAll(File directory) {
+    if (!(directory.exists() && directory.isDirectory())) {
+        throw new RuntimeException("目录不存在");
+    }
+    File[] files = directory.listFiles();
+    for (File file : files) {
+        System.out.println(file.getPath() + file.getName());
+        if (file.isDirectory()) {
+            listAll(file);
+        }
+    }
+}
+```
 
 
 
