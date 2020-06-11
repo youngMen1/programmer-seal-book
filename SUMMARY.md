@@ -20,7 +20,7 @@
     * [Java常见异常大全](ji-chu-zhi-shi/yi-chang/javachang-jian-yi-chang-da-quan.md)
   * [树的名词](ji-chu-zhi-shi/shu-de-ming-ci.md)
   * [基本数据类型](ji-chu-zhi-shi/ji-ben-shu-ju-lei-xing.md)
-    * 8种基本数据类型
+    * [8种基本数据类型](ji-chu-zhi-shi/ji-ben-shu-ju-lei-xing/8zhong-ji-ben-shu-ju-lei-xing.md)
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
 * [常用算法](chang-yong-suan-fa.md)
