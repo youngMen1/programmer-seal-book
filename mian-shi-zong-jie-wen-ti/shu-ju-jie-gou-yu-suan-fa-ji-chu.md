@@ -42,6 +42,38 @@ public void bubbleSort(int[] a) {
 
 ## 4.如何遍历一棵二叉树？
 
+```
+List<List<Integer>> print(TreeNode root) {
+  ArrayList<ArrayList<Integer>> ll = new ArrayList<>();
+  if (root == null) {
+    return ll;
+  }
+  ArrayList<Integer> l = new ArrayList<Integer>();
+  TreeNode p = root;
+  TreeNode last = null;
+  LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+  queue.add(root);
+  while (!queue.isEmpty()) {
+    TreeNode node = queue.poll();
+    l.add(node.val);
+    if (node.left != null) {
+      last = node.left;
+      queue.add(node.left);
+    }
+    if (node.right != null) {
+      last = node.right;
+      queue.add(node.right);
+    }
+    if (p == node) {
+      p = last;
+      ll.add(l);
+      l = new ArrayList<>();
+    }
+  }
+  return ll;
+}
+```
+
 ## 5.倒排一个LinkedList。
 
 ## 6.用Java写一个递归遍历目录下面的所有文件。
