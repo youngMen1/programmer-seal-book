@@ -38,13 +38,11 @@ _**实体类按照如下规则和数据库表进行转换,注解全部是JPA中�
 | int selectCount\(T record\); | 通过实体查询实体数量 |
 | boolean existsWithPrimaryKey\(Object key\); | 通过主键查询此主键是否存在 |
 
-  
+###### SelectByIdsMapper下的通用方法
 
-
-  
-
-
-
+| 方法名称 | 作用 |
+| :--- | :--- |
+| List&lt;T&gt; selectByIds\(String var1\); | 通过多个主键查询数据 |
 
 
 
