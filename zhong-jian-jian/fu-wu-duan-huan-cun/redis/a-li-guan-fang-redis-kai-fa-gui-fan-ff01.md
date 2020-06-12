@@ -282,7 +282,7 @@ jedis.del(bigZsetKey);
 }
 ```
 
-## 1.6.选择合适的数据类型。
+## 1.6.选择合适的数据类型
 
 目前Redis支持的数据库结构类型较多：字符串（String），哈希（Hash），列表（List），集合（Set），有序集合（Sorted Set）, Bitmap, HyperLogLog和地理空间索引（geospatial）等,需要根据业务场景选择合适的类型。
 
