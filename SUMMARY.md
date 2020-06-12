@@ -287,6 +287,7 @@
       * [导致索引失效的可能情况](shu-ju-ku/mysql/dao-zhi-suo-yin-shi-xiao-de-ke-neng-qing-kuang.md)
       * [MYSQL分页limit速度太慢优化方法](shu-ju-ku/mysql/mysqlfen-ye-limit-su-du-tai-man-you-hua-fang-fa.md)
       * [Explain 使用分析](shu-ju-ku/mysql/explain.md)
+    * [MySQL实战](shu-ju-ku/mysql/mysql.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * [Hbase](shu-ju-ku/nosql/hbase.md)
