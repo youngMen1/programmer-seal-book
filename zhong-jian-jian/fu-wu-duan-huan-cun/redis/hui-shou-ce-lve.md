@@ -1,4 +1,4 @@
-# redis的回收策略
+# Redis的回收策略
 
 ## 1.使用[Redis](http://lib.csdn.net/base/redis)有哪些好处？
 
