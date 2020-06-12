@@ -282,6 +282,12 @@ jedis.del(bigZsetKey);
 }
 ```
 
+## 1.6.选择合适的数据类型。
+
+目前Redis支持的数据库结构类型较多：字符串（String），哈希（Hash），列表（List），集合（Set），有序集合（Sorted Set）, Bitmap, HyperLogLog和地理空间索引（geospatial）等,需要根据业务场景选择合适的类型。
+
+在不能确定其它复杂数据结构⼀定优于String类型时，避免使用Redis的复杂数据结构。 每种数据结构都有相应的使⽤场景，String类型是Redis中最简单的数据类型，建议使用String类型。 但是考虑到具体的业务场景，综合评估性能、存储网络等方面之后使用适当的数据结构。 需要根据业务场景选择合适的类型，常见的如：String可以用作普通的K-V、简单数据类类型等；Hash可以用作对象如居民、医生等，包含较多属性的信息；List可以用作息队列、医生同行/关注列表等；Set可以用于推荐；Sorted Set可以用于排行等。
+
 # 2.参考
 
 **阿里云Redis开发规范：**
@@ -294,9 +300,5 @@ jedis.del(bigZsetKey);
 
 腾讯云关于redis key命名规范的设计：
 
-https://cloud.tencent.com/developer/article/1551803
-
-
-
-
+[https://cloud.tencent.com/developer/article/1551803](https://cloud.tencent.com/developer/article/1551803)
 

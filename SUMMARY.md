@@ -214,7 +214,7 @@
     * [Redis](zhong-jian-jian/fu-wu-duan-huan-cun/redis.md)
       * [回收策略](zhong-jian-jian/fu-wu-duan-huan-cun/redis/hui-shou-ce-lve.md)
       * [架构](zhong-jian-jian/fu-wu-duan-huan-cun/redis/jia-gou.md)
-      * [阿里官方Redis开发规范！](zhong-jian-jian/fu-wu-duan-huan-cun/redis/a-li-guan-fang-redis-kai-fa-gui-fan-ff01.md)
+      * [阿里官方Redis开发规范](zhong-jian-jian/fu-wu-duan-huan-cun/redis/a-li-guan-fang-redis-kai-fa-gui-fan-ff01.md)
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
   * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
     * [消息总线](zhong-jian-jian/xiao-xi-dui-lie/xiao-xi-zong-xian.md)
