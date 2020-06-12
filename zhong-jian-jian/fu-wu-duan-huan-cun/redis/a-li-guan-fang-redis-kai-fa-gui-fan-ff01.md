@@ -1,4 +1,4 @@
-# 1.阿里官方Redis开发规范！
+# 1.阿里官方Redis开发规范
 
 本文主要介绍在使用阿里云Redis的开发规范，从下面几个方面进行说明。
 
@@ -29,7 +29,7 @@ ugc:video:1
 保证语义的前提下，控制key的长度，当key较多时，内存占用也不容忽视，例如：
 
 ```
-user:{uid}:friends:messages:{mid}简化为u:{uid}:fr:m:{mid}。
+user:{uid}:friends:messages:{mid}简化为u:{uid}:fr:m:{mid}
 ```
 
 ##### 不要包含特殊字符
