@@ -68,7 +68,7 @@ hmset user:1 name tom age 19 favor football
 
 redis不是垃圾桶，建议使用expire设置过期时间\(条件允许可以打散过期时间，防止集中过期\)，不过期的数据重点关注idletime。
 
-### **二、命令使用**
+## 1.2.**命令使用**
 
 ##### **1、O\(N\)命令关注N的数量**
 
