@@ -282,7 +282,7 @@ jedis.del(bigZsetKey);
 }
 ```
 
-# 参考
+# 2.参考
 
 **阿里云Redis开发规范：**
 
