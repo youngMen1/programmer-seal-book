@@ -288,6 +288,8 @@
       * [MYSQL分页limit速度太慢优化方法](shu-ju-ku/mysql/mysqlfen-ye-limit-su-du-tai-man-you-hua-fang-fa.md)
       * [Explain 使用分析](shu-ju-ku/mysql/explain.md)
     * [MySQL实战](shu-ju-ku/mysql/mysql.md)
+      * [基础篇](shu-ju-ku/mysql/mysql/ji-chu-pian.md)
+        * 日志系统：一条SQL更新语句是如何执行的？
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * [Hbase](shu-ju-ku/nosql/hbase.md)
