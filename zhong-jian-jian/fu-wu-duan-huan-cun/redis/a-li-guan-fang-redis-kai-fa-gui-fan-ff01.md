@@ -164,7 +164,7 @@ jedis.close();
 
 * noeviction：不会剔除任何数据，拒绝所有写入操作并返回客户端错误信息"\(error\) OOM command not allowed when used memory"，此时Redis只响应读操作。
 
-### **四、相关工具**
+## 1.4.**相关工具**
 
 ##### **1、数据同步**
 
