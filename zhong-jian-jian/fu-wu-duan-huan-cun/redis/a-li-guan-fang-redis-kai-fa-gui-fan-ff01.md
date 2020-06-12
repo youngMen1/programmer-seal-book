@@ -298,7 +298,7 @@ jedis.del(bigZsetKey);
 
 [https://mp.weixin.qq.com/s?spm=a2c4e.10696291.0.0.389b19a4V0yHDa&\_\_biz=Mzg2NTEyNzE0OA==∣=2247483677&idx=1&sn=5c320b46f0e06ce9369a29909d62b401&chksm=ce5f9e9ef928178834021b6f9b939550ac400abae5c31e1933bafca2f16b23d028cc51813aec&scene=21\#wechat\_redirect](https://mp.weixin.qq.com/s?spm=a2c4e.10696291.0.0.389b19a4V0yHDa&__biz=Mzg2NTEyNzE0OA==&mid=2247483677&idx=1&sn=5c320b46f0e06ce9369a29909d62b401&chksm=ce5f9e9ef928178834021b6f9b939550ac400abae5c31e1933bafca2f16b23d028cc51813aec&scene=21#wechat_redirect)
 
-腾讯云关于redis key命名规范的设计\(写的非常好\)：
+**腾讯云关于redis key命名规范的设计\(写的非常好\)：**
 
 [https://cloud.tencent.com/developer/article/1551803](https://cloud.tencent.com/developer/article/1551803)
 
