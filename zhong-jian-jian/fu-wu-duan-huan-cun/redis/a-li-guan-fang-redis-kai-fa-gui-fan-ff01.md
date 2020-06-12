@@ -178,7 +178,7 @@ redis大key搜索工具
 
 内部实现使用monitor，所以建议短时间使用facebook的redis-faina 阿里云Redis已经在内核层面解决热点key问题
 
-### **五、删除bigkey**
+## 1.5.**删除bigkey**
 
 * 下面操作可以使用pipeline加速。
 * redis 4.0已经支持key的异步删除，欢迎使用。
