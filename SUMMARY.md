@@ -290,6 +290,7 @@
     * [MySQL实战](shu-ju-ku/mysql/mysql.md)
       * [基础篇](shu-ju-ku/mysql/mysql/ji-chu-pian.md)
         * [日志系统：一条SQL更新语句是如何执行的？](shu-ju-ku/mysql/mysql/ji-chu-pian/ri-zhi-xi-tong-ff1a-yi-tiao-sql-geng-xin-yu-ju-shi-ru-he-zhi-xing-de-ff1f.md)
+        * 基础架构：一条SQL查询语句是如何执行的？
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * [Hbase](shu-ju-ku/nosql/hbase.md)
