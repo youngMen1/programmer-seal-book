@@ -95,8 +95,10 @@ public V put(K key, V value) {
         return null;
     }
 ```
+## 2.3.treeifyBin()方法简单解析：
 
-## 2.2.resize\(\)方法简单解析：
+
+## 2.3.resize()方法简单解析：
 
 ```
     final Node<K,V>[] resize() {
