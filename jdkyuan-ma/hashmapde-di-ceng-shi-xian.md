@@ -8,7 +8,7 @@ HashMap结构
 
 JDK1.7：Entry数组+链表
 
-JDK1.8：Entry数组+链表+红黑树
+JDK1.8：Entry数组 + 链表 + 红黑树
 
 **继承关系**
 
