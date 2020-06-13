@@ -261,3 +261,5 @@ jdk1.8中HashMap在扩容的时候做了哪些优化
 
 [https://cloud.tencent.com/developer/article/1571903](https://cloud.tencent.com/developer/article/1571903)
 
+https://www.cnblogs.com/name-lizonglin/p/12090408.html
+
