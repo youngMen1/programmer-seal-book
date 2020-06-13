@@ -18,12 +18,19 @@ public class HashMap<K,V>extends AbstractMap<K,V>
 基本属性
 
 ```
-// 哈希数组最大容量
+// 默认初始容量16
+static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; 
+// 容量最大值
 static final int MAXIMUM_CAPACITY = 1 << 30;
-// 哈希数组默认容量
-static final int DEFAULT_INITIAL_CAPACITY = 16;
-// HashMap默认负载因子（负荷系数）     
+// 默认加载因子0.75
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
+// 树化的阈值，当桶中链表节点数大于8时，将链表转换为红黑树
+static final int TREEIFY_THRESHOLD = 8;
+// 红黑树退化为链表的阈值，当桶中红黑树节点数小于6时，将红黑树转换为链表
+static final int UNTREEIFY_THRESHOLD = 6;
+// 最小的树化容量，进行树化的时候，还有一次判断，只有键值对数量大于64时才会发生转换，
+// 这是为了避免在哈希表建立初期，多个键值对恰好被放入了同一个链表而导致不必要的转化
+static final int MIN_TREEIFY_CAPACITY = 64;
 ```
 
 
