@@ -255,7 +255,7 @@ public V put(K key, V value) {
 
 # 3.参考
 
-https://cloud.tencent.com/developer/article/1571903
+jdk1.8中HashMap在扩容的时候做了哪些优化
 
-
+[https://cloud.tencent.com/developer/article/1571903](https://cloud.tencent.com/developer/article/1571903)
 
