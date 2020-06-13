@@ -18,8 +18,6 @@ JDK1.8：Entry数组 + 链表 + 红黑树
 
 2.JDK1.8不会倒置
 
-
-
 **继承关系**
 
 ```
@@ -254,6 +252,10 @@ public V put(K key, V value) {
         return newTab;
     }
 ```
+
+# 3.参考
+
+https://cloud.tencent.com/developer/article/1571903
 
 
 
