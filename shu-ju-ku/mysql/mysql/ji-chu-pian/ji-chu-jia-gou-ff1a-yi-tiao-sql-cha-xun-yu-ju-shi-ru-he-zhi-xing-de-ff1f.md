@@ -152,11 +152,7 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 
 Connect\_timeout 指的是“连接过程中”的等待时间，
 
-  
-
-
-  
-
-
 wait\_timeout指的是“连接完成后，使用过程中”的等待时间
+
+interactive-timeout：交换式……
 
