@@ -95,10 +95,38 @@ public V put(K key, V value) {
         return null;
     }
 ```
-## 2.3.treeifyBin()方法简单解析：
 
+## 2.3.treeifyBin\(\)方法简单解析：
 
-## 2.3.resize()方法简单解析：
+```
+    final void treeifyBin(Node<K,V>[] tab, int hash) {
+        int n, index; Node<K,V> e;
+        //如果表为空或者表的长度小于树化的容量，resize()扩容而不是树化
+        if (tab == null || (n = tab.length) < MIN_TREEIFY_CAPACITY)
+            resize();
+        else if ((e = tab[index = (n - 1) & hash]) != null) {
+            //hd是转换为树节点后桶中的头节点   tl记录上一个遍历的节点
+            TreeNode<K,V> hd = null, tl = null;
+            do {
+                //将hash位置处的桶中的每个节点包装成树节点，p记录当前遍历的节点
+                TreeNode<K,V> p = replacementTreeNode(e, null);
+                if (tl == null)
+                    hd = p;
+                else {
+                    p.prev = tl;
+                    tl.next = p;
+                }
+                tl = p;
+                //循环将桶中每个节点替换为树节点，最终结果就是链表转换为双向链表，prev指向前一个节点，next指向后一个节点
+            } while ((e = e.next) != null);
+            if ((tab[index] = hd) != null)  
+                    //将双向链表转化为红黑树
+                    hd.treeify(tab);
+            }
+    }
+```
+
+## 2.3.resize\(\)方法简单解析：
 
 ```
     final Node<K,V>[] resize() {
