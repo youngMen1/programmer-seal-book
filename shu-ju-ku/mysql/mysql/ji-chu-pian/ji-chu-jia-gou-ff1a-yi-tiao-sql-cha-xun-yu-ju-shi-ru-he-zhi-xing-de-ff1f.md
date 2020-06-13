@@ -148,6 +148,8 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 
 2.逻辑架构图是用什么工具画的？
 
+ipad的pencil
+
 3.connection\_timeout参数，和wait\_timeout参数还有interactive-timeout？
 
 Connect\_timeout 指的是“连接过程中”的等待时间，
