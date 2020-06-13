@@ -6,7 +6,7 @@ HashMap基于Map接口实现，元素以键值对的方式存储，并且允许�
 
 HashMap结构
 
-JDK1.7：Entry数组+链表
+JDK1.7：Entry数组 + 链表
 
 JDK1.8：Entry数组 + 链表 + 红黑树
 
