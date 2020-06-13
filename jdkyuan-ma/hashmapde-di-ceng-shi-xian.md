@@ -39,6 +39,10 @@ static final int MIN_TREEIFY_CAPACITY = 64;
 
 put\(\)方法简单解析：
 
+```
+
+```
+
 resize\(\)方法简单解析：
 
 ```
