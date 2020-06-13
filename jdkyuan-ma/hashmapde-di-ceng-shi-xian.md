@@ -37,7 +37,7 @@ static final int MIN_TREEIFY_CAPACITY = 64;
 
 # 2.方法解析
 
-put\(\)方法简单解析：
+## 2.1.put\(\)方法简单解析：
 
 ```
 public V put(K key, V value) {
@@ -96,7 +96,7 @@ public V put(K key, V value) {
     }
 ```
 
-resize\(\)方法简单解析：
+## 2.2.resize\(\)方法简单解析：
 
 ```
     final Node<K,V>[] resize() {
