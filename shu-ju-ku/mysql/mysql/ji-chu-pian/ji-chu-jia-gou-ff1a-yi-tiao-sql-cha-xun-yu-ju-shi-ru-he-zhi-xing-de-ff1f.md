@@ -146,3 +146,17 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 
 有些时候，SQL语句要操作的表不只是SQL字面上那些。比如如果有个触发器，得在执行器阶段（过程中）才能确定。优化器阶段前是无能为力的
 
+2.逻辑架构图是用什么工具画的？
+
+3.connection\_timeout参数，和wait\_timeout参数还有interactive-timeout?
+
+Connect\_timeout 指的是“连接过程中”的等待时间，
+
+  
+
+
+  
+
+
+wait\_timeout指的是“连接完成后，使用过程中”的等待时间
+
