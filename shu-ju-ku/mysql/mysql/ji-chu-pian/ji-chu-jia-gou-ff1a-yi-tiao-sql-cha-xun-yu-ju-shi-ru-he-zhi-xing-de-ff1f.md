@@ -99,7 +99,7 @@ ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that 
 
 经过了分析器，MySQL 就知道你要做什么了。在开始执行之前，还要先经过优化器的处理。
 
-优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。比如你执行下面这样的语句，这个语句是执行两个表的 join：
+优化器是在表里面有多个索引的时候，**决定使用哪个索引**；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。比如你执行下面这样的语句，这个语句是执行两个表的 join：
 
 ```
 mysql> select * from t1 join t2 using(ID)  where t1.c=10 and t2.d=20;
