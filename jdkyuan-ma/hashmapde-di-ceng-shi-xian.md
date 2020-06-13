@@ -68,6 +68,7 @@ public V put(K key, V value) {
                     if ((e = p.next) == null) {
                         p.next = newNode(hash, key, value, null);
                         if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                            // 链表转化为红黑树
                             treeifyBin(tab, hash);
                         break;
                     }
