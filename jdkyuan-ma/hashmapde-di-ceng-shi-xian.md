@@ -40,7 +40,59 @@ static final int MIN_TREEIFY_CAPACITY = 64;
 put\(\)方法简单解析：
 
 ```
-
+public V put(K key, V value) {
+        return putVal(hash(key), key, value, false, true);
+}
+    final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                   boolean evict) {
+        Node<K,V>[] tab; Node<K,V> p; int n, i;
+        //如果表为空或者表的容量为0，resize初始化表
+        if ((tab = table) == null || (n = tab.length) == 0)
+            n = (tab = resize()).length;
+        //根据hash得到在表中索引位置的桶，如果桶为空，则将节点直接插入桶中
+        if ((p = tab[i = (n - 1) & hash]) == null)
+            tab[i] = newNode(hash, key, value, null);
+        //桶不为空
+        else {
+            Node<K,V> e; K k;
+            //首先判断桶中第一个节点的hash与待插入元素的key的hash值是否相同且key是否"相等"，如果相等，赋给变量e
+            if (p.hash == hash &&
+                ((k = p.key) == key || (key != null && key.equals(k))))
+                e = p;
+            //是树节点，则调用putTreeVal添加到红黑树中
+            else if (p instanceof TreeNode)
+                e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+            //否则是链表，遍历链表，如果不存在相同的key，则插入链表尾部，并且判断节点数量是否大于树化阈值，如果大于则转换为红黑树；如果存在相同的key，break，遍历链表结束
+            else {
+                for (int binCount = 0; ; ++binCount) {
+                    if ((e = p.next) == null) {
+                        p.next = newNode(hash, key, value, null);
+                        if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                            treeifyBin(tab, hash);
+                        break;
+                    }
+                    if (e.hash == hash &&
+                        ((k = e.key) == key || (key != null && key.equals(k))))
+                        break;
+                    p = e;
+                }
+            }
+            //e不为空表示存在相同的key，替换value并返回旧值
+            if (e != null) { // existing mapping for key
+                V oldValue = e.value;
+                if (!onlyIfAbsent || oldValue == null)
+                    e.value = value;
+                afterNodeAccess(e);
+                return oldValue;
+            }
+        }
+        ++modCount;
+        //链表元素增加，并判断是否大于阈值，如果大于，则扩容
+        if (++size > threshold)
+            resize();
+        afterNodeInsertion(evict);
+        return null;
+    }
 ```
 
 resize\(\)方法简单解析：
