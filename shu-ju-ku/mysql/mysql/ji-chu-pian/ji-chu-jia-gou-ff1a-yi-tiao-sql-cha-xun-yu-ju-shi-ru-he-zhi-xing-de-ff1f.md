@@ -12,5 +12,7 @@ mysql> select * from T where ID=10；
 
 ## 1.1.MySQL 的基本架构示意图
 
+0d2070e8f84c4801adbfa03bda1f98d9.png
+
 
 
