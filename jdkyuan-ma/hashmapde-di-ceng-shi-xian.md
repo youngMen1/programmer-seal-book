@@ -17,7 +17,7 @@ public class HashMap<K,V>extends AbstractMap<K,V>
     implements Map<K,V>, Cloneable, Serializable
 ```
 
-基本属性
+**基本属性**
 
 ```
 // 默认初始容量16
@@ -35,3 +35,4 @@ static final int UNTREEIFY_THRESHOLD = 6;
 static final int MIN_TREEIFY_CAPACITY = 64;
 ```
 
+put方法简单解析：
