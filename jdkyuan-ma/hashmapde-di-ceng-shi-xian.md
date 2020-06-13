@@ -22,9 +22,8 @@ public class HashMap<K,V>extends AbstractMap<K,V>
 static final int MAXIMUM_CAPACITY = 1 << 30;
 // 哈希数组默认容量
 static final int DEFAULT_INITIAL_CAPACITY = 16;
-// HashMap默认装载因子（负荷系数）     
-static final float DEFAULT_LOAD_FACTOR = 0.75f;     
-
+// HashMap默认负载因子（负荷系数）     
+static final float DEFAULT_LOAD_FACTOR = 0.75f;
 ```
 
 
