@@ -88,8 +88,9 @@ public V put(K key, V value) {
             }
         }
         ++modCount;
-        //链表元素增加，并判断是否大于阈值，如果大于，则扩容
+        // 链表元素增加，并判断是否大于阈值，如果大于，则扩容
         if (++size > threshold)
+           // 扩容
             resize();
         afterNodeInsertion(evict);
         return null;
@@ -99,6 +100,13 @@ public V put(K key, V value) {
 ## 2.3.treeifyBin\(\)方法简单解析：
 
 ```
+
+    /*
+     * 当桶中链表节点数大于8时，将链表转换为红黑树
+     *
+     * tab：待转换的链表
+     * hash：某元素的哈希值
+     */
     final void treeifyBin(Node<K,V>[] tab, int hash) {
         int n, index; Node<K,V> e;
         //如果表为空或者表的长度小于树化的容量，resize()扩容而不是树化
@@ -129,6 +137,12 @@ public V put(K key, V value) {
 ## 2.3.resize\(\)方法简单解析：
 
 ```
+    /*
+     * 初始化哈希数组，或者对哈希数组扩容，返回新的哈希数组
+     *
+     * 注：哈希数组的容量跟HashMap存放的元素数量没有必然联系
+     *    哈希数组只存放一系列同位元素（在HashMap中占据相同位置的元素）中最早进来的那个
+     */
     final Node<K,V>[] resize() {
         Node<K,V>[] oldTab = table;
         //旧表的容量
