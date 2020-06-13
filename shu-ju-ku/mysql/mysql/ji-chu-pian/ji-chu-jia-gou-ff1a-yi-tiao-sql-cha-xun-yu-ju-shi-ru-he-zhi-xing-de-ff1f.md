@@ -39,7 +39,7 @@ mysql -h$ip -P$port -u$user -p
 
 这就意味着，一个用户成功建立连接后，即使你用管理员账号对这个用户的权限做了修改，也不会影响已经存在连接的权限。修改完成后，只有再新建的连接才会使用新的权限设置。连接完成后，如果你没有后续的动作，这个连接就处于空闲状态，你可以在 show processlist 命令中看到它。文本中这个图是 show processlist 的结果，其中的 Command 列显示为“Sleep”的这一行，就表示现在系统里面有一个空闲连接。
 
-f2da4aa3a672d48ec05df97b9f992fed.png
+![](/static/image/f2da4aa3a672d48ec05df97b9f992fed.png)
 
 客户端如果太长时间没动静，连接器就会自动将它断开。**这个时间是由参数 wait\_timeout 控制的，默认值是 8 小时。**
 
