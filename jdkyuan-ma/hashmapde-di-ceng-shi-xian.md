@@ -34,5 +34,8 @@ static final int UNTREEIFY_THRESHOLD = 6;
 // 这是为了避免在哈希表建立初期，多个键值对恰好被放入了同一个链表而导致不必要的转化
 static final int MIN_TREEIFY_CAPACITY = 64;
 ```
+# 2.方法解析
+put()方法简单解析：
 
-put方法简单解析：
+resize()方法简单解析：
+
