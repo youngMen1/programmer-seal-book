@@ -142,5 +142,9 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 
 # 3.总结
 
+1.有个问题不太明白，为什么对权限的检查不在优化器之前做而要等到执行器再做权限检查？
+
+
+
 
 
