@@ -100,7 +100,6 @@ public V put(K key, V value) {
 ## 2.3.treeifyBin\(\)方法简单解析：
 
 ```
-
     /*
      * 当桶中链表节点数大于8时，将链表转换为红黑树
      *
@@ -135,6 +134,8 @@ public V put(K key, V value) {
 ```
 
 ## 2.3.resize\(\)方法简单解析：
+
+如果存在key节点，返回旧值，如果不存在则返回Null。
 
 ```
     /*
