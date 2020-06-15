@@ -109,7 +109,7 @@ public V put(K key, V value) {
     }
 ```
 
-## 2.3.treeifyBin\(\)方法简单解析：
+## 2.2.treeifyBin\(\)方法简单解析：
 
 ```
     /*
