@@ -217,7 +217,15 @@ alter table T add primary key(id);
 
 3.业务连接数据库的时候，根据业务本身的预估，通过 SET MAX\_EXECUTION\_TIME 命令，来控制每个语句执行的最长时间，避免单个语句意外执行太长时间。（为什么会意外？在后续的文章中会提到这类案例）
 
-#### 
+#### 其次，从数据库端来看：
+
+1.监控 information\_schema.Innodb\_trx 表，设置长事务阈值，超过就报警 / 或者 kill；
+
+2.Percona 的 pt-kill 这个工具不错，推荐使用；
+
+3.在业务功能测试阶段要求输出所有的 general\_log，分析日志行为提前发现问题；
+
+4.如果使用的是 MySQL 5.6 或者更新版本，把 innodb\_undo\_tablespaces 设置成 2（或更大的值）。如果真的出现大事务导致回滚段过大，这样设置后清理起来更方便。
 
 # 2.总结
 
