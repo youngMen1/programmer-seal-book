@@ -58,15 +58,11 @@
 
 那select ＊from table where id＝xx
 
-和select id from table where id＝xx
+和select id from table where id＝xx的效率是一样的吗？（id是主键）
 
-的效率是一样的吗？（id是主键）
+这两个语句是都不用回表了，在“查找行”这个逻辑上是一样的，但是select \*要读和拷贝更多列到server,还要发送更多列给客户端，所以还是select id更快的。
 
-```
-这两个语句是都不用回表了，在“查找行”这个逻辑上是一样的，
 
-但是select *要读和拷贝更多列到server,还要发送更多列给客户端，所以还是select id更快的。
-```
 
 
 
