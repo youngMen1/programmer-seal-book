@@ -119,13 +119,16 @@ N 叉树由于在读写上的性能优点，以及适配磁盘的访问模式，
 这个表的建表语句是：
 
 ```
-
 mysql> create table T(
 id int primary key, 
 k int not null, 
 name varchar(16),
 index (k))engine=InnoDB;
 ```
+
+表中 R1~R5 的 \(ID,k\) 值分别为 \(100,1\)、\(200,2\)、\(300,3\)、\(500,5\) 和 \(600,6\)，两棵树的示例示意图如下。
+
+dcda101051f28502bd5c4402b292e38d.png
 
 # 2.总结
 
