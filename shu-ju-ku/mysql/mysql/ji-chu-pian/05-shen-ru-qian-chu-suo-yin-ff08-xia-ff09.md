@@ -29,7 +29,10 @@
 2.select * from T where k between 1 and 5
 ```
 
+第一个要树搜素5次
+
+  
 
 
-
+第二个搜索一次
 
