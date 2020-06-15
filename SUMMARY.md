@@ -291,6 +291,7 @@
       * [基础篇](shu-ju-ku/mysql/mysql/ji-chu-pian.md)
         * [日志系统：一条SQL更新语句是如何执行的？](shu-ju-ku/mysql/mysql/ji-chu-pian/ri-zhi-xi-tong-ff1a-yi-tiao-sql-geng-xin-yu-ju-shi-ru-he-zhi-xing-de-ff1f.md)
         * [基础架构：一条SQL查询语句是如何执行的？](shu-ju-ku/mysql/mysql/ji-chu-pian/ji-chu-jia-gou-ff1a-yi-tiao-sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de-ff1f.md)
+        * 04 \| 深入浅出索引（上）
     * MySQL使用
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
