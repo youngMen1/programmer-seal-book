@@ -104,7 +104,7 @@
 备注：这里的实验环境是 MySQL 5.6
 ```
 
-7cf6a3bf90d72d1f0fc156ececdfb0ce.jpg
+![](/static/image/7cf6a3bf90d72d1f0fc156ececdfb0ce.jpg)
 
 我们可以看到 session A 先启动，这时候会对表 t 加一个 MDL 读锁。由于 session B 需要的也是 MDL 读锁，因此可以正常执行。
 
