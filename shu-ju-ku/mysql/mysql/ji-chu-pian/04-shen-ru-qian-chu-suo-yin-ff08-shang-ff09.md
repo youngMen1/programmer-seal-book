@@ -190,7 +190,6 @@ B+ 树为了维护索引**有序性**，在插入新值的时候需要做必要�
 最后，我给你留下一个问题吧。对于上面例子中的 InnoDB 表 T，如果你要重建索引 k，你的两个 SQL 语句可以这么写：
 
 ```
-
 alter table T drop index k;
 alter table T add index(k);
 ```
@@ -198,10 +197,11 @@ alter table T add index(k);
 如果你要重建主键索引，也可以这么写：
 
 ```
-
 alter table T drop primary key;
 alter table T add primary key(id);
 ```
+
+我的问题是，对于上面这两个重建索引的作法，说出你的理解。如果有不合适的，为什么，更好的方法是什么？
 
 # 2.总结
 
