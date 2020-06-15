@@ -127,12 +127,13 @@ MySQL 里面表级别的锁有两种：一种是表锁，一种是元数据锁�
 MariaDB 已经合并了 AliSQL 的这个功能，所以这两个开源分支目前都支持 DDL NOWAIT/WAIT n 这个语法。
 
 ```
-
 ALTER TABLE tbl_name NOWAIT add column ...
-ALTER TABLE tbl_name WAIT N add column ... 
+ALTER TABLE tbl_name WAIT N add column ...
 ```
 
 ### 小结
+
+今天，我跟你介绍了 MySQL 的全局锁和表级锁。全局锁主要用在逻辑备份过程中。对于全部是 InnoDB 引擎的库，我建议你选择使用–single-transaction 参数，对应用会更友好。表锁一般是在数据库引擎不支持行锁的时候才会被用到的。如果你发现你的应用程序里有 lock tables 这样的语句，你需要追查一下，比较可能的情况是：
 
 # 2.总结
 
