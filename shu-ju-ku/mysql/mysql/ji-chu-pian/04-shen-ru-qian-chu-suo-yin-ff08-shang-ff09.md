@@ -54,7 +54,20 @@
 
 ## 2.1.问题
 
+1.回表只是普通索引才会有的吗？主键和数据放在同一个树中，根据主键查询的时候，就可以直接获得数据了。
+
+  
 
 
+那select ＊from table where id＝xx
 
+  
+
+
+和select id from table where id＝xx
+
+  
+
+
+的效率是一样的吗？（id是主键）
 
