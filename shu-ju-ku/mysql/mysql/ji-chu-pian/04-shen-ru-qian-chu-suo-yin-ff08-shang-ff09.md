@@ -205,7 +205,9 @@ alter table T add primary key(id);
 
 重建索引 k 的做法是合理的，可以达到省空间的目的。但是，重建主键的过程不合理。不论是删除主键还是创建主键，都会将整个表重建。所以连着执行这两个语句的话，第一个语句就白做了。这两个语句，你可以用这个语句代替 ： **alter table T engine=InnoDB**。在专栏的第 12 篇文章《为什么表数据删掉一半，表文件大小不变？》中，我会和你分析这条语句的执行流程。
 
-为什么可以用alter table T engine=InnoDB代替解释一下原理
+为什么可以用alter table T engine=InnoDB代替解释一下原理？
+
+
 
 ### 上期问题时间
 
