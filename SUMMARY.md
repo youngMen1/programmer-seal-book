@@ -24,6 +24,7 @@
     * [java运算符](ji-chu-zhi-shi/ji-ben-shu-ju-lei-xing/wei-yun-suan-fu.md)
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
+  * [B+树](chang-yong-suan-fa/bshu.md)
 * [常用算法](chang-yong-suan-fa.md)
   * [排序、查找算法](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa.md)
     * [选择排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/xuan-ze-pai-xu.md)
@@ -39,7 +40,6 @@
     * [java中的排序工具](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/javazhong-de-pai-xu-gong-ju.md)
   * [布隆过滤器](chang-yong-suan-fa/bu-long-guo-lv-qi.md)
   * [时间复杂度](chang-yong-suan-fa/shi-jian-fu-za-du.md)
-  * B+树
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
