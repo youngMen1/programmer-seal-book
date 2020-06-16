@@ -51,6 +51,8 @@ B+树中的卫星数据（Satellite Information）：
 ![](/static/image/99d5067451ec486dbccc37611ff3747c_th.png)  
 ![](/static/image/7522d2811b5340a7a9b222bc14ba7276_th.png)
 
+# ..............太多了直接去B+树图文详解看
+
 # 2.总结
 
 ## B+树的特征：
