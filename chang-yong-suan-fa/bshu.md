@@ -50,7 +50,7 @@ B+树中的卫星数据（Satellite Information）：
 ![](/static/image/baaed98d8fca4fb9806400651953f92d_th.png)  
 ![](/static/image/99d5067451ec486dbccc37611ff3747c_th.png)  
 ![](/static/image/7522d2811b5340a7a9b222bc14ba7276_th.png)
-![](/static/image/169def080e8e47a68fc4fdce3451337a_th.png）
+![](/static/image/169def080e8e47a68fc4fdce3451337a_th.png)
 # ..............太多了直接去B+树图文详解看
 
 # 2.总结
