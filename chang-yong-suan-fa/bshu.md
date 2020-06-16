@@ -41,6 +41,11 @@ d8ae1b14e9bf4b1890146eb803ee9795_th.png
 32ad0e6237624d718bb9a5346e37792e_th.png
 第一次磁盘IO：
 6808907785b84be09d8c6b7c8acb5d2a_th.png
+第二次磁盘IO：
+0193eedf3a5b47129340e2b6c654ef72_th.png
+第三次磁盘IO：
+68553d369a304d798116f432247c6e3f_th.png
+3830300c15bf41f8a2c8fdf8d163fa5b_th.png
 # 2.总结
 
 # 3.参考
