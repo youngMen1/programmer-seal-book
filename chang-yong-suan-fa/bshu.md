@@ -30,6 +30,7 @@ B+ 树是一种树数据结构，是一个n叉树，每个节点通常有多个�
 ![](/static/image/3bd2b4220a0f4d1887e2943a729c40a1_th.png)
 ![](/static/image/664e36a4da0f45fcaf6e18b68d36a0b4_th.png)
 ![](/static/image/514d587fa73746978200aca252837a44_th.png)
+B-树中的卫星数据（Satellite Information）：
 
 # 2.总结
 
