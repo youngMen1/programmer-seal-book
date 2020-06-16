@@ -1,6 +1,6 @@
 # 1.基本介绍
 
-17a0c4f672b34e668a0cd2eb214c117d\_th.png
+![](/static/image/17a0c4f672b34e668a0cd2eb214c117d_th.png)
 
 # 2.总结
 
