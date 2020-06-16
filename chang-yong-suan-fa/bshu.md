@@ -40,7 +40,7 @@ B+树中的卫星数据（Satellite Information）：
 ![](/static/image/7a52624e7add4033bb49c3aa5632a681_th.png)  
 ![](/static/image/0ae1d08ece1e4daeac37361e86b3d6a6_th.png)  
 ![](/static/image/32ad0e6237624d718bb9a5346e37792e_th.png)
-32ad0e6237624d718bb9a5346e37792e_th.png
+
 第一次磁盘IO：  
 ![](/static/image/6808907785b84be09d8c6b7c8acb5d2a_th.png)  
 第二次磁盘IO：  
