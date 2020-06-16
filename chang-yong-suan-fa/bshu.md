@@ -3,6 +3,7 @@ B+ 树是一种树数据结构，是一个n叉树，每个节点通常有多个�
 ![](/static/image/17a0c4f672b34e668a0cd2eb214c117d_th.png)
 ![](/static/image/c56155c2131e45b0bf69f9ae6cba056e_th.png)
 ![](/static/image/164ce3d2504c4d63945e134ca6752a2c_th.png)
+891ad19fb4294e9293fdca83e8e34616_th.png
 # 2.总结
 
 # 3.参考
