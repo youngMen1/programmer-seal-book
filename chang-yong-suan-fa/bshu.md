@@ -35,6 +35,7 @@ B-树中的卫星数据（Satellite Information）：
 c3a519a9a9e8456d9be41e69709bafaf_th.png
 B+树中的卫星数据（Satellite Information）：
 d8ae1b14e9bf4b1890146eb803ee9795_th.png
+需要补充的是，在数据库的聚集索引（Clustered Index）中，叶子节点直接包含卫星数据。在非聚集索引（NonClustered Index）中，叶子节点带有指向卫星数据的指针。
 # 2.总结
 
 # 3.参考
