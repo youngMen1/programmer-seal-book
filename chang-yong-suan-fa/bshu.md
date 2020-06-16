@@ -31,21 +31,24 @@ B+ 树是一种树数据结构，是一个n叉树，每个节点通常有多个�
 ![](/static/image/664e36a4da0f45fcaf6e18b68d36a0b4_th.png)
 ![](/static/image/514d587fa73746978200aca252837a44_th.png)
 B-树中的卫星数据（Satellite Information）：
-36efa69561dc4043a17d550133e13a6c_th.png
-c3a519a9a9e8456d9be41e69709bafaf_th.png
+![](/static/image/36efa69561dc4043a17d550133e13a6c_th.png)
+![](/static/image/c3a519a9a9e8456d9be41e69709bafaf_th.png)
 B+树中的卫星数据（Satellite Information）：
-d8ae1b14e9bf4b1890146eb803ee9795_th.png
+![](/static/image/d8ae1b14e9bf4b1890146eb803ee9795_th.png)
 需要补充的是，在数据库的聚集索引（Clustered Index）中，叶子节点直接包含卫星数据。在非聚集索引（NonClustered Index）中，叶子节点带有指向卫星数据的指针。
-7a52624e7add4033bb49c3aa5632a681_th.png
-0ae1d08ece1e4daeac37361e86b3d6a6_th.png
-32ad0e6237624d718bb9a5346e37792e_th.png
+![](/static/image/7a52624e7add4033bb49c3aa5632a681_th.png)
+![](/static/image/0ae1d08ece1e4daeac37361e86b3d6a6_th.png)
+![](/static/image/32ad0e6237624d718bb9a5346e37792e_th.png)
 第一次磁盘IO：
-6808907785b84be09d8c6b7c8acb5d2a_th.png
+![](/static/image/6808907785b84be09d8c6b7c8acb5d2a_th.png)
 第二次磁盘IO：
-0193eedf3a5b47129340e2b6c654ef72_th.png
+![](/static/image/0193eedf3a5b47129340e2b6c654ef72_th.png)
 第三次磁盘IO：
-68553d369a304d798116f432247c6e3f_th.png
-3830300c15bf41f8a2c8fdf8d163fa5b_th.png
+![](/static/image/68553d369a304d798116f432247c6e3f_th.png)
+![](/static/image/3830300c15bf41f8a2c8fdf8d163fa5b_th.png)
+![](/static/image/baaed98d8fca4fb9806400651953f92d_th.png)
+![](/static/image/99d5067451ec486dbccc37611ff3747c_th.png)
+![](/static/image/7522d2811b5340a7a9b222bc14ba7276_th.png)
 # 2.总结
 
 # 3.参考
