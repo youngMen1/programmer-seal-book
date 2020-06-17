@@ -200,8 +200,6 @@ JMM的设计图为：
 
 ![](/assets/happens-before与JMM的关系.png)
 
-!\[happens-before与JMM的关系\]\([http://upload-images.jianshu.io/upload\_images/2615789-dd96af34a8df5c49.png?imageMogr2/auto-orient/strip\|imageView2/2/w/800\](http://upload-images.jianshu.io/upload_images/2615789-dd96af34a8df5c49.png?imageMogr2/auto-orient/strip|imageView2/2/w/800%29\)
-
 一个happens-before规则对应于一个或多个编译器和处理器重排序规则。对于Java程序员来说，happens-before规则简单易懂，它避免Java程序员为了理解JMM提供的内存可见性保证而去学习复杂的重排序规则以及这些规则的具体实现方法
 
 ## 5.3 今后可能需要关注的问题
