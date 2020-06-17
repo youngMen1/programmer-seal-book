@@ -190,8 +190,6 @@ JMM的设计图为：
 
 ![](/assets/JMM的设计示意图.png)
 
-!\[JMM设计示意图\]\([http://upload-images.jianshu.io/upload\_images/2615789-b288451befb6a441.png?imageMogr2/auto-orient/strip\|imageView2/2/w/800\](http://upload-images.jianshu.io/upload_images/2615789-b288451befb6a441.png?imageMogr2/auto-orient/strip|imageView2/2/w/800%29\)
-
 从图可以看出：
 
 1. JMM向程序员提供的happens-before规则能满足程序员的需求。JMM的happens-before规则不但简单易懂，而且也向程序员提供了足够强的内存可见性保证（有些内存可见性保证其实并不一定真实存在，比如上面的A happens-before B）。
