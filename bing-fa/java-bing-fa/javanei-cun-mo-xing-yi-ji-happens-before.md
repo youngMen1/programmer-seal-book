@@ -58,8 +58,6 @@
 
 ![](/assets/从源码到最终执行的指令序列的示意图.png)
 
-!\[从源码到最终执行的指令序列的示意图\]\([http://upload-images.jianshu.io/upload\_images/2615789-4a1ae3e7c7906823.png?imageMogr2/auto-orient/strip\|imageView2/2/w/800\](http://upload-images.jianshu.io/upload_images/2615789-4a1ae3e7c7906823.png?imageMogr2/auto-orient/strip|imageView2/2/w/800%29\)
-
 1. 编译器优化的重排序。编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序；
 
 2. 指令级并行的重排序。现代处理器采用了指令级并行技术来将多条指令重叠执行。如果**不存在数据依赖性**，处理器可以改变语句对应机器指令的执行顺序；
