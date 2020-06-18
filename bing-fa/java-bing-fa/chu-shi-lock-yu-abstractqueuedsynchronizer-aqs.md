@@ -124,7 +124,6 @@ AQS可重写的方法如下图（摘自《java并发编程的艺术》一书）�
 
 ![](/static/image/AQS提供的模板方法.png)
 
-!\[AQS提供的模板方法.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-33aa10c3be109206.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
 
 AQS提供的模板方法可以分为3类：
 
