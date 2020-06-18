@@ -72,7 +72,7 @@ Provides a framework for implementing blocking locks and related
      implement their public methods.
 ```
 
-同步器是用来构建锁和其他同步组件的基础框架，它的实现主要依赖一个int成员变量来表示同步状态以及通过一个FIFO队列构成等待队列。它的\*\***子类必须重写AQS的几个protected修饰的用来改变同步状态的方法**\*\*，其他方法主要是实现了排队和阻塞机制。\*\***状态的更新使用getState,setState以及compareAndSetState这三个方法**\*\*。
+同步器是用来构建锁和其他同步组件的基础框架，它的实现主要依赖一个int成员变量来表示同步状态以及通过一个FIFO队列构成等待队列。它的**子类必须重写AQS的几个protected修饰的用来改变同步状态的方法**，其他方法主要是实现了排队和阻塞机制。**状态的更新使用getState,setState以及compareAndSetState这三个方法**。
 
 子类被\*\***推荐定义为自定义同步组件的静态内部类**\*\*，同步器自身没有实现任何同步接口，它仅仅是定义了若干同步状态的获取和释放方法来供自定义同步组件的使用，同步器既支持独占式获取同步状态，也可以支持共享式获取同步状态，这样就可以方便的实现不同类型的同步组件。
 
