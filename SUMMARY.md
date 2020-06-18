@@ -296,7 +296,7 @@
         * [04 \| 深入浅出索引（上）](shu-ju-ku/mysql/mysql/ji-chu-pian/04-shen-ru-qian-chu-suo-yin-ff08-shang-ff09.md)
         * [05 \| 深入浅出索引（下）](shu-ju-ku/mysql/mysql/ji-chu-pian/05-shen-ru-qian-chu-suo-yin-ff08-xia-ff09.md)
         * [06 \| 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？](shu-ju-ku/mysql/mysql/ji-chu-pian/06-quan-ju-suo-he-biao-suo-ff1a-gei-biao-jia-ge-zi-duan-zen-yao-you-zhe-yao-duo-zu-ai-ff1f.md)
-        * 07 \| 行锁功过：怎么减少行锁对性能的影响
+        * [07 \| 行锁功过：怎么减少行锁对性能的影响](shu-ju-ku/mysql/mysql/ji-chu-pian/07-xing-suo-gong-guo-ff1a-zen-yao-jian-shao-xing-suo-dui-xing-neng-de-ying-xiang.md)
     * MySQL使用
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
