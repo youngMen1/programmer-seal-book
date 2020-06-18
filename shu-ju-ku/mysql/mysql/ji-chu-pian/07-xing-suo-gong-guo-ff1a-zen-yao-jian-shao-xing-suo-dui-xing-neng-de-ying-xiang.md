@@ -165,7 +165,7 @@
 
 **6.innodb行级锁是通过锁索引记录实现的。如果update的列没建索引，即使只update一条记录也会锁定整张表吗？比如update t set t.name='abc' where t.name='cde'; name字段无索引。为何innodb不优化一下，只锁定name='cde'的列？**
 
-是的。但是你可以再往前考虑一下，如果是你的update 语句后面加个limit 1, 会怎么锁？Innodb支持行锁，没有支持“列锁”
+是的。会逐行加锁，但是你可以再往前考虑一下，如果是你的update 语句后面加个limit 1, 会怎么锁？Innodb支持行锁，没有支持“列锁”
 
 ## 2.2.实践方法
 
