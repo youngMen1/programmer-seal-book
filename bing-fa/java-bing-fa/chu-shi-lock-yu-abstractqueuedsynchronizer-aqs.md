@@ -10,8 +10,6 @@
 
 ![](/assets/concurrent包实现整体示意图.png)
 
-!\[concurrent包实现整体示意图.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-24da822ddc226b03.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-24da822ddc226b03.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
-
 ## 2. lock简介
 
 我们下来看concurent包下的lock子包。锁是用来控制多个线程访问共享资源的方式，一般来说，一个锁能够防止多个线程同时访问共享资源。在Lock接口出现之前，java程序主要是靠synchronized关键字实现锁功能的，而java SE5之后，并发包中增加了lock接口，它提供了与synchronized一样的锁功能。\*\***虽然它失去了像synchronize关键字隐式加锁解锁的便捷性，但是却拥有了锁获取和释放的可操作性，可中断的获取锁以及超时获取锁等多种synchronized关键字所不具备的同步特性。**\*\*通常使用显示使用lock的形式如下：
