@@ -116,9 +116,7 @@ ReentrantLock中NonfairSync（继承AQS）会重写该方法为：
 
 AQS可重写的方法如下图（摘自《java并发编程的艺术》一书）：
 
-![](/assets/AQS可重写的方法.png)
-
-!\[AQS可重写的方法.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-214b5823e76f8eb0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
+![](/static/image/AQS可重写的方法.png)
 
 在实现同步组件时AQS提供的模板方法如下图：
 
