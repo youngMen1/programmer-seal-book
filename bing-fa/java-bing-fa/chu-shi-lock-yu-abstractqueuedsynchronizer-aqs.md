@@ -83,7 +83,7 @@ Provides a framework for implementing blocking locks and related
 
 ### 2.3 AQS的模板方法设计模式
 
-AQS的设计是使用模板方法设计模式，它将\*\***一些方法开放给子类进行重写，而同步器给同步组件所提供模板方法又会重新调用被子类所重写的方法**\*\*。举个例子，AQS中需要重写的方法tryAcquire：
+AQS的设计是使用模板方法设计模式，它将**一些方法开放给子类进行重写，而同步器给同步组件所提供模板方法又会重新调用被子类所重写的方法**。举个例子，AQS中需要重写的方法tryAcquire：
 
 ```
 protected boolean tryAcquire(int arg) {
