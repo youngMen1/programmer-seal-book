@@ -4,8 +4,6 @@
 
 ![](/assets/concurrent目录结构.png)
 
-!\[concurrent目录结构.png\]\([http://upload-images.jianshu.io/upload\_images/2615789-da951eb99c5dabfd.png?imageMogr2/auto-orient/strip\|imageView2/2/w/1240\](http://upload-images.jianshu.io/upload_images/2615789-da951eb99c5dabfd.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240%29\)
-
 其中包含了两个子包：**atomic以及lock**，另外在concurrent下的阻塞队列以及executors,这些就是concurrent包中的精华，之后会一一进行学习。而这些类的实现主要是依赖于volatile以及CAS（关于volatile可以看\[这篇文章\]
 
 \([https://juejin.im/post/5ae9b41b518825670b33e6c4\)，关于CAS可以看\[这篇文章的3.1节\]\(https://juejin.im/post/5ae6dc04f265da0ba351d3ff\)），从整体上来看concurrent包的整体实现图如下图所示：](https://juejin.im/post/5ae9b41b518825670b33e6c4%29，关于CAS可以看[这篇文章的3.1节]%28https://juejin.im/post/5ae6dc04f265da0ba351d3ff%29），从整体上来看concurrent包的整体实现图如下图所示：)
