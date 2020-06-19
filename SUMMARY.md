@@ -43,7 +43,7 @@
   * [时间复杂度](chang-yong-suan-fa/shi-jian-fu-za-du.md)
   * [数据结构与算法之美](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei.md)
     * [入门篇](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ru-men-pian.md)
-      * 03 \| 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗
+      * [03 \| 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ru-men-pian/03-fu-za-du-fen-xi-ff08-shang-ff09-ff1a-ru-he-fen-xi-3001-tong-ji-suan-fa-de-zhi-xing-xiao-lv-he-zi-yuan-xiao-hao.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
