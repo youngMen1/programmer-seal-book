@@ -41,7 +41,7 @@
     * [java中的排序工具](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/javazhong-de-pai-xu-gong-ju.md)
   * [布隆过滤器](chang-yong-suan-fa/bu-long-guo-lv-qi.md)
   * [时间复杂度](chang-yong-suan-fa/shi-jian-fu-za-du.md)
-  * 数据结构与算法之美
+  * [数据结构与算法之美](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
