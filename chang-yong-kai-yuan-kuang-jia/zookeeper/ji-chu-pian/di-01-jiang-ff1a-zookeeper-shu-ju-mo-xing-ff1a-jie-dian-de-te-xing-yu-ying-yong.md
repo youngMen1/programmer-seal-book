@@ -38,7 +38,7 @@ bin/zkServer.sh start
 bin/zkCli.sh -server 127.0.0.1:2181
 ```
 
-4.这样单机版的开发环境就已经构建完成了，接下来我们通过 ZooKeeper 提供的 create 命令来创建几个节点，分别是：“/locks”“/servers”“/works”：
+4.这样单机版的开发环境就已经构建完成了，接下来我们通过 ZooKeeper 提供的 create 命令来创建几个节点，分别是`“/locks”“/servers”“/works”`：
 
 ```
 create /locks
