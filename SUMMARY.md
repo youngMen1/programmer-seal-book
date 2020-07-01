@@ -370,7 +370,8 @@
   * [Mybatis](chang-yong-kai-yuan-kuang-jia/mybatis.md)
   * [TkMybatis](chang-yong-kai-yuan-kuang-jia/tkmybatis.md)
   * [ZooKeeper](chang-yong-kai-yuan-kuang-jia/zookeeper.md)
-    * 基础篇
+    * [基础篇](chang-yong-kai-yuan-kuang-jia/zookeeper/ji-chu-pian.md)
+      * 第01讲：ZooKeeper 数据模型：节点的特性与应用
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
