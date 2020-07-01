@@ -369,7 +369,7 @@
   * [SpringCloud](chang-yong-kai-yuan-kuang-jia/springcloud.md)
   * [Mybatis](chang-yong-kai-yuan-kuang-jia/mybatis.md)
   * [TkMybatis](chang-yong-kai-yuan-kuang-jia/tkmybatis.md)
-  * ZooKeeper
+  * [ZooKeeper](chang-yong-kai-yuan-kuang-jia/zookeeper.md)
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
