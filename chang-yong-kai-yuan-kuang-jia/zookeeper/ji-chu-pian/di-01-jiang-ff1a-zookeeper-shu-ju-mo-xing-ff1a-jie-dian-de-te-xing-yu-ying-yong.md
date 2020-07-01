@@ -108,3 +108,5 @@ Ciqc1F6zbwWAVkt5AAC\_yMQVCFo712.png
 
 线程 a 通过成功创建 ZooKeeper 节点“/locks”的方式获取锁后继续执行，如下图所示：
 
+CgqCHl6yL\_WAAnymAAB32xbrhxQ973.png
+
