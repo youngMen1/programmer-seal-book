@@ -86,3 +86,5 @@ Ciqc1F6yL-yAKn9QAABsJSpQkFI688.png
 
 每一个节点都有一个自己的状态属性，记录了节点本身的一些信息，这些属性包括的内容我列在了下面这个表格里：
 
+Ciqc1F6zbwWAVkt5AAC\_yMQVCFo712.png
+
