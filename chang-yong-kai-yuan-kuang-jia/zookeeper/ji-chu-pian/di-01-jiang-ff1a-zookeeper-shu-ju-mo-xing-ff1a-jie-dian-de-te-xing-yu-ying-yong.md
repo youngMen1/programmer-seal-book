@@ -141,7 +141,7 @@ ZooKeeper 中的数据模型是一种树形结构，非常像电脑中的文件�
 
 这是因为 ZooKeeper 大多是应用场景是定位数据模型上的节点，并在相关节点上进行操作。像这种查找与给定值相等的记录问题最适合用散列来解决。因此 ZooKeeper 在底层实现的时候，使用了一个 hashtable，即 hashtableConcurrentHashMap<String, DataNode> nodes ，用节点的完整路径来作为 key 存储节点数据。这样就大大提高了 ZooKeeper 的性能。
 
-# 参考
+# 2.参考
 官网：https://zookeeper.apache.org/doc/r3.6.0/zookeeperProgrammers.html
 
 
