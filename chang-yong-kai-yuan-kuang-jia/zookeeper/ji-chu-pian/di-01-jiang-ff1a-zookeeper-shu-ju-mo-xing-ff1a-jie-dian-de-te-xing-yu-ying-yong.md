@@ -54,3 +54,7 @@ ZooKeeper 中的数据模型是一种树形结构，非常像电脑中的文件�
 
 CgqCHl6yL9uAbpHYAABF\_GHyGNc950.png
 
+znode 节点类型与特性
+
+知道了 ZooKeeper 的数据模型是一种树形结构，就像在 MySQL 中数据是存在于数据表中，ZooKeeper 中的数据是由多个数据节点最终构成的一个层级的树状结构，和我们在创建 MySOL 数据表时会定义不同类型的数据列字段，ZooKeeper 中的数据节点也分为持久节点、临时节点和有序节点三种类型：
+
