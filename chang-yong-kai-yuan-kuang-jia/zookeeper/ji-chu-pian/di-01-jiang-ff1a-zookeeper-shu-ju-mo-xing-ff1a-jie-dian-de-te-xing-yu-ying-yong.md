@@ -68,7 +68,7 @@ CgqCHl6yL9uAbpHYAABF\_GHyGNc950.png
 
 在平时的开发中，我们可以利用临时节点的这一特性来做服务器集群内机器运行情况的统计，将集群设置为“/servers”节点，并为集群下的每台服务器创建一个临时节点“/servers/host”，当服务器下线时该节点自动被删除，最后统计临时节点个数就可以知道集群中的运行情况。如下图所示：
 
-CgqCHl6yL-SAb0zaAABQBLohKvo019.png
+![](/static/image/CgqCHl6yL-SAb0zaAABQBLohKvo019.png)
 
 **3、有序节点**
 
