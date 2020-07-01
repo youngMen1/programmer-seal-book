@@ -47,3 +47,5 @@ create /works
 
 最终在 ZooKeeper 服务器上会得到一个具有层级关系的数据结构，如下图所示，这个数据结构就是 ZooKeeper 中的数据模型。
 
+Ciqc1F6yL9OAUUguAAAtBwGI74E989.png
+
