@@ -305,7 +305,7 @@
         * [06 \| 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？](shu-ju-ku/mysql/mysql/ji-chu-pian/06-quan-ju-suo-he-biao-suo-ff1a-gei-biao-jia-ge-zi-duan-zen-yao-you-zhe-yao-duo-zu-ai-ff1f.md)
         * [07 \| 行锁功过：怎么减少行锁对性能的影响](shu-ju-ku/mysql/mysql/ji-chu-pian/07-xing-suo-gong-guo-ff1a-zen-yao-jian-shao-xing-suo-dui-xing-neng-de-ying-xiang.md)
         * [08 \| 事务到底是隔离的还是不隔离的](shu-ju-ku/mysql/mysql/ji-chu-pian/08-shi-wu-dao-di-shi-ge-li-de-huan-shi-bu-ge-li-de.md)
-    * MySQL使用
+    * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * [Hbase](shu-ju-ku/nosql/hbase.md)
@@ -369,6 +369,7 @@
   * [SpringCloud](chang-yong-kai-yuan-kuang-jia/springcloud.md)
   * [Mybatis](chang-yong-kai-yuan-kuang-jia/mybatis.md)
   * [TkMybatis](chang-yong-kai-yuan-kuang-jia/tkmybatis.md)
+  * ZooKeeper
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
