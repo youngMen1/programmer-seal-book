@@ -112,3 +112,5 @@ CgqCHl6yL\_WAAnymAAB32xbrhxQ973.png
 
 这时进程 b 也要访问临界区资源，于是进程 b 也尝试创建“/locks”节点来获取锁，因为之前进程 a 已经创建该节点，所以进程 b 创建节点失败无法获得锁。
 
+CgqCHl6yL\_6AOIONAAB3daUjikw147.png
+
