@@ -82,7 +82,7 @@ CgqCHl6yL-SAb0zaAABQBLohKvo019.png
 
 每个节点都有属于自己的状态信息，这就很像我们每个人的身份信息一样，我们打开之前的客户端，执行 stat /zk\_test，可以看到控制台输出了一些信息，这些就是节点状态信息。
 
-Ciqc1F6yL-yAKn9QAABsJSpQkFI688.png
+![](/static/image/Ciqc1F6yL-yAKn9QAABsJSpQkFI688.png)
 
 每一个节点都有一个自己的状态属性，记录了节点本身的一些信息，这些属性包括的内容我列在了下面这个表格里：
 
