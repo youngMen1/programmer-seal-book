@@ -18,3 +18,5 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 1ed9536031d6698570ea175a7b7f9a46.png
 
+接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。
+
