@@ -22,5 +22,7 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 ## 查询过程
 
+假设，执行查询的语句是 select id from T where k=5。这个查询语句在索引树上查找的过程，先是通过 B+ 树从树根开始，按层搜索到叶子节点，也就是图中右下角的这个数据页，然后可以认为数据页内部通过二分法来定位记录。
+
 
 
