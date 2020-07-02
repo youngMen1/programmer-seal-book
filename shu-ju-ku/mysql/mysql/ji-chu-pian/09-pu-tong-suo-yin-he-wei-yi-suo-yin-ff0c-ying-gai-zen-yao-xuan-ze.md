@@ -94,5 +94,7 @@ change buffer 用的是 buffer pool 里的内存，因此不能无限增大。ch
 
 ## change buffer 和 redo log
 
+理解了 change buffer 的原理，你可能会联想到我在前面文章中和你介绍过的 redo log 和 WAL。
+
 
 
