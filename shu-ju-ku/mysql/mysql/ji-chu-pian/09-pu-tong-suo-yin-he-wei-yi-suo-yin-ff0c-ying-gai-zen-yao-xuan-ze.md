@@ -16,3 +16,5 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 简单起见，我们还是用第 4 篇文章《深入浅出索引（上）》中的例子来说明，假设字段 k 上的值都不重复。
 
+1ed9536031d6698570ea175a7b7f9a46.png
+
