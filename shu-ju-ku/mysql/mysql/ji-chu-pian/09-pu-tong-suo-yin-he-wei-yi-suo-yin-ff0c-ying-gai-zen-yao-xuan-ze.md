@@ -52,3 +52,5 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 因此，唯一索引的更新就不能使用 change buffer，实际上也只有普通索引可以使用。
 
+change buffer 用的是 buffer pool 里的内存，因此不能无限增大。change buffer 的大小，可以通过参数 innodb\_change\_buffer\_max\_size 来动态设置。这个参数设置为 50 的时候，表示 change buffer 的大小最多只能占用 buffer pool 的 50%。
+
