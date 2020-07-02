@@ -110,3 +110,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 980a2b786f0ea7adabef2e64fb4c4ca3.png
 
+分析这条更新语句，你会发现它涉及了四个部分：内存、redo log（ib\_log\_fileX）、 数据表空间（t.ibd）、系统表空间（ibdata1）。
+
