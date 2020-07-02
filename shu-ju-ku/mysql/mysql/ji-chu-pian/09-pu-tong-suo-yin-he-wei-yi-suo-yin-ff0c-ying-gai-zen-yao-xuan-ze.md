@@ -102,3 +102,10 @@ change buffer 用的是 buffer pool 里的内存，因此不能无限增大。ch
 
 现在，我们要在表上执行这个插入语句：
 
+```
+
+mysql> insert into t(id,k) values(id1,k1),(id2,k2);
+```
+
+
+
