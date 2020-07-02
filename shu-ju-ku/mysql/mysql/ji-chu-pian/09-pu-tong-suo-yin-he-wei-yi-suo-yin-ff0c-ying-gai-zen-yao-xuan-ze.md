@@ -54,3 +54,5 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 change buffer 用的是 buffer pool 里的内存，因此不能无限增大。change buffer 的大小，可以通过参数 innodb\_change\_buffer\_max\_size 来动态设置。这个参数设置为 50 的时候，表示 change buffer 的大小最多只能占用 buffer pool 的 50%。
 
+现在，你已经理解了 change buffer 的机制，那么我们再一起来看看**如果要在这张表中插入一个新记录 \(4,400\) 的话，InnoDB 的处理流程是怎样的。**
+
