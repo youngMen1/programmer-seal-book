@@ -74,5 +74,7 @@ change buffer 用的是 buffer pool 里的内存，因此不能无限增大。ch
 
 ## change buffer 的使用场景
 
+通过上面的分析，你已经清楚了使用 change buffer 对更新过程的加速作用，也清楚了 change buffer 只限于用在普通索引的场景下，而不适用于唯一索引。那么，现在有一个问题就是：普通索引的所有场景，使用 change buffer 都可以起到加速作用吗？
+
 
 
