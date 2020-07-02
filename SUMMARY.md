@@ -306,9 +306,9 @@
         * [07 \| 行锁功过：怎么减少行锁对性能的影响](shu-ju-ku/mysql/mysql/ji-chu-pian/07-xing-suo-gong-guo-ff1a-zen-yao-jian-shao-xing-suo-dui-xing-neng-de-ying-xiang.md)
         * [08 \| 事务到底是隔离的还是不隔离的](shu-ju-ku/mysql/mysql/ji-chu-pian/08-shi-wu-dao-di-shi-ge-li-de-huan-shi-bu-ge-li-de.md)
         * [09 \| 普通索引和唯一索引，应该怎么选择](shu-ju-ku/mysql/mysql/ji-chu-pian/09-pu-tong-suo-yin-he-wei-yi-suo-yin-ff0c-ying-gai-zen-yao-xuan-ze.md)
-        * [10 \| MySQL为什么有时候会选错索引](shu-ju-ku/mysql/mysql/ji-chu-pian/10-mysqlwei-shi-yao-you-shi-hou-hui-xuan-cuo-suo-yin.md)
       * [实践篇 \(37讲\)](shu-ju-ku/mysql/mysql/shi-jian-pian-37-8bb229.md)
         * 11 \| 怎么给字符串字段加索引
+        * [10 \| MySQL为什么有时候会选错索引](shu-ju-ku/mysql/mysql/ji-chu-pian/10-mysqlwei-shi-yao-you-shi-hou-hui-xuan-cuo-suo-yin.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
