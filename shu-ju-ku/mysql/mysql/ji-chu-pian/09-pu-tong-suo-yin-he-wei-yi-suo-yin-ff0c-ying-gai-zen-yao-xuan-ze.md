@@ -112,3 +112,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 分析这条更新语句，你会发现它涉及了四个部分：内存、redo log（ib\_log\_fileX）、 数据表空间（t.ibd）、系统表空间（ibdata1）。
 
+这条更新语句做了如下的操作（按照图中的数字顺序）：Page 1 在内存中，直接更新内存；Page 2 没有在内存中，就在内存的 change buffer 区域，记录下“我要往 Page 2 插入一行”这个信息将上述两个动作记入 redo log 中（图中 3 和 4）。
+
