@@ -4,3 +4,8 @@
 
 假设你在维护一个市民系统，每个人都有一个唯一的身份证号，而且业务代码已经保证了不会写入两个重复的身份证号。如果市民系统需要按照身份证号查姓名，就会执行类似这样的 SQL 语句：
 
+```
+
+select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
+```
+
