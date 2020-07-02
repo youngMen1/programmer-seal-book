@@ -108,3 +108,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 这里，我们假设当前 k 索引树的状态，查找到位置后，k1 所在的数据页在内存 \(InnoDB buffer pool\) 中，k2 所在的数据页不在内存中。如图 2 所示是带 change buffer 的更新状态图。
 
+980a2b786f0ea7adabef2e64fb4c4ca3.png
+
