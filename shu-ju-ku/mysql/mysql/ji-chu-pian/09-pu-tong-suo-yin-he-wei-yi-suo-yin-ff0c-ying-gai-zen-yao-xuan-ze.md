@@ -148,3 +148,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 由于唯一索引用不上 change buffer 的优化机制，因此如果业务可以接受，从性能角度出发我建议你优先考虑非唯一索引。
 
+最后，又到了思考题时间。
+
