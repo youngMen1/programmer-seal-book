@@ -88,3 +88,5 @@ change buffer 用的是 buffer pool 里的内存，因此不能无限增大。ch
 
 如果所有的更新后面，都马上伴随着对这个记录的查询，那么你应该关闭 change buffer。而在其他情况下，change buffer 都能提升更新性能。
 
+在实际使用中，你会发现，普通索引和 change buffer 的配合使用，对于数据量大的表的更新优化还是很明显的。
+
