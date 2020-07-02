@@ -126,3 +126,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 那在这之后的读请求，要怎么处理呢？
 
+比如，我们现在要执行 select \* from t where k in \(k1, k2\)。这里，我画了这两个读请求的流程图。
+
