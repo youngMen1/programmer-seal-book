@@ -130,7 +130,7 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 如果读语句发生在更新语句后不久，内存中的数据都还在，那么此时的这两个读操作就与系统表空间（ibdata1）和 redo log（ib\_log\_fileX）无关了。所以，我在图中就没画出这两部分。
 
-6dc743577af1dbcbb8550bddbfc5f98e.png
+![](/static/image/6dc743577af1dbcbb8550bddbfc5f98e.png）
 
 从图中可以看到：
 
