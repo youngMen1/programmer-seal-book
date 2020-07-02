@@ -34,3 +34,7 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 但是，我们之前计算过，对于整型字段，一个数据页可以放近千个 key，因此出现这种情况的概率会很低。所以，我们计算平均性能差异时，仍可以认为这个操作成本对于现在的 CPU 来说可以忽略不计。
 
+更新过程
+
+
+
