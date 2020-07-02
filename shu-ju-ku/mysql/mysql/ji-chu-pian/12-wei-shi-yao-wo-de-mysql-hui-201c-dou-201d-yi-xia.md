@@ -30,3 +30,5 @@
 
 a25bdbbfc2cfc5d5e20690547fe7f2e5.jpg
 
+checkpoint 可不是随便往前修改一下位置就可以的。比如图 2 中，把 checkpoint 位置从 CP 推进到 CP’，就需要将两个点之间的日志（浅绿色部分），对应的所有脏页都 flush 到磁盘上。之后，图中从 write pos 到 CP’之间就是可以再写入的 redo log 的区域。
+
