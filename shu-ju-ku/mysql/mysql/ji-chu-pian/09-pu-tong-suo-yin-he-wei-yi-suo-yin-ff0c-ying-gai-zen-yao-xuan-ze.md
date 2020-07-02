@@ -92,3 +92,5 @@ change buffer 用的是 buffer pool 里的内存，因此不能无限增大。ch
 
 特别地，在使用机械硬盘时，change buffer 这个机制的收效是非常显著的。所以，当你有一个类似“历史数据”的库，并且出于成本考虑用的是机械硬盘时，那你应该特别关注这些表里的索引，尽量使用普通索引，然后把 change buffer 尽量开大，以确保这个“历史数据”表的数据写入速度。
 
+change buffer 和 redo log
+
