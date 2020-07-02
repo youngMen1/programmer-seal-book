@@ -150,3 +150,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 最后，又到了思考题时间。
 
+通过图 2 你可以看到，change buffer 一开始是写内存的，那么如果这个时候机器掉电重启，会不会导致 change buffer 丢失呢？change buffer 丢失可不是小事儿，再从磁盘读入数据可就没有了 merge 过程，就等于是数据丢失了。会不会出现这种情况呢？
+
