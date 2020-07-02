@@ -128,3 +128,5 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 比如，我们现在要执行 select \* from t where k in \(k1, k2\)。这里，我画了这两个读请求的流程图。
 
+如果读语句发生在更新语句后不久，内存中的数据都还在，那么此时的这两个读操作就与系统表空间（ibdata1）和 redo log（ib\_log\_fileX）无关了。所以，我在图中就没画出这两部分。
+
