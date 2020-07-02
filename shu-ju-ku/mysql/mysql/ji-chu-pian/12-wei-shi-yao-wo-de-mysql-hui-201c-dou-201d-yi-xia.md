@@ -28,5 +28,5 @@
 
 这个场景，对应的就是 InnoDB 的 redo log 写满了。这时候系统会停止所有更新操作，把 checkpoint 往前推进，redo log 留出空间可以继续写。我在第二讲画了一个 redo log 的示意图，这里我改成环形，便于大家理解。
 
-
+a25bdbbfc2cfc5d5e20690547fe7f2e5.jpg
 
