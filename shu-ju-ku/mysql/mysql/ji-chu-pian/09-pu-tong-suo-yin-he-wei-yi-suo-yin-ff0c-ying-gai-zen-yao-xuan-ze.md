@@ -142,3 +142,7 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 所以，如果要简单地对比这两个机制在提升更新性能上的收益的话，redo log 主要节省的是随机写磁盘的 IO 消耗（转成顺序写），而 change buffer 主要节省的则是随机读磁盘的 IO 消耗。
 
+# 总结
+
+
+
