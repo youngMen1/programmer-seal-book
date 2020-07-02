@@ -305,7 +305,7 @@
         * [06 \| 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？](shu-ju-ku/mysql/mysql/ji-chu-pian/06-quan-ju-suo-he-biao-suo-ff1a-gei-biao-jia-ge-zi-duan-zen-yao-you-zhe-yao-duo-zu-ai-ff1f.md)
         * [07 \| 行锁功过：怎么减少行锁对性能的影响](shu-ju-ku/mysql/mysql/ji-chu-pian/07-xing-suo-gong-guo-ff1a-zen-yao-jian-shao-xing-suo-dui-xing-neng-de-ying-xiang.md)
         * [08 \| 事务到底是隔离的还是不隔离的](shu-ju-ku/mysql/mysql/ji-chu-pian/08-shi-wu-dao-di-shi-ge-li-de-huan-shi-bu-ge-li-de.md)
-        * 09 \| 普通索引和唯一索引，应该怎么选择
+        * [09 \| 普通索引和唯一索引，应该怎么选择](shu-ju-ku/mysql/mysql/ji-chu-pian/09-pu-tong-suo-yin-he-wei-yi-suo-yin-ff0c-ying-gai-zen-yao-xuan-ze.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
