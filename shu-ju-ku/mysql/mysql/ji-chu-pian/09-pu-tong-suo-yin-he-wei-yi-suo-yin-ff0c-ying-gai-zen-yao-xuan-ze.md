@@ -14,3 +14,5 @@ select name from CUser where id_card = 'xxxxxxxyyyyyyzzzzz';
 
 现在我要问你的是，从性能的角度考虑，你选择唯一索引还是普通索引呢？选择的依据是什么呢？
 
+简单起见，我们还是用第 4 篇文章《深入浅出索引（上）》中的例子来说明，假设字段 k 上的值都不重复。
+
