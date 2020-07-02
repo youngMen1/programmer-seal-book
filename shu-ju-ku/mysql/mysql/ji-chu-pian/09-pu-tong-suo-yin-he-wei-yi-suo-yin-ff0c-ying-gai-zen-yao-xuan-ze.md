@@ -103,9 +103,8 @@ change buffer 用的是 buffer pool 里的内存，因此不能无限增大。ch
 现在，我们要在表上执行这个插入语句：
 
 ```
-
 mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 ```
 
-
+这里，我们假设当前 k 索引树的状态，查找到位置后，k1 所在的数据页在内存 \(InnoDB buffer pool\) 中，k2 所在的数据页不在内存中。如图 2 所示是带 change buffer 的更新状态图。
 
