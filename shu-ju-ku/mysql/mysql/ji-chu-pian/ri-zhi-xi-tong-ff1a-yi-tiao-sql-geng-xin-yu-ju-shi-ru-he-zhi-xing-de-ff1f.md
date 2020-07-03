@@ -135,5 +135,7 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 # 2.总结
 
+今天，我介绍了 MySQL 里面最重要的两个日志，即物理日志 redo log 和逻辑日志 binlog。
+
 
 
