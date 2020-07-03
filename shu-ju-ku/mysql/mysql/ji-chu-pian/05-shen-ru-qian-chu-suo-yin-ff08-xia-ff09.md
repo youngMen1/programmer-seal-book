@@ -129,12 +129,14 @@ mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
 
 ![](/static/image/b32aa8b1f75611e0759e52f5915539ac.jpg)
 图 3 无索引下推执行流程
-76e385f3df5a694cc4238c7b65acfe1b.jpg
+![](/static/image/76e385f3df5a694cc4238c7b65acfe1b.jpg)
 图 4 索引下推执行流程
 
 在图 3 和 4 这两个图里面，每一个虚线箭头表示回表一次。
 
 图 3 中，在 (name,age) 索引里面我特意去掉了 age 的值，这个过程 InnoDB 并不会去看 age 的值，只是按顺序把“name 第一个字是’张’”的记录一条条取出来回表。因此，需要回表 4 次。
+
+图 4 跟图 3 的区别是，InnoDB 在 (name,age) 索引内部就判断了 age 是否等于 10，对于不等于 10 的记录，直接判断并跳过。在我们的这个例子中，只需要对 ID4、ID5 这两条记录回表取数据判断，就只需要回表 2 次。
 
 
 
