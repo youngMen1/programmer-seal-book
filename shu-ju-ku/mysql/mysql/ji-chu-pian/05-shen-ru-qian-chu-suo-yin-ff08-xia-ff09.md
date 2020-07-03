@@ -244,5 +244,10 @@ select * from geek where c=N order by b limit 1;
 
 –c--|–a--|–主键部分b-- （注意，这里不是 ab，而是只有 b）
 
-
+2 1 3
+2 2 2
+3 1 2
+3 1 4
+3 2 1
+4 2 3
 
