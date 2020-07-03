@@ -17,6 +17,7 @@ mysql> CREATE TABLE `t` (
 insert into t(id, k) values(1,1),(2,2);
 ```
 823acf76e53c0bdba7beab45e72e90d6.png
+图 1 事务 A、B、C 的执行流程
 
 
 # 2.总结
