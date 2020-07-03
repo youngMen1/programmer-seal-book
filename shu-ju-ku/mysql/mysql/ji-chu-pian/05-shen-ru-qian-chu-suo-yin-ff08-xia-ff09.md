@@ -220,5 +220,14 @@ CREATE TABLE `geek` (
 同事告诉他，是因为他们的业务里面有这样的两种语句：
 
 
+```
+
+select * from geek where c=N order by a limit 1;
+select * from geek where c=N order by b limit 1;
+```
+
+
+
+
 
 
