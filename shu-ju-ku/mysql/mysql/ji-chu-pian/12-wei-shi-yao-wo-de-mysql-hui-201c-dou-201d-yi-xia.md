@@ -118,3 +118,12 @@ cc44c1d080141aa50df6a91067475374.png
 
 其中，脏页比例是通过 Innodb\_buffer\_pool\_pages\_dirty/Innodb\_buffer\_pool\_pages\_total 得到的，具体的命令参考下面的代码：
 
+```
+
+mysql> select VARIABLE_VALUE into @a from global_status where VARIABLE_NAME = 'Innodb_buffer_pool_pages_dirty';
+select VARIABLE_VALUE into @b from global_status where VARIABLE_NAME = 'Innodb_buffer_pool_pages_total';
+select @a/@b;
+```
+
+
+
