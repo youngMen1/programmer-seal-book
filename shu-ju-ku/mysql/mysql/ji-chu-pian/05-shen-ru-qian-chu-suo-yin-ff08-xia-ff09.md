@@ -230,7 +230,14 @@ select * from geek where c=N order by b limit 1;
 
 ### 答案：
 
-–a--|–b--|–c--|–d--1 2 3 d1 3 2 d1 4 3 d2 1 3 d2 2 2 d2 3 4 d
+–a--|–b--|–c--|–d--
+1 2 3 d
+1 3 2 d
+1 4 3 d
+2 1 3 d
+2 2 2 d
+2 3 4 d
+主键 a，b 的聚簇索引组织顺序相当于 order by a,b ，也就是先按 a 排序，再按 b 排序，c 无序。
 
 
 
