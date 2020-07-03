@@ -18,6 +18,21 @@
 下面是这个表的初始化语句。
 
 
+```
+
+mysql> create table T (
+ID int primary key,
+k int NOT NULL DEFAULT 0, 
+s varchar(16) NOT NULL DEFAULT '',
+index k(k))
+engine=InnoDB;
+
+insert into T values(100,1, 'aa'),(200,2,'bb'),(300,3,'cc'),(500,5,'ee'),(600,6,'ff'),(700,7,'gg');
+```
+
+
+
+
 
 # 2.总结
 
