@@ -32,10 +32,11 @@
 其中“读提交”和“可重复读”比较难理解，所以我用一个例子说明这几种隔离级别。假设数据表 T 中只有一列，其中一行的值为 1，下面是按照时间顺序执行两个事务的行为。
 
 ```
-
 mysql> create table T(c int) engine=InnoDB;
 insert into T(c) values(1);
 ```
+
+7dea45932a6b722eb069d2264d0066f8.png
 
 # 2.总结
 
