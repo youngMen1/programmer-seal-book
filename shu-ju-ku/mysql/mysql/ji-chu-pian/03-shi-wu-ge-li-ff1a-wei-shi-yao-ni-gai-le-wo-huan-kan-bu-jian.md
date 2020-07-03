@@ -51,6 +51,21 @@ insert into T(c) values(1);
 
 配置的方式是，将启动参数 transaction-isolation 的值设置成 READ-COMMITTED。你可以用 show variables 来查看当前的值。
 
+```
+
+mysql> show variables like 'transaction_isolation';
+
++-----------------------+----------------+
+
+| Variable_name | Value |
+
++-----------------------+----------------+
+
+| transaction_isolation | READ-COMMITTED |
+
++-----------------------+----------------+
+```
+
 # 2.总结
 
 
