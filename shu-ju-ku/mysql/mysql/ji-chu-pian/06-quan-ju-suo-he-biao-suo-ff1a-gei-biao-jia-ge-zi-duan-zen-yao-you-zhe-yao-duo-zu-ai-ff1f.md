@@ -171,7 +171,7 @@ MySQL提供加全局读锁的方法：Flush tables with read lock(FTWRL)
 
 ## 2.**表级锁**
 
-**MySQL里面表级锁有两种，一种是表锁，一种是元数据所\(meta data lock,MDL\)**
+**MySQL里面表级锁有两种，一种是表锁，一种是元数据所(meta data lock,MDL)**
 
 表锁的语法是:lock tables ... read/write
 
