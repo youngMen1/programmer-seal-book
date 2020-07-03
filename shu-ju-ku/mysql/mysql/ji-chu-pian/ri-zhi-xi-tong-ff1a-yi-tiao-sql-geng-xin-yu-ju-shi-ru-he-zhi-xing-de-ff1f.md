@@ -99,6 +99,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 2e5bff4910ec189fe1ee6e2ecc7b4bbe.png
 
+你可能注意到了，最后三步看上去有点“绕”，将 redo log 的写入拆成了两个步骤：prepare 和 commit，这就是"两阶段提交"。
+
 # 2.总结
 
 
