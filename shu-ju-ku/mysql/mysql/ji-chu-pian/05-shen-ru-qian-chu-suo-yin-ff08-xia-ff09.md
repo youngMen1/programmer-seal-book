@@ -251,3 +251,5 @@ select * from geek where c=N order by b limit 1;
 3 2 1
 4 2 3
 这个跟索引 c 的数据是一模一样的。
+索引 cb 的组织是先按 c 排序，在按 b 排序，同时记录主键
+–c--|–b--|–主键部分a-- （同上）
