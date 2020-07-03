@@ -93,6 +93,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 4.执行器生成这个操作的 binlog，并把 binlog 写入磁盘。
 
+5.执行器调用引擎的提交事务接口，引擎把刚刚写入的 redo log 改成提交（commit）状态，更新完成。
+
 # 2.总结
 
 
