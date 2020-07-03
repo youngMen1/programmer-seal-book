@@ -19,6 +19,7 @@ begin/start transaction 命令并不是一个事务的起点，在执行到它�
   第一种启动方式，一致性视图是在执行第一个快照读语句时创建的；  
   第二种启动方式，一致性视图是在执行 start transaction with consistent snapshot 时创建的。
 
+还需要注意的是，在整个专栏里面，我们的例子中如果没有特别说明，都是默认 autocommit=1。
 
 
 # 2.总结
