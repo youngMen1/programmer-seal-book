@@ -219,7 +219,7 @@ alter table T add primary key(id);
 
 整个过程是online,获取MDL写锁-&gt;降级为MDL读锁-&gt;DDL-&gt;升级为MDL写锁-&gt;释放MDL锁
 
-# 2.总结
+## 2.2.总结
 
 1.索引的作用：提高数据查询效率
 
