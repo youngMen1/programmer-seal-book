@@ -16,7 +16,7 @@
 
 今天的文章里，我将会以 InnoDB 为例，剖析 MySQL 在事务支持方面的特定实现，并基于原理给出相应的实践建议，希望这些案例能加深你对 MySQL 事务原理的理解。
 
-### 隔离性与隔离级别
+### 1.2.1.隔离性与隔离级别
 
 提到事务，你肯定会想到 ACID（Atomicity、Consistency、Isolation、Durability，即原子性、一致性、隔离性、持久性），今天我们就来说说其中 I，也就是“隔离性”。
 
@@ -126,6 +126,4 @@ select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx
 ## 2.1.问题时间
 
 我给你留一个问题吧。你现在知道了系统里面应该避免长事务，如果你是业务开发负责人同时也是数据库负责人，你会有什么方案来避免出现或者处理这种情况呢？
-
-
 
