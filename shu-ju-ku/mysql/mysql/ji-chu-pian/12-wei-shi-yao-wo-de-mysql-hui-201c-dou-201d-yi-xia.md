@@ -136,3 +136,9 @@ select @a/@b;
 
 在 MySQL 8.0 中，innodb\_flush\_neighbors 参数的默认值已经是 0 了。
 
+# 2.总结
+
+
+
+
+
