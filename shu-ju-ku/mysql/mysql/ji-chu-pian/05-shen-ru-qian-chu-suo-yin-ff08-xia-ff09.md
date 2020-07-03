@@ -125,6 +125,8 @@ mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
 
 而 MySQL 5.6 引入的索引下推优化（index condition pushdown)， 可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数。
 
+图 3 和图 4，是这两个过程的执行流程图。
+
 
 # 2.总结
 
