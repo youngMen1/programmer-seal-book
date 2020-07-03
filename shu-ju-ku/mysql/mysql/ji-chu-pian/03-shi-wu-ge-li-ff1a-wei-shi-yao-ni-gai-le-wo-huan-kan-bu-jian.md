@@ -73,6 +73,8 @@ mysql> show variables like 'transaction_isolation';
 
 ### 事务隔离的实现
 
+理解了事务的隔离级别，我们再来看看事务隔离具体是怎么实现的。这里我们展开说明“可重复读”。
+
 # 2.总结
 
 
