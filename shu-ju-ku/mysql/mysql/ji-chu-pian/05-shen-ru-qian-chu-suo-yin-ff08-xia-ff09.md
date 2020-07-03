@@ -119,6 +119,12 @@ mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
 
 然后呢？
 
+当然是判断其他条件是否满足。
+
+在 MySQL 5.6 之前，只能从 ID3 开始一个个回表。到主键索引上找出数据行，再对比字段值。
+
+而 MySQL 5.6 引入的索引下推优化（index condition pushdown)， 可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数。
+
 
 # 2.总结
 
