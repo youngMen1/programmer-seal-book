@@ -16,6 +16,7 @@ mysql> CREATE TABLE `t` (
 ) ENGINE=InnoDB;
 insert into t(id, k) values(1,1),(2,2);
 ```
+823acf76e53c0bdba7beab45e72e90d6.png
 
 
 # 2.总结
