@@ -55,6 +55,24 @@ insert into T values(100,1, 'aa'),(200,2,'bb'),(300,3,'cc'),(500,5,'ee'),(600,6,
 
 假设这个市民表的定义是这样的：
 
+
+
+```
+
+CREATE TABLE `tuser` (
+  `id` int(11) NOT NULL,
+  `id_card` varchar(32) DEFAULT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `ismale` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_card` (`id_card`),
+  KEY `name_age` (`name`,`age`)
+) ENGINE=InnoDB
+```
+
+
+
 # 2.总结
 
 **最左前缀原则：**B+Tree这种索引结构，可以利用索引的"最左前缀"来定位记录只要满足最左前缀，就可以利用索引来加速检索。
