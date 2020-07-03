@@ -59,6 +59,8 @@ mysql> update T set c=c+1 where ID=2;
 
 16a7950217b3f0f4ed02db5db59562a7.png
 
+write pos 是当前记录的位置，一边写一边后移，写到第 3 号文件末尾后就回到 0 号文件开头。checkpoint 是当前要擦除的位置，也是往后推移并且循环的，擦除记录前要把记录更新到数据文件。
+
 # 2.总结
 
 
