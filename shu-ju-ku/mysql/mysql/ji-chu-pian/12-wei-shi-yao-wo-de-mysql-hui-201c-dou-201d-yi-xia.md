@@ -95,3 +95,15 @@ InnoDB 会根据这两个因素先单独算出两个数字。
 
 参数 innodb\_max\_dirty\_pages\_pct 是脏页比例上限，默认值是 75%。InnoDB 会根据当前的脏页比例（假设为 M），算出一个范围在 0 到 100 之间的数字，计算这个数字的伪代码类似这样：
 
+```
+
+F1(M)
+{
+  if M>=innodb_max_dirty_pages_pct then
+      return 100;
+  return 100*M/innodb_max_dirty_pages_pct;
+}
+```
+
+
+
