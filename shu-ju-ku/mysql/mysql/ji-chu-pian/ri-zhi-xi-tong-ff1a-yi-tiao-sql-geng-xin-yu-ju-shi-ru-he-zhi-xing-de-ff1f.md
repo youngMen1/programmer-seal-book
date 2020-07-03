@@ -69,6 +69,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 ### 重要的日志模块：binlog
 
+
+
 # 2.总结
 
 
