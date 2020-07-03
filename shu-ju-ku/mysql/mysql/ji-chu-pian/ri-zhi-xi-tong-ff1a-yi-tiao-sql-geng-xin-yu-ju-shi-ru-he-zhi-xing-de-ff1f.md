@@ -69,7 +69,7 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 ### 重要的日志模块：binlog
 
-
+前面我们讲过，MySQL 整体来看，其实就有两块：一块是 Server 层，它主要做的是 MySQL 功能层面的事情；还有一块是引擎层，负责存储相关的具体事宜。上面我们聊到的粉板 redo log 是 InnoDB 引擎特有的日志，而 Server 层也有自己的日志，称为 binlog（归档日志）。
 
 # 2.总结
 
