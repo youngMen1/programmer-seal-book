@@ -71,6 +71,8 @@ mysql> show variables like 'transaction_isolation';
 
 这时候使用“可重复读”隔离级别就很方便。事务启动时的视图可以认为是静态的，不受其他事务更新的影响。
 
+### 事务隔离的实现
+
 # 2.总结
 
 
