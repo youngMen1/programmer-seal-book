@@ -12,6 +12,11 @@
 
 我们还是从一个表的一条更新语句说起，下面是这个表的创建语句，这个表有一个主键 ID 和一个整型字段 c：
 
+```
+
+mysql> create table T(ID int primary key, c int);
+```
+
 # 2.总结
 
 
