@@ -157,15 +157,9 @@ sync\_binlog 这个参数设置成 1 的时候，表示每次事务的 binlog �
 
 1、首先数据库更新操作都是基于内存页，更新的时候不会直接更新磁盘，如果内存有存在就直接更新内存，如果内存没有存在就从磁盘读取到内存，在更新内存，并且写redo log，目的是为了更新效率更快，等空闲时间在将其redo log所做的改变更新到磁盘中，innodb\_flush\_log\_at\_trx\_commit设置为1时，也可以防止服务出现异常重启，数据不会丢失
 
-  
-
-
 2、redo log两阶段提交，是为了保证redo log和binlog的一致性，如果redo log写入成功处于prepare阶段，写binlog失败，事务回滚，redo log会回滚到操作之前的状态
 
-  
-
-
-3、redo log也是写磁盘，写redo log是顺序写，update直接更新磁盘，需要找到数据，再对此数据进行更新
+3、redo log也是写磁盘，写redo log是顺序写，update直接更新磁盘，需要找到数据，再对此数据进行更新。
 
 ## 2.1.思考题
 
