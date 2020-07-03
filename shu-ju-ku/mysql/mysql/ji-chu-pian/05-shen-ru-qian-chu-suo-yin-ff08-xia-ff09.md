@@ -110,6 +110,14 @@ CREATE TABLE `tuser` (
 
 我们还是以市民表的联合索引（name, age）为例。如果现在有一个需求：检索出表中“名字第一个字是张，而且年龄是 10 岁的所有男孩”。那么，SQL 语句是这么写的：
 
+
+```
+
+mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
+```
+
+
+
 # 2.总结
 
 **最左前缀原则：**B+Tree这种索引结构，可以利用索引的"最左前缀"来定位记录只要满足最左前缀，就可以利用索引来加速检索。
