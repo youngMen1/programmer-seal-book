@@ -29,7 +29,7 @@ engine=InnoDB;
 
 insert into T values(100,1, 'aa'),(200,2,'bb'),(300,3,'cc'),(500,5,'ee'),(600,6,'ff'),(700,7,'gg');
 ```
-
+![](/static/image/dcda101051f28502bd5c4402b292e38d.png)
 
 
 
