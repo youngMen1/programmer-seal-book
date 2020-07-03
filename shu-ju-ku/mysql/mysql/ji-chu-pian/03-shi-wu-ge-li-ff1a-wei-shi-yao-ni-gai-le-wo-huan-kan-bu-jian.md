@@ -79,6 +79,8 @@ mysql> show variables like 'transaction_isolation';
 
 假设一个值从 1 被按顺序改成了 2、3、4，在回滚日志里面就会有类似下面的记录。
 
+d9c313809e5ac148fc39feff532f0fee.png
+
 # 2.总结
 
 
