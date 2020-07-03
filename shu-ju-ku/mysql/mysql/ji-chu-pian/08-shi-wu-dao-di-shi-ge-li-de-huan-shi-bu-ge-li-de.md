@@ -1,28 +1,25 @@
 # 1.事务到底是隔离的还是不隔离的
+
 我在第 3 篇文章和你讲事务隔离级别的时候提到过，如果是可重复读隔离级别，事务 T 启动的时候会创建一个视图 read-view，之后事务 T 执行期间，即使有其他事务修改了数据，事务 T 看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。
 
 但是，我在上一篇文章中，**和你分享行锁的时候又提到，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？**
 
 我给你举一个例子吧。下面是一个只有两行的表的初始化语句。
 
+    mysql> CREATE TABLE `t` (
+      `id` int(11) NOT NULL,
+      `k` int(11) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB;
+    insert into t(id, k) values(1,1),(2,2);
 
-
-```
-
-mysql> CREATE TABLE `t` (
-  `id` int(11) NOT NULL,
-  `k` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-insert into t(id, k) values(1,1),(2,2);
-```
-![](/static/image/823acf76e53c0bdba7beab45e72e90d6.png)
-
-图 1 事务 A、B、C 的执行流程
-这里，我们需要注意的是事务的启动时机。
-begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句，事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。
-  第一种启动方式，一致性视图是在执行第一个快照读语句时创建的；
+![](/static/image/823acf76e53c0bdba7beab45e72e90d6.png)图 1 事务 A、B、C 的执行流程  
+这里，我们需要注意的是事务的启动时机。  
+begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句，事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。  
+  第一种启动方式，一致性视图是在执行第一个快照读语句时创建的；  
   第二种启动方式，一致性视图是在执行 start transaction with consistent snapshot 时创建的。
+
+
 
 # 2.总结
 
