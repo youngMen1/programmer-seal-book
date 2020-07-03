@@ -225,7 +225,7 @@ CREATE TABLE `geek` (
 select * from geek where c=N order by a limit 1;
 select * from geek where c=N order by b limit 1;
 ```
-
+我给你的问题是，这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？
 
 
 
