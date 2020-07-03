@@ -230,7 +230,7 @@ select * from geek where c=N order by b limit 1;
 
 ### 答案：
 
-表记录
+–a--|–b--|–c--|–d--1 2 3 d1 3 2 d1 4 3 d2 1 3 d2 2 2 d2 3 4 d
 
 
 
