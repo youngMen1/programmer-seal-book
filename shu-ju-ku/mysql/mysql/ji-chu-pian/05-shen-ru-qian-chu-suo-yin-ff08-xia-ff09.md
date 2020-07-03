@@ -259,3 +259,4 @@ select * from geek where c=N order by b limit 1;
 3 2 1
 3 4 1
 4 3 2
+所以，结论是 ca 可以去掉，cb 需要保留。
