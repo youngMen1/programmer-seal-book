@@ -147,7 +147,7 @@ MDL 会直到事务提交才释放，在做表结构变更的时候，你一定�
 
 对整个数据库实例加锁。
 
-MySQL提供加全局读锁的方法：Flush tables with read lock\(FTWRL\)
+MySQL提供加全局读锁的方法：Flush tables with read lock(FTWRL)
 
 这个命令可以使整个库处于只读状态。使用该命令之后，数据更新语句、数据定义语句和更新类事务的提交语句等操作都会被阻塞。
 
