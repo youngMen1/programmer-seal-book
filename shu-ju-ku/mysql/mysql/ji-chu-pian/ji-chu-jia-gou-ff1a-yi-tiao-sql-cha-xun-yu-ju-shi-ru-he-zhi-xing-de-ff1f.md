@@ -156,6 +156,8 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 
 ## 3.1.思考题
 
+我给你留一个问题吧，如果表 T 中没有字段 k，而你执行了这个语句 select \* from T where k=1, 那肯定是会报“不存在这个列”的错误： “Unknown column ‘k’ in ‘where clause’”。你觉得这个错误是在我们上面提到的哪个阶段报出来的呢？
+
 ## 3.2.问题总结
 
 1.有个问题不太明白，为什么对权限的检查不在优化器之前做而要等到执行器再做权限检查？
