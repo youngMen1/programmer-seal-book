@@ -250,4 +250,4 @@ select * from geek where c=N order by b limit 1;
 3 1 4
 3 2 1
 4 2 3
-
+这个跟索引 c 的数据是一模一样的。
