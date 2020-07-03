@@ -115,7 +115,9 @@ CREATE TABLE `tuser` (
 
 mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
 ```
+你已经知道了前缀索引规则，所以这个语句在搜索索引树的时候，只能用 “张”，找到第一个满足条件的记录 ID3。当然，这还不错，总比全表扫描要好。
 
+然后呢？
 
 
 # 2.总结
