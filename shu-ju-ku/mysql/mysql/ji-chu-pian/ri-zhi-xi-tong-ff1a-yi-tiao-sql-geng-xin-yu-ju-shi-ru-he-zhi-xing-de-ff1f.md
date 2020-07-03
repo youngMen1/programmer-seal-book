@@ -19,9 +19,10 @@ mysql> create table T(ID int primary key, c int);
 如果要将 ID=2 这一行的值加 1，SQL 语句就会这么写：
 
 ```
-
 mysql> update T set c=c+1 where ID=2;
 ```
+
+前面我有跟你介绍过 SQL 语句基本的执行链路，这里我再把那张图拿过来，你也可以先简单看看这个图回顾下。首先，可以确定的说，查询语句的那一套流程，更新语句也是同样会走一遍。
 
 # 2.总结
 
