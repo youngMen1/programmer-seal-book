@@ -52,7 +52,6 @@ insert into T(c) values(1);
 配置的方式是，将启动参数 transaction-isolation 的值设置成 READ-COMMITTED。你可以用 show variables 来查看当前的值。
 
 ```
-
 mysql> show variables like 'transaction_isolation';
 
 +-----------------------+----------------+
@@ -65,6 +64,8 @@ mysql> show variables like 'transaction_isolation';
 
 +-----------------------+----------------+
 ```
+
+总结来说，存在即合理，每种隔离级别都有自己的使用场景，你要根据自己的业务情况来定。**我想你可能会问那什么时候需要“可重复读”的场景呢？**我们来看一个数据校对逻辑的案例。
 
 # 2.总结
 
