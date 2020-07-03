@@ -127,6 +127,13 @@ mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
 
 图 3 和图 4，是这两个过程的执行流程图。
 
+b32aa8b1f75611e0759e52f5915539ac.jpg
+图 3 无索引下推执行流程
+76e385f3df5a694cc4238c7b65acfe1b.jpg
+图 4 索引下推执行流程
+
+
+
 
 # 2.总结
 
