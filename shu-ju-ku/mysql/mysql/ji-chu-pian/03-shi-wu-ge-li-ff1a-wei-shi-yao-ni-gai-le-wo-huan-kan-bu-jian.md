@@ -116,11 +116,12 @@ d9c313809e5ac148fc39feff532f0fee.png
 你可以在 information\_schema 库的 innodb\_trx 这个表中查询长事务，比如下面这个语句，用于查找持续时间超过 60s 的事务。
 
 ```
-
 select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx_started))>60
 ```
 
 # 2.总结
+
+## 2.1.问题时间
 
 
 
