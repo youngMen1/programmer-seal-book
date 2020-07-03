@@ -138,7 +138,7 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 
 你会在数据库的慢查询日志\(**Explain 使用分析**\)中看到一个 rows\_examined 的字段，表示这个语句执行过程中扫描了多少行。这个值就是在执行器每次调用引擎获取数据行的时候累加的。
 
-在有些场景下，执行器调用一次，在引擎内部则扫描了多行，因此引擎扫描行数跟 rows\_examined 并不是完全相同的。我们后面会专门有一篇文章来讲存储引擎的内部机制，里面会有详细的说明。
+在有些场景下，执行器调用一次，在引擎内部则扫描了多行**，因此引擎扫描行数跟 rows\_examined 并不是完全相同的。**我们后面会专门有一篇文章来讲存储引擎的内部机制，里面会有详细的说明。
 
 # 3.总结
 
@@ -157,6 +157,8 @@ ERROR 1142 (42000): SELECT command denied to user 'b'@'localhost' for table 'T'
 ## 3.1.思考题
 
 我给你留一个问题吧，如果表 T 中没有字段 k，而你执行了这个语句 select \* from T where k=1, 那肯定是会报“不存在这个列”的错误： “Unknown column ‘k’ in ‘where clause’”。你觉得这个错误是在我们上面提到的哪个阶段报出来的呢？
+
+
 
 ## 3.2.问题总结
 
