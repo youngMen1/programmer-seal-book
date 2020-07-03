@@ -119,11 +119,12 @@ cc44c1d080141aa50df6a91067475374.png
 其中，脏页比例是通过 Innodb\_buffer\_pool\_pages\_dirty/Innodb\_buffer\_pool\_pages\_total 得到的，具体的命令参考下面的代码：
 
 ```
-
 mysql> select VARIABLE_VALUE into @a from global_status where VARIABLE_NAME = 'Innodb_buffer_pool_pages_dirty';
 select VARIABLE_VALUE into @b from global_status where VARIABLE_NAME = 'Innodb_buffer_pool_pages_total';
 select @a/@b;
 ```
 
+接下来，我们再看一个有趣的策略。
 
+一旦一个查询请求需要在执行过程中先 flush 掉一个脏页时，这个查询就可能要比平时慢了。而 MySQL 中的一个机制，可能让你的查询会更慢：在准备刷一个脏页的时候，如果这个数据页旁边的数据页刚好是脏页，就会把这个“邻居”也带着一起刷掉；而且这个把“邻居”拖下水的逻辑还可以继续蔓延，也就是对于每个邻居数据页，如果跟它相邻的数据页也还是脏页的话，也会被放到一起刷。
 
