@@ -26,6 +26,8 @@ mysql> update T set c=c+1 where ID=2;
 
 0d2070e8f84c4801adbfa03bda1f98d9.png
 
+你执行语句前要先连接数据库，这是连接器的工作。
+
 # 2.总结
 
 
