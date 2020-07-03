@@ -87,6 +87,7 @@ CREATE TABLE `tuser` (
 
 ![](/static/image/89f74c631110cfbc83298ef27dcd6370.jpg)
 
+可以看到，索引项是按照索引定义里面出现的字段顺序排序的。
 
 # 2.总结
 
