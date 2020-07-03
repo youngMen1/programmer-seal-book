@@ -242,5 +242,7 @@ select * from geek where c=N order by b limit 1;
 
 索引 ca 的组织是先按 c 排序，再按 a 排序，同时记录主键
 
+–c--|–a--|–主键部分b-- （注意，这里不是 ab，而是只有 b）
+
 
 
