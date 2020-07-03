@@ -85,6 +85,8 @@ CREATE TABLE `tuser` (
 
 为了直观地说明这个概念，我们用（name，age）这个联合索引来分析。
 
+89f74c631110cfbc83298ef27dcd6370.jpg
+
 
 # 2.总结
 
