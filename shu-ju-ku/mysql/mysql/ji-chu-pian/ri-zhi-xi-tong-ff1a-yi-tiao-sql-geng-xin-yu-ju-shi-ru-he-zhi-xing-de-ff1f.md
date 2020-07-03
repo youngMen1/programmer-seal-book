@@ -77,6 +77,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 这两种日志有以下三点不同。
 
+1.redo log 是 InnoDB 引擎特有的；binlog 是 MySQL 的 Server 层实现的，所有引擎都可以使用。
+
 # 2.总结
 
 
