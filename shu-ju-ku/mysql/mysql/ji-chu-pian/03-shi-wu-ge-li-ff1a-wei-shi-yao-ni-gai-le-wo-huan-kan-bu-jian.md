@@ -18,6 +18,8 @@
 
 ### 隔离性与隔离级别
 
+提到事务，你肯定会想到 ACID（Atomicity、Consistency、Isolation、Durability，即原子性、一致性、隔离性、持久性），今天我们就来说说其中 I，也就是“隔离性”。
+
 # 2.总结
 
 
