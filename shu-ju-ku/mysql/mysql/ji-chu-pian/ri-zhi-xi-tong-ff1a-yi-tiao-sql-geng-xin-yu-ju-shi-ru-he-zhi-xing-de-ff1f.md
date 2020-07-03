@@ -73,6 +73,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 我想你肯定会问，为什么会有两份日志呢？
 
+因为最开始 MySQL 里并没有 InnoDB 引擎。MySQL 自带的引擎是 MyISAM，但是 MyISAM 没有 crash-safe 的能力，binlog 日志只能用于归档。而 InnoDB 是另一个公司以插件形式引入 MySQL 的，既然只依靠 binlog 是没有 crash-safe 能力的，所以 InnoDB 使用另外一套日志系统——也就是 redo log 来实现 crash-safe 能力。
+
 # 2.总结
 
 
