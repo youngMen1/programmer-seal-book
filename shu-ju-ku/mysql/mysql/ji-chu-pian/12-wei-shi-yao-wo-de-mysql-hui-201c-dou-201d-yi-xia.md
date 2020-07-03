@@ -116,3 +116,5 @@ cc44c1d080141aa50df6a91067475374.png
 
 要尽量避免这种情况，你就要合理地设置 innodb\_io\_capacity 的值，并且**平时要多关注脏页比例，不要让它经常接近 75%。**
 
+其中，脏页比例是通过 Innodb\_buffer\_pool\_pages\_dirty/Innodb\_buffer\_pool\_pages\_total 得到的，具体的命令参考下面的代码：
+
