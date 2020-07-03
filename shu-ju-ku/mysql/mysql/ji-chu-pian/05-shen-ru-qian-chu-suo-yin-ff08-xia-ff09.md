@@ -237,6 +237,7 @@ select * from geek where c=N order by b limit 1;
 2 1 3 d
 2 2 2 d
 2 3 4 d
+
 主键 a，b 的聚簇索引组织顺序相当于 order by a,b ，也就是先按 a 排序，再按 b 排序，c 无序。
 
 索引 ca 的组织是先按 c 排序，再按 a 排序，同时记录主键
