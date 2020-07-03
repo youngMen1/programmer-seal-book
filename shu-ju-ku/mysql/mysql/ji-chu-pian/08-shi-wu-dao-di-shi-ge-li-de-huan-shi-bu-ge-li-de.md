@@ -18,7 +18,7 @@ insert into t(id, k) values(1,1),(2,2);
 ```
 823acf76e53c0bdba7beab45e72e90d6.png
 图 1 事务 A、B、C 的执行流程
-
+这里，我们需要注意的是事务的启动时机。
 
 # 2.总结
 
