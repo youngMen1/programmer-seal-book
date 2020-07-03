@@ -79,7 +79,7 @@ mysql> show variables like 'transaction_isolation';
 
 假设一个值从 1 被按顺序改成了 2、3、4，在回滚日志里面就会有类似下面的记录。
 
-d9c313809e5ac148fc39feff532f0fee.png
+![](/static/image/d9c313809e5ac148fc39feff532f0fee.png)
 
 当前值是 4，但是在查询这条记录的时候，不同时刻启动的事务会有不同的 read-view。如图中看到的，在视图 A、B、C 里面，这一个记录的值分别是 1、2、4，同一条记录在系统中可以存在多个版本，就是数据库的多版本并发控制（MVCC）。对于 read-view A，要得到 1，就必须将当前值依次执行图中所有的回滚操作得到。
 
