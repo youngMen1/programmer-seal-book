@@ -97,6 +97,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 这里我给出这个 update 语句的执行流程图，图中浅色框表示是在 InnoDB 内部执行的，深色框表示是在执行器中执行的。
 
+2e5bff4910ec189fe1ee6e2ecc7b4bbe.png
+
 # 2.总结
 
 
