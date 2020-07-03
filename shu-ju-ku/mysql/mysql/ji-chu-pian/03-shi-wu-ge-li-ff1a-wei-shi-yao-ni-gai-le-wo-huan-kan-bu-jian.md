@@ -121,6 +121,8 @@ select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx
 
 # 2.总结
 
+这篇文章里面，我介绍了 MySQL 的事务隔离级别的现象和实现，根据实现原理分析了长事务存在的风险，以及如何用正确的方式避免长事务。希望我举的例子能够帮助你理解事务，并更好地使用 MySQL 的事务特性。
+
 ## 2.1.问题时间
 
 
