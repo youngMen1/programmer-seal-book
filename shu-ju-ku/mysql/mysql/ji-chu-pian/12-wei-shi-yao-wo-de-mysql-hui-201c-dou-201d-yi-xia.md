@@ -154,6 +154,7 @@ select @a/@b;
 ### 答案
 每次事务提交都要写 redo log，如果设置太小，很快就会被写满，也就是下面这个图的状态，这个“环”将很快被写满，write pos 一直追着 CP。
 ![](/static/image/a25bdbbfc2cfc5d5e20690547fe7f2e5.jpg)
+这时候系统不得不停止所有更新，去推进 checkpoint。
 
 
 
