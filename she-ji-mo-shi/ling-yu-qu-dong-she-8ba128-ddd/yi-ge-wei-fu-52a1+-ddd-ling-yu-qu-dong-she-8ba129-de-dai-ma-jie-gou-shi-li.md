@@ -3,7 +3,7 @@
 
 
 # 2.参考
-
+可以落地的DDD到底长什么样：
 https://www.cnblogs.com/hafiz/p/9388334.html
 https://blog.csdn.net/k6T9Q8XKs6iIkZPPIFq/article/details/78909897
 领域驱动设计之领域模型：
