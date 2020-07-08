@@ -4,7 +4,7 @@
 领域驱动设计(DDD,Domain-Driven Design)
 DDD总体结构分为四层  :  Infrastructure(基础实施层)，Domain(领域层)，Application(应用层)，Interfaces(表示层，也叫用户界面层或是接口层)，各个层面的作用下面介绍。
 994599-20180830125911190-468037055.png
-
+994599-20180830125945668-1072959527.png
 # 2.参考
 可以落地的DDD到底长什么样：
 https://www.cnblogs.com/hafiz/p/9388334.html
