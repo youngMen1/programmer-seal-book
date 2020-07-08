@@ -15,6 +15,7 @@ DDD总体结构分为四层  :  Infrastructure(基础实施层)，Domain(领域�
 而在微服务实际开发中，结合DDD的思想去划分所有属于自己的领域。
 
 如图示例，对于我这个Project而言，是模块已经划分好的微服务应用，代码设计上就分为  Infrastructure，Domain，Application，Interfaces : 
+![](/static/image/994599-20180830132619533-611437668.png)
 # 2.参考
 可以落地的DDD到底长什么样：
 https://www.cnblogs.com/hafiz/p/9388334.html
