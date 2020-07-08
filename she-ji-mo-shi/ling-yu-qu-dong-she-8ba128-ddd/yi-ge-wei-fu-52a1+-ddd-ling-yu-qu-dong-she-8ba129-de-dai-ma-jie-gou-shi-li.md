@@ -44,6 +44,8 @@ DDD总体结构分为四层  :  Infrastructure\(基础实施层\)，Domain\(领�
 
 # 2.参考
 
+
+
 可以落地的DDD到底长什么样：  
 [https://www.cnblogs.com/hafiz/p/9388334.html](https://www.cnblogs.com/hafiz/p/9388334.html)  
 领域驱动设计之领域模型：  
