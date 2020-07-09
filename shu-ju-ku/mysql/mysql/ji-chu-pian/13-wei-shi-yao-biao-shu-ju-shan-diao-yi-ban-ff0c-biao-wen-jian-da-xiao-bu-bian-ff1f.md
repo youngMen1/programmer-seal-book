@@ -148,6 +148,7 @@ alter table t add FULLTEXT(field_name);
 这个过程是 inplace 的，但会阻塞增删改操作，是非 Online 的。
 
 如果说这两个逻辑之间的关系是什么的话，可以概括为：
+* 1.DDL 过程如果是 Online 的，就一定是 inplace 的；
 
 
 
