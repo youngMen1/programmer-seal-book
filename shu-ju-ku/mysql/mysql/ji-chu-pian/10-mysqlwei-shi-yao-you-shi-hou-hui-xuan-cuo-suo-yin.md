@@ -42,6 +42,7 @@ call idata();
 
 mysql> select * from t where a between 10000 and 20000;
 ```
+你一定会说，这个语句还用分析吗，很简单呀，a 上有索引，肯定是要使用索引 a 的。
 
 # 2.总结
 
