@@ -111,3 +111,22 @@
 你可能注意到了，在图 3 中，我们把表 A 中的数据导出来的存放位置叫作 tmp_table。这是一个临时表，是在 server 层创建的。
 
 在图 4 中，根据表 A 重建出来的数据是放在“tmp_file”里的，这个临时文件是 InnoDB 在内部创建出来的。整个 DDL 过程都在 InnoDB 内部完成。对于 server 层来说，没有把数据挪动到临时表，是一个“原地”操作，这就是“inplace”名称的来源。
+
+所以，我现在问你，如果你有一个 1TB 的表，现在磁盘间是 1.2TB，能不能做一个 inplace 的 DDL 呢？
+
+答案是不能。因为，tmp_file 也是要占用临时空间的。
+
+我们重建表的这个语句 alter table t engine=InnoDB，其实隐含的意思是：
+
+
+```
+
+alter table t engine=innodb,ALGORITHM=inplace;
+```
+
+
+
+
+
+
+
