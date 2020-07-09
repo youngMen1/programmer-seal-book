@@ -137,6 +137,8 @@ alter table t engine=innodb,ALGORITHM=copy;
 
 其实不是的，只是在重建表这个逻辑中刚好是这样而已。
 
+比如，如果我要给 InnoDB 表的一个字段加全文索引，写法是：
+
 
 
 
