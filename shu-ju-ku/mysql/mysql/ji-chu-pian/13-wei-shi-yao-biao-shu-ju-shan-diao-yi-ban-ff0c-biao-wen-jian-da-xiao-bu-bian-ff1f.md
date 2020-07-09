@@ -135,7 +135,7 @@ alter table t engine=innodb,ALGORITHM=copy;
 
 但我这样说你可能会觉得，inplace 跟 Online 是不是就是一个意思？
 
-
+其实不是的，只是在重建表这个逻辑中刚好是这样而已。
 
 
 
