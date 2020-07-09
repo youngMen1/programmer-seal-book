@@ -24,6 +24,24 @@ CREATE TABLE `t` (
 我是用存储过程来插入数据的，这里我贴出来方便你复现：
 
 
+```
+
+delimiter ;;
+create procedure idata()
+begin
+  declare i int;
+  set i=1;
+  while(i<=100000)do
+    insert into t values(i, i, i);
+    set i=i+1;
+  end while;
+end;;
+delimiter ;
+call idata();
+```
+
+
+
 
 
 
