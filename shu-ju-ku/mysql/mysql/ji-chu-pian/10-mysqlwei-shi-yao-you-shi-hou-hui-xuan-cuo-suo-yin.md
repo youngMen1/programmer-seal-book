@@ -54,6 +54,8 @@ mysql> select * from t where a between 10000 and 20000;
 
 ![](/static/image/1e5ba1c2934d3b2c0d96b210a27e1a1e.png)
                                                                                               图 2 session A 和 session B 的执行流程
+这里，session A 的操作你已经很熟悉了，它就是开启了一个事务。随后，session B 把数据都删除后，又调用了 idata 这个存储过程，插入了 10 万行数据。                                                                                              
+                                                                                              
 # 2.总结
 
 
