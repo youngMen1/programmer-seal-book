@@ -8,9 +8,7 @@
 我们先建一个简单的表，表里有 a、b 两个字段，并分别建上索引：
 
 
-
 ```
-
 CREATE TABLE `t` (
   `id` int(11) NOT NULL,
   `a` int(11) DEFAULT NULL,
