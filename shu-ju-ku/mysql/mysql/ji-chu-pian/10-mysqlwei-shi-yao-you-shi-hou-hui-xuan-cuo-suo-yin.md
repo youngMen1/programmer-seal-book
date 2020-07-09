@@ -71,8 +71,8 @@ select * from t force index(a) where a between 10000 and 20000;/*Q2*/
 * 第二句，Q1 是 session B 原来的查询；
 * 第三句，Q2 是加了 force index(a) 来和 session B 原来的查询语句执行情况对比。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 如图 3 所示是这三条 SQL 语句执行完成后的慢查询日志。
-7c58b9c71853b8bba1a8ad5e926de1f6.png
-                                                                                                                                                                                
+![](/static/image/7c58b9c71853b8bba1a8ad5e926de1f6.png)
+图 3 slow log 结果                                                                                                                                                                               
 # 2.总结
 
 
