@@ -25,7 +25,6 @@ CREATE TABLE `t` (
 
 
 ```
-
 delimiter ;;
 create procedure idata()
 begin
