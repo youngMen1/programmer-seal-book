@@ -57,7 +57,8 @@ mysql> select * from t where a between 10000 and 20000;
 这里，session A 的操作你已经很熟悉了，它就是开启了一个事务。随后，session B 把数据都删除后，又调用了 idata 这个存储过程，插入了 10 万行数据。
 
 这时候，session B 的查询语句 select * from t where a between 10000 and 20000 就不会再选择索引 a 了。我们可以通过慢查询日志（slow log）来查看一下具体的执行情况。
-                                                                                                                                                                                            
+ 
+为了说明优化器选择的结果是否正确，我增加了一个对照，即：使用 force index(a) 来让优化器强制使用索引 a（这部分内容，我还会在这篇文章的后半部分中提到）。                                                                                                                                                                                                                                                                                                                                                                                       
                                                                                             
 # 2.总结
 
