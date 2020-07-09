@@ -81,17 +81,17 @@
 
 显然，花时间最多的步骤是往临时表插入数据的过程，如果在这个过程中，有新的数据要写入到表 A 的话，就会造成数据丢失。因此，在整个 DDL 过程中，表 A 中不能有更新。也就是说，这个 DDL 不是 Online 的。  
 而在 MySQL 5.6 版本开始引入的 Online DDL，对这个操作流程做了优化。  
-我给你简单描述一下引入了 Online DDL 之后，重建表的流程：  
+我给你简单描述一下引入了 Online DDL 之后，重建表的流程：
+
 * 1.建立一个临时文件，扫描表 A 主键的所有数据页；  
 * 2.用数据页中表 A 的记录生成 B+ 树，存储到临时文件中；  
 * 3.生成临时文件的过程中，将所有对 A 的操作记录在一个日志文件（row log）中，对应的是图中 state2 的状态；  
 * 4.临时文件生成后，将日志文件中的操作应用到临时文件，得到一个逻辑数据上与表 A 相同的数据文件，对应的就是图中 state3 的状态；  
 * 5.用临时文件替换表 A 的数据文件。  
-![](/static/image/2d1cfbbeb013b851a56390d38b5321f0.png)  
-                                                                                                 图 4 Online DDL
-                                                                                                 
+  ![](/static/image/2d1cfbbeb013b851a56390d38b5321f0.png)                                          图 4 Online DDL
+
 可以看到，与图 3 过程的不同之处在于，由于日志文件记录和重放操作这个功能的存在，这个方案在重建表的过程中，允许对表 A 做增删改操作。这也就是 Online DDL 名字的来源。
-                                                                                                 
+
 我记得有同学在第 6 篇讲表锁的文章《全局锁和表锁 ：给表加个字段怎么索这么多阻碍？》的评论区留言说，DDL 之前是要拿 MDL 写锁的，这样还能叫 Online DDL 吗？
 
 确实，图 4 的流程中，alter 语句在启动的时候需要获取 MDL 写锁，但是这个写锁在真正拷贝数据之前就退化成读锁了。
@@ -108,26 +108,23 @@
 
 说到 Online，我还要再和你澄清一下它和另一个跟 DDL 有关的、容易混淆的概念 inplace 的区别。
 
-你可能注意到了，在图 3 中，我们把表 A 中的数据导出来的存放位置叫作 tmp_table。这是一个临时表，是在 server 层创建的。
+你可能注意到了，在图 3 中，我们把表 A 中的数据导出来的存放位置叫作 tmp\_table。这是一个临时表，是在 server 层创建的。
 
-在图 4 中，根据表 A 重建出来的数据是放在“tmp_file”里的，这个临时文件是 InnoDB 在内部创建出来的。整个 DDL 过程都在 InnoDB 内部完成。对于 server 层来说，没有把数据挪动到临时表，是一个“原地”操作，这就是“inplace”名称的来源。
+在图 4 中，根据表 A 重建出来的数据是放在“tmp\_file”里的，这个临时文件是 InnoDB 在内部创建出来的。整个 DDL 过程都在 InnoDB 内部完成。对于 server 层来说，没有把数据挪动到临时表，是一个“原地”操作，这就是“inplace”名称的来源。
 
 所以，我现在问你，如果你有一个 1TB 的表，现在磁盘间是 1.2TB，能不能做一个 inplace 的 DDL 呢？
 
-答案是不能。因为，tmp_file 也是要占用临时空间的。
+答案是不能。因为，tmp\_file 也是要占用临时空间的。
 
 我们重建表的这个语句 alter table t engine=InnoDB，其实隐含的意思是：
 
-
 ```
-
 alter table t engine=innodb,ALGORITHM=inplace;
 ```
+
 跟 inplace 对应的就是拷贝表的方式了，用法是：
 
-
 ```
-
 alter table t engine=innodb,ALGORITHM=copy;
 ```
 
@@ -139,17 +136,16 @@ alter table t engine=innodb,ALGORITHM=copy;
 
 比如，如果我要给 InnoDB 表的一个字段加全文索引，写法是：
 
-
-
 ```
-
 alter table t add FULLTEXT(field_name);
 ```
+
 这个过程是 inplace 的，但会阻塞增删改操作，是非 Online 的。
 
 如果说这两个逻辑之间的关系是什么的话，可以概括为：
+
 * 1.DDL 过程如果是 Online 的，就一定是 inplace 的；
-* 2.反过来未必，也就是说 inplace 的 DDL，有可能不是 Online 的。截止到 MySQL 8.0，添加全文索引（FULLTEXT index）和空间索引 (SPATIAL index) 就属于这种情况。
+* 2.反过来未必，也就是说 inplace 的 DDL，有可能不是 Online 的。截止到 MySQL 8.0，添加全文索引（FULLTEXT index）和空间索引 \(SPATIAL index\) 就属于这种情况。
 
 最后，我们再延伸一下。
 
@@ -176,3 +172,4 @@ alter table t add FULLTEXT(field_name);
 你觉得可能是什么原因呢 ？
 
 你可以把你觉得可能的原因写在留言区里，我会在下一篇文章的末尾把大家描述的合理的原因都列出来，以后其他同学就不用掉到这样的坑里了。感谢你的收听，也欢迎你把这篇文章分享给更多的朋友一起阅读。
+
