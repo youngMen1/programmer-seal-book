@@ -311,7 +311,7 @@
         * [10 \| MySQL为什么有时候会选错索引](shu-ju-ku/mysql/mysql/ji-chu-pian/10-mysqlwei-shi-yao-you-shi-hou-hui-xuan-cuo-suo-yin.md)
         * [11 \| 怎么给字符串字段加索引](shu-ju-ku/mysql/mysql/ji-chu-pian/11-zen-yao-gei-zi-fu-chuan-zi-duan-jia-suo-yin.md)
         * [12 \| 为什么我的MySQL会“抖”一下](shu-ju-ku/mysql/mysql/ji-chu-pian/12-wei-shi-yao-wo-de-mysql-hui-201c-dou-201d-yi-xia.md)
-        * 13 \| 为什么表数据删掉一半，表文件大小不变？
+        * [13 \| 为什么表数据删掉一半，表文件大小不变？](shu-ju-ku/mysql/mysql/ji-chu-pian/13-wei-shi-yao-biao-shu-ju-shan-diao-yi-ban-ff0c-biao-wen-jian-da-xiao-bu-bian-ff1f.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
