@@ -36,6 +36,8 @@ delimiter ;
 call idata();
 ```
 
+接下来，我们分析一条 SQL 语句：
+
 # 2.总结
 
 
