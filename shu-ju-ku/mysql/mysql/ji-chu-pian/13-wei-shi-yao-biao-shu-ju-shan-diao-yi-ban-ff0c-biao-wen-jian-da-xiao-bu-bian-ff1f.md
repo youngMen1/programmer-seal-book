@@ -172,3 +172,5 @@ alter table t add FULLTEXT(field_name);
 * 1.一个表 t 文件大小为 1TB；
 * 2.对这个表执行 alter table t engine=InnoDB；
 * 3.发现执行完成后，空间不仅没变小，还稍微大了一点儿，比如变成了 1.01TB。
+
+你觉得可能是什么原因呢 ？
