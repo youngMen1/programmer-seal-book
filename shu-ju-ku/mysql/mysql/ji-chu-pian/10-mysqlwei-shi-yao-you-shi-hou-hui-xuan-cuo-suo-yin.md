@@ -1,4 +1,5 @@
 # 1.MySQL为什么有时候会选错索引？
+
 前面我们介绍过索引，你已经知道了在 MySQL 中一张表其实是可以支持多个索引的。但是，你写 SQL 语句的时候，并没有主动指定使用哪个索引。也就是说，使用哪个索引是由 MySQL 来确定的。
 
 不知道你有没有碰到过这种情况，一条本来可以执行得很快的语句，却由于 MySQL 选错了索引，而导致执行速度变得很慢？
@@ -7,22 +8,18 @@
 
 我们先建一个简单的表，表里有 a、b 两个字段，并分别建上索引：
 
+    CREATE TABLE `t` (
+      `id` int(11) NOT NULL,
+      `a` int(11) DEFAULT NULL,
+      `b` int(11) DEFAULT NULL,
+      PRIMARY KEY (`id`),
+      KEY `a` (`a`),
+      KEY `b` (`b`)
+    ) ENGINE=InnoDB；
 
-```
-CREATE TABLE `t` (
-  `id` int(11) NOT NULL,
-  `a` int(11) DEFAULT NULL,
-  `b` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `a` (`a`),
-  KEY `b` (`b`)
-) ENGINE=InnoDB；
-```
-
-然后，我们往表 t 中插入 10 万行记录，取值按整数递增，即：(1,1,1)，(2,2,2)，(3,3,3) 直到 (100000,100000,100000)。
+然后，我们往表 t 中插入 10 万行记录，取值按整数递增，即：\(1,1,1\)，\(2,2,2\)，\(3,3,3\) 直到 \(100000,100000,100000\)。
 
 我是用存储过程来插入数据的，这里我贴出来方便你复现：
-
 
 ```
 delimiter ;;
@@ -38,9 +35,6 @@ end;;
 delimiter ;
 call idata();
 ```
-
-
-
 
 
 
