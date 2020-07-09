@@ -123,6 +123,14 @@
 
 alter table t engine=innodb,ALGORITHM=inplace;
 ```
+跟 inplace 对应的就是拷贝表的方式了，用法是：
+
+
+```
+
+alter table t engine=innodb,ALGORITHM=copy;
+```
+当你使用 ALGORITHM=copy 的时候，表示的是强制拷贝表，对应的流程就是图 3 的操作过程。
 
 
 
