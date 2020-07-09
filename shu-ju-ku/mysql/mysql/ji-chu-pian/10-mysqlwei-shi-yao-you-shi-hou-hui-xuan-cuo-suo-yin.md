@@ -62,14 +62,12 @@ mysql> select * from t where a between 10000 and 20000;
 
 下面的三条 SQL 语句，就是这个实验过程。
 
-
 ```
-
 set long_query_time=0;
 select * from t where a between 10000 and 20000; /*Q1*/
 select * from t force index(a) where a between 10000 and 20000;/*Q2*/
 ```
-
+* 第一句，是将慢查询日志的阈值设置为 0，表示这个线程接下来的语句都会被记录入慢查询日志中；
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                                                                                             
