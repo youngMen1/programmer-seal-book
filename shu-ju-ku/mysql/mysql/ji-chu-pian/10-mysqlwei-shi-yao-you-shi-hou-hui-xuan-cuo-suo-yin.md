@@ -53,6 +53,7 @@ mysql> select * from t where a between 10000 and 20000;
 不过别急，这个案例不会这么简单。在我们已经准备好的包含了 10 万行数据的表上，我们再做如下操作。
 
 1e5ba1c2934d3b2c0d96b210a27e1a1e.png
+                                                                                              图 2 session A 和 session B 的执行流程
 # 2.总结
 
 
