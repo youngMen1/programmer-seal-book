@@ -145,7 +145,7 @@ alter table t engine=innodb,ALGORITHM=copy;
 
 alter table t add FULLTEXT(field_name);
 ```
-
+这个过程是 inplace 的，但会阻塞增删改操作，是非 Online 的。
 
 
 
