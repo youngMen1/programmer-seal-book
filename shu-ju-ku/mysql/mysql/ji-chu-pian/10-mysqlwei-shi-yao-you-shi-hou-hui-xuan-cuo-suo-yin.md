@@ -46,7 +46,9 @@ mysql> select * from t where a between 10000 and 20000;
 
 你说得没错，图 1 显示的就是使用 explain 命令看到的这条语句的执行情况。
 
-2cfce769551c6eac9bfbee0563d48fe3.png
+![](/static/image/2cfce769551c6eac9bfbee0563d48fe3.png)
+
+                                                                                               图 1 使用 explain 命令查看语句执行情况
 
 # 2.总结
 
