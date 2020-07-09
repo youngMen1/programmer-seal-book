@@ -39,26 +39,26 @@ call idata();
 接下来，我们分析一条 SQL 语句：
 
 ```
-
 mysql> select * from t where a between 10000 and 20000;
 ```
+
 你一定会说，这个语句还用分析吗，很简单呀，a 上有索引，肯定是要使用索引 a 的。
 
 你说得没错，图 1 显示的就是使用 explain 命令看到的这条语句的执行情况。
 
-![](/static/image/2cfce769551c6eac9bfbee0563d48fe3.png)
+![](/static/image/2cfce769551c6eac9bfbee0563d48fe3.png)  
                                                                                                图 1 使用 explain 命令查看语句执行情况
-                                                                                               
-从图 1 看上去，这条查询语句的执行也确实符合预期，key 这个字段值是’a’，表示优化器选择了索引 a。
+
+从图 1 看上去，这条查询语句的执行也确实符合预期，key 这个字段值是’a’，表示优化器选择了索引 a。  
 不过别急，这个案例不会这么简单。在我们已经准备好的包含了 10 万行数据的表上，我们再做如下操作。
 
-![](/static/image/1e5ba1c2934d3b2c0d96b210a27e1a1e.png)
-                                                                                              图 2 session A 和 session B 的执行流程
+![](/static/image/1e5ba1c2934d3b2c0d96b210a27e1a1e.png)  
+                                                                                              图 2 session A 和 session B 的执行流程  
 这里，session A 的操作你已经很熟悉了，它就是开启了一个事务。随后，session B 把数据都删除后，又调用了 idata 这个存储过程，插入了 10 万行数据。
 
-这时候，session B 的查询语句 select * from t where a between 10000 and 20000 就不会再选择索引 a 了。我们可以通过慢查询日志（slow log）来查看一下具体的执行情况。
- 
-为了说明优化器选择的结果是否正确，我增加了一个对照，即：使用 force index(a) 来让优化器强制使用索引 a（这部分内容，我还会在这篇文章的后半部分中提到）。      
+这时候，session B 的查询语句 select \* from t where a between 10000 and 20000 就不会再选择索引 a 了。我们可以通过慢查询日志（slow log）来查看一下具体的执行情况。
+
+为了说明优化器选择的结果是否正确，我增加了一个对照，即：使用 force index\(a\) 来让优化器强制使用索引 a（这部分内容，我还会在这篇文章的后半部分中提到）。
 
 下面的三条 SQL 语句，就是这个实验过程。
 
@@ -67,16 +67,18 @@ set long_query_time=0;
 select * from t where a between 10000 and 20000; /*Q1*/
 select * from t force index(a) where a between 10000 and 20000;/*Q2*/
 ```
+
 * 第一句，是将慢查询日志的阈值设置为 0，表示这个线程接下来的语句都会被记录入慢查询日志中；
 * 第二句，Q1 是 session B 原来的查询；
-* 第三句，Q2 是加了 force index(a) 来和 session B 原来的查询语句执行情况对比。 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-如图 3 所示是这三条 SQL 语句执行完成后的慢查询日志。
-![](/static/image/7c58b9c71853b8bba1a8ad5e926de1f6.png)
-                                                                                                  图 3 slow log 结果    
+* 第三句，Q2 是加了 force index\(a\) 来和 session B 原来的查询语句执行情况对比。 
 
-可以看到，Q1 扫描了 10 万行，显然是走了全表扫描，执行时间是 40 毫秒。Q2 扫描了 10001 行，执行了 21 毫秒。也就是说，我们在没有使用 force index 的时候，MySQL 用错了索引，导致了更长的执行时间。                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   这个例子对应的是我们平常不断地删除历史数据和新增数据的场景。这时，MySQL 竟然会选错索引，是不是有点奇怪呢？今天，我们就从这个奇怪的结果说起吧。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+如图 3 所示是这三条 SQL 语句执行完成后的慢查询日志。  
+![](/static/image/7c58b9c71853b8bba1a8ad5e926de1f6.png)  
+                                                                                                  图 3 slow log 结果
+
+可以看到，Q1 扫描了 10 万行，显然是走了全表扫描，执行时间是 40 毫秒。Q2 扫描了 10001 行，执行了 21 毫秒。也就是说，我们在没有使用 force index 的时候，MySQL 用错了索引，导致了更长的执行时间。  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   这个例子对应的是我们平常不断地删除历史数据和新增数据的场景。这时，MySQL 竟然会选错索引，是不是有点奇怪呢？今天，我们就从这个奇怪的结果说起吧。
+
 # 2.总结
 
 
