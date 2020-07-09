@@ -155,4 +155,8 @@ alter table t add FULLTEXT(field_name);
 
 在第 10 篇文章《MySQL 为什么有时候会选错索引》的评论区中，有同学问到使用 optimize table、analyze table 和 alter table 这三种方式重建表的区别。这里，我顺便再简单和你解释一下。
 
+* 从 MySQL 5.6 版本开始，alter table t engine = InnoDB（也就是 recreate）默认的就是上面图 4 的流程了；
+* analyze table t 其实不是重建表，只是对表的索引信息做重新统计，没有修改数据，这个过程中加了 MDL 读锁；
+* optimize table t 等于 recreate+analyze。
+## 2.小结
 
