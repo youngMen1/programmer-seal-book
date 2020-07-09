@@ -130,7 +130,10 @@ alter table t engine=innodb,ALGORITHM=inplace;
 
 alter table t engine=innodb,ALGORITHM=copy;
 ```
+
 当你使用 ALGORITHM=copy 的时候，表示的是强制拷贝表，对应的流程就是图 3 的操作过程。
+
+但我这样说你可能会觉得，inplace 跟 Online 是不是就是一个意思？
 
 
 
