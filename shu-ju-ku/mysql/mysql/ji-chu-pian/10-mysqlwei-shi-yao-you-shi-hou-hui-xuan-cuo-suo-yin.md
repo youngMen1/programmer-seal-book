@@ -48,7 +48,8 @@ mysql> select * from t where a between 10000 and 20000;
 
 ![](/static/image/2cfce769551c6eac9bfbee0563d48fe3.png)
                                                                                                图 1 使用 explain 命令查看语句执行情况
-
+                                                                                               
+从图 1 看上去，这条查询语句的执行也确实符合预期，key 这个字段值是’a’，表示优化器选择了索引 a。
 # 2.总结
 
 
