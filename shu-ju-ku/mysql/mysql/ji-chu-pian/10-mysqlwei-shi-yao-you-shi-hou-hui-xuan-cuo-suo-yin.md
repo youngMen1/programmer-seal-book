@@ -38,6 +38,11 @@ call idata();
 
 接下来，我们分析一条 SQL 语句：
 
+```
+
+mysql> select * from t where a between 10000 and 20000;
+```
+
 # 2.总结
 
 
