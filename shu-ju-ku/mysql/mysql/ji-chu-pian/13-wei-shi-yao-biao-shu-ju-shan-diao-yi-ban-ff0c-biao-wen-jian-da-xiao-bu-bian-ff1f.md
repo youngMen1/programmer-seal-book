@@ -158,5 +158,6 @@ alter table t add FULLTEXT(field_name);
 * 从 MySQL 5.6 版本开始，alter table t engine = InnoDB（也就是 recreate）默认的就是上面图 4 的流程了；
 * analyze table t 其实不是重建表，只是对表的索引信息做重新统计，没有修改数据，这个过程中加了 MDL 读锁；
 * optimize table t 等于 recreate+analyze。
-## 2.小结
 
+## 2.小结
+今天这篇文章，我和你讨论了数据库中收缩表空间的方法。
