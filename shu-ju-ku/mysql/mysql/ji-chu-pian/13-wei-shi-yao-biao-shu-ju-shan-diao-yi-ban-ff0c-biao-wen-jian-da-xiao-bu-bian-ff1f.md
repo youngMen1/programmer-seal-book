@@ -141,5 +141,14 @@ alter table t engine=innodb,ALGORITHM=copy;
 
 
 
+```
+
+alter table t add FULLTEXT(field_name);
+```
+
+
+
+
+
 
 
