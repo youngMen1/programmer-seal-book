@@ -54,7 +54,10 @@ mysql> select * from t where a between 10000 and 20000;
 
 ![](/static/image/1e5ba1c2934d3b2c0d96b210a27e1a1e.png)
                                                                                               图 2 session A 和 session B 的执行流程
-这里，session A 的操作你已经很熟悉了，它就是开启了一个事务。随后，session B 把数据都删除后，又调用了 idata 这个存储过程，插入了 10 万行数据。                                                                                              
+这里，session A 的操作你已经很熟悉了，它就是开启了一个事务。随后，session B 把数据都删除后，又调用了 idata 这个存储过程，插入了 10 万行数据。
+
+这时候，session B 的查询语句 select * from t where a between 10000 and 20000 就不会再选择索引 a 了。我们可以通过慢查询日志（slow log）来查看一下具体的执行情况。
+                                                                                                                                                                                            
                                                                                               
 # 2.总结
 
