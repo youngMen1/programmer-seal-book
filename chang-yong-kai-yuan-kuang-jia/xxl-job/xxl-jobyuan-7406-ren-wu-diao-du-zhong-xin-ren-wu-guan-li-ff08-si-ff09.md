@@ -199,6 +199,7 @@ JobInfoController中提供接口处理
         String name = String.valueOf(xxlJobInfo.getId());
  
 		try {
+		// 暂停任务
             boolean ret = XxlJobDynamicScheduler.pauseJob(name, group);	// jobStatus do not store
             return ret?ReturnT.SUCCESS:ReturnT.FAIL;
 		} catch (SchedulerException e) {
