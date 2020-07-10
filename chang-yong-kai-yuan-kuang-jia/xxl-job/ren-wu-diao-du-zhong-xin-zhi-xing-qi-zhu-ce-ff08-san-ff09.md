@@ -108,7 +108,8 @@ public static RpcResponse invokeService(RpcRequest request, Object serviceBean) 
 	}
 
 ```
-
-
+调用的类：
+20180915141957718.png
+参数：基本的服务器信息
 
 
