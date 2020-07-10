@@ -254,4 +254,31 @@ public static ReturnT<String> runExecutor(TriggerParam triggerParam, String addr
 
 ```
 
+在XxlJobDynamicScheduler的getExecutorBiz中会通过NetComClientProxy生成代理对象，在执行时会调用其方法。
+
+
+
+```
+public static ExecutorBiz getExecutorBiz(String address) throws Exception {
+        // valid
+        if (address==null || address.trim().length()==0) {
+            return null;
+        }
+ 
+        // load-cache
+        address = address.trim();
+        ExecutorBiz executorBiz = executorBizRepository.get(address);
+        if (executorBiz != null) {
+            return executorBiz;
+        }
+ 
+        // set-cache
+        executorBiz = (ExecutorBiz) new NetComClientProxy(ExecutorBiz.class, address, accessToken).getObject();
+        executorBizRepository.put(address, executorBiz);
+        return executorBiz;
+    }
+
+```
+
+
 
