@@ -383,7 +383,8 @@
       * [第02讲：发布订阅模式：如何使用 Watch 机制实现分布式通知](chang-yong-kai-yuan-kuang-jia/zookeeper/ji-chu-pian/di-02-jiang-ff1a-fabu-ding-yue-mo-shi-ff1a-ru-he-shi-yong-watch-ji-zhi-shi-xian-fen-bu-shi-tong-zhi.md)
   * [ShardingSphere](chang-yong-kai-yuan-kuang-jia/shardingsphere.md)
   * [XXL-JOB](chang-yong-kai-yuan-kuang-jia/xxl-job.md)
-    * 任务调度中心执行器注册（三）
+    * [任务调度中心执行器注册（三）](chang-yong-kai-yuan-kuang-jia/xxl-job/ren-wu-diao-du-zhong-xin-zhi-xing-qi-zhu-ce-ff08-san-ff09.md)
+    * XXL-JOB原理--定时任务框架简介（一）
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
