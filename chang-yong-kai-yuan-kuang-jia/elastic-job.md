@@ -8,3 +8,4 @@ ElasticJob自2014年底开源以来，经历了5年多的发展，以其功能�
 ![](/static/image/sdfsdfsdf44.jpg)
 
 ## 1.2.说明
+Elastic-Job-Lite定位为轻量级无中心化解决方案，使用jar包的形式提供分布式任务的协调服务。
