@@ -239,3 +239,15 @@ JobInfoController中提供接口重新执行任务
 
 
 
+```
+    @RequestMapping("/resume")
+	@ResponseBody
+	public ReturnT<String> resume(int id) {
+		return xxlJobService.resume(id);
+	}
+
+```
+
+
+
+
