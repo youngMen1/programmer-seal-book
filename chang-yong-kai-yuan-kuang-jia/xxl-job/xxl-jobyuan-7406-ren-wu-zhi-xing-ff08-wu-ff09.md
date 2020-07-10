@@ -1,4 +1,4 @@
-``# 1.XXL-JOB原理--任务执行（五）
+````# 1.XXL-JOB原理--任务执行（五）
 ## 1.1.基本介绍
 任务调度中心发送任务执行请求
 任务发送执行的操作有两种：
@@ -226,5 +226,32 @@ public static void trigger(int jobId) {
 ```
 
 runExecutor方法中根据address服务器地址，XxlJobDynamicScheduler.getExecutorBiz中会获取代理类最终调用JettyClient的send方法。
+
+
+
+```
+public static ReturnT<String> runExecutor(TriggerParam triggerParam, String address){
+        ReturnT<String> runResult = null;
+        try {
+			//获取代理对象
+            ExecutorBiz executorBiz = XxlJobDynamicScheduler.getExecutorBiz(address);
+			//最终调用执行
+            runResult = executorBiz.run(triggerParam);
+        } catch (Exception e) {
+            logger.error(">>>>>>>>>>> xxl-job trigger error, please check if the executor[{}] is running.", address, e);
+            runResult = new ReturnT<String>(ReturnT.FAIL_CODE, ""+e );
+        }
+ 
+        StringBuffer runResultSB = new StringBuffer(I18nUtil.getString("jobconf_trigger_run") + "：");
+        runResultSB.append("<br>address：").append(address);
+        runResultSB.append("<br>code：").append(runResult.getCode());
+        runResultSB.append("<br>msg：").append(runResult.getMsg());
+ 
+        runResult.setMsg(runResultSB.toString());
+        runResult.setContent(address);
+        return runResult;
+    }
+
+```
 
 
