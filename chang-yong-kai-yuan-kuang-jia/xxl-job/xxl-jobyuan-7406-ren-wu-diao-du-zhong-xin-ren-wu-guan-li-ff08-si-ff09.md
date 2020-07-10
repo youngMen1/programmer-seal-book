@@ -210,6 +210,28 @@ JobInfoController中提供接口处理
 
 ```
 
+调用XxlJobDynamicScheduler的pauseJob进行任务停止，最终还是执行quartz 的接口完成任务暂停
+
+```
+public static boolean pauseJob(String jobName, String jobGroup) throws SchedulerException {
+    	// TriggerKey : name + group
+    	TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
+        
+        boolean result = false;
+        if (checkExists(jobName, jobGroup)) {
+            //任务暂停
+            scheduler.pauseTrigger(triggerKey);
+            result = true;
+            logger.info(">>>>>>>>>>> pauseJob success, triggerKey:{}", triggerKey);
+        } else {
+        	logger.info(">>>>>>>>>>> pauseJob fail, triggerKey:{}", triggerKey);
+        }
+        return result;
+    }
+
+```
+
+### 4.恢复任务
 
 
 
