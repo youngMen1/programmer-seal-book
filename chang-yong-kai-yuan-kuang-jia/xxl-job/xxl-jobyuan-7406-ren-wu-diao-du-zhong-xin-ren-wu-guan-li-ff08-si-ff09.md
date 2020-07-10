@@ -74,6 +74,7 @@
 ```
 
 数据库持久化数据：
+
 ![](/static/image/20180915163211609.png)
 
 在XxlJobDynamicScheduler中调用quartz的创建任务方法构建定时任务，定时任务执行类为QuartzJobBean的子类RemoteHttpJobBean，在定时任务执行时RemoteHttpJobBean会调用任务执行器接口，执行相关任务 
