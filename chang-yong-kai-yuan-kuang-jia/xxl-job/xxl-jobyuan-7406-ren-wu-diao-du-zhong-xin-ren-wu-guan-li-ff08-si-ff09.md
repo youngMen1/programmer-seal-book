@@ -74,3 +74,46 @@
 
 在XxlJobDynamicScheduler中调用quartz的创建任务方法构建定时任务，定时任务执行类为QuartzJobBean的子类RemoteHttpJobBean，在定时任务执行时RemoteHttpJobBean会调用任务执行器接口，执行相关任务
 
+
+```
+public static boolean addJob(String jobName, String jobGroup, String cronExpression) throws SchedulerException {
+    	// TriggerKey : name + group
+		//创建定时器别名
+        TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
+        JobKey jobKey = new JobKey(jobName, jobGroup);
+        
+        // TriggerKey valid if_exists
+        if (checkExists(jobName, jobGroup)) {
+            logger.info(">>>>>>>>> addJob fail, job already exist, jobGroup:{}, jobName:{}", jobGroup, jobName);
+            return false;
+        }
+        
+        // CronTrigger : TriggerKey + cronExpression	// withMisfireHandlingInstructionDoNothing 忽略掉调度终止过程中忽略的调度
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression).withMisfireHandlingInstructionDoNothing();
+		//创建cron定时器
+        CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity(triggerKey).withSchedule(cronScheduleBuilder).build();
+ 
+        // JobDetail : jobClass
+		//定时执行类
+		Class<? extends Job> jobClass_ = RemoteHttpJobBean.class;   // Class.forName(jobInfo.getJobClass());
+        
+		//创建任务
+		JobDetail jobDetail = JobBuilder.newJob(jobClass_).withIdentity(jobKey).build();
+        /*if (jobInfo.getJobData()!=null) {
+        	JobDataMap jobDataMap = jobDetail.getJobDataMap();
+        	jobDataMap.putAll(JacksonUtil.readValue(jobInfo.getJobData(), Map.class));	
+        	// JobExecutionContext context.getMergedJobDataMap().get("mailGuid");
+		}*/
+        
+        // schedule : jobDetail + cronTrigger
+		//添加定时任务到quartz
+        Date date = scheduler.scheduleJob(jobDetail, cronTrigger);
+ 
+        logger.info(">>>>>>>>>>> addJob success, jobDetail:{}, cronTrigger:{}, date:{}", jobDetail, cronTrigger, date);
+        return true;
+    }
+
+```
+
+
+
