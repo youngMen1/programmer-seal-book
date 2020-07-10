@@ -46,5 +46,7 @@ public void addTrigger(final int jobId){
 
 ```
 
+在XxlJobTrigger.trigger中会根据jobId获取任务的基本配置信息（阻塞策略、路由策略、失败重试测试、分组服务器列表等等），然后根据路由策略选择是广播还是单播等，接下来就是组装消息体调用runExecutor方法发送http请求到任务执行器。
+
 
 
