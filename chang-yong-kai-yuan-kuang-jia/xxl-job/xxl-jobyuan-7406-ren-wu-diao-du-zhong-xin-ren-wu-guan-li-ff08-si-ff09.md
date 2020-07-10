@@ -164,7 +164,7 @@ public static boolean removeJob(String jobName, String jobGroup) throws Schedule
         TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
         boolean result = false;
         if (checkExists(jobName, jobGroup)) {
-			//删除任务
+	    // 删除任务
             result = scheduler.unscheduleJob(triggerKey);
             logger.info(">>>>>>>>>>> removeJob, triggerKey:{}, result [{}]", triggerKey, result);
         }
