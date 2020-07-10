@@ -146,7 +146,7 @@ public static void trigger(int jobId) {
 
             }
         } else {
-            //单播模式
+            // 单播模式
             // 1、save log-id
             XxlJobLog jobLog = new XxlJobLog();
             jobLog.setJobGroup(jobInfo.getJobGroup());
@@ -195,7 +195,7 @@ public static void trigger(int jobId) {
                 triggerParam.setBroadcastTotal(1);
 
                 // 4.2、trigger-run (route run / trigger remote executor)
-                //路由后远程调用服务接口，执行任务
+                // 路由后远程调用服务接口，执行任务
                 triggerResult = executorRouteStrategyEnum.getRouter().routeRun(triggerParam, addressList);
                 triggerMsgSb.append("<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>"+ I18nUtil.getString("jobconf_trigger_run") +"<<<<<<<<<<< </span><br>").append(triggerResult.getMsg());
 
