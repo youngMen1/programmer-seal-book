@@ -31,6 +31,20 @@ public class RemoteHttpJobBean extends QuartzJobBean {
 
 ```
 
+JobTriggerPoolHelper.trigger所做的操作是将任务提交给一个线程池（任务调度中心默认开启50个线程），在线程池中调用XxlJobTrigger.trigger。
+
+
+```
+public void addTrigger(final int jobId){
+        triggerPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                XxlJobTrigger.trigger(jobId);
+            }
+        });
+    }
+
+```
 
 
 
