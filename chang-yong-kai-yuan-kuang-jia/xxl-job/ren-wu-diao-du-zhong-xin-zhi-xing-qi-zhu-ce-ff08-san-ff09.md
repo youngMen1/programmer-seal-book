@@ -114,7 +114,9 @@ public static RpcResponse invokeService(RpcRequest request, Object serviceBean) 
 
   
 ![](/static/image/20180915141957718.png)  
-参数：基本的服务器信息  
+
+参数：基本的服务器信息
+
 ![](/static/image/20180915142414402.png)  
 3.在AdminBiz的实现类AdminBizImpl中调用dao完成注册信息入库操作：
 
