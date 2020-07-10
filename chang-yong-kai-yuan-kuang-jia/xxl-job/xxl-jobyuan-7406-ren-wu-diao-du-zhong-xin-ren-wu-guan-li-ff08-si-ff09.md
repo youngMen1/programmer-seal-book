@@ -117,3 +117,7 @@ public static boolean addJob(String jobName, String jobGroup, String cronExpress
 
 #### 2.删除任务
 
+删除任务简单来说就是将任务从quartz中移除，不再执行就好
+
+JobInfoController中提供了删除任务接口
+
