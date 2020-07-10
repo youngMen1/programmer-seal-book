@@ -382,6 +382,7 @@ public class JettyServerHandler extends AbstractHandler {
 
 ```
 
+在invokeService根据发送过来的类名com.xxl.job.core.biz.ExecutorBiz和方法run，通过反射机制调用
 
 
 
