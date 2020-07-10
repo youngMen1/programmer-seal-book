@@ -36,8 +36,6 @@ xxl:
 
 XxlJobExecutor类在进行初始化时会进行如下操作。
 
-
-
 ```
 //当存在多个任务调度中心时，创建代理类并注册，在NetComClientProxy
 private static void initAdminBizList(String adminAddresses, String accessToken) throws Exception {
@@ -56,6 +54,53 @@ private static void initAdminBizList(String adminAddresses, String accessToken) 
     }
 
 ```
+在XxlJobExecutor被调用时执行getObject方法，完成向任务调度中心发送请求进行服务注册操作。
+
+
+```
+@Override
+	public Object getObject() throws Exception {
+		return Proxy.newProxyInstance(Thread.currentThread()
+				.getContextClassLoader(), new Class[] { iface },
+				new InvocationHandler() {
+					@Override
+					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+ 
+						// filter method like "Object.toString()"
+						if (Object.class.getName().equals(method.getDeclaringClass().getName())) {
+							logger.error(">>>>>>>>>>> xxl-rpc proxy class-method not support [{}.{}]", method.getDeclaringClass().getName(), method.getName());
+							throw new RuntimeException("xxl-rpc proxy class-method not support");
+						}
+						
+						// request
+						RpcRequest request = new RpcRequest();
+	                    request.setServerAddress(serverAddress);
+	                    request.setCreateMillisTime(System.currentTimeMillis());
+	                    request.setAccessToken(accessToken);
+	                    request.setClassName(method.getDeclaringClass().getName());
+	                    request.setMethodName(method.getName());
+	                    request.setParameterTypes(method.getParameterTypes());
+	                    request.setParameters(args);
+ 
+	                    // send
+						//向任务调度中心发送请求进行服务注册
+	                    RpcResponse response = client.send(request);
+	                    
+	                    // valid response
+						if (response == null) {
+							throw new Exception("Network request fail, response not found.");
+						}
+	                    if (response.isError()) {
+	                        throw new RuntimeException(response.getError());
+	                    } else {
+	                        return response.getResult();
+	                    }
+	                   
+					}
+				});
+
+```
+
 
 
 
