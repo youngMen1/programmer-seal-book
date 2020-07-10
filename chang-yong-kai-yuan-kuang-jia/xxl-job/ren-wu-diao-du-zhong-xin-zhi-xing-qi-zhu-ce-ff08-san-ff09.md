@@ -112,8 +112,7 @@ public static RpcResponse invokeService(RpcRequest request, Object serviceBean) 
 
 调用的类：
 
-  
-![](/static/image/20180915141957718.png)  
+![](/static/image/20180915141957718.png)
 
 参数：基本的服务器信息
 
@@ -123,7 +122,7 @@ public static RpcResponse invokeService(RpcRequest request, Object serviceBean) 
 ```
 @Override
 public ReturnT<String> registry(RegistryParam registryParam) {
-        //在xxl_job_qrtz_trigger_registry表中添加或更新数据
+        // 在xxl_job_qrtz_trigger_registry表中添加或更新数据
         int ret = xxlJobRegistryDao.registryUpdate(registryParam.getRegistGroup(), registryParam.getRegistryKey(), registryParam.getRegistryValue());
         if (ret < 1) {
             xxlJobRegistryDao.registrySave(registryParam.getRegistGroup(), registryParam.getRegistryKey(), registryParam.getRegistryValue());
