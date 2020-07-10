@@ -137,5 +137,6 @@ public ReturnT<String> registry(RegistryParam registryParam) {
 
 在任务调度中心会列表展示数据：
 
+20180915142914984.png
 
 
