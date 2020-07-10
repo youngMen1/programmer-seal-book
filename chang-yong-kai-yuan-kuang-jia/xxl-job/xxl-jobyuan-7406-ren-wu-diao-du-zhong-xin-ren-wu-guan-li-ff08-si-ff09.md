@@ -131,6 +131,6 @@ public ReturnT<String> remove(int id) {
 }
 
 ```
-
+在XxlJobService中根据逻辑id删除任务，并且删除数据库中相关持久化数据
 
 
