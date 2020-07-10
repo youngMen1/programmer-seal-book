@@ -4,4 +4,4 @@ ElasticJob自2014年底开源以来，经历了5年多的发展，以其功能�
 
 2020年6月，经过Apache ShardingSphere社区投票，接纳ElasticJob为其子项目。目前ElasticJob的四个子项目已经正式迁入Apache仓库。
 
-aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wVW9DdDl0Z3BubFBpYUl6Rkh4QnpBRzRKWlF0ejVNMXZEeHlRcWpKVHBzTExBaWNqQmhkMWowdXlUTFV1MWVtbllrUU11aWFEV1liOGlhS3dQWU1PTXFZNFEvNjQw.jpg
+![](/static/image/sdfsdfsdf44.jpg)
