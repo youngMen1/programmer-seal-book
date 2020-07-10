@@ -5,4 +5,5 @@ http://www.xuxueli.com/xxl-job/#/?id=%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B
 ```
 **最新版本架构图：**
 ![](/static/image/微信截图_20200710140240.png)
+## 1.1.基本介绍
 
