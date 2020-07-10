@@ -10,10 +10,13 @@ ElasticJob自2014年底开源以来，经历了5年多的发展，以其功能�
 ## 1.2.说明
 Elastic-Job-Lite定位为轻量级无中心化解决方案，使用jar包的形式提供分布式任务的协调服务。
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-lite`
+
 Elastic-Job-Cloud采用自研Mesos Framework的解决方案，额外提供资源治理、应用分发以及进程隔离等功能。
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-cloud`
+
 官方文档
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-doc`
+
 官方Elastic-Job 示例
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-example`
 
