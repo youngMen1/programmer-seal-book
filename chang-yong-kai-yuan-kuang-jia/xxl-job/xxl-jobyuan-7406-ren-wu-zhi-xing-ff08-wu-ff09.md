@@ -544,6 +544,7 @@ public static RpcResponse invokeService(RpcRequest request, Object serviceBean) 
 ```
 
 # 2.总结
+
 任务执行器提供web服务，任务调度中心根据任务分组及分组服务器发送http请求，任务执行器收到请求，根据请求中的数据调用对应的任务。
 
 
