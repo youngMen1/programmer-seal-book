@@ -134,3 +134,28 @@ public ReturnT<String> remove(int id) {
 在XxlJobService中根据逻辑id删除任务，并且删除数据库中相关持久化数据
 
 
+```
+    @Override
+	public ReturnT<String> remove(int id) {
+		XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
+        String group = String.valueOf(xxlJobInfo.getJobGroup());
+        String name = String.valueOf(xxlJobInfo.getId());
+ 
+		try {
+			//从quartz中移除任务，并将数据库中相关数据删除
+			XxlJobDynamicScheduler.removeJob(name, group);
+			xxlJobInfoDao.delete(id);
+			xxlJobLogDao.delete(id);
+			xxlJobLogGlueDao.deleteByJobId(id);
+			return ReturnT.SUCCESS;
+		} catch (SchedulerException e) {
+			logger.error(e.getMessage(), e);
+		}
+		return ReturnT.FAIL;
+	}
+
+```
+
+
+
+
