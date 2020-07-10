@@ -292,6 +292,64 @@ public static boolean resumeJob(String jobName, String jobGroup) throws Schedule
     }
 
 ```
+### 5.更新任务
+
+任务更新操作就是更新一下任务相关参数
+
+XxlJobController中提供update接口，完成任务更新操作
+
+```
+    @RequestMapping("/update")
+	@ResponseBody
+	public ReturnT<String> update(XxlJobInfo jobInfo) {
+		return xxlJobService.update(jobInfo);
+	}
+
+```
+
+在XxlJobService中调用update更新任务，并更新相关数据库中的数据
+
+```
+@Override
+	public ReturnT<String> update(XxlJobInfo jobInfo) {
+ 
+		//省略部分判断代码
+		// stage job info
+		XxlJobInfo exists_jobInfo = xxlJobInfoDao.loadById(jobInfo.getId());
+		if (exists_jobInfo == null) {
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_id")+I18nUtil.getString("system_not_found")) );
+		}
+		//String old_cron = exists_jobInfo.getJobCron();
+ 
+		exists_jobInfo.setJobCron(jobInfo.getJobCron());
+		exists_jobInfo.setJobDesc(jobInfo.getJobDesc());
+		exists_jobInfo.setAuthor(jobInfo.getAuthor());
+		exists_jobInfo.setAlarmEmail(jobInfo.getAlarmEmail());
+		exists_jobInfo.setExecutorRouteStrategy(jobInfo.getExecutorRouteStrategy());
+		exists_jobInfo.setExecutorHandler(jobInfo.getExecutorHandler());
+		exists_jobInfo.setExecutorParam(jobInfo.getExecutorParam());
+		exists_jobInfo.setExecutorBlockStrategy(jobInfo.getExecutorBlockStrategy());
+		exists_jobInfo.setExecutorFailStrategy(jobInfo.getExecutorFailStrategy());
+		exists_jobInfo.setExecutorTimeout(jobInfo.getExecutorTimeout());
+		exists_jobInfo.setChildJobId(jobInfo.getChildJobId());
+        xxlJobInfoDao.update(exists_jobInfo);
+ 
+		// fresh quartz
+		String qz_group = String.valueOf(exists_jobInfo.getJobGroup());
+		String qz_name = String.valueOf(exists_jobInfo.getId());
+        try {
+            //重新配置定时任务
+            boolean ret = XxlJobDynamicScheduler.rescheduleJob(qz_group, qz_name, exists_jobInfo.getJobCron());
+            return ret?ReturnT.SUCCESS:ReturnT.FAIL;
+        } catch (SchedulerException e) {
+            logger.error(e.getMessage(), e);
+        }
+ 
+		return ReturnT.FAIL;
+	}
+
+```
+
 
 
 
