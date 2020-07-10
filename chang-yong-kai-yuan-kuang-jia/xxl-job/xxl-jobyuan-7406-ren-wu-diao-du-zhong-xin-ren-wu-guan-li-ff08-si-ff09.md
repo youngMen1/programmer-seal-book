@@ -188,6 +188,7 @@ JobInfoController中提供接口处理
 
 ```
 
+调用XxlJobService的paus进行任务停止
 
 
 
