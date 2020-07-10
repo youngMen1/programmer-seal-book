@@ -28,7 +28,7 @@
         return xxlJobService.add(jobInfo);
     }
 ```
-
+#### 1.任务创建
 调用XxlJobService的add方法，新建quartz任务
 
 ```
@@ -115,5 +115,5 @@ public static boolean addJob(String jobName, String jobGroup, String cronExpress
 
 ```
 
-
+#### 2.删除任务
 
