@@ -12,6 +12,9 @@ Elastic-Job-Lite定位为轻量级无中心化解决方案，使用jar包的形�
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-lite`
 Elastic-Job-Cloud采用自研Mesos Framework的解决方案，额外提供资源治理、应用分发以及进程隔离等功能。
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-cloud`
-Elastic-Job 示例
+官方文档
+仓库地址：`https://github.com/apache/shardingsphere-elastic-job-doc`
+官方Elastic-Job 示例
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-example`
+
 
