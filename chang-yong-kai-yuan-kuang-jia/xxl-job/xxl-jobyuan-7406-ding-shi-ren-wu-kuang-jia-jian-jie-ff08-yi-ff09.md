@@ -11,3 +11,13 @@ http://www.xuxueli.com/xxl-job/#/?id=%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B
 quartz支持多种数据库（`https://github.com/quartz-scheduler/quartz/tree/master/quartz-core/src/main/resources/org/quartz/impl/jdbcjobstore`），
 xxl-job其实也是在quartz的基础上实现的，但是修改了任务调度的模式，并且任务调度采用注册和RPC调用方式来实现。
 20180910211104223.png
+
+### 技术栈
+mysql、SSM，内置jetty作为RPC服务调用、quartz
+
+### xxl-job支持Postgresql数据库
+目前由于xxl-job只支持mysql数据库，目前在github上拉了一个分支支持Postgresql 地址GitHub地址
+`https://github.com/IAMTJW/xxl-job`
+
+
+
