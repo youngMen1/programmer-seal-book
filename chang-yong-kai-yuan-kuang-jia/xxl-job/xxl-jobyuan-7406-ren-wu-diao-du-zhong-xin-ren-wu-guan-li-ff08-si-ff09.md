@@ -24,7 +24,7 @@
 
 
 ```
-@RequestMapping("/add")
+       @RequestMapping("/add")
 	@ResponseBody
 	public ReturnT<String> add(XxlJobInfo jobInfo) {
 		//添加定时器
