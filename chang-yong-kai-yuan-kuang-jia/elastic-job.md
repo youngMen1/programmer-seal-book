@@ -3,3 +3,5 @@ ElasticJob（https://github.com/elasticjob）是一个分布式调度解决方�
 ElasticJob自2014年底开源以来，经历了5年多的发展，以其功能的丰富性，文档的全面性，代码的高质量，框架的易用性，积累了大量的忠实用户和良好的业内口碑（5.8K star），一直也是分布式调度框架领域最受大家欢迎的项目之一。
 
 2020年6月，经过Apache ShardingSphere社区投票，接纳ElasticJob为其子项目。目前ElasticJob的四个子项目已经正式迁入Apache仓库。
+
+aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy8wVW9DdDl0Z3BubFBpYUl6Rkh4QnpBRzRKWlF0ejVNMXZEeHlRcWpKVHBzTExBaWNqQmhkMWowdXlUTFV1MWVtbllrUU11aWFEV1liOGlhS3dQWU1PTXFZNFEvNjQw.jpg
