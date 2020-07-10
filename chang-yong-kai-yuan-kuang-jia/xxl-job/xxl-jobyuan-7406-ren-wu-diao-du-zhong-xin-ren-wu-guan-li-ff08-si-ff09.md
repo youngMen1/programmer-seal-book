@@ -32,6 +32,7 @@
 	}
 
 ```
+调用XxlJobService的add方法，新建quartz任务
 
 
  
