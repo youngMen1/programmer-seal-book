@@ -173,6 +173,22 @@ public static boolean removeJob(String jobName, String jobGroup) throws Schedule
 
 ```
 
+### 3.暂停任务
+
+暂停任务同意调用quartz的接口进行任务暂停处理
+
+JobInfoController中提供接口处理
+
+```
+    @RequestMapping("/pause")
+	@ResponseBody
+	public ReturnT<String> pause(int id) {
+		return xxlJobService.pause(id);
+	}
+
+```
+
+
 
 
 
