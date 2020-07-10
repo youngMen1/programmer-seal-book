@@ -191,6 +191,26 @@ JobInfoController中提供接口处理
 调用XxlJobService的paus进行任务停止
 
 
+```
+    @Override
+	public ReturnT<String> pause(int id) {
+        XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
+        String group = String.valueOf(xxlJobInfo.getJobGroup());
+        String name = String.valueOf(xxlJobInfo.getId());
+ 
+		try {
+            boolean ret = XxlJobDynamicScheduler.pauseJob(name, group);	// jobStatus do not store
+            return ret?ReturnT.SUCCESS:ReturnT.FAIL;
+		} catch (SchedulerException e) {
+			logger.error(e.getMessage(), e);
+			return ReturnT.FAIL;
+		}
+	}
+
+```
+
+
+
 
 
 
