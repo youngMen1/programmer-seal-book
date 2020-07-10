@@ -5,7 +5,7 @@
 地址：http://127.0.0.1:8080/api
 任务调度中心对外提供注册地址/api用来接受任务执行器注册的相关服务器信息
 
-#### 1.xxl-job admin通过JobApiController来对外提供/api接口
+1.xxl-job admin通过JobApiController来对外提供/api接口
 
 
 ```
@@ -61,5 +61,54 @@ public class JobApiController {
 }
 
 ```
+2.在NetComServerFactory类中调用invokeService方法，根据反射调用AdminBiz接口的实现类AdminBizImpl的register方法完成服务注册操作
+
+
+```
+public static RpcResponse invokeService(RpcRequest request, Object serviceBean) {
+		if (serviceBean==null) {
+			serviceBean = serviceMap.get(request.getClassName());
+		}
+		if (serviceBean == null) {
+			// TODO
+		}
+ 
+		RpcResponse response = new RpcResponse();
+ 
+		if (System.currentTimeMillis() - request.getCreateMillisTime() > 180000) {
+			response.setResult(new ReturnT<String>(ReturnT.FAIL_CODE, "The timestamp difference between admin and executor exceeds the limit."));
+			return response;
+		}
+		if (accessToken!=null && accessToken.trim().length()>0 && !accessToken.trim().equals(request.getAccessToken())) {
+			response.setResult(new ReturnT<String>(ReturnT.FAIL_CODE, "The access token[" + request.getAccessToken() + "] is wrong."));
+			return response;
+		}
+ 
+		try {
+			//接口AdminBiz的实现类AdminBizImpl
+			Class<?> serviceClass = serviceBean.getClass();
+			//AdminBiz的register方法
+			String methodName = request.getMethodName();
+			Class<?>[] parameterTypes = request.getParameterTypes();
+			Object[] parameters = request.getParameters();
+ 
+			FastClass serviceFastClass = FastClass.create(serviceClass);
+			//调用AdminBizImpl的register方法
+			FastMethod serviceFastMethod = serviceFastClass.getMethod(methodName, parameterTypes);
+ 
+			Object result = serviceFastMethod.invoke(serviceBean, parameters);
+ 
+			response.setResult(result);
+		} catch (Throwable t) {
+			t.printStackTrace();
+			response.setError(t.getMessage());
+		}
+ 
+		return response;
+	}
+
+```
+
+
 
 
