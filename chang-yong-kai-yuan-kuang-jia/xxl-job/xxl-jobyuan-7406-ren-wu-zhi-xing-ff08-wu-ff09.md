@@ -225,6 +225,6 @@ public static void trigger(int jobId) {
 
 ```
 
-
+runExecutor方法中根据address服务器地址，XxlJobDynamicScheduler.getExecutorBiz中会获取代理类最终调用JettyClient的send方法。
 
 
