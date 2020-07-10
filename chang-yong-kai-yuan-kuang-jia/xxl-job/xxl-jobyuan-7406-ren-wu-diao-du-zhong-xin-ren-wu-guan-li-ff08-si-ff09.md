@@ -351,6 +351,64 @@ XxlJobController中提供update接口，完成任务更新操作
 ```
 
 
+在XxlJobDynamicScheduler中调用quartz相关方法重新配置定时任务
+
+
+
+```
+public static boolean rescheduleJob(String jobGroup, String jobName, String cronExpression) throws SchedulerException {
+    	
+    	// TriggerKey valid if_exists
+        if (!checkExists(jobName, jobGroup)) {
+        	logger.info(">>>>>>>>>>> rescheduleJob fail, job not exists, JobGroup:{}, JobName:{}", jobGroup, jobName);
+            return false;
+        }
+        
+        // TriggerKey : name + group
+        TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
+        CronTrigger oldTrigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+        //任务存在直接更新一下
+        if (oldTrigger != null) {
+            // avoid repeat
+            String oldCron = oldTrigger.getCronExpression();
+            if (oldCron.equals(cronExpression)){
+                return true;
+            }
+ 
+            // CronTrigger : TriggerKey + cronExpression
+            CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression).withMisfireHandlingInstructionDoNothing();
+            oldTrigger = oldTrigger.getTriggerBuilder().withIdentity(triggerKey).withSchedule(cronScheduleBuilder).build();
+ 
+            // rescheduleJob
+            scheduler.rescheduleJob(triggerKey, oldTrigger);
+        } else {
+            //不存在和直接创建新的任务类似
+            // CronTrigger : TriggerKey + cronExpression
+            CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression).withMisfireHandlingInstructionDoNothing();
+            CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity(triggerKey).withSchedule(cronScheduleBuilder).build();
+ 
+            // JobDetail-JobDataMap fresh
+            JobKey jobKey = new JobKey(jobName, jobGroup);
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+            /*JobDataMap jobDataMap = jobDetail.getJobDataMap();
+            jobDataMap.clear();
+            jobDataMap.putAll(JacksonUtil.readValue(jobInfo.getJobData(), Map.class));*/
+ 
+            // Trigger fresh
+            HashSet<Trigger> triggerSet = new HashSet<Trigger>();
+            triggerSet.add(cronTrigger);
+ 
+            scheduler.scheduleJob(jobDetail, triggerSet, true);
+        }
+ 
+        logger.info(">>>>>>>>>>> resumeJob success, JobGroup:{}, JobName:{}", jobGroup, jobName);
+        return true;
+    }
+
+```
+
+### 6.立即执行任务
+
 
 
 
