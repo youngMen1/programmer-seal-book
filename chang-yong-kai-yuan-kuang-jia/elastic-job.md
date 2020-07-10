@@ -17,4 +17,6 @@ Elastic-Job-Cloud采用自研Mesos Framework的解决方案，额外提供资源
 官方Elastic-Job 示例
 仓库地址：`https://github.com/apache/shardingsphere-elastic-job-example`
 
+后续ElasticJob会作为Apache ShardingSphere ElasticJob子项目继续发展，并融入Apache ShardingSphere解决方案，成为生态体系中的一个重要调度组件。并且可以作为全功能的分布式调度框架，独立应用于各种业务调度场景。
+
 
