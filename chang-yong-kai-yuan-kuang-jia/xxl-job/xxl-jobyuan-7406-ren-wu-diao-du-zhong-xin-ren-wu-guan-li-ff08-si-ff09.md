@@ -248,6 +248,52 @@ JobInfoController中提供接口重新执行任务
 
 ```
 
+调用XxlJobService的resume接口继续任务
+
+
+```
+    @Override
+	public ReturnT<String> resume(int id) {
+        XxlJobInfo xxlJobInfo = xxlJobInfoDao.loadById(id);
+        String group = String.valueOf(xxlJobInfo.getJobGroup());
+        String name = String.valueOf(xxlJobInfo.getId());
+ 
+		try {
+            //继续任务
+			boolean ret = XxlJobDynamicScheduler.resumeJob(name, group);
+			return ret?ReturnT.SUCCESS:ReturnT.FAIL;
+		} catch (SchedulerException e) {
+			logger.error(e.getMessage(), e);
+			return ReturnT.FAIL;
+		}
+	}
+
+```
+
+在XllJobDynamicScheduler中调用quartz的接口重新开启任务
+
+
+
+```
+public static boolean resumeJob(String jobName, String jobGroup) throws SchedulerException {
+    	// TriggerKey : name + group
+    	TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
+        
+        boolean result = false;
+        if (checkExists(jobName, jobGroup)) {
+            //继续任务
+            scheduler.resumeTrigger(triggerKey);
+            result = true;
+            logger.info(">>>>>>>>>>> resumeJob success, triggerKey:{}", triggerKey);
+        } else {
+        	logger.info(">>>>>>>>>>> resumeJob fail, triggerKey:{}", triggerKey);
+        }
+        return result;
+    }
+
+```
+
+
 
 
 
