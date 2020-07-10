@@ -390,6 +390,7 @@
     * [XXL-JOB原理--任务执行（五）](chang-yong-kai-yuan-kuang-jia/xxl-job/xxl-jobyuan-7406-ren-wu-zhi-xing-ff08-wu-ff09.md)
   * [Elastic-Job](chang-yong-kai-yuan-kuang-jia/elastic-job.md)
     * [分布式调度项目ElasticJob正式迁入Apache仓库](chang-yong-kai-yuan-kuang-jia/elastic-job/fen-bu-shi-diao-du-xiang-mu-elasticjob-zheng-shi-qian-ru-apache-cang-ku.md)
+    * Elastic-Job原理--服务器初始化、节点选举与通知\(二\)
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
