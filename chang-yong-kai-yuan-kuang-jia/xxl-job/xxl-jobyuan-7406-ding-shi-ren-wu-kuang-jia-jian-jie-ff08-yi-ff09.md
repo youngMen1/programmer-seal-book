@@ -16,8 +16,8 @@ xxl-job其实也是在quartz的基础上实现的，但是修改了任务调度�
 mysql、SSM，内置jetty作为RPC服务调用、quartz
 
 ### xxl-job支持Postgresql数据库
-目前由于xxl-job只支持mysql数据库，目前在github上拉了一个分支支持Postgresql 地址GitHub地址
-`https://github.com/IAMTJW/xxl-job`
+目前由于xxl-job只支持mysql数据库，目前在github上拉了一个分支支持Postgresql
+地址GitHub地址：`https://github.com/IAMTJW/xxl-job`
 
 
 
