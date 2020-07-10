@@ -20,6 +20,20 @@
  ### 1.2.1.任务创建
  
 调用JobInfoController的add方法添加任务
+
+
+
+```
+@RequestMapping("/add")
+	@ResponseBody
+	public ReturnT<String> add(XxlJobInfo jobInfo) {
+		//添加定时器
+		return xxlJobService.add(jobInfo);
+	}
+
+```
+
+
  
  
  
