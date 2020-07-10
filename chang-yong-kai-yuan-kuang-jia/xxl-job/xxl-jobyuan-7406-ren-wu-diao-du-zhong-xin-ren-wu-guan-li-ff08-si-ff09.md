@@ -156,6 +156,24 @@ public ReturnT<String> remove(int id) {
 
 ```
 
+在XxlJobDynamicScheduler中调用removeJob方法删除相关任务
+
+```
+public static boolean removeJob(String jobName, String jobGroup) throws SchedulerException {
+    	// TriggerKey : name + group
+        TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
+        boolean result = false;
+        if (checkExists(jobName, jobGroup)) {
+			//删除任务
+            result = scheduler.unscheduleJob(triggerKey);
+            logger.info(">>>>>>>>>>> removeJob, triggerKey:{}, result [{}]", triggerKey, result);
+        }
+        return true;
+    }
+
+```
+
+
 
 
 
