@@ -100,8 +100,8 @@ private static void initAdminBizList(String adminAddresses, String accessToken) 
 				});
 
 ```
-在JettyClient中调用send方法完成服务注册操作
 
+在JettyClient中调用send方法完成服务注册操作
 
 ```
 public RpcResponse send(RpcRequest request) throws Exception {
@@ -136,7 +136,8 @@ public RpcResponse send(RpcRequest request) throws Exception {
 	}
 
 ```
-
+# 2.总结
+其实执行器注册到任务调度的信息非常简单，可以就简单的认为为应用的一些基本信息，IP、端口和应用名称等等，并不用将具体的任务类等信息注册到任务调度中心，所以任务调度中心无法感知执行器一些具体信息，只能需要靠运维和技术人员在任务调度中心进行选择配置，否则可能会无法正常执行任务。
 
 
 
