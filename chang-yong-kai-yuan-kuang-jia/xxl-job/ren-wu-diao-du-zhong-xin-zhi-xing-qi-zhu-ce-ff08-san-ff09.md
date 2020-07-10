@@ -133,7 +133,7 @@ public ReturnT<String> registry(RegistryParam registryParam) {
 
 表中数据：
 
-20180915142945462.png
+![](/static/image/20180915142945462.png)
 
 在任务调度中心会列表展示数据：
 
