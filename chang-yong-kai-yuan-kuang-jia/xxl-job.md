@@ -31,7 +31,31 @@ xxl:
       logretentiondays: 20
 ```
 2.相关注册执行代码
+
 在执行器启动时会读取配置，当存在任务调度中心地址会依次向任务调度中心注册其地址
 
 XxlJobExecutor类在进行初始化时会进行如下操作。
+
+
+
+```
+//当存在多个任务调度中心时，创建代理类并注册，在NetComClientProxy
+private static void initAdminBizList(String adminAddresses, String accessToken) throws Exception {
+        if (adminAddresses!=null && adminAddresses.trim().length()>0) {
+            for (String address: adminAddresses.trim().split(",")) {
+                if (address!=null && address.trim().length()>0) {
+                    String addressUrl = address.concat(AdminBiz.MAPPING);
+                    AdminBiz adminBiz = (AdminBiz) new NetComClientProxy(AdminBiz.class, addressUrl, accessToken).getObject();
+                    if (adminBizList == null) {
+                        adminBizList = new ArrayList<AdminBiz>();
+                    }
+                    adminBizList.add(adminBiz);
+                }
+            }
+        }
+    }
+
+```
+
+
 
