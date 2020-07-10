@@ -381,6 +381,7 @@
     * [基础篇](chang-yong-kai-yuan-kuang-jia/zookeeper/ji-chu-pian.md)
       * [第01讲：ZooKeeper 数据模型：节点的特性与应用](chang-yong-kai-yuan-kuang-jia/zookeeper/ji-chu-pian/di-01-jiang-ff1a-zookeeper-shu-ju-mo-xing-ff1a-jie-dian-de-te-xing-yu-ying-yong.md)
       * [第02讲：发布订阅模式：如何使用 Watch 机制实现分布式通知](chang-yong-kai-yuan-kuang-jia/zookeeper/ji-chu-pian/di-02-jiang-ff1a-fabu-ding-yue-mo-shi-ff1a-ru-he-shi-yong-watch-ji-zhi-shi-xian-fen-bu-shi-tong-zhi.md)
+  * ShardingSphere
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
