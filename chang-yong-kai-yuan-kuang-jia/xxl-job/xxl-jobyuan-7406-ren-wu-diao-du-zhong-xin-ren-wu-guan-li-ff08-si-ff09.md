@@ -35,6 +35,46 @@
 调用XxlJobService的add方法，新建quartz任务
 
 
+```
+@Override
+	public ReturnT<String> add(XxlJobInfo jobInfo) {
+		// valid
+		//获取任务分组
+		XxlJobGroup group = xxlJobGroupDao.load(jobInfo.getJobGroup());
+		
+		//省略部分任务相关信息检查的代码
+ 
+		// add in db
+		//将任务持久化到数据库的xxl_job_qrtz_trigger_info
+		xxlJobInfoDao.save(jobInfo);
+		if (jobInfo.getId() < 1) {
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add")+I18nUtil.getString("system_fail")) );
+		}
+ 
+		// add in quartz
+        String qz_group = String.valueOf(jobInfo.getJobGroup());
+        String qz_name = String.valueOf(jobInfo.getId());
+        try {
+			//添加任务到quartz中
+            XxlJobDynamicScheduler.addJob(qz_name, qz_group, jobInfo.getJobCron());
+            //XxlJobDynamicScheduler.pauseJob(qz_name, qz_group);
+            return ReturnT.SUCCESS;
+        } catch (SchedulerException e) {
+            logger.error(e.getMessage(), e);
+            try {
+                xxlJobInfoDao.delete(jobInfo.getId());
+                XxlJobDynamicScheduler.removeJob(qz_name, qz_group);
+            } catch (SchedulerException e1) {
+                logger.error(e.getMessage(), e1);
+            }
+            return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add")+I18nUtil.getString("system_fail"))+":" + e.getMessage());
+        }
+	}
+
+```
+
+
+
  
  
  
