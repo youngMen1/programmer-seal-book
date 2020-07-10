@@ -328,4 +328,60 @@ getObject中生成代理对象，执行会执行JettyClient的send方法。
 
 
 
+```
+public class JettyServerHandler extends AbstractHandler {
+	private static Logger logger = LoggerFactory.getLogger(JettyServerHandler.class);
+ 
+	//接收请求，处理任务
+	@Override
+	public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
+		// invoke
+		//调用任务执行
+        RpcResponse rpcResponse = doInvoke(request);
+ 
+        // serialize response
+        byte[] responseBytes = HessianSerializer.serialize(rpcResponse);
+		
+		response.setContentType("text/html;charset=utf-8");
+		response.setStatus(HttpServletResponse.SC_OK);
+		baseRequest.setHandled(true);
+		
+		OutputStream out = response.getOutputStream();
+		out.write(responseBytes);
+		out.flush();
+		
+	}
+ 
+	private RpcResponse doInvoke(HttpServletRequest request) {
+		try {
+			// deserialize request
+			byte[] requestBytes = HttpClientUtil.readBytes(request);
+			if (requestBytes == null || requestBytes.length==0) {
+				RpcResponse rpcResponse = new RpcResponse();
+				rpcResponse.setError("RpcRequest byte[] is null");
+				return rpcResponse;
+			}
+			//反序列化数据
+			RpcRequest rpcRequest = (RpcRequest) HessianSerializer.deserialize(requestBytes, RpcRequest.class);
+ 
+			// invoke
+			//通过反射调用任务
+			RpcResponse rpcResponse = NetComServerFactory.invokeService(rpcRequest, null);
+			return rpcResponse;
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+ 
+			RpcResponse rpcResponse = new RpcResponse();
+			rpcResponse.setError("Server-error:" + e.getMessage());
+			return rpcResponse;
+		}
+	}
+ 
+}
+
+```
+
+
+
 
