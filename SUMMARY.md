@@ -386,6 +386,7 @@
     * [XXL-JOB原理--定时任务框架简介（一）](chang-yong-kai-yuan-kuang-jia/xxl-job/xxl-jobyuan-7406-ding-shi-ren-wu-kuang-jia-jian-jie-ff08-yi-ff09.md)
     * [XXL-JOB原理--执行器注册（二）](chang-yong-kai-yuan-kuang-jia/xxl-job/xxl-jobyuan-7406-zhi-xing-qi-zhu-ce-ff08-er-ff09.md)
     * [任务调度中心执行器注册（三）](chang-yong-kai-yuan-kuang-jia/xxl-job/ren-wu-diao-du-zhong-xin-zhi-xing-qi-zhu-ce-ff08-san-ff09.md)
+    * XXL-JOB原理--任务调度中心任务管理（四）
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
