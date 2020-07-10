@@ -121,3 +121,16 @@ public static boolean addJob(String jobName, String jobGroup, String cronExpress
 
 JobInfoController中提供了删除任务接口
 
+
+
+```
+@RequestMapping("/remove")
+@ResponseBody
+public ReturnT<String> remove(int id) {
+	return xxlJobService.remove(id);
+}
+
+```
+
+
+
