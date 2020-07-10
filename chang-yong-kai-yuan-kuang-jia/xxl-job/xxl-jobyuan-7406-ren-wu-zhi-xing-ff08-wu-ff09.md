@@ -326,8 +326,6 @@ getObject中生成代理对象，执行会执行JettyClient的send方法。
 
 在任务执行器会根据内置的jetty提供web服务，提供请求处理器JettyServerHandler接收处理任务调度中心发送过来的任务
 
-
-
 ```
 public class JettyServerHandler extends AbstractHandler {
 	private static Logger logger = LoggerFactory.getLogger(JettyServerHandler.class);
