@@ -100,6 +100,43 @@ private static void initAdminBizList(String adminAddresses, String accessToken) 
 				});
 
 ```
+在JettyClient中调用send方法完成服务注册操作
+
+
+```
+public RpcResponse send(RpcRequest request) throws Exception {
+		try {
+			// serialize request
+			byte[] requestBytes = HessianSerializer.serialize(request);
+ 
+			// reqURL
+			String reqURL = request.getServerAddress();
+			if (reqURL!=null && reqURL.toLowerCase().indexOf("http")==-1) {
+				reqURL = "http://" + request.getServerAddress() + "/";	// IP:PORT, need parse to url
+			}
+            //发送post请求进行服务注册，简单注册一下IP和端口信息等
+			// remote invoke
+			byte[] responseBytes = HttpClientUtil.postRequest(reqURL, requestBytes);
+			if (responseBytes == null || responseBytes.length==0) {
+				RpcResponse rpcResponse = new RpcResponse();
+				rpcResponse.setError("Network request fail, RpcResponse byte[] is null");
+				return rpcResponse;
+            }
+ 
+            // deserialize response
+			RpcResponse rpcResponse = (RpcResponse) HessianSerializer.deserialize(responseBytes, RpcResponse.class);
+			return rpcResponse;
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+ 
+			RpcResponse rpcResponse = new RpcResponse();
+			rpcResponse.setError("Network request error: " + e.getMessage());
+			return rpcResponse;
+		}
+	}
+
+```
+
 
 
 
