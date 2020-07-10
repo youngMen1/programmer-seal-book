@@ -137,7 +137,7 @@ public ReturnT<String> registry(RegistryParam registryParam) {
 
 在任务调度中心会列表展示数据：
 
-20180915142914984.png
+![](/static/image/20180915142914984.png)
 
 # 2.总结
 简单来说执行器将其服务器信息通过http请求发送到任务调度中心，调度中心将相关注册信息插入或更新到xxl_job_qrtz_trigger_registry表中，在任务调度中心通过列表展示，接下来相关任务执行时会根据服务器信息通过http发送调用请求。
