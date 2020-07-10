@@ -269,5 +269,6 @@ public static ExecutorBiz getExecutorBiz(String address) throws Exception {
     }
 ```
 
+getObject中生成代理对象，执行会执行JettyClient的send方法。
 
 
