@@ -233,7 +233,9 @@ public static boolean pauseJob(String jobName, String jobGroup) throws Scheduler
 
 ### 4.恢复任务
 
+恢复任务就是将暂停的任务继续重新执行
 
+JobInfoController中提供接口重新执行任务
 
 
 
