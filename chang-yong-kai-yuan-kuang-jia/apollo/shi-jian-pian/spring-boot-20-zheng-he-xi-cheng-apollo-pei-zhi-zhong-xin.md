@@ -144,4 +144,5 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 ![](/static/image/apollo-sample-home.png)配置中心中包含一个默认的项目`SampleApp`
 
 3.点击SampleApp进入配置界面，可以看到当前有一个配置timeout=100
+sample-app-config.png
 
