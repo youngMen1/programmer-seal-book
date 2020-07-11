@@ -262,6 +262,10 @@ public class GlobalDefaultExceptionHandler {
 
 #### 1.3.3.HttpMessageConverters
 
+根据用户请求头来格式化不同对象。请求传给服务器的都是一个字符串流，而服务器根据用户请求头判断不同媒体类型，然后在已注册的转换器中查找对应的转换器，比如在content-type中发现json后，就能转换成json对象了
+
+
+
 
 
 
