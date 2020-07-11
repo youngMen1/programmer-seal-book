@@ -6,6 +6,21 @@
 
 ## 1.2.apollo项目依赖
 
+apollo中有7个子项目
+最重要的有四个
+apollo-portal:后台管理服务
+apollo-admin:后台配置管理服务，用户发布了的配置项会经过portal->admin更新到数据库
+apollo-configservice: 配置管理服务，客户端通过该服务拉取配置项
+apollo-client:客户端，集成该客户端拉取配置项
+此外还有apollo-biz，apollo-common,apollo-core提供基础服务
+
+作者：方老司
+链接：https://segmentfault.com/a/1190000019542623
+来源：SegmentFault 思否
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
 
 
 
