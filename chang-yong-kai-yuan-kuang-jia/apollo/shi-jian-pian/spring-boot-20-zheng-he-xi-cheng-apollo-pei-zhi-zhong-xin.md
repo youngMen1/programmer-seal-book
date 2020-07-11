@@ -348,6 +348,17 @@ Apollo同时还增加了几个新的Annotation来简化在Spring环境中的使�
   }
 ```
 
+测试
+
+  
+
+
+浏览器访问
+
+`http://127.0.0.1:8080/index3`
+
+，正确打印配置的值
+
 ##### `@ApolloConfigChangeListener`的使用
 
 
