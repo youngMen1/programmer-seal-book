@@ -243,6 +243,18 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 
 #### 1.3.2.GlobalDefaultExceptionHandler
 
+统一异常处理类，用于抓取controller层的所有异常，从此再也不用写超级多的try...catch了。只要加了@ControllerAdvice就能抓取所有异常了。
+
+
+
+```
+@ControllerAdvice
+public class GlobalDefaultExceptionHandler {
+.......
+}
+```
+
+
 
 
 
