@@ -311,6 +311,9 @@ public class CharacterEncodingFilterConfiguration {
 
 ### 1.4.aop包
 
+里面只定义了一个类，用于给所有的数据库操作都加上cat链路跟踪，简单看下它的用法
+
+
 
 
 
