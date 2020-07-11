@@ -266,6 +266,13 @@ public class GlobalDefaultExceptionHandler {
   }
 ```
 
+在apollo中定义了这几个异常:
+内置异常: `Throwable,HttpRequestMethodNotSupportedException,HttpStatusCodeException,AccessDeniedException`
+以及apollo自定义的异常AbstractApolloHttpException
+将异常进行分类能方便直观的展示所遇到的异常
+
+
+
 
 
 
