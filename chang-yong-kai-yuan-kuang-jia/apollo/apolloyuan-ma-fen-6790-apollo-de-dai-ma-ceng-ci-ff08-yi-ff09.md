@@ -354,6 +354,29 @@ cloud条件注解
 
 ```
 
+ConditionalOnBean
+
+```
+@Configuration
+public class Configuration1 {
+
+    @Bean
+    @ConditionalOnBean(Bean2.class)
+    public Bean1 bean1() {
+        return new Bean1();
+    }
+}
+
+@Configuration
+public class Configuration2 {
+
+@Bean
+public Bean2 bean2(){
+    return new Bean2();
+}
+
+```
+
 
 
 
