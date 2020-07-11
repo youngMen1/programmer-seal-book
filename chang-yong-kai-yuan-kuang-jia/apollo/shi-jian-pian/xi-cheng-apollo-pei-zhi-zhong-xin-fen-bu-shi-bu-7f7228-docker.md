@@ -172,7 +172,7 @@ source /your_local_path/sql/apolloconfigdb.sql
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | timeout | 100 | sample | timeout配置 |
 
-##### 从别的环境导入ApolloConfigDB的项目数据
+##### 1.3.1.2.1.从别的环境导入ApolloConfigDB的项目数据
 
 
 
