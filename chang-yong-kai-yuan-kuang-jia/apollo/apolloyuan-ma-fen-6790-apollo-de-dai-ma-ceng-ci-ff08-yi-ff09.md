@@ -127,10 +127,11 @@ public abstract class AbstractApolloHttpException extends RuntimeException{
 
 #### NotFoundException
 
-作者：方老司
-链接：https://segmentfault.com/a/1190000019542623
-来源：SegmentFault 思否
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+某个值找不到了 
+
+2788800039-5cf77ce3b3bae_articlex.png
+
+
 
 
 
