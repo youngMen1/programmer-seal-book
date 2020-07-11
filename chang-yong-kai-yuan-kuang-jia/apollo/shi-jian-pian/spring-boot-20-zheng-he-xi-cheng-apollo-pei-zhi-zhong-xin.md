@@ -261,35 +261,11 @@ public class JavaConfigBean {
 
 #### 1.3.2.3.ConfigurationProperties使用方式
 
-Spring Boot提供了
+Spring Boot提供了`@ConfigurationProperties`把配置注入到bean对象中。Apollo也支持这种方式，下面的例子会把
 
-`@ConfigurationProperties`
-
-把配置注入到bean对象中。Apollo也支持这种方式，下面的例子会把
-
-`redis.cache.expireSeconds`
-
-和
-
-`redis.cache.commandTimeout`
-
-分别注入到
-
-`SampleRedisConfig`
-
-的
-
-`expireSeconds`
-
-和
-
-`commandTimeout`
+`redis.cache.expireSeconds`和`redis.cache.commandTimeout`分别注入到`SampleRedisConfig`的`expireSeconds`和`commandTimeout`
 
 字段中。
 
-  
-
-
-  
-
+1.新增配置类`SampleRedisConfig`如下：
 
