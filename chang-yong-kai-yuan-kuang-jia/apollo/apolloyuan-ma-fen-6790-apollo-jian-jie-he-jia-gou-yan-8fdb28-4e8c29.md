@@ -32,6 +32,28 @@ if ("lastModifiedTime".equals(orderBy)) {
 
 当然也有比较"高端"的，比如servlet3.0中的DeferredResult用来保持长连接
 
+```
+@RequestMapping(method = RequestMethod.GET)
+public DeferredResult<ResponseEntity<List<ApolloConfigNotification>>> pollNotification(
+
+```
+
+自定义注解
+
+
+```
+@Import(ApolloConfigRegistrar.class)  //用import注解来载入bean
+public @interface EnableApolloConfig {
+
+//用ImportBeanDefinitionRegistrar来注册bean
+public class ApolloConfigRegistrar implements ImportBeanDefinitionRegistrar {
+  @Override
+  public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+
+```
+
+
+
 
 
 
