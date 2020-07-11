@@ -432,6 +432,58 @@ public @interface ConditionalOnMissingProfile {    //注解的名称
 }
 
 ```
+而后再实现类中实现了对环境变量的判断
+
+
+
+```
+//实现condition接口
+public class OnProfileCondition implements Condition {
+  //如果match则返回true
+  @Override
+  public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+    //获取环境变量中所有的active值, spring.profile.active=xxx
+    Set<String> activeProfiles = Sets.newHashSet(context.getEnvironment().getActiveProfiles());
+    //获取profile中的所有制
+    Set<String> requiredActiveProfiles = retrieveAnnotatedProfiles(metadata, ConditionalOnProfile.class.getName());
+    Set<String> requiredInactiveProfiles = retrieveAnnotatedProfiles(metadata, ConditionalOnMissingProfile.class
+        .getName());
+
+    return Sets.difference(requiredActiveProfiles, activeProfiles).isEmpty()
+        && Sets.intersection(requiredInactiveProfiles, activeProfiles).isEmpty();
+  }
+
+  private Set<String> retrieveAnnotatedProfiles(AnnotatedTypeMetadata metadata, String annotationType) {
+    if (!metadata.isAnnotated(annotationType)) {
+      return Collections.emptySet();
+    }
+
+    MultiValueMap<String, Object> attributes = metadata.getAllAnnotationAttributes(annotationType);
+
+    if (attributes == null) {
+      return Collections.emptySet();
+    }
+
+    Set<String> profiles = Sets.newHashSet();
+    List<?> values = attributes.get("value");
+
+    if (values != null) {
+      for (Object value : values) {
+        if (value instanceof String[]) {
+          Collections.addAll(profiles, (String[]) value);
+        }
+        else {
+          profiles.add((String) value);
+        }
+      }
+    }
+
+    return 
+```
+
+
+
+
 
 
 
