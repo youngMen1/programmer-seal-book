@@ -10,3 +10,5 @@ Java客户端不依赖任何框架，能够运行于所有Java运行时环境，
 
 如果想要深入了解，可以到github上参见[Apollo配置中心](https://github.com/ctripcorp/apollo#screenshots)，官网的介绍很详细。本章主要讲述Spring Boot 2.0 整合Apollo配置中心。
 
+一、Apollo配置中心服务端(来源于官网)
+
