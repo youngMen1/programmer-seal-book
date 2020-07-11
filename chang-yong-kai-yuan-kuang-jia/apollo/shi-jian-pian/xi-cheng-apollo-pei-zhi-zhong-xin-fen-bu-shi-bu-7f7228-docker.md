@@ -114,6 +114,12 @@ eureka:
 3. 构建docker镜像：为apollo-configservice, apollo-adminservice, apollo-portal构建Docker镜像
 4. 部署Apollo服务端：构建镜像后通过docker compose就可以部署到公司的测试和生产环境了
 
+### 1.3.1.创建数据库
+
+Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官网把数据库、表的创建和样例数据都分别准备了sql文件（在下载的源码`/scripts/sql`目录下），只需要导入数据库即可。
+
+由于我只在一台服务器上做演示，所以`ApolloPortalDB`和`ApolloConfigDB`在UAT环境部署一套就可以了
+
   
 
 
