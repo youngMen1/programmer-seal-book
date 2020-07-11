@@ -12,7 +12,7 @@ Java客户端不依赖任何框架，能够运行于所有Java运行时环境，
 
 如果想要深入了解，可以到github上参见[Apollo配置中心](https://github.com/ctripcorp/apollo#screenshots)，官网的介绍很详细。本章主要讲述Spring Boot 2.0 整合Apollo配置中心。
 
-## 1.2.Apollo配置中心服务端(来源于官网)
+## 1.2.Apollo配置中心服务端\(来源于官网\)
 
 本文的重点在于Apollo在客户端的使用，所以Apollo服务端使用的是官网提供的 Quick Start（针对本地测试使用），后续文章会专门讲述Apollo服务端在分布式环境下的部署。
 
@@ -31,16 +31,24 @@ Apollo的表结构对timestamp使用了多个default声明，所以需要5.6.5�
 ### 1.2.2.安装步骤
 
 #### 1.2.2.1 创建数据库
+
 Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官网把数据库、表的创建和样例数据都分别准备了sql文件（在下载的 Quick Start 安装包的sql目录下），只需要导入数据库即可。
 
 #### 1.2.2.2 创建ApolloPortalDB
-通过各种Mysql客户端（Navicat,DataGrip等）导入sql/apolloportaldb.sql即可
-下面以MySQL原生客户端为例：
-`source /your_local_path/sql/apolloportaldb.sql`
-导入成功后，可以通过执行以下sql语句来验证：
-`select `Id`, `AppId`, `Name` from ApolloPortalDB.App;`
+
+通过各种Mysql客户端（Navicat,DataGrip等）导入sql/apolloportaldb.sql即可  
+下面以MySQL原生客户端为例：  
+`source /your_local_path/sql/apolloportaldb.sql`  
+导入成功后，可以通过执行以下sql语句来验证：  
+`select`Id`,`AppId`,`Name`from ApolloPortalDB.App;`
+
+| Id |
+| :--- |
 
 
+|  | AppId | Name |
+| :--- | :--- | :--- |
+| 1 | SampleApp | Sample App |
 
 
 
