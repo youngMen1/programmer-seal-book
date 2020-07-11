@@ -478,7 +478,7 @@ public class OnProfileCondition implements Condition {
       }
     }
 
-    return 
+    return profiles;
 ```
 
 
