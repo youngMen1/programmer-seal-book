@@ -43,5 +43,40 @@
 
 另外可以参考下面的样例部署图：
 
-![](/static/image/5389623-9cbf9c29454f3e5e.webp)
+![](/static/image/5389623-9cbf9c29454f3e5e.webp)  
 为了演示方便，本文将Apollo-portal，Apollo-adminservice和Apollo-configservice部署在一台机器上
+
+
+
+| 服务器 |
+| :--- |
+
+
+|  | 服务 | 端口 | 环境 |
+| :--- | :--- | :--- | :--- |
+| 192.168.10.138 | apollo-portal | 8070 | UAT |
+| 192.168.10.138 | apollo-adminservice | 8080 | UAT |
+| 192.168.10.138 | apollo-configservice | 8090 | UAT |
+
+### 1.2.5.网络策略（来自官网）
+
+### 分布式部署的时候，apollo-configservice和apollo-adminservice需要把自己的IP和端口注册到Meta Server（apollo-configservice本身）。
+
+Apollo客户端和Portal会从Meta Server获取服务的地址（IP+端口），然后通过服务地址直接访问。
+
+所以如果实际部署的机器有多块网卡（如docker），或者存在某些网卡的IP是Apollo客户端和Portal无法访问的（如网络安全限制），那么我们就需要在apollo-configservice和apollo-adminservice中做相关限制以避免Eureka将这些网卡的IP注册到Meta Server。
+
+如下面这个例子就是对于apollo-configservice，把docker0和veth.\* 的网卡在注册到Eureka时忽略掉。
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
