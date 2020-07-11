@@ -207,5 +207,7 @@ source /your_local_path/sql/apolloconfigdb.sql
 
 Apollo自身的一些配置是放在数据库里面的，所以需要针对实际情况做一些调整。
 
+##### 1.3.1.3.1.调整ApolloPortalDB配置
+
 
 
