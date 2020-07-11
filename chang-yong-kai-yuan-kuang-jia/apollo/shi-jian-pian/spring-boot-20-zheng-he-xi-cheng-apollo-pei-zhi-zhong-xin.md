@@ -7,3 +7,10 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 Java客户端不依赖任何框架，能够运行于所有Java运行时环境，同时对Spring/Spring Boot环境也有较好的支持。
 
 .Net客户端不依赖任何框架，能够运行于所有.Net运行时环境。
+
+如果想要深入了解，可以到github上参见
+
+[Apollo配置中心](https://github.com/ctripcorp/apollo#screenshots)
+
+，官网的介绍很详细。本章主要讲述Spring Boot 2.0 整合Apollo配置中心。
+
