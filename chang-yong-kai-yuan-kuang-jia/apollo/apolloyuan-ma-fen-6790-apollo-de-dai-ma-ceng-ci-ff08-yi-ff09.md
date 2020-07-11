@@ -245,8 +245,6 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 
 统一异常处理类，用于抓取controller层的所有异常，从此再也不用写超级多的try...catch了。只要加了@ControllerAdvice就能抓取所有异常了。
 
-
-
 ```
 @ControllerAdvice
 public class GlobalDefaultExceptionHandler {
@@ -256,10 +254,8 @@ public class GlobalDefaultExceptionHandler {
 
 而后使用@ExcepionHandler来抓取异常，比如这样
 
-
-
 ```
-//处理系统内置的Exception
+  // 处理系统内置的Exception
   @ExceptionHandler(Throwable.class)
   public ResponseEntity<Map<String, Object>> exception(HttpServletRequest request, Throwable ex) {
     return handleError(request, INTERNAL_SERVER_ERROR, ex);
