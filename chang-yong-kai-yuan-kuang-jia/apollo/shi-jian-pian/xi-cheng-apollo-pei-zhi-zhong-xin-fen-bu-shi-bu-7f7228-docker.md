@@ -174,5 +174,19 @@ source /your_local_path/sql/apolloconfigdb.sql
 
 ##### 1.3.1.2.1.从别的环境导入ApolloConfigDB的项目数据
 
+如果是全新部署的Apollo配置中心，请忽略此步。
+
+如果不是全新部署的Apollo配置中心，比如已经使用了一段时间，这时在Apollo配置中心已经创建了不少项目以及namespace等，那么在新环境中的ApolloConfigDB中需要从其它正常运行的环境中导入必要的项目数据。
+
+主要涉及ApolloConfigDB的下面4张表，下面同时附上需要导入的数据查询语句：
+
+  
+
+
+  
+
+
+
+
 
 
