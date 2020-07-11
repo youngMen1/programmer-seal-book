@@ -30,7 +30,22 @@
 * PRO 生产环境如果希望添加自定义的环境名称，具体步骤可以参考  
   [部署&开发遇到的常见问题\#42-添加自定义的环境](https://github.com/ctripcorp/apollo/wiki/部署&开发遇到的常见问题#42-添加自定义的环境)
 
-以ctrip为例，其部署策略如下：
+以ctrip为例，其部署策略如下：  
 ![](/static/image/5389623-7342136aa7097287.webp)
+
+Portal部署在生产环境的机房，通过它来直接管理FAT、UAT、PRO等环境的配置
+
+Meta Server、Config Service和Admin Service在每个环境都单独部署，使用独立的数据库
+
+Meta Server、Config Service和Admin Service在生产环境部署在两个机房，实现双活
+
+Meta Server和Config Service部署在同一个JVM进程内，Admin Service部署在同一台服务器的另一个JVM进程内
+
+  
+
+
+  
+
+
 
 
