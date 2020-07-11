@@ -289,6 +289,10 @@ public class HttpMessageConverterConfiguration {
 apollo中自定了GsonHttpMessageConverter,重写了默认的json转换器，这种转换当然更快乐，Gson是google的一个json转换器，当然，传说ali 的fastjson会更快，但是貌似fastjson问题会很多。json处理中对于日期格式的处理也是一个大问题，所以这里也定义了日期格式转换器。
 
 
+#### 1.3.4.CharacterEncodingFilterConfiguration 过滤器
+
+
+
 
 
 
