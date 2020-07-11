@@ -197,6 +197,17 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 
 
 
+```
+@Override
+  public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+    configurer.favorPathExtension(false);
+    configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.APPLICATION_JSON);
+  }
+
+```
+
+
+
 
 
 
