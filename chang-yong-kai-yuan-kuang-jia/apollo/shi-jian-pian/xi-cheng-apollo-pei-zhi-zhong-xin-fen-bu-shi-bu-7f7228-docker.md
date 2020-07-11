@@ -136,13 +136,9 @@ source /your_local_path/sql/apolloportaldb.sql
 
 导入成功后，可以通过执行以下sql语句来验证：
 
-    select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
+select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
 
-| Id |
-| :--- |
-
-
-|  | AppId | Name |
+| Id  | AppId | Name |
 | :--- | :--- | :--- |
 | 1 | SampleApp | Sample App |
 
@@ -162,13 +158,11 @@ source /your_local_path/sql/apolloconfigdb.sql
 
 导入成功后，可以通过执行以下sql语句来验证：
 
-    select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
+```
+select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
 
-| NamespaceId |
-| :--- |
-
-
-|  |  | Key | Value | Comment |
+```
+| NamespaceId  |  | Key | Value | Comment |
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | timeout | 100 | sample | timeout配置 |
 
