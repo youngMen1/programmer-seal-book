@@ -52,6 +52,11 @@ select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
 #### 1.2.2.3.创建ApolloConfigDB
 通过各种Mysql客户端（Navicat,DataGrip等）导入`sql/apolloconfigdb.sql`即可
 下面以MySQL原生客户端为例：
+```
+source /your_local_path/sql/apolloconfigdb.sql
+```
+
+
 
 
 
