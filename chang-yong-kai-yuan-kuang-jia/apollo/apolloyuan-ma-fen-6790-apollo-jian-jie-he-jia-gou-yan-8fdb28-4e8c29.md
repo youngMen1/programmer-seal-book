@@ -64,6 +64,17 @@ public class ApolloConfigRegistrar implements ImportBeanDefinitionRegistrar {
 
 
 
+```
+private static final int MAX_QTY_PER_USER = 5; //产品需求限购5张
+if (qty > MAX_QTY_PER_USER ) {
+    throw new IllegalStateException(
+        String.format("每个用户最多购买%d张!", MAX_QTY_PER_USER ));
+}
+
+```
+
+
+
 
 
 
