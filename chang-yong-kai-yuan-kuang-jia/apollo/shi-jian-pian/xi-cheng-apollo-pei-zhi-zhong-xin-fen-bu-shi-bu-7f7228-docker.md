@@ -276,11 +276,6 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 
 3.获取apollo-portal安装包：安装包位于apollo-portal/target/目录下的apollo-portal-x.x.x-github.zip，Dockerfile在apollo-portal/src/main/docker/目录下
 
-作者：AaronSimon
-链接：https://www.jianshu.com/p/039e7ca8ad0a
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
 分别将上面的安装包和Dockerfile文件上传至服务器（已安装Docker）上
 
 ### 1.3.3.构建docker镜像
