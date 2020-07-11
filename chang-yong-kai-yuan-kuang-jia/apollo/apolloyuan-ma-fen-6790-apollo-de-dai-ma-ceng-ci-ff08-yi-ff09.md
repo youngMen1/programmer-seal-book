@@ -15,11 +15,8 @@ apollo-client:客户端，集成该客户端拉取配置项
 此外还有apollo-biz，apollo-common,apollo-core提供基础服务
 
 其依赖关系如下
+![](/static/image/2051242107-5cf737fd43e95_articlex.jpg)
 
-作者：方老司
-链接：https://segmentfault.com/a/1190000019542623
-来源：SegmentFault 思否
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 
