@@ -222,5 +222,33 @@ Spring应用通常会使用Placeholder来注入配置，使用的格式形如`${
 2.通过设置META-INF/app.properties中的`apollo.autoUpdateInjectedSpringProperties=false`
 
 #### 1.3.2.2.Java Config使用方式
+1.新建配置类JavaConfigBean如下：
+
+
+```
+/**
+ * Java Config方式
+ *
+ * @author simon
+ * @create 2018-11-02 15:00
+ **/
+@Configuration
+public class JavaConfigBean {
+  @Value("${timeout:20}")
+  private int timeout;
+
+  public int getTimeout() {
+    return timeout;
+  }
+}
+```
+
+
+
+
+```
+
+```
+
 
 
