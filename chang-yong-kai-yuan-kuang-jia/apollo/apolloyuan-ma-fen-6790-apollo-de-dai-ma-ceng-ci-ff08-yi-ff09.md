@@ -189,6 +189,17 @@ supportsParameter：用于判定是否需要处理该参数分解，返回true�
 resolveArgument：真正用于处理参数分解的方法，返回的Object就是controller方法上的形参对象。
 ```
 
+比如apollo就加入的是对分页的处理: PageableHandlerMethodArgumentResolver
+
+这里我们可以看个例子，有这样一个业务场景，用户传的报文在网络中做了加密处理，需要对用户报文做解密，相当一个公共处理逻辑，写到业务代码中不方便维护，此时就可以增加一个HandlerMethodArgumentResolver用于解密。代码参考github:xxx
+
+作者：方老司
+链接：https://segmentfault.com/a/1190000019542623
+来源：SegmentFault 思否
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
 
 
 
