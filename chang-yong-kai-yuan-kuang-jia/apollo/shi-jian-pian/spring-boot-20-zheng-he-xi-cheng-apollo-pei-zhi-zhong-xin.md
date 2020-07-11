@@ -181,3 +181,12 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 ```
 #### 1.3.1.2.添加配置信息
 
+
+```
+# 应用ID(在Apollo服务端新增项目添加的应用ID)
+app.id=testclient
+# apollo-configservice地址
+apollo.meta=http://127.0.0.1:8080
+```
+
+
