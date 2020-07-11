@@ -56,6 +56,15 @@ public class ApolloConfigRegistrar implements ImportBeanDefinitionRegistrar {
 
 ## 1.2.应用场景
 
+### 传统开发
+
+作者：方老司
+链接：https://segmentfault.com/a/1190000019381816
+来源：SegmentFault 思否
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
 
 
 
