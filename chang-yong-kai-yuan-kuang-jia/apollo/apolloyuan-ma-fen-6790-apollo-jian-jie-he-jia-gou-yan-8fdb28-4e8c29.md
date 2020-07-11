@@ -11,14 +11,23 @@ Apollo是我现在看起来最"简单"的源码
 ![](/static/image/apollo123456.png)
 
 它使用不同的异常处理类
-微信截图_20200711113149.png
+![](/static/image/微信截图_20200711113149.png)
 
 它对DTO,排序等的使用
 
-作者：方老司
-链接：https://segmentfault.com/a/1190000019381816
-来源：SegmentFault 思否
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```
+ @RequestMapping(value = "/apps/{appId}/envs/{env}/clusters/{clusterName}/namespaces/{namespaceName}/items", method = RequestMethod.GET)
+ public List<ItemDTO> findItems(@PathVariable String appId, @PathVariable String env,
+                             @PathVariable String clusterName, @PathVariable String namespaceName,
+                             @RequestParam(defaultValue = "lineNum") String orderBy) {
+
+List<ItemDTO> items = configService.findItems(appId, Env.valueOf(env), clusterName, namespaceName);
+if ("lastModifiedTime".equals(orderBy)) {
+  Collections.sort(items, (o1, o2) -> {
+
+```
+
+
 
 
 
