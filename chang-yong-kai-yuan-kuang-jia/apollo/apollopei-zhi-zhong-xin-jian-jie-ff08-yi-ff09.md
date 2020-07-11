@@ -53,3 +53,5 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 
 ### 客户端设计
 ![](/static/image/20190808195606326.png)
+
+上图简要描述了Apollo客户端的实现原理：
