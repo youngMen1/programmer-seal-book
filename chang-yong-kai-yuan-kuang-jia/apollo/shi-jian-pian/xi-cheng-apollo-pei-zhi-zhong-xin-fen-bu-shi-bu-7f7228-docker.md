@@ -277,9 +277,7 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 
 分别将上面的安装包和Dockerfile文件上传至服务器（已安装Docker）上
 
-
-
-### 构建docker镜像
+### 1.3.3.构建docker镜像
 
 
 
