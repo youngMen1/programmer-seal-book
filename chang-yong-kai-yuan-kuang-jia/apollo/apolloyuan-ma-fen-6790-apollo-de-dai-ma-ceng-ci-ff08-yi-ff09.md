@@ -266,6 +266,29 @@ public class GlobalDefaultExceptionHandler {
 
 
 
+```
+@Configuration
+public class HttpMessageConverterConfiguration {
+  @Bean
+  public HttpMessageConverters messageConverters() {
+    GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
+    gsonHttpMessageConverter.setGson(
+            new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").create());
+    final List<HttpMessageConverter<?>> converters = Lists.newArrayList(
+            new ByteArrayHttpMessageConverter(), new StringHttpMessageConverter(),
+            new AllEncompassingFormHttpMessageConverter(), gsonHttpMessageConverter);
+    return new HttpMessageConverters() {
+      @Override
+      public List<HttpMessageConverter<?>> getConverters() {
+        return converters;
+      }
+    };
+  }
+}
+```
+
+
+
 
 
 
