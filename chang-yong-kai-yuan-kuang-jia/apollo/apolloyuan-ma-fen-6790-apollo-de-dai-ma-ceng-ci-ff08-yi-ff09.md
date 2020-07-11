@@ -1,4 +1,4 @@
-# 1.Apollo源码分析-Apollo的代码层次\(三\)
+``# 1.Apollo源码分析-Apollo的代码层次\(三\)
 
 ## 1.1.基本介绍
 
@@ -227,6 +227,19 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 ##### WebServerFactoryCustomizer
 
 定制tomcat，spring boot集成了tomcat，在2.0以上版本中，通过实现WebServerFactoryCustomizer类来自定义tomcat，比如在这里设置字符集
+
+
+
+```
+@Override
+  public void customize(TomcatServletWebServerFactory factory) {
+    MimeMappings mappings = new MimeMappings(MimeMappings.DEFAULT);
+    mappings.add("html", "text/html;charset=utf-8");
+    factory.setMimeMappings(mappings );
+
+  }
+
+```
 
 
 
