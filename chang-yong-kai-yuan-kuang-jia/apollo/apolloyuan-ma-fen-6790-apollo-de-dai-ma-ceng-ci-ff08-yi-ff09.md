@@ -1,4 +1,4 @@
-# 1.Apollo源码分析-Apollo的代码层次(三)
+# 1.Apollo源码分析-Apollo的代码层次\(三\)
 
 ## 1.1.基本介绍
 
@@ -6,17 +6,16 @@
 
 ## 1.2.apollo项目依赖
 
-apollo中有7个子项目
-最重要的有四个
-apollo-portal:后台管理服务
-apollo-admin:后台配置管理服务，用户发布了的配置项会经过portal->admin更新到数据库
-apollo-configservice: 配置管理服务，客户端通过该服务拉取配置项
-apollo-client:客户端，集成该客户端拉取配置项
+apollo中有7个子项目  
+最重要的有四个  
+apollo-portal:后台管理服务  
+apollo-admin:后台配置管理服务，用户发布了的配置项会经过portal-&gt;admin更新到数据库  
+apollo-configservice: 配置管理服务，客户端通过该服务拉取配置项  
+apollo-client:客户端，集成该客户端拉取配置项  
 此外还有apollo-biz，apollo-common,apollo-core提供基础服务
 
-其依赖关系如下:
+其依赖关系如下:  
 ![](/static/image/2051242107-5cf737fd43e95_articlex.jpg)
-
 
 ### apollo-common分析
 
@@ -24,10 +23,10 @@ apollo-client:客户端，集成该客户端拉取配置项
 
 ### utils 基础包
 
-
 utils中集成了了一些通用方法，比如判断非空，对象拷贝，字符串拼接等
 
 #### BeanUtils 拷贝对象
+
 实现不同类对象中属性的拷贝，服务之间传递的都是dto对象，而在使用时必须转换为用法:
 
 ```
@@ -40,7 +39,6 @@ App entity = BeanUtils.transfrom(App.class, dto);
 ...
 //实体类再拷贝成DTO   
 dto = BeanUtils.transfrom(AppDTO.class, entity);
-
 ```
 
 源码:
@@ -60,8 +58,8 @@ dto = BeanUtils.transfrom(AppDTO.class, entity);
     org.springframework.beans.BeanUtils.copyProperties(src, instance, getNullPropertyNames(src));
     return instance;
   }
-
 ```
+
 #### ExceptionUtils 将exception转为String
 
 ```
@@ -79,37 +77,10 @@ ExceptionUtils源码
     if (errorAttributes != null) {
       return MoreObjects.toStringHelper(HttpStatusCodeException.class).omitNullValues()
           .add("status", errorAttributes.get("status"))
-          .add("message", errorAttributes.get("message"))       
-
+          .add("message", errorAttributes.get("message"))
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 当中用到了Guava的MoreObjects的链式调用来优雅的拼接字符串，[参考Guava Object的使用](https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained)
 
 
 
