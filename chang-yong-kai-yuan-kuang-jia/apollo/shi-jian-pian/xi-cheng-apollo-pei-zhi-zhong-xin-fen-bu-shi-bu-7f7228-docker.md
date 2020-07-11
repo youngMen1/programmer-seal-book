@@ -136,13 +136,9 @@ source /your_local_path/sql/apolloportaldb.sql
 
 导入成功后，可以通过执行以下sql语句来验证：
 
+    select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
 
-```
-select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
-
-```
-
-| Id  | AppId | Name |
+| Id | AppId | Name |
 | :--- | :--- | :--- |
 | 1 | SampleApp | Sample App |
 
@@ -162,11 +158,9 @@ source /your_local_path/sql/apolloconfigdb.sql
 
 导入成功后，可以通过执行以下sql语句来验证：
 
-```
-select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
+    select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
 
-```
-| NamespaceId  |  | Key | Value | Comment |
+| NamespaceId |  | Key | Value | Comment |
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | timeout | 100 | sample | timeout配置 |
 
@@ -223,5 +217,23 @@ apollo.portal.envs - 可支持的环境列表
    **这里我填写**`http://192.168.10.138:8080/eureka`。后续文章我会单独介绍如何将Config Service和Admin Service注册到公司统一的Eureka上
 
 ### 1.3.2.获取安装包
+
+可以通过两种方式获取安装包：
+
+1. 直接下载安装包
+   * 从GitHub Release页面下载预先打好的安装包
+   * 如果对Apollo的代码没有定制需求，建议使用这种方式，可以省去本地打包的过程
+2. 通过源码构建
+   * 从GitHub Release页面下载Source code包或直接clone源码后在本地构建
+   * 如果需要对Apollo的做定制开发，需要使用这种方式
+
+这里我是通过源码构建的
+
+  
+
+
+  
+
+
 
 
