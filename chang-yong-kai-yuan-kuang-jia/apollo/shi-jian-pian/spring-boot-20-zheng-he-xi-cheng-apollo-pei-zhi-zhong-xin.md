@@ -34,7 +34,7 @@ Apollo的表结构对timestamp使用了多个default声明，所以需要5.6.5�
 
 Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官网把数据库、表的创建和样例数据都分别准备了sql文件（在下载的 Quick Start 安装包的sql目录下），只需要导入数据库即可。
 
-#### 1.2.2.2 创建ApolloPortalDB
+##### 1.2.2.1.1 创建ApolloPortalDB
 
 通过各种Mysql客户端（Navicat,DataGrip等）导入sql/apolloportaldb.sql即可  
 下面以MySQL原生客户端为例：
@@ -48,7 +48,7 @@ Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官�
 | :--- | :--- | :--- |
 | 1 | SampleApp | Sample App |
 
-#### 1.2.2.3.创建ApolloConfigDB
+#### 1.2.2.1.2.创建ApolloConfigDB
 
 通过各种Mysql客户端（Navicat,DataGrip等）导入`sql/apolloconfigdb.sql`即可  
 下面以MySQL原生客户端为例：
