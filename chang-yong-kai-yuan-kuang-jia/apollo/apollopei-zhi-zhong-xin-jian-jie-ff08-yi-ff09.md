@@ -47,3 +47,5 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 * 3.Config Service 如果发现有新的消息记录，那么就会通知到所有的消息监听器（ReleaseMessageListener），如 NotificationControllerV2 ，消息监听器的注册过程参见 ConfigServiceAutoConfiguration 。
 * 4.NotificationControllerV2 得到配置发布的 AppId+Cluster+Namespace 后，会通知对应的客户端。
 
+示意图：
+
