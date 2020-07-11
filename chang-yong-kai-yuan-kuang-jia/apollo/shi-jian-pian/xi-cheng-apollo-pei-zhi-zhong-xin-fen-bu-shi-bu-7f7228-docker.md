@@ -304,3 +304,39 @@ apollo_admin
 
 我们通过docker compose部署Apollo服务端，部署的配置文件如下：
 
+```
+version: "3"
+
+services:
+  apollo-configservice:                                         ##容器服务名
+    container_name: apollo-configservice                        ##容器名
+    #build: apollo-configservice/src/main/docker/                ##Dockerfile路径
+    image: simon/apollo-configservice                           ##镜像名
+    ports:
+      - "8080:8080"    
+    volumes:
+      - "/opt/logs/100003171:/opt/logs/100003171"    ##将/opt/logs/100003171目录挂载到宿主机的/opt/logs/100003171方便在宿主机上查看日志
+  apollo-adminservice:
+    container_name: apollo-adminservice
+    #build: apollo-adminservice/src/main/docker/
+    image: simon/apollo-adminservice
+    ports:
+      - "8090:8090"
+    depends_on:
+      - apollo-configservice
+    volumes:
+      - "/opt/logs/100003172:/opt/logs/100003172"
+  apollo-portal:
+    container_name: apollo-portal
+    #build: apollo-portal/src/main/docker/
+    image: simon/apollo-portal
+    ports:
+      - "8070:8070"
+    depends_on:
+      - apollo-adminservice
+    volumes:
+      - "/opt/logs/100003173:/opt/logs/100003173"
+```
+
+
+
