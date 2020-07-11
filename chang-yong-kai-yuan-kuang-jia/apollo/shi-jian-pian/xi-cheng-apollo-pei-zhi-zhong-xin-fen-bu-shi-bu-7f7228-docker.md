@@ -41,5 +41,7 @@
 
 * Meta Server和Config Service部署在同一个JVM进程内，Admin Service部署在同一台服务器的另一个JVM进程内
 
+另外可以参考下面的样例部署图：
+
 
 
