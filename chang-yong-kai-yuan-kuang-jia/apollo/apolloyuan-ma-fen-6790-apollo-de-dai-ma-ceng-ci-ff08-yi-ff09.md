@@ -71,6 +71,21 @@ dto = BeanUtils.transfrom(AppDTO.class, entity);
         logger.error(ExceptionUtils.exceptionToString(ex));
 ```
 
+ExceptionUtils源码
+
+```
+ public static String toString(HttpStatusCodeException e) {
+    Map<String, Object> errorAttributes = gson.fromJson(e.getResponseBodyAsString(), mapType);
+    if (errorAttributes != null) {
+      return MoreObjects.toStringHelper(HttpStatusCodeException.class).omitNullValues()
+          .add("status", errorAttributes.get("status"))
+          .add("message", errorAttributes.get("message"))       
+
+```
+
+
+
+
 
 
 
