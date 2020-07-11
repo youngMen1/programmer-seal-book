@@ -315,6 +315,28 @@ public class CharacterEncodingFilterConfiguration {
 
 
 
+```
+@Aspect  //定义一个切面
+@Component
+public class RepositoryAspect {
+/**
+** 所有Repository下的类都必须都添加切面
+*/
+  @Pointcut("execution(public * org.springframework.data.repository.Repository+.*(..))")
+  public void anyRepositoryMethod() {
+  }
+/**
+** 切面的具体方法
+*/
+  @Around("anyRepositoryMethod()")
+  public Object invokeWithCatTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
+    ...
+}
+
+```
+
+
+
 
 
 
