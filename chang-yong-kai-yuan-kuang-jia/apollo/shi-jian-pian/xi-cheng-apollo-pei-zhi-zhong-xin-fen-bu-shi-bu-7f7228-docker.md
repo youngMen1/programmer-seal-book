@@ -251,5 +251,5 @@ apollo_portal_db_password=Ibase2016
 
 ##### 1.3.2.1.2.配置各环境meta service地址
 
-
+Apollo Portal需要在不同的环境访问不同的meta service\(apollo-configservice\)地址，所以需要在打包时提供这些信息。我这里只部署UAT环境，配置修改如下：
 
