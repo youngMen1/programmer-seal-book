@@ -201,11 +201,5 @@ source /your_local_path/sql/apolloconfigdb.sql
 * 导入默认的default集群中的namespace
 * 如：insert into 新环境的ApolloConfigDB.Namespace select \* from 其它环境的ApolloConfigDB.Namespace where ClusterName = 'default' and IsDeleted = 0;
 
-  
-
-
-  
-
-
-
+同时也别忘了通知用户在新的环境给自己的项目设置正确的配置信息，尤其是一些影响面比较大的公共namespace配置。
 
