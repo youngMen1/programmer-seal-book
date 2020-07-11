@@ -110,6 +110,24 @@ key值生成器
 
 封装常用的异常处理类，对常见的异常做了分类，比如业务异常，服务异常，not found异常等，大家做异常时不妨参考下其对异常的分类。
 
+#### AbstractApolloHttpException
+apollo异常基类，设置了httpstatus，便于返回准确的http的报错信息，其继承了RuntimeException，并加入了一个httpStatus
+
+```
+public abstract class AbstractApolloHttpException extends RuntimeException{
+      protected HttpStatus httpStatus;
+      ...
+}
+```
+#### BadRequestException
+
+业务异常类，下图可以看出其对业务异常的分类描述
+
+2176780131-5cf77c8197a23_articlex.png
+
+
+
+
 
 
 
