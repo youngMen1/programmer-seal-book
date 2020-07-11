@@ -145,4 +145,4 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 
 3.点击SampleApp进入配置界面，可以看到当前有一个配置timeout=100
 ![](/static/image/sample-app-config.png)
-
+如果提示系统出错，请重试或联系系统负责人，请稍后几秒钟重试一下，因为通过Eureka注册的服务有一个刷新的延时。
