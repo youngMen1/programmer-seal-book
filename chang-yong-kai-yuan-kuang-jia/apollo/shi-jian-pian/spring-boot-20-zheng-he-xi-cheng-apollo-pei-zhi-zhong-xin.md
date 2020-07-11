@@ -302,3 +302,16 @@ public class SampleRedisConfig {
 
 2.新增访问端点
 
+```
+//2. ConfigurationProperties使用方式
+  @Autowired
+  SampleRedisConfig sampleRedisConfig;
+
+  @RequestMapping("/index2")
+  public String hello2(){
+    return sampleRedisConfig.getCommandTimeout()+"--"+sampleRedisConfig.getExpireSeconds();
+  }
+```
+
+
+
