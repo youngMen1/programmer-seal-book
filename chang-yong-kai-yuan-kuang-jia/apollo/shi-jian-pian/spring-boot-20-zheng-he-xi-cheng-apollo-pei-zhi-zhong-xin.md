@@ -221,7 +221,7 @@ Spring应用通常会使用Placeholder来注入配置，使用的格式形如`${
 `-Dapollo.autoUpdateInjectedSpringProperties=false`  
 2.通过设置META-INF/app.properties中的`apollo.autoUpdateInjectedSpringProperties=false`
 
-#### 1.3.2.2.Java Config使用方式
+##### 1.3.2.1.1.Java Config使用方式
 
 1.新建配置类JavaConfigBean如下：
 
@@ -259,7 +259,7 @@ public class JavaConfigBean {
 3.测试  
 浏览器访问`http://127.0.0.1:8080/index1`，正确返回配置的值
 
-#### 1.3.2.3.ConfigurationProperties使用方式
+##### 1.3.2.1.2.ConfigurationProperties使用方式
 
 Spring Boot提供了`@ConfigurationProperties`把配置注入到bean对象中。Apollo也支持这种方式，下面的例子会把
 
