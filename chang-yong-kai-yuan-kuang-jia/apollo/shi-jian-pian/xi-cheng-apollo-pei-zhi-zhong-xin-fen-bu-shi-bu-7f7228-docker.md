@@ -86,6 +86,32 @@ spring:
 
 ，或者也可以修改apollo-adminservice或apollo-configservice 的bootstrap.yml文件，加入以下配置
 
+```
+eureka:
+  instance:
+    ip-address: ${指定的IP}
+```
+
+最后一种方式是直接指定要注册的IP+PORT，可以修改startup.sh，通过JVM System Property在运行时传入，如
+
+`-Deureka.instance.homePageUrl=http://${指定的IP}:${指定的Port}`
+
+，或者也可以修改apollo-adminservice或apollo-configservice 的bootstrap.yml文件，加入以下配置
+
+```
+eureka:
+  instance:
+    homePageUrl: http://${指定的IP}:${指定的Port}
+    preferIpAddress: false
+
+```
+
+如果Apollo部署在公有云上，本地开发环境无法连接，但又需要做开发测试的话，客户端可以升级到0.11.0版本及以上，然后通过
+
+`-Dapollo.configService=http://config-service的公网IP:端口`
+
+来跳过meta service的服务发现
+
   
 
 
