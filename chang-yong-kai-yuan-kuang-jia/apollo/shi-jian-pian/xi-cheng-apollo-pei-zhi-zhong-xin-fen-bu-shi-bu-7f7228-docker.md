@@ -120,11 +120,14 @@ Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官�
 
 由于我只在一台服务器上做演示，所以`ApolloPortalDB`和`ApolloConfigDB`在UAT环境部署一套就可以了
 
-  
+| 服务器 |
+| :--- |
 
 
-  
-
+|  | 数据库 | 端口 | 环境 |
+| :--- | :--- | :--- | :--- |
+| 192.168.10.58 | ApolloPortalDB | 3306 | UAT |
+| 192.168.10.58 | ApolloConfigDB | 3306 | UAT |
 
 
 
