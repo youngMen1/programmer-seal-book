@@ -331,6 +331,8 @@ Apollo同时还增加了几个新的Annotation来简化在Spring环境中的使�
 
 ##### 1.3.2.2.1.`@ApolloConfig`的使用
 
+1.新增访问端点
+
 ##### `@ApolloConfigChangeListener`的使用
 
 
