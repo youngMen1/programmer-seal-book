@@ -23,6 +23,6 @@ Apollo支持4个维度管理Key-Value格式的配置：
 * Portal通过域名访问Meta Server获取Admin Service服务列表（IP+Port），而后直接通过IP+Port访问服务，同时在Portal侧会做load balance、错误重试
 * 为了简化部署，我们实际上会把Config Service、Eureka和Meta Server三个逻辑角色部署在同一个JVM进程中
 
-服务角色
+### 服务角色
 
-配置发布流程
+### 配置发布流程
