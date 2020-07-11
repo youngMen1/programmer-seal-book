@@ -151,7 +151,7 @@ BeanUtils中进行对象转换时发生异常类
 
 封装了异常处理中心，报文转换，http序列换等工具作者
 
-#### WebMvcConfig
+#### 1.3.1.WebMvcConfig
 
 实现了WebMvcConfigurer和WebServerFactoryCustomizer
 
@@ -240,6 +240,10 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
   }
 
 ```
+
+#### 1.3.2.GlobalDefaultExceptionHandler
+
+
 
 
 
