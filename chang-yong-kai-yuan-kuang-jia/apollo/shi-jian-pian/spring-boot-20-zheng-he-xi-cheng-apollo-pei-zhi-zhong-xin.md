@@ -214,16 +214,16 @@ apollo.meta=http://127.0.0.1:8080
 
 #### 1.3.2.1.Spring Placeholder的使用
 
-Spring应用通常会使用Placeholder来注入配置，使用的格式形如`${someKey:someDefaultValue}`，如
+Spring应用通常会使用Placeholder来注入配置，使用的格式形如`${someKey:someDefaultValue}`，如  
 `${timeout:100}`。冒号前面的是key，冒号后面的是默认值（建议在实际使用时尽量给出默认值，以免由于key没有定义导致运行时错误）。Apollo从v0.10.0开始的版本支持placeholder在运行时自动更新。如果需要关闭placeholder在运行时自动更新功能，可以通过以下两种方式关闭：
 
-1.通过设置`System Property apollo.autoUpdateInjectedSpringProperties`，如启动时传入
-`-Dapollo.autoUpdateInjectedSpringProperties=false`
+1.通过设置`System Property apollo.autoUpdateInjectedSpringProperties`，如启动时传入  
+`-Dapollo.autoUpdateInjectedSpringProperties=false`  
 2.通过设置META-INF/app.properties中的`apollo.autoUpdateInjectedSpringProperties=false`
 
 #### 1.3.2.2.Java Config使用方式
-1.新建配置类JavaConfigBean如下：
 
+1.新建配置类JavaConfigBean如下：
 
 ```
 /**
@@ -243,7 +243,6 @@ public class JavaConfigBean {
 }
 ```
 
-
 2.新增访问端点
 
 ```
@@ -257,8 +256,40 @@ public class JavaConfigBean {
   }
 ```
 
-3.测试
+3.测试  
 浏览器访问`http://127.0.0.1:8080/index1`，正确返回配置的值
 
-
 #### 1.3.2.3.ConfigurationProperties使用方式
+
+Spring Boot提供了
+
+`@ConfigurationProperties`
+
+把配置注入到bean对象中。Apollo也支持这种方式，下面的例子会把
+
+`redis.cache.expireSeconds`
+
+和
+
+`redis.cache.commandTimeout`
+
+分别注入到
+
+`SampleRedisConfig`
+
+的
+
+`expireSeconds`
+
+和
+
+`commandTimeout`
+
+字段中。
+
+  
+
+
+  
+
+
