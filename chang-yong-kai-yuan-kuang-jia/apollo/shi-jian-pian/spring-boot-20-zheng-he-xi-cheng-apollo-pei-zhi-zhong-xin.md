@@ -120,5 +120,8 @@ Portal started. You can visit http://localhost:8070 now!
 ```
 #### 1.2.3.3.异常排查
 
+如果启动遇到了异常，可以分别查看service和portal目录下的log文件排查问题。
+
+注： 在启动apollo-configservice的过程中会在日志中输出eureka注册失败的信息，如com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused。需要注意的是，这个是预期的情况，因为apollo-configservice需要向Meta Server（它自己）注册服务，但是因为在启动过程中，自己还没起来，所以会报这个错。后面会进行重试的动作，所以等自己服务起来后就会注册正常了。
 
 
