@@ -136,4 +136,10 @@ source /your_local_path/sql/apolloportaldb.sql
 导入成功后，可以通过执行以下sql语句来验证：
 
 
+```
+select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
+```
+
+
+
 
