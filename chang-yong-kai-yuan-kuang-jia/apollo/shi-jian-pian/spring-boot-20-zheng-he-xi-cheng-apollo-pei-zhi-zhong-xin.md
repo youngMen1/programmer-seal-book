@@ -416,5 +416,5 @@ public class User {
 jsonBeanProperty=[ { "username": "john", "password": "1234" }, { "username": "simon", "password": "222132" } ]
 ```
 
-
+3.客户端获取配置
 
