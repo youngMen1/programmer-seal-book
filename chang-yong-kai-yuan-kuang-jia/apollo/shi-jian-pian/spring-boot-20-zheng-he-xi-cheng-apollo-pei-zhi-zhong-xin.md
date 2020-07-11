@@ -61,7 +61,7 @@ source /your_local_path/sql/apolloconfigdb.sql
 
     select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
 
-| NamespaceId |  | Key | Value | Comment |
+| NamespaceId | Key | Value | Comment |
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | timeout | 100 | sample | timeout配置 |
 
