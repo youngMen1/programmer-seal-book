@@ -254,6 +254,20 @@ public class GlobalDefaultExceptionHandler {
 }
 ```
 
+而后使用@ExcepionHandler来抓取异常，比如这样
+
+
+
+```
+//处理系统内置的Exception
+  @ExceptionHandler(Throwable.class)
+  public ResponseEntity<Map<String, Object>> exception(HttpServletRequest request, Throwable ex) {
+    return handleError(request, INTERNAL_SERVER_ERROR, ex);
+  }
+```
+
+
+
 
 
 
