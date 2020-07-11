@@ -15,3 +15,11 @@ Java客户端不依赖任何框架，能够运行于所有Java运行时环境，
 ## 1.2.Apollo配置中心服务端(来源于官网)
 
 本文的重点在于Apollo在客户端的使用，所以Apollo服务端使用的是官网提供的 Quick Start（针对本地测试使用），后续文章会专门讲述Apollo服务端在分布式环境下的部署。
+
+### 1.2.1.准备工作
+1.Java
+Apollo服务端要求Java 1.8+，客户端要求Java 1.7+，笔者本地使用的是Java 1.8。
+2.MySQL
+Apollo的表结构对timestamp使用了多个default声明，所以需要5.6.5以上版本。笔者本地使用的是8.0.13版本
+3.下载 Quick Start
+
