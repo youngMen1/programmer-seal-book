@@ -60,6 +60,12 @@ public class ApolloConfigRegistrar implements ImportBeanDefinitionRegistrar {
 
 小A是XX团队主力开发，有一天产品说要上线一个迪士尼门票内购功能，由于迪士尼门票很火爆，产品一拍脑袋说，每个用户限购5张！
 
+代码如下:
+
+
+
+
+
 
 
 
