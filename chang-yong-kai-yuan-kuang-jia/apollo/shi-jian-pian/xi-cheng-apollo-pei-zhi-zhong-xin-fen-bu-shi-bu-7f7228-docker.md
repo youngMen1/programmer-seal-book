@@ -310,7 +310,7 @@ version: "3"
 services:
   apollo-configservice:                                         ##容器服务名
     container_name: apollo-configservice                        ##容器名
-    #build: apollo-configservice/src/main/docker/                ##Dockerfile路径
+    #build: apollo-configservice/src/main/docker/               ##Dockerfile路径
     image: simon/apollo-configservice                           ##镜像名
     ports:
       - "8080:8080"    
