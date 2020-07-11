@@ -270,5 +270,20 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 
 ##### 1.3.2.1.4.获取安装包和Dockerfile文件
 
+1.获取apollo-configservice安装包：安装包在位于apollo-configservice/target/目录下的apollo-configservice-x.x.x-github.zip，Dockerfile在apollo-configservice/src/main/docker/目录下
+
+1. 获取apollo-adminservice安装包：安装包位于apollo-adminservice/target/目录下的apollo-adminservice-x.x.x-github.zip，Dockerfile在apollo-adminservice/src/main/docker/目录下
+2. 获取apollo-portal安装包：安装包位于apollo-portal/target/目录下的apollo-portal-x.x.x-github.zip，Dockerfile在apollo-portal/src/main/docker/目录下
+
+分别将上面的安装包和Dockerfile文件上传至服务器（已安装Docker）上
+
+  
+
+
+  
+
+
+
+
 
 
