@@ -24,3 +24,5 @@ Apollo支持4个维度管理Key-Value格式的配置：
 * 为了简化部署，我们实际上会把Config Service、Eureka和Meta Server三个逻辑角色部署在同一个JVM进程中
 
 服务角色
+
+配置发布流程
