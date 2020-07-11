@@ -210,3 +210,4 @@ apollo.meta=http://127.0.0.1:8080
 在上一节，我们简单的搭建了客户端，成功的使用服务端配置。Apollo为我们提供的使用方式有很多种，下面只介绍Spring Boot 2.0环境下的使用方式。
 
 #### 1.3.2.1.Spring Placeholder的使用
+Spring应用通常会使用Placeholder来注入配置，使用的格式形如${someKey:someDefaultValue}，如${timeout:100}。冒号前面的是key，冒号后面的是默认值（建议在实际使用时尽量给出默认值，以免由于key没有定义导致运行时错误）。Apollo从v0.10.0开始的版本支持placeholder在运行时自动更新。如果需要关闭placeholder在运行时自动更新功能，可以通过以下两种方式关闭：
