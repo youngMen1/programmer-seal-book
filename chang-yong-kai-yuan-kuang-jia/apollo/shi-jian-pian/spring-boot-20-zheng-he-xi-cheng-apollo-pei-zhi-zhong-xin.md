@@ -141,4 +141,5 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 [Portal 实现用户登录功能](https://github.com/ctripcorp/apollo/wiki/Portal-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD)
 
 2.输入用户名apollo，密码admin登录
+![](/static/image/apollo-sample-home.png)
 
