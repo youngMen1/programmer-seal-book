@@ -66,5 +66,5 @@ source /your_local_path/sql/apolloconfigdb.sql
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | timeout | 100 | sample | timeout配置 |
 
-
+### 1.2.3.配置数据库连接信息
 
