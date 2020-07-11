@@ -9,6 +9,7 @@ Apollo支持4个维度管理Key-Value格式的配置：
 * environment (环境)
 * cluster (集群)
 * namespace (命名空间)
+
 同时，Apollo基于开源模式开发，开源地址：`https://github.com/ctripcorp/apollo`
 
 ## 1.2.设计架构
