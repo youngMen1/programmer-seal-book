@@ -418,3 +418,18 @@ jsonBeanProperty=[ { "username": "john", "password": "1234" }, { "username": "si
 
 3.客户端获取配置
 
+```
+//4. @ApolloJsonValue使用
+@ApolloJsonValue("${jsonBeanProperty:[]}")
+private List<User> anotherJsonBeans;
+
+@RequestMapping("/index4")
+public void hello4(){
+  anotherJsonBeans.forEach(item -> {
+    System.err.println(item.getUsername()+"--"+item.getPassword());
+  });
+}
+```
+
+
+
