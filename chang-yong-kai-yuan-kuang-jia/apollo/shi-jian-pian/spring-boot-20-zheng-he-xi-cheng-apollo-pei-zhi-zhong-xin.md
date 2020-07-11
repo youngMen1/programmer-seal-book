@@ -315,3 +315,5 @@ public class SampleRedisConfig {
 
 3.测试
 
+浏览器访问`http://127.0.0.1:8080/index2`，正确返回配置的值
+
