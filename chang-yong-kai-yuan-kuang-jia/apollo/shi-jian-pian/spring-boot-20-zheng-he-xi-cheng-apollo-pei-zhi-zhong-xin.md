@@ -100,3 +100,9 @@ netstat -aon|findstr "8080"
 
 在Quick Start目录下执行如下命令：
 
+```
+./demo.sh start
+```
+
+
+
