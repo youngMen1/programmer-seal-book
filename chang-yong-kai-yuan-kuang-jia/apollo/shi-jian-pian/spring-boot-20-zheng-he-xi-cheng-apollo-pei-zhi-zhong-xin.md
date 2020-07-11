@@ -244,10 +244,17 @@ public class JavaConfigBean {
 ```
 
 
-
+2.新增访问端点
 
 ```
+  //1.Java Config方式
+  @Autowired
+  JavaConfigBean javaConfigBean;
 
+  @RequestMapping("/index1")
+  public String hello1(){
+    return javaConfigBean.getTimeout()+"";
+  }
 ```
 
 
