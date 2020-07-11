@@ -203,4 +203,5 @@ apollo.meta=http://127.0.0.1:8080
 
 #### 1.3.1.5.启动服务测试
 
+在Apollo配置中心中，我们对该项目有一条配置server.port = 9000,启动服务，访问http://localhost:9000/index，返回hello man。证明，客户端是从服务端获取的配置。
 
