@@ -269,3 +269,36 @@ Spring Boot提供了`@ConfigurationProperties`把配置注入到bean对象中。
 
 1.新增配置类`SampleRedisConfig`如下：
 
+```
+/**
+ * ConfigurationProperties使用方式
+ *
+ * @author simon
+ * @create 2018-11-02 9:30
+ **/
+@Configuration
+@ConfigurationProperties(prefix = "redis.cache")
+public class SampleRedisConfig {
+  private int expireSeconds;
+  private int commandTimeout;
+
+  public void setExpireSeconds(int expireSeconds) {
+    this.expireSeconds = expireSeconds;
+  }
+
+  public void setCommandTimeout(int commandTimeout) {
+    this.commandTimeout = commandTimeout;
+  }
+
+  public int getExpireSeconds() {
+    return expireSeconds;
+  }
+
+  public int getCommandTimeout() {
+    return commandTimeout;
+  }
+}
+```
+
+
+
