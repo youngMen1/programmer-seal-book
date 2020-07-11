@@ -50,3 +50,5 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 示意图：
 
 ![](/static/image/20190810173214556.jpg)
+
+### 客户端设计
