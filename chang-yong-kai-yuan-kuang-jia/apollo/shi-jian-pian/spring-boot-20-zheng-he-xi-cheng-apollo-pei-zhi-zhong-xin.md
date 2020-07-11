@@ -221,6 +221,6 @@ Spring应用通常会使用Placeholder来注入配置，使用的格式形如`${
 `-Dapollo.autoUpdateInjectedSpringProperties=false`
 2.通过设置META-INF/app.properties中的`apollo.autoUpdateInjectedSpringProperties=false`
 
-
+#### 1.3.2.2.Java Config使用方式
 
 
