@@ -166,7 +166,7 @@ public class WebMvcConfig implements WebMvcConfigurer, WebServerFactoryCustomize
 
 挑重点介绍下
 
-HandlerMethodArgumentResolver
+##### HandlerMethodArgumentResolver
 
 ```
  @Override
@@ -193,7 +193,7 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 
 这里我们可以看个例子，有这样一个业务场景，用户传的报文在网络中做了加密处理，需要对用户报文做解密，相当一个公共处理逻辑，写到业务代码中不方便维护，此时就可以增加一个HandlerMethodArgumentResolver用于解密。代码参考github:xxx
 
-configureContentNegotiation
+##### configureContentNegotiation
 
 
 
