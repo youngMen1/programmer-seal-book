@@ -24,11 +24,7 @@ Apollo服务端要求Java 1.8+，客户端要求Java 1.7+，笔者本地使用�
 Apollo的表结构对timestamp使用了多个default声明，所以需要5.6.5以上版本。笔者本地使用的是8.0.13版本  
 3.下载 Quick Start
 
-官网为我们准备了 Quick Start 安装包。大家只需要下载到本地，就可以直接使用，免去了编译、打包过程。大家可以到
+官网为我们准备了 Quick Start 安装包。大家只需要下载到本地，就可以直接使用，免去了编译、打包过程。大家可以到[github下载](https://github.com/nobodyiam/apollo-build-scripts)
 
-[github下载](https://github.com/nobodyiam/apollo-build-scripts)
-
-，也可以通过
-
-[百度云盘下载](https://pan.baidu.com/s/187W86LoeVuv3DMrOJhcg1A)
+，也可以通过[百度云盘下载](https://pan.baidu.com/s/187W86LoeVuv3DMrOJhcg1A)
 
