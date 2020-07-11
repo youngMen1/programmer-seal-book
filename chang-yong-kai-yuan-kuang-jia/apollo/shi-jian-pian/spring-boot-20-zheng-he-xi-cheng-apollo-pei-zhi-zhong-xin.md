@@ -321,3 +321,7 @@ public class SampleRedisConfig {
 
 `EnvironmentChangeEvent`或`RefreshScope`。这个我会在后续文章中详细描述。
 
+#### Spring Annotation支持
+
+
+
