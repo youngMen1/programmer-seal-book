@@ -302,5 +302,5 @@ apollo_admin
 
 ### 1.3.4.部署Apollo服务端
 
-
+我们通过docker compose部署Apollo服务端，部署的配置文件如下：
 
