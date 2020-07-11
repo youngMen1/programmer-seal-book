@@ -180,12 +180,31 @@ source /your_local_path/sql/apolloconfigdb.sql
 
 主要涉及ApolloConfigDB的下面4张表，下面同时附上需要导入的数据查询语句：
 
+1.App
+
+导入全部的App
+
+如：insert into 新环境的ApolloConfigDB.App select \* from 其它环境的ApolloConfigDB.App where IsDeleted = 0;
+
+2.AppNamespace
+
+* 导入全部的AppNamespace
+* 如：insert into 新环境的ApolloConfigDB.AppNamespace select \* from 其它环境的ApolloConfigDB.AppNamespace where IsDeleted = 0;
+
+3.Cluster
+
+* 导入默认的default集群
+* 如：insert into 新环境的ApolloConfigDB.Cluster select \* from 其它环境的ApolloConfigDB.Cluster where Name = 'default' and IsDeleted = 0;
+
+4.Namespace
+
+* 导入默认的default集群中的namespace
+* 如：insert into 新环境的ApolloConfigDB.Namespace select \* from 其它环境的ApolloConfigDB.Namespace where ClusterName = 'default' and IsDeleted = 0;
+
   
 
 
   
-
-
 
 
 
