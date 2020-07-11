@@ -104,7 +104,7 @@ if (qty > MAX_QTY_PER_USER ) {
 ## 1.5.搭建Apollo服务
 springboot接入非常简单，只需在maven里面加个依赖，然后启动类上加个@EnableApolloConfig就可以了，然后在配置项上使用@Value注解即可
 
-搭建apollo服务还是要颇费一番功夫的，参考《apollo开发指南》
+搭建apollo服务还是要颇费一番功夫的，参考《apollo开发指南》[]
 
 
 
