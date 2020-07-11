@@ -291,6 +291,23 @@ apollo中自定了GsonHttpMessageConverter,重写了默认的json转换器，这
 
 #### 1.3.4.CharacterEncodingFilterConfiguration 过滤器
 
+```
+@Configuration
+public class CharacterEncodingFilterConfiguration {
+
+  @Bean
+  public FilterRegistrationBean encodingFilter() {
+    FilterRegistrationBean bean = new FilterRegistrationBean();
+    bean.setFilter(new CharacterEncodingFilter());
+    bean.addInitParameter("encoding", "UTF-8");
+    bean.setName("encodingFilter");
+    bean.addUrlPatterns("/*");
+    bean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.FORWARD);
+    return bean;
+  }
+}
+```
+
 
 
 
