@@ -352,6 +352,13 @@ Apollo同时还增加了几个新的Annotation来简化在Spring环境中的使�
 
 浏览器访问`http://127.0.0.1:8080/index3`，正确打印配置的值
 
+```
+redis.cache.commandTimeout=3000
+redis.cache.expireSeconds=20
+server.port=800
+timeout=200
+```
+
 ##### 1.3.2.2.2.`@ApolloConfigChangeListener`的使用
 
 
