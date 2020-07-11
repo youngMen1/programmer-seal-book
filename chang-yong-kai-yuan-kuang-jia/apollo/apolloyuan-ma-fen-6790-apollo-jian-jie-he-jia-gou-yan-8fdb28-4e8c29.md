@@ -28,6 +28,11 @@ if ("lastModifiedTime".equals(orderBy)) {
   Collections.sort(items, (o1, o2) -> {
 
 ```
+平凡而接地气，让我们有了学习的榜样
+
+当然也有比较"高端"的，比如servlet3.0中的DeferredResult用来保持长连接
+
+
 
 
 
