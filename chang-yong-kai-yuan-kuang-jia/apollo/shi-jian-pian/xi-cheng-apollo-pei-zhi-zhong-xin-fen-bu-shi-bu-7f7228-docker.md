@@ -129,5 +129,7 @@ Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官�
 | 192.168.10.58 | ApolloPortalDB | 3306 | UAT |
 | 192.168.10.58 | ApolloConfigDB | 3306 | UAT |
 
+#### 创建ApolloPortalDB
+
 
 
