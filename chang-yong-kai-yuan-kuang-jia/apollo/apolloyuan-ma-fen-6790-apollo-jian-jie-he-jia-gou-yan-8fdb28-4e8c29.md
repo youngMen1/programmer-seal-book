@@ -42,7 +42,7 @@ public DeferredResult<ResponseEntity<List<ApolloConfigNotification>>> pollNotifi
 
 
 ```
-@Import(ApolloConfigRegistrar.class)  //用import注解来载入bean
+@Import(ApolloConfigRegistrar.class)  // 用import注解来载入bean
 public @interface EnableApolloConfig {
 
 //用ImportBeanDefinitionRegistrar来注册bean
