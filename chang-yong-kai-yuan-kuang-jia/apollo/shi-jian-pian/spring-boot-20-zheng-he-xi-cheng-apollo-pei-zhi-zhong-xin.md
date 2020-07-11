@@ -224,6 +224,14 @@ Spring应用通常会使用Placeholder来注入配置，使用的格式形如
 
 。冒号前面的是key，冒号后面的是默认值（建议在实际使用时尽量给出默认值，以免由于key没有定义导致运行时错误）。Apollo从v0.10.0开始的版本支持placeholder在运行时自动更新。如果需要关闭placeholder在运行时自动更新功能，可以通过以下两种方式关闭：
 
+通过设置
+
+`System Property apollo.autoUpdateInjectedSpringProperties`
+
+，如启动时传入
+
+`-Dapollo.autoUpdateInjectedSpringProperties=false`
+
   
 
 
