@@ -92,7 +92,6 @@ lsof -i:8080
 ```
 在windows下，可以通过如下命令检查：
 
-
 ```
 netstat -aon|findstr "8080"
 ```
