@@ -61,7 +61,7 @@ source /your_local_path/sql/apolloconfigdb.sql
 
     select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
 
-| NamespaceId | Key | Value | Comment |
+|  | NamespaceId | Key | Value | Comment |
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | timeout | 100 | sample | timeout配置 |
 
@@ -84,16 +84,19 @@ apollo_portal_db_password=密码（如果没有密码，留空即可）
 ### 1.2.3.启动Apollo配置中心
 
 #### 1.2.3.1.确保端口未被占用
+
 Quick Start脚本会在本地启动3个服务，分别使用8070, 8080, 8090端口，请确保这3个端口当前没有被使用。例如，在Linux/Mac下，可以通过如下命令检查：
 
 ```
 lsof -i:8080
 ```
+
 在windows下，可以通过如下命令检查：
 
 ```
 netstat -aon|findstr "8080"
 ```
+
 #### 1.2.3.2.执行启动脚本
 
 在Quick Start目录下执行如下命令：
@@ -118,6 +121,7 @@ Started [10846]
 Waiting for portal startup......
 Portal started. You can visit http://localhost:8070 now!
 ```
+
 #### 1.2.3.3.异常排查
 
 如果启动遇到了异常，可以分别查看service和portal目录下的log文件排查问题。
@@ -128,6 +132,9 @@ Portal started. You can visit http://localhost:8070 now!
 
 #### 1.2.4.1.查看样例配置
 
-1. 打开http://localhost:8070
+1. 打开[http://localhost:8070](http://localhost:8070)
 
-![](/static/image/apollo-login.png)
+![](/static/image/apollo-login.png)Quick Start集成了Spring Security简单认证，更多信息可以参考
+
+[Portal 实现用户登录功能](https://github.com/ctripcorp/apollo/wiki/Portal-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD)
+
