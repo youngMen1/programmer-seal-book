@@ -1,4 +1,4 @@
-# 1.Apollo源码分析-Apollo的代码层次(三)
+# 1.Apollo源码分析-Apollo的代码层次\(三\)
 
 ## 1.1.基本介绍
 
@@ -308,7 +308,7 @@ public class CharacterEncodingFilterConfiguration {
 
 加入了一个CharacterEncodingFilter将所有的字符集全部转换成UTF-8.
 
-### 1.3.4.aop包
+### 1.3.4.Aop包
 
 里面只定义了一个类，用于给所有的数据库操作都加上cat链路跟踪，简单看下它的用法
 
