@@ -219,7 +219,7 @@ Spring应用通常会使用Placeholder来注入配置，使用的格式形如`${
 
 1.通过设置`System Property apollo.autoUpdateInjectedSpringProperties`，如启动时传入
 `-Dapollo.autoUpdateInjectedSpringProperties=false`
-2.通过设置META-INF/app.properties中的apollo.autoUpdateInjectedSpringProperties=false
+2.通过设置META-INF/app.properties中的`apollo.autoUpdateInjectedSpringProperties=false`
 
 
 
