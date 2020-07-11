@@ -170,8 +170,7 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 
 ### 1.3.1.客户端搭建
 
-
-
+#### 1.3.1.1.添加Apollo客户端依赖
 ```
 <dependency>
      <groupId>com.ctrip.framework.apollo</groupId>
