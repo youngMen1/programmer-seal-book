@@ -24,5 +24,9 @@ Apollo支持4个维度管理Key-Value格式的配置：
 * 为了简化部署，我们实际上会把Config Service、Eureka和Meta Server三个逻辑角色部署在同一个JVM进程中
 
 ### 服务角色
+1.apollo-configservice：提供配置获取接口，提供配置更新推送接口，接口服务对象为Apollo客户端
+2.apollo-adminservice：提供配置管理接口，提供配置修改、发布等接口，接口服务对象为Portal，以及Eureka
+3.apollo-portal：提供Web界面供用户管理配置
+4.apollo-client：Apollo提供的客户端程序，为应用提供配置获取、实时更新等功能
 
 ### 配置发布流程
