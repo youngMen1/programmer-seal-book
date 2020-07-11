@@ -258,4 +258,4 @@ public class JavaConfigBean {
 ```
 
 3.测试
-
+浏览器访问`http://127.0.0.1:8080/index1`，正确返回配置的值
