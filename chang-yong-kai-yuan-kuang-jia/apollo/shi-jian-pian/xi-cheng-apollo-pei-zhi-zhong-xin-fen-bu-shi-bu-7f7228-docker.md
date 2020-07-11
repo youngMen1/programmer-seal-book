@@ -27,18 +27,10 @@
 * DEV 开发环境
 * FAT 测试环境，相当于alpha环境\(功能测试\)
 * UAT 集成环境，相当于beta环境（回归测试）
-* PRO 生产环境
-
-  如果希望添加自定义的环境名称，具体步骤可以参考  
+* PRO 生产环境如果希望添加自定义的环境名称，具体步骤可以参考  
   [部署&开发遇到的常见问题\#42-添加自定义的环境](https://github.com/ctripcorp/apollo/wiki/部署&开发遇到的常见问题#42-添加自定义的环境)
 
 以ctrip为例，其部署策略如下：
 
-作者：AaronSimon
 
-链接：[https://www.jianshu.com/p/039e7ca8ad0a](https://www.jianshu.com/p/039e7ca8ad0a)
-
-来源：简书
-
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
