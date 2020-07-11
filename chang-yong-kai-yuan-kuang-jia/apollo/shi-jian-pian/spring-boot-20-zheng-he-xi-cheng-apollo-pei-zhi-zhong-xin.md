@@ -317,3 +317,23 @@ public class SampleRedisConfig {
 
 浏览器访问`http://127.0.0.1:8080/index2`，正确返回配置的值
 
+**注：**
+
+`@ConfigurationProperties`
+
+如果需要在Apollo配置变化时自动更新注入的值，需要配合使用
+
+`EnvironmentChangeEvent`
+
+或
+
+`RefreshScope`
+
+。这个我会在后续文章中详细描述。
+
+  
+
+
+  
+
+
