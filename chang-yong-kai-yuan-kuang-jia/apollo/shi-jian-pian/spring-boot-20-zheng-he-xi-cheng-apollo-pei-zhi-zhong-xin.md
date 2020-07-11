@@ -171,7 +171,9 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 ### 1.3.1.客户端搭建
 
 #### 1.3.1.1.添加Apollo客户端依赖
+
 目前最新版本为1.1.1
+
 ```
 <dependency>
      <groupId>com.ctrip.framework.apollo</groupId>
@@ -179,7 +181,9 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
      <version>1.1.1</version>
 </dependency>
 ```
+
 #### 1.3.1.2.添加配置信息
+
 ```
 # 应用ID(在Apollo服务端新增项目添加的应用ID)
 app.id=testclient
@@ -193,7 +197,6 @@ apollo.meta=http://127.0.0.1:8080
 
 #### 1.3.1.4.新增一个测试接口
 
-
 ```
   @RequestMapping("/index")
   public String hello(){
@@ -203,11 +206,29 @@ apollo.meta=http://127.0.0.1:8080
 
 #### 1.3.1.5.启动服务测试
 
-在Apollo配置中心中，我们对该项目有一条配置server.port = 9000,启动服务，访问http://localhost:9000/index，返回hello man。证明，客户端是从服务端获取的配置。
+在Apollo配置中心中，我们对该项目有一条配置server.port = 9000,启动服务，访问[http://localhost:9000/index，返回hello](http://localhost:9000/index，返回hello) man。证明，客户端是从服务端获取的配置。
 
 ### 1.3.2.客户端用法
 
 在上一节，我们简单的搭建了客户端，成功的使用服务端配置。Apollo为我们提供的使用方式有很多种，下面只介绍Spring Boot 2.0环境下的使用方式。
 
 #### 1.3.2.1.Spring Placeholder的使用
-Spring应用通常会使用Placeholder来注入配置，使用的格式形如${someKey:someDefaultValue}，如${timeout:100}。冒号前面的是key，冒号后面的是默认值（建议在实际使用时尽量给出默认值，以免由于key没有定义导致运行时错误）。Apollo从v0.10.0开始的版本支持placeholder在运行时自动更新。如果需要关闭placeholder在运行时自动更新功能，可以通过以下两种方式关闭：
+
+Spring应用通常会使用Placeholder来注入配置，使用的格式形如
+
+`${someKey:someDefaultValue}`
+
+，如
+
+`${timeout:100}`
+
+。冒号前面的是key，冒号后面的是默认值（建议在实际使用时尽量给出默认值，以免由于key没有定义导致运行时错误）。Apollo从v0.10.0开始的版本支持placeholder在运行时自动更新。如果需要关闭placeholder在运行时自动更新功能，可以通过以下两种方式关闭：
+
+  
+
+
+  
+
+
+
+
