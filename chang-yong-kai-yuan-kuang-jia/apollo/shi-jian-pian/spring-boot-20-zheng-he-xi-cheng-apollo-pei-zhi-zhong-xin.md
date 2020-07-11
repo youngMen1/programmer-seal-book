@@ -179,5 +179,5 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
      <version>1.1.1</version>
 </dependency>
 ```
-
+#### 1.3.1.2.添加配置信息
 
