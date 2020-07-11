@@ -377,6 +377,13 @@ public Bean2 bean2(){
 
 ```
 
+在spring ioc的过程中，优先解析@Component，@Service，@Controller注解的类。其次解析配置类，也就是@Configuration标注的类。最后开始解析配置类中定义的bean。
+
+在apollo中使用自定义condition:
+
+用注解实现spi
+
+
 
 
 
