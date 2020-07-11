@@ -253,3 +253,16 @@ apollo_portal_db_password=Ibase2016
 
 Apollo Portal需要在不同的环境访问不同的meta service\(apollo-configservice\)地址，所以需要在打包时提供这些信息。我这里只部署UAT环境，配置修改如下：
 
+```
+# meta server url, different environments should have different meta server addresses
+#dev_meta=http://192.168.10.58:8080
+#fat_meta=http://192.168.10.58:8080
+uat_meta=http://192.168.10.138:8080
+#pro_meta=http://192.168.10.58:8080
+
+#META_SERVERS_OPTS="-Ddev_meta=$dev_meta -Dfat_meta=$fat_meta -Duat_meta=$uat_meta -Dpro_meta=$pro_meta"
+META_SERVERS_OPTS="-Duat_meta=$uat_meta"
+```
+
+
+
