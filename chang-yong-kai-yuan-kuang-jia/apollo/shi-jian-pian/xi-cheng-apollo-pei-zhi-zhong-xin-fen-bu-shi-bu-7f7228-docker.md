@@ -266,34 +266,7 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 
 ##### 1.3.2.1.3.执行编译、打包
 
-做完上述配置后，就可以执行编译和打包了。
-
-**执行/scripts目录下build.sh脚本**
-
-，该脚本会依次打包apollo-configservice, apollo-adminservice, apollo-portal。
-
-  
-
-
-  
-
-
-作者：AaronSimon
-
-  
-
-
-链接：https://www.jianshu.com/p/039e7ca8ad0a
-
-  
-
-
-来源：简书
-
-  
-
-
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+做完上述配置后，就可以执行编译和打包了。**执行/scripts目录下build.sh脚本**，该脚本会依次打包apollo-configservice, apollo-adminservice, apollo-portal。
 
 
 
