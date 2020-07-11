@@ -179,7 +179,14 @@ HandlerMethodArgumentResolver
   }
 
 ```
+
 重载HandlerMethodArgumentResolver是做啥用的呢？简单来说就是用来处理spring mvc中各类参数，比如@RequestParam、@RequestHeader、@RequestBody、@PathVariable、@ModelAttribute
+
+而是使用了addArgumentResolvers后就加入了新的参数处理能力。HandlerMethodArgumentResolver中有两个最重要的参数
+
+
+
+
 
 
 
