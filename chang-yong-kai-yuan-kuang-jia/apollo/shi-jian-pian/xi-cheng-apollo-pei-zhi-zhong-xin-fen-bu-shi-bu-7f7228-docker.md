@@ -222,17 +222,7 @@ apollo.portal.envs - 可支持的环境列表
 配置项统一存储在ApolloConfigDB.ServerConfig表中，需要注意每个环境的ApolloConfigDB.ServerConfig都需要单独配置。
 
 1. eureka.service.url - Eureka服务Url不管是apollo-configservice还是apollo-adminservice都需要向eureka服务注册，所以需要配置eureka服务地址。 按照目前的实现，apollo-configservice本身就是一个eureka服务，所以只需要填入apollo-configservice的地址即可，如有多个，用逗号分隔（注意不要忘了/eureka/后缀）。
-   **这里我填写**
-   **`http://192.168.10.138:8080/eureka`**
-   。后续文章我会单独介绍如何将Config Service和Admin Service注册到公司统一的Eureka上
-
-  
-
-
-  
-
-
-
+   **这里我填写**`http://192.168.10.138:8080/eureka`。后续文章我会单独介绍如何将Config Service和Admin Service注册到公司统一的Eureka上
 
 
 
