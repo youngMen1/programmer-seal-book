@@ -103,7 +103,7 @@ ExceptionUtils源码
 
 key值生成器
 
-微信截图_20200711135712.png
+![](/static/image/微信截图_20200711135712.png)
 
 
 ### exception 异常包
