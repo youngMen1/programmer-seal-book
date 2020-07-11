@@ -406,6 +406,12 @@ spi的定义: SPI 全称为 Service Provider Interface，是一种服务发现�
 而 **@Profile("ctrip")**是特指在系统环境变量中存在ctrip时才会生效，限定了方法的生效环境。
 还有一种常见的方式是做数据库配置，比如在不同的dev，stg，prd环境中配置不同的地址，或者使用不同的数据库:
 
+```
+  @Profile("dev")
+  @Profile("stg")
+  @Profile("prd")
+```
+
 
 
 
