@@ -44,7 +44,6 @@
 另外可以参考下面的样例部署图：
 
 ```
- 
 为了演示方便，本文将Apollo-portal，Apollo-adminservice和Apollo-configservice部署在一台机器上
 ```
 
@@ -80,6 +79,18 @@ spring:
         - docker0
         - veth.*
 ```
+
+另外一种方式是直接指定要注册的IP，可以修改startup.sh，通过JVM System Property在运行时传入，如
+
+`-Deureka.instance.ip-address=${指定的IP}`
+
+，或者也可以修改apollo-adminservice或apollo-configservice 的bootstrap.yml文件，加入以下配置
+
+  
+
+
+  
+
 
 
 
