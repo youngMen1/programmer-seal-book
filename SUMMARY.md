@@ -397,6 +397,7 @@
     * [Apollo源码分析-Apollo的代码层次\(三\)](chang-yong-kai-yuan-kuang-jia/apollo/apolloyuan-ma-fen-6790-apollo-de-dai-ma-ceng-ci-ff08-yi-ff09.md)
     * [实践篇](chang-yong-kai-yuan-kuang-jia/apollo/shi-jian-pian.md)
       * Spring Boot 2.0 整合携程Apollo配置中心
+      * 携程 Apollo 配置中心分布式部署\(Docker\)
 * [分布式设计](fen-bu-shi-she-ji.md)
   * [扩展性设计](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji.md)
     * [可扩展性设计之数据切分](fen-bu-shi-she-ji/kuo-zhan-xing-she-ji/ke-kuo-zhan-xing-she-ji-zhi-shu-ju-qie-fen.md)
