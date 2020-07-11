@@ -77,3 +77,4 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 * 如果在60秒内有客户端关心的配置变化，被保持住的客户端请求会立即返回，并告知客户端有配置变化的namespace信息，客户端会据此拉取对应namespace的最新配置
 * 如果在60秒内没有客户端关心的配置变化，那么会返回Http状态码304给客户端
 3.客户端在收到服务端请求后会立即重新发起连接，回到第一步
+考虑到会有数万客户端向服务端发起长连，在服务端我们使用了async servlet(Spring DeferredResult)来服务Http Long Polling请求。
