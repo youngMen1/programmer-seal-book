@@ -361,5 +361,17 @@ timeout=200
 
 ##### 1.3.2.2.2.`@ApolloConfigChangeListener`的使用
 
+1.新增以下代码
+
+```
+@ApolloConfigChangeListener
+  private void someOnChange(ConfigChangeEvent changeEvent) {
+    //update injected value of batch if it is changed in Apollo
+    if (changeEvent.isChanged("timeout")) {
+      System.out.println(config.getIntProperty("timeout", 0));
+    }
+  }
+```
+
 
 
