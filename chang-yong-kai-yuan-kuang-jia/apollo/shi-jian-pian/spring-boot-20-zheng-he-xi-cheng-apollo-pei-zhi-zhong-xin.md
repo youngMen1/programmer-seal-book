@@ -102,5 +102,23 @@ netstat -aon|findstr "8080"
 ./demo.sh start
 ```
 
+当看到如下输出后，就说明启动成功了！
+
+```
+==== starting service ====
+Service logging file is ./service/apollo-service.log
+Started [10768]
+Waiting for config service startup.......
+Config service started. You may visit http://localhost:8080 for service status now!
+Waiting for admin service startup....
+Admin service started
+==== starting portal ====
+Portal logging file is ./portal/apollo-portal.log
+Started [10846]
+Waiting for portal startup......
+Portal started. You can visit http://localhost:8070 now!
+```
+
+
 
 
