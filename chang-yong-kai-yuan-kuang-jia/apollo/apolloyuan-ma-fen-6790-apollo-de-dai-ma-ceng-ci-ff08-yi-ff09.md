@@ -92,6 +92,16 @@ ExceptionUtils源码
 
 
 
+```
+ RequestPrecondition.checkArguments(!StringUtils.isContainEmpty(model.getReleasedBy(), model
+            .getReleaseTitle()),
+        "Params(releaseTitle and releasedBy) can not be empty");
+
+```
+
+
+
+
 
 
 
