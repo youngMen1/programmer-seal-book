@@ -264,8 +264,6 @@ public class GlobalDefaultExceptionHandler {
 
 根据用户请求头来格式化不同对象。请求传给服务器的都是一个字符串流，而服务器根据用户请求头判断不同媒体类型，然后在已注册的转换器中查找对应的转换器，比如在content-type中发现json后，就能转换成json对象了
 
-
-
 ```
 @Configuration
 public class HttpMessageConverterConfiguration {
@@ -286,8 +284,8 @@ public class HttpMessageConverterConfiguration {
   }
 }
 ```
-apollo中自定了GsonHttpMessageConverter,重写了默认的json转换器，这种转换当然更快乐，Gson是google的一个json转换器，当然，传说ali 的fastjson会更快，但是貌似fastjson问题会很多。json处理中对于日期格式的处理也是一个大问题，所以这里也定义了日期格式转换器。
 
+apollo中自定了GsonHttpMessageConverter,重写了默认的json转换器，这种转换当然更快乐，Gson是google的一个json转换器，当然，传说ali 的fastjson会更快，但是貌似fastjson问题会很多。json处理中对于日期格式的处理也是一个大问题，所以这里也定义了日期格式转换器。
 
 #### 1.3.4.CharacterEncodingFilterConfiguration 过滤器
 
@@ -307,13 +305,12 @@ public class CharacterEncodingFilterConfiguration {
   }
 }
 ```
+
 加入了一个CharacterEncodingFilter将所有的字符集全部转换成UTF-8.
 
 ### 1.4.aop包
 
 里面只定义了一个类，用于给所有的数据库操作都加上cat链路跟踪，简单看下它的用法
-
-
 
 ```
 @Aspect  //定义一个切面
@@ -332,8 +329,8 @@ public class RepositoryAspect {
   public Object invokeWithCatTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
     ...
 }
-
 ```
+
 ### 1.5.condition 条件注解
 
 cloud条件注解
@@ -351,7 +348,6 @@ cloud条件注解
 @ConditionalOnResource：类路径是否有指定的值
 @ConditionalOnSingleCandidate：当指定Bean在SpringIoc容器内只有一个，或者虽然有多个但是指定首选的Bean
 @ConditionalOnWebApplication：当前项目是Web项目的条件
-
 ```
 
 ConditionalOnBean
@@ -374,7 +370,6 @@ public class Configuration2 {
 public Bean2 bean2(){
     return new Bean2();
 }
-
 ```
 
 在spring ioc的过程中，优先解析@Component，@Service，@Controller注解的类。其次解析配置类，也就是@Configuration标注的类。最后开始解析配置类中定义的bean。
@@ -382,7 +377,6 @@ public Bean2 bean2(){
 在apollo中使用自定义condition:
 
 用注解实现spi
-
 
 ```
   @Configuration
@@ -403,7 +397,7 @@ public Bean2 bean2(){
 
 spi的定义: SPI 全称为 Service Provider Interface，是一种服务发现机制。SPI 的本质是将接口实现类的全限定名配置在文件中，并由服务加载器读取配置文件，加载实现类。这样可以在运行时，动态为接口替换实现类。正因此特性，我们可以很容易的通过 SPI 机制为我们的程序提供拓展功能。
 
-而 **@Profile("ctrip")**是特指在系统环境变量中存在ctrip时才会生效，限定了方法的生效环境。
+而 **@Profile\("ctrip"\)**是特指在系统环境变量中存在ctrip时才会生效，限定了方法的生效环境。  
 还有一种常见的方式是做数据库配置，比如在不同的dev，stg，prd环境中配置不同的地址，或者使用不同的数据库:
 
 ```
@@ -430,7 +424,6 @@ public @interface ConditionalOnMissingProfile {    //注解的名称
    */
   String[] value() default {};
 }
-
 ```
 
 而后再实现类中实现了对环境变量的判断
@@ -479,37 +472,6 @@ public class OnProfileCondition implements Condition {
 
     return profiles;
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
