@@ -98,5 +98,5 @@ netstat -aon|findstr "8080"
 ```
 #### 1.2.3.2.执行启动脚本
 
-
+在Quick Start目录下执行如下命令：
 
