@@ -209,5 +209,7 @@ Apollo自身的一些配置是放在数据库里面的，所以需要针对实�
 
 ##### 1.3.1.3.1.调整ApolloPortalDB配置
 
+配置项统一存储在ApolloPortalDB.ServerConfig表中，也可以通过管理员工具 - 系统参数页面进行配置。
+
 
 
