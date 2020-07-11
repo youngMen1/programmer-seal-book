@@ -88,10 +88,11 @@ ExceptionUtils源码
 
 #### RequestPrecondition
 
-作者：方老司
-链接：https://segmentfault.com/a/1190000019542623
-来源：SegmentFault 思否
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+做非空、正数判断等，抽象出了一个类，而不用硬编码了
+
+
+
+
 
 
 
