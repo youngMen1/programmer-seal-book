@@ -30,5 +30,7 @@ Apollo的表结构对timestamp使用了多个default声明，所以需要5.6.5�
 
 ### 1.2.2.安装步骤
 
+#### 1.2.1 创建数据库
+Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官网把数据库、表的创建和样例数据都分别准备了sql文件（在下载的 Quick Start 安装包的sql目录下），只需要导入数据库即可。
 
 
