@@ -264,5 +264,7 @@ uat_meta=http://192.168.10.138:8080
 META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 ```
 
+##### 1.3.2.1.3.执行编译、打包
+
 
 
