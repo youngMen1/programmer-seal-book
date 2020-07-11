@@ -203,3 +203,7 @@ source /your_local_path/sql/apolloconfigdb.sql
 
 同时也别忘了通知用户在新的环境给自己的项目设置正确的配置信息，尤其是一些影响面比较大的公共namespace配置。
 
+#### 1.3.1.3.调整服务端配置
+
+
+
