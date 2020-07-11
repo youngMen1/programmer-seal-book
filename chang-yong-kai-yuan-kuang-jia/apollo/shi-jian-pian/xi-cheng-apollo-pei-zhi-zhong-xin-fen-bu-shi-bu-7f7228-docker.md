@@ -146,5 +146,7 @@ source /your_local_path/sql/apolloportaldb.sql
 | :--- | :--- | :--- |
 | 1 | SampleApp | Sample App |
 
+#### 1.3.1.2.创建ApolloConfigDB
+
 
 
