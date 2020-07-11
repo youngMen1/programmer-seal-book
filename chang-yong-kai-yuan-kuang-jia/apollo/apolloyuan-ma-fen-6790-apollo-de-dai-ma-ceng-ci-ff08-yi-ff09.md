@@ -412,6 +412,32 @@ spi的定义: SPI 全称为 Service Provider Interface，是一种服务发现�
   @Profile("prd")
 ```
 
+但这样存在一个问题是无法满足devops的一次编译，多处运行的原则，因此最好是将配置放置与外部，通过不同环境特征来获取不同的配置文件。
+
+看下自定义的condition是如何实现的:
+
+定义注解
+
+```
+@Target({ ElementType.TYPE, ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(OnProfileCondition.class)   //具体的实现类
+public @interface ConditionalOnMissingProfile {    //注解的名称
+  /**
+   * The profiles that should be inactive
+   * @return
+   */
+  String[] value() default {};
+}
+
+```
+
+
+
+
+
+
 
 
 
