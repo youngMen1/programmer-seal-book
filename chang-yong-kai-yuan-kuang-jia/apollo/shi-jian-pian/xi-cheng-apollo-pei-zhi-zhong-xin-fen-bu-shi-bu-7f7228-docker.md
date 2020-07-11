@@ -294,6 +294,11 @@ apollo_admin
       - apollo-adminservice-x.x.x-github.zip
 ```
 
+1.构建simon/apollo-portal镜像进入`apollo_portal`目录执行如下命令`docker build -t simon/apollo_portal .`
+
+2.构建simon/apollo-portal镜像进入`apollo_config`目录执行如下命令`docker build -t simon/apollo_configservice .`
+
+3.构建simon/apollo-portal镜像 进入`apollo_admin`目录执行如下命令`docker build -t simon/apollo_adminservice .`
 
 
 
