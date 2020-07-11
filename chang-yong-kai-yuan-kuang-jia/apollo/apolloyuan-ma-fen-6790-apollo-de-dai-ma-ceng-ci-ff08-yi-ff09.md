@@ -121,13 +121,13 @@ public abstract class AbstractApolloHttpException extends RuntimeException{
 
 业务异常类，下图可以看出其对业务异常的分类描述
 
-2176780131-5cf77c8197a23\_articlex.png
+![](/static/image/2176780131-5cf77c8197a23_articlex.png)
 
 #### NotFoundException
 
 某个值找不到了
 
-2788800039-5cf77ce3b3bae\_articlex.png
+![](/static/image/2788800039-5cf77ce3b3bae_articlex.png)
 
 #### ServiceException
 
