@@ -237,3 +237,17 @@ apollo.portal.envs - 可支持的环境列表
 
 Apollo服务端需要知道如何连接到你前面创建的数据库，所以需要编辑scripts/build.sh，修改ApolloPortalDB和ApolloConfigDB相关的数据库连接串信息。
 
+```
+# apollo config db info
+apollo_config_db_url=jdbc:mysql://192.168.10.58:3306/ApolloConfigDB?characterEncoding=utf8
+apollo_config_db_username=root
+apollo_config_db_password=Ibase2016
+
+# apollo portal db info
+apollo_portal_db_url=jdbc:mysql://192.168.10.58:3306/ApolloPortalDB?characterEncoding=utf8
+apollo_portal_db_username=root
+apollo_portal_db_password=Ibase2016
+```
+
+
+
