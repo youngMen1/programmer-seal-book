@@ -44,4 +44,4 @@
 另外可以参考下面的样例部署图：
 
 ![](/static/image/5389623-9cbf9c29454f3e5e.webp)
-
+为了演示方便，本文将Apollo-portal，Apollo-adminservice和Apollo-configservice部署在一台机器上
