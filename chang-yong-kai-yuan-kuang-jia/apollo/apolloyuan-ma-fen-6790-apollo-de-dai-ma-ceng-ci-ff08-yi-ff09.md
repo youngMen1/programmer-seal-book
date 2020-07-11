@@ -143,6 +143,13 @@ public abstract class AbstractApolloHttpException extends RuntimeException{
 
 ```
 
+#### BeanUtilsException
+
+BeanUtils中进行对象转换时发生异常类
+
+
+
+
 
 
 
