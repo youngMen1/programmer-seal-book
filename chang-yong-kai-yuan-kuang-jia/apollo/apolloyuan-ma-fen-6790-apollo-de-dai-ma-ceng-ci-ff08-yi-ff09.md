@@ -82,5 +82,22 @@ ExceptionUtils源码
 
  当中用到了Guava的MoreObjects的链式调用来优雅的拼接字符串，[参考Guava Object的使用](https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained)
 
+#### InputValidator
+
+验证ClusterName和AppName是否正确
+
+#### RequestPrecondition
+
+作者：方老司
+链接：https://segmentfault.com/a/1190000019542623
+来源：SegmentFault 思否
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
+
+
+
 
 
