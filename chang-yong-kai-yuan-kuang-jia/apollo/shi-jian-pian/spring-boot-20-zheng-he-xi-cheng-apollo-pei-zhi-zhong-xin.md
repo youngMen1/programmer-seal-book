@@ -4,3 +4,5 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 
 
 
+服务端基于Spring Boot和Spring Cloud开发，打包后可以直接运行，不需要额外安装Tomcat等应用容器。
+
