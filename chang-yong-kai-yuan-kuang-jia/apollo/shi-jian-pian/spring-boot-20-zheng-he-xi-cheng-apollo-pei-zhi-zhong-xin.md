@@ -35,6 +35,7 @@ Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官�
 
 #### 1.2.2.2 创建ApolloPortalDB
 通过各种Mysql客户端（Navicat,DataGrip等）导入sql/apolloportaldb.sql即可
-下面以MySQL原生客户端为例：`source /your_local_path/sql/apolloportaldb.sql`
+下面以MySQL原生客户端为例：
+`source /your_local_path/sql/apolloportaldb.sql`
 
 
