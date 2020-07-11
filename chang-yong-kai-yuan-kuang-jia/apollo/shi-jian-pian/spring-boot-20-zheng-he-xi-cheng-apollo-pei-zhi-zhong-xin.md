@@ -67,5 +67,6 @@ source /your_local_path/sql/apolloconfigdb.sql
 | 1 | timeout | 100 | sample | timeout配置 |
 
 ### 1.2.3.配置数据库连接信息
+
 Apollo服务端需要知道如何连接到你前面创建的数据库，所以需要编辑demo.sh，修改ApolloPortalDB和ApolloConfigDB相关的数据库连接串信息。
 
