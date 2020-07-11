@@ -10,6 +10,10 @@ Apollo是我现在看起来最"简单"的源码
 比如它的maven依赖层次结构
 ![](/static/image/apollo123456.png)
 
+它使用不同的异常处理类
+
+
+
 
 
 
