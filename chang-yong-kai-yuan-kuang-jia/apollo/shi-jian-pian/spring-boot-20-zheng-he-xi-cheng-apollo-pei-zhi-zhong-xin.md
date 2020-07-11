@@ -166,5 +166,5 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 
 ## 1.3.Apollo配置中心客户端
 
-
+我们客户端基于Spring Boot 2.0搭建，开发工具是InteIIij IDEA。新建一个项目，项目名称为apollo-client
 
