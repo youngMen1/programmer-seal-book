@@ -148,5 +148,16 @@ source /your_local_path/sql/apolloportaldb.sql
 
 #### 1.3.1.2.创建ApolloConfigDB
 
+通过各种Mysql客户端（Navicat,DataGrip等）导入
+
+`sql/apolloconfigdb.sql`
+
+即可
+
+  
+
+
+下面以MySQL原生客户端为例：
+
 
 
