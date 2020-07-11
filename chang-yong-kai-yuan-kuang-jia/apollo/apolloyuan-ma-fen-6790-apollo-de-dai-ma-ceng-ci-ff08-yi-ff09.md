@@ -21,7 +21,7 @@ apollo-client:客户端，集成该客户端拉取配置项
 
 ![](/static/image/304542458-5cf739653eaa7_articlex.jpg)
 
-### utils 基础包
+### 1.3.1.utils 基础包
 
 utils中集成了了一些通用方法，比如判断非空，对象拷贝，字符串拼接等
 
@@ -106,7 +106,7 @@ key值生成器
 ![](/static/image/微信截图_20200711135712.png)
 
 
-### exception 异常包
+### 1.3.2.exception 异常包
 
 
 
