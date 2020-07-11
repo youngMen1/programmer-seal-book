@@ -30,6 +30,55 @@ utils中集成了了一些通用方法，比如判断非空，对象拷贝，字
 #### BeanUtils 拷贝对象
 实现不同类对象中属性的拷贝，服务之间传递的都是dto对象，而在使用时必须转换为用法:
 
+```
+//在网络中传输的为DTO对象，而程序中处理的是实体类对象
+@RequestMapping(path = "/apps", method = RequestMethod.POST)
+public AppDTO create(@RequestBody AppDTO dto) {
+ ...
+//DTO拷贝成实体类
+App entity = BeanUtils.transfrom(App.class, dto);
+...
+//实体类再拷贝成DTO   
+dto = BeanUtils.transfrom(AppDTO.class, entity);
+
+```
+
+源码:
+
+```
+// 封装{@link org.springframework.beans.BeanUtils#copyProperties}，惯用与直接将转换结果返回
+  public static <T> T transfrom(Class<T> clazz, Object src) {
+    if (src == null) {
+      return null;
+    }
+    T instance = null;
+    try {
+      instance = clazz.newInstance();
+    } catch (Exception e) {
+      throw new BeanUtilsException(e);
+    }
+    org.springframework.beans.BeanUtils.copyProperties(src, instance, getNullPropertyNames(src));
+    return instance;
+  }
+
+```
+#### ExceptionUtils 将exception转为String
+
+
+
+```
+//将exception转为String
+ } catch (IllegalAccessException ex) {
+    if (logger.isErrorEnabled()) {
+        logger.error(ExceptionUtils.exceptionToString(ex));
+```
+
+
+
+
+
+
+
 
 
 
