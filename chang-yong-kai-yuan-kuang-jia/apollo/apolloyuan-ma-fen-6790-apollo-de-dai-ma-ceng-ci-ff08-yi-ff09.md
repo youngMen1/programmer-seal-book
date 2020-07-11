@@ -1,4 +1,4 @@
-``# 1.Apollo源码分析-Apollo的代码层次\(三\)
+\`\`\# 1.Apollo源码分析-Apollo的代码层次\(三\)
 
 ## 1.1.基本介绍
 
@@ -80,7 +80,7 @@ ExceptionUtils源码
           .add("message", errorAttributes.get("message"))
 ```
 
- 当中用到了Guava的MoreObjects的链式调用来优雅的拼接字符串，[参考Guava Object的使用](https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained)
+当中用到了Guava的MoreObjects的链式调用来优雅的拼接字符串，[参考Guava Object的使用](https://github.com/google/guava/wiki/CommonObjectUtilitiesExplained)
 
 #### InputValidator
 
@@ -90,13 +90,10 @@ ExceptionUtils源码
 
 做非空、正数判断等，抽象出了一个类，而不用硬编码了
 
-
-
 ```
  RequestPrecondition.checkArguments(!StringUtils.isContainEmpty(model.getReleasedBy(), model
             .getReleaseTitle()),
         "Params(releaseTitle and releasedBy) can not be empty");
-
 ```
 
 #### UniqueKeyGenerator
@@ -105,12 +102,12 @@ key值生成器
 
 ![](/static/image/微信截图_20200711135712.png)
 
-
 ### 1.3.2.exception 异常包
 
 封装常用的异常处理类，对常见的异常做了分类，比如业务异常，服务异常，not found异常等，大家做异常时不妨参考下其对异常的分类。
 
 #### AbstractApolloHttpException
+
 apollo异常基类，设置了httpstatus，便于返回准确的http的报错信息，其继承了RuntimeException，并加入了一个httpStatus
 
 ```
@@ -119,17 +116,18 @@ public abstract class AbstractApolloHttpException extends RuntimeException{
       ...
 }
 ```
+
 #### BadRequestException
 
 业务异常类，下图可以看出其对业务异常的分类描述
 
-2176780131-5cf77c8197a23_articlex.png
+2176780131-5cf77c8197a23\_articlex.png
 
 #### NotFoundException
 
-某个值找不到了 
+某个值找不到了
 
-2788800039-5cf77ce3b3bae_articlex.png
+2788800039-5cf77ce3b3bae\_articlex.png
 
 #### ServiceException
 
@@ -140,7 +138,6 @@ public abstract class AbstractApolloHttpException extends RuntimeException{
                                                               + " Maybe because of meta server down or all admin server down. "
                                                               + "Meta server address: %s",
                                                               MetaDomainConsts.getDomain(env)));
-
 ```
 
 #### BeanUtilsException
@@ -177,7 +174,6 @@ public class WebMvcConfig implements WebMvcConfigurer, WebServerFactoryCustomize
 
     argumentResolvers.add(pageResolver);
   }
-
 ```
 
 重载HandlerMethodArgumentResolver是做啥用的呢？简单来说就是用来处理spring mvc中各类参数，比如@RequestParam、@RequestHeader、@RequestBody、@PathVariable、@ModelAttribute
@@ -201,8 +197,8 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
     configurer.favorPathExtension(false);
     configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.APPLICATION_JSON);
   }
-
 ```
+
 视图解析器，这里的配置指的是不检查accept头，而且默认请求为json格式。
 
 ##### addResourceHandlers
@@ -220,15 +216,13 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
     addCacheControl(registry, "styles", 86400);
     addCacheControl(registry, "views", 86400);
   }
-
 ```
+
 静态资源的访问时间。
 
 ##### WebServerFactoryCustomizer
 
 定制tomcat，spring boot集成了tomcat，在2.0以上版本中，通过实现WebServerFactoryCustomizer类来自定义tomcat，比如在这里设置字符集
-
-
 
 ```
 @Override
@@ -238,7 +232,6 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
     factory.setMimeMappings(mappings );
 
   }
-
 ```
 
 #### 1.3.2.GlobalDefaultExceptionHandler
@@ -262,70 +255,12 @@ public class GlobalDefaultExceptionHandler {
   }
 ```
 
-在apollo中定义了这几个异常:
-内置异常: `Throwable,HttpRequestMethodNotSupportedException,HttpStatusCodeException,AccessDeniedException`
-以及apollo自定义的异常AbstractApolloHttpException
+在apollo中定义了这几个异常:  
+内置异常: `Throwable,HttpRequestMethodNotSupportedException,HttpStatusCodeException,AccessDeniedException`  
+以及apollo自定义的异常AbstractApolloHttpException  
 将异常进行分类能方便直观的展示所遇到的异常
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 1.3.3.HttpMessageConverters
 
 
 
