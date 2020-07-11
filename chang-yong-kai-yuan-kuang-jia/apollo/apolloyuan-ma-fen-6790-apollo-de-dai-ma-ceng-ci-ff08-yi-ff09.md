@@ -64,8 +64,6 @@ dto = BeanUtils.transfrom(AppDTO.class, entity);
 ```
 #### ExceptionUtils 将exception转为String
 
-
-
 ```
 //将exception转为String
  } catch (IllegalAccessException ex) {
