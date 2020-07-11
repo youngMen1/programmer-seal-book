@@ -14,7 +14,7 @@ apollo-configservice: 配置管理服务，客户端通过该服务拉取配置�
 apollo-client:客户端，集成该客户端拉取配置项
 此外还有apollo-biz，apollo-common,apollo-core提供基础服务
 
-其依赖关系如下
+其依赖关系如下:
 ![](/static/image/2051242107-5cf737fd43e95_articlex.jpg)
 
 
