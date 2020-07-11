@@ -36,3 +36,4 @@ Apollo支持4个维度管理Key-Value格式的配置：
 * Portal调用Admin Service的接口操作发布
 * Admin Service发布配置后，发送ReleaseMessage给各个Config Service
 * Config Service收到ReleaseMessage后，通知对应的客户端
+### Admin Service 与 Config Service 异步通知流程
