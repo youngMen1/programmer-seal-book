@@ -133,7 +133,7 @@ Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官�
 ```
 source /your_local_path/sql/apolloportaldb.sql
 ```
-
+导入成功后，可以通过执行以下sql语句来验证：
 
 
 
