@@ -279,11 +279,19 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 分别将上面的安装包和Dockerfile文件上传至服务器（已安装Docker）上
 
 ### 1.3.3.构建docker镜像
+
 上传到服务器上的安胡子那个包和Dockerfile文件目录结构如下：
 
-
 ```
-
+apollo_portal
+      - Dokerfile
+      - apollo-portal-x.x.x-github.zip
+apollo_config
+      - Dokerfile
+      - apollo-configservice-x.x.x-github.zip      
+apollo_admin
+      - Dokerfile
+      - apollo-adminservice-x.x.x-github.zip
 ```
 
 
