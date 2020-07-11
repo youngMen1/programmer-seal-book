@@ -232,10 +232,6 @@ Spring应用通常会使用Placeholder来注入配置，使用的格式形如
 
 `-Dapollo.autoUpdateInjectedSpringProperties=false`
 
-  
-
-
-  
 
 
 
