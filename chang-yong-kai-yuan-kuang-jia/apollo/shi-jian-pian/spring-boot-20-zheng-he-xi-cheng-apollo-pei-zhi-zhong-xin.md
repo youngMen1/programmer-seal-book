@@ -300,5 +300,5 @@ public class SampleRedisConfig {
 }
 ```
 
-
+2.新增访问端点
 
