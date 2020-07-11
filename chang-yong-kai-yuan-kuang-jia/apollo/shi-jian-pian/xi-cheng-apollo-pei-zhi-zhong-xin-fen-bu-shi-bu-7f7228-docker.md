@@ -268,5 +268,7 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 
 做完上述配置后，就可以执行编译和打包了。**执行/scripts目录下build.sh脚本**，该脚本会依次打包apollo-configservice, apollo-adminservice, apollo-portal。
 
+##### 1.3.2.1.4.获取安装包和Dockerfile文件
+
 
 
