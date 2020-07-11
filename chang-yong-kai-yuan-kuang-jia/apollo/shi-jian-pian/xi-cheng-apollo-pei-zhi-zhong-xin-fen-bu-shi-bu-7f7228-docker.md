@@ -99,20 +99,13 @@ eureka:
   instance:
     homePageUrl: http://${指定的IP}:${指定的Port}
     preferIpAddress: false
-
 ```
 
 如果Apollo部署在公有云上，本地开发环境无法连接，但又需要做开发测试的话，客户端可以升级到0.11.0版本及以上，然后通过
 
-`-Dapollo.configService=http://config-service的公网IP:端口`
+`-Dapollo.configService=http://config-service的公网IP:端口`来跳过meta service的服务发现
 
-来跳过meta service的服务发现
-
-  
-
-
-  
-
+## 1.3.部署步骤
 
 
 
