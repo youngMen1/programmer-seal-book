@@ -12,4 +12,4 @@ Apollo支持4个维度管理Key-Value格式的配置：
 同时，Apollo基于开源模式开发，开源地址：`https://github.com/ctripcorp/apollo`
 
 ## 1.2.设计架构
-20190808193934865.png
+![](/static/image/20190808193934865.png)
