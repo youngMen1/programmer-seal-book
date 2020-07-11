@@ -132,7 +132,7 @@ Portal started. You can visit http://localhost:8070 now!
 
 #### 1.2.4.1.查看样例配置
 
-1. 打开[http://localhost:8070](http://localhost:8070)
+1.打开[http://localhost:8070](http://localhost:8070)
 
 ![](/static/image/apollo-login.png)
 
