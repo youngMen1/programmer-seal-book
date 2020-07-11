@@ -141,7 +141,7 @@ Quick Start集成了Spring Security简单认证，更多信息可以参考
 [Portal 实现用户登录功能](https://github.com/ctripcorp/apollo/wiki/Portal-实现用户登录功能)
 
 2.输入用户名apollo，密码admin登录  
-![](/static/image/apollo-sample-home.png)配置中心中包含一个默认的项目
+![](/static/image/apollo-sample-home.png)配置中心中包含一个默认的项目`SampleApp`
 
-`SampleApp`
+3.点击SampleApp进入配置界面，可以看到当前有一个配置timeout=100
 
