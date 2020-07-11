@@ -209,8 +209,6 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 
 静态资源控制器
 
-
-
 ```
 @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
