@@ -233,3 +233,7 @@ apollo.portal.envs - 可支持的环境列表
 
 到github上进行[源码下载](https://github.com/ctripcorp/apollo/releases)
 
+##### 1.3.2.1..1 配置数据库连接信息
+
+
+
