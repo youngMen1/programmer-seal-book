@@ -229,11 +229,7 @@ apollo.portal.envs - 可支持的环境列表
 
 这里我是通过源码构建的
 
-  
+#### 1.3.2.1.通过源码构建
 
-
-  
-
-
-
+到github上进行[源码下载](https://github.com/ctripcorp/apollo/releases)
 
