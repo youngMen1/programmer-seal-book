@@ -49,5 +49,7 @@ select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
 | :--- | :--- | :--- |
 | 1 | SampleApp | Sample App |
 
+#### 1.2.2.3.创建ApolloConfigDB
+
 
 
