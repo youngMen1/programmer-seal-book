@@ -333,6 +333,21 @@ Apollo同时还增加了几个新的Annotation来简化在Spring环境中的使�
 
 1.新增访问端点
 
+```
+// 3. @ApolloConfig使用
+  @ApolloConfig
+  private Config config;
+
+  @RequestMapping("/index3")
+  public String hello3(){
+    Set <String> propertyNames = config.getPropertyNames();
+    propertyNames.forEach(key -> {
+      System.err.println(key+"="+config.getIntProperty(key,0));
+    });
+    return propertyNames.toString();
+  }
+```
+
 ##### `@ApolloConfigChangeListener`的使用
 
 
