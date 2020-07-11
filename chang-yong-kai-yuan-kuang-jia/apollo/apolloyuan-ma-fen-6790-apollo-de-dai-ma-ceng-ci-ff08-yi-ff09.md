@@ -195,8 +195,6 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
 
 ##### configureContentNegotiation
 
-
-
 ```
 @Override
   public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
@@ -205,6 +203,9 @@ resolveArgument：真正用于处理参数分解的方法，返回的Object就�
   }
 
 ```
+视图解析器，这里的配置指的是不检查accept头，而且默认请求为json格式。
+
+
 
 
 
