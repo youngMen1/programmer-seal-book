@@ -80,7 +80,7 @@ if (qty > MAX_QTY_PER_USER ) {
 
 小B是YY团队主力开发，有一天产品说要上线一个欢乐谷门票抢购功能，由于欢乐谷门票很火爆，产品一拍脑袋说，每个用户限购5张！
 小B吸取了小A的教训，二话不说把配置写在了Apollo配置中心
-1358582139-5cd8dbc2c0f5f_articlex.png
+![](/static/image/1358582139-5cd8dbc2c0f5f_articlex.png)
 第二天中午，由于内购实在太火爆，产品急匆匆的跑过来对小B说，赶紧改成每人1张！
 小B不紧不慢的说：10秒内搞定
 
@@ -98,7 +98,7 @@ if (qty > MAX_QTY_PER_USER ) {
 私有类型：应用独有的配置
 关联类型：应用继承共享配置，并可覆盖（类似于类的继承）
 
-2516805662-5cd8e9c2d4334_articlex.png
+![](/static/image/2516805662-5cd8e9c2d4334_articlex.png)
 
 
 
