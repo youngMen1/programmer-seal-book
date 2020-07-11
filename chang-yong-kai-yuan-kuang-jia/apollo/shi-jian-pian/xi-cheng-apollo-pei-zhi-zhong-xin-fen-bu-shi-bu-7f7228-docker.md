@@ -233,7 +233,7 @@ apollo.portal.envs - 可支持的环境列表
 
 到github上进行[源码下载](https://github.com/ctripcorp/apollo/releases)
 
-##### 1.3.2.1..1 配置数据库连接信息
+##### 1.3.2.1.1 配置数据库连接信息
 
-
+Apollo服务端需要知道如何连接到你前面创建的数据库，所以需要编辑scripts/build.sh，修改ApolloPortalDB和ApolloConfigDB相关的数据库连接串信息。
 
