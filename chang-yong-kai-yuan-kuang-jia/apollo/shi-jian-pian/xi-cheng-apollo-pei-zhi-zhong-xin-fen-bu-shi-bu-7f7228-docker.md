@@ -130,3 +130,10 @@ Apollo服务端共需要两个数据库：ApolloPortalDB和ApolloConfigDB，官�
 下面以MySQL原生客户端为例：
 
 
+```
+source /your_local_path/sql/apolloportaldb.sql
+```
+
+
+
+
