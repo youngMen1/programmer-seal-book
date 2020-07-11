@@ -155,13 +155,15 @@ BeanUtils中进行对象转换时发生异常类
 
 实现了WebMvcConfigurer和WebServerFactoryCustomizer
 
-
-
 ```
 public class WebMvcConfig implements WebMvcConfigurer, WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
-
-
+}
 ```
+
+而我们的WebMvcConfigurer是个接口，类实现这个接口来具备一定的能力，以下就列出了这些能力
+
+
+
 
 
 
