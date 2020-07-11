@@ -281,6 +281,11 @@ META_SERVERS_OPTS="-Duat_meta=$uat_meta"
 ### 1.3.3.构建docker镜像
 上传到服务器上的安胡子那个包和Dockerfile文件目录结构如下：
 
-apollo_portal
+
+```
+
+```
+
+
 
 
