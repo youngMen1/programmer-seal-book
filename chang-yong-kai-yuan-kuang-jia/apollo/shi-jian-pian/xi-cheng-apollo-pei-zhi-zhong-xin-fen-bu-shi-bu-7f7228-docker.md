@@ -47,7 +47,7 @@
 为了演示方便，本文将Apollo-portal，Apollo-adminservice和Apollo-configservice部署在一台机器上
 ```
 
-| 服务 | 服务 | 端口 | 环境 |
+| 服务器 | 服务 | 端口 | 环境 |
 | :--- | :--- | :--- | :--- |
 | 192.168.10.138 | apollo-portal | 8070 | UAT |
 | 192.168.10.138 | apollo-adminservice | 8080 | UAT |
