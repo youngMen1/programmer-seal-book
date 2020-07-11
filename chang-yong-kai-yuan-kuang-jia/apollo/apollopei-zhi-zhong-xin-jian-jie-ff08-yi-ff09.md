@@ -32,7 +32,7 @@ Apollo支持4个维度管理Key-Value格式的配置：
 ### 配置发布流程
 ![](/static/image/20190808193607960.png)
 上图简要描述了配置发布的大致过程：
-用户在Portal操作配置发布
-Portal调用Admin Service的接口操作发布
-Admin Service发布配置后，发送ReleaseMessage给各个Config Service
-Config Service收到ReleaseMessage后，通知对应的客户端
+* 用户在Portal操作配置发布
+* Portal调用Admin Service的接口操作发布
+* Admin Service发布配置后，发送ReleaseMessage给各个Config Service
+* Config Service收到ReleaseMessage后，通知对应的客户端
