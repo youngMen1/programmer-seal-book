@@ -162,6 +162,8 @@ public class WebMvcConfig implements WebMvcConfigurer, WebServerFactoryCustomize
 
 而我们的WebMvcConfigurer是个接口，类实现这个接口来具备一定的能力，以下就列出了这些能力
 
+3894336015-5cfa6908111d8_articlex.png
+
 
 
 
