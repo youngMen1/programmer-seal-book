@@ -432,9 +432,8 @@ public @interface ConditionalOnMissingProfile {    //注解的名称
 }
 
 ```
+
 而后再实现类中实现了对环境变量的判断
-
-
 
 ```
 //实现condition接口
