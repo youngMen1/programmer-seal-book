@@ -126,6 +126,14 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 CRUD+发布 --> 数据库 config db
 
 #### 1.3.2.3.Client
+
+为应用获取配置，支持实时更新
+通过 Meta Service 获取 ConfigService 的服务列表
+使用客户端软辅在SLB（例如：Ribbon）方式路由到目标服务示例，进而调用ConfigService
+Client和ConfigService保持长连接，通过一种推拉结合(push & pull)的模式，在实现配置实时更新的同时，保证配置更新不丢失
+
+
+
 #### 1.3.2.4.Portal
 
 ### 1.3.3.辅助微服务之间进行服务发现的模块
