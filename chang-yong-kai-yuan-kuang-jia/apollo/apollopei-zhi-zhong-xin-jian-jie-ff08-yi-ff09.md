@@ -159,6 +159,12 @@ CRUD+发布 --> 数据库 config db
 
 #### 1.3.3.4.NginxLB （Software Load Balancer)
 
+* 和域名系统配合，协助Portal访问MetaServer获取AdminService地址列表
+* 和域名系统配合，协助Client访问MetaServer获取ConfigService地址列表
+* 和域名系统配合，协助用户访问Portal进行配置管理
+* 引入原因：MetaServer 同事时无状态集群方式部署，服务发现，为MetaServer配置域名，指向NginxLB；NginxLB再对MetaServer进行负载均衡和流量转发。Client/Portal通过域名+NginxLB间接访问MetaServer集群。
+
+
 ### 1.3.4.DB
 #### 1.3.4.1.Config DB
 #### 1.3.4.2.Portal DB
