@@ -95,6 +95,19 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 ## 1.3.架构剖析
 
 ### 1.3.1.流程图解
+
 ### 1.3.2.核心微服务模块
+#### 1.3.2.1.ConfigService
+#### 1.3.2.2.AdminService
+#### 1.3.2.3.Client
+#### 1.3.2.4.Portal
+
 ### 1.3.3.辅助微服务之间进行服务发现的模块
+#### 1.3.3.1.服务发现是微服务架构的基础，在Apollo的微服务架构中，既采用Eureka注册中心式的服务发现，也采用NginxLB集中Proxy式的服务发现
+#### 1.3.3.2.Meta Service
+#### 1.3.3.3.Eukera 服务注册中心
+#### 1.3.3.4.NginxLB （Software Load Balancer)
+
 ### 1.3.4.DB
+#### 1.3.4.1.Config DB
+#### 1.3.4.2.Portal DB
