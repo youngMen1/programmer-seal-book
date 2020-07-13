@@ -123,6 +123,7 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 - AdminService ConfigService config-DB 不同环境分别部署一份
 - 启动后注册到 Eukera ，定期发送保活心跳
 
+CRUD+发布 --> 数据库 config db
 
 #### 1.3.2.3.Client
 #### 1.3.2.4.Portal
