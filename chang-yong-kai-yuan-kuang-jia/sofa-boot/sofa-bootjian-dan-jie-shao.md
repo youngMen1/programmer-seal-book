@@ -6,7 +6,7 @@ SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spr
 
 SOFABoot 3.0.0 已经发布，该版本基于 Spring Boot 2.0.3.RELEASE 开发，并兼容 Spring Cloud。除此之外，SOFABoot 3.0.0 增加了支持 ReactiveHealthIndicator 健康检查扩展，支持 WebFlux 请求埋点等新功能，欢迎试用新版本。
 
-## 背景
+## 1.1.背景
 
 Spring Boot 是一个非常优秀的开源框架，可以非常方便地就构建出一个基于 Spring 的应用程序，但是在使用过程中，还是会遇到一些问题：
 
@@ -17,7 +17,7 @@ Spring Boot 是一个非常优秀的开源框架，可以非常方便地就构�
 
 为了解决以上的问题，又因为 SOFA 中间件中的各个组件本身就需要集成 Spring Boot，所以蚂蚁金服基于 Spring Boot 开发并开源了 SOFABoot，来解决以上的问题，也方便使用者在 Spring Boot 中方便地去使用 SOFA 中间件。
 
-## 功能简介
+## 1.2.功能简介
 
 为了解决 Spring Boot 在实施大规模微服务架构时候的问题，SOFABoot 提供了以下的能力：
 
