@@ -95,44 +95,44 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 ## 1.3.架构剖析
 
 ### 1.3.1.流程图解
+
 ![](/static/image/2019052519012757.png)
+
 ### 1.3.2.核心微服务模块
 
 #### 1.3.2.1.ConfigService
 
 服务于 Apollo Client 端
 
-- 配置信息获取接口（被动） Client --> Meta Service --> Eureka --> ConfigService --> Config Data
-- 配置信息推送接口（主动）
+* 配置信息获取接口（被动） Client --&gt; Meta Service --&gt; Eureka --&gt; ConfigService --&gt; Config Data
+* 配置信息推送接口（主动）
 
 注册在 Eukera 上
 
-- 部署方式：集群部署
-- 部署数量：项目应用的不同环境分别部署一份
+* 部署方式：集群部署
+* 部署数量：项目应用的不同环境分别部署一份
 
 #### 1.3.2.2.AdminService
 
 服务于 Apollo Portal 端（管理界面）
 
-- 配置管理接口
-- 配置修改发布接口
+* 配置管理接口
+* 配置修改发布接口
 
 注册在 Eukera 上
 
-- 同 ConfigService
-- AdminService ConfigService config-DB 不同环境分别部署一份
-- 启动后注册到 Eukera ，定期发送保活心跳
+* 同 ConfigService
+* AdminService ConfigService config-DB 不同环境分别部署一份
+* 启动后注册到 Eukera ，定期发送保活心跳
 
-CRUD+发布 --> 数据库 config db
+CRUD+发布 --&gt; 数据库 config db
 
 #### 1.3.2.3.Client
 
 * 为应用获取配置，支持实时更新
 * 通过 Meta Service 获取 ConfigService 的服务列表
 * 使用客户端软辅在SLB（例如：Ribbon）方式路由到目标服务示例，进而调用ConfigService
-* Client和ConfigService保持长连接，通过一种推拉结合(push & pull)的模式，在实现配置实时更新的同时，保证配置更新不丢失
-
-
+* Client和ConfigService保持长连接，通过一种推拉结合\(push & pull\)的模式，在实现配置实时更新的同时，保证配置更新不丢失
 
 #### 1.3.2.4.Portal
 
@@ -142,9 +142,11 @@ CRUD+发布 --> 数据库 config db
 * 操作数据库 Portal DB
 
 ### 1.3.3.辅助微服务之间进行服务发现的模块
+
 #### 1.3.3.1.服务发现是微服务架构的基础，在Apollo的微服务架构中，既采用Eureka注册中心式的服务发现，也采用NginxLB集中Proxy式的服务发现
 
 #### 1.3.3.2.Meta Service
+
 * Eureka的Proxy 将Eureka的服务发现接口以更简单明确的HTTP接口的形式暴露出来，方便Client/Protal通过简单的HTTPClient就可以查询到Config/AdminService的地址列表
 * 与 ConfigService 部署在一起
 * 引入原因：多语言环境下使用
@@ -157,13 +159,12 @@ CRUD+发布 --> 数据库 config db
 * 注册原因： AdminService ConfigService 无状态集群方式部署，通过注册在 Eukera ,实现服务发现问题
 * 基于Eukera实现服务发现注册+客户端Ribbo配合实现软路由
 
-#### 1.3.3.4.NginxLB （Software Load Balancer)
+#### 1.3.3.4.NginxLB （Software Load Balancer\)
 
 * 和域名系统配合，协助Portal访问MetaServer获取AdminService地址列表
 * 和域名系统配合，协助Client访问MetaServer获取ConfigService地址列表
 * 和域名系统配合，协助用户访问Portal进行配置管理
 * 引入原因：MetaServer 同事时无状态集群方式部署，服务发现，为MetaServer配置域名，指向NginxLB；NginxLB再对MetaServer进行负载均衡和流量转发。Client/Portal通过域名+NginxLB间接访问MetaServer集群。
-
 
 ### 1.3.4.DB
 
@@ -177,3 +178,6 @@ CRUD+发布 --> 数据库 config db
 
 * 存储内容：用户权限、项目和配置的元数据
 * 部署一份
+
+
+
