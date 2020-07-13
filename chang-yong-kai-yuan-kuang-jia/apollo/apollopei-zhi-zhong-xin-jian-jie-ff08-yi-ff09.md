@@ -112,6 +112,18 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 
 #### 1.3.2.2.AdminService
 
+服务于 Apollo Portal 端（管理界面）
+
+- 配置管理接口
+- 配置修改发布接口
+
+注册在 Eukera 上
+
+- 同 ConfigService
+- AdminService ConfigService config-DB 不同环境分别部署一份
+- 启动后注册到 Eukera ，定期发送保活心跳
+
+
 #### 1.3.2.3.Client
 #### 1.3.2.4.Portal
 
