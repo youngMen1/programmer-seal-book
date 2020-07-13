@@ -28,7 +28,7 @@ Apollo支持4个维度管理Key-Value格式的配置：
 
 | 英文简写 | 英文全称| 中文释义 | 环境用途 |
 | :--- | :--- | :--- | :--- |
-| DEV |  |  |  |
+| DEV | Development environment |  |  |
 | FAT |  |  |  |
 | UAT |  |  |  |
 | PRO |  |  |  |
