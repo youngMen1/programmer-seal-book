@@ -92,5 +92,6 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 
 考虑到会有数万客户端向服务端发起长连，在服务端我们使用了async servlet\(Spring DeferredResult\)来服务Http Long Polling请求。
 
+## 1.3.架构剖析
 
 
