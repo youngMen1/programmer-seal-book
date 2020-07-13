@@ -150,6 +150,13 @@ CRUD+发布 --> 数据库 config db
 * 引入原因：多语言环境下使用
 
 #### 1.3.3.3.Eukera 服务注册中心
+
+* 用于服务发现和注册
+* Config/AdminService注册实例并定期报心跳
+* 与 ConfigService 部署在一起
+* 注册原因： AdminService ConfigService 无状态集群方式部署，通过注册在 Eukera ,实现服务发现问题
+* 基于Eukera实现服务发现注册+客户端Ribbo配合实现软路由
+
 #### 1.3.3.4.NginxLB （Software Load Balancer)
 
 ### 1.3.4.DB
