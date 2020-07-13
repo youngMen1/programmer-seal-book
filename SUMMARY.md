@@ -229,7 +229,6 @@
     * [消息总线](zhong-jian-jian/xiao-xi-dui-lie/xiao-xi-zong-xian.md)
     * 消息的顺序
     * [RabbitMQ](zhong-jian-jian/xiao-xi-dui-lie/rabbitmq.md)
-    * [RocketMQ](zhong-jian-jian/xiao-xi-dui-lie/rocketmq.md)
     * ActiveMQ
     * [Kafka](zhong-jian-jian/xiao-xi-dui-lie/kafka.md)
     * [Redis 消息推送](zhong-jian-jian/xiao-xi-dui-lie/redis-xiao-xi-tui-song.md)
