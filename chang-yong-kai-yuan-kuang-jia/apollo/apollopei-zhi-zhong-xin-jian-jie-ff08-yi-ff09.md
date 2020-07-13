@@ -104,10 +104,14 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 
 - 配置信息获取接口（被动） Client --> Meta Service --> Eureka --> ConfigService --> Config Data
 - 配置信息推送接口（主动）
-#### 1.3.2.2.AdminService
+
 注册在 Eukera 上
+
 - 部署方式：集群部署
 - 部署数量：项目应用的不同环境分别部署一份
+
+#### 1.3.2.2.AdminService
+
 #### 1.3.2.3.Client
 #### 1.3.2.4.Portal
 
