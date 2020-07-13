@@ -143,7 +143,12 @@ CRUD+发布 --> 数据库 config db
 
 ### 1.3.3.辅助微服务之间进行服务发现的模块
 #### 1.3.3.1.服务发现是微服务架构的基础，在Apollo的微服务架构中，既采用Eureka注册中心式的服务发现，也采用NginxLB集中Proxy式的服务发现
+
 #### 1.3.3.2.Meta Service
+* Eureka的Proxy 将Eureka的服务发现接口以更简单明确的HTTP接口的形式暴露出来，方便Client/Protal通过简单的HTTPClient就可以查询到Config/AdminService的地址列表
+* 与 ConfigService 部署在一起
+* 引入原因：多语言环境下使用
+
 #### 1.3.3.3.Eukera 服务注册中心
 #### 1.3.3.4.NginxLB （Software Load Balancer)
 
