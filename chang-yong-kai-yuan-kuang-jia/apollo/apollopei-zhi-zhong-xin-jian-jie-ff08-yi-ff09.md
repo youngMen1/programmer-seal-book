@@ -101,6 +101,7 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 #### 1.3.2.1.ConfigService
 
 服务于 Apollo Client 端
+
 - 配置信息获取接口（被动） Client --> Meta Service --> Eureka --> ConfigService --> Config Data
 - 配置信息推送接口（主动）
 #### 1.3.2.2.AdminService
