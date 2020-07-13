@@ -28,10 +28,10 @@ Apollo支持4个维度管理Key-Value格式的配置：
 
 | 英文简写 | 英文全称| 中文释义 | 环境用途 |
 | :--- | :--- | :--- | :--- |
-| DEV | Development environment |  |  |
-| FAT |  |  |  |
-| UAT |  |  |  |
-| PRO |  |  |  |
+| DEV | Development environment | 开发环境 |  |
+| FAT | Feature Acceptance Test environment | 功能验收测试环境 |  |
+| UAT | User Acceptance Test environment | 用户验收测试环境 |  |
+| PRO | Production environment | 生产环境 |  |
 
 
 
