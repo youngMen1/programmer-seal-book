@@ -168,10 +168,12 @@ CRUD+发布 --> 数据库 config db
 ### 1.3.4.DB
 
 #### 1.3.4.1.Config DB
+
 * ConfigService 与 AdminService 共享数据库
 * 每个环境部署一份
 * 存储内容：不同环境的配置文件信息
 
 #### 1.3.4.2.Portal DB
+
 * 存储内容：用户权限、项目和配置的元数据
 * 部署一份
