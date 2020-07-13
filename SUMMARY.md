@@ -227,9 +227,9 @@
     * [Tair](zhong-jian-jian/fu-wu-duan-huan-cun/tair.md)
   * [消息队列](zhong-jian-jian/xiao-xi-dui-lie.md)
     * [消息总线](zhong-jian-jian/xiao-xi-dui-lie/xiao-xi-zong-xian.md)
-    * 消息的顺序
+    * [消息的顺序](zhong-jian-jian/xiao-xi-dui-lie/xiao-xi-de-shun-xu.md)
     * [RabbitMQ](zhong-jian-jian/xiao-xi-dui-lie/rabbitmq.md)
-    * ActiveMQ
+    * [ActiveMQ](zhong-jian-jian/xiao-xi-dui-lie/activemq.md)
     * [Kafka](zhong-jian-jian/xiao-xi-dui-lie/kafka.md)
     * [Redis 消息推送](zhong-jian-jian/xiao-xi-dui-lie/redis-xiao-xi-tui-song.md)
     * [ZeroMQ](zhong-jian-jian/xiao-xi-dui-lie/zeromq.md)
