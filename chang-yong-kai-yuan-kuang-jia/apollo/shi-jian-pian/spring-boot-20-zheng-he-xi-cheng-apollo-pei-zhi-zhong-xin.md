@@ -130,7 +130,7 @@ Portal started. You can visit http://localhost:8070 now!
 
 ### 1.2.4.使用Apollo配置中心
 
-#### 1.2.4.1.查看样例配置
+#### 1.2.4.1.查看样例配置（默认的账号是 apollo，密码是 admin）
 
 1.打开[http://localhost:8070](http://localhost:8070)
 
