@@ -13,7 +13,7 @@
 ### 各层说明
 * **service 服务层：**这一层是用户自己编写的，不管是服务的接口还是服务的实现。从整体设计图可以看到，接口是提供方和消费方共同使用的，而实现则只在提供方，并不暴露给消费方。这也与我们平时的使用认知相符，服务提供方将接口单独打成一个jar包让消费方使用。
 
-**config 配置层：**对外配置接口，以 ServiceConfig, ReferenceConfig 为中心，可以直接初始化配置类，也可以通过 spring 解析配置生成配置类。dubbo-config下面包含了config-api和config-spring两个子模块，分别对应了两种配置生成方式。配置类会包含协议、url等信息，是一个比较重的对象。
+* **config 配置层：**对外配置接口，以 ServiceConfig, ReferenceConfig 为中心，可以直接初始化配置类，也可以通过 spring 解析配置生成配置类。dubbo-config下面包含了config-api和config-spring两个子模块，分别对应了两种配置生成方式。配置类会包含协议、url等信息，是一个比较重的对象。
 
 **proxy 服务代理层：**服务接口透明代理，生成服务的客户端 Stub 和服务器端 Skeleton, 以 ServiceProxy 为中心，扩展接口为 ProxyFactory。可以看整体设计图，Invoker其实就是负责调用服务提供方真实服务的一个代理，而Proxy则是在消费方负责调用提供方服务的一个代理。
 
