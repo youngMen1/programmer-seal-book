@@ -7,20 +7,22 @@ Apollo（阿波罗）是携程框架部门研发的开源配置管理中心，�
 
 ### 组件功能：配置中心
 
-提供不同环境、不同集群的配置中心管理
-提供可视化操作界面管理不同环境的配置
+提供不同环境、不同集群的配置中心管理  
+提供可视化操作界面管理不同环境的配置  
 提供用户权限、操作流程管理功能
 
 Apollo支持4个维度管理Key-Value格式的配置：
 
-* application (应用)
-* environment (环境)
-* cluster (集群)
-* namespace (命名空间)
+* application \(应用\)
+* environment \(环境\)
+* cluster \(集群\)
+* namespace \(命名空间\)
 
 同时，Apollo基于开源模式开发，开源地址：`https://github.com/ctripcorp/apollo`
 
 ## 项目环境
+
+
 
 ## 1.2.设计架构
 
