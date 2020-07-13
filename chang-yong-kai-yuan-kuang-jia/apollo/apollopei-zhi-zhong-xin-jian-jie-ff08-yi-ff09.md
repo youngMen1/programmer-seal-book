@@ -97,3 +97,4 @@ Admin Service 在配置发布后，需要通知所有的 Config Service 有配�
 流程图解
 核心微服务模块
 辅助微服务之间进行服务发现的模块
+DB
