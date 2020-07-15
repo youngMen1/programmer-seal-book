@@ -260,7 +260,7 @@ public V put(K key, V value) {
 # 3.总结
 泊松分布
 
-泊松分布.jpg
+![](/static/image/泊松分布.jpg)
 
 # 4.参考
 
