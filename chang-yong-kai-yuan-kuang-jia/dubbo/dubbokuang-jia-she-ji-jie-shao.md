@@ -2,7 +2,11 @@
 
 ## 1.1.基本介绍
 
-### 整体设计
+
+
+
+
+## 1.2.整体设计
 
 ![](/static/image/12744765-157dd7b682851d26.webp)
 
@@ -36,6 +40,8 @@
 * **serialize 数据序列化层：**可复用的一些工具，扩展接口为 Serialization, ObjectInput, ObjectOutput, ThreadPool。dubbo的序列化也支持多种协议。
 
 # 2.总结
+
+
 
 # 3.参考
 
