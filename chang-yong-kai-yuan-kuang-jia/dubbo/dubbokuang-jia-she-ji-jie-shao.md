@@ -209,7 +209,7 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 
 看看test的目录：
 
-3683560091-5bc980997aea1_articlex.png
+![](/static/image/3683560091-5bc980997aea1_articlex.png)
 
 dubbo-test-benchmark：对性能的测试。
 dubbo-test-compatibility：对兼容性的测试，对spring3对兼容性测试。
