@@ -208,6 +208,11 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 
 ### dubbo-test——测试模块
 
+这个模块封装了针对dubbo的性能测试、兼容性测试等功能。
+
+看看test的目录：
+
+
 ### 下面我来讲讲dubbo中Maven相关的pom文件
 
 
