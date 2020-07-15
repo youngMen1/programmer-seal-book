@@ -58,6 +58,10 @@
 
 ![](/static/image/413017614-5bc97d1e64145_articlex.png)
 
+1.dubbo-registry-api：抽象了注册中心的注册和发现，实现了一些公用的方法，让子类只关注部分关键方法。
+2.以下四个包是分别是四种注册中心实现方法的封装，其中dubbo-registry-default就是官方文档里面的Simple注册中心。
+
+
 
 
 ### dubbo-cluster——集群模块
