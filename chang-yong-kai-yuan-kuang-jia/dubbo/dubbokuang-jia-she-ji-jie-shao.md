@@ -120,7 +120,7 @@
 
 看看rpc的目录：
 
-3097685983-5bc97eeb34b86_articlex.png
+![](/static/image/3097685983-5bc97eeb34b86_articlex.png)
 
 
 
