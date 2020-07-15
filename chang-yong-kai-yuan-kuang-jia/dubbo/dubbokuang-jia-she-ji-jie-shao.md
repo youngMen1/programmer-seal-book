@@ -225,6 +225,11 @@ dubbo-test-integration：测试所需的pom文件
 
 ![](/static/image/2377277672-5bc9818cd17fe_articlex.png)
 
+3.`all/pow.xml`：定义了dubbo的打包脚本，使用dubbo库的时候，需要引入改pom文件。
+4.`dubbo-parent`：是dubbo的父pom，dubbo的maven模块都会引入该pom文件。
+
+
+
 
 
 
