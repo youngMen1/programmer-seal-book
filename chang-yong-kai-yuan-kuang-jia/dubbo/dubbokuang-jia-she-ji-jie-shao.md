@@ -183,6 +183,17 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 ### dubbo-plugin——插件模块
 
+该模块提供了内置的插件。
+
+看看plugin的目录：
+
+作者：加点代码调调味
+链接：https://segmentfault.com/a/1190000016741532
+来源：SegmentFault 思否
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
 ### dubbo-serialization——序列化模块
 
 ### dubbo-test——测试模块
