@@ -203,9 +203,6 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 其他的包都是实现了对应的序列化框架的方法。dubbo内置的就是这几类的序列化框架，序列化也支持扩展。
 
 
-
-
-
 ### dubbo-test——测试模块
 
 这个模块封装了针对dubbo的性能测试、兼容性测试等功能。
