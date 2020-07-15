@@ -131,6 +131,16 @@
 
 ### dubbo-remoting——远程通信模块
 
+官方文档的解释：相当于 Dubbo 协议的实现，如果 RPC 用 RMI协议则不需要使用此包。
+
+我的理解：提供了多种客户端和服务端通信功能，比如基于Grizzly、Netty、Tomcat等等，RPC用除了RMI的协议都要用到此模块。
+
+看看remoting的目录：
+![](/static/image/2915119122-5bc97f1442fec_articlex.png)
+
+
+
+
 ### dubbo-container——容器模块
 
 ### dubbo-monitor——监控模块
