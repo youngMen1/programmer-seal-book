@@ -177,6 +177,10 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 看看filter的目录：
 ![](/static/image/1004755792-5bc980382351a_articlex.png)
 
+1.dubbo-filter-cache：提供缓存过滤器。
+2.dubbo-filter-validation：提供参数验证过滤器。
+
+
 ### dubbo-plugin——插件模块
 
 ### dubbo-serialization——序列化模块
