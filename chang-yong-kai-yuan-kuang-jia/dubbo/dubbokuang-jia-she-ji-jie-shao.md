@@ -211,6 +211,11 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 
 3683560091-5bc980997aea1_articlex.png
 
+dubbo-test-benchmark：对性能的测试。
+dubbo-test-compatibility：对兼容性的测试，对spring3对兼容性测试。
+dubbo-test-examples：测试所使用的示例。
+dubbo-test-integration：测试所需的pom文件
+
 ### 下面我来讲讲dubbo中Maven相关的pom文件
 
 
