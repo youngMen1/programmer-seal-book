@@ -114,7 +114,7 @@
 
 我的理解：远程调用，最主要的肯定是协议，dubbo提供了许许多多的协议实现，不过官方推荐时使用dubbo自己的协议，还给出了一份性能测试报告。
 
-性能测试报告地址：
+性能测试报告地址：`http://dubbo.apache.org/zh-cn/docs/user/perf-test.html`
 
 
 
