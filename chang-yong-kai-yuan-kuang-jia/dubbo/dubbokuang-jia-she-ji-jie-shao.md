@@ -70,32 +70,10 @@
 
 ### dubbo-plugin——插件模块
 
+### dubbo-serialization——序列化模块
+
 作者：加点代码调调味
 链接：https://segmentfault.com/a/1190000016741532
 来源：SegmentFault 思否
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 2.总结
-
-# 3.参考
-
-[https://segmentfault.com/a/1190000016741532](https://segmentfault.com/a/1190000016741532)
 
