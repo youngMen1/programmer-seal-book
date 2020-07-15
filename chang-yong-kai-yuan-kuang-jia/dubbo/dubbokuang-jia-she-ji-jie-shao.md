@@ -221,6 +221,8 @@ dubbo-test-integration：测试所需的pom文件
 1.`dubbo-bom/pom.xml`，利用Maven BOM统一定义了dubbo的版本号。`dubbo-test`和`dubbo-demo`的pom文件中都会引用`dubbo-bom/pom.xml`，以`dubbo-demo`都pom举例子：
 ![](/static/image/2905388040-5bc980ec7d454_articlex.png)
 
+2.`dubbo-dependencies-bom/pom.xml`：利用Maven BOM统一定义了dubbo依赖的第三方库的版本号。`dubbo-parent`会引入该bom：
+
 
 
 
