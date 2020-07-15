@@ -160,7 +160,7 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 看看monitor的目录：
 
-4259709195-5bc97fbf1e7fe\_articlex.png
+![](/static/image/4259709195-5bc97fbf1e7fe_articlex.png)
 
 1.dubbo-monitor-api：定义了monitor相关的接口，实现了监控所需要的过滤器。  
 2.dubbo-monitor-default：实现了dubbo监控相关的功能。
