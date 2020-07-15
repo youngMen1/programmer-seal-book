@@ -56,7 +56,7 @@
 
 看看registry目录结构：
 
-
+![](/static/image/413017614-5bc97d1e64145_articlex.png)
 
 
 
