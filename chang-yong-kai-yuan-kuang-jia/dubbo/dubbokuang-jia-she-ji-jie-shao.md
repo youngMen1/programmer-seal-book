@@ -17,7 +17,7 @@
 * 图中绿色小块的为扩展接口，蓝色小块为实现类，图中只显示用于关联各层的实现类。
 * 图中蓝色虚线为初始化过程，即启动时组装链，红色实线为方法调用过程，即运行时调时链，紫色三角箭头为继承，可以把子类看作父类的同一个节点，线上的文字为调用的方法。
 
-### 各层说明
+### 1.2.1.各层说明
 
 * **service 服务层：**这一层是用户自己编写的，不管是服务的接口还是服务的实现。从整体设计图可以看到，接口是提供方和消费方共同使用的，而实现则只在提供方，并不暴露给消费方。这也与我们平时的使用认知相符，服务提供方将接口单独打成一个jar包让消费方使用。
 
@@ -40,13 +40,15 @@
 * **serialize 数据序列化层：**可复用的一些工具，扩展接口为 Serialization, ObjectInput, ObjectOutput, ThreadPool。dubbo的序列化也支持多种协议。
 
 ## 1.3. dubbo框架设计
+
 ### dubbo整体的结构
-![](/static/image/微信截图_20200715165008.png)
+
+![](/static/image/微信截图_20200715165008.png)  
 可以看到Dubbo被拆分成很多的Maven项目（右边的我还没有截全）接下来我会介绍左边每个模块的大致作用。
 
 如果看过dubbo官方文档的朋友肯定看到过以下这个图：
 
-![](/static/image/2020402645-5bc97b00874e3_articlex.jpg)
+![](/static/image/2020402645-5bc97b00874e3_articlex.jpg)  
 ​从以上这个图我们可以清晰的看到各个模块之间依赖关系,其实以上的图只是展示了关键的模块依赖关系，还有部分模块比如dubbo-bootstrap清理模块等，下面我会对各个模块做个简单的介绍，至少弄明白各个模块的作用。
 
 ### dubbo-registry——注册中心模块
@@ -59,24 +61,24 @@
 
 ![](/static/image/413017614-5bc97d1e64145_articlex.png)
 
-1.dubbo-registry-api：抽象了注册中心的注册和发现，实现了一些公用的方法，让子类只关注部分关键方法。
+1.dubbo-registry-api：抽象了注册中心的注册和发现，实现了一些公用的方法，让子类只关注部分关键方法。  
 2.以下四个包是分别是四种注册中心实现方法的封装，其中dubbo-registry-default就是官方文档里面的Simple注册中心。
 
 ### dubbo-cluster——集群模块
 
-官方文档的解释：将多个服务提供方伪装为一个提供方，包括：负载均衡, 容错，路由等，集群的地址列表可以是静态配置的，也可以是由注册中心下发。
-![](/static/image/3641195658-5ad5d471dc7dd_articlex.jpg)
+官方文档的解释：将多个服务提供方伪装为一个提供方，包括：负载均衡, 容错，路由等，集群的地址列表可以是静态配置的，也可以是由注册中心下发。  
+![](/static/image/3641195658-5ad5d471dc7dd_articlex.jpg)  
 我的理解：它就是一个解决出错情况采用的策略，这个模块里面封装了多种策略的实现方法，并且也支持自己扩展集群容错策略，cluster把多个Invoker伪装成一个Invoker，并且在伪装过程中加入了容错逻辑，失败了，重试下一个。
 
 看看cluster的目录结构：
 
 ![](/static/image/3556511465-5bc97d7261a8e_articlex.png)
 
-1.configurator包：配置包，dubbo的基本设计原则是采用URL作为配置信息的统一格式，所有拓展点都通过传递URL携带配置信息，这个包就是用来根据统一的配置规则生成配置信息。
-2.directory包：Directory 代表了多个 Invoker，并且它的值会随着注册中心的服务变更推送而变化 。这里介绍一下Invoker，Invoker是Provider的一个调用Service的抽象，Invoker封装了Provider地址以及Service接口信息。
-3.loadbalance包：封装了负载均衡的实现，负责利用负载均衡算法从多个Invoker中选出具体的一个Invoker用于此次的调用，如果调用失败，则需要重新选择。
-4.merger包：封装了合并返回结果，分组聚合到方法，支持多种数据结构类型。
-5.router包：封装了路由规则的实现，路由规则决定了一次dubbo服务调用的目标服务器，路由规则分两种：条件路由规则和脚本路由规则，并且支持可拓展。
+1.configurator包：配置包，dubbo的基本设计原则是采用URL作为配置信息的统一格式，所有拓展点都通过传递URL携带配置信息，这个包就是用来根据统一的配置规则生成配置信息。  
+2.directory包：Directory 代表了多个 Invoker，并且它的值会随着注册中心的服务变更推送而变化 。这里介绍一下Invoker，Invoker是Provider的一个调用Service的抽象，Invoker封装了Provider地址以及Service接口信息。  
+3.loadbalance包：封装了负载均衡的实现，负责利用负载均衡算法从多个Invoker中选出具体的一个Invoker用于此次的调用，如果调用失败，则需要重新选择。  
+4.merger包：封装了合并返回结果，分组聚合到方法，支持多种数据结构类型。  
+5.router包：封装了路由规则的实现，路由规则决定了一次dubbo服务调用的目标服务器，路由规则分两种：条件路由规则和脚本路由规则，并且支持可拓展。  
 6.support包：封装了各类Invoker和cluster，包括集群容错模式和分组聚合的cluster以及相关的Invoker。
 
 ### dubbo-common——公共逻辑模块
@@ -87,7 +89,7 @@
 
 看看common的目录：
 
-![](/static/image/1386696672-5bc97e750a3d8_articlex.png)
+![](/static/image/1386696672-5bc97e750a3d8_articlex.png)  
 这个类中的包含义我就不一一讲了，具体的介绍会穿插在后续文章中，因为这些都是工具类的一些实现，包的含义也很明显。
 
 ### dubbo-config——配置模块
@@ -100,7 +102,7 @@
 
 ![](/static/image/400949415-5bc97e9dab834_articlex.png)
 
-1.dubbo-config-api：实现了API配置和属性配置的功能。
+1.dubbo-config-api：实现了API配置和属性配置的功能。  
 2.dubbo-config-spring：实现了XML配置和注解配置的功能。
 
 ### dubbo-rpc——远程调用模块
@@ -117,7 +119,7 @@
 
 ![](/static/image/3097685983-5bc97eeb34b86_articlex.png)
 
-1.dubbo-rpc-api：抽象了动态代理和各类协议，实现一对一的调用
+1.dubbo-rpc-api：抽象了动态代理和各类协议，实现一对一的调用  
 2.另外的包都是各个协议的实现。
 
 ### dubbo-remoting——远程通信模块
@@ -126,16 +128,16 @@
 
 我的理解：提供了多种客户端和服务端通信功能，比如基于Grizzly、Netty、Tomcat等等，RPC用除了RMI的协议都要用到此模块。
 
-看看remoting的目录：
+看看remoting的目录：  
 ![](/static/image/2915119122-5bc97f1442fec_articlex.png)
 
-1.dubbo-remoting-api：定义了客户端和服务端的接口。
-2.dubbo-remoting-grizzly：基于Grizzly实现的Client和Server。
-3.dubbo-remoting-http：基于Jetty或Tomcat实现的Client和Server。
-4.dubbo-remoting-mina：基于Mina实现的Client和Server。
-5.dubbo-remoting-netty：基于Netty3实现的Client和Server。
-6.Dubbo-remoting-netty4：基于Netty4实现的Client和Server。
-7.dubbo-remoting-p2p：P2P服务器，注册中心multicast中会用到这个服务器使用。
+1.dubbo-remoting-api：定义了客户端和服务端的接口。  
+2.dubbo-remoting-grizzly：基于Grizzly实现的Client和Server。  
+3.dubbo-remoting-http：基于Jetty或Tomcat实现的Client和Server。  
+4.dubbo-remoting-mina：基于Mina实现的Client和Server。  
+5.dubbo-remoting-netty：基于Netty3实现的Client和Server。  
+6.Dubbo-remoting-netty4：基于Netty4实现的Client和Server。  
+7.dubbo-remoting-p2p：P2P服务器，注册中心multicast中会用到这个服务器使用。  
 8.dubbo-remoting-zookeeper：封装了Zookeeper Client ，和 Zookeeper Server 通信。
 
 ### dubbo-container——容器模块
@@ -144,21 +146,22 @@
 
 我的理解：因为后台服务不需要Tomcat/JBoss 等 Web 容器的功能，不需要用这些厚实的容器去加载服务提供方，既资源浪费，又增加复杂度。服务容器只是一个简单的Main方法，加载一些内置的容器，也支持扩展容器。
 
-看看container的目录：
-![](/static/image/486980947-5bc97f99a9383_articlex.png)
-dubbo-container-api：定义了Container接口，实现了服务加载的Main方法。
+看看container的目录：  
+![](/static/image/486980947-5bc97f99a9383_articlex.png)  
+dubbo-container-api：定义了Container接口，实现了服务加载的Main方法。  
 其他三个分别提供了对应的容器，供Main方法加载。
 
 ### dubbo-monitor——监控模块
+
 官方文档的解释：统计服务调用次数，调用时间的，调用链跟踪的服务。
 
 我的理解：这个模块很清楚，就是对服务的监控。
 
 看看monitor的目录：
 
-4259709195-5bc97fbf1e7fe_articlex.png
+4259709195-5bc97fbf1e7fe\_articlex.png
 
-1.dubbo-monitor-api：定义了monitor相关的接口，实现了监控所需要的过滤器。
+1.dubbo-monitor-api：定义了monitor相关的接口，实现了监控所需要的过滤器。  
 2.dubbo-monitor-default：实现了dubbo监控相关的功能。
 
 ### dubbo-bootstrap——清理模块
@@ -172,14 +175,14 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 示例介绍地址：`http://dubbo.apache.org/zh-cn/docs/user/quick-start.html`
 
 ### dubbo-filter——过滤器模块
+
 这个模块提供了内置的一些过滤器。
 
-看看filter的目录：
+看看filter的目录：  
 ![](/static/image/1004755792-5bc980382351a_articlex.png)
 
-1.dubbo-filter-cache：提供缓存过滤器。
+1.dubbo-filter-cache：提供缓存过滤器。  
 2.dubbo-filter-validation：提供参数验证过滤器。
-
 
 ### dubbo-plugin——插件模块
 
@@ -199,9 +202,8 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 ![](/static/image/883131-5bc98071bdd4b_articlex.png)
 
-dubbo-serialization-api：定义了Serialization的接口以及数据输入输出的接口。
+dubbo-serialization-api：定义了Serialization的接口以及数据输入输出的接口。  
 其他的包都是实现了对应的序列化框架的方法。dubbo内置的就是这几类的序列化框架，序列化也支持扩展。
-
 
 ### dubbo-test——测试模块
 
@@ -211,27 +213,20 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 
 ![](/static/image/3683560091-5bc980997aea1_articlex.png)
 
-dubbo-test-benchmark：对性能的测试。
-dubbo-test-compatibility：对兼容性的测试，对spring3对兼容性测试。
-dubbo-test-examples：测试所使用的示例。
+dubbo-test-benchmark：对性能的测试。  
+dubbo-test-compatibility：对兼容性的测试，对spring3对兼容性测试。  
+dubbo-test-examples：测试所使用的示例。  
 dubbo-test-integration：测试所需的pom文件
 
 ### 下面我来讲讲dubbo中Maven相关的pom文件
 
-1.`dubbo-bom/pom.xml`，利用Maven BOM统一定义了dubbo的版本号。`dubbo-test`和`dubbo-demo`的pom文件中都会引用`dubbo-bom/pom.xml`，以`dubbo-demo`都pom举例子：
+1.`dubbo-bom/pom.xml`，利用Maven BOM统一定义了dubbo的版本号。`dubbo-test`和`dubbo-demo`的pom文件中都会引用`dubbo-bom/pom.xml`，以`dubbo-demo`都pom举例子：  
 ![](/static/image/2905388040-5bc980ec7d454_articlex.png)
 
 2.`dubbo-dependencies-bom/pom.xml`：利用Maven BOM统一定义了dubbo依赖的第三方库的版本号。`dubbo-parent`会引入该bom：
 
 ![](/static/image/2377277672-5bc9818cd17fe_articlex.png)
 
-3.`all/pow.xml`：定义了dubbo的打包脚本，使用dubbo库的时候，需要引入改pom文件。
+3.`all/pow.xml`：定义了dubbo的打包脚本，使用dubbo库的时候，需要引入改pom文件。  
 4.`dubbo-parent`：是dubbo的父pom，dubbo的maven模块都会引入该pom文件。
-
-
-
-
-
-
-
 
