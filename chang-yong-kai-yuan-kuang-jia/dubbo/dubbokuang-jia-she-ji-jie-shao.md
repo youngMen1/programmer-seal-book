@@ -69,7 +69,7 @@
 
 看看cluster的目录结构：
 
-
+3556511465-5bc97d7261a8e_articlex.png
 
 
 ### dubbo-common——公共逻辑模块
