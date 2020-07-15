@@ -54,11 +54,17 @@
 ### dubbo-cluster——集群模块
 
 ### dubbo-common——公共逻辑模块
+### dubbo-config——配置模块
+
+### dubbo-rpc——远程调用模块
 
 作者：加点代码调调味
 链接：https://segmentfault.com/a/1190000016741532
 来源：SegmentFault 思否
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
 
 
 
