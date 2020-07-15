@@ -191,10 +191,13 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 1.dubbo-qos：提供了在线运维的命令。
 
-
-
-
 ### dubbo-serialization——序列化模块
+
+该模块中封装了各类序列化框架的支持实现。
+
+看看serialization的目录：
+
+
 
 ### dubbo-test——测试模块
 
