@@ -138,6 +138,17 @@
 看看remoting的目录：
 ![](/static/image/2915119122-5bc97f1442fec_articlex.png)
 
+1.dubbo-remoting-api：定义了客户端和服务端的接口。
+2.dubbo-remoting-grizzly：基于Grizzly实现的Client和Server。
+3.dubbo-remoting-http：基于Jetty或Tomcat实现的Client和Server。
+4.dubbo-remoting-mina：基于Mina实现的Client和Server。
+5.dubbo-remoting-netty：基于Netty3实现的Client和Server。
+6.Dubbo-remoting-netty4：基于Netty4实现的Client和Server。
+7.dubbo-remoting-p2p：P2P服务器，注册中心multicast中会用到这个服务器使用。
+8.dubbo-remoting-zookeeper：封装了Zookeeper Client ，和 Zookeeper Server 通信。
+
+
+
 
 
 
