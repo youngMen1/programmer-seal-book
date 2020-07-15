@@ -99,7 +99,12 @@
 我的理解：用户都是使用配置来使用dubbo，dubbo也提供了四种配置方式，包括XML配置、属性配置、API配置、注解配置，配置模块就是实现了这四种配置的功能。
 
 看看config的目录：
-400949415-5bc97e9dab834_articlex.png
+
+![](/static/image/400949415-5bc97e9dab834_articlex.png)
+
+1.dubbo-config-api：实现了API配置和属性配置的功能。
+2.dubbo-config-spring：实现了XML配置和注解配置的功能。
+
 
 
 
