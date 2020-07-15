@@ -94,6 +94,15 @@
 
 ### dubbo-config——配置模块
 
+官方文档的解释：是 Dubbo 对外的 API，用户通过 Config 使用Dubbo，隐藏 Dubbo 所有细节。
+
+我的理解：用户都是使用配置来使用dubbo，dubbo也提供了四种配置方式，包括XML配置、属性配置、API配置、注解配置，配置模块就是实现了这四种配置的功能。
+
+看看config的目录：
+400949415-5bc97e9dab834_articlex.png
+
+
+
 ### dubbo-rpc——远程调用模块
 
 ### dubbo-remoting——远程通信模块
