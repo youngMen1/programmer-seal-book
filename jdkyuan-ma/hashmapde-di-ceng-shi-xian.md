@@ -259,6 +259,8 @@ public V put(K key, V value) {
 
 # 3.总结
 
+泊松分布.jpg
+
 # 4.参考
 
 jdk1.8中HashMap在扩容的时候做了哪些优化
