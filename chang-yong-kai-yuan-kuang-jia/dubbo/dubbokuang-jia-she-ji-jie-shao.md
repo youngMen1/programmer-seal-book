@@ -149,10 +149,6 @@
 dubbo-container-api：定义了Container接口，实现了服务加载的Main方法。
 其他三个分别提供了对应的容器，供Main方法加载。
 
-作者：加点代码调调味
-链接：https://segmentfault.com/a/1190000016741532
-来源：SegmentFault 思否
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 
