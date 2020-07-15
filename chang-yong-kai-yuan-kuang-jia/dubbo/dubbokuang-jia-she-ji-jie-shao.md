@@ -149,11 +149,21 @@
 dubbo-container-api：定义了Container接口，实现了服务加载的Main方法。
 其他三个分别提供了对应的容器，供Main方法加载。
 
-
-
-
-
 ### dubbo-monitor——监控模块
+官方文档的解释：统计服务调用次数，调用时间的，调用链跟踪的服务。
+
+我的理解：这个模块很清楚，就是对服务的监控。
+
+看看monitor的目录：
+
+作者：加点代码调调味
+链接：https://segmentfault.com/a/1190000016741532
+来源：SegmentFault 思否
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
 
 ### dubbo-bootstrap——清理模块
 
