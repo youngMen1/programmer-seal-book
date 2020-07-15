@@ -50,6 +50,7 @@
 ​从以上这个图我们可以清晰的看到各个模块之间依赖关系,其实以上的图只是展示了关键的模块依赖关系，还有部分模块比如dubbo-bootstrap清理模块等，下面我会对各个模块做个简单的介绍，至少弄明白各个模块的作用。
 
 ### dubbo-registry——注册中心模块
+
 官方文档的解释：基于注册中心下发地址的集群方式，以及对各种注册中心的抽象。
 
 我的理解是：dubbo的注册中心实现有Multicast注册中心、Zookeeper注册中心、Redis注册中心、Simple注册中心（具体怎么实现我在后面文章中会介绍），这个模块就是封装了dubbo所支持的注册中心的实现。
@@ -78,8 +79,6 @@
 5.router包：封装了路由规则的实现，路由规则决定了一次dubbo服务调用的目标服务器，路由规则分两种：条件路由规则和脚本路由规则，并且支持可拓展。
 6.support包：封装了各类Invoker和cluster，包括集群容错模式和分组聚合的cluster以及相关的Invoker。
 
-
-
 ### dubbo-common——公共逻辑模块
 
 官方文档的解释：包括 Util 类和通用模型。
@@ -90,7 +89,6 @@
 
 ![](/static/image/1386696672-5bc97e750a3d8_articlex.png)
 这个类中的包含义我就不一一讲了，具体的介绍会穿插在后续文章中，因为这些都是工具类的一些实现，包的含义也很明显。
-
 
 ### dubbo-config——配置模块
 
@@ -104,9 +102,6 @@
 
 1.dubbo-config-api：实现了API配置和属性配置的功能。
 2.dubbo-config-spring：实现了XML配置和注解配置的功能。
-
-
-
 
 ### dubbo-rpc——远程调用模块
 
@@ -124,10 +119,6 @@
 
 1.dubbo-rpc-api：抽象了动态代理和各类协议，实现一对一的调用
 2.另外的包都是各个协议的实现。
-
-
-
-
 
 ### dubbo-remoting——远程通信模块
 
@@ -147,12 +138,16 @@
 7.dubbo-remoting-p2p：P2P服务器，注册中心multicast中会用到这个服务器使用。
 8.dubbo-remoting-zookeeper：封装了Zookeeper Client ，和 Zookeeper Server 通信。
 
-
-
-
-
-
 ### dubbo-container——容器模块
+
+官方文档的解释：是一个 Standlone 的容器，以简单的 Main 加载 Spring 启动，因为服务通常不需要 Tomcat/JBoss 等 Web 容器的特性，没必要用 Web 容器去加载服务。
+
+我的理解：因为后台服务不需要Tomcat/JBoss 等 Web 容器的功能，不需要用这些厚实的容器去加载服务提供方，既资源浪费，又增加复杂度。服务容器只是一个简单的Main方法，加载一些内置的容器，也支持扩展容器。
+
+看看container的目录：
+486980947-5bc97f99a9383_articlex.png
+
+
 
 ### dubbo-monitor——监控模块
 
