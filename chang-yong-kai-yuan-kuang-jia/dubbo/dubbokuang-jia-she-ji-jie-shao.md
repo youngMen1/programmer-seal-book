@@ -116,6 +116,12 @@
 
 性能测试报告地址：`http://dubbo.apache.org/zh-cn/docs/user/perf-test.html`
 
+这个模块依赖于dubbo-remoting模块，抽象了各类的协议。
+
+看看rpc的目录：
+
+3097685983-5bc97eeb34b86_articlex.png
+
 
 
 
