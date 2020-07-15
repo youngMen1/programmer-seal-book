@@ -212,6 +212,7 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 
 看看test的目录：
 
+3683560091-5bc980997aea1_articlex.png
 
 ### 下面我来讲讲dubbo中Maven相关的pom文件
 
