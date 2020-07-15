@@ -197,7 +197,7 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 看看serialization的目录：
 
-
+883131-5bc98071bdd4b_articlex.png
 
 ### dubbo-test——测试模块
 
