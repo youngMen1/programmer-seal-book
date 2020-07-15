@@ -145,7 +145,7 @@
 我的理解：因为后台服务不需要Tomcat/JBoss 等 Web 容器的功能，不需要用这些厚实的容器去加载服务提供方，既资源浪费，又增加复杂度。服务容器只是一个简单的Main方法，加载一些内置的容器，也支持扩展容器。
 
 看看container的目录：
-486980947-5bc97f99a9383_articlex.png
+![](/static/image/486980947-5bc97f99a9383_articlex.png)
 dubbo-container-api：定义了Container接口，实现了服务加载的Main方法。
 其他三个分别提供了对应的容器，供Main方法加载。
 
