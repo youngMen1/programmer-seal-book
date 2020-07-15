@@ -183,6 +183,8 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 这个模块是快速启动示例，其中包含了服务提供方和调用方，注册中心用的是multicast，用XML配置方法，具体的介绍可以看官方文档。
 
+微信截图_20200715175637.png
+
 示例介绍地址：`http://dubbo.apache.org/zh-cn/docs/user/quick-start.html`
 
 ### dubbo-filter——过滤器模块
