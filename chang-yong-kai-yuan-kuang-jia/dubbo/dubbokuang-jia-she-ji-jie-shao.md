@@ -128,7 +128,7 @@ RPC英文全名为Remote Procedure Call，也叫远程过程调用，其实就�
 
 看看rpc的目录：
 
-![](/static/image/3097685983-5bc97eeb34b86_articlex.png)
+![](/static/image/微信截图_20200715175822.png)
 
 1.dubbo-rpc-api：抽象了动态代理和各类协议，实现一对一的调用  
 2.另外的包都是各个协议的实现。
