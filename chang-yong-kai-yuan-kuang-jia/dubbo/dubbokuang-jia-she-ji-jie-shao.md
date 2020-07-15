@@ -187,6 +187,11 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 看看plugin的目录：
 
+![](/static/image/637508015-5bc98051a2650_articlex.png)
+
+1.dubbo-qos：提供了在线运维的命令。
+
+
 
 
 ### dubbo-serialization——序列化模块
