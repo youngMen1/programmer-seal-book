@@ -197,7 +197,7 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 
 看看serialization的目录：
 
-883131-5bc98071bdd4b_articlex.png
+![](/static/image/883131-5bc98071bdd4b_articlex.png)
 
 dubbo-serialization-api：定义了Serialization的接口以及数据输入输出的接口。
 其他的包都是实现了对应的序列化框架的方法。dubbo内置的就是这几类的序列化框架，序列化也支持扩展。
