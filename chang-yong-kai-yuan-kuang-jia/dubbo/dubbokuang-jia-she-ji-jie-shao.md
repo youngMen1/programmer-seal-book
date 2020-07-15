@@ -43,8 +43,7 @@
 
 ### dubbo整体的结构
 
-![](/static/image/微信截图_20200715165008.png)  
-
+![](/static/image/微信截图_20200715165008.png)
 
 可以看到Dubbo被拆分成很多的Maven项目（右边的我还没有截全）接下来我会介绍左边每个模块的大致作用。
 
@@ -64,7 +63,7 @@
 ![](/static/image/413017614-5bc97d1e64145_articlex.png)
 
 1.dubbo-registry-api：抽象了注册中心的注册和发现，实现了一些公用的方法，让子类只关注部分关键方法。  
-2.以下四个包是分别是四种注册中心实现方法的封装，其中dubbo-registry-default就是官方文档里面的Simple注册中心。
+2.以下四个包是分别是四种注册中心实现方法的封装，其中`dubbo-registry-default`就是官方文档里面的Simple注册中心。
 
 ### dubbo-cluster——集群模块
 
