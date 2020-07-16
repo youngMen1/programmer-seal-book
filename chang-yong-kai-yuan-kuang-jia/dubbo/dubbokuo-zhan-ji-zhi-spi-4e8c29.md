@@ -51,7 +51,11 @@ dubbo的SPI机制增加了对IOC、AOP的支持，一个扩展点可以直接通
 
 # 3.总结
 
-# 4.参考
+该文章讲解了dubbo的SPI扩展机制的实现原理，最关键的是弄清楚dubbo跟jdk在实现SPI的思想上做了哪些改进和优化，解读dubbo SPI扩展机制最关键的是弄清楚@SPI、@Adaptive、@Activate三个注解的含义，大部分逻辑都被封装在ExtensionLoader类中。dubbo的很多接口都是扩展接口，解读该文，也能让读者在后续文章中更加容易的去了解dubbo的架构设计。
 
+
+
+# 4.参考
+https://segmentfault.com/a/1190000016842868
 
 
