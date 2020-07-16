@@ -43,7 +43,8 @@ dubbo的SPI机制增加了对IOC、AOP的支持，一个扩展点可以直接通
 该类在ExtensionLoader类的getActivateExtension方法中被运用到，作为自动激活拓展对象的排序器。
 
 
-```public class ActivateComparator implements Comparator<Object> {
+```
+public class ActivateComparator implements Comparator<Object> {
 
     public static final Comparator<Object> COMPARATOR = new ActivateComparator();
 
