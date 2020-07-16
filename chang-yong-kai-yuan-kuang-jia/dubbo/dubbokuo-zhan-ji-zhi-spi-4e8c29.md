@@ -8,7 +8,7 @@
 ## 1.3.JDK的SPI思想
 SPI的全名为Service Provider Interface，面向对象的设计里面，模块之间推荐基于接口编程，而不是对实现类进行硬编码，这样做也是为了模块设计的可拔插原则。为了在模块装配的时候不在程序里指明是哪个实现，就需要一种服务发现的机制，jdk的spi就是为某个接口寻找服务实现。jdk提供了服务实现查找的工具类：java.util.ServiceLoader，它会去加载META-INF/service/目录下的配置文件。具体的内部实现逻辑为这里先不展开，主要还是讲解dubbo关于spi的实现原理。
 
-## Dubbo的SPI扩展机制原理
+## 1.4.Dubbo的SPI扩展机制原理
 
 dubbo自己实现了一套SPI机制，改进了JDK标准的SPI机制：
 
