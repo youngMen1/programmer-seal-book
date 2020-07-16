@@ -22,6 +22,22 @@ dubbo的SPI机制增加了对IOC、AOP的支持，一个扩展点可以直接通
 
 ### 1.4.1.注解@SPI
 
+### 1.4.2.注解@Adaptive
+
+
+### 1.4.3.注解@Activate
+
+
+### 1.4.4.接口ExtensionFactory
+
+
+### 1.4.5.ExtensionLoader
+
+
+### 1.4.6.AdaptiveExtensionFactory
+
+
+
 
 
 
