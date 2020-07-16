@@ -18,12 +18,7 @@ dubbo自己实现了一套SPI机制，改进了JDK标准的SPI机制：
 dubbo的SPI机制增加了对IOC、AOP的支持，一个扩展点可以直接通过setter注入到其他扩展点。
 
 我们先来看看SPI扩展机制实现的结构目录：
-
-作者：加点代码调调味
-链接：https://segmentfault.com/a/1190000016842868
-来源：SegmentFault 思否
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
+4161901345-5bd70cc24509d_articlex.png
 
 
 
