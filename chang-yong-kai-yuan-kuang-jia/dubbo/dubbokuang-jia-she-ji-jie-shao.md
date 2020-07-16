@@ -243,3 +243,9 @@ dubbo-serialization-api：定义了Serialization的接口以及数据输入输�
 3.`all/pow.xml`：定义了dubbo的打包脚本，使用dubbo库的时候，需要引入改pom文件。  
 4.`dubbo-parent`：是dubbo的父pom，dubbo的maven模块都会引入该pom文件。
 
+
+
+# 2.
+
+
+
