@@ -79,7 +79,7 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 
 这个视图数组把所有的 row trx_id 分成了几种不同的情况。
 
-882114aaf55861832b4270d44507695e.png
+![](/static/image/882114aaf55861832b4270d44507695e.png)
                                                                                         图 3 数据版本可见性规则
 # 2.总结
 
