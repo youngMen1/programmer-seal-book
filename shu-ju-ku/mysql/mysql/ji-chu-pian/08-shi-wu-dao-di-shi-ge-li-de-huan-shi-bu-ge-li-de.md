@@ -165,7 +165,7 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 mysql> select k from t where id=1 lock in share mode;
 mysql> select k from t where id=1 for update;
 ```
-
+再往前一步，假设事务 C 不是马上提交的，而是变成了下面的事务 C’，会怎么样呢？
 
 # 2.总结
 
