@@ -166,7 +166,7 @@ mysql> select k from t where id=1 for update;
 ```
 再往前一步，假设事务 C 不是马上提交的，而是变成了下面的事务 C’，会怎么样呢？
 
-cda2a0d7decb61e59dddc83ac51efb6e.png
+![](/static/image/cda2a0d7decb61e59dddc83ac51efb6e.png)
                                                                                      图 6 事务 A、B、C'的执行流程
 
 # 2.总结
