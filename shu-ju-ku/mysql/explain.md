@@ -144,7 +144,11 @@ EXplain 中的很多额外的信息会在 Extra 字段显示, 常见的有以下
 
 * Using index
 
-"覆盖索引扫描", 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件, 往往说明性能不错
+覆盖索引，"覆盖索引扫描", 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件, 往往说明性能不错
+
+* Using index condition 
+
+  是索引下推
 
 * Using temporary
 
@@ -156,5 +160,5 @@ MySQL 性能优化神器 Explain 使用分析：
 
 [https://segmentfault.com/a/1190000008131735](https://segmentfault.com/a/1190000008131735)
 
-https://www.cnblogs.com/oneweek/p/12095686.html
+[https://www.cnblogs.com/oneweek/p/12095686.html](https://www.cnblogs.com/oneweek/p/12095686.html)
 
