@@ -57,6 +57,8 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 
 图中虚线框里是同一行数据的 4 个版本，当前最新版本是 V4，k 的值是 22，它是被 transaction id 为 25 的事务更新的，因此它的 row trx_id 也是 25。
 
+你可能会问，前面的文章不是说，语句更新会生成 undo log（回滚日志）吗？那么，undo log 在哪呢？
+
 # 2.总结
 
 
