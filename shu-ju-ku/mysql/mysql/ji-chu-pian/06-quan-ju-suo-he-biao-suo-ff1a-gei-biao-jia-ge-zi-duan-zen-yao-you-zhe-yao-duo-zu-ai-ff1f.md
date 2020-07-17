@@ -226,7 +226,9 @@ Q6:ROLLBACK TO SAVEPOINT sp;
 /* other tables */
 ```
 
-在备份开始的时候，为了确保 RR（可重复读）隔离级别，再设置一次 RR 隔离级别 (Q1);启动事务，这里用 WITH CONSISTENT SNAPSHOT 确保这个语句执行完就可以得到一个一致性视图（Q2)；设置一个保存点，这个很重要（Q3）；
+在备份开始的时候，为了确保 RR（可重复读）隔离级别，再设置一次 RR 隔离级别 (Q1);
+启动事务，这里用 WITH CONSISTENT SNAPSHOT 确保这个语句执行完就可以得到一个一致性视图（Q2)；
+设置一个保存点，这个很重要（Q3）；
 
 
 
