@@ -164,7 +164,7 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 ### 答案
 
-
+不会丢失
 
 
 
