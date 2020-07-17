@@ -161,7 +161,6 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 
 
 ```
-
 mysql> select k from t where id=1 lock in share mode;
 mysql> select k from t where id=1 for update;
 ```
