@@ -18,6 +18,8 @@ db：数据库名
 command： 连接状态，一般是休眠（sleep），查询（query），连接（connect）  
 time：连接持续时间，单位是秒  
 state：显示当前sql语句的状态  
-info：显示这个sql语句  
+info：显示这个sql语句
+
+其中state的状态十分关键，下表列出state主要状态和描述：  
 ![](/static/image/微信截图_20200717173950.png)
 
