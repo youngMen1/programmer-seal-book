@@ -86,6 +86,8 @@ select * from sys.schema_auto_increment_columns limit 10;
 
 # 2.参考
 
+MySQL - 系统表 - sys
+
 [http://blog.itpub.net/15498/viewspace-2643654/](http://blog.itpub.net/15498/viewspace-2643654/)
 
 sys库视图和指标详解
