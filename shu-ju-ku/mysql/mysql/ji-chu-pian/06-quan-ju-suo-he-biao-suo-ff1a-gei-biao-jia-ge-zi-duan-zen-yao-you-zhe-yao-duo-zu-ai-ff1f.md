@@ -208,12 +208,10 @@ Online DDL的过程是这样的：
 最后，我给你留一个问题吧。备份一般都会在备库上执行，你在用set –single-transaction 方法做逻辑备份的过程中，如果主库上的一个小表做了一个 DDL，比如给一个表上加了一列。这时候，从备库上会看到什么现象呢？
 
 ### 答案
+
 假设这个 DDL 是针对表 t1 的， 这里我把备份过程中几个关键的语句列出来：
 
-
-
 ```
-
 Q1:SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 Q2:START TRANSACTION  WITH CONSISTENT SNAPSHOT；
 /* other tables */
@@ -228,7 +226,7 @@ Q6:ROLLBACK TO SAVEPOINT sp;
 /* other tables */
 ```
 
-
+在备份开始的时候，为了确保 RR（可重复读）隔离级别，再设置一次 RR 隔离级别 (Q1);启动事务，这里用 WITH CONSISTENT SNAPSHOT 确保这个语句执行完就可以得到一个一致性视图（Q2)；设置一个保存点，这个很重要（Q3）；
 
 
 
