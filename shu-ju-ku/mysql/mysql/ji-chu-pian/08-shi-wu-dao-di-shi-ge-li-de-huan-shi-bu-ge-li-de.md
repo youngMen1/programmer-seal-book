@@ -189,6 +189,7 @@ mysql> select k from t where id=1 for update;
 
 下面是读提交时的状态图，可以看到这两个查询语句的创建视图数组的时机发生了变化，就是图中的 read view 框。（注意：这里，我们用的还是事务 C 的逻辑直接提交，而不是事务 C’）
 
+18fd5179b38c8c3804b313c3582cd1be.jpg
 # 2.总结
 
 
