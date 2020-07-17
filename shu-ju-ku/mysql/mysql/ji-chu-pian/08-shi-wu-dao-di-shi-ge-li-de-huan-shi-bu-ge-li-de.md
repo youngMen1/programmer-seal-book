@@ -219,5 +219,5 @@ mysql> CREATE TABLE `t` (
 ) ENGINE=InnoDB;
 insert into t(id, c) values(1,1),(2,2),(3,3),(4,4);
 ```
-9b8fe7cf88c9ba40dc12e93e36c3060b.png
+![](/static/image/9b8fe7cf88c9ba40dc12e93e36c3060b.png)
 复现出来以后，请你再思考一下，在实际的业务开发中有没有可能碰到这种情况？你的应用代码会不会掉进这个“坑”里，你又是怎么解决的呢？
