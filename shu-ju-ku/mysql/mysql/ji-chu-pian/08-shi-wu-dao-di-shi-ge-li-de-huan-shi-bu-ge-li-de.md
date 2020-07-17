@@ -197,6 +197,7 @@ mysql> select k from t where id=1 for update;
 * (1,2) 提交了，属于情况 3，可见。
 所以，这时候事务 A 查询语句返回的是 k=2。
 显然地，事务 B 查询结果 k=3。
+小结
 # 2.总结
 
 
