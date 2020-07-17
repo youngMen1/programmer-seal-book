@@ -169,6 +169,7 @@ mysql> select k from t where id=1 for update;
 ![](/static/image/cda2a0d7decb61e59dddc83ac51efb6e.png)
                                                                                      图 6 事务 A、B、C'的执行流程
 
+事务 C’的不同是，更新后并没有马上提交，在它提交前，事务 B 的更新语句先发起了。前面说过了，虽然事务 C’还没提交，但是 (1,2) 这个版本也已经生成了，并且是当前的最新版本。那么，事务 B 的更新语句会怎么处理呢？
 # 2.总结
 
 
