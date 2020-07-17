@@ -88,7 +88,7 @@ select * from sys.schema_auto_increment_columns limit 10;
 
 [http://blog.itpub.net/15498/viewspace-2643654/](http://blog.itpub.net/15498/viewspace-2643654/)
 
-https://www.cnblogs.com/sea520/p/11773141.html
+sys库视图和指标详解
 
-
+[https://www.cnblogs.com/sea520/p/11773141.html](https://www.cnblogs.com/sea520/p/11773141.html)
 
