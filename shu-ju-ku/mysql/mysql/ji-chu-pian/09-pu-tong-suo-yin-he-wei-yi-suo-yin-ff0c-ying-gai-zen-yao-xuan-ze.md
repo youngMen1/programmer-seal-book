@@ -166,5 +166,12 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 不会丢失，虽然是只更新内存，但是在事务提交的时候，我们把 change buffer 的操作也记录到 redo log 里了，所以崩溃恢复的时候，change buffer 也能找回来。
 
+在评论区有同学问到，merge 的过程是否会把数据直接写回磁盘，这是个好问题。
+这里，我再为你分析一下。
+merge 的执行流程是这样的：
+1.从磁盘读入数据页到内存（老版本的数据页）；
+2.从 change buffer 里找出这个数据页的 change buffer 记录 (可能有多个），依次应用，得到新版数据页；
+3.写 redo log。这个 redo log 包含了数据的变更和 change buffer 的变更。
+到这里 merge 过程就结束了。这时候，数据页和内存中 change buffer 对应的磁盘位置都还没有修改，属于脏页，之后各自刷回自己的物理数据，就是另外一个过程了。
 
 
