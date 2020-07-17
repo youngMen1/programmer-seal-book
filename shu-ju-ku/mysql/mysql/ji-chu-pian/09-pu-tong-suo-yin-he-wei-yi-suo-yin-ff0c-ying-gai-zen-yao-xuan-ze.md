@@ -164,7 +164,7 @@ mysql> insert into t(id,k) values(id1,k1),(id2,k2);
 
 ### 答案
 
-不会丢失
+不会丢失，虽然是只更新内存，但是在事务提交的时候，我们把 change buffer 的操作也记录到 redo log 里了，所以崩溃恢复的时候，change buffer 也能找回来。
 
 
 
