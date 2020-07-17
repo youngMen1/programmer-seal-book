@@ -296,7 +296,7 @@
       * [MYSQL分页limit速度太慢优化方法](shu-ju-ku/mysql/mysqlfen-ye-limit-su-du-tai-man-you-hua-fang-fa.md)
       * [Explain 使用分析](shu-ju-ku/mysql/explain.md)
       * [MySQL命令详解](shu-ju-ku/mysql/mysqlming-ling-xiang-jie.md)
-      * [MySQL sys库常用SQL汇总大全](shu-ju-ku/mysql/mysql-sysku-chang-yong-sql-hui-zong-da-quan.md)
+      * [MySQL SYS库常用SQL汇总大全](shu-ju-ku/mysql/mysql-sysku-chang-yong-sql-hui-zong-da-quan.md)
     * [MySQL实战](shu-ju-ku/mysql/mysql.md)
       * [基础篇\(8讲\)](shu-ju-ku/mysql/mysql/ji-chu-pian.md)
         * [01 \| 基础架构：一条SQL查询语句是如何执行的？](shu-ju-ku/mysql/mysql/ji-chu-pian/ji-chu-jia-gou-ff1a-yi-tiao-sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de-ff1f.md)
