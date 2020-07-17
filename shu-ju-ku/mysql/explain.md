@@ -81,6 +81,10 @@ type 常用的取值有:
 
 EXplain 中的很多额外的信息会在 Extra 字段显示, 常见的有以下几种内容:
 
+* Using filesort
+
+当 Extra 中有 `Using filesort`时, 表示 MySQL 需额外的排序操作, 不能通过索引顺序达到排序效果. 一般有 `Using filesort`, 都建议优化去掉, 因为这样的查询 CPU 资源消耗大。
+
 
 
 # 2.参考
