@@ -1,6 +1,6 @@
 # 1.MySQL命令详解
 
-![](/STATIC/IMAGE/微信截图_20200717173429.png)
+![](/static/image/微信截图_20200717173429.png)
 
 SHOW PROCESSLIST显示哪些线程正在运行
 
