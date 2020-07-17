@@ -212,6 +212,24 @@ Online DDL的过程是这样的：
 
 
 
+```
+
+Q1:SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+Q2:START TRANSACTION  WITH CONSISTENT SNAPSHOT；
+/* other tables */
+Q3:SAVEPOINT sp;
+/* 时刻 1 */
+Q4:show create table `t1`;
+/* 时刻 2 */
+Q5:SELECT * FROM `t1`;
+/* 时刻 3 */
+Q6:ROLLBACK TO SAVEPOINT sp;
+/* 时刻 4 */
+/* other tables */
+```
+
+
+
 
 
 
