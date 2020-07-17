@@ -52,6 +52,8 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 
 如图 2 所示，就是一个记录被多个事务连续更新后的状态。
 
+68d08d277a6f7926a41cc5541d3dfced.png
+
 # 2.总结
 
 
