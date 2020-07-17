@@ -1,4 +1,5 @@
 # 1.MySQL SYS库常用SQL汇总大全
+
 查看当前连接情况：
 
 ```
@@ -28,6 +29,7 @@ select * from sys.io_global_by_file_by_bytes limit 10;
 ```
 select * from sys.statement_analysis order by exec_count desc limit 10 \G
 ```
+
 查看哪些语句延迟比较严重：
 
 ```
@@ -64,20 +66,13 @@ select * from sys.innodb_buffer_stats_by_table order by pages desc limit 10 \G
 select * from sys.innodb_buffer_stats_by_schema;
 ```
 
-
-
-
-
 查看每个连接分配多少内存:
-
-
 
 ```
 select b.user, current_count_used,current_allocated, current_avg_alloc, current_max_alloc,total_allocated,current_statement from sys.memory_by_thread_by_current_bytes a,sys.session b where a.thread_id = b.thd_id;
 ```
 
 查看MySQL内部的线程类型及数量：
-
 
 ```
 select user, count(*) from sys.processlist group by user;
@@ -90,5 +85,10 @@ select * from sys.schema_auto_increment_columns limit 10;
 ```
 
 # 2.参考
-http://blog.itpub.net/15498/viewspace-2643654/
+
+[http://blog.itpub.net/15498/viewspace-2643654/](http://blog.itpub.net/15498/viewspace-2643654/)
+
+https://www.cnblogs.com/sea520/p/11773141.html
+
+
 
