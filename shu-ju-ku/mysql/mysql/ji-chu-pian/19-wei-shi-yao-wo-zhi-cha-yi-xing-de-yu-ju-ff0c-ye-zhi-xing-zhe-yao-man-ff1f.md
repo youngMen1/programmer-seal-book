@@ -56,3 +56,6 @@ mysql> select * from t where id=1;
                                                                                                                   图 2 Waiting for table metadata lock 状态示意图
 
 出现这个状态表示的是，现在有一个线程正在表 t 上请求或者持有 MDL 写锁，把 select 语句堵住了。
+
+在**第 6 篇文章《全局锁和表锁 ：给表加个字段怎么有这么多阻碍？》**中，我给你介绍过一种复现方法。但需要说明的是，那个复现过程是基于 MySQL 5.6 版本的。而 MySQL 5.7 版本修改了 MDL 的加锁策略，所以就不能复现这个场景了。
+
