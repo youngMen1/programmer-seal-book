@@ -238,40 +238,19 @@ commit;
 
 #### 别的优秀的答案
 
-innodb先锁全表的所有行，返回server层，判断c是否等于5，然后释放c！=5的行锁。
-
-  
-
+innodb先锁全表的所有行，返回server层，判断c是否等于5，然后释放c != 5的行锁。
 
 验证方法：
 
-  
-
-
 事务A执行 锁住一行c！=5的记录 比如id =3 c=3
 
-  
-
-
- select \* from t where id = 3 for update 或者 update t set c=4 where id =3
-
-  
-
+select \* from t where id = 3 for update 或者 update t set c=4 where id =3
 
 然后启动新事务B执行上面的语句select \* from t where c=5 for update; 看看有没有被阻塞。
 
-  
-
-
 用于判断事务B的语句会不会试图锁不满足条件的记录。
 
-  
-
-
 然后把事务A和事务B的执行顺序对调一下，也就是先执行B在执行A。看看有没有阻塞，
-
-  
-
 
 判断在事务B加锁成功的情况下会不会释放不满足查询条件记录的行锁。
 
