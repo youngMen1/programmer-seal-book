@@ -110,3 +110,4 @@ flush tables with read lock;
 
 现在，我们一起来复现一下这种情况，**复现步骤**如图 6 所示：
 2bbc77cfdb118b0d9ef3fdd679d0a69c.png
+图 6 Waiting for table flush 的复现步骤
