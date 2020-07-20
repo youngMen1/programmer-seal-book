@@ -40,3 +40,4 @@ call idata();
 mysql> select * from t where id=1;
 ```
 查询结果长时间不返回。
+8707b79d5ed906950749f5266014f22a.png
