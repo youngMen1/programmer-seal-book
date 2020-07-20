@@ -94,3 +94,12 @@ mysql> select * from information_schema.processlist where id=1;
                                                                                                   图 5 Waiting for table flush 状态示意图
 
 这个状态表示的是，现在有一个线程正要对表 t 做 flush 操作。MySQL 里面对表做 flush 操作的用法，一般有以下两个：
+
+
+```
+
+flush tables t with read lock;
+
+flush tables with read lock;
+```
+
