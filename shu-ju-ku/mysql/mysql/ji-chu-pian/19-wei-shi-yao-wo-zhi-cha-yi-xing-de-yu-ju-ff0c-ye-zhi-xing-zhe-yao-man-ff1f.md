@@ -131,7 +131,7 @@ mysql> select * from t where id=1 lock in share mode;
 
 由于访问 id=1 这个记录时要加读锁，如果这时候已经有一个事务在这行记录上持有一个写锁，我们的 select 语句就会被堵住。
 
-
+复现步骤和现场如下：
 
 
 
