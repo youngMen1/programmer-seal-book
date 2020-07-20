@@ -90,7 +90,7 @@ mysql> select * from information_schema.processlist where id=1;
 
 你可以看一下图 5。我查出来这个线程的状态是 Waiting for table flush，你可以设想一下这是什么原因。
 
-[](/static/image/2d8250398bc7f8f7dce8b6b1923c3724.png)
+![](/static/image/2d8250398bc7f8f7dce8b6b1923c3724.png)
                                                                                                   图 5 Waiting for table flush 状态示意图
 
 这个状态表示的是，现在有一个线程正要对表 t 做 flush 操作。MySQL 里面对表做 flush 操作的用法，一般有以下两个：
@@ -109,5 +109,7 @@ flush tables with read lock;
 所以，出现 Waiting for table flush 状态的可能情况是：有一个 flush tables 命令被别的语句堵住了，然后它又堵住了我们的 select 语句。
 
 现在，我们一起来复现一下这种情况，**复现步骤**如图 6 所示：
-2bbc77cfdb118b0d9ef3fdd679d0a69c.png
-图 6 Waiting for table flush 的复现步骤
+![](/static/image/2bbc77cfdb118b0d9ef3fdd679d0a69c.png)
+                                                                                                              图 6 Waiting for table flush 的复现步骤
+
+在 session A 中，我故意每行都调用一次 sleep(1)，这样这个语句默认要执行 10 万秒，在这期间表 t 一直是被 session A“打开”着。然后，session B 的 flush tables t 命令再要去关闭表 t，就需要等 session A 的查询结束。这样，session C 要再次查询的话，就会被 flush 命令堵住了。
