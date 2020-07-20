@@ -116,4 +116,5 @@ flush tables with read lock;
 
 图 7 是这个复现步骤的 show processlist 结果。这个例子的排查也很简单，你看到这个 show processlist 的结果，肯定就知道应该怎么做了。
 
-398407014180be4146c2d088fc07357e.png
+![](/static/image/398407014180be4146c2d088fc07357e.png)
+                                                                                                                 图 7 Waiting for table flush 的 show processlist 结果
