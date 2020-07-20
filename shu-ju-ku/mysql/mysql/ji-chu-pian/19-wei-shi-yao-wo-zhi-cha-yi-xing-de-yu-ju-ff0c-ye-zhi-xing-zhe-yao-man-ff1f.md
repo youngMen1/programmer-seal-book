@@ -226,3 +226,13 @@ session B 更新完 100 万次，生成了 100 万个回滚日志 (undo log)。
 ## 2.1.思考题
 
 我们在举例加锁读的时候，用的是这个语句，select * from t where id=1 lock in share mode。由于 id 上有索引，所以可以直接定位到 id=1 这一行，因此读锁也是只加在了这一行上。但如果是下面的 SQL 语句，
+
+
+```
+
+begin;
+select * from t where c=5 for update;
+commit;
+```
+
+
