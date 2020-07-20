@@ -82,10 +82,10 @@ session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的
 
 我在表 t 上，执行下面的 SQL 语句：
 
-
-
 ```
-
 mysql> select * from information_schema.processlist where id=1;
 ```
 
+这里，我先卖个关子。
+
+你可以看一下图 5。我查出来这个线程的状态是 Waiting for table flush，你可以设想一下这是什么原因。
