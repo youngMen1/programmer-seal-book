@@ -118,3 +118,5 @@ flush tables with read lock;
 
 ![](/static/image/398407014180be4146c2d088fc07357e.png)
                                                                                                                  图 7 Waiting for table flush 的 show processlist 结果
+
+## 等行锁
