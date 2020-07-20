@@ -213,3 +213,5 @@ session B 执行完 100 万次 update 语句后，id=1 这一行处于什么状�
 
 46bb9f5e27854678bfcaeaf0c3b8a98c.png
 图 16 id=1 的数据状态
+
+session B 更新完 100 万次，生成了 100 万个回滚日志 (undo log)。
