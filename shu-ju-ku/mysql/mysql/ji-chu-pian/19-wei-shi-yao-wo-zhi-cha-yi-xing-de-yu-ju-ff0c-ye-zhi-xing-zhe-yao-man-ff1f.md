@@ -234,5 +234,6 @@ begin;
 select * from t where c=5 for update;
 commit;
 ```
+这个语句序列是怎么加锁的呢？加的锁又是什么时候释放呢？
 
 
