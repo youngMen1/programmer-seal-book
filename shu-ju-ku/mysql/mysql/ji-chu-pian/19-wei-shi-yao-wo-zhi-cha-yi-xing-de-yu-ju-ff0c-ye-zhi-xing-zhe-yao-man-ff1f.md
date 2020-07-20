@@ -193,3 +193,5 @@ mysql> select * from t where id=1；
 是不是有点奇怪呢，这些时间都花在哪里了？
 
 如果我把这个 slow log 的截图再往下拉一点，你可以看到下一个语句，select * from t where id=1 lock in share mode，执行时扫描行数也是 1 行，执行时间是 0.2 毫秒。
+
+bde83e269d9fa185b27900c8aa8137d2.png
