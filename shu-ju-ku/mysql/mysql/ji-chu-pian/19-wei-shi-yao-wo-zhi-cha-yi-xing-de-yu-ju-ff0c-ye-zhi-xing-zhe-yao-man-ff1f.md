@@ -36,10 +36,7 @@ call idata();
 
 如图 1 所示，在表 t 执行下面的 SQL 语句：
 
-
-
 ```
-
 mysql> select * from t where id=1;
 ```
 
