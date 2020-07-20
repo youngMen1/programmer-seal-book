@@ -136,4 +136,4 @@ mysql> select * from t where id=1 lock in share mode;
 图 8 行锁复现
 
 3c266e23fc307283aa94923ecbbc738f.png
-
+图 9 行锁 show processlist 现场
