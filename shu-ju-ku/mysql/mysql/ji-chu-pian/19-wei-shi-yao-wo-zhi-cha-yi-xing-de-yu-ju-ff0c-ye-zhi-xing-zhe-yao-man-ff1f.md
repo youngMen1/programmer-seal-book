@@ -244,9 +244,9 @@ innodb先锁全表的所有行，返回server层，判断c是否等于5，然后
 
 事务A执行 锁住一行c！=5的记录 比如id =3 c=3
 
-select \* from t where id = 3 for update 或者 update t set c=4 where id =3
+`select * from t where id = 3 for update` 或者 `update t set c=4 where id =3`
 
-然后启动新事务B执行上面的语句select \* from t where c=5 for update; 看看有没有被阻塞。
+然后启动新事务B执行上面的语句`select * from t where c=5 for update; `看看有没有被阻塞。
 
 用于判断事务B的语句会不会试图锁不满足条件的记录。
 
