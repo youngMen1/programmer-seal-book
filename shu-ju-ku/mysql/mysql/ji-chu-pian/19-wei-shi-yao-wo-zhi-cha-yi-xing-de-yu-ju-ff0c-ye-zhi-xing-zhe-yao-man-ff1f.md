@@ -133,7 +133,7 @@ mysql> select * from t where id=1 lock in share mode;
 
 复现步骤和现场如下：
 ![](/static/image/3e68326b967701c59770612183277475.png)
-图 8 行锁复现
+ 图 8 行锁复现
 
 ![](/static/image/3c266e23fc307283aa94923ecbbc738f.png)
 图 9 行锁 show processlist 现场
