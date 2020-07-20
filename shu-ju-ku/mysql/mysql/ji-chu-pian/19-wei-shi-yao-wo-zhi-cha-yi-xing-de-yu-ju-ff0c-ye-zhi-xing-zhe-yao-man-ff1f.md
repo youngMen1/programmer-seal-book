@@ -170,3 +170,4 @@ mysql> select * from t where c=50000 limit 1;
 
 作为确认，你可以看一下慢查询日志。注意，这里为了把所有语句记录到 slow log 里，我在连接后先执行了 set long_query_time=0，将慢查询日志的时间阈值设置为 0。
 d8b2b5f97c60ae4fc4a03c616847503c.png
+图 11 全表扫描 5 万行的 slow log
