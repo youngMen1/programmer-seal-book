@@ -215,3 +215,5 @@ session B 执行完 100 万次 update 语句后，id=1 这一行处于什么状�
 图 16 id=1 的数据状态
 
 session B 更新完 100 万次，生成了 100 万个回滚日志 (undo log)。
+
+**带 lock in share mode 的 SQL 语句，是当前读，因此会直接读到 1000001 这个结果，所以速度很快；而 select * from t where id=1 这个语句，是一致性读，因此需要从 1000001 开始，依次执行 undo log，执行了 100 万次以后，才将 1 这个结果返回。**
