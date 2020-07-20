@@ -145,4 +145,4 @@ mysql> select * from t where id=1 lock in share mode;
 ```
 mysql> select * from t sys.innodb_lock_waits where locked_table='`test`.`t`'\G
 ```
-
+d8603aeb4eaad3326699c13c46379118.png
