@@ -120,3 +120,11 @@ flush tables with read lock;
                                                                                                                  图 7 Waiting for table flush 的 show processlist 结果
 
 ## 等行锁
+现在，经过了表级锁的考验，我们的 select 语句终于来到引擎里了。
+
+
+
+
+
+
+
