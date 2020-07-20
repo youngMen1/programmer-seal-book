@@ -207,3 +207,6 @@ bde83e269d9fa185b27900c8aa8137d2.png
 
 84667a3449dc846e393142600ee7a2ff.png
 图 15 复现步骤
+
+你看到了，session A 先用 start transaction with consistent snapshot 命令启动了一个事务，之后 session B 才开始执行 update 语句。
+session B 执行完 100 万次 update 语句后，id=1 这一行处于什么状态呢？你可以从图 16 中找到答案。
