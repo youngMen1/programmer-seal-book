@@ -194,24 +194,24 @@ mysql> select * from t where id=1；
 
 如果我把这个 slow log 的截图再往下拉一点，你可以看到下一个语句，select * from t where id=1 lock in share mode，执行时扫描行数也是 1 行，执行时间是 0.2 毫秒。
 
-bde83e269d9fa185b27900c8aa8137d2.png
+![](/static/image/bde83e269d9fa185b27900c8aa8137d2.png)
 图 13 加上 lock in share mode 的 slow log
 
 看上去是不是更奇怪了？按理说 lock in share mode 还要加锁，时间应该更长才对啊。
 可能有的同学已经有答案了。如果你还没有答案的话，我再给你一个提示信息，图 14 是这两个语句的执行输出结果。
 
-1fbb84bb392b6bfa93786fe032690b1c.png
+![](/static/image/1fbb84bb392b6bfa93786fe032690b1c.png)
 图 14 两个语句的输出结果
 
 第一个语句的查询结果里 c=1，带 lock in share mode 的语句返回的是 c=1000001。看到这里应该有更多的同学知道原因了。如果你还是没有头绪的话，也别着急。我先跟你说明一下复现步骤，再分析原因。
 
-84667a3449dc846e393142600ee7a2ff.png
+![](/static/image/84667a3449dc846e393142600ee7a2ff.png)
 图 15 复现步骤
 
 你看到了，session A 先用 start transaction with consistent snapshot 命令启动了一个事务，之后 session B 才开始执行 update 语句。
 session B 执行完 100 万次 update 语句后，id=1 这一行处于什么状态呢？你可以从图 16 中找到答案。
 
-46bb9f5e27854678bfcaeaf0c3b8a98c.png
+![](/static/image/46bb9f5e27854678bfcaeaf0c3b8a98c.png)
 图 16 id=1 的数据状态
 
 session B 更新完 100 万次，生成了 100 万个回滚日志 (undo log)。
