@@ -90,5 +90,7 @@ mysql> select * from information_schema.processlist where id=1;
 
 你可以看一下图 5。我查出来这个线程的状态是 Waiting for table flush，你可以设想一下这是什么原因。
 
-2d8250398bc7f8f7dce8b6b1923c3724.png
-图 5 Waiting for table flush 状态示意图
+[](/static/image/2d8250398bc7f8f7dce8b6b1923c3724.png)
+                                                                                                  图 5 Waiting for table flush 状态示意图
+
+这个状态表示的是，现在有一个线程正要对表 t 做 flush 操作。MySQL 里面对表做 flush 操作的用法，一般有以下两个：
