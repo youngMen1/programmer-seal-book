@@ -61,7 +61,7 @@ mysql> select * from t where id=1;
 
 不过，在 MySQL 5.7 版本下复现这个场景，也很容易。如图 3 所示，我给出了简单的复现步骤。
 
-742249a31b83f4858c51bfe106a5daca.png
+![](/static/image/742249a31b83f4858c51bfe106a5daca.png)
                                                                                                              图 3 MySQL 5.7 中 Waiting for table metadata lock 的复现步骤
 
 session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的查询需要获取 MDL 读锁。所以，session B 进入等待状态。
