@@ -75,3 +75,5 @@ session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的
 74fb24ba3826e3831eeeff1670990c01.png
 
 图 4 查获加表锁的线程 id
+
+## 等 flush
