@@ -210,4 +210,6 @@ bde83e269d9fa185b27900c8aa8137d2.png
 
 你看到了，session A 先用 start transaction with consistent snapshot 命令启动了一个事务，之后 session B 才开始执行 update 语句。
 session B 执行完 100 万次 update 语句后，id=1 这一行处于什么状态呢？你可以从图 16 中找到答案。
+
 46bb9f5e27854678bfcaeaf0c3b8a98c.png
+图 16 id=1 的数据状态
