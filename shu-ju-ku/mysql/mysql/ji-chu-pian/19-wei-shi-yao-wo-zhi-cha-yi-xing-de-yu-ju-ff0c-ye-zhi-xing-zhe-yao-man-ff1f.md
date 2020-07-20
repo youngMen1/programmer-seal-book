@@ -65,3 +65,5 @@ mysql> select * from t where id=1;
                                                                                                              图 3 MySQL 5.7 中 Waiting for table metadata lock 的复现步骤
 
 session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的查询需要获取 MDL 读锁。所以，session B 进入等待状态。
+
+这类问题的处理方式，就是找到谁持有 MDL 写锁，然后把它 kill 掉。
