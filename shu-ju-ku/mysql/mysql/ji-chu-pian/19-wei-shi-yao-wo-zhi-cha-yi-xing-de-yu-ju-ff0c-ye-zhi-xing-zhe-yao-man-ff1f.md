@@ -123,6 +123,13 @@ flush tables with read lock;
 现在，经过了表级锁的考验，我们的 select 语句终于来到引擎里了。
 
 
+```
+
+mysql> select * from t where id=1 lock in share mode; 
+```
+
+
+
 
 
 
