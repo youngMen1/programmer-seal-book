@@ -246,7 +246,7 @@ innodb先锁全表的所有行，返回server层，判断c是否等于5，然后
 
 `select * from t where id = 3 for update` 或者 `update t set c=4 where id =3`
 
-然后启动新事务B执行上面的语句`select * from t where c=5 for update; `看看有没有被阻塞。
+然后启动新事务B执行上面的语句`select * from t where c=5 for update;`看看有没有被阻塞。
 
 用于判断事务B的语句会不会试图锁不满足条件的记录。
 
@@ -255,6 +255,10 @@ innodb先锁全表的所有行，返回server层，判断c是否等于5，然后
 判断在事务B加锁成功的情况下会不会释放不满足查询条件记录的行锁。
 
 ## 2.2.高质量问题
+
+1.索引扫描与全表扫描，有什么异同点？
+
+
 
 
 
