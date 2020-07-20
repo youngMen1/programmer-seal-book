@@ -187,3 +187,4 @@ Rows_examined 显示扫描了 50000 行。你可能会说，不是很慢呀，11
 mysql> select * from t where id=1；
 ```
 虽然扫描行数是 1，但执行时间却长达 800 毫秒。
+66f26bb885401e8e460451ff6b0c0746.png
