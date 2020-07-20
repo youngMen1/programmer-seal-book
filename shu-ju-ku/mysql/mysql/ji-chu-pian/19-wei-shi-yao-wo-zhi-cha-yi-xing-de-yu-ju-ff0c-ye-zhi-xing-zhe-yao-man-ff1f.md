@@ -61,3 +61,5 @@ mysql> select * from t where id=1;
 
 不过，在 MySQL 5.7 版本下复现这个场景，也很容易。如图 3 所示，我给出了简单的复现步骤。
 
+742249a31b83f4858c51bfe106a5daca.png
+
