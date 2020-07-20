@@ -138,6 +138,6 @@ mysql> select * from t where id=1 lock in share mode;
 3c266e23fc307283aa94923ecbbc738f.png
 图 9 行锁 show processlist 现场
 
-显然，session A 启动了事务，占有写锁，还不提交，是导致 session B 被堵住的原因。这个问题并不难分析，但问题是怎么查出是谁占着这个写锁。如果你用的是 MySQL 5.7 版本，可以通过 sys.innodb_lock_waits 表查到。
+显然，session A 启动了事务，占有写锁，还不提交，是导致 session B 被堵住的原因。这个问题并不难分析，但问题是怎么查出是谁占着这个写锁。**如果你用的是 MySQL 5.7 版本，可以通过 sys.innodb_lock_waits 表查到。**
 
 查询方法是：
