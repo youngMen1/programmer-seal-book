@@ -186,3 +186,5 @@ binlog几大模式，一般采用row，因为遇到时间，从库可能会出�
 一致
 当在3之前崩溃
 重启恢复：虽没有commit，但满足prepare和binlog完整，所以重启后会自动commit。备份：有binlog. 一致
+
+3.我可以认为redo log 记录的是这个行在这个页更新之后的状态，binlog 记录的是sql吗？
