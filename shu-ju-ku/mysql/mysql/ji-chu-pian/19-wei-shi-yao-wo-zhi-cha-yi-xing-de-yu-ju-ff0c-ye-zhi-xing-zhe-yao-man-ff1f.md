@@ -127,7 +127,7 @@ flush tables with read lock;
 
 mysql> select * from t where id=1 lock in share mode; 
 ```
-
+上面这条语句的用法你也很熟悉了，我们在**第 8 篇《事务到底是隔离的还是不隔离的？》**文章介绍当前读时提到过。
 
 
 
