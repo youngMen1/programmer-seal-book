@@ -54,3 +54,5 @@ mysql> select * from t where id=1;
 
 5008d7e9e22be88a9c80916df4f4b328.png
                                                                                                                   图 2 Waiting for table metadata lock 状态示意图
+
+出现这个状态表示的是，现在有一个线程正在表 t 上请求或者持有 MDL 写锁，把 select 语句堵住了。
