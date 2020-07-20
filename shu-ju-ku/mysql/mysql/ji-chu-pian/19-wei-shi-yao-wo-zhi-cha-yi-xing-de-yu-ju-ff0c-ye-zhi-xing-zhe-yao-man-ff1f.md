@@ -49,5 +49,6 @@ mysql> select * from t where id=1;
 
 
 ## 等 MDL 锁
+如图 2 所示，就是使用 show processlist 命令查看 Waiting for table metadata lock 的示意图。
 
 
