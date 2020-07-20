@@ -146,7 +146,7 @@ mysql> select * from t where id=1 lock in share mode;
 mysql> select * from t sys.innodb_lock_waits where locked_table='`test`.`t`'\G
 ```
 d8603aeb4eaad3326699c13c46379118.png
-图 10 通过 sys.innodb_lock_waits 查行锁
+                                                                                                         图 10 通过 sys.innodb_lock_waits 查行锁
 
 可以看到，这个信息很全，4 号线程是造成堵塞的罪魁祸首。而干掉这个罪魁祸首的方式，就是 KILL QUERY 4 或 KILL 4。
 
@@ -170,7 +170,7 @@ mysql> select * from t where c=50000 limit 1;
 
 作为确认，你可以看一下慢查询日志。注意，这里为了把所有语句记录到 slow log 里，我在连接后先执行了 set long_query_time=0，将慢查询日志的时间阈值设置为 0。
 ![](/static/image/d8b2b5f97c60ae4fc4a03c616847503c.png)
-图 11 全表扫描 5 万行的 slow log
+                                                                                                      图 11 全表扫描 5 万行的 slow log
 
 Rows_examined 显示扫描了 50000 行。你可能会说，不是很慢呀，11.5 毫秒就返回了，我们线上一般都配置超过 1 秒才算慢查询。但你要记住：**坏查询不一定是慢查询。**我们这个例子里面只有 10 万行记录，数据量大起来的话，执行时间就线性涨上去了。
 
@@ -188,31 +188,31 @@ mysql> select * from t where id=1；
 ```
 虽然扫描行数是 1，但执行时间却长达 800 毫秒。
 ![](/static/image/66f26bb885401e8e460451ff6b0c0746.png)
-图 12 扫描一行却执行得很慢
+                                                                                                          图 12 扫描一行却执行得很慢
 
 是不是有点奇怪呢，这些时间都花在哪里了？
 
 如果我把这个 slow log 的截图再往下拉一点，你可以看到下一个语句，select * from t where id=1 lock in share mode，执行时扫描行数也是 1 行，执行时间是 0.2 毫秒。
 
 ![](/static/image/bde83e269d9fa185b27900c8aa8137d2.png)
-图 13 加上 lock in share mode 的 slow log
+                                                                                                          图 13 加上 lock in share mode 的 slow log
 
 看上去是不是更奇怪了？按理说 lock in share mode 还要加锁，时间应该更长才对啊。
 可能有的同学已经有答案了。如果你还没有答案的话，我再给你一个提示信息，图 14 是这两个语句的执行输出结果。
 
 ![](/static/image/1fbb84bb392b6bfa93786fe032690b1c.png)
-图 14 两个语句的输出结果
+                                                                                                         图 14 两个语句的输出结果
 
 第一个语句的查询结果里 c=1，带 lock in share mode 的语句返回的是 c=1000001。看到这里应该有更多的同学知道原因了。如果你还是没有头绪的话，也别着急。我先跟你说明一下复现步骤，再分析原因。
 
 ![](/static/image/84667a3449dc846e393142600ee7a2ff.png)
-图 15 复现步骤
+                                                                                                           图 15 复现步骤
 
 你看到了，session A 先用 start transaction with consistent snapshot 命令启动了一个事务，之后 session B 才开始执行 update 语句。
 session B 执行完 100 万次 update 语句后，id=1 这一行处于什么状态呢？你可以从图 16 中找到答案。
 
 ![](/static/image/46bb9f5e27854678bfcaeaf0c3b8a98c.png)
-图 16 id=1 的数据状态
+                                                                                                图 16 id=1 的数据状态
 
 session B 更新完 100 万次，生成了 100 万个回滚日志 (undo log)。
 
