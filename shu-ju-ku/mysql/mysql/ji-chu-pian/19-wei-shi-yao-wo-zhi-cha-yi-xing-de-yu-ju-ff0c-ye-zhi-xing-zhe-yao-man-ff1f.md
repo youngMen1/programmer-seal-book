@@ -71,3 +71,5 @@ session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的
 但是，由于在 `show processlist` 的结果里面，session A 的 Command 列是“Sleep”，导致查找起来很不方便。不过有了 performance_schema 和 sys 系统库以后，就方便多了。（MySQL 启动时需要设置 performance_schema=on，相比于设置为 off 会有 10% 左右的性能损失)
 
 通过查询 sys.schema_table_lock_waits 这张表，我们就可以直接找出造成阻塞的 process id，把这个连接用 kill 命令断开即可。
+
+74fb24ba3826e3831eeeff1670990c01.png
