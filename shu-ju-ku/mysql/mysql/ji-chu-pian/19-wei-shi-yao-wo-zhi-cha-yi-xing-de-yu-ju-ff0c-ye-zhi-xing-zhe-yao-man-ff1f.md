@@ -147,3 +147,11 @@ mysql> select * from t sys.innodb_lock_waits where locked_table='`test`.`t`'\G
 ```
 d8603aeb4eaad3326699c13c46379118.png
 图 10 通过 sys.innodb_lock_waits 查行锁
+
+可以看到，这个信息很全，4 号线程是造成堵塞的罪魁祸首。而干掉这个罪魁祸首的方式，就是 KILL QUERY 4 或 KILL 4。
+
+不过，这里不应该显示“KILL QUERY 4”。这个命令表示停止 4 号线程当前正在执行的语句，而这个方法其实是没有用的。因为占有行锁的是 update 语句，这个语句已经是之前执行完成了的，现在执行 KILL QUERY，无法让这个事务去掉 id=1 上的行锁。
+
+实际上，KILL 4 才有效，也就是说直接断开这个连接。这里隐含的一个逻辑就是，连接被断开的时候，会自动回滚这个连接里面正在执行的线程，也就释放了 id=1 上的行锁。
+
+## 第二类：查询慢
