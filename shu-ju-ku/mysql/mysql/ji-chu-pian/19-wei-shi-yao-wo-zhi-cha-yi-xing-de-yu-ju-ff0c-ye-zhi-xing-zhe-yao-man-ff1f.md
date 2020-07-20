@@ -35,3 +35,11 @@ call idata();
 第一类：查询长时间不返回
 
 如图 1 所示，在表 t 执行下面的 SQL 语句：
+
+
+
+```
+
+mysql> select * from t where id=1;
+```
+
