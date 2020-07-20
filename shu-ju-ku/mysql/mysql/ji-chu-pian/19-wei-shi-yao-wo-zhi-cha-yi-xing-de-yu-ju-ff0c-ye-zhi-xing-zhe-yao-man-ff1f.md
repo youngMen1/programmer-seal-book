@@ -81,3 +81,11 @@ session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的
 接下来，我给你举另外一种查询被堵住的情况。
 
 我在表 t 上，执行下面的 SQL 语句：
+
+
+
+```
+
+mysql> select * from information_schema.processlist where id=1;
+```
+
