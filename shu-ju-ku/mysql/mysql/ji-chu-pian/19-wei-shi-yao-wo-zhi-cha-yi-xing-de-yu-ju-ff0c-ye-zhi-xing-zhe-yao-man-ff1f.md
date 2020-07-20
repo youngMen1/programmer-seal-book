@@ -133,6 +133,7 @@ mysql> select * from t where id=1 lock in share mode;
 
 复现步骤和现场如下：
 3e68326b967701c59770612183277475.png
+图 8 行锁复现
 
 
 
