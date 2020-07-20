@@ -73,3 +73,5 @@ session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的
 通过查询 sys.schema_table_lock_waits 这张表，我们就可以直接找出造成阻塞的 process id，把这个连接用 kill 命令断开即可。
 
 74fb24ba3826e3831eeeff1670990c01.png
+
+图 4 查获加表锁的线程 id
