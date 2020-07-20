@@ -39,4 +39,4 @@ call idata();
 ```
 mysql> select * from t where id=1;
 ```
-
+查询结果长时间不返回。
