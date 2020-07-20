@@ -67,3 +67,5 @@ mysql> select * from t where id=1;
 session A 通过 lock table 命令持有表 t 的 MDL 写锁，而 session B 的查询需要获取 MDL 读锁。所以，session B 进入等待状态。
 
 这类问题的处理方式，就是找到谁持有 MDL 写锁，然后把它 kill 掉。
+
+但是，由于在 `show processlist` 的结果里面，session A 的 Command 列是“Sleep”，导致查找起来很不方便。不过有了 performance_schema 和 sys 系统库以后，就方便多了。（MySQL 启动时需要设置 performance_schema=on，相比于设置为 off 会有 10% 左右的性能损失)
