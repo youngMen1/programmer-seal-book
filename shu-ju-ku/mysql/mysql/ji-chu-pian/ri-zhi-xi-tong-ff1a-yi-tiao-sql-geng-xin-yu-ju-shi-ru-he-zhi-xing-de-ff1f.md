@@ -110,7 +110,8 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 
 这里我给出这个 update 语句的执行流程图，图中浅色框表示是在 InnoDB 内部执行的，深色框表示是在执行器中执行的。
 
-![](/static/image/2e5bff4910ec189fe1ee6e2ecc7b4bbe.png)
+![](/static/image/2e5bff4910ec189fe1ee6e2ecc7b4bbe.png) 
+                                                                                                         update 语句执行流程
 
 你可能注意到了，最后三步看上去有点“绕”，将 redo log 的写入拆成了两个步骤：prepare 和 commit，这就是"两阶段提交"。
 
