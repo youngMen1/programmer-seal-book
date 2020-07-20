@@ -102,4 +102,7 @@ flush tables t with read lock;
 
 flush tables with read lock;
 ```
-
+这两个 flush 语句，如果指定表 t 的话，代表的是只关闭表 t；如果没有指定具体的表名，则表示关闭 MySQL 里所有打开的表。
+但是正常这两个语句执行起来都很快，除非它们也被别的线程堵住了。
+所以，出现 Waiting for table flush 状态的可能情况是：有一个 flush tables 命令被别的语句堵住了，然后它又堵住了我们的 select 语句。
+现在，我们一起来复现一下这种情况，**复现步骤**如图 6 所示：
