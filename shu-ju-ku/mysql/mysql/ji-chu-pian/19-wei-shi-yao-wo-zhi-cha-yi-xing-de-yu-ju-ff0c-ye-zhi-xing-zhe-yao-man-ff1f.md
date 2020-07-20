@@ -47,6 +47,7 @@ mysql> select * from t where id=1;
 
 然后我们再针对每种状态，去分析它们产生的原因、如何复现，以及如何处理。
 
-等 MDL 锁
+
+## 等 MDL 锁
 
 
