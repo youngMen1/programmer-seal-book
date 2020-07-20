@@ -52,4 +52,4 @@ mysql> select * from t where id=1;
 
 如图 2 所示，就是使用 show processlist 命令查看 Waiting for table metadata lock 的示意图。
 
-
+5008d7e9e22be88a9c80916df4f4b328.png
