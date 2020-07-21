@@ -27,6 +27,7 @@ info：显示这个sql语句
 
 ## 1.2.show variables like 'transaction_isolation';
 
+可以用 show variables 来查看当前的值
 
 ```
 show variables like 'transaction_isolation';
