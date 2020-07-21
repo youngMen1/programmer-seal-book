@@ -25,11 +25,21 @@ info：显示这个sql语句
 其中state的状态十分关键，下表列出state主要状态和描述：  
 ![](/static/image/微信截图_20200717173950.png)
 
-## 1.2.show variables like 'transaction_isolation';
+## 1.2.show variables like 'transaction\_isolation';
 
 可以用 show variables 来查看当前事务的隔离级别
 
 ```
 show variables like 'transaction_isolation';
 ```
+## 1.2.查询长事务
+你可以在 information_schema 库的 innodb_trx 这个表中查询长事务，比如下面这个语句，用于查找持续时间超过 60s 的事务。
+
+```
+
+select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx_started))>60
+```
+
+
+
 
