@@ -25,3 +25,10 @@ info：显示这个sql语句
 其中state的状态十分关键，下表列出state主要状态和描述：  
 ![](/static/image/微信截图_20200717173950.png)
 
+## 1.2.show variables like 'transaction_isolation';
+
+
+```
+show variables like 'transaction_isolation';
+```
+
