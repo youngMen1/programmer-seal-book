@@ -14,7 +14,7 @@
     * [常用的Java工具库](ji-chu-zhi-shi/javazhong-ge-zhong-guan-jian-zi/chang-yong-de-java-gong-ju-ku.md)
   * [注解](ji-chu-zhi-shi/zhu-jie.md)
     * [Spring常用注解](ji-chu-zhi-shi/zhu-jie/springchang-yong-zhu-jie.md)
-    * 元注解
+    * [元注解](ji-chu-zhi-shi/zhu-jie/yuan-zhu-jie.md)
   * [JVM参数及调优](ji-chu-zhi-shi/jvmcan-shu-ji-diao-you.md)
   * [异常](ji-chu-zhi-shi/yi-chang.md)
     * [Java常见异常大全](ji-chu-zhi-shi/yi-chang/javachang-jian-yi-chang-da-quan.md)
