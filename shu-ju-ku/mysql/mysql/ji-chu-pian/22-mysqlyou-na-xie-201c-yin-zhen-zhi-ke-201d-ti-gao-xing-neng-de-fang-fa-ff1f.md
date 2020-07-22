@@ -41,6 +41,8 @@ ae6a9ceecf8517e47f9ebfc565f0f925.png
 ca4b455c8eacbf32b98d1fe9ed9876e8.png
 图 3 从 information_schema.innodb_trx 查询事务状态
 
+这个结果里，trx_mysql_thread_id=4，表示 id=4 的线程还处在事务中。
+
 ### 1.1.2.第二种方法：减少连接过程的消耗。
 
 ## 1.2.慢查询性能问题
