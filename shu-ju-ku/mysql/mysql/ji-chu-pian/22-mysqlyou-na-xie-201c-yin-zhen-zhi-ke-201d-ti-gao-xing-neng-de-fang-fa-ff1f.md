@@ -35,7 +35,9 @@ max_connections 的计算，不是看谁在 running，是只要连着就占用�
 但是，怎么判断哪些是事务外空闲的呢？session C 在 T 时刻之后的 30 秒执行 show processlist，看到的结果是这样的。
 
 ae6a9ceecf8517e47f9ebfc565f0f925.png
+图 2 sleep 线程的两种状态，show processlist 结果
 
+图中 id=4 和 id=5 的两个会话都是 Sleep 状态。而要看事务具体状态的话，你可以查 information_schema 库的 innodb_trx 表。
 ### 1.1.2.第二种方法：减少连接过程的消耗。
 
 ## 1.2.慢查询性能问题
