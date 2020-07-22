@@ -321,7 +321,7 @@
         * [19 \| 为什么我只查一行的语句，也执行这么慢？](shu-ju-ku/mysql/mysql/ji-chu-pian/19-wei-shi-yao-wo-zhi-cha-yi-xing-de-yu-ju-ff0c-ye-zhi-xing-zhe-yao-man-ff1f.md)
         * 20 \| 幻读是什么，幻读有什么问题？
         * 21 \| 为什么我只改一行的语句，锁这么多？
-        * 22 \| MySQL有哪些“饮鸩止渴”提高性能的方法？
+        * [22 \| MySQL有哪些“饮鸩止渴”提高性能的方法？](shu-ju-ku/mysql/mysql/ji-chu-pian/22-mysqlyou-na-xie-201c-yin-zhen-zhi-ke-201d-ti-gao-xing-neng-de-fang-fa-ff1f.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
