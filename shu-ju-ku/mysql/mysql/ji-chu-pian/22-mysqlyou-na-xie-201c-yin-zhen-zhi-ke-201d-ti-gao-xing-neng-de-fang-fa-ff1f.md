@@ -105,6 +105,8 @@ call query_rewrite.flush_rewrite_rules();
 
 这时候，应急方案就是给这个语句加上 force index。
 
+同样地，使用查询重写功能，给原来的语句加上 force index，也可以解决这个问题。
+
 
 
 
