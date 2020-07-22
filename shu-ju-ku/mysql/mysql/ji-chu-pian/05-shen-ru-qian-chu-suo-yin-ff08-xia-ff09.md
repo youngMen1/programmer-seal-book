@@ -26,7 +26,9 @@ engine=InnoDB;
 insert into T values(100,1, 'aa'),(200,2,'bb'),(300,3,'cc'),(500,5,'ee'),(600,6,'ff'),(700,7,'gg');
 ```
 
-![](/static/image/dcda101051f28502bd5c4402b292e38d.png)  
+![](/static/image/dcda101051f28502bd5c4402b292e38d.png)
+图 1 InnoDB 的索引组织结构
+  
 .现在，我们一起来看看这条 SQL 查询语句的执行流程：
 
 1.在 k 索引树上找到 k=3 的记录，取得 ID = 300；  
