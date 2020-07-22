@@ -99,7 +99,7 @@ mysql> insert into query_rewrite.rewrite_rules(pattern, replacement, pattern_dat
 
 call query_rewrite.flush_rewrite_rules();
 ```
-
+这里，call query_rewrite.flush_rewrite_rules() 这个存储过程，是让插入的新规则生效，也就是我们说的“查询重写”。你可以用图 4 中的方法来确认改写规则是否生效。
 
 ### 1.2.3.导致慢查询的第三种可能，就是碰上了我们在第 10 篇文章《MySQL 为什么有时候会选错索引？》中提到的情况，MySQL 选错了索引。
 
