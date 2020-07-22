@@ -117,6 +117,6 @@ call query_rewrite.flush_rewrite_rules();
 不要吝啬这段花在上线前的“额外”时间，因为这会帮你省下很多故障复盘的时间。如果新增的 SQL 语句不多，手动跑一下就可以。而如果是新项目的话，或者是修改了原有项目的 表结构设计，全量回归测试都是必要的。这时候，你需要工具帮你检查所有的 SQL 语句的返回结果。比如，你可以使用开源工具 pt-query-digest(https://www.percona.com/doc/percona-toolkit/3.0/pt-query-digest.html)。
 
 ## 1.3.QPS 突增问题
-
+有时候由于业务突然出现高峰，或者应用程序 bug，导致某个语句的 QPS 突然暴涨，也可能导致 MySQL 压力过大，影响服务。
 
 # 2.总结
