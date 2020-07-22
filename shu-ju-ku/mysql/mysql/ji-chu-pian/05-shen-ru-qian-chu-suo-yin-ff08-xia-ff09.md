@@ -27,7 +27,7 @@ insert into T values(100,1, 'aa'),(200,2,'bb'),(300,3,'cc'),(500,5,'ee'),(600,6,
 ```
 
 ![](/static/image/dcda101051f28502bd5c4402b292e38d.png)
-图 1 InnoDB 的索引组织结构
+                                                                                                  图 1 InnoDB 的索引组织结构
   
 .现在，我们一起来看看这条 SQL 查询语句的执行流程：
 
@@ -81,7 +81,7 @@ insert into T values(100,1, 'aa'),(200,2,'bb'),(300,3,'cc'),(500,5,'ee'),(600,6,
 为了直观地说明这个概念，我们用（name，age）这个联合索引来分析。
 
 ![](/static/image/89f74c631110cfbc83298ef27dcd6370.jpg)
-图 2 （name，age）索引示意图
+                                                                                                              图 2 （name，age）索引示意图
 
 可以看到，索引项是按照索引定义里面出现的字段顺序排序的。
 
@@ -124,9 +124,9 @@ mysql> select * from tuser where name like '张%' and age=10 and ismale=1;
 图 3 和图 4，是这两个过程的执行流程图。
 
 ![](/static/image/b32aa8b1f75611e0759e52f5915539ac.jpg)  
-图 3 无索引下推执行流程  
+                                                                                                           图 3 无索引下推执行流程  
 ![](/static/image/76e385f3df5a694cc4238c7b65acfe1b.jpg)  
-图 4 索引下推执行流程
+                                                                                                           图 4 索引下推执行流程
 
 在图 3 和 4 这两个图里面，每一个虚线箭头表示回表一次。
 
