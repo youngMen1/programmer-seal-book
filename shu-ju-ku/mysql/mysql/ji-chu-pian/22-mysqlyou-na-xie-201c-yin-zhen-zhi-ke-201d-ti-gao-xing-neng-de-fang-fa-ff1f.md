@@ -33,6 +33,9 @@ max_connections 的计算，不是看谁在 running，是只要连着就占用�
 在上面这个例子里，如果断开 session A 的连接，因为这时候 session A 还没有提交，所以 MySQL 只能按照回滚事务来处理；而断开 session B 的连接，就没什么大影响。所以，如果按照优先级来说，你应该优先断开像 session B 这样的事务外空闲的连接。
 
 但是，怎么判断哪些是事务外空闲的呢？session C 在 T 时刻之后的 30 秒执行 show processlist，看到的结果是这样的。
+
+ae6a9ceecf8517e47f9ebfc565f0f925.png
+
 ### 1.1.2.第二种方法：减少连接过程的消耗。
 
 ## 1.2.慢查询性能问题
