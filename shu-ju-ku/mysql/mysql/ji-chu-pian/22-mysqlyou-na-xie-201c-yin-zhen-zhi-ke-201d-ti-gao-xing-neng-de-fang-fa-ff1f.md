@@ -91,6 +91,16 @@ ca4b455c8eacbf32b98d1fe9ed9876e8.png
 这时，我们可以通过改写 SQL 语句来处理。MySQL 5.7 提供了 query_rewrite 功能，可以把输入的一种语句改写成另外一种模式。
 
 比如，语句被错误地写成了 select * from t where id + 1 = 10000，你可以通过下面的方式，增加一个语句改写规则。
+
+
+```
+
+mysql> insert into query_rewrite.rewrite_rules(pattern, replacement, pattern_database) values ("select * from t where id + 1 = ?", "select * from t where id = ? - 1", "db1");
+
+call query_rewrite.flush_rewrite_rules();
+```
+
+
 ### 1.2.3.导致慢查询的第三种可能，就是碰上了我们在第 10 篇文章《MySQL 为什么有时候会选错索引？》中提到的情况，MySQL 选错了索引。
 
 ## 1.3.QPS 突增问题
