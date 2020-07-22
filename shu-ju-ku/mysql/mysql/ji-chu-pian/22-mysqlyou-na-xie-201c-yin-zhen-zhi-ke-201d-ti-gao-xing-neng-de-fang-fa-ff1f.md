@@ -28,18 +28,18 @@ max_connections 的计算，不是看谁在 running，是只要连着就占用�
 但是需要注意，在 show processlist 的结果里，踢掉显示为 sleep 的线程，可能是有损的。我们来看下面这个例子。
 
 ![](/static/image/9091ff280592c8c68665771b1516c62a.png)
-图 1 sleep 线程的两种状态
+                                                                                                                    图 1 sleep 线程的两种状态
 
 在上面这个例子里，如果断开 session A 的连接，因为这时候 session A 还没有提交，所以 MySQL 只能按照回滚事务来处理；而断开 session B 的连接，就没什么大影响。所以，如果按照优先级来说，你应该优先断开像 session B 这样的事务外空闲的连接。
 
 但是，怎么判断哪些是事务外空闲的呢？session C 在 T 时刻之后的 30 秒执行 show processlist，看到的结果是这样的。
 
 ![](/static/image/ae6a9ceecf8517e47f9ebfc565f0f925.png)
-图 2 sleep 线程的两种状态，show processlist 结果
+                                                                                                    图 2 sleep 线程的两种状态，show processlist 结果
 
 图中 id=4 和 id=5 的两个会话都是 Sleep 状态。而要看事务具体状态的话，你可以查 information_schema 库的 innodb_trx 表。
 ![](/static/image/ca4b455c8eacbf32b98d1fe9ed9876e8.png)
-图 3 从 information_schema.innodb_trx 查询事务状态
+                                                                                                              图 3 从 information_schema.innodb_trx 查询事务状态
 
 这个结果里，trx_mysql_thread_id=4，表示 id=4 的线程还处在事务中。
 
@@ -99,7 +99,7 @@ call query_rewrite.flush_rewrite_rules();
 ```
 **这里，call query_rewrite.flush_rewrite_rules() 这个存储过程，是让插入的新规则生效，也就是我们说的“查询重写”。你可以用图 4 中的方法来确认改写规则是否生效。**
 ![](/static/image/47a1002cbc4c05c74841591d20f7388a.png)
-图 4 查询重写效果
+                                                                                                           图 4 查询重写效果
 
 ### 1.2.3.导致慢查询的第三种可能，就是碰上了我们在第 10 篇文章《MySQL 为什么有时候会选错索引？》中提到的情况，MySQL 选错了索引。
 
@@ -131,6 +131,7 @@ call query_rewrite.flush_rewrite_rules();
 
 所以，方案 3 是用于止血的，跟前面提到的去掉权限验证一样，应该是你所有选项里优先级最低的一个方案。
 同时你会发现，其实方案 1 和 2 都要依赖于规范的运维体系：虚拟化、白名单机制、业务账号分离。由此可见，更多的准备，往往意味着更稳定的系统。
+
 # 2.总结
 今天这篇文章，我以业务高峰期的性能问题为背景，和你介绍了一些紧急处理的手段。
 
