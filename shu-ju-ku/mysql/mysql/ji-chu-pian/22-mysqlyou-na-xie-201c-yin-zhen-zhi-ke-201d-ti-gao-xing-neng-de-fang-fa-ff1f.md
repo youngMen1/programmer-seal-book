@@ -27,7 +27,7 @@ max_connections 的计算，不是看谁在 running，是只要连着就占用�
 
 但是需要注意，在 show processlist 的结果里，踢掉显示为 sleep 的线程，可能是有损的。我们来看下面这个例子。
 
-9091ff280592c8c68665771b1516c62a.png
+![](/static/image/9091ff280592c8c68665771b1516c62a.png)
 图 1 sleep 线程的两种状态
 
 在上面这个例子里，如果断开 session A 的连接，因为这时候 session A 还没有提交，所以 MySQL 只能按照回滚事务来处理；而断开 session B 的连接，就没什么大影响。所以，如果按照优先级来说，你应该优先断开像 session B 这样的事务外空闲的连接。
