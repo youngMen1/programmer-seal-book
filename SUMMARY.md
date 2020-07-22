@@ -318,6 +318,7 @@
         * [19 \| 为什么我只查一行的语句，也执行这么慢？](shu-ju-ku/mysql/mysql/ji-chu-pian/19-wei-shi-yao-wo-zhi-cha-yi-xing-de-yu-ju-ff0c-ye-zhi-xing-zhe-yao-man-ff1f.md)
         * 16 \| “order by”是怎么工作的？
         * 17 \| 如何正确地显示随机消息？
+        * 18 \| 为什么这些SQL语句逻辑相同，性能却差异巨大？
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
