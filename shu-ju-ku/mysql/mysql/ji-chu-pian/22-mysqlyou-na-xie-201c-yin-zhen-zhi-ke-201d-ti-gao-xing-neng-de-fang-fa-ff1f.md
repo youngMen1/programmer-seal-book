@@ -101,6 +101,7 @@ call query_rewrite.flush_rewrite_rules();
 ```
 **这里，call query_rewrite.flush_rewrite_rules() 这个存储过程，是让插入的新规则生效，也就是我们说的“查询重写”。你可以用图 4 中的方法来确认改写规则是否生效。**
 47a1002cbc4c05c74841591d20f7388a.png
+图 4 查询重写效果
 ### 1.2.3.导致慢查询的第三种可能，就是碰上了我们在第 10 篇文章《MySQL 为什么有时候会选错索引？》中提到的情况，MySQL 选错了索引。
 
 ## 1.3.QPS 突增问题
