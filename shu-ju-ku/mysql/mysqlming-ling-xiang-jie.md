@@ -32,14 +32,20 @@ info：显示这个sql语句
 ```
 show variables like 'transaction_isolation';
 ```
+
 ## 1.2.查询长事务
-你可以在 information_schema 库的 innodb_trx 这个表中查询长事务，比如下面这个语句，用于查找持续时间超过 60s 的事务。
+
+你可以在 information\_schema 库的 innodb\_trx 这个表中查询长事务，比如下面这个语句，用于查找持续时间超过 60s 的事务。
 
 ```
-
 select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx_started))>60
 ```
 
+查看事务具体状态的话，你可以查 information_schema 库的 innodb_trx 表。
+
+```
+select * from information_schema.innodb_trx
+```
 
 
 
