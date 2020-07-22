@@ -315,10 +315,10 @@
         * [13 \| 为什么表数据删掉一半，表文件大小不变](shu-ju-ku/mysql/mysql/ji-chu-pian/13-wei-shi-yao-biao-shu-ju-shan-diao-yi-ban-ff0c-biao-wen-jian-da-xiao-bu-bian-ff1f.md)
         * [14 \| count\(\*\)这么慢，我该怎么办](shu-ju-ku/mysql/mysql/ji-chu-pian/14-countzhe-yao-man-ff0c-wo-gai-zen-yao-ban.md)
         * [15 \| 答疑文章（一）：日志和索引相关问题](shu-ju-ku/mysql/mysql/ji-chu-pian/15-da-yi-wen-zhang-ff08-yi-ff09-ff1a-ri-zhi-he-suo-yin-xiang-guan-wen-ti.md)
-        * [19 \| 为什么我只查一行的语句，也执行这么慢？](shu-ju-ku/mysql/mysql/ji-chu-pian/19-wei-shi-yao-wo-zhi-cha-yi-xing-de-yu-ju-ff0c-ye-zhi-xing-zhe-yao-man-ff1f.md)
         * 16 \| “order by”是怎么工作的？
         * 17 \| 如何正确地显示随机消息？
         * 18 \| 为什么这些SQL语句逻辑相同，性能却差异巨大？
+        * [19 \| 为什么我只查一行的语句，也执行这么慢？](shu-ju-ku/mysql/mysql/ji-chu-pian/19-wei-shi-yao-wo-zhi-cha-yi-xing-de-yu-ju-ff0c-ye-zhi-xing-zhe-yao-man-ff1f.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
