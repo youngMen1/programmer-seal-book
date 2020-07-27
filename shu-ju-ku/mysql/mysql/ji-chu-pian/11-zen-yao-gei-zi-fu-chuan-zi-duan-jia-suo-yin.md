@@ -60,7 +60,18 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 
 **如果使用的是 index2（即 email(6) 索引结构）**，执行顺序是这样的：
 
-从 index2 索引树找到满足索引值是’zhangs’的记录，找到的第一个是 ID1；
+1.从 index2 索引树找到满足索引值是’zhangs’的记录，找到的第一个是 ID1；
+2.到主键上查到主键值是 ID1 的行，判断出 email 的值不是’zhangssxyz@xxx.com’，这行记录丢弃；
+3.取 index2 上刚刚查到的位置的下一条记录，发现仍然是’zhangs’，取出 ID2，再到 ID 索引上取整行然后判断，这次值对了，将这行记录加入结果集；
+4.重复上一步，直到在 idxe2 上取到的值不是’zhangs’时，循环结束。
+
+在这个过程中，要回主键索引取 4 次数据，也就是扫描了 4 行。
+
+
+
+
+
+
 
 
 # 2.总结
