@@ -41,19 +41,24 @@ show variables like 'transaction_isolation';
 select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx_started))>60
 ```
 
-查看事务具体状态的话，你可以查 information_schema 库的 innodb_trx 表。
+查看事务具体状态的话，你可以查 information\_schema 库的 innodb\_trx 表。
 
 ```
 select * from information_schema.innodb_trx
 ```
 
 ## 1.3.全局读锁
-MySQL 提供了一个加全局读锁的方法，命令是：
-`Flush tables with read lock` 
+
+MySQL 提供了一个加全局读锁的方法，命令是：  
+`Flush tables with read lock`   
 官方自带的逻辑备份工具是 mysqldump。当 mysqldump 使用参数–single-transaction 的时候，导数据之前就会启动一个事务，来确保拿到一致性视图。而由于 MVCC 的支持，这个过程中数据是可以正常更新的。
 
 为什么不使用 set global readonly=true 的方式呢？确实 readonly 方式也可以让全库进入只读状态，但我还是会建议你用 FTWRL 方式，主要有两个原因：
+
 * 一是，在有些系统中，readonly 的值会被用来做其他逻辑，比如用来判断一个库是主库还是备库。因此，修改 global 变量的方式影响面更大，我不建议你使用。
 * 二是，在异常处理机制上有差异。如果执行 FTWRL 命令之后由于客户端发生异常断开，那么 MySQL 会自动释放这个全局锁，整个库回到可以正常更新的状态。而将整个库设置为 readonly 之后，如果客户端发生异常，则数据库就会一直保持 readonly 状态，这样会导致整个库长时间处于不可写状态，风险较高。
+
+## 1.4.show warnings;
+
 
 
