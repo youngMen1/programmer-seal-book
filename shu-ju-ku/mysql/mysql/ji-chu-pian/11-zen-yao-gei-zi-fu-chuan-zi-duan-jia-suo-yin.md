@@ -156,6 +156,14 @@ mysql> select field_list from t where id_card = reverse('input_id_card_string');
 
 **第二种方式是使用 hash 字段。**你可以在表上再创建一个整数字段，来保存身份证的校验码，同时在这个字段上创建索引。
 
+
+```
+
+mysql> alter table t add id_card_crc int unsigned, add index(id_card_crc);
+```
+
+
+
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
