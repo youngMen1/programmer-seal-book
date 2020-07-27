@@ -13,7 +13,7 @@
     ) ENGINE=InnoDB;
     insert into t(id, k) values(1,1),(2,2);
 
-![](/static/image/823acf76e53c0bdba7beab45e72e90d6.png)
+![](/static/image/823acf76e53c0bdba7beab45e72e90d6.png)  
                                                                                                           图 1 事务 A、B、C 的执行流程  
 这里，我们需要注意的是事务的启动时机。  
 begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句，事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。  
@@ -230,7 +230,13 @@ InnoDB 的行数据有多个版本，每个数据版本有自己的 row trx\_id�
 ![](/static/image/9b8fe7cf88c9ba40dc12e93e36c3060b.png)  
 复现出来以后，请你再思考一下，在实际的业务开发中有没有可能碰到这种情况？你的应用代码会不会掉进这个“坑”里，你又是怎么解决的呢？
 
+### 答案
+
+
+
 ## 2.2.高质量问题
+
+
 
 
 
