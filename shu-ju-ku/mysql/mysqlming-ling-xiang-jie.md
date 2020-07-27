@@ -48,6 +48,7 @@ select * from information_schema.innodb_trx
 ```
 
 ## 1.3.全局读锁
+MySQL 提供了一个加全局读锁的方法，命令是：
 `Flush tables with read lock` 
 
 
