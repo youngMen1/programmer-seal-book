@@ -11,3 +11,5 @@
 
 **问题 2：**为什么 binlog cache 是每个线程自己维护的，而 redo log buffer 是全局共用的？
 回答：MySQL 这么设计的主要原因是，binlog 是不能“被打断的”。一个事务的 binlog 必须连续写，因此要整个事务完成后，再一起写到文件里。
+
+而 redo log 并没有这个要求，中间有生成的日志可以写到 redo log buffer 中。redo log buffer 中的内容还能“搭便车”，其他事务提交的时候可以被一起写到磁盘中。
