@@ -77,6 +77,26 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 
 实际上，我们在建立索引时关注的是区分度，区分度越高越好。因为区分度越高，意味着重复的键值越少。因此，我们可以通过统计索引上有多少个不同的值来判断要使用多长的前缀。
 
+
+首先，你可以使用下面这个语句，算出这个列上有多少个不同的值：
+
+
+
+
+```
+mysql> select count(distinct email) as L from SUser;
+```
+然后，依次选取不同长度的前缀来看这个值，比如我们要看一下 4~7 个字节的前缀索引，可以用这个语句：
+
+
+mysql> select 
+  count(distinct left(email,4)）as L4,
+  count(distinct left(email,5)）as L5,
+  count(distinct left(email,6)）as L6,
+  count(distinct left(email,7)）as L7,
+from SUser;
+
+
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
