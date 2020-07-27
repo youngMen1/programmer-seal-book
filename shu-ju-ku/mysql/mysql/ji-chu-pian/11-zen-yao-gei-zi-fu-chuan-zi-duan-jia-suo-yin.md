@@ -5,7 +5,12 @@
 
 
 ```
-假设，你现在维护一个支持邮箱登录的系统，用户表是这么定义的：
+
+mysql> create table SUser(
+ID bigint unsigned primary key,
+email varchar(64), 
+... 
+)engine=innodb; 
 ```
 
 
