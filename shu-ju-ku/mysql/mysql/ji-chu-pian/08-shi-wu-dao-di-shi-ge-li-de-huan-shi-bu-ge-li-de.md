@@ -13,7 +13,8 @@
     ) ENGINE=InnoDB;
     insert into t(id, k) values(1,1),(2,2);
 
-![](/static/image/823acf76e53c0bdba7beab45e72e90d6.png)图 1 事务 A、B、C 的执行流程  
+![](/static/image/823acf76e53c0bdba7beab45e72e90d6.png)
+                                                                                                          图 1 事务 A、B、C 的执行流程  
 这里，我们需要注意的是事务的启动时机。  
 begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句，事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。  
   第一种启动方式，一致性视图是在执行第一个快照读语句时创建的；  
