@@ -8,3 +8,5 @@
 
 **问题 1：**执行一个 update 语句以后，我再去执行 hexdump 命令直接查看 ibd 文件内容，为什么没有看到数据有改变呢？
 回答：这可能是因为 WAL 机制的原因。update 语句执行完成后，InnoDB 只保证写完了 redo log、内存，可能还没来得及将数据写到磁盘。
+
+**问题 2：**为什么 binlog cache 是每个线程自己维护的，而 redo log buffer 是全局共用的？
