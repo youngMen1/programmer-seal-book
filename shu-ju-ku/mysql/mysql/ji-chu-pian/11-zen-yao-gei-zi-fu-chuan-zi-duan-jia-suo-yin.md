@@ -14,6 +14,8 @@ email varchar(64),
 ```
 由于要使用邮箱登录，所以业务代码中一定会出现类似于这样的语句：
 
+mysql> select f1, f2 from SUser where email='xxx';
+
 
 # 2.总结
 
