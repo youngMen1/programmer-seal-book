@@ -30,7 +30,7 @@ mysql> alter table SUser add index index1(email);
 或
 mysql> alter table SUser add index index2(email(6));
 ```
-
+第一个语句创建的 index1 索引里面，包含了每个记录的整个字符串；而第二个语句创建的 index2 索引里面，对于每个记录都是只取前 6 个字节。
 
 
 # 2.总结
