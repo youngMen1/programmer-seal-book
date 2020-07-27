@@ -89,12 +89,18 @@ mysql> select count(distinct email) as L from SUser;
 然后，依次选取不同长度的前缀来看这个值，比如我们要看一下 4~7 个字节的前缀索引，可以用这个语句：
 
 
+
+
+```
 mysql> select 
   count(distinct left(email,4)）as L4,
   count(distinct left(email,5)）as L5,
   count(distinct left(email,6)）as L6,
   count(distinct left(email,7)）as L7,
 from SUser;
+```
+
+当然，使用前缀索引很可能会损失区分度，所以你需要预先设定一个可以接受的损失比例，比如 5%。然后，在返回的 L4~L7 中，找出不小于 L * 95% 的值，假设这里 L6、L7 都满足，你就可以选择前缀长度为 6。
 
 
 # 2.总结
