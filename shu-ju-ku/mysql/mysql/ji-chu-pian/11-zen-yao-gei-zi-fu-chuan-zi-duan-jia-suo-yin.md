@@ -35,7 +35,7 @@ mysql> alter table SUser add index index2(email(6));
 d31da662bee595991862c439a5567eb7.jpg
 图 1 email 索引结构
 134583875561de914991fc2e192cf842.jpg
-
+图 2 email(6) 索引结构
 
 
 
