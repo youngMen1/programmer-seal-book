@@ -50,6 +50,7 @@ select * from information_schema.innodb_trx
 ## 1.3.全局读锁
 MySQL 提供了一个加全局读锁的方法，命令是：
 `Flush tables with read lock` 
+官方自带的逻辑备份工具是 mysqldump。当 mysqldump 使用参数–single-transaction 的时候，导数据之前就会启动一个事务，来确保拿到一致性视图。而由于 MVCC 的支持，这个过程中数据是可以正常更新的。
 
 
 
