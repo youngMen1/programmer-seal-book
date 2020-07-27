@@ -47,5 +47,8 @@ select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx
 select * from information_schema.innodb_trx
 ```
 
+## 1.3.全局读锁
+`Flush tables with read lock` 
+
 
 
