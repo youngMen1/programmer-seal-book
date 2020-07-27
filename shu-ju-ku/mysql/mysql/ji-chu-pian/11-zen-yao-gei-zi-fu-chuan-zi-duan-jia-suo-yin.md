@@ -56,6 +56,7 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 1.从 index1 索引树找到满足索引值是’zhangssxyz@xxx.com’的这条记录，取得 ID2 的值；
 2.到主键上查到主键值是 ID2 的行，判断 email 的值是正确的，将这行记录加入结果集；
 3.取 index1 索引树上刚刚查到的位置的下一条记录，发现已经不满足 email='zhangssxyz@xxx.com’的条件了，循环结束。
+这个过程中，只需要回主键索引取一次数据，所以系统认为只扫描了一行。
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
