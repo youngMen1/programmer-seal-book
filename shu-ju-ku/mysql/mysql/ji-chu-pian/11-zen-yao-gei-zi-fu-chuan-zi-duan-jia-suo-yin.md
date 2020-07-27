@@ -68,7 +68,7 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 在这个过程中，要回主键索引取 4 次数据，也就是扫描了 4 行。
 
 
-
+通过这个对比，你很容易就可以发现，使用前缀索引后，可能会导致查询语句读数据的次数变多。
 
 
 
