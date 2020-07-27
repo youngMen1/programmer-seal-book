@@ -52,7 +52,8 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 
 
 
-如果使用的是 index1（即 email 整个字符串的索引结构），执行顺序是这样的：
+**如果使用的是 index1（即 email 整个字符串的索引结构），**执行顺序是这样的：
+1.从 index1 索引树找到满足索引值是’zhangssxyz@xxx.com’的这条记录，取得 ID2 的值；
 
 # 2.总结
 
