@@ -145,6 +145,16 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 
 **答案：**是，有的。
 
+**第一种方式是使用倒序存储。**如果你存储身份证号的时候把它倒过来存，每次查询的时候，你可以这么写：
+
+
+```
+
+mysql> select field_list from t where id_card = reverse('input_id_card_string');
+```
+
+
+
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
