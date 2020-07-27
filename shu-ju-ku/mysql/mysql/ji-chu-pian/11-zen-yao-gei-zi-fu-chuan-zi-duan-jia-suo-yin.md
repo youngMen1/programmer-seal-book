@@ -170,7 +170,8 @@ mysql> alter table t add id_card_crc int unsigned, add index(id_card_crc);
 mysql> select field_list from t where id_card_crc=crc32('input_id_card_string') and id_card='input_id_card_string'
 ```
 
-
+这样，索引的长度变成了 4 个字节，比原来小了很多。
+接下来，**我们再一起看看使用倒序存储和使用 hash 字段这两种方法的异同点。**
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
