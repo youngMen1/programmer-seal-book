@@ -107,8 +107,29 @@ from SUser;
 前面我们说了使用前缀索引可能会增加扫描行数，这会影响到性能。其实，前缀索引的影响不止如此，我们再看一下另外一个场景。
 
 
+你先来看看这个 SQL 语句：
 
 
+
+```
+
+select id,email from SUser where email='zhangssxyz@xxx.com';
+```
+与前面例子中的 SQL 语句
+
+
+```
+
+select id,name,email from SUser where email='zhangssxyz@xxx.com';
+```
+
+相比，这个语句只要求返回 id 和 email 字段。
+
+所以，如果使用 index1（即 email 整个字符串的索引结构）的话，可以利用覆盖索引，从 index1 查到结果后直接就返回了，不需要回到 ID 索引再去查一次。而如果使用 index2（即 email(6) 索引结构）的话，就不得不回到 ID 索引再去判断 email 字段的值。
+
+即使你将 index2 的定义修改为 email(18) 的前缀索引，这时候虽然 index2 已经包含了所有的信息，但 InnoDB 还是要回到 id 索引再查一下，因为系统并不确定前缀索引的定义是否截断了完整信息。
+
+也就是说，使用前缀索引就用不上覆盖索引对查询性能的优化了，这也是你在选择是否使用前缀索引时需要考虑的一个因素。
 
 # 2.总结
 
