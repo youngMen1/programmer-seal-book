@@ -34,7 +34,7 @@ mysql> alter table SUser add index index2(email(6));
 那么，这两种不同的定义在数据结构和存储上有什么区别呢？如图 2 和 3 所示，就是这两个索引的示意图。
 d31da662bee595991862c439a5567eb7.jpg
 图 1 email 索引结构
-
+134583875561de914991fc2e192cf842.jpg
 
 
 
