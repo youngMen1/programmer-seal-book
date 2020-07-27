@@ -69,7 +69,7 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 
 通过这个对比，你很容易就可以发现，使用前缀索引后，可能会导致查询语句读数据的次数变多。
 
-
+但是，对于这个查询语句来说，如果你定义的 index2 不是 email(6) 而是 email(7），也就是说取 email 字段的前 7 个字节来构建索引的话，即满足前缀’zhangss’的记录只有一个，也能够直接查到 ID2，只扫描一行就结束了。
 
 
 
