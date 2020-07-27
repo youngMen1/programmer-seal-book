@@ -161,7 +161,7 @@ mysql> select field_list from t where id_card = reverse('input_id_card_string');
 
 mysql> alter table t add id_card_crc int unsigned, add index(id_card_crc);
 ```
-
+然后每次插入新记录的时候，都同时用 crc32() 这个函数得到校验码填到这个新字段。由于校验码可能存在冲突，也就是说两个不同的身份证号通过 crc32() 函数得到的结果可能是相同的，所以你的查询语句 where 部分要判断 id_card 的值是否精确相同。
 
 
 # 2.总结
