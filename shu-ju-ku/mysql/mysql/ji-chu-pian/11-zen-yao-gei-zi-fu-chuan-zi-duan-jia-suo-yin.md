@@ -60,7 +60,7 @@ select id,name,email from SUser where email='zhangssxyz@xxx.com';
 
 **如果使用的是 index2（即 email(6) 索引结构）**，执行顺序是这样的：
 
-
+从 index2 索引树找到满足索引值是’zhangs’的记录，找到的第一个是 ID1；
 
 
 # 2.总结
