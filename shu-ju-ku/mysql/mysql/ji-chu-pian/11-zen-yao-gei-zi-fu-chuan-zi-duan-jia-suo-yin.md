@@ -31,7 +31,7 @@ mysql> alter table SUser add index index1(email);
 mysql> alter table SUser add index index2(email(6));
 ```
 第一个语句创建的 index1 索引里面，包含了每个记录的整个字符串；而第二个语句创建的 index2 索引里面，对于每个记录都是只取前 6 个字节。
-
+那么，这两种不同的定义在数据结构和存储上有什么区别呢？如图 2 和 3 所示，就是这两个索引的示意图。
 
 # 2.总结
 
