@@ -206,3 +206,10 @@ merge 的执行流程是这样的：
 
 有几位同学都提了，我加到文末说明一下。
 
+3.问题3
+1、changebuffer跟普通数据页一样也是存在磁盘里，区别在于changebuffer是在共享表空间ibdata1里
+2、redolog有两种，一种记录普通数据页的改动，一种记录changebuffer的改动
+3、只要内存里脏页（innodb buffer pool）里的数据发生了变化，就一定会记录2中前一种redolog
+（对数据的修改记录在changebuffer里的时候，内存里是没有这个物理页的，不存在脏页）
+3、真正对磁盘数据页的修改是通过将内存里脏页的数据刷回磁盘来完成的，而不是根据redolog
+
