@@ -43,6 +43,9 @@ d31da662bee595991862c439a5567eb7.jpg
 
 接下来，我们再看看下面这个语句，在这两个索引定义下分别是怎么执行的。
 
+
+select id,name,email from SUser where email='zhangssxyz@xxx.com';
+
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
