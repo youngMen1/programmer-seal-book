@@ -23,6 +23,16 @@ mysql> select f1, f2 from SUser where email='xxx';
 同时，MySQL 是支持前缀索引的，也就是说，你可以定义字符串的一部分作为索引。默认地，如果你创建索引的语句不指定前缀长度，那么索引就会包含整个字符串。
 比如，这两个在 email 字段上创建索引的语句：
 
+
+```
+
+mysql> alter table SUser add index index1(email);
+或
+mysql> alter table SUser add index index2(email(6));
+```
+
+
+
 # 2.总结
 
 在今天这篇文章中，我跟你聊了聊字符串字段创建索引的场景。我们来回顾一下，你可以使用的方式有：
