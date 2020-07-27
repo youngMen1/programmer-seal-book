@@ -199,9 +199,6 @@ mysql> select field_list from t where id_card_crc=crc32('input_id_card_string') 
 
 在实际应用中，你要根据业务字段的特点选择使用哪种方式。
 
-首先，你可以使用下面这个语句，算出这个列上有多少个不同的值：
-
-
 
 ## 2.1.问题时间
 
