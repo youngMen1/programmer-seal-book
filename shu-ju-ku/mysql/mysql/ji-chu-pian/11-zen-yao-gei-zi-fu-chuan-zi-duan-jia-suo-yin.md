@@ -44,7 +44,15 @@ d31da662bee595991862c439a5567eb7.jpg
 接下来，我们再看看下面这个语句，在这两个索引定义下分别是怎么执行的。
 
 
+
+
+```
 select id,name,email from SUser where email='zhangssxyz@xxx.com';
+```
+
+
+
+如果使用的是 index1（即 email 整个字符串的索引结构），执行顺序是这样的：
 
 # 2.总结
 
