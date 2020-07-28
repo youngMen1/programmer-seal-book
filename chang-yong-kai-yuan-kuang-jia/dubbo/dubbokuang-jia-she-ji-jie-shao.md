@@ -177,6 +177,7 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 Dubbo 的元数据模块（本课程后续会详细介绍元数据的内容）。dubbo-metadata 模块的实现套路也是有一个 api 子模块进行抽象，然后其他子模块进行具体实现。
 ![](/static/image/CgqCHl8eRiSAPFIYAABXCRqgsNA891.png)
 
+
 ### dubbo-monitor——监控模块
 
 官方文档的解释：统计服务调用次数，调用时间的，调用链跟踪的服务,统计服务的调用次调和调用时间的日志服务称之为“服务监控中心”
@@ -191,6 +192,11 @@ Dubbo 的元数据模块（本课程后续会详细介绍元数据的内容）�
 
 1.dubbo-monitor-api：定义了monitor相关的接口，实现了监控所需要的过滤器。  
 2.dubbo-monitor-default：实现了dubbo监控相关的功能。
+
+### dubbo-configcenter———动态配置模块
+Dubbo 的动态配置模块，主要负责外部化配置以及服务治理规则的存储与通知，提供了多个子模块用来接入多种开源的服务发现组件。
+
+CgqCHl8eRiuAM7LfAAA9BmMR2zY483.png
 
 ### dubbo-bootstrap——清理模块
 
