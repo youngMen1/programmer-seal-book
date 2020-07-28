@@ -123,6 +123,8 @@ Dubbo 对外暴露的配置都是由该模块进行解析的。例如，dubbo-co
 
 官方文档的解释：抽象各种协议，以及动态代理，只包含一对一的调用，不关心集群的管理，一个远程过程调用的抽象，支持负载均衡、容灾和集群功能。
 
+ Dubbo 中对远程调用协议进行抽象的模块，其中抽象了各种协议，依赖于 dubbo-remoting 模块的远程调用功能。dubbo-rpc-api 子模块是核心抽象，其他子模块是针对具体协议的实现，例如，dubbo-rpc-dubbo 子模块是对 Dubbo 协议的实现，依赖了 dubbo-remoting-netty4 等 dubbo-remoting 子模块。 dubbo-rpc 模块的实现中只包含一对一的调用，不关心集群的相关内容。
+
 我的理解：远程调用，最主要的肯定是协议，dubbo提供了许许多多的协议实现，不过官方推荐时使用dubbo自己的协议，还给出了一份性能测试报告。
 
 性能测试报告地址：`http://dubbo.apache.org/zh-cn/docs/user/perf-test.html`
