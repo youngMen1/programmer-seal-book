@@ -196,7 +196,7 @@ Dubbo 的元数据模块（本课程后续会详细介绍元数据的内容）�
 ### dubbo-configcenter———动态配置模块
 Dubbo 的动态配置模块，主要负责外部化配置以及服务治理规则的存储与通知，提供了多个子模块用来接入多种开源的服务发现组件。
 
-CgqCHl8eRiuAM7LfAAA9BmMR2zY483.png
+![](/static/image/CgqCHl8eRiuAM7LfAAA9BmMR2zY483.png)
 
 ### dubbo-bootstrap——清理模块
 
