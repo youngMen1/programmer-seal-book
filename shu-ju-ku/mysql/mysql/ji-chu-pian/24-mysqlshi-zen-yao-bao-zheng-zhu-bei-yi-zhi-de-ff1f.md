@@ -36,3 +36,7 @@ binlog 在 MySQL 的各种高可用方案上扮演了重要角色。今天介绍
 **3.老师你好，问个备份问题，假如周日23点做了备份，周二20点需要恢复数据，那么在用binlog恢复时，如何恰好定位到周日23点的binlog,谢谢。**
 
 **回答：**Mysqlbinlog有个参数—stop-datetime
+
+4.老师您好，读到您关于binlog的文章之后，我有个疑问。
+我之前理解是，mysql 每执行一条事务所产生的binlog准备写到 binlog file时，都会先判断当前文件写入这条binlog之后是否会超过设置的max_binlog_size值。 如果超过，则rotate 自动生成下个binlog flie 来记录这条binlog信息。
+那如果 事务所有产生的binlog 大于 max_binlog_size 值呢？ 那不是永久地rotate吗？ mysql是如何处理的？
