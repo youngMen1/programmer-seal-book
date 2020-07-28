@@ -66,6 +66,8 @@ RPC英文全名为Remote Procedure Call，也叫远程过程调用，其实就�
 
 官方文档的解释：基于注册中心下发地址的集群方式，以及对各种注册中心的抽象，服务目录框架用于服务的注册和服务事件发布和订阅
 
+Dubbo 中负责与多种开源注册中心进行交互的模块，提供注册中心的能力。其中， dubbo-registry-api 子模块是顶层抽象，其他子模块是针对具体开源注册中心组件的具体实现，例如，dubbo-registry-zookeeper 子模块是 Dubbo 接入 ZooKeeper 的具体实现。
+
 我的理解是：dubbo的注册中心实现有Multicast注册中心、Zookeeper注册中心、Redis注册中心、Simple注册中心（具体怎么实现我在后面文章中会介绍），这个模块就是封装了dubbo所支持的注册中心的实现。
 
 看看registry目录结构：
