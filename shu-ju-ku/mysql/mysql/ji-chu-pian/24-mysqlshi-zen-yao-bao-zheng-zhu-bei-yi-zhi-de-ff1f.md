@@ -40,3 +40,5 @@ binlog 在 MySQL 的各种高可用方案上扮演了重要角色。今天介绍
 4.老师您好，读到您关于binlog的文章之后，我有个疑问。
 我之前理解是，mysql 每执行一条事务所产生的binlog准备写到 binlog file时，都会先判断当前文件写入这条binlog之后是否会超过设置的max_binlog_size值。 如果超过，则rotate 自动生成下个binlog flie 来记录这条binlog信息。
 那如果 事务所有产生的binlog 大于 max_binlog_size 值呢？ 那不是永久地rotate吗？ mysql是如何处理的？
+
+**回答：**一个事务的binlog日志不会被拆到两个binlog文件，所以会等到这个事务的日志写完再rotate，所以你会看见超过配置大小上限的binlog 文件
