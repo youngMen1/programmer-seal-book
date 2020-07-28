@@ -100,7 +100,7 @@ RPC英文全名为Remote Procedure Call，也叫远程过程调用，其实就�
 
 看看common的目录：
 
-![](/static/image/1386696672-5bc97e750a3d8_articlex.png)  
+![](/static/image/CgqCHl8eRfWANQSTAAHowsC6F8s134.png)  
 这个类中的包含义我就不一一讲了，具体的介绍会穿插在后续文章中，因为这些都是工具类的一些实现，包的含义也很明显。
 
 ### dubbo-config——配置模块
