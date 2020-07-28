@@ -175,6 +175,7 @@ dubbo-container-api：定义了Container接口，实现了服务加载的Main方
 ### dubbo-metadata ———元数据模块： 
 
 Dubbo 的元数据模块（本课程后续会详细介绍元数据的内容）。dubbo-metadata 模块的实现套路也是有一个 api 子模块进行抽象，然后其他子模块进行具体实现。
+![](/static/image/CgqCHl8eRiSAPFIYAABXCRqgsNA891.png）
 
 ### dubbo-monitor——监控模块
 
