@@ -325,6 +325,7 @@
         * [22 \| MySQL有哪些“饮鸩止渴”提高性能的方法？](shu-ju-ku/mysql/mysql/ji-chu-pian/22-mysqlyou-na-xie-201c-yin-zhen-zhi-ke-201d-ti-gao-xing-neng-de-fang-fa-ff1f.md)
         * [23 \| MySQL是怎么保证数据不丢的？](shu-ju-ku/mysql/mysql/ji-chu-pian/23-mysqlshi-zen-yao-bao-zheng-shu-ju-bu-diu-de-ff1f.md)
         * [24 \| MySQL是怎么保证主备一致的？](shu-ju-ku/mysql/mysql/ji-chu-pian/24-mysqlshi-zen-yao-bao-zheng-zhu-bei-yi-zhi-de-ff1f.md)
+        * 25 \| MySQL是怎么保证高可用的？
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
