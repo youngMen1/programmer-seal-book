@@ -9,6 +9,8 @@
 
 ## 2.1.思考题
 
+一般现在的数据库运维系统都有备库延迟监控，其实就是在备库上执行 show slave status，采集 seconds_behind_master 的值。
+
 ## 2.2.高质量问题
 
 
