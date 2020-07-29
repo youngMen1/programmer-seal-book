@@ -321,7 +321,7 @@
         * 18 \| 为什么这些SQL语句逻辑相同，性能却差异巨大？
         * [19 \| 为什么我只查一行的语句，也执行这么慢？](shu-ju-ku/mysql/mysql/ji-chu-pian/19-wei-shi-yao-wo-zhi-cha-yi-xing-de-yu-ju-ff0c-ye-zhi-xing-zhe-yao-man-ff1f.md)
         * 20 \| 幻读是什么，幻读有什么问题？
-        * 21 \| 为什么我只改一行的语句，锁这么多？
+        * [21 \| 为什么我只改一行的语句，锁这么多？](shu-ju-ku/mysql/mysql/ji-chu-pian/21-wei-shi-yao-wo-zhi-gai-yi-xing-de-yu-ju-ff0c-suo-zhe-yao-duo-ff1f.md)
         * [22 \| MySQL有哪些“饮鸩止渴”提高性能的方法？](shu-ju-ku/mysql/mysql/ji-chu-pian/22-mysqlyou-na-xie-201c-yin-zhen-zhi-ke-201d-ti-gao-xing-neng-de-fang-fa-ff1f.md)
         * [23 \| MySQL是怎么保证数据不丢的？](shu-ju-ku/mysql/mysql/ji-chu-pian/23-mysqlshi-zen-yao-bao-zheng-shu-ju-bu-diu-de-ff1f.md)
         * [24 \| MySQL是怎么保证主备一致的？](shu-ju-ku/mysql/mysql/ji-chu-pian/24-mysqlshi-zen-yao-bao-zheng-zhu-bei-yi-zhi-de-ff1f.md)
