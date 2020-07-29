@@ -26,7 +26,6 @@
 * [数据结构](shu-ju-jie-gou.md)
   * [队列](shu-ju-jie-gou/dui-lie.md)
   * [B+树](chang-yong-suan-fa/bshu.md)
-  * [数据结构与算法之美](shu-ju-jie-gou/shu-ju-jie-gou-yu-suan-fa-zhi-mei.md)
 * [常用算法](chang-yong-suan-fa.md)
   * [排序、查找算法](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa.md)
     * [选择排序](chang-yong-suan-fa/pai-xu-3001-cha-zhao-suan-fa/xuan-ze-pai-xu.md)
