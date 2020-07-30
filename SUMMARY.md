@@ -47,7 +47,6 @@
       * [04 \| 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ru-men-pian/04-fu-za-du-fen-xi-ff08-xia-ff09-ff1a-qian-xi-zui-hao-3001-zui-huai-3001-ping-jun-3001-jun-tan-shi-jian-fu-za-du.md)
     * [基础篇](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian.md)
       * [05 \| 数组：为什么很多编程语言中数组都从0开始编号](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/05-shu-zu-ff1a-wei-shi-yao-hen-duo-bian-cheng-yu-yan-zhong-shu-zu-du-cong-0-kai-shi-bian-hao-ff1f.md)
-      * [05 \| 数组：为什么很多编程语言中数组？](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/05-shu-zu-ff1a-wei-shi-yao-hen-duo-bian-cheng-yu-yan-zhong-shu-zu-du-cong-0-kai-shi-bian-hao-ff1f.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
