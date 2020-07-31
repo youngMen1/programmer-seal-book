@@ -21,6 +21,8 @@
 ## 双指针法
 ## 树
 ## 图与搜索
+## 二分查找
+
 # 3.总结
 
 [https://leetcode-cn.com/circle/article/48kq9d/](https://leetcode-cn.com/circle/article/48kq9d/)
