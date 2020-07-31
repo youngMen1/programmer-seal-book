@@ -49,7 +49,7 @@
       * [05 \| 数组：为什么很多编程语言中数组都从0开始编号](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/05-shu-zu-ff1a-wei-shi-yao-hen-duo-bian-cheng-yu-yan-zhong-shu-zu-du-cong-0-kai-shi-bian-hao-ff1f.md)
       * [06 \| 链表（上）：如何实现LRU缓存淘汰算法?](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/06-lian-biao-ff08-shang-ff09-ff1a-ru-he-shi-xian-lru-huan-cun-tao-tai-suan-6cd53f.md)
       * 07 \| 链表（下）：如何轻松写出正确的链表代码？
-  * [如何刷力扣题目](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
+  * [一起从零开始刷力扣](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
