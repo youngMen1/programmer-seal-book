@@ -5,6 +5,8 @@
 
 今天我会继续给你讲四个复杂度分析方面的知识点，**最好情况时间复杂度**（best case time complexity）、**最坏情况时间复杂度**（worst case time complexity）、**平均情况时间复杂度**（average case time complexity）、**均摊时间复杂度**（amortized time complexity）。如果这几个概念你都能掌握，那对你来说，复杂度分析这部分内容就没什么大问题了。
 
+最好、最坏情况时间复杂度
+
 # 2.总结
 
 
