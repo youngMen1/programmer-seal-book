@@ -9,6 +9,22 @@
 
 上一节我举的分析复杂度的例子都很简单，今天我们来看一个稍微复杂的。你可以用我上节教你的分析技巧，自己先试着分析一下这段代码的时间复杂度。
 
+
+```
+
+// n表示数组array的长度
+int find(int[] array, int n, int x) {
+  int i = 0;
+  int pos = -1;
+  for (; i < n; ++i) {
+    if (array[i] == x) pos = i;
+  }
+  return pos;
+}
+```
+
+
+
 # 2.总结
 
 
