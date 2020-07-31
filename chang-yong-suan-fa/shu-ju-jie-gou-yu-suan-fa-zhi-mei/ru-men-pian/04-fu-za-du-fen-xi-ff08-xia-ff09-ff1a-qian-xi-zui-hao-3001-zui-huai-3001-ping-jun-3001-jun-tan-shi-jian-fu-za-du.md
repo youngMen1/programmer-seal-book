@@ -26,6 +26,8 @@ int find(int[] array, int n, int x) {
 
 我们在数组中查找一个数据，并不需要每次都把整个数组都遍历一遍，因为有可能中途找到就可以提前结束循环了。但是，这段代码写得不够高效。我们可以这样优化一下这段查找代码。
 
+```
+
 
 // n表示数组array的长度
 int find(int[] array, int n, int x) {
@@ -39,6 +41,9 @@ int find(int[] array, int n, int x) {
   }
   return pos;
 }
+```
+
+
 
 # 2.总结
 
