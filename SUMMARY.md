@@ -48,7 +48,7 @@
     * [基础篇](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian.md)
       * [05 \| 数组：为什么很多编程语言中数组都从0开始编号](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/05-shu-zu-ff1a-wei-shi-yao-hen-duo-bian-cheng-yu-yan-zhong-shu-zu-du-cong-0-kai-shi-bian-hao-ff1f.md)
       * [06 \| 链表（上）：如何实现LRU缓存淘汰算法?](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/06-lian-biao-ff08-shang-ff09-ff1a-ru-he-shi-xian-lru-huan-cun-tao-tai-suan-6cd53f.md)
-      * 07 \| 链表（下）：如何轻松写出正确的链表代码？
+      * [07 \| 链表（下）：如何轻松写出正确的链表代码？](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/07-lian-biao-ff08-xia-ff09-ff1a-ru-he-qing-song-xie-chu-zheng-que-de-lian-biao-dai-ma-ff1f.md)
   * [一起从零开始刷力扣](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
@@ -329,6 +329,7 @@
         * [24 \| MySQL是怎么保证主备一致的？](shu-ju-ku/mysql/mysql/ji-chu-pian/24-mysqlshi-zen-yao-bao-zheng-zhu-bei-yi-zhi-de-ff1f.md)
         * [25 \| MySQL是怎么保证高可用的？](shu-ju-ku/mysql/mysql/ji-chu-pian/25-mysqlshi-zen-yao-bao-zheng-gao-ke-yong-de-ff1f.md)
         * [26 \| 备库为什么会延迟好几个小时？](shu-ju-ku/mysql/mysql/ji-chu-pian/26-bei-ku-wei-shi-yao-hui-yan-chi-hao-ji-ge-xiao-shi-ff1f.md)
+        * 29 \| 如何判断一个数据库是不是出问题了？
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
