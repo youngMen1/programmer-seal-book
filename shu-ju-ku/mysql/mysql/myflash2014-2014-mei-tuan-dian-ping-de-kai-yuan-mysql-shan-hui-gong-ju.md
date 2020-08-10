@@ -4,15 +4,15 @@
 
 在美团点评，我们也遇到过研发人员误删主站的配置信息，从而导致主站长达2个小时不可用的情况。DBA同学当时使用了技术团队自研的binlog2sql完成了数据恢复，并多次挽救了线上误删数据导致的严重故障。不过，binlog2sql在恢复速度上不尽如人意，因此我们开发了一个新的工具——MyFlash，它很好地解决了上述痛点，能够方便并且高效地进行数据恢复。
 
-现在该工具正式开源，开源地址为：https://github.com/Meituan-Dianping/MyFlash
+现在该工具正式开源，开源地址为：[https://github.com/Meituan-Dianping/MyFlash](https://github.com/Meituan-Dianping/MyFlash)
 
 先来看下目前市面上已有的恢复工具，我们从实现角度把它们划分成如下几类。
 
-① mysqlbinlog工具配合sed、awk。该方式先将binlog解析成类SQL的文本，然后使用sed、awk把类SQL文本转换成真正的SQL。 * 优点：当SQL中字段类型比较简单时，可以快速生成需要的SQL，且编程门槛也比较低。 * 缺点：当SQL中字段类型比较复杂时，尤其是字段中的文本包含HTML代码，用awk、sed等工具时，就需要考虑极其复杂的转义等情况，出错概率很大。
+① mysqlbinlog工具配合sed、awk。该方式先将binlog解析成类SQL的文本，然后使用sed、awk把类SQL文本转换成真正的SQL。 _ 优点：当SQL中字段类型比较简单时，可以快速生成需要的SQL，且编程门槛也比较低。 _ 缺点：当SQL中字段类型比较复杂时，尤其是字段中的文本包含HTML代码，用awk、sed等工具时，就需要考虑极其复杂的转义等情况，出错概率很大。
 
-② 给数据库源码打patch。该方式扩展了mysqlbinlog的功能，增加Flashback选项。 * 优点：复用了MySQL Server层中binlog解析等代码，一旦稳定之后，无须关心复杂的字段类型，且效率较高。 * 缺点：在修改前，需要对MySQL的复制代码结构和细节需要较深的了解。版本比较敏感，在MySQL 5.6上做的patch，基本不能用于MySQL 5.7的回滚操作。升级困难，因为patch的代码是分布在MySQL的各个文件和函数中，一旦MySQL代码改变，特别是复制层的重构，升级的难度不亚于完全重新写一个。
+② 给数据库源码打patch。该方式扩展了mysqlbinlog的功能，增加Flashback选项。 _ 优点：复用了MySQL Server层中binlog解析等代码，一旦稳定之后，无须关心复杂的字段类型，且效率较高。 _ 缺点：在修改前，需要对MySQL的复制代码结构和细节需要较深的了解。版本比较敏感，在MySQL 5.6上做的patch，基本不能用于MySQL 5.7的回滚操作。升级困难，因为patch的代码是分布在MySQL的各个文件和函数中，一旦MySQL代码改变，特别是复制层的重构，升级的难度不亚于完全重新写一个。
 
-③ 使用业界提供的解析binlog的库，然后进行SQL构造，其优秀代表是binlog2sql。 * 优点：使用业界成熟的库，因此稳定性较好，且上手难度较低。 * 缺点：效率往往较低，且实现上受制于binlog库提供的功能。
+③ 使用业界提供的解析binlog的库，然后进行SQL构造，其优秀代表是binlog2sql。 _ 优点：使用业界成熟的库，因此稳定性较好，且上手难度较低。 _ 缺点：效率往往较低，且实现上受制于binlog库提供的功能。
 
 上述几种实现方式，主要是提供的过滤选项较少，比如不能提供基于SQL类型的过滤，需要回滚一个delete语句，导致在回滚时，需要结合awk、sed等工具进行筛选。
 
@@ -34,7 +34,7 @@ binlog文件实例：
 
 每个event都是由event header 和event data组成。下面简单介绍下几种常见的binlog event。
 
-① formart description event
+① formart description event  
 ![](/static/image/01f23313.png)
 
 表达的含义是：
@@ -49,16 +49,24 @@ Start: binlog v 4, server v 5.7.18-log created 170905  01:59:33
 ![](/static/image/1ec5b317.png)
 
 表达的含义是：
-   
-```
-170905  01:59:33 server id 10  end_log_pos 339 CRC32 0x3de40c0d     
-Table_map: `test`.`test4` mapped to number 238
-```
 
-③ update row event
+    170905  01:59:33 server id 10  end_log_pos 339 CRC32 0x3de40c0d     
+    Table_map: `test`.`test4` mapped to number 238
+
+③ update row event  
 ![](/static/image/a39ad60b.png)
 
 # 2.总结
+
+从上述图表中可以看出，MyFlash的速度最快。
+
+1.MySQL官方文档[1](https://dev.mysql.com/doc/internals/en/binary-log-structure-and-contents.html),[2](https://dev.mysql.com/doc/internals/en/binary-log-versions.html),[3](https://dev.mysql.com/doc/internals/en/event-structure.html).
+
+2.[binlog2sql](https://github.com/danfengcao/binlog2sql).
+
+3.[mysqlbinlog Flashback for 5.6](http://www.cnblogs.com/youge-OneSQL/p/5249736.html#3474192)
+
+4.[MySQL闪回原理与实战](http://www.danfengcao.info/mysql/2017/01/04/mysql-flashback-principle-and-practice.html)
 
 # 3.参考
 
