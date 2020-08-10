@@ -24,7 +24,32 @@ c、--start-position：从二进制日志中读取指定position 事件位置作
 
 d、--stop-position：从二进制日志中读取指定position 事件位置作为事件截至
 
+3.一般来说开启binlog日志大概会有1%的性能损耗。
+
+4.binlog日志有两个最重要的使用场景。
+
+a、mysql主从复制：mysql replication在master端开启binlog,master把它的二进制日志传递给slaves来达到master-slave数据一致的目的。
+
+b、数据恢复：通过mysqlbinlog工具来恢复数据。
+
+binlog日志包括两类文件：
+
+1)、二进制日志索引文件(文件名后缀为.index)用于记录所有的二进制文件。
+
+2)、二进制日志文件(文件名后缀为.00000*)记录数据库所有的DDL和DML(除了数据查询语句select)语句事件。
+
 ## 1.2.开启binlog日志
+
+1、编辑打开mysql配置文件/application/mysql3307/my.cnf在
+
+[mysqld]区块添加
+
+log-bin=mysql-bin(也可指定二进制日志生成的路径，如：log-bin=/opt/Data/mysql-bin)
+server-id=1
+
+binlog_format=MIXED(加入此参数才能记录到insert语句)
+
+
 ## 1.3.常用的binlog日志操作命令
 ## 1.4.查看binlog日志内容，常用有两种方式
 ## 1.5.利用binlog日志恢复mysql数据
