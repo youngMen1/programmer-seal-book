@@ -40,6 +40,8 @@ binlog日志包括两类文件：
 
 ## 1.2.开启binlog日志
 
+binlog的格式也有三种：STATEMENT、ROW、MIXED 。
+
 1、编辑打开mysql配置文件/application/mysql3307/my.cnf在
 
 [mysqld]区块添加
