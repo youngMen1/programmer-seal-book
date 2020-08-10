@@ -332,6 +332,7 @@
         * [26 \| 备库为什么会延迟好几个小时？](shu-ju-ku/mysql/mysql/ji-chu-pian/26-bei-ku-wei-shi-yao-hui-yan-chi-hao-ji-ge-xiao-shi-ff1f.md)
         * [29 \| 如何判断一个数据库是不是出问题了？](shu-ju-ku/mysql/mysql/ji-chu-pian/29-ru-he-pan-duan-yi-ge-shu-ju-ku-shi-bu-shi-chu-wen-ti-le-ff1f.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
+      * mysqlbinlog 工具分析binlog日志
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * [Hbase](shu-ju-ku/nosql/hbase.md)
