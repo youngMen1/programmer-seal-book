@@ -44,7 +44,9 @@ binlog文件实例：
 Start: binlog v 4, server v 5.7.18-log created 170905  01:59:33
 ```
 
+② table map event
 
+1ec5b317.png
 
 # 2.总结
 
