@@ -6,6 +6,9 @@
 ## 1.5.利用binlog日志恢复mysql数据
 
 # 2.总结
+
+所谓恢复，就是让mysql将保存在binlog日志中指定段落区间的sql语句逐个重新执行一次而已。
+
 # 3.参考
 mysqlbinlog 工具分析binlog日志
 https://www.cnblogs.com/lvzf/p/10689462.html
