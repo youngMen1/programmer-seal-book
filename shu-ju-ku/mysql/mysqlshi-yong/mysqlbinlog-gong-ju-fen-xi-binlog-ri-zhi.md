@@ -71,7 +71,7 @@ mysql> show variables like 'log_%';
 ## 1.3.常用的binlog日志操作命令
 1、查看所有binlog日志列表
 show master logs;
-1414258-20180910150911389-1398860498.png
+![](/static/image/1414258-20180910150911389-1398860498.png)
 
 
 ## 1.4.查看binlog日志内容，常用有两种方式
