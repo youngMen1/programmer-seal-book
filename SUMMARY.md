@@ -333,7 +333,7 @@
         * [29 \| 如何判断一个数据库是不是出问题了？](shu-ju-ku/mysql/mysql/ji-chu-pian/29-ru-he-pan-duan-yi-ge-shu-ju-ku-shi-bu-shi-chu-wen-ti-le-ff1f.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
       * [mysqlbinlog 工具分析binlog日志](shu-ju-ku/mysql/mysqlshi-yong/mysqlbinlog-gong-ju-fen-xi-binlog-ri-zhi.md)
-    * [MySql工具](shu-ju-ku/mysql/mysql.md)
+    * [MySQL工具](shu-ju-ku/mysql/mysql.md)
       * [MySQL Flashback 工具介绍](shu-ju-ku/mysql/mysql/mysql-flashback-gong-ju-jie-shao.md)
         * [MyFlash美团点评的开源MySQL闪回工具](shu-ju-ku/mysql/mysql/myflash2014-2014-mei-tuan-dian-ping-de-kai-yuan-mysql-shan-hui-gong-ju.md)
         * [FlashBack\(闪回工具\)](shu-ju-ku/mysql/mysql/flashbackshan-hui-gong-517729.md)
