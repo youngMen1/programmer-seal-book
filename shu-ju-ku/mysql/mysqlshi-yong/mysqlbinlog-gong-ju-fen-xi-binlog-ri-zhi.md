@@ -142,23 +142,23 @@ d、row\_count :查询总条数（不指定就是所有行）
 
 3、上面这条语句可以将指定的binlog日志文件，分成有效事件行的方式返回，并可使用limit指定pos点的起始偏移，查询条数！
 
-a、查询第一个最早的binlog日志：
+* a、查询第一个最早的binlog日志：
 
 `show binlog events\G;`
 
-b、指定查询mysql-bin.000002这个文件
+* b、指定查询mysql-bin.000002这个文件
 
 `show binlog events in 'mysql-bin.000002'\G;`
 
-c、指定查询mysql-bin.000002这个文件，从pos点:624开始查起：
+* c、指定查询mysql-bin.000002这个文件，从pos点:624开始查起：
 
 `show binlog events in 'mysql-bin.000002' from 624\G;`
 
-d、指定查询mysql-bin.000002这个文件，从pos点:624开始查起，查询10条（即10条语句）
+* d、指定查询mysql-bin.000002这个文件，从pos点:624开始查起，查询10条（即10条语句）
 
 `show binlog events in 'mysql-bin.000002' from 624 limit 10\G;`
 
-e、指定查询 mysql-bin.000002这个文件，从pos点:624开始查起，偏移2行（即中间跳过2个）查询10条（即10条语句）。
+* e、指定查询 mysql-bin.000002这个文件，从pos点:624开始查起，偏移2行（即中间跳过2个）查询10条（即10条语句）。
 
 `show binlog events in 'mysql-bin.000002' from 624 limit 2,10\G;`
 
