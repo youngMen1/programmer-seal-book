@@ -130,7 +130,7 @@ e、也可根据时间点查看
 mysql> show binlog events [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count];
 ```
 
-参数解释：
+**参数解释：**
 
 a、IN 'log_name':指定要查询的binlog文件名（不指定就是第一个binlog文件）
 
