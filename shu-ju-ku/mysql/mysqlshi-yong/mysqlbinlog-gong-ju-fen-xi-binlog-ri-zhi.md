@@ -61,7 +61,18 @@ binlog\_format=MIXED\(加入此参数才能记录到insert语句\)
 nohup /application/mysql3307/bin/mysqld_safe --defaults-file=/application/mysql3307/my.cnf --user=mysql &
 ```
 
+3、查看binlog日志是否开启
+
+mysql> show variables like 'log_%'; 
+![](/static/image/1414258-20180910150727415-1015390112.png)
+
+
+
 ## 1.3.常用的binlog日志操作命令
+1、查看所有binlog日志列表
+show master logs;
+1414258-20180910150911389-1398860498.png
+
 
 ## 1.4.查看binlog日志内容，常用有两种方式
 
