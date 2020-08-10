@@ -26,7 +26,26 @@ a. 无需把binlog解析成文本，再进行转换。 b. 提供原生的基于�
 
 一个完整的binlog文件是由一个format description event开头，一个rotate event结尾，中间由多个其他event组合而成。
 
-640a302f.png
+![](/static/image/640a302f.png)
+
+binlog文件实例：
+
+![](/static/image/df3aea56.png)
+
+每个event都是由event header 和event data组成。下面简单介绍下几种常见的binlog event。
+
+① formart description event
+![](/static/image/01f23313.png)
+
+表达的含义是：
+
+```
+170905  01:59:33 server id 10  end_log_pos 123 CRC32 0xed1ec563 
+Start: binlog v 4, server v 5.7.18-log created 170905  01:59:33
+```
+
+
+
 # 2.总结
 
 # 3.参考
