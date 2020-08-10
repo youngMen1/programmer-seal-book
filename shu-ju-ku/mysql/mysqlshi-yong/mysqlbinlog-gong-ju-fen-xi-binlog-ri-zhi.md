@@ -95,6 +95,20 @@ mysql> show variables like 'log_%';
 
 ## 1.4.查看binlog日志内容，常用有两种方式
 
+1、使用mysqlbinlog自带查看命令法
+
+**注意：**
+
+a、binlog是二进制文件，普通文件查看器cat、more、vim等都无法打开，必须使用自带的mysqlbinlog命令查看。
+
+b、binlog日志与数据库文件在同目录中。
+
+c、在Mysql5.5以下版本使用mysqlbinlog命令时如果报错，就加上"--no-defaults"选项
+
+d、使用mysqlbinlog命令查看binlog日志内容，下面截取其中的一个片段分析分析：
+
+1414258-20180910173629464-1243321061.png
+
 ## 1.5.利用binlog日志恢复mysql数据
 
 # 2.总结
