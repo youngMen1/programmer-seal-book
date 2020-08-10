@@ -18,21 +18,21 @@ Data Manipulation Language 数据操纵语言
 
 2.mysqlbinlog常见的选项有一下几个：
 
-a、--start-datetime：从二进制日志中读取指定等于时间戳或者晚于本地计算机的时间
+* a、--start-datetime：从二进制日志中读取指定等于时间戳或者晚于本地计算机的时间
 
-b、--stop-datetime：从二进制日志中读取指定小于时间戳或者等于本地计算机的时间 取值和上述一样
+* b、--stop-datetime：从二进制日志中读取指定小于时间戳或者等于本地计算机的时间 取值和上述一样
 
-c、--start-position：从二进制日志中读取指定position 事件位置作为开始。
+* c、--start-position：从二进制日志中读取指定position 事件位置作为开始。
 
-d、--stop-position：从二进制日志中读取指定position 事件位置作为事件截至
+* d、--stop-position：从二进制日志中读取指定position 事件位置作为事件截至
 
 3.一般来说开启binlog日志大概会有1%的性能损耗。
 
 4.binlog日志有两个最重要的使用场景。
 
-a、mysql主从复制：mysql replication在master端开启binlog,master把它的二进制日志传递给slaves来达到master-slave数据一致的目的。
+* a、mysql主从复制：mysql replication在master端开启binlog,master把它的二进制日志传递给slaves来达到master-slave数据一致的目的。
 
-b、数据恢复：通过mysqlbinlog工具来恢复数据。
+* b、数据恢复：通过mysqlbinlog工具来恢复数据。
 
 binlog日志包括两类文件：
 
@@ -65,7 +65,7 @@ nohup /application/mysql3307/bin/mysqld_safe --defaults-file=/application/mysql3
 
 `show variables like 'log_%'`
 
-mysql&gt; show variables like 'log\_%';   
+mysql&gt; show variables like 'log\_%';  
 ![](/static/image/1414258-20180910150727415-1015390112.png)
 
 ## 1.3.常用的binlog日志操作命令
