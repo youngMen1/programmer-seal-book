@@ -50,6 +50,7 @@
       * [06 \| 链表（上）：如何实现LRU缓存淘汰算法?](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/06-lian-biao-ff08-shang-ff09-ff1a-ru-he-shi-xian-lru-huan-cun-tao-tai-suan-6cd53f.md)
       * [07 \| 链表（下）：如何轻松写出正确的链表代码？](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/07-lian-biao-ff08-xia-ff09-ff1a-ru-he-qing-song-xie-chu-zheng-que-de-lian-biao-dai-ma-ff1f.md)
   * [一起从零开始刷力扣](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
+  * LRU算法
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
