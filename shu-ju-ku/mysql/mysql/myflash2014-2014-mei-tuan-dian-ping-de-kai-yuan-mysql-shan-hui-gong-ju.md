@@ -46,7 +46,7 @@ Start: binlog v 4, server v 5.7.18-log created 170905  01:59:33
 
 ② table map event
 
-1ec5b317.png
+![](/static/image/1ec5b317.png)
 
 表达的含义是：
    
@@ -56,7 +56,7 @@ Table_map: `test`.`test4` mapped to number 238
 ```
 
 ③ update row event
-a39ad60b.png
+![](/static/image/a39ad60b.png)
 
 # 2.总结
 
