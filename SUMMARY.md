@@ -333,6 +333,7 @@
         * [29 \| 如何判断一个数据库是不是出问题了？](shu-ju-ku/mysql/mysql/ji-chu-pian/29-ru-he-pan-duan-yi-ge-shu-ju-ku-shi-bu-shi-chu-wen-ti-le-ff1f.md)
     * [MySQL使用](shu-ju-ku/mysql/mysqlshi-yong.md)
       * [mysqlbinlog 工具分析binlog日志](shu-ju-ku/mysql/mysqlshi-yong/mysqlbinlog-gong-ju-fen-xi-binlog-ri-zhi.md)
+    * [Mysql工具](shu-ju-ku/mysql/mysql.md)
   * [NoSQL](shu-ju-ku/nosql.md)
     * [MongoDB](shu-ju-ku/nosql/mongodb.md)
     * [Hbase](shu-ju-ku/nosql/hbase.md)
