@@ -20,7 +20,7 @@ a、--start-datetime：从二进制日志中读取指定等于时间戳或者晚
 
 b、--stop-datetime：从二进制日志中读取指定小于时间戳或者等于本地计算机的时间 取值和上述一样
 
-c、--start-position：从二进制日志中读取指定position 事件位置作为开始。
+c、--start-position：从二进制日志中读取指定position 事件位置作为开始。``
 
 d、--stop-position：从二进制日志中读取指定position 事件位置作为事件截至
 
@@ -50,6 +50,16 @@ log-bin=mysql-bin(也可指定二进制日志生成的路径，如：log-bin=/op
 server-id=1
 
 binlog_format=MIXED(加入此参数才能记录到insert语句)
+
+2、重启mysqld服务
+
+
+```
+/application/mysql3307/bin/mysqladmin -uroot -S /application/mysql3307/logs/mysql.sock -p shutdown
+
+　　　　nohup /application/mysql3307/bin/mysqld_safe --defaults-file=/application/mysql3307/my.cnf --user=mysql &
+```
+
 
 
 ## 1.3.常用的binlog日志操作命令
