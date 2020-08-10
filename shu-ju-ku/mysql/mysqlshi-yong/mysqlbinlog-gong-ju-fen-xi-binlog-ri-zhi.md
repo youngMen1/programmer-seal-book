@@ -70,9 +70,16 @@ mysql> show variables like 'log_%';
 
 ## 1.3.常用的binlog日志操作命令
 1、查看所有binlog日志列表
+
 show master logs;
+
 ![](/static/image/1414258-20180910150911389-1398860498.png)
 
+2、查看master状态，即最后（最新）一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值。
+
+show master status;
+
+![](/static/image/1414258-20180910171026280-1049764479.png)
 
 ## 1.4.查看binlog日志内容，常用有两种方式
 
