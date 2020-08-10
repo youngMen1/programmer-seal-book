@@ -14,6 +14,15 @@ Data Manipulation Language 数据操纵语言
 
 主要命令是slect,update,insert,delete,就像它的名字一样，这4条命令是用来对数据库里的数据进行操作的语言
 
+2.mysqlbinlog常见的选项有一下几个：
+
+a、--start-datetime：从二进制日志中读取指定等于时间戳或者晚于本地计算机的时间
+
+b、--stop-datetime：从二进制日志中读取指定小于时间戳或者等于本地计算机的时间 取值和上述一样
+
+c、--start-position：从二进制日志中读取指定position 事件位置作为开始。
+
+d、--stop-position：从二进制日志中读取指定position 事件位置作为事件截至
 
 ## 1.2.开启binlog日志
 ## 1.3.常用的binlog日志操作命令
