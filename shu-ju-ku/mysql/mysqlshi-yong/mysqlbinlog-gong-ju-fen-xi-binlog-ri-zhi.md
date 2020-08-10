@@ -57,7 +57,7 @@ binlog_format=MIXED(加入此参数才能记录到insert语句)
 ```
 /application/mysql3307/bin/mysqladmin -uroot -S /application/mysql3307/logs/mysql.sock -p shutdown
 
-　　　　nohup /application/mysql3307/bin/mysqld_safe --defaults-file=/application/mysql3307/my.cnf --user=mysql &
+nohup /application/mysql3307/bin/mysqld_safe --defaults-file=/application/mysql3307/my.cnf --user=mysql &
 ```
 
 
