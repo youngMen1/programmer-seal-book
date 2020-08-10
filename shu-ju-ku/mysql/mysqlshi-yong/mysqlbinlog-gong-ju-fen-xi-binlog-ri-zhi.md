@@ -22,7 +22,7 @@ a、--start-datetime：从二进制日志中读取指定等于时间戳或者晚
 
 b、--stop-datetime：从二进制日志中读取指定小于时间戳或者等于本地计算机的时间 取值和上述一样
 
-c、--start-position：从二进制日志中读取指定position 事件位置作为开始。\`\`
+c、--start-position：从二进制日志中读取指定position 事件位置作为开始。
 
 d、--stop-position：从二进制日志中读取指定position 事件位置作为事件截至
 
@@ -65,19 +65,18 @@ nohup /application/mysql3307/bin/mysqld_safe --defaults-file=/application/mysql3
 
 `show variables like 'log_%'`
 
-mysql> show variables like 'log_%'; 
+mysql&gt; show variables like 'log\_%';   
 ![](/static/image/1414258-20180910150727415-1015390112.png)
 
-
-
 ## 1.3.常用的binlog日志操作命令
+
 1、查看所有binlog日志列表
 
 `show master logs`
 
 ![](/static/image/1414258-20180910150911389-1398860498.png)
 
-2、查看master状态，即最后（最新）一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值。
+2、查看master状态，即最后（最新）一个binlog日志的编号名称，及其最后一个操作事件pos结束点\(Position\)值。
 
 `show master status`
 
@@ -109,14 +108,13 @@ d、使用mysqlbinlog命令查看binlog日志内容，下面截取其中的一�
 
 ![](/static/image/1414258-20180910173629464-1243321061.png)
 
-
 **解释：**
 
 server id 1:数据库主机的服务号
 
-end_log_pos 796 :sql结束时的pos节点
+end\_log\_pos 796 :sql结束时的pos节点
 
-thread_id=11:线程号
+thread\_id=11:线程号
 
 e、也可根据时间点查看
 
@@ -132,13 +130,13 @@ mysql> show binlog events [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
 
 **参数解释：**
 
-a、IN 'log_name':指定要查询的binlog文件名（不指定就是第一个binlog文件）
+a、IN 'log\_name':指定要查询的binlog文件名（不指定就是第一个binlog文件）
 
 b、FROM pos:指定从哪个pos起始点开始查起（不指定就是从整个文件首个pos点开始算）
 
-c、LIMIT【offset】：偏移量(不指定就是0)
+c、LIMIT【offset】：偏移量\(不指定就是0\)
 
-d、row_count :查询总条数（不指定就是所有行）
+d、row\_count :查询总条数（不指定就是所有行）
 
 ![](/static/image/1414258-20180911102458325-913289497.png)
 
@@ -147,8 +145,6 @@ d、row_count :查询总条数（不指定就是所有行）
 a、查询第一个最早的binlog日志：
 
 `show binlog events\G;`
-
-
 
 b、指定查询mysql-bin.000002这个文件
 
