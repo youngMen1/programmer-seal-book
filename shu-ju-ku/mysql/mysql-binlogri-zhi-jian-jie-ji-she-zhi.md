@@ -28,3 +28,44 @@ binlog的格式也有三种：STATEMENT、ROW、MIXED 。
 
 
 3、混合模式复制(mixed-based replication, MBR)：以上两种模式的混合使用，一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog，MySQL会根据执行的SQL语句选择日志保存方式。
+
+## binlog配置
+
+在MySQL配置文件my.cnf文件中的mysqld节中添加下面的配置文件：
+
+
+[mysqld]
+
+
+#设置日志格式
+
+binlog_format = mixed
+
+
+#设置日志路径，注意路经需要mysql用户有权限写
+
+log-bin = /data/mysql/logs/mysql-bin.log
+
+
+#设置binlog清理时间
+
+expire_logs_days = 7
+
+
+#binlog每个日志文件大小
+
+max_binlog_size = 100m
+
+
+#binlog缓存大小
+
+binlog_cache_size = 4m
+
+
+#最大binlog缓存大小
+
+max_binlog_cache_size = 512m
+
+
+
+重启MySQL生效，如果不方便重启服务，也可以直接修改对应的变量即可。
