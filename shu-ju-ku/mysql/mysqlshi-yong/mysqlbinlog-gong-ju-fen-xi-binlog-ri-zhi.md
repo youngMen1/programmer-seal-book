@@ -73,25 +73,25 @@ mysql> show variables like 'log_%';
 ## 1.3.常用的binlog日志操作命令
 1、查看所有binlog日志列表
 
-`show master logs;`
+`show master logs`
 
 ![](/static/image/1414258-20180910150911389-1398860498.png)
 
 2、查看master状态，即最后（最新）一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值。
 
-`show master status;`
+`show master status`
 
 ![](/static/image/1414258-20180910171026280-1049764479.png)
 
 3、flush 刷新log日志，自此刻开始产生一个新编号的binlog日志文件;
 
-`flush logs;`
+`flush logs`
 
 **注意：**每当mysqld服务重启时，会自动执行此命令，刷新binlog日志；在mysqlddump备份数据时加-F选项也会刷新binlog日志；
 
 4、重置（清空）所有binlog日志
 
-`reset master;`
+`reset master`
 
 ## 1.4.查看binlog日志内容，常用有两种方式
 
