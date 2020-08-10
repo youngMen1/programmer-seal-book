@@ -17,5 +17,9 @@
   * [Percona Data Recovery Tool for InnoDB](https://link.jianshu.com/?t=https%3A%2F%2Fwww.percona.com%2Fdocs%2Fwiki%2Finnodb-data-recovery-tool_start.html)--&gt;[code](https://link.jianshu.com/?t=https%3A%2F%2Flaunchpad.net%2Fpercona-data-recovery-tool-for-innodb)
   * [undrop-for-innodb](https://link.jianshu.com/?t=https%3A%2F%2Ftwindb.com%2Fundrop-tool-for-innodb%2F)--&gt;[code](https://link.jianshu.com/?t=https%3A%2F%2Fgithub.com%2Fchhabhaiya%2Fundrop-for-innodb)「2017-01-01 已经闭源并收费」
 
+DDL Falshback 要求离线，比 DML Flashback 要求更多，生产环境数据可能覆盖导致恢复不全
+
+因为 5.6 开始，有单独的 purge 线程，数据恢复可能性更低了
+
 
 
