@@ -68,4 +68,6 @@ show grants 命令查看账户的权限，如果权限过大，可以建议 DBA 
 
 ## 1.6.show engine innodb status
 
+30 | 答疑文章（二）：用动态的观点看加锁
+
 show engine innodb status 输出结果中的事务信息和死锁信息
