@@ -124,6 +124,21 @@ e、也可根据时间点查看
 /home/software/mysql-5.1.72-linux-x86_64-glibc23/bin/mysqlbinlog --no-defaults mysql-bin.000720 --start-datetime="2018-09-12 18:45:00" --stop-datetime="2018-09-12:18:47:00"
 ```
 
+2、上面这种办法读取出binlog日志的全文内容比较多，不容易分辨查看到pos点信息，下面介绍一种更为方便的查询命令：
+
+```
+mysql> show binlog events [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count];
+```
+
+参数解释：
+
+a、IN 'log_name':指定要查询的binlog文件名（不指定就是第一个binlog文件）
+
+b、FROM pos:指定从哪个pos起始点开始查起（不指定就是从整个文件首个pos点开始算）
+
+c、LIMIT【offset】：偏移量(不指定就是0)
+
+d、row_count :查询总条数（不指定就是所有行）
 
 ## 1.5.利用binlog日志恢复mysql数据
 
