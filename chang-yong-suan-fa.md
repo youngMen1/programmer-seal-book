@@ -10,5 +10,7 @@ LRU-MQ
 
 # 3.参考
 
-https://www.jianshu.com/p/c4e4d55706ff
+LRU-K和2Q缓存算法介绍
+
+[https://www.jianshu.com/p/c4e4d55706ff](https://www.jianshu.com/p/c4e4d55706ff)
 
