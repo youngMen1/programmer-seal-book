@@ -48,6 +48,16 @@ Start: binlog v 4, server v 5.7.18-log created 170905  01:59:33
 
 1ec5b317.png
 
+表达的含义是：
+   
+```
+170905  01:59:33 server id 10  end_log_pos 339 CRC32 0x3de40c0d     
+Table_map: `test`.`test4` mapped to number 238
+```
+
+③ update row event
+a39ad60b.png
+
 # 2.总结
 
 # 3.参考
