@@ -73,4 +73,7 @@ max_binlog_cache_size = 512m
 
 # 2.总结
 
+无论是增量备份还是主从复制，都是需要开启mysql-binlog日志，最好跟数据目录设置到不同的磁盘分区，可以降低io等待，提升性能；并且在磁盘故障的时候可以利用mysql-binlog恢复数据。
+![](/static/image/u=1778793404,3158621773&fm=173&app=25&f=JPEG.jpg)
+
 
