@@ -18,3 +18,7 @@ LRU-K和2Q缓存算法介绍
 
 [https://www.jianshu.com/p/c4e4d55706ff](https://www.jianshu.com/p/c4e4d55706ff)
 
+LRU算法四种实现方式介绍
+
+https://blog.csdn.net/elricboa/article/details/78847305
+
