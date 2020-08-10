@@ -62,5 +62,7 @@ MySQL 提供了一个加全局读锁的方法，命令是：
 
 SHOW WARNINGS是诊断语句，显示有关在当前会话中执行语句所导致的条件（错误，警告和注释）的信息。警告DML语句诸如产生INSERT，UPDATE和LOAD DATA以及DDL语句如CREATE TABLE和ALTER TABLE。
 
+## 1.5.show grants 命令查看账户的权限
+
 
 
