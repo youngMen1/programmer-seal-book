@@ -87,6 +87,10 @@ flush logs;
 
 **注意：**每当mysqld服务重启时，会自动执行此命令，刷新binlog日志；在mysqlddump备份数据时加-F选项也会刷新binlog日志；
 
+4、重置（清空）所有binlog日志
+
+reset master;
+
 ## 1.4.查看binlog日志内容，常用有两种方式
 
 ## 1.5.利用binlog日志恢复mysql数据
