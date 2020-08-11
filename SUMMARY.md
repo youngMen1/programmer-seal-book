@@ -288,6 +288,7 @@
       * [MySQL的InnoDB索引原理详解](shu-ju-ku/mysql/yuan-li/mysqlde-innodb-suo-yin-yuan-li-xiang-jie.md)
       * [MySQL存储引擎－－MyISAM与InnoDB区别](shu-ju-ku/mysql/yuan-li/mysqlcun-chu-yin-qing-ff0d-ff0d-myisam-yu-innodb-qu-bie.md)
       * [myisam和innodb索引实现的不同](shu-ju-ku/mysql/yuan-li/myisamhe-innodb-suo-yin-shi-xian-de-bu-tong.md)
+      * 聚集索引与非聚集索引的总结
     * [InnoDB](shu-ju-ku/mysql/innodb.md)
       * [『浅入浅出』MySQL 和 InnoDB](shu-ju-ku/mysql/innodb/300e-qian-ru-qianchu-300f-mysql-he-innodb.md)
     * [优化](shu-ju-ku/mysql/you-hua.md)
