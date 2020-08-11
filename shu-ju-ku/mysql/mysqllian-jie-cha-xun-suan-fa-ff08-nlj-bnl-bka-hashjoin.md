@@ -67,7 +67,7 @@ WHERE条件也可以称为搜索条件，比如t1.m1 > 1是只针对t1表的过�
 
 ## 1.2.联接算法介绍
 
-联接算法是MySQL数据库用于处理联接的物理策略。目前MySQL数据库仅支持Nested-Loops Join算法。而MySQL的分支版本MariaDB除了支持Nested-Loops Join算法外，还支持Classic Hash Join算法。当联接的表上有索引时，Nested-Loops Join是非常高效的算法。根据B+树的特性，其联接的时间复杂度为O\(N\)，若没有索引，则可视为最坏的情况，时间复杂度为O\(N²\)。**MySQL数据库根据不同的使用场合，支持两种Nested-Loops Join算法，一种是Simple Nested-Loops Join（NLJ）算法，另一种是Block Nested-Loops Join（BNL）算法。**
+联接算法是MySQL数据库用于处理联接的物理策略。目前MySQL数据库仅支持Nested-Loops Join算法。而MySQL的分支版本MariaDB除了支持Nested-Loops Join算法外，还支持Classic Hash Join算法。当联接的表上有索引时，**Nested-Loops Join是非常高效的算法。根据B+树的特性，其联接的时间复杂度为O\(N\)，若没有索引，则可视为最坏的情况，时间复杂度为O\(N²\)。MySQL数据库根据不同的使用场合，支持两种Nested-Loops Join算法，一种是Simple Nested-Loops Join（NLJ）算法，另一种是Block Nested-Loops Join（BNL）算法。**
 
 在讲述MySQL的Join类型与算法前，看看两张表的Join的过程：
 
