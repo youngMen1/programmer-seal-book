@@ -124,6 +124,23 @@ For each row r in R do                         -- 扫描R表（驱动表）
 
 ### Index Nested-Loops Join（INLJ，基于索引的嵌套循环联接）
 
+SNLJ算法虽然简单明了，但是也是相当的粗暴，需要多次访问内表（每一次都是全表扫描）。因此，在Join的优化时候，通常都会建议在内表建立索引，以此降低Nested-Loop Join算法的开销，减少内表扫描次数，MySQL数据库中使用较多的就是这种算法，以下称为INLJ。来看这种算法的伪代码：
+
+
+```
+For each row r in R do                     -- 扫描R表
+    lookup s in S index                    -- 查询S表的索引（固定3~4次IO，B+树高度）
+        If find s == r                     -- 如果r匹配了索引s
+            Then output the tuple <r, s>   -- 返回结果集
+```
+
+由于内表上有索引，所以比较的时候不再需要一条条记录进行比较，而可以通过索引来减少比较，从而加速查询。整个过程如下图所示：
+
+2018080111472193.jpg
+
+
+
+
 ### Block Nested-Loops Join（BNL，基于块的嵌套循环联接）
 
 ## 1.3.总结
