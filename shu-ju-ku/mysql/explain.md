@@ -140,21 +140,13 @@ rows 也是一个重要的字段. MySQL 查询优化器根据统计信息, 估�
 
 EXplain 中的很多额外的信息会在 Extra 字段显示, 常见的有以下几种内容:
 
-* Using filesort
+* Using filesort      当 Extra 中有 `Using filesort`时, 表示 MySQL 需额外的排序操作, 不能通过索引顺序达到排序效果. 一般有 `Using filesort`, 都建议优化去掉, 因为这样的查询 CPU 资源消耗大。
 
-当 Extra 中有 `Using filesort`时, 表示 MySQL 需额外的排序操作, 不能通过索引顺序达到排序效果. 一般有 `Using filesort`, 都建议优化去掉, 因为这样的查询 CPU 资源消耗大。
+* Using index      覆盖索引，"覆盖索引扫描", 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件, 往往说明性能不错
 
-* Using index
+* Using index condition     是索引下推
 
-覆盖索引，"覆盖索引扫描", 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件, 往往说明性能不错
-
-* Using index condition
-
-  是索引下推
-
-* Using temporary
-
-查询有使用临时表, 一般出现于排序, 分组和多表 join 的情况, 查询效率不高, 建议优化.
+* Using temporary     查询有使用临时表, 一般出现于排序, 分组和多表 join 的情况, 查询效率不高, 建议优化.
 
 # 2.参考
 
