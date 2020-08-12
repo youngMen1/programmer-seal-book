@@ -110,6 +110,9 @@ For each row r in R do                         -- 扫描R表（驱动表）
 
 2018080111305498.jpg
 
+其中R表为外部表（Outer Table），S表为内部表（Inner Table）。这是一个最简单的算法，这个算法的开销其实非常大。假设在两张表R和S上进行联接的列都不含有索引，外表的记录数为RN，内表的记录数位SN。根据上一节对于Join算法的评判标准来看，SNLJ的开销如下表所示：
+
+
 
 
 ### Index Nested-Loops Join（INLJ，基于索引的嵌套循环联接）
