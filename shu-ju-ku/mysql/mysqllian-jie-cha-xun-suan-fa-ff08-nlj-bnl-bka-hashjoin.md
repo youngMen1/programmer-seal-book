@@ -108,7 +108,6 @@ For each row r in R do                         -- 扫描R表（驱动表）
 
 下图能更好地显示整个SNLJ的过程：
 
-
 ![](/static/image/2018080111305498.jpg)
 
 其中R表为外部表（Outer Table），S表为内部表（Inner Table）。这是一个最简单的算法，这个算法的开销其实非常大。假设在两张表R和S上进行联接的列都不含有索引，外表的记录数为RN，内表的记录数位SN。根据上一节对于Join算法的评判标准来看，SNLJ的开销如下表所示：
@@ -136,7 +135,6 @@ For each row r in R do                     -- 扫描R表
 
 由于内表上有索引，所以比较的时候不再需要一条条记录进行比较，而可以通过索引来减少比较，从而加速查询。整个过程如下图所示：
 
-
 ![](/static/image/2018080111472193.jpg)
 
 可以看到外表中的每条记录通过内表的索引进行访问，就是读取外部表一行数据，然后去内部表索引进行二分查找匹配；而一般B+树的高度为3~4层，也就是说匹配一次的io消耗也就3~4次，因此索引查询的成本是比较固定的，故优化器都倾向于使用记录数少的表作为外表（这里是否又会存在潜在的问题呢？）。故INLJ的算法成本如下表所示：
@@ -163,8 +161,6 @@ INLJ的算法并不复杂，也算简单易懂。但是效率是否能达到用�
 
 然后我们给上面的 t1.m1 和 t2.m2 分别添加主键，看一下下面这个内联接的执行计划：
 
-
-
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2;
 +----+-------------+-------+------------+--------+---------------+---------+---------+-----------------+------+----------+-------+
@@ -176,25 +172,17 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2;
 2 rows in set, 1 warning (0.00 sec)
 ```
 
-可以看到执行计划是将 t1 表作为驱动表，将 t2 表作为被驱动表，因为对 t2.m2 列的条件是等值查找，比如 t2.m2=2、t2.m2=3 等，所以MySQL把在联接查询中对被驱动表使用主键值或者唯一二级索引列的值进行等值查找的查询执行方式称之为eq_ref。
-
+可以看到执行计划是将 t1 表作为驱动表，将 t2 表作为被驱动表，因为对 t2.m2 列的条件是等值查找，比如 t2.m2=2、t2.m2=3 等，所以MySQL把在联接查询中对被驱动表使用主键值或者唯一二级索引列的值进行等值查找的查询执行方式称之为eq\_ref。
 
 ```
 Tips：如果被驱动表使用了非唯一二级索引列的值进行等值查询，则查询方式为 ref。另外，如果被驱动表使用了主键或者唯一二级索引列的值进行等值查找，但主键或唯一二级索引如果有多个列的话，则查询类型也会变成 ref。
 
 有时候联接查询的查询列表和过滤条件中可能只涉及被驱动表的部分列，而这些列都是某个索引的一部分，这种情况下即使不能使用eq_ref、ref、ref_or_null或者range这些访问方法执行对被驱动表的查询的话，也可以使用索引扫描，也就是index的访问方法来查询被驱动表。所以我们建议在真实工作中最好不要使用*作为查询列表，最好把真实用到的列作为查询列表。
-
-
 ```
-
-
-
 
 这里为什么将 t1 作为驱动表？因为表 t1 中的记录少于表 t2，这样联接需要匹配的次数就少了，所以SQL优化器选择表 t1 作为驱动表。
 
 若我们执行的SQL带有WHERE条件时呢？看看不一样的执行计划。如果条件为表 t1 的主键，执行计划如下：
-
-
 
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t1.m1 = 2;
@@ -207,11 +195,9 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t1.m1 = 2;
 2 rows in set, 1 warning (0.00 sec)
 ```
 
-可以看到执行计划算是极优，同时 t1 表还是驱动表，因为经过WHERE条件过滤后的数据只有一条（我们知道在单表中使用主键值或者唯一二级索引列的值进行等值查找的方式称之为const，所以我们可以看到 t1 的type为const；如果这里条件为 t1.m1 > 1，那么自然 type 就为 range），同时 t2.m2 也是主键，自然只有一条数据，type也为const。
+可以看到执行计划算是极优，同时 t1 表还是驱动表，因为经过WHERE条件过滤后的数据只有一条（我们知道在单表中使用主键值或者唯一二级索引列的值进行等值查找的方式称之为const，所以我们可以看到 t1 的type为const；如果这里条件为 t1.m1 &gt; 1，那么自然 type 就为 range），同时 t2.m2 也是主键，自然只有一条数据，type也为const。
 
 如果WHERE条件是一个没有索引的字段呢？执行计划如下：
-
-
 
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t1.n1='a';
@@ -223,11 +209,10 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t1.n1='a';
 +----+-------------+-------+------------+--------+---------------+---------+---------+-----------------+------+----------+-------------+
 2 rows in set, 1 warning (0.00 sec)
 ```
+
 从执行计划上看跟不加WHERE条件几乎差不多，但是可以看到filtered为33%了，而不是100%，说明需要返回的数据量变少了。另外Extra字段中标识使用了WHERE条件过滤。
 
 如果WHERE条件是一个有索引的字段呢（比如给 t2.n2 添加一个非唯一二级索引）？这里就不得不提MySQL一个非常重要的特性了，pushed-down conditions（条件下推）优化。就是把索引条件下推到存储引擎层进行数据的过滤并返回过滤后的数据。那么此时的执行计划就如下：
-
-
 
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2='a';
@@ -244,7 +229,6 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2='a';
 
 如果我们把 t2.n2 换为范围查询呢？看执行计划如下：
 
-
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2>'a';
 +----+-------------+-------+------------+--------+----------------+---------+---------+-----------------+------+----------+-------------+
@@ -256,19 +240,15 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2>'a';
 2 rows in set, 1 warning (0.00 sec)
 ```
 
-可以看到虽然WHERE条件有索引，但由于 t2.n2>’a’ 过滤后的数据还是比 t1 表多，所以优化器就选择了 t1 表作为驱动表。而此时 t2 表的查询条件类似如下：
-
-
+可以看到虽然WHERE条件有索引，但由于 t2.n2&gt;’a’ 过滤后的数据还是比 t1 表多，所以优化器就选择了 t1 表作为驱动表。而此时 t2 表的查询条件类似如下：
 
 ```
 SELECT * FROM t2 WHERE t2.m2 = 1 AND t2.n2 > 'a';
 ```
 
-由于 t2.m2 是主键，t2.n2 有二级索引，优化器平衡了一下，可能觉得 t2.n2 过滤后的数据占全表比例太大，回表的成本比直接访问主键成本要高，所以就直接使用了主键。如果说 t2.n2 过滤后的数据占全表数据比例较小，是有可能会选择 idx_n2 索引。
+由于 t2.m2 是主键，t2.n2 有二级索引，优化器平衡了一下，可能觉得 t2.n2 过滤后的数据占全表比例太大，回表的成本比直接访问主键成本要高，所以就直接使用了主键。如果说 t2.n2 过滤后的数据占全表数据比例较小，是有可能会选择 idx\_n2 索引。
 
 最后，我们使用 t1.n1 与 t2.n2 作为条件，看一下执行计划如下：
-
-
 
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.n1 = t2.n2;
@@ -283,13 +263,9 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.n1 = t2.n2;
 
 一切按照我们预想的结果在工作，就是由于 t2.n2 不是主键或唯一索引，type类型变成了 ref。
 
-
-
 ```
 Tips：虽然在INNER JOIN中可以使用pushed-down conditions的优化方式，但是不能直接在OUTER JOIN中使用该方式，因为有些不满足联接条件的记录会通过外部表行的方式再次添加到结果中，因此需要有条件地使用pushed-down conditions的优化。在优化器内部对于联接查询会设置一个标志来表示是否启用pushed-down conditions的过滤。
 ```
-
-
 
 ### Block Nested-Loops Join（BNL，基于块的嵌套循环联接）
 
@@ -297,10 +273,7 @@ Tips：虽然在INNER JOIN中可以使用pushed-down conditions的优化方式�
 
 当被驱动表中的数据非常多时，每次访问被驱动表，被驱动表的记录会被加载到内存中，在内存中的每一条记录只会和驱动表结果集的一条记录做匹配，之后就会被从内存中清除掉。然后再从驱动表结果集中拿出另一条记录，再一次把被驱动表的记录加载到内存中一遍，周而复始，驱动表结果集中有多少条记录，就得把被驱动表从磁盘上加载到内存中多少次。所以我们可不可以在把被驱动表的记录加载到内存的时候，一次性和多条驱动表中的记录做匹配，这样就可以大大减少重复从磁盘上加载被驱动表的代价了。这也就是Block Nested-Loop Join算法的思想。
 
-
 也就是说在有索引的情况下，MySQL会尝试去使用Index Nested-Loop Join算法，在有些情况下，可能Join的列就是没有索引，那么这时MySQL的选择绝对不会是最先介绍的Simple Nested-Loop Join算法，因为那个算法太粗暴，不忍直视。数据量大些的复杂SQL估计几年都可能跑不出结果。而Block Nested-Loop Join算法较Simple Nested-Loop Join的改进就在于可以减少内表的扫描次数，甚至可以和Hash Join算法一样，仅需扫描内表一次。其使用Join Buffer（联接缓冲）来减少内部循环读取表的次数。
-
-
 
 ```
 For each tuple r in R do                             -- 扫描外表R
@@ -316,7 +289,7 @@ For each tuple r in R do                             -- 扫描外表R
 
 MySQL数据库使用Join Buffer的原则如下：
 
-* 系统变量Join_buffer_size决定了Join Buffer的大小。
+* 系统变量Join\_buffer\_size决定了Join Buffer的大小。
 
 * Join Buffer可被用于联接是ALL、index、和range的类型。
 
@@ -326,19 +299,17 @@ MySQL数据库使用Join Buffer的原则如下：
 
 * Join Buffer只存储要进行查询操作的相关列数据，而不是整行的记录。
 
-**Join_buffer_size变量**
+**Join\_buffer\_size变量**
 
-所以，Join Buffer并不是那么好用的。首先变量join_buffer_size用来控制Join Buffer的大小，调大后可以避免多次的内表扫描，从而提高性能。也就是说，当MySQL的Join有使用到Block Nested-Loop Join，那么调大变量join_buffer_size才是有意义的。而前面的Index Nested-Loop Join如果仅使用索引进行Join，那么调大这个变量则毫无意义。
+所以，Join Buffer并不是那么好用的。首先变量join\_buffer\_size用来控制Join Buffer的大小，调大后可以避免多次的内表扫描，从而提高性能。也就是说，当MySQL的Join有使用到Block Nested-Loop Join，那么调大变量join\_buffer\_size才是有意义的。而前面的Index Nested-Loop Join如果仅使用索引进行Join，那么调大这个变量则毫无意义。
 
-变量join_buffer_size的默认值是256K，显然对于稍复杂的SQL是不够用的。好在这个是会话级别的变量，可以在执行前进行扩展。建议在会话级别进行设置，而不是全局设置，因为很难给一个通用值去衡量。另外，这个内存是会话级别分配的，如果设置不好容易导致因无法分配内存而导致的宕机问题。
+变量join\_buffer\_size的默认值是256K，显然对于稍复杂的SQL是不够用的。好在这个是会话级别的变量，可以在执行前进行扩展。建议在会话级别进行设置，而不是全局设置，因为很难给一个通用值去衡量。另外，这个内存是会话级别分配的，如果设置不好容易导致因无法分配内存而导致的宕机问题。
 
 **Join Buffer缓存对象**
 
 另外，Join Buffer缓存的对象是什么，这个问题相当关键和重要。然在MySQL的官方手册中是这样记录的：Only columns of interest to the join are stored in the join buffer, not whole rows.
 
 可以发现Join Buffer不是缓存外表的整行记录，而是缓存“columns of interest”，具体指所有参与查询的列都会保存到Join Buffer，而不是只有Join的列。比如下面的SQL语句，假设没有索引，需要使用到Join Buffer进行链接：
-
-
 
 ```
 SELECT a.col3
@@ -353,16 +324,13 @@ WHERE a.col1 = b.col2
 
 通过上面的介绍，我们现在可以得到内表的扫描次数为：
 
-
-
-
 ```
 Scaninner_table = (RN * used_column_size) / join_buffer_size + 1
 ```
 
 对于有经验的DBA就可以预估需要分配的Join Buffer大小，然后尽量使得内表的扫描次数尽可能的少，最优的情况是只扫描内表一次。
 
-**Join Buffer的分配**
+**Join Buffer的分配**  
 需要牢记的是，Join Buffer是在Join之前就进行分配，并且每次Join就需要分配一次Join Buffer，所以假设有N张表参与Join，每张表之间通过Block Nested-Loop Join，那么总共需要分配N-1个Join Buffer，这个内存容量是需要DBA进行考量的。
 
 在MySQL 5.6（包括MariaDB 5.3）中，优化了Join Buffer在多张表之间联接的内存使用效率。MySQL 5.6将Join Buffer分为Regular join buffer和Incremental join buffer。假设B1是表t1和t2联接使用的Join Buffer，B2是t1和t2联接产生的结果和表t3进行联接使用的join buffer，那么：
@@ -375,18 +343,21 @@ Scaninner_table = (RN * used_column_size) / join_buffer_size + 1
 
 此外，对于NULL类型的列，其实不需要存放在Join Buffer中，而对于VARCHAR类型的列，也是仅需最小的内存即可，而不是以CHAR类型在Join Buffer中保存。最后，在MySQL 5.5版本中，Join Buffer只能在INNER JOIN中使用，在OUTER JOIN中则不能使用，即Block Nested Loop算法不支持OUTER JOIN。从MySQL 5.6及MariaDB 5.3开始，Join Buffer的使用得到了进一步扩展，在OUTER JOIN中使join buffer得到支持。
 
-
 **Block Nested-Loop Join开销**
 
 Block Nested-Loop Join极大的避免了内表的扫描次数，如果Join Buffer可以缓存外表的数据，那么内表的扫描仅需一次，这和Hash Join非常类似。但是Block Nested-Loop Join依然没有解决的是Join比较的次数，其仍然通过Join判断式进行比较。综上所述，到目前为止各Join算法的成本比较如下所示：
 
+| 开销统计 |
+| :--- |
 
 
-
-
-
-
-
+|  | SNLJ | INLJ | BNL |
+| :--- | :--- | :--- | :--- |
+| 外表扫描次数（O） | 1 | 1 | 1 |
+| 内表扫描次数（I） | R | 0 | RN\*used\_column\_size/join\_buffer\_size + 1 |
+| 读取记录数（R） | RN + SN\*RN | RN + Smatch | RN + S\*I |
+| Join比较次数（M） | SN\*RN | RN \* IndexHeight | SN\*RN |
+| 回表读取记录次数（F） | 0 | Smatch \(if possible\) | 0 |
 
 ## 1.3.总结
 
@@ -397,7 +368,6 @@ Block Nested-Loop Join极大的避免了内表的扫描次数，如果Join Buffe
 * 对被驱动表的访问成本尽可能降低
 
 这两点对于我们实际书写联接查询语句时十分有用，我们需要尽量在被驱动表的联接列上建立索引（主键或唯一索引最优，其次是非唯一二级索引），这样就可以使用 eq\_ref 或 ref 访问方法来降低访问被驱动表的成本了。
-
 
 # 2.总结
 
