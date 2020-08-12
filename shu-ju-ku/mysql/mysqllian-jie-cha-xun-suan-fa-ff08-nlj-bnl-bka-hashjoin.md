@@ -314,6 +314,25 @@ For each tuple r in R do                             -- 扫描外表R
 
 2018080112323783.jpg
 
+MySQL数据库使用Join Buffer的原则如下：
+
+* 系统变量Join_buffer_size决定了Join Buffer的大小。
+
+* Join Buffer可被用于联接是ALL、index、和range的类型。
+
+* 每次联接使用一个Join Buffer，因此多表的联接可以使用多个Join Buffer。
+
+* Join Buffer在联接发生之前进行分配，在SQL语句执行完后进行释放。
+
+* Join Buffer只存储要进行查询操作的相关列数据，而不是整行的记录。
+
+**Join_buffer_size变量**
+
+所以，Join Buffer并不是那么好用的。首先变量join_buffer_size用来控制Join Buffer的大小，调大后可以避免多次的内表扫描，从而提高性能。也就是说，当MySQL的Join有使用到Block Nested-Loop Join，那么调大变量join_buffer_size才是有意义的。而前面的Index Nested-Loop Join如果仅使用索引进行Join，那么调大这个变量则毫无意义。
+
+变量join_buffer_size的默认值是256K，显然对于稍复杂的SQL是不够用的。好在这个是会话级别的变量，可以在执行前进行扩展。建议在会话级别进行设置，而不是全局设置，因为很难给一个通用值去衡量。另外，这个内存是会话级别分配的，如果设置不好容易导致因无法分配内存而导致的宕机问题。
+
+**Join Buffer缓存对象**
 ## 1.3.总结
 
 经过上面的学习，我们能发现联接查询成本占大头的就是“驱动表记录数 乘以 单次访问被驱动表的成本”，所以我们的优化重点其实就是下面这两个部分：
