@@ -114,6 +114,17 @@ For each row r in R do                         -- 扫描R表（驱动表）
 
 
 
+| 开销统计 |
+| :--- |
+
+
+|  | SNLJ |
+| :--- | :--- |
+| 外表扫描次数（O） | 1 |
+| 内表扫描次数（I） | RN |
+| 读取记录数（R） | RN + SN\*RN |
+| Join比较次数（M） | SN\*RN |
+| 回表读取记录次数（F） | 0 |
 
 ### Index Nested-Loops Join（INLJ，基于索引的嵌套循环联接）
 
