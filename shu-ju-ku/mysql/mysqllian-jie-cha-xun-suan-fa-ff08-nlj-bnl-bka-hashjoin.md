@@ -466,6 +466,82 @@ possible_keys: idx_birth_date
 如果外部表扫描的是主键，那么表中的记录访问都是比较有序的，但是如果联接的列是非主键索引，那么对于表中记录的访问可能就是非常离散的。因此对于非主键索引的联接，Batched Key Access Join算法将能极大提高SQL的执行效率。BKA算法支持内连接，外连接和半连接操作，包括嵌套外连接。
 
 
+Batched Key Access Join算法的工作步骤如下：
+
+1. 将外部表中相关的列放入Join Buffer中。
+
+2. 批量的将Key（索引键值）发送到Multi-Range Read（MRR）接口。
+
+3. Multi-Range Read（MRR）通过收到的Key，根据其对应的ROWID进行排序，然后再进行数据的读取操作。
+
+4. 返回结果集给客户端。
+
+Batched Key Access Join算法的本质上来说还是Simple Nested-Loops Join算法，其发生的条件为内部表上有索引，并且该索引为非主键，并且联接需要访问内部表主键上的索引。这时Batched Key Access Join算法会调用Multi-Range Read（MRR）接口，批量的进行索引键的匹配和主键索引上获取数据的操作，以此来提高联接的执行效率，因为读取数据是以顺序磁盘IO而不是随机磁盘IO进行的。
+
+在MySQL 5.6中默认关闭BKA（MySQL 5.7默认打开），必须将optimizer_switch系统变量的batched_key_access标志设置为on。BKA使用MRR，因此mrr标志也必须打开。目前，MRR的成本估算过于悲观。因此，mrr_cost_based也必须关闭才能使用BKA。以下设置启用BKA：
+
+
+
+
+```
+SET optimizer_switch='mrr=on,mrr_cost_based=off,batched_key_access=on';
+```
+
+因为BKA算法的本质是通过MRR接口将非主键索引对于记录的访问，转化为根据ROWID排序的较为有序的记录获取，所以要想通过BKA算法来提高性能，不但需要确保联接的列参与match的操作（联接的列可以是唯一索引或者普通索引，但不能是主键），还要有对非主键列的search操作。例如下列SQL语句：
+
+
+```
+mysql> explain select a.gender, b.dept_no from employees a, dept_emp b where a.birth_date=b.from_date;
++----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+----------------------------------------+
+| id | select_type | table | partitions | type | possible_keys  | key            | key_len | ref                   | rows   | filtered | Extra                                  |
++----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+----------------------------------------+
+|  1 | SIMPLE      | b     | NULL       | ALL  | NULL           | NULL           | NULL    | NULL                  | 331570 |   100.00 | NULL                                   |
+|  1 | SIMPLE      | a     | NULL       | ref  | idx_birth_date | idx_birth_date | 3       | employees.b.from_date |     62 |   100.00 | Using join buffer (Batched Key Access) |
++----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+----------------------------------------+
+2 rows in set, 1 warning (0.00 sec)
+```
+
+列a.gender是表employees的数据，但不是通过搜索idx_birth_date索引就能得到数据，还需要回表访问主键来获取数据。因此这时可以使用BKA算法。但是如果联接不涉及针对主键进一步获取数据，内部表只参与联接判断，那么就不会启用BKA算法，因为没有必要去调用MRR接口。比如search的主键（a.emp_no），那么肯定就不需要BKA算法了，直接覆盖索引就可以返回数据了（二级索引有主键值）。
+
+
+
+```
+mysql> explain select a.emp_no, b.dept_no from employees a, dept_emp b where a.birth_date=b.from_date;
++----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys  | key            | key_len | ref                   | rows   | filtered | Extra       |
++----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+-------------+
+|  1 | SIMPLE      | b     | NULL       | ALL  | NULL           | NULL           | NULL    | NULL                  | 331570 |   100.00 | NULL        |
+|  1 | SIMPLE      | a     | NULL       | ref  | idx_birth_date | idx_birth_date | 3       | employees.b.from_date |     62 |   100.00 | Using index |
++----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+-------------+
+2 rows in set, 1 warning (0.00 sec)
+```
+在EXPLAIN输出中，当Extra值包含Using join buffer（Batched Key Access）且类型值为ref或eq_ref时，表示使用BKA。
+
+**Classic Hash Join（CHJ）**
+
+MySQL数据库虽然提供了BKA Join来优化传统的JOIN算法，的确在一定程度上可以提升JOIN的速度。但不可否认的是，仍然有许多用户对于Hash Join算法有着强烈的需求。Hash Join不需要任何的索引，通过扫描表就能快速地进行JOIN查询，通过利用磁盘的带宽带最大程度的解决大数据量下的JOIN问题。
+
+MariaDB支持Classic Hash Join算法，该算法不同于Oracle的Grace Hash Join，但是也是通过Hash来进行连接，不需要索引，可充分利用磁盘的带宽。
+
+其实MariaDB的Classic Hash Join和Block Nested Loop Join算法非常类似（Classic Hash Join也称为Block Nested Loop Hash Join），但并不是直接通过进行JOIN的键值进行比较，而是根据Join Buffer中的对象创建哈希表，内表通过哈希算法进行查找，从而在Block Nested Loop Join算法的基础上，又进一步减少了内表的比较次数，从而提升JOIN的查询性能。过程如下图所示：
+
+![](/static/image/2018080206473230.jpg)
+
+Classic Hash Join算法先将外部表中数据放入Join Buffer中，然后根据键值产生一张散列表，这是第一个阶段，称为build阶段。随后读取内部表中的一条记录，对其应用散列函数，将其和散列表中的数据进行比较，这是第二个阶段，称为probe阶段。
+
+如果将Hash查找应用于Simple Nested-Loops Join中，则执行计划的Extra列会显示BNLH。如果将Hash查找应用于Batched Key Access Join中，则执行计划的Extra列会显示BKAH。
+
+同样地，如果Join Buffer能够缓存所有驱动表（外表）的查询列，那么驱动表和内表的扫描次数都将只有1次，并且比较的次数也只是内表记录数（假设哈希算法冲突为0）。反之，需要扫描多次内部表。为了使Classic Hash Join更有效果，应该更好地规划Join Buffer的大小。
+
+要使用Classic Hash Join算法，需要将join_cache_level设置为大于等于4的值，并显示地打开优化器的选项，设置过程如下：
+
+
+
+
+
+
+
+
 ## 1.3.总结
 
 经过上面的学习，我们能发现联接查询成本占大头的就是“驱动表记录数 乘以 单次访问被驱动表的成本”，所以我们的优化重点其实就是下面这两个部分：
