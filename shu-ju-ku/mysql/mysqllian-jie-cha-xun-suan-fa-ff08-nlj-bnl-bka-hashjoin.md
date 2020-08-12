@@ -347,17 +347,31 @@ Scaninner_table = (RN * used_column_size) / join_buffer_size + 1
 
 Block Nested-Loop Join极大的避免了内表的扫描次数，如果Join Buffer可以缓存外表的数据，那么内表的扫描仅需一次，这和Hash Join非常类似。但是Block Nested-Loop Join依然没有解决的是Join比较的次数，其仍然通过Join判断式进行比较。综上所述，到目前为止各Join算法的成本比较如下所示：
 
-| 开销统计 |
-| :--- |
-
-
-|  | SNLJ | INLJ | BNL |
+| 开销统计 | SNLJ | INLJ | BNL |
 | :--- | :--- | :--- | :--- |
 | 外表扫描次数（O） | 1 | 1 | 1 |
 | 内表扫描次数（I） | R | 0 | RN\*used\_column\_size/join\_buffer\_size + 1 |
 | 读取记录数（R） | RN + SN\*RN | RN + Smatch | RN + S\*I |
 | Join比较次数（M） | SN\*RN | RN \* IndexHeight | SN\*RN |
 | 回表读取记录次数（F） | 0 | Smatch \(if possible\) | 0 |
+
+
+这个算法很好测试，我们可以随便构建两张没有索引的字段进行联接，然后查看一下执行计划。下面是我在MySQL 5.7版本上的执行计划。
+
+
+
+```
+mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2>'c';
++----+-------------+-------+------------+-------+----------------+--------+---------+------+------+----------+----------------------------------------------------+
+| id | select_type | table | partitions | type  | possible_keys  | key    | key_len | ref  | rows | filtered | Extra                                              |
++----+-------------+-------+------------+-------+----------------+--------+---------+------+------+----------+----------------------------------------------------+
+|  1 | SIMPLE      | t2    | NULL       | range | PRIMARY,idx_n2 | idx_n2 | 2       | NULL |    3 |   100.00 | Using where; Using index                           |
+|  1 | SIMPLE      | t1    | NULL       | ALL   | PRIMARY        | NULL   | NULL    | NULL |    3 |    33.33 | Using where; Using join buffer (Block Nested Loop) |
++----+-------------+-------+------------+-------+----------------+--------+---------+------+------+----------+----------------------------------------------------+
+2 rows in set, 1 warning (0.00 sec)
+```
+
+
 
 ## 1.3.总结
 
