@@ -333,6 +333,38 @@ MySQL数据库使用Join Buffer的原则如下：
 变量join_buffer_size的默认值是256K，显然对于稍复杂的SQL是不够用的。好在这个是会话级别的变量，可以在执行前进行扩展。建议在会话级别进行设置，而不是全局设置，因为很难给一个通用值去衡量。另外，这个内存是会话级别分配的，如果设置不好容易导致因无法分配内存而导致的宕机问题。
 
 **Join Buffer缓存对象**
+
+另外，Join Buffer缓存的对象是什么，这个问题相当关键和重要。然在MySQL的官方手册中是这样记录的：Only columns of interest to the join are stored in the join buffer, not whole rows.
+
+可以发现Join Buffer不是缓存外表的整行记录，而是缓存“columns of interest”，具体指所有参与查询的列都会保存到Join Buffer，而不是只有Join的列。比如下面的SQL语句，假设没有索引，需要使用到Join Buffer进行链接：
+
+
+
+```
+SELECT a.col3
+FROM a,
+     b
+WHERE a.col1 = b.col2
+  AND a.col2 > ….
+  AND b.col2 = …
+```
+
+假设上述SQL语句的外表是a，内表是b，那么存放在Join Buffer中的列是所有参与查询的列，在这里就是（a.col1，a.col2，a.col3）。
+
+通过上面的介绍，我们现在可以得到内表的扫描次数为：
+
+
+
+
+```
+Scaninner_table = (RN * used_column_size) / join_buffer_size + 1
+```
+
+对于有经验的DBA就可以预估需要分配的Join Buffer大小，然后尽量使得内表的扫描次数尽可能的少，最优的情况是只扫描内表一次。
+
+**Join Buffer的分配**
+
+
 ## 1.3.总结
 
 经过上面的学习，我们能发现联接查询成本占大头的就是“驱动表记录数 乘以 单次访问被驱动表的成本”，所以我们的优化重点其实就是下面这两个部分：
