@@ -60,7 +60,7 @@ EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以�
 
 #### 1.1.3.1.type 常用类型
 
-常用的类型有：**ALL, index,  range, ref, eq\_ref, const, system, NULL（从左到右，性能从差到好）**
+常用的类型有：**ALL, index,  range, ref, eq\_ref, const, system, NULL（从左到右，性能从差到好）**
 
 type 常用的取值有:
 
@@ -82,7 +82,7 @@ type 常用的取值有:
 * ALL: 表示全表扫描, 这个类型的查询是性能最差的查询之一. 通常来说, 我们的查询不应该出现 ALL 类型的查询, 因为这样的查询在数据量大的情况下, 对数据库的性能是巨大的灾难. 如一个查询是 ALL 类型查询, 那么一般来说可以对相应的字段添加索引来避免.  
   下面是一个全表扫描的例子, 可以看到, 在全表扫描时, possible\_keys 和 key 字段都是 NULL, 表示没有使用到索引, 并且 rows 十分巨大, 因此整个查询效率是十分低下的。
 
-##### 1.1.3.2.type 类型的性能比较
+#### 1.1.3.2.type 类型的性能比较
 
 通常来说, 不同的 type 类型的性能关系如下:  
 `ALL < index < range ~ index_merge < ref < eq_ref < const < system`  
