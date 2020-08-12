@@ -97,6 +97,21 @@ Join的比较次数，记为M。根据不同Join算法，比较次数不同
 
 Simple Nested-Loops Join算法相当简单、直接。即外表（驱动表）中的每一条记录与内表（被驱动表）中的记录进行比较判断。对于两表连接来说，驱动表只会被访问一遍，但被驱动表却要被访问到好多遍，具体访问几遍取决于对驱动表执行单表查询后的结果集中的记录条数。对于内连接来说，选取哪个表为驱动表都没关系，而外连接的驱动表是固定的，也就是说左（外）连接的驱动表就是左边的那个表，右（外）连接的驱动表就是右边的那个表。
 
+用伪代码表示一下这个过程就是这样：
+
+```
+For each row r in R do                         -- 扫描R表（驱动表）
+    For each row s in S do                     -- 扫描S表（被驱动表）
+        If r and s satisfy the join condition  -- 如果r和s满足join条件
+            Then output the tuple <r, s>       -- 返回结果集
+```
+
+下图能更好地显示整个SNLJ的过程：
+
+2018080111305498.jpg
+
+
+
 ### Index Nested-Loops Join（INLJ，基于索引的嵌套循环联接）
 
 ### Block Nested-Loops Join（BNL，基于块的嵌套循环联接）
