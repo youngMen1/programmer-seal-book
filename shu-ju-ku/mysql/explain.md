@@ -60,6 +60,8 @@ EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以�
 
 #### 1.1.3.1.type 常用类型
 
+常用的类型有：**ALL, index,  range, ref, eq\_ref, const, system, NULL（从左到右，性能从差到好）**
+
 type 常用的取值有:
 
 * `system`: 表中只有一条数据. 这个类型是特殊的`const`类型.
@@ -146,7 +148,7 @@ EXplain 中的很多额外的信息会在 Extra 字段显示, 常见的有以下
 
 覆盖索引，"覆盖索引扫描", 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件, 往往说明性能不错
 
-* Using index condition 
+* Using index condition
 
   是索引下推
 
