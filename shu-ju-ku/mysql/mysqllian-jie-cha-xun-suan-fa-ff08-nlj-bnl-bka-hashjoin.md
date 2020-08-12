@@ -414,10 +414,56 @@ Index Nested-Loop Join虽好，但是通过辅助索引进行联接后需要回�
 在说明Batched Key Access Join前，首先介绍下MySQL 5.6的新特性mrr——multi range read。因为这个特性也是BKA的重要支柱。MRR优化的目的就是为了减少磁盘的随机访问，InnoDB由于索引组织表的特性，如果你的查询是使用辅助索引，并且有用到表中非索引列（投影非索引字段，及条件有非索引字段），因此需要回表读取数据做后续处理，过于随机的回表会伴随着大量的随机I/O。这个过程如下图所示：
 
 ![](/static/image/2018080113315135.jpg)
+
 而mrr的优化在于，并不是每次通过辅助索引读取到数据就回表去取记录，范围扫描（range access）中MySQL将扫描到的数据存入由 read_rnd_buffer_size 变量定义的内存大小中，默认256K。然后对其按照Primary Key（RowID）排序，然后使用排序好的数据进行顺序回表，因为我们知道InnoDB中叶子节点数据是按照PRIMARY KEY（ROWID）进行顺序排列的，所以我们可以认为，如果按照主键的递增顺序查询的话，对磁盘的读比较接近顺序读，能够提升读性能。这对于IO-bound类型的SQL查询语句带来性能极大的提升。
 
 MRR 能够提升性能的核心在于，这条查询语句在索引上做的是一个范围查询（也就是说，这是一个多值查询），可以得到足够多的主键id。这样通过排序以后，再去主键索引查数据，才能体现出“顺序性”的优势。所以MRR优化可用于range，ref，eq_ref类型的查询，工作方式如下图：
 
+2016120912190540.png
+
+要开启mrr还有一个比较重的参数是在变量optimizer_switch中的mrr和mrr_cost_based选项。mrr选项默认为on，mrr_cost_based选项默认为off。mrr_cost_based选项表示通过基于成本的算法来确定是否需要开启mrr特性。然而，在MySQL当前版本中，基于成本的算法过于保守，导致大部分情况下优化器都不会选择mrr特性。为了确保优化器使用mrr特性，请执行下面的SQL语句：
+
+
+
+```
+set optimizer_switch='mrr=on,mrr_cost_based=off';
+```
+
+但如果强制开启MRR，那在某些SQL语句下，性能可能会变差；因为MRR需要排序，假如排序的时间超过直接扫描的时间，那性能就会降低。optimizer_switch可以是全局的，也可以是会话级的。
+
+当然，除了调整参数外，数据库也提供了语句级别的开启或关闭MRR，使用方法如下：
+
+
+
+
+```
+mysql> explain select /*+ MRR(employees)*/ * from employees where birth_date >= '1996-01-01'\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: employees
+   partitions: NULL
+         type: range
+possible_keys: idx_birth_date
+          key: idx_birth_date
+      key_len: 3
+          ref: NULL
+         rows: 1
+     filtered: 100.00
+        Extra: Using index condition; Using MRR
+1 row in set, 1 warning (0.00 sec)
+```
+理解了 MRR 性能提升的原理，我们就能理解 MySQL 在 5.6 版本后开始引入的 Batched Key Acess(BKA) 算法了。这个 BKA 算法，其实就是对 INLJ 算法的优化。
+
+我们知道 INLJ 算法执行的逻辑是：从驱动表一行行地取出 join 条件值，再到被驱动表去做 join。也就是说，对于被驱动表来说，每次都是匹配一个值。这时，MRR 的优势就用不上了。那怎么才能一次性地多传些值给被驱动表呢？方法就是，从驱动表里一次性地多拿些行出来，一起传给被驱动表。既然如此，我们就把驱动表的数据取出来一部分，先放到一个临时内存。这个临时内存不是别人，就是 join_buffer。
+
+我们知道 join_buffer 在 BNL 算法里的作用，是暂存驱动表的数据。但是在 NLJ 算法里并没有用。那么，我们刚好就可以复用 join_buffer 到 BKA 算法中。NLJ 算法优化后的 BKA 算法的流程，整个过程如下所示：
+
+![](/static/image/2018080202505519.jpg)
+
+对于多表join语句，当MySQL使用索引访问第二个join表的时候，使用一个join buffer来收集第一个操作对象生成的相关列值。BKA构建好key后，批量传给引擎层做索引查找。key是通过MRR接口提交给引擎的，这样，MRR使得查询更有效率。
+
+如果外部表扫描的是主键，那么表中的记录访问都是比较有序的，但是如果联接的列是非主键索引，那么对于表中记录的访问可能就是非常离散的。因此对于非主键索引的联接，Batched Key Access Join算法将能极大提高SQL的执行效率。BKA算法支持内连接，外连接和半连接操作，包括嵌套外连接。
 
 
 ## 1.3.总结
