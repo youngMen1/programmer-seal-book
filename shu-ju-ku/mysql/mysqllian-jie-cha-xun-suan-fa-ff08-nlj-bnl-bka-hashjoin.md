@@ -363,6 +363,29 @@ Scaninner_table = (RN * used_column_size) / join_buffer_size + 1
 对于有经验的DBA就可以预估需要分配的Join Buffer大小，然后尽量使得内表的扫描次数尽可能的少，最优的情况是只扫描内表一次。
 
 **Join Buffer的分配**
+需要牢记的是，Join Buffer是在Join之前就进行分配，并且每次Join就需要分配一次Join Buffer，所以假设有N张表参与Join，每张表之间通过Block Nested-Loop Join，那么总共需要分配N-1个Join Buffer，这个内存容量是需要DBA进行考量的。
+
+在MySQL 5.6（包括MariaDB 5.3）中，优化了Join Buffer在多张表之间联接的内存使用效率。MySQL 5.6将Join Buffer分为Regular join buffer和Incremental join buffer。假设B1是表t1和t2联接使用的Join Buffer，B2是t1和t2联接产生的结果和表t3进行联接使用的join buffer，那么：
+
+* 如果B2是Regular join buffer，那么B2就会包含B1的Join Buffer中r1相关的列，以及表t2中相关的列。
+
+* 如果B2是Incremental join buffer，那么B2包含表t2中的数据及一个指针，该指针指向B1中r1相对应的数据。
+
+因此，对于第一次联接的表，使用的都是Regular join buffer，之后再联接，则使用Incremental join buffer。又因为Incremental join buffer只包含指向之前Join Buffer中数据的指针，所以Join Buffer的内存使用效率得到了大幅的提高。
+
+此外，对于NULL类型的列，其实不需要存放在Join Buffer中，而对于VARCHAR类型的列，也是仅需最小的内存即可，而不是以CHAR类型在Join Buffer中保存。最后，在MySQL 5.5版本中，Join Buffer只能在INNER JOIN中使用，在OUTER JOIN中则不能使用，即Block Nested Loop算法不支持OUTER JOIN。从MySQL 5.6及MariaDB 5.3开始，Join Buffer的使用得到了进一步扩展，在OUTER JOIN中使join buffer得到支持。
+
+
+**Block Nested-Loop Join开销**
+
+Block Nested-Loop Join极大的避免了内表的扫描次数，如果Join Buffer可以缓存外表的数据，那么内表的扫描仅需一次，这和Hash Join非常类似。但是Block Nested-Loop Join依然没有解决的是Join比较的次数，其仍然通过Join判断式进行比较。综上所述，到目前为止各Join算法的成本比较如下所示：
+
+
+
+
+
+
+
 
 
 ## 1.3.总结
