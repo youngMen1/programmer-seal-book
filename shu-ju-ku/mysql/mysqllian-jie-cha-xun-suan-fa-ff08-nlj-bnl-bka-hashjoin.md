@@ -293,8 +293,22 @@ Tips：虽然在INNER JOIN中可以使用pushed-down conditions的优化方式�
 
 ### Block Nested-Loops Join（BNL，基于块的嵌套循环联接）
 
+扫描一个表的过程其实是先把这个表从磁盘上加载到内存中，然后从内存中比较匹配条件是否满足。但内存里可能并不能完全存放的下表中所有的记录，所以在扫描表前边记录的时候后边的记录可能还在磁盘上，等扫描到后边记录的时候可能内存不足，所以需要把前边的记录从内存中释放掉。我们前边又说过，采用Simple Nested-Loop Join算法的两表连接过程中，被驱动表可是要被访问好多次的，如果这个被驱动表中的数据特别多而且不能使用索引进行访问，那就相当于要从磁盘上读好几次这个表，这个I/O代价就非常大了，所以我们得想办法：尽量减少访问被驱动表的次数。
+
+当被驱动表中的数据非常多时，每次访问被驱动表，被驱动表的记录会被加载到内存中，在内存中的每一条记录只会和驱动表结果集的一条记录做匹配，之后就会被从内存中清除掉。然后再从驱动表结果集中拿出另一条记录，再一次把被驱动表的记录加载到内存中一遍，周而复始，驱动表结果集中有多少条记录，就得把被驱动表从磁盘上加载到内存中多少次。所以我们可不可以在把被驱动表的记录加载到内存的时候，一次性和多条驱动表中的记录做匹配，这样就可以大大减少重复从磁盘上加载被驱动表的代价了。这也就是Block Nested-Loop Join算法的思想。
 
 
+也就是说在有索引的情况下，MySQL会尝试去使用Index Nested-Loop Join算法，在有些情况下，可能Join的列就是没有索引，那么这时MySQL的选择绝对不会是最先介绍的Simple Nested-Loop Join算法，因为那个算法太粗暴，不忍直视。数据量大些的复杂SQL估计几年都可能跑不出结果。而Block Nested-Loop Join算法较Simple Nested-Loop Join的改进就在于可以减少内表的扫描次数，甚至可以和Hash Join算法一样，仅需扫描内表一次。其使用Join Buffer（联接缓冲）来减少内部循环读取表的次数。
+
+
+
+```
+For each tuple r in R do                             -- 扫描外表R
+    store used columns as p from R in Join Buffer    -- 将部分或者全部R的记录保存到Join Buffer中，记为p
+    For each tuple s in S do                         -- 扫描内表S
+        If p and s satisfy the join condition        -- p与s满足join条件
+            Then output the tuple                    -- 返回为结果集
+```
 
 
 
