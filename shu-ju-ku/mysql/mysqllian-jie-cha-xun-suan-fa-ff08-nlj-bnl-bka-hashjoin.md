@@ -310,7 +310,9 @@ For each tuple r in R do                             -- 扫描外表R
             Then output the tuple                    -- 返回为结果集
 ```
 
+可以看到相比Simple Nested-Loop Join算法，Block Nested-LoopJoin算法仅多了一个所谓的Join Buffer，为什么这样就能减少内表的扫描次数呢？下图相比更好地解释了Block Nested-Loop Join算法的运行过程：
 
+2018080112323783.jpg
 
 ## 1.3.总结
 
