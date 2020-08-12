@@ -353,12 +353,9 @@ Block Nested-Loop Join极大的避免了内表的扫描次数，如果Join Buffe
 | 内表扫描次数（I） | R | 0 | RN\*used\_column\_size/join\_buffer\_size + 1 |
 | 读取记录数（R） | RN + SN\*RN | RN + Smatch | RN + S\*I |
 | Join比较次数（M） | SN\*RN | RN \* IndexHeight | SN\*RN |
-| 回表读取记录次数（F） | 0 | Smatch \(if possible\) | 0 |
-
+| 回表读取记录次数（F） | 0 | Smatch \(if possible\) | 0 |
 
 这个算法很好测试，我们可以随便构建两张没有索引的字段进行联接，然后查看一下执行计划。下面是我在MySQL 5.7版本上的执行计划。
-
-
 
 ```
 mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2>'c';
@@ -371,27 +368,25 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2>'c';
 2 rows in set, 1 warning (0.00 sec)
 ```
 
-可以看到，SQL 执行计划的 Extra 列中提示 Using join buffer (Block Nested Loop)，很明显使用了BNL算法。
+可以看到，SQL 执行计划的 Extra 列中提示 Using join buffer \(Block Nested Loop\)，很明显使用了BNL算法。
 
 另外，可以看出这条 SQL 先根据索引进行了条件过滤，然后拿过滤后的结果集作为驱动表，也是为了减少被驱动表扫描次数。如果 t2.n2 没有索引呢？使用 BNL 算法来 join 的话，这个语句的执行流程是这样的，假设表 t1 是驱动表，表 t2 是被驱动表：
 
-1. 把表 t1 的所有字段取出来，存入 join_buffer 中。
+1. 把表 t1 的所有字段取出来，存入 join\_buffer 中。
 
-2. 扫描表 t2，取出每一行数据跟 join_buffer 中的数据进行对比；如果不满足 t1.m1=t2.m2，则跳过； 如果满足 t1.m1=t2.m2，再判断其他条件，也就是是否满足 t2.n2>’c’ 的条件，如果是，就作为结果集的一部分返回，否则跳过。
+2. 扫描表 t2，取出每一行数据跟 join\_buffer 中的数据进行对比；如果不满足 t1.m1=t2.m2，则跳过； 如果满足 t1.m1=t2.m2，再判断其他条件，也就是是否满足 t2.n2&gt;’c’ 的条件，如果是，就作为结果集的一部分返回，否则跳过。
 
-对于表 t2 的每一行，判断 join 是否满足的时候，都需要遍历 join_buffer 中的所有行。因此判断等值条件的次数是 t1表行数*t2表行数，数据量稍微大点时，这个判断的次数都是上亿次。如果不想在表 t2 的字段 n2 上创建索引，又想减少比较次数。那么，有没有两全其美的办法呢？这时候，我们可以考虑使用临时表。使用临时表的大致思路是：
+对于表 t2 的每一行，判断 join 是否满足的时候，都需要遍历 join\_buffer 中的所有行。因此判断等值条件的次数是 t1表行数\*t2表行数，数据量稍微大点时，这个判断的次数都是上亿次。如果不想在表 t2 的字段 n2 上创建索引，又想减少比较次数。那么，有没有两全其美的办法呢？这时候，我们可以考虑使用临时表。使用临时表的大致思路是：
 
+1. 把表 t2 中满足条件的数据放在临时表 tmp\_t 中；
 
-1. 把表 t2 中满足条件的数据放在临时表 tmp_t 中；
+2. 为了让 join 使用 BKA 算法，给临时表 tmp\_t 的字段 n2 加上索引；
 
-2. 为了让 join 使用 BKA 算法，给临时表 tmp_t 的字段 n2 加上索引；
-
-3. 让表 t1 和 tmp_t 做 join 操作。
+3. 让表 t1 和 tmp\_t 做 join 操作。
 
 **Block Nested-Loop Join影响**
 
-
-在使用 Block Nested-Loop Join(BNL) 算法时，可能会对被驱动表做多次扫描。如果这个被驱动表是一个大的冷数据表，除了会导致 IO 压力大以外，还会对 buffer poll 产生严重的影响。
+在使用 Block Nested-Loop Join\(BNL\) 算法时，可能会对被驱动表做多次扫描。如果这个被驱动表是一个大的冷数据表，除了会导致 IO 压力大以外，还会对 buffer poll 产生严重的影响。
 
 如果了解 InnoDB 的 LRU 算法就会知道，由于 InnoDB 对 Bufffer Pool 的 LRU 算法做了优化，即：第一次从磁盘读入内存的数据页，会先放在 old 区域。如果 1 秒之后这个数据页不再被访问了，就不会被移动到 LRU 链表头部，这样对 Buffer Pool 的命中率影响就不大。
 
@@ -401,40 +396,32 @@ mysql> EXPLAIN SELECT * FROM t1 INNER JOIN t2 on t1.m1 = t2.m2 WHERE t2.n2>'c';
 
 也就是说，这两种情况都会影响 Buffer Pool 的正常运作。 大表 join 操作虽然对 IO 有影响，但是在语句执行结束后，对 IO 的影响也就结束了。但是，对 Buffer Pool 的影响就是持续性的，需要依靠后续的查询请求慢慢恢复内存命中率。
 
-为了减少这种影响，你可以考虑增大 join_buffer_size 的值，减少对被驱动表的扫描次数。
+为了减少这种影响，你可以考虑增大 join\_buffer\_size 的值，减少对被驱动表的扫描次数。
 
-也就是说，BNL 算法对系统的影响主要包括三个方面： 可能会多次扫描被驱动表，占用磁盘 IO 资源； 判断 join 条件需要执行 M*N 次对比（M、N 分别是两张表的行数），如果是大表就会占用非常多的 CPU 资源； 可能会导致 Buffer Pool 的热数据被淘汰，影响内存命中率。
+也就是说，BNL 算法对系统的影响主要包括三个方面： 可能会多次扫描被驱动表，占用磁盘 IO 资源； 判断 join 条件需要执行 M\*N 次对比（M、N 分别是两张表的行数），如果是大表就会占用非常多的 CPU 资源； 可能会导致 Buffer Pool 的热数据被淘汰，影响内存命中率。
 
-
-
-
-**Batched Key Access Join（BKA，批量键访问联接）**
+**Batched Key Access Join（BKA，批量键访问联接）**  
 Index Nested-Loop Join虽好，但是通过辅助索引进行联接后需要回表，这里需要大量的随机I/O操作。若能优化随机I/O，那么就能极大的提升Join的性能。为此，MySQL 5.6（MariaDB 5.3）开始支持Batched Key Access Join算法（简称BKA），该算法通过常见的空间换时间，随机I/O转顺序I/O，以此来极大的提升Join的性能。
 
 在说明Batched Key Access Join前，首先介绍下MySQL 5.6的新特性mrr——multi range read。因为这个特性也是BKA的重要支柱。MRR优化的目的就是为了减少磁盘的随机访问，InnoDB由于索引组织表的特性，如果你的查询是使用辅助索引，并且有用到表中非索引列（投影非索引字段，及条件有非索引字段），因此需要回表读取数据做后续处理，过于随机的回表会伴随着大量的随机I/O。这个过程如下图所示：
 
 ![](/static/image/2018080113315135.jpg)
 
-而mrr的优化在于，并不是每次通过辅助索引读取到数据就回表去取记录，范围扫描（range access）中MySQL将扫描到的数据存入由 read_rnd_buffer_size 变量定义的内存大小中，默认256K。然后对其按照Primary Key（RowID）排序，然后使用排序好的数据进行顺序回表，因为我们知道InnoDB中叶子节点数据是按照PRIMARY KEY（ROWID）进行顺序排列的，所以我们可以认为，如果按照主键的递增顺序查询的话，对磁盘的读比较接近顺序读，能够提升读性能。这对于IO-bound类型的SQL查询语句带来性能极大的提升。
+而mrr的优化在于，并不是每次通过辅助索引读取到数据就回表去取记录，范围扫描（range access）中MySQL将扫描到的数据存入由 read\_rnd\_buffer\_size 变量定义的内存大小中，默认256K。然后对其按照Primary Key（RowID）排序，然后使用排序好的数据进行顺序回表，因为我们知道InnoDB中叶子节点数据是按照PRIMARY KEY（ROWID）进行顺序排列的，所以我们可以认为，如果按照主键的递增顺序查询的话，对磁盘的读比较接近顺序读，能够提升读性能。这对于IO-bound类型的SQL查询语句带来性能极大的提升。
 
-MRR 能够提升性能的核心在于，这条查询语句在索引上做的是一个范围查询（也就是说，这是一个多值查询），可以得到足够多的主键id。这样通过排序以后，再去主键索引查数据，才能体现出“顺序性”的优势。所以MRR优化可用于range，ref，eq_ref类型的查询，工作方式如下图：
+MRR 能够提升性能的核心在于，这条查询语句在索引上做的是一个范围查询（也就是说，这是一个多值查询），可以得到足够多的主键id。这样通过排序以后，再去主键索引查数据，才能体现出“顺序性”的优势。所以MRR优化可用于range，ref，eq\_ref类型的查询，工作方式如下图：
 
 2016120912190540.png
 
-要开启mrr还有一个比较重的参数是在变量optimizer_switch中的mrr和mrr_cost_based选项。mrr选项默认为on，mrr_cost_based选项默认为off。mrr_cost_based选项表示通过基于成本的算法来确定是否需要开启mrr特性。然而，在MySQL当前版本中，基于成本的算法过于保守，导致大部分情况下优化器都不会选择mrr特性。为了确保优化器使用mrr特性，请执行下面的SQL语句：
-
-
+要开启mrr还有一个比较重的参数是在变量optimizer\_switch中的mrr和mrr\_cost\_based选项。mrr选项默认为on，mrr\_cost\_based选项默认为off。mrr\_cost\_based选项表示通过基于成本的算法来确定是否需要开启mrr特性。然而，在MySQL当前版本中，基于成本的算法过于保守，导致大部分情况下优化器都不会选择mrr特性。为了确保优化器使用mrr特性，请执行下面的SQL语句：
 
 ```
 set optimizer_switch='mrr=on,mrr_cost_based=off';
 ```
 
-但如果强制开启MRR，那在某些SQL语句下，性能可能会变差；因为MRR需要排序，假如排序的时间超过直接扫描的时间，那性能就会降低。optimizer_switch可以是全局的，也可以是会话级的。
+但如果强制开启MRR，那在某些SQL语句下，性能可能会变差；因为MRR需要排序，假如排序的时间超过直接扫描的时间，那性能就会降低。optimizer\_switch可以是全局的，也可以是会话级的。
 
 当然，除了调整参数外，数据库也提供了语句级别的开启或关闭MRR，使用方法如下：
-
-
-
 
 ```
 mysql> explain select /*+ MRR(employees)*/ * from employees where birth_date >= '1996-01-01'\G
@@ -453,18 +440,18 @@ possible_keys: idx_birth_date
         Extra: Using index condition; Using MRR
 1 row in set, 1 warning (0.00 sec)
 ```
-理解了 MRR 性能提升的原理，我们就能理解 MySQL 在 5.6 版本后开始引入的 Batched Key Acess(BKA) 算法了。这个 BKA 算法，其实就是对 INLJ 算法的优化。
 
-我们知道 INLJ 算法执行的逻辑是：从驱动表一行行地取出 join 条件值，再到被驱动表去做 join。也就是说，对于被驱动表来说，每次都是匹配一个值。这时，MRR 的优势就用不上了。那怎么才能一次性地多传些值给被驱动表呢？方法就是，从驱动表里一次性地多拿些行出来，一起传给被驱动表。既然如此，我们就把驱动表的数据取出来一部分，先放到一个临时内存。这个临时内存不是别人，就是 join_buffer。
+理解了 MRR 性能提升的原理，我们就能理解 MySQL 在 5.6 版本后开始引入的 Batched Key Acess\(BKA\) 算法了。这个 BKA 算法，其实就是对 INLJ 算法的优化。
 
-我们知道 join_buffer 在 BNL 算法里的作用，是暂存驱动表的数据。但是在 NLJ 算法里并没有用。那么，我们刚好就可以复用 join_buffer 到 BKA 算法中。NLJ 算法优化后的 BKA 算法的流程，整个过程如下所示：
+我们知道 INLJ 算法执行的逻辑是：从驱动表一行行地取出 join 条件值，再到被驱动表去做 join。也就是说，对于被驱动表来说，每次都是匹配一个值。这时，MRR 的优势就用不上了。那怎么才能一次性地多传些值给被驱动表呢？方法就是，从驱动表里一次性地多拿些行出来，一起传给被驱动表。既然如此，我们就把驱动表的数据取出来一部分，先放到一个临时内存。这个临时内存不是别人，就是 join\_buffer。
+
+我们知道 join\_buffer 在 BNL 算法里的作用，是暂存驱动表的数据。但是在 NLJ 算法里并没有用。那么，我们刚好就可以复用 join\_buffer 到 BKA 算法中。NLJ 算法优化后的 BKA 算法的流程，整个过程如下所示：
 
 ![](/static/image/2018080202505519.jpg)
 
 对于多表join语句，当MySQL使用索引访问第二个join表的时候，使用一个join buffer来收集第一个操作对象生成的相关列值。BKA构建好key后，批量传给引擎层做索引查找。key是通过MRR接口提交给引擎的，这样，MRR使得查询更有效率。
 
 如果外部表扫描的是主键，那么表中的记录访问都是比较有序的，但是如果联接的列是非主键索引，那么对于表中记录的访问可能就是非常离散的。因此对于非主键索引的联接，Batched Key Access Join算法将能极大提高SQL的执行效率。BKA算法支持内连接，外连接和半连接操作，包括嵌套外连接。
-
 
 Batched Key Access Join算法的工作步骤如下：
 
@@ -478,17 +465,13 @@ Batched Key Access Join算法的工作步骤如下：
 
 Batched Key Access Join算法的本质上来说还是Simple Nested-Loops Join算法，其发生的条件为内部表上有索引，并且该索引为非主键，并且联接需要访问内部表主键上的索引。这时Batched Key Access Join算法会调用Multi-Range Read（MRR）接口，批量的进行索引键的匹配和主键索引上获取数据的操作，以此来提高联接的执行效率，因为读取数据是以顺序磁盘IO而不是随机磁盘IO进行的。
 
-在MySQL 5.6中默认关闭BKA（MySQL 5.7默认打开），必须将optimizer_switch系统变量的batched_key_access标志设置为on。BKA使用MRR，因此mrr标志也必须打开。目前，MRR的成本估算过于悲观。因此，mrr_cost_based也必须关闭才能使用BKA。以下设置启用BKA：
-
-
-
+在MySQL 5.6中默认关闭BKA（MySQL 5.7默认打开），必须将optimizer\_switch系统变量的batched\_key\_access标志设置为on。BKA使用MRR，因此mrr标志也必须打开。目前，MRR的成本估算过于悲观。因此，mrr\_cost\_based也必须关闭才能使用BKA。以下设置启用BKA：
 
 ```
 SET optimizer_switch='mrr=on,mrr_cost_based=off,batched_key_access=on';
 ```
 
 因为BKA算法的本质是通过MRR接口将非主键索引对于记录的访问，转化为根据ROWID排序的较为有序的记录获取，所以要想通过BKA算法来提高性能，不但需要确保联接的列参与match的操作（联接的列可以是唯一索引或者普通索引，但不能是主键），还要有对非主键列的search操作。例如下列SQL语句：
-
 
 ```
 mysql> explain select a.gender, b.dept_no from employees a, dept_emp b where a.birth_date=b.from_date;
@@ -501,9 +484,7 @@ mysql> explain select a.gender, b.dept_no from employees a, dept_emp b where a.b
 2 rows in set, 1 warning (0.00 sec)
 ```
 
-列a.gender是表employees的数据，但不是通过搜索idx_birth_date索引就能得到数据，还需要回表访问主键来获取数据。因此这时可以使用BKA算法。但是如果联接不涉及针对主键进一步获取数据，内部表只参与联接判断，那么就不会启用BKA算法，因为没有必要去调用MRR接口。比如search的主键（a.emp_no），那么肯定就不需要BKA算法了，直接覆盖索引就可以返回数据了（二级索引有主键值）。
-
-
+列a.gender是表employees的数据，但不是通过搜索idx\_birth\_date索引就能得到数据，还需要回表访问主键来获取数据。因此这时可以使用BKA算法。但是如果联接不涉及针对主键进一步获取数据，内部表只参与联接判断，那么就不会启用BKA算法，因为没有必要去调用MRR接口。比如search的主键（a.emp\_no），那么肯定就不需要BKA算法了，直接覆盖索引就可以返回数据了（二级索引有主键值）。
 
 ```
 mysql> explain select a.emp_no, b.dept_no from employees a, dept_emp b where a.birth_date=b.from_date;
@@ -515,7 +496,8 @@ mysql> explain select a.emp_no, b.dept_no from employees a, dept_emp b where a.b
 +----+-------------+-------+------------+------+----------------+----------------+---------+-----------------------+--------+----------+-------------+
 2 rows in set, 1 warning (0.00 sec)
 ```
-在EXPLAIN输出中，当Extra值包含Using join buffer（Batched Key Access）且类型值为ref或eq_ref时，表示使用BKA。
+
+在EXPLAIN输出中，当Extra值包含Using join buffer（Batched Key Access）且类型值为ref或eq\_ref时，表示使用BKA。
 
 **Classic Hash Join（CHJ）**
 
@@ -533,16 +515,9 @@ Classic Hash Join算法先将外部表中数据放入Join Buffer中，然后根�
 
 同样地，如果Join Buffer能够缓存所有驱动表（外表）的查询列，那么驱动表和内表的扫描次数都将只有1次，并且比较的次数也只是内表记录数（假设哈希算法冲突为0）。反之，需要扫描多次内部表。为了使Classic Hash Join更有效果，应该更好地规划Join Buffer的大小。
 
-要使用Classic Hash Join算法，需要将join_cache_level设置为大于等于4的值，并显示地打开优化器的选项，设置过程如下：
+要使用Classic Hash Join算法，需要将join\_cache\_level设置为大于等于4的值，并显示地打开优化器的选项，设置过程如下：
 
-
-
-
-
-
-
-
-## 1.3.总结
+# 2.总结
 
 经过上面的学习，我们能发现联接查询成本占大头的就是“驱动表记录数 乘以 单次访问被驱动表的成本”，所以我们的优化重点其实就是下面这两个部分：
 
@@ -551,8 +526,6 @@ Classic Hash Join算法先将外部表中数据放入Join Buffer中，然后根�
 * 对被驱动表的访问成本尽可能降低
 
 这两点对于我们实际书写联接查询语句时十分有用，我们需要尽量在被驱动表的联接列上建立索引（主键或唯一索引最优，其次是非唯一二级索引），这样就可以使用 eq\_ref 或 ref 访问方法来降低访问被驱动表的成本了。
-
-# 2.总结
 
 # 3.参考
 
