@@ -323,7 +323,7 @@
         * [14 \| count\(\*\)这么慢，我该怎么办](shu-ju-ku/mysql/mysql/ji-chu-pian/14-countzhe-yao-man-ff0c-wo-gai-zen-yao-ban.md)
         * [15 \| 答疑文章（一）：日志和索引相关问题](shu-ju-ku/mysql/mysql/ji-chu-pian/15-da-yi-wen-zhang-ff08-yi-ff09-ff1a-ri-zhi-he-suo-yin-xiang-guan-wen-ti.md)
         * [16 \| “order by”是怎么工作的？](shu-ju-ku/mysql/mysql/ji-chu-pian/16-order-by201d-shi-zen-yao-gong-zuo-de-ff1f.md)
-        * 17 \| 如何正确地显示随机消息？
+        * [17 \| 如何正确地显示随机消息？](shu-ju-ku/mysql/mysql/ji-chu-pian/17-ru-he-zheng-que-di-xian-shi-sui-ji-xiao-xi-ff1f.md)
         * 18 \| 为什么这些SQL语句逻辑相同，性能却差异巨大？
         * [19 \| 为什么我只查一行的语句，也执行这么慢？](shu-ju-ku/mysql/mysql/ji-chu-pian/19-wei-shi-yao-wo-zhi-cha-yi-xing-de-yu-ju-ff0c-ye-zhi-xing-zhe-yao-man-ff1f.md)
         * 20 \| 幻读是什么，幻读有什么问题？
