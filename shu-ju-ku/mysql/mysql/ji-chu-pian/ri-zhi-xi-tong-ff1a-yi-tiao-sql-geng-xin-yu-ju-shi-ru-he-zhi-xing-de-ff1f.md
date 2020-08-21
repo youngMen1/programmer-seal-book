@@ -197,3 +197,7 @@ Binlog有两种模式，statement 格式的话是记sql语句， row格式会记
 
 **4.有没可能 出现binlog写入成功，redolog写入失败的可能？**
 不会，你看执行过程，更新完之后，引擎层先写的redo log 进入prepare状态，然后告诉执行器事务可以提交，此时执行器才会生成bin log并写到磁盘
+
+**5.俩问题，一个是当mysql重启，对于innodb的启动是如何实现的，听文章说redo log会很大，比如一个G，需要全都加载一边才能算启动完成吗？另一个，二段提交，如果在commit之前crash了，innodb是如何界定这一条数据全是丢弃还是不丢弃？因为有两种情况，一种是bin log写成功了，但是commit没成功，另一个是bin log压根就没写成功**
+1.从checkpoint开始到writepos结束，不需要全部4G
+2.Binlog写成功事务算成功，就提交事务；binlog没写成功就回滚
