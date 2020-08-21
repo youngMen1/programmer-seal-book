@@ -67,7 +67,7 @@ MyISM使用的是非聚簇索引，非聚簇索引的两棵B+树看上去没什�
 
 如果说前面的内容偏向于解释原理，那后面就开始涉及具体实现了。
 
-理解InnoDB的实现不得不提Page结构，Page是整个InnoDB存储的最基本构件，也是InnoDB磁盘管理的最小单位，与数据库相关的所有内容都存储在这种Page结构里。Page分为几种类型，常见的页类型有数据页（B-tree Node）Undo页（Undo Log Page）系统页（System Page） 事务数据页（Transaction System Page）等。单个Page的大小是16K（编译宏UNIV\_PAGE\_SIZE控制），每个Page使用一个32位的int值来唯一标识，这也正好对应InnoDB最大64TB的存储容量（16Kib \* 2^32 = 64Tib）。一个Page的基本结构如下图所示：  
+理解InnoDB的实现不得不提Page结构，Page是整个InnoDB存储的最基本构件，也是InnoDB磁盘管理的最小单位，与数据库相关的所有内容都存储在这种Page结构里。Page分为几种类型，**常见的页类型有数据页（B-tree Node）Undo页（Undo Log Page）系统页（System Page） 事务数据页（Transaction System Page）等。单个Page的大小是16K（编译宏UNIV\_PAGE\_SIZE控制），每个Page使用一个32位的int值来唯一标识**，这也正好对应InnoDB最大64TB的存储容量（16Kib \* 2^32 = 64Tib）。一个Page的基本结构如下图所示：  
 ![img](/static/image/20141027091512695110.png)  
 每个Page都有通用的头和尾，但是中部的内容根据Page的类型不同而发生变化。Page的头部里有我们关心的一些数据，下图把Page的头部详细信息显示出来：  
 ![img](/static/image/20141027091523976520.PNG)
