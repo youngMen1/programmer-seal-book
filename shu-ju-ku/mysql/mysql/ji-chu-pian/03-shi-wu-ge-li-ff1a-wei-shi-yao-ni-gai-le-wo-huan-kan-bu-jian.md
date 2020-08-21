@@ -169,3 +169,11 @@ select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx
 
 监控 information\_schema.Innodb\_trx 表，设置长事务阈值，超过就报警 / 或者 kill；Percona 的 pt-kill 这个工具不错，推荐使用；在业务功能测试阶段要求输出所有的 general\_log，分析日志行为提前发现问题；如果使用的是 MySQL 5.6 或者更新版本，把 innodb\_undo\_tablespaces 设置成 2（或更大的值）。如果真的出现大事务导致回滚段过大，这样设置后清理起来更方便。
 
+## 2.2.高质量问题
+
+
+
+
+
+
+
