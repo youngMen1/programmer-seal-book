@@ -12,6 +12,7 @@ binlog 是逻辑日志，记录的是这个语句的原始逻辑，比如“给 
 binlog 是可以追加写入的。“追加写”是指 binlog 文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。
 
 ## 2.WAL 技术
+**《02 | 日志系统：一条SQL更新语句是如何执行的？》**
 WAL 的全称是 Write-Ahead Logging
 它的关键点就是先写日志，再写磁盘
 
@@ -28,7 +29,7 @@ WAL 的全称是 Write-Ahead Logging
 
 change buffer 的大小，可以通过参数 **innodb_change_buffer_max_size** 来动态设置。这个参数设置为 50 的时候，表示 change buffer 的大小最多只能占用 buffer pool 的 50%。
 
-## 什么是buffer pool？
+## 4.什么是buffer pool？
 数据库缓冲池(buffer pool)
 缓存表数据与索引数据，把磁盘上的数据加载到缓冲池，避免每次访问都进行磁盘IO，起到加速访问的作用。
 数据库缓冲池(buffer pool)：`https://www.jianshu.com/p/f9ab1cb24230`
