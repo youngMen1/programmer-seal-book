@@ -1,5 +1,14 @@
 # 1.MySQL45讲总结
-
+## 日志模块
+redo log（重做日志）和 binlog（归档日志）
+### redo log
+redo log 是 InnoDB 引擎特有的日志
+redo log 是物理日志，记录的是“在某个数据页上做了什么修改”；
+redo log 是循环写的，空间固定会用完
+### bin log
+Server 层也有自己的日志，称为 binlog（归档日志）。
+binlog 是逻辑日志，记录的是这个语句的原始逻辑，比如“给 ID=2 这一行的 c 字段加 1 ”。
+binlog 是可以追加写入的。“追加写”是指 binlog 文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。
 ## WAL 技术
 WAL 的全称是 Write-Ahead Logging
 它的关键点就是先写日志，再写磁盘
