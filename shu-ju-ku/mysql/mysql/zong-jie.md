@@ -1,5 +1,11 @@
-# 1.MySQL总结
-## 1.什么是change buffer？
+# 1.MySQL45讲总结
+
+## WAL 技术
+WAL 的全称是 Write-Ahead Logging
+它的关键点就是先写日志，再写磁盘
+
+
+## 什么是change buffer？
 **《09 | 普通索引和唯一索引，应该怎么选择？》**
 当需要更新一个数据页时，如果数据页在内存中就直接更新，而如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，InnoDB 会将这些更新操作缓存在 change buffer 中，这样就不需要从磁盘中读入这个数据页了。
 
@@ -11,7 +17,7 @@
 
 change buffer 的大小，可以通过参数 **innodb_change_buffer_max_size** 来动态设置。这个参数设置为 50 的时候，表示 change buffer 的大小最多只能占用 buffer pool 的 50%。
 
-## 2.什么是buffer pool？
+## 什么是buffer pool？
 数据库缓冲池(buffer pool)
 缓存表数据与索引数据，把磁盘上的数据加载到缓冲池，避免每次访问都进行磁盘IO，起到加速访问的作用。
 数据库缓冲池(buffer pool)：`https://www.jianshu.com/p/f9ab1cb24230`
