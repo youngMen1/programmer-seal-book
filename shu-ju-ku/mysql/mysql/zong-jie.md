@@ -1,5 +1,6 @@
 # 1.MySQL45讲总结
 ## 日志模块
+**《02 | 日志系统：一条SQL更新语句是如何执行的？》**
 redo log（重做日志）和 binlog（归档日志）
 ### redo log
 redo log 是 InnoDB 引擎特有的日志
