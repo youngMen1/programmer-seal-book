@@ -13,3 +13,7 @@ Spring Cloud 是 Java 微服务架构的代表性框架。如果使用 Spring Cl
 接下来，我们就看看使用 Feign 和 Apache HttpClient 进行 HTTP 接口调用时，可能会遇到的超时、重试和并发方面的坑。
 
 ## 配置连接超时和读取超时参数的学问
+
+对于 HTTP 调用，虽然应用层走的是 HTTP 协议，但网络层面始终是 TCP/IP 协议。TCP/IP 是面向连接的协议，在传输数据之前需要建立连接。几乎所有的网络框架都会提供这么两个超时参数：
+* 连接超时参数 ConnectTimeout，让用户配置建连阶段的最长等待时间；
+* 读取超时参数 ReadTimeout，用来控制从 Socket 上读取数据的最长等待时间。
