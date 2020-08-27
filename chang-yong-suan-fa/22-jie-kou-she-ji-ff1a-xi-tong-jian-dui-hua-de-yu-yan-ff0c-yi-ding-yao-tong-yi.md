@@ -531,4 +531,107 @@ public SyncUploadResponse syncUpload(SyncUploadRequest request) {
 }
 ```
 
+这里的 SyncUploadRequest 和 SyncUploadResponse 类，与之前定义的 UploadRequest 和 UploadResponse 是一致的。对于接口的入参和出参 DTO 的命名，我比较建议的方式是，使用接口名 +Request 和 Response 后缀。接下来，我们看看异步的上传文件接口如何实现。异步上传接口在出参上有点区别，不再返回文件 URL，而是返回一个任务 ID：
 
+
+
+```
+
+@Data
+public class AsyncUploadRequest {
+    private byte[] file;
+}
+
+@Data
+public class AsyncUploadResponse {
+    private String taskId;
+}
+```
+在接口实现上，我们同样把上传任务提交到线程池处理，但是并不会同步等待任务完成，而是完成后把结果写入一个 HashMap，任务查询接口通过查询这个 HashMap 来获得文件的 URL：
+
+
+```
+
+//计数器，作为上传任务的ID
+private AtomicInteger atomicInteger = new AtomicInteger(0);
+//暂存上传操作的结果，生产代码需要考虑数据持久化
+private ConcurrentHashMap<String, SyncQueryUploadTaskResponse> downloadUrl = new ConcurrentHashMap<>();
+//异步上传操作
+public AsyncUploadResponse asyncUpload(AsyncUploadRequest request) {
+    AsyncUploadResponse response = new AsyncUploadResponse();
+    //生成唯一的上传任务ID
+    String taskId = "upload" + atomicInteger.incrementAndGet();
+    //异步上传操作只返回任务ID
+    response.setTaskId(taskId);
+    //提交上传原始文件操作到线程池异步处理
+    threadPool.execute(() -> {
+        String url = uploadFile(request.getFile());
+        //如果ConcurrentHashMap不包含Key，则初始化一个SyncQueryUploadTaskResponse，然后设置DownloadUrl
+        downloadUrl.computeIfAbsent(taskId, id -> new SyncQueryUploadTaskResponse(id)).setDownloadUrl(url);
+    });
+    //提交上传缩略图操作到线程池异步处理
+    threadPool.execute(() -> {
+        String url = uploadThumbnailFile(request.getFile());
+        downloadUrl.computeIfAbsent(taskId, id -> new SyncQueryUploadTaskResponse(id)).setThumbnailDownloadUrl(url);
+    });
+    return response;
+}
+```
+文件上传查询接口则以任务 ID 作为入参，返回两个文件的下载地址，因为文件上传查询接口是同步的，所以直接命名为 syncQueryUploadTask：
+
+
+
+```
+
+//syncQueryUploadTask接口入参
+@Data
+@RequiredArgsConstructor
+public class SyncQueryUploadTaskRequest {
+    private final String taskId;//使用上传文件任务ID查询上传结果 
+}
+//syncQueryUploadTask接口出参
+@Data
+@RequiredArgsConstructor
+public class SyncQueryUploadTaskResponse {
+    private final String taskId; //任务ID
+    private String downloadUrl; //原始文件下载URL
+    private String thumbnailDownloadUrl; //缩略图下载URL
+}
+
+public SyncQueryUploadTaskResponse syncQueryUploadTask(SyncQueryUploadTaskRequest request) {
+    SyncQueryUploadTaskResponse response = new SyncQueryUploadTaskResponse(request.getTaskId());
+     //从之前定义的downloadUrl ConcurrentHashMap查询结果
+response.setDownloadUrl(downloadUrl.getOrDefault(request.getTaskId(), response).getDownloadUrl());
+    response.setThumbnailDownloadUrl(downloadUrl.getOrDefault(request.getTaskId(), response).getThumbnailDownloadUrl());
+    return response;
+}
+```
+经过改造的 FileService 不再提供一个看起来是同步上传，内部却是异步上传的 upload 方法，改为提供很明确的：
+* 同步上传接口 syncUpload；
+* 异步上传接口 asyncUpload，搭配 syncQueryUploadTask 查询上传结果。
+
+使用方可以根据业务性质选择合适的方法：如果是后端批处理使用，那么可以使用同步上传，多等待一些时间问题不大；如果是面向用户的接口，那么接口响应时间不宜过长，可以调用异步上传接口，然后定时轮询上传结果，拿到结果再显示。
+
+# 重点回顾
+
+今天，我针对接口设计，和你深入探讨了三个方面的问题。
+
+第一，针对响应体的设计混乱、响应结果的不明确问题，服务端需要明确响应体每一个字段的意义，以一致的方式进行处理，并确保不透传下游服务的错误。
+
+第二，针对接口版本控制问题，主要就是在开发接口之前明确版本控制策略，以及尽量使用统一的版本控制策略两方面。
+
+第三，针对接口的处理方式，我认为需要明确要么是同步要么是异步。如果 API 列表中既有同步接口也有异步接口，那么最好直接在接口名中明确。
+
+一个良好的接口文档不仅仅需要说明如何调用接口，更需要补充接口使用的最佳实践以及接口的 SLA 标准。我看到的大部分接口文档只给出了参数定义，但诸如幂等性、同步异步、缓存策略等看似内部实现相关的一些设计，其实也会影响调用方对接口的使用策略，最好也可以体现在接口文档中。
+
+最后，我再额外提一下，对于服务端出错的时候是否返回 200 响应码的问题，其实一直有争论。从 RESTful 设计原则来看，我们应该尽量利用 HTTP 状态码来表达错误，但也不是这么绝对。
+
+如果我们认为 HTTP 状态码是协议层面的履约，那么当这个错误已经不涉及 HTTP 协议时（换句话说，服务端已经收到请求进入服务端业务处理后产生的错误），不一定需要硬套协议本身的错误码。但涉及非法 URL、非法参数、没有权限等无法处理请求的情况，还是应该使用正确的响应码来应对。
+
+今天用到的代码，我都放在了 GitHub 上，你可以点击这个链接查看。
+
+## 思考与讨论
+
+1.在第一节的例子中，接口响应结构体中的 code 字段代表执行结果的错误码，对于业务特别复杂的接口，可能会有很多错误情况，code 可能会有几十甚至几百个。客户端开发人员需要根据每一种错误情况逐一写 if-else 进行不同交互处理，会非常麻烦，你觉得有什么办法来改进吗？作为服务端，是否有必要告知客户端接口执行的错误码呢？
+
+2.在第二节的例子中，我们在类或方法上标记 @APIVersion 自定义注解，实现了 URL 方式统一的接口版本定义。你可以用类似的方式（也就是自定义 RequestMappingHandlerMapping），来实现一套统一的基于请求头方式的版本控制吗？
