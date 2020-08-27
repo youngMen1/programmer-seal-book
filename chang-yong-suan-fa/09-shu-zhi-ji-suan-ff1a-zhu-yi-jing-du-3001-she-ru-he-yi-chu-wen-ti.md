@@ -242,4 +242,4 @@ System.out.println(new BigDecimal("1.0").equals(new BigDecimal("1")))
 public boolean equals(Object x)
 ```
 
-
+如果我们希望只比较 BigDecimal 的 value，可以使用 compareTo 方法，修改后代码如下：
