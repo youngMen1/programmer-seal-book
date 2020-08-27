@@ -284,6 +284,9 @@ hashSet2.add(new BigDecimal("1.0").stripTrailingZeros());
 System.out.println(hashSet2.contains(new BigDecimal("1.000").stripTrailingZeros()));//返回true
 ```
 
+## 小心数值溢出问题
+
+
 
 
 
