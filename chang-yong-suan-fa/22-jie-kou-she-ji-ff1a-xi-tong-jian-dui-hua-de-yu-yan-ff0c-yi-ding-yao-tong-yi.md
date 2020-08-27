@@ -128,7 +128,7 @@ public APIResponse<OrderInfo> server(@RequestParam("userId") Long userId) {
     return response;
 }
 ```
-
+客户端代码，则可以按照流程图上的逻辑来实现，同样模拟三种出错情况和正常下单的情况：
 
 
 
