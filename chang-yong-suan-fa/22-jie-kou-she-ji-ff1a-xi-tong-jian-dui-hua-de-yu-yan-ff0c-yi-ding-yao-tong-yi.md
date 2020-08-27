@@ -1,4 +1,4 @@
-# 22 | 接口设计：系统间对话的语言，一定要统一
+``# 22 | 接口设计：系统间对话的语言，一定要统一
 
 你好，我是朱晔。今天，我要和你分享的主题是，在做接口设计时一定要确保系统之间对话的语言是统一的。
 
@@ -439,3 +439,16 @@ public class CommonMistakesApplication implements WebMvcRegistrations {
 }
 ```
 这样，就实现了在 Controller 上或接口方法上通过注解，来实现以统一的 Pattern 进行版本号控制：
+
+
+
+```
+
+@GetMapping(value = "/api/user")
+@APIVersion("v4")
+public int right4() {
+    return 4;
+}
+```
+
+
