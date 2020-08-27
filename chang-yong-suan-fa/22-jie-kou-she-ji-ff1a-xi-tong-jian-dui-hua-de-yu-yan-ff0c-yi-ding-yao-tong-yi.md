@@ -307,5 +307,7 @@ public @interface NoAPIResponse {
 }
 ```
 
+在 ResponseBodyAdvice 的 support 方法中，我们排除了标记有这个注解的方法或类的自动响应体包装。比如，对于刚才我们实现的测试客户端 client 方法不需要包装为 APIResponse，就可以标记上这个注解：
+
 
 
