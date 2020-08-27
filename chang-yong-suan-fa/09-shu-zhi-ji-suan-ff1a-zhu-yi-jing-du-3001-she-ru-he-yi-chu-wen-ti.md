@@ -192,3 +192,16 @@ System.out.println(format.format(num2));
 
 当我们把这 2 个浮点数向下舍入取 2 位小数时，输出分别是 3.35 和 3.34，还是我们之前说的浮点数无法精确存储的问题。因此，即使通过 DecimalFormat 来精确控制舍入方式，double 和 float 的问题也可能产生意想不到的结果，所以浮点数避坑第二原则：浮点数的字符串格式化也要通过 BigDecimal 进行。比如下面这段代码，使用 BigDecimal 来格式化数字 3.35，分别使用向下舍入和四舍五入方式取 1 位小数进行格式化：
 
+
+
+```
+
+BigDecimal num1 = new BigDecimal("3.35");
+BigDecimal num2 = num1.setScale(1, BigDecimal.ROUND_DOWN);
+System.out.println(num2);
+BigDecimal num3 = num1.setScale(1, BigDecimal.ROUND_HALF_UP);
+System.out.println(num3);
+```
+
+
+
