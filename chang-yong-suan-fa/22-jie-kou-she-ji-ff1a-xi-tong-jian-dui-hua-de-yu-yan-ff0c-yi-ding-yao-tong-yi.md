@@ -510,3 +510,25 @@ public class UploadResponse {
 ```
 到这里，你能看出这种实现方式的问题是什么吗？从接口命名上看虽然是同步上传操作，但其内部通过线程池进行异步上传，并因为设置了较短超时所以接口整体响应挺快。但是，**一旦遇到超时，接口就不能返回完整的数据，不是无法拿到原文件下载地址，就是无法拿到缩略图下载地址，接口的行为变得不可预测：**
 8e75863413fd7a01514b47804f0c4a78.png
+
+
+所以，这种优化接口响应速度的方式并不可取，**更合理的方式是，让上传接口要么是彻底的同步处理，要么是彻底的异步处理：**
+
+* 所谓同步处理，接口一定是同步上传原文件和缩略图的，调用方可以自己选择调用超时，如果来得及可以一直等到上传完成，如果等不及可以结束等待，下一次再重试；
+* 所谓异步处理，接口是两段式的，上传接口本身只是返回一个任务 ID，然后异步做上传操作，上传接口响应很快，客户端需要之后再拿着任务 ID 调用任务查询接口查询上传的文件 URL。
+
+同步上传接口的实现代码如下，把超时的选择留给客户端：
+
+
+
+```
+
+public SyncUploadResponse syncUpload(SyncUploadRequest request) {
+    SyncUploadResponse response = new SyncUploadResponse();
+    response.setDownloadUrl(uploadFile(request.getFile()));
+    response.setThumbnailDownloadUrl(uploadThumbnailFile(request.getFile()));
+    return response;
+}
+```
+
+
