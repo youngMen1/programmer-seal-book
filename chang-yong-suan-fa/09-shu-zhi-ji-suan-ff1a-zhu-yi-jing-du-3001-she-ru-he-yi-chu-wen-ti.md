@@ -260,4 +260,30 @@ Set<BigDecimal> hashSet1 = new HashSet<>();
 hashSet1.add(new BigDecimal("1.0"));
 System.out.println(hashSet1.contains(new BigDecimal("1")));//返回false
 ```
+解决这个问题的办法有两个：
+
+* 第一个方法是，使用 TreeSet 替换 HashSet。TreeSet 不使用 hashCode 方法，也不使用 equals 比较元素，而是使用 compareTo 方法，所以不会有问题。
+
+
+
+```
+
+Set<BigDecimal> treeSet = new TreeSet<>();
+treeSet.add(new BigDecimal("1.0"));
+System.out.println(treeSet.contains(new BigDecimal("1")));//返回true
+```
+
+* 第二个方法是，把 BigDecimal 存入 HashSet 或 HashMap 前，先使用 stripTrailingZeros 方法去掉尾部的零，比较的时候也去掉尾部的 0，确保 value 相同的 BigDecimal，scale 也是一致的：
+
+
+
+```
+
+Set<BigDecimal> hashSet2 = new HashSet<>();
+hashSet2.add(new BigDecimal("1.0").stripTrailingZeros());
+System.out.println(hashSet2.contains(new BigDecimal("1.000").stripTrailingZeros()));//返回true
+```
+
+
+
 
