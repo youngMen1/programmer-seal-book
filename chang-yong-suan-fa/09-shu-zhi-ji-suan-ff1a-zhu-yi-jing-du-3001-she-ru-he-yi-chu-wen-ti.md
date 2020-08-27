@@ -219,3 +219,27 @@ System.out.println(new BigDecimal("1.0").equals(new BigDecimal("1")))
 ```
 你可能已经猜到我要说什么了，结果当然是 false。BigDecimal 的 equals 方法的注释中说明了原因，equals 比较的是 BigDecimal 的 value 和 scale，1.0 的 scale 是 1，1 的 scale 是 0，所以结果一定是 false：
 
+
+```
+
+/**
+ * Compares this {@code BigDecimal} with the specified
+ * {@code Object} for equality.  Unlike {@link
+ * #compareTo(BigDecimal) compareTo}, this method considers two
+ * {@code BigDecimal} objects equal only if they are equal in
+ * value and scale (thus 2.0 is not equal to 2.00 when compared by
+ * this method).
+ *
+ * @param  x {@code Object} to which this {@code BigDecimal} is
+ *         to be compared.
+ * @return {@code true} if and only if the specified {@code Object} is a
+ *         {@code BigDecimal} whose value and scale are equal to this
+ *         {@code BigDecimal}'s.
+ * @see    #compareTo(java.math.BigDecimal)
+ * @see    #hashCode
+ */
+@Override
+public boolean equals(Object x)
+```
+
+
