@@ -96,4 +96,12 @@ private String getCityFromDb(int cityId) {
 }
 ```
 
+使用 **wrk 工具**，设置 10 线程 10 连接压测 city 接口：
 
+
+
+```
+wrk -c10 -t10 -d 100s http://localhost:45678/cacheinvalid/city
+```
+
+启动程序 30 秒后缓存过期，回源的数据库 QPS 最高达到了 700 多：
