@@ -375,3 +375,16 @@ public void wrong3(){
 ```
 
 显然，商品、商店和商户的接口开发同学，没有按照一致的 URL 格式来实现接口的版本控制。更要命的是，我们可能开发出两个 URL 类似接口，比如一个是 /api/v1/user，另一个是 /api/user/v1，这到底是一个接口还是两个接口呢？相比于在每一个接口的 URL Path 中设置版本号，更理想的方式是在框架层面实现统一。如果你使用 Spring 框架的话，可以按照下面的方式自定义 RequestMappingHandlerMapping 来实现。首先，创建一个注解来定义接口的版本。@APIVersion 自定义注解可以应用于方法或 Controller 上：
+
+
+
+```
+
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface APIVersion {
+    String[] value();
+}
+```
+
+
