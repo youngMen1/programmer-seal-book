@@ -460,3 +460,34 @@ f8fae105eae532e93e329ae2d3253502.png
 ## 接口处理方式要明确同步还是异步
 
 看到这个标题，你可能感觉不太好理解，我们直接看一个实际案例吧。有一个文件上传服务 FileService，其中一个 upload 文件上传接口特别慢，原因是这个上传接口在内部需要进行两步操作，首先上传原图，然后压缩后上传缩略图。如果每一步都耗时 5 秒的话，那么这个接口返回至少需要 10 秒的时间。于是，开发同学把接口改为了异步处理，每一步操作都限定了超时时间，也就是分别把上传原文件和上传缩略图的操作提交到线程池，然后等待一定的时间：
+
+
+
+```
+
+private ExecutorService threadPool = Executors.newFixedThreadPool(2);
+
+//我没有贴出两个文件上传方法uploadFile和uploadThumbnailFile的实现，它们在内部只是随机进行休眠然后返回文件名，对于本例来说不是很重要
+
+public UploadResponse upload(UploadRequest request) {
+    UploadResponse response = new UploadResponse();
+    //上传原始文件任务提交到线程池处理
+    Future<String> uploadFile = threadPool.submit(() -> uploadFile(request.getFile()));
+    //上传缩略图任务提交到线程池处理
+    Future<String> uploadThumbnailFile = threadPool.submit(() -> uploadThumbnailFile(request.getFile()));
+    //等待上传原始文件任务完成，最多等待1秒
+    try {
+        response.setDownloadUrl(uploadFile.get(1, TimeUnit.SECONDS));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    //等待上传缩略图任务完成，最多等待1秒
+    try {
+        response.setThumbnailDownloadUrl(uploadThumbnailFile.get(1, TimeUnit.SECONDS));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return response;
+}
+```
+
