@@ -52,7 +52,7 @@
   * [一起从零开始刷力扣](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
   * LRU算法
   * [23 \| 缓存设计：缓存可以锦上添花也可以落井下石](chang-yong-suan-fa/23-huan-cun-she-ji-ff1a-huan-cun-ke-yi-jin-shang-tian-hua-ye-ke-yi-luo-jing-xia-shi.md)
-  * 24 \| 业务代码写完，就意味着生产就绪了？
+  * [24 \| 业务代码写完，就意味着生产就绪了？](chang-yong-suan-fa/24-ye-wu-dai-ma-xie-wan-ff0c-jiu-yi-wei-zhao-sheng-chan-jiu-xu-le-ff1f.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
