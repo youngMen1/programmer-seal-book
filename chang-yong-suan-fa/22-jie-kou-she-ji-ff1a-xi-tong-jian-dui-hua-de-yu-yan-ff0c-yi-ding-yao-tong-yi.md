@@ -200,4 +200,4 @@ public String client(@RequestParam(value = "error", defaultValue = "0") int erro
     return "";
 }
 ```
-
+**相比原来混乱的接口定义和处理逻辑，改造后的代码，明确了接口每一个字段的含义，以及对于各种情况服务端的输出和客户端的处理步骤，对齐了客户端和服务端的处理逻辑。**那么现在，你能回答前面那 4 个让人疑惑的问题了吗？
