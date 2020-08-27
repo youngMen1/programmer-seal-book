@@ -225,4 +225,4 @@ public OrderInfo server(@RequestParam("userId") Long userId) {
     return new OrderInfo("Created", 2L);
 }
 ```
-
+在 APIException 中包含错误码和错误消息：
