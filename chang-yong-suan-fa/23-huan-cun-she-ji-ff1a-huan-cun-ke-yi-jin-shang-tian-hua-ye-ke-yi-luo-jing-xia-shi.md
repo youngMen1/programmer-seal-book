@@ -106,6 +106,8 @@ wrk -c10 -t10 -d 100s http://localhost:45678/cacheinvalid/city
 
 启动程序 30 秒后缓存过期，回源的数据库 QPS 最高达到了 700 多：
 
+918a91e34725e475cdee746d5ba8aa6b.png
+
 
 解决缓存 Key 同时大规模失效需要回源，导致数据库压力激增问题的方式有两种。
 
@@ -126,6 +128,8 @@ public void rightInit1() {
 }
 ```
 修改后，缓存过期时的回源不会集中在同一秒，数据库的 QPS 从 700 多降到了最高 100 左右：
+
+6f4a666cf48c4d1373aead40afb57a35.png
 
 方案二，让缓存不主动过期。初始化缓存数据的时候设置缓存永不过期，然后启动一个后台线程 30 秒一次定时把所有数据更新到缓存，而且通过适当的休眠，控制从数据库更新数据的频率，降低数据库压力：
 
@@ -162,4 +166,43 @@ public void rightInit2() throws InterruptedException {
 }
 ```
 
+这样，可以把回源到数据库的并发限制在 1：
+.
+63ccde3fdf058b48431fc7c554fed828.png
+
+在真实的业务场景下，不一定要这么严格地使用双重检查分布式锁进行全局的并发限制，因为这样虽然可以把数据库回源并发降到最低，但也限制了缓存失效时的并发。可以考虑的方式是：
+
+* 方案一，使用进程内的锁进行限制，这样每一个节点都可以以一个并发回源数据库；
+
+* 方案二，不使用锁进行限制，而是使用类似 Semaphore 的工具限制并发数，比如限制为 10，这样既限制了回源并发数不至于太大，又能使得一定量的线程可以同时回源。
+
+## 注意缓存穿透问题
+
+在之前的例子中，缓存回源的逻辑都是当缓存中查不到需要的数据时，回源到数据库查询。这里容易出现的一个漏洞是，缓存中没有数据不一定代表数据没有缓存，还有一种可能是原始数据压根就不存在。
+
+比如下面的例子。数据库中只保存有 ID 介于 0（不含）和 10000（包含）之间的用户，如果从数据库查询 ID 不在这个区间的用户，会得到空字符串，所以缓存中缓存的也是空字符串。如果使用 ID=0 去压接口的话，从缓存中查出了空字符串，认为是缓存中没有数据回源查询，其实相当于每次都回源：
+
+
+```
+
+@GetMapping("wrong")
+public String wrong(@RequestParam("id") int id) {
+    String key = "user" + id;
+    String data = stringRedisTemplate.opsForValue().get(key);
+    //无法区分是无效用户还是缓存失效
+    if (StringUtils.isEmpty(data)) {
+        data = getCityFromDb(id);
+        stringRedisTemplate.opsForValue().set(key, data, 30, TimeUnit.SECONDS);
+    }
+    return data;
+}
+
+private String getCityFromDb(int id) {
+    atomicInteger.incrementAndGet();
+    //注意，只有ID介于0（不含）和10000（包含）之间的用户才是有效用户，可以查询到用户信息
+    if (id > 0 && id <= 10000) return "userdata";
+    //否则返回空字符串
+    return "";
+}
+```
 
