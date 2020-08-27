@@ -151,5 +151,5 @@ f36d21beb95ce0e7ea96dfde96f21847.png
 
 [14:13:13.951] [http-nio-45678-exec-8] [WARN ] [.c.a.d.APIThreeLevelStatusController:36  ] - 用户 1 调用订单服务失败，原因是 Risk order detected
 ```
-
+error==0 的用例模拟正常用户，下单成功。这时可以解析 data 结构体提取业务结果，作为兜底，需要判断订单状态，如果不是 Created 则给予友好提示，否则查询 orderId 获得下单的订单号，这是第三层处理。
 
