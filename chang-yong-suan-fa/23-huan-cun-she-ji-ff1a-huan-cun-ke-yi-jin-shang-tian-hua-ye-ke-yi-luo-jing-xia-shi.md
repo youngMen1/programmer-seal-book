@@ -263,3 +263,36 @@ c58cb0c65c37f4c1bf3aceba1c00d71f.png
 * 对于极小概率的误判请求，才会最终让非法 Key 的请求走到缓存或数据库。
 
 要用上布隆过滤器，我们可以使用 Google 的 Guava 工具包提供的 BloomFilter 类改造一下程序：启动时，初始化一个具有所有有效用户 ID 的、10000 个元素的 BloomFilter，在从缓存查询数据之前调用其 mightContain 方法，来检测用户 ID 是否可能存在；如果布隆过滤器说值不存在，那么一定是不存在的，直接返回：
+
+
+
+```
+
+private BloomFilter<Integer> bloomFilter;
+
+@PostConstruct
+public void init() {
+    //创建布隆过滤器，元素数量10000，期望误判率1%
+    bloomFilter = BloomFilter.create(Funnels.integerFunnel(), 10000, 0.01);
+    //填充布隆过滤器
+    IntStream.rangeClosed(1, 10000).forEach(bloomFilter::put);
+}
+
+@GetMapping("right2")
+public String right2(@RequestParam("id") int id) {
+    String data = "";
+    //通过布隆过滤器先判断
+    if (bloomFilter.mightContain(id)) {
+        String key = "user" + id;
+        //走缓存查询
+        data = stringRedisTemplate.opsForValue().get(key);
+        if (StringUtils.isEmpty(data)) {
+            //走数据库查询
+            data = getCityFromDb(id);
+            stringRedisTemplate.opsForValue().set(key, data, 30, TimeUnit.SECONDS);
+        }
+    }
+    return data;
+}
+```
+
