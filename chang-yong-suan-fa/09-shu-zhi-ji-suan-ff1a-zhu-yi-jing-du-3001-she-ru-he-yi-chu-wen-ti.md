@@ -289,4 +289,13 @@ System.out.println(hashSet2.contains(new BigDecimal("1.000").stripTrailingZeros(
 数值计算还有一个要小心的点是溢出，不管是 int 还是 long，所有的基本数值类型都有超出表达范围的可能性。比如，对 Long 的最大值进行 +1 操作：
 
 
+```
+
+long l = Long.MAX_VALUE;
+System.out.println(l + 1);
+System.out.println(l + 1 == Long.MIN_VALUE);
+```
+
+
+
 
