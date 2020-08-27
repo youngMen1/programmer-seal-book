@@ -251,4 +251,4 @@ public class APIException extends RuntimeException {
 }
 ```
 
-
+然后，定义一个 @RestControllerAdvice 来完成自动包装响应体的工作：
