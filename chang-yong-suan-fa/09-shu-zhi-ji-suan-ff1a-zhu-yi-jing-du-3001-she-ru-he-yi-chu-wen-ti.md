@@ -217,5 +217,5 @@ System.out.println(num3);
 
 System.out.println(new BigDecimal("1.0").equals(new BigDecimal("1")))
 ```
-
+你可能已经猜到我要说什么了，结果当然是 false。BigDecimal 的 equals 方法的注释中说明了原因，equals 比较的是 BigDecimal 的 value 和 scale，1.0 的 scale 是 1，1 的 scale 是 0，所以结果一定是 false：
 
