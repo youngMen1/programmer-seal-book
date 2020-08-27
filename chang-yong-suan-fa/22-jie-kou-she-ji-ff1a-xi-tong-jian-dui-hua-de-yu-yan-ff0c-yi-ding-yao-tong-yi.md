@@ -491,3 +491,22 @@ public UploadResponse upload(UploadRequest request) {
 }
 ```
 
+上传接口的请求和响应比较简单，传入二进制文件，传出原文件和缩略图下载地址：
+
+
+
+```
+
+@Data
+public class UploadRequest {
+    private byte[] file;
+}
+
+@Data
+public class UploadResponse {
+    private String downloadUrl;
+    private String thumbnailDownloadUrl;
+}
+```
+
+
