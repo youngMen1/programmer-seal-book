@@ -143,3 +143,13 @@ f36d21beb95ce0e7ea96dfde96f21847.png
 
 412c64e66a574d8252ac8dd59b4cfe2c.png
 
+但在服务端可以看到如下错误信息：
+
+
+
+```
+
+[14:13:13.951] [http-nio-45678-exec-8] [WARN ] [.c.a.d.APIThreeLevelStatusController:36  ] - 用户 1 调用订单服务失败，原因是 Risk order detected
+```
+
+
