@@ -318,6 +318,33 @@ try {
     ex.printStackTrace();
 }
 ```
+执行后，可以得到 ArithmeticException，这是一个 RuntimeException：
+
+
+
+```
+
+java.lang.ArithmeticException: long overflow
+  at java.lang.Math.addExact(Math.java:809)
+  at org.geekbang.time.commonmistakes.numeralcalculations.demo3.CommonMistakesApplication.right2(CommonMistakesApplication.java:25)
+  at org.geekbang.time.commonmistakes.numeralcalculations.demo3.CommonMistakesApplication.main(CommonMistakesApplication.java:13)
+```
+
+
+方法二是，使用大数类 BigInteger。BigDecimal 是处理浮点数的专家，而 BigInteger 则是对大数进行科学计算的专家。如下代码，使用 BigInteger 对 Long 最大值进行 +1 操作；如果希望把计算结果转换一个 Long 变量的话，可以使用 BigInteger 的 longValueExact 方法，在转换出现溢出时，同样会抛出 ArithmeticException：
+
+
+```
+
+BigInteger i = new BigInteger(String.valueOf(Long.MAX_VALUE));
+System.out.println(i.add(BigInteger.ONE).toString());
+
+try {
+    long l = i.add(BigInteger.ONE).longValueExact();
+} catch (Exception ex) {
+    ex.printStackTrace();
+}
+```
 
 
 
