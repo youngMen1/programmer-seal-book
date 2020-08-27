@@ -152,3 +152,29 @@ System.out.println(String.format("%.1f", num2));
 
 **我们看一下 Formatter 类的相关源码，可以发现使用的舍入模式是 HALF_UP（代码第 11 行）：**
 
+
+
+```
+
+else if (c == Conversion.DECIMAL_FLOAT) {
+    // Create a new BigDecimal with the desired precision.
+    int prec = (precision == -1 ? 6 : precision);
+    int scale = value.scale();
+
+    if (scale > prec) {
+        // more "scale" digits than the requested "precision"
+        int compPrec = value.precision();
+        if (compPrec <= scale) {
+            // case of 0.xxxxxx
+            value = value.setScale(prec, RoundingMode.HALF_UP);
+        } else {
+            compPrec -= (scale - prec);
+            value = new BigDecimal(value.unscaledValue(),
+                                   scale,
+                                   new MathContext(compPrec));
+        }
+    }
+```
+
+
+
