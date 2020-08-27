@@ -9,3 +9,7 @@
 最后，需要考虑框架是否会像浏览器那样限制并发连接数，以免在服务并发很大的情况下，HTTP 调用的并发数限制成为瓶颈。
 
 Spring Cloud 是 Java 微服务架构的代表性框架。如果使用 Spring Cloud 进行微服务开发，就会使用 Feign 进行声明式的服务调用。如果不使用 Spring Cloud，而直接使用 Spring Boot 进行微服务开发的话，可能会直接使用 Java 中最常用的 HTTP 客户端 Apache HttpClient 进行服务调用。
+
+接下来，我们就看看使用 Feign 和 Apache HttpClient 进行 HTTP 接口调用时，可能会遇到的超时、重试和并发方面的坑。
+
+## 配置连接超时和读取超时参数的学问
