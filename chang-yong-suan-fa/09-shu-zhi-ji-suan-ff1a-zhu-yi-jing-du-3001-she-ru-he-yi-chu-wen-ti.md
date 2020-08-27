@@ -98,3 +98,30 @@ System.out.println(new BigDecimal("123.3").divide(new BigDecimal("100")));
 System.out.println(new BigDecimal("4.015").multiply(new BigDecimal(Double.toString(100))));
 ```
 
+输出为 401.5000。与上面字符串初始化 100 和 4.015 相乘得到的结果 401.500 相比，这里为什么多了 1 个 0 呢？原因就是，BigDecimal 有 scale 和 precision 的概念，scale 表示小数点右边的位数，而 precision 表示精度，也就是有效数字的长度。
+
+调试一下可以发现，new BigDecimal(Double.toString(100)) 得到的 BigDecimal 的 scale=1、precision=4；而 new BigDecimal(“100”) 得到的 BigDecimal 的 scale=0、precision=3。对于 BigDecimal 乘法操作，返回值的 scale 是两个数的 scale 相加。所以，初始化 100 的两种不同方式，导致最后结果的 scale 分别是 4 和 3：
+
+
+```
+
+private static void testScale() {
+    BigDecimal bigDecimal1 = new BigDecimal("100");
+    BigDecimal bigDecimal2 = new BigDecimal(String.valueOf(100d));
+    BigDecimal bigDecimal3 = new BigDecimal(String.valueOf(100));
+    BigDecimal bigDecimal4 = BigDecimal.valueOf(100d);
+    BigDecimal bigDecimal5 = new BigDecimal(Double.toString(100));
+
+    print(bigDecimal1); //scale 0 precision 3 result 401.500
+    print(bigDecimal2); //scale 1 precision 4 result 401.5000
+    print(bigDecimal3); //scale 0 precision 3 result 401.500
+    print(bigDecimal4); //scale 1 precision 4 result 401.5000
+    print(bigDecimal5); //scale 1 precision 4 result 401.5000
+}
+
+private static void print(BigDecimal bigDecimal) {
+    log.info("scale {} precision {} result {}", bigDecimal.scale(), bigDecimal.precision(), bigDecimal.multiply(new BigDecimal("4.015")));
+}
+```
+
+
