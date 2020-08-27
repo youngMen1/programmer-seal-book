@@ -128,3 +128,38 @@ public void rightInit1() {
 修改后，缓存过期时的回源不会集中在同一秒，数据库的 QPS 从 700 多降到了最高 100 左右：
 
 方案二，让缓存不主动过期。初始化缓存数据的时候设置缓存永不过期，然后启动一个后台线程 30 秒一次定时把所有数据更新到缓存，而且通过适当的休眠，控制从数据库更新数据的频率，降低数据库压力：
+
+
+
+```
+
+@PostConstruct
+public void rightInit2() throws InterruptedException {
+    CountDownLatch countDownLatch = new CountDownLatch(1);
+    //每隔30秒全量更新一次缓存 
+    Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+        IntStream.rangeClosed(1, 1000).forEach(i -> {
+            String data = getCityFromDb(i);
+            //模拟更新缓存需要一定的时间
+            try {
+                TimeUnit.MILLISECONDS.sleep(20);
+            } catch (InterruptedException e) { }
+            if (!StringUtils.isEmpty(data)) {
+                //缓存永不过期，被动更新
+                stringRedisTemplate.opsForValue().set("city" + i, data);
+            }
+        });
+        log.info("Cache update finished");
+        //启动程序的时候需要等待首次更新缓存完成
+        countDownLatch.countDown();
+    }, 0, 30, TimeUnit.SECONDS);
+
+    Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+        log.info("DB QPS : {}", atomicInteger.getAndSet(0));
+    }, 0, 1, TimeUnit.SECONDS);
+
+    countDownLatch.await();
+}
+```
+
+
