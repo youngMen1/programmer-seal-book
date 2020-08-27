@@ -124,4 +124,7 @@ private static void print(BigDecimal bigDecimal) {
 }
 ```
 
+BigDecimal 的 toString 方法得到的字符串和 scale 相关，又会引出了另一个问题：对于浮点数的字符串形式输出和格式化，我们应该考虑显式进行，通过格式化表达式或格式化工具来明确小数位数和舍入方式。接下来，我们就聊聊浮点数舍入和格式化。
+
+## 考虑浮点数舍入和格式化的方式
 
