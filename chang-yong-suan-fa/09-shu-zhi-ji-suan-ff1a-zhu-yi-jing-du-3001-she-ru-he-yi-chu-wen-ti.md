@@ -176,5 +176,5 @@ else if (c == Conversion.DECIMAL_FLOAT) {
     }
 ```
 
-
+如果我们希望使用其他舍入方式来格式化字符串的话，可以设置 DecimalFormat，如下代码所示：
 
