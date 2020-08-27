@@ -200,4 +200,29 @@ public String client(@RequestParam(value = "error", defaultValue = "0") int erro
     return "";
 }
 ```
+
 **相比原来混乱的接口定义和处理逻辑，改造后的代码，明确了接口每一个字段的含义，以及对于各种情况服务端的输出和客户端的处理步骤，对齐了客户端和服务端的处理逻辑。**那么现在，你能回答前面那 4 个让人疑惑的问题了吗？
+
+
+最后分享一个小技巧。为了简化服务端代码，我们可以把包装 API 响应体 APIResponse 的工作交由框架自动完成，这样直接返回 DTO OrderInfo 即可。对于业务逻辑错误，可以抛出一个自定义异常：
+
+
+
+```
+
+@GetMapping("server")
+public OrderInfo server(@RequestParam("userId") Long userId) {
+    if (userId == null) {
+        throw new APIException(3001, "Illegal userId");
+    }
+
+    if (userId == 1) {
+        ...
+        //直接抛出异常
+        throw new APIException(3002, "Internal Error, order is cancelled");
+    }
+    //直接返回DTO
+    return new OrderInfo("Created", 2L);
+}
+```
+
