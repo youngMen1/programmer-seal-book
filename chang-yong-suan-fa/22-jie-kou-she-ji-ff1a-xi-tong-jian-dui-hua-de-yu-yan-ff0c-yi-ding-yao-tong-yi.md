@@ -348,4 +348,30 @@ public int right3(@RequestHeader("X-API-VERSION") int version) {
 }
 ```
 
+这样，客户端就可以在配置中处理相关版本控制的参数，有可能实现版本的动态切换。
+
+这三种方式中，URL Path 的方式最直观也最不容易出错；QueryString 不易携带，不太推荐作为公开 API 的版本策略；HTTP 头的方式比较没有侵入性，如果仅仅是部分接口需要进行版本控制，可以考虑这种方式。
+
+**第二，版本实现方式要统一。**
+
+之前，我就遇到过一个 O2O 项目，需要针对商品、商店和用户实现 REST 接口。虽然大家约定通过 URL Path 方式实现 API 版本控制，但实现方式不统一，有的是 /api/item/v1，有的是 /api/v1/shop，还有的是 /v1/api/merchant：
+
+
+```
+
+@GetMapping("/api/item/v1")
+public void wrong1(){
+}
+
+
+@GetMapping("/api/v1/shop")
+public void wrong2(){
+}
+
+
+@GetMapping("/v1/api/merchant")
+public void wrong3(){
+}
+```
+
 
