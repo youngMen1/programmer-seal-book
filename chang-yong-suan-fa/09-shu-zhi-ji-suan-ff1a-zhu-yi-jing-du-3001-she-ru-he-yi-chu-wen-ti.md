@@ -306,4 +306,6 @@ System.out.println(l + 1 == Long.MIN_VALUE);
 true
 ```
 
+**显然这是发生了溢出，而且是默默的溢出，并没有任何异常。**这类问题非常容易被忽略，改进方式有下面 2 种。方法一是，考虑使用 Math 类的 addExact、subtractExact 等 xxExact 方法进行数值运算，这些方法可以在数值溢出时主动抛出异常。我们来测试一下，使用 Math.addExact 对 Long 最大值做 +1 操作：
+
 
