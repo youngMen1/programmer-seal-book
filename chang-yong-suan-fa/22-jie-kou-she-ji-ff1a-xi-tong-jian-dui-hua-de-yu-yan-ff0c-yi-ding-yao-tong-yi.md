@@ -323,4 +323,29 @@ public String client(@RequestParam(value = "error", defaultValue = "0") int erro
 
 接口不可能一成不变，需要根据业务需求不断增加内部逻辑。如果做大的功能调整或重构，涉及参数定义的变化或是参数废弃，导致接口无法向前兼容，这时接口就需要有版本的概念。在考虑接口版本策略设计时，我们需要注意的是，最好一开始就明确版本策略，并考虑在整个服务端统一版本策略。
 
+## 第一，版本策略最好一开始就考虑。
+
+既然接口总是要变迁的，那么最好一开始就确定版本策略。比如，确定是通过 URL Path 实现，是通过 QueryString 实现，还是通过 HTTP 头实现。这三种实现方式的代码如下：
+
+
+
+```
+
+//通过URL Path实现版本控制
+@GetMapping("/v1/api/user")
+public int right1(){
+    return 1;
+}
+//通过QueryString中的version参数实现版本控制
+@GetMapping(value = "/api/user", params = "version=2")
+public int right2(@RequestParam("version") int version) {
+    return 2;
+}
+//通过请求头中的X-API-VERSION参数实现版本控制
+@GetMapping(value = "/api/user", headers = "X-API-VERSION=3")
+public int right3(@RequestHeader("X-API-VERSION") int version) {
+    return 3;
+}
+```
+
 
