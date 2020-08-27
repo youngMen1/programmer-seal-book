@@ -139,3 +139,7 @@ c1ddea0ebf6d86956d68efb0424a6b36.png
 
 f36d21beb95ce0e7ea96dfde96f21847.png
 
+* error==3 的用例模拟 userId 为 1 的情况，因为用户有风险，收单服务调用订单服务出错。处理方式和之前没有任何区别，因为收单服务会屏蔽订单服务的内部错误。
+
+412c64e66a574d8252ac8dd59b4cfe2c.png
+
