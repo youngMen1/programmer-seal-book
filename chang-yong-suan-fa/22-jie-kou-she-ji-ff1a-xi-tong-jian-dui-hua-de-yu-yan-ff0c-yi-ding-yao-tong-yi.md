@@ -438,4 +438,4 @@ public class CommonMistakesApplication implements WebMvcRegistrations {
     }
 }
 ```
-
+这样，就实现了在 Controller 上或接口方法上通过注解，来实现以统一的 Pattern 进行版本号控制：
