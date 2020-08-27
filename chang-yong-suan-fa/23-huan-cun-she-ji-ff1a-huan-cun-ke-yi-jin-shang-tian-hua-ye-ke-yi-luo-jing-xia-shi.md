@@ -105,3 +105,26 @@ wrk -c10 -t10 -d 100s http://localhost:45678/cacheinvalid/city
 ```
 
 启动程序 30 秒后缓存过期，回源的数据库 QPS 最高达到了 700 多：
+
+
+解决缓存 Key 同时大规模失效需要回源，导致数据库压力激增问题的方式有两种。
+
+方案一，差异化缓存过期时间，不要让大量的 Key 在同一时间过期。比如，在初始化缓存的时候，设置缓存的过期时间是 30 秒 +10 秒以内的随机延迟（扰动值）。这样，这些 Key 不会集中在 30 秒这个时刻过期，而是会分散在 30~40 秒之间过期：
+
+
+```
+
+@PostConstruct
+public void rightInit1() {
+    //这次缓存的过期时间是30秒+10秒内的随机延迟
+    IntStream.rangeClosed(1, 1000).forEach(i -> stringRedisTemplate.opsForValue().set("city" + i, getCityFromDb(i), 30 + ThreadLocalRandom.current().nextInt(10), TimeUnit.SECONDS));
+    log.info("Cache init finished");
+    //同样1秒一次输出数据库QPS：
+   Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+        log.info("DB QPS : {}", atomicInteger.getAndSet(0));
+    }, 0, 1, TimeUnit.SECONDS);
+}
+```
+修改后，缓存过期时的回源不会集中在同一秒，数据库的 QPS 从 700 多降到了最高 100 左右：
+
+方案二，让缓存不主动过期。初始化缓存数据的时候设置缓存永不过期，然后启动一个后台线程 30 秒一次定时把所有数据更新到缓存，而且通过适当的休眠，控制从数据库更新数据的频率，降低数据库压力：
