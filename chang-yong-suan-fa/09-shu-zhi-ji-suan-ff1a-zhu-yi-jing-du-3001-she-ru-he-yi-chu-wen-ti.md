@@ -204,4 +204,18 @@ System.out.println(num3);
 ```
 
 
+这次得到的结果是 3.3 和 3.4，符合预期。
+
+
+## 用 equals 做判等，就一定是对的吗？
+
+现在我们知道了，应该使用 BigDecimal 来进行浮点数的表示、计算、格式化。在上一讲介绍判等问题时，我提到一个原则：包装类的比较要通过 equals 进行，而不能使用 ==。那么，使用 equals 方法对两个 BigDecimal 判等，一定能得到我们想要的结果吗？我们来看下面的例子。使用 equals 方法比较 1.0 和 1 这两个 BigDecimal：
+
+
+
+```
+
+System.out.println(new BigDecimal("1.0").equals(new BigDecimal("1")))
+```
+
 
