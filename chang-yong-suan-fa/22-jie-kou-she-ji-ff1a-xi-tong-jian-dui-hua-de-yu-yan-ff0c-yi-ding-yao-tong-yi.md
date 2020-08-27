@@ -298,3 +298,14 @@ public class APIResponseAdvice implements ResponseBodyAdvice<Object> {
 ```
 在这里，我们实现了一个 @NoAPIResponse 自定义注解。如果某些 @RestController 的接口不希望实现自动包装的话，可以标记这个注解：
 
+
+```
+
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NoAPIResponse {
+}
+```
+
+
+
