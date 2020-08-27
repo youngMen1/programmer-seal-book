@@ -250,5 +250,5 @@ public boolean equals(Object x)
 
 System.out.println(new BigDecimal("1.0").compareTo(new BigDecimal("1"))==0);
 ```
-
+学过上一讲，你可能会意识到 BigDecimal 的 equals 和 hashCode 方法会同时考虑 value 和 scale，如果结合 HashSet 或 HashMap 使用的话就可能会出现麻烦。比如，我们把值为 1.0 的 BigDecimal 加入 HashSet，然后判断其是否存在值为 1 的 BigDecimal，得到的结果是 false：
 
