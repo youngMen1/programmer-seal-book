@@ -221,3 +221,35 @@ dc2ee3259dd21d55a845dc4a8b9146d2.png
 **解决缓存穿透有以下两种方案。**
 
 方案一，对于不存在的数据，同样设置一个特殊的 Value 到缓存中，比如当数据库中查出的用户信息为空的时候，设置 NODATA 这样具有特殊含义的字符串到缓存中。这样下次请求缓存的时候还是可以命中缓存，即直接从缓存返回结果，不查询数据库：
+
+
+
+
+```
+
+@GetMapping("right")
+public String right(@RequestParam("id") int id) {
+    String key = "user" + id;
+    String data = stringRedisTemplate.opsForValue().get(key);
+    if (StringUtils.isEmpty(data)) {
+        data = getCityFromDb(id);
+        //校验从数据库返回的数据是否有效
+        if (!StringUtils.isEmpty(data)) {
+            stringRedisTemplate.opsForValue().set(key, data, 30, TimeUnit.SECONDS);
+        }
+        else {
+            //如果无效，直接在缓存中设置一个NODATA，这样下次查询时即使是无效用户还是可以命中缓存
+            stringRedisTemplate.opsForValue().set(key, "NODATA", 30, TimeUnit.SECONDS);
+        }
+    }
+    return data;
+}
+```
+
+但，这种方式可能会把大量无效的数据加入缓存中，如果担心大量无效数据占满缓存的话还可以考虑方案二，即使用布隆过滤器做前置过滤。
+
+布隆过滤器是一种概率型数据库结构，由一个很长的二进制向量和一系列随机映射函数组成。它的原理是，当一个元素被加入集合时，通过 k 个散列函数将这个元素映射成一个 m 位 bit 数组中的 k 个点，并置为 1。
+
+检索时，我们只要看看这些点是不是都是 1 就（大概）知道集合中有没有它了。如果这些点有任何一个 0，则被检元素一定不在；如果都是 1，则被检元素很可能在。原理如下图所示：
+
+c58cb0c65c37f4c1bf3aceba1c00d71f.png
