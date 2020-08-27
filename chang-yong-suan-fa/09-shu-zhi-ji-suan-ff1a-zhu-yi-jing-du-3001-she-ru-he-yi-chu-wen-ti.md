@@ -150,4 +150,5 @@ System.out.println(String.format("%.1f", num2));
 3.349999904632568359375
 ```
 
+**我们看一下 Formatter 类的相关源码，可以发现使用的舍入模式是 HALF_UP（代码第 11 行）：**
 
