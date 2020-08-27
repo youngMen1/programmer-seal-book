@@ -140,3 +140,4 @@ System.out.println(String.format("%.1f", num1));//四舍五入
 System.out.println(String.format("%.1f", num2));
 ```
 
+得到的结果居然是 3.4 和 3.3。这就是由精度问题和舍入方式共同导致的，double 和 float 的 3.35 其实相当于 3.350xxx 和 3.349xxx：
