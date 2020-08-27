@@ -299,3 +299,11 @@ System.out.println(l + 1 == Long.MIN_VALUE);
 输出结果是一个负数，因为 Long 的最大值 +1 变为了 Long 的最小值：
 
 
+
+```
+
+-9223372036854775808
+true
+```
+
+
