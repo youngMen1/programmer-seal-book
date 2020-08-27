@@ -386,5 +386,5 @@ public @interface APIVersion {
     String[] value();
 }
 ```
-
+然后，定义一个 APIVersionHandlerMapping 类继承 RequestMappingHandlerMapping。RequestMappingHandlerMapping 的作用，是根据类或方法上的 @RequestMapping 来生成 RequestMappingInfo 的实例。我们覆盖 registerHandlerMethod 方法的实现，从 @APIVersion 自定义注解中读取版本信息，拼接上原有的、不带版本号的 URL Pattern，构成新的 RequestMappingInfo，来通过注解的方式为接口增加基于 URL 的版本号：
 
