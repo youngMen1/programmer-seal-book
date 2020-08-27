@@ -252,3 +252,6 @@ public class APIException extends RuntimeException {
 ```
 
 然后，定义一个 @RestControllerAdvice 来完成自动包装响应体的工作：
+
+1.通过实现 ResponseBodyAdvice 接口的 beforeBodyWrite 方法，来处理成功请求的响应体转换。
+2.实现一个 @ExceptionHandler 来处理业务异常时，APIException 到 APIResponse 的转换。
