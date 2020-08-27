@@ -317,6 +317,6 @@ public @interface NoAPIResponse {
 public String client(@RequestParam(value = "error", defaultValue = "0") int error)
 ```
 
-
+这样我们的业务逻辑中就不需要考虑响应体的包装，代码会更简洁。
 
 
