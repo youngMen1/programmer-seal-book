@@ -90,8 +90,12 @@ public class APIResponse<T> {
 
 * success 为 true 的情况下，才需要继续解析响应体中的 data 结构体。data 结构体代表了业务数据，通常会有下面两种情况。
 
+1.通常情况下，success 为 true 时订单状态是 Created，获取 orderId 属性可以拿到订单号。
 
+2.特殊情况下，比如收单服务内部处理不当，或是订单服务出现了额外的状态，虽然 success 为 true，但订单实际状态不是 Created，这时可以给予友好的错误提示。
 
+cd799f2bdb407bcb9ff5ad452376a6ed.jpg
 
+明确了接口的设计逻辑，我们就是可以实现收单服务的服务端和客户端来模拟这些情况了。首先，实现服务端的逻辑：
 
 
