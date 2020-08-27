@@ -130,5 +130,12 @@ public APIResponse<OrderInfo> server(@RequestParam("userId") Long userId) {
 ```
 客户端代码，则可以按照流程图上的逻辑来实现，同样模拟三种出错情况和正常下单的情况：
 
+* error==1 的用例模拟一个不存在的 URL，请求无法到收单服务，会得到 404 的 HTTP 状态码，直接进行友好提示，这是第一层处理。
 
+
+c1ddea0ebf6d86956d68efb0424a6b36.png
+
+* error==2 的用例模拟 userId 参数为空的情况，收单服务会因为缺少 userId 参数提示非法用户。这时，可以把响应体中的 message 展示给用户，这是第二层处理。
+
+f36d21beb95ce0e7ea96dfde96f21847.png
 
