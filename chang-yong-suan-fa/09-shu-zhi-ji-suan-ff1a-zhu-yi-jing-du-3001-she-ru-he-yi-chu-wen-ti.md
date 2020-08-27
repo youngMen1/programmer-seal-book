@@ -178,3 +178,17 @@ else if (c == Conversion.DECIMAL_FLOAT) {
 
 如果我们希望使用其他舍入方式来格式化字符串的话，可以设置 DecimalFormat，如下代码所示：
 
+
+```
+
+double num1 = 3.35;
+float num2 = 3.35f;
+DecimalFormat format = new DecimalFormat("#.##");
+format.setRoundingMode(RoundingMode.DOWN);
+System.out.println(format.format(num1));
+format.setRoundingMode(RoundingMode.DOWN);
+System.out.println(format.format(num2));
+```
+
+
+
