@@ -78,4 +78,23 @@ System.out.println(new BigDecimal("4.015").multiply(new BigDecimal("100")));
 System.out.println(new BigDecimal("123.3").divide(new BigDecimal("100")));
 ```
 
+改进后，就能得到我们想要的输出了：
+
+
+```
+
+0.3
+0.2
+401.500
+1.233
+```
+
+到这里，你可能会继续问，不能调用 BigDecimal 传入 Double 的构造方法，但手头只有一个 Double，如何转换为精确表达的 BigDecimal 呢？我们试试用 Double.toString 把 double 转换为字符串，看看行不行？
+
+
+
+```
+
+System.out.println(new BigDecimal("4.015").multiply(new BigDecimal(Double.toString(100))));
+```
 
