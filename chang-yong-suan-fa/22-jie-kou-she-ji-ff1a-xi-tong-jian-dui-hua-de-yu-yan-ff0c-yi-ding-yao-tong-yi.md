@@ -423,5 +423,5 @@ public class APIVersionHandlerMapping extends RequestMappingHandlerMapping {
     }
 }
 ```
-
+最后，也是特别容易忽略的一点，要通过实现 WebMvcRegistrations 接口，来生效自定义的 APIVersionHandlerMapping：
 
