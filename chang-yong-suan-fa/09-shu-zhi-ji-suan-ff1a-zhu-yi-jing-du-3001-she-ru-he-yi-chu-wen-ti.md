@@ -66,4 +66,16 @@ System.out.println(new BigDecimal(123.3).divide(new BigDecimal(100)));
 1.232999999999999971578290569595992565155029296875
 ```
 
+可以看到，运算结果还是不精确，只不过是精度高了而已。这里给出浮点数运算避坑第一原则：**使用 BigDecimal 表示和计算浮点数，且务必使用字符串的构造方法来初始化 BigDecimal：**
+
+
+
+```
+
+System.out.println(new BigDecimal("0.1").add(new BigDecimal("0.2")));
+System.out.println(new BigDecimal("1.0").subtract(new BigDecimal("0.8")));
+System.out.println(new BigDecimal("4.015").multiply(new BigDecimal("100")));
+System.out.println(new BigDecimal("123.3").divide(new BigDecimal("100")));
+```
+
 
