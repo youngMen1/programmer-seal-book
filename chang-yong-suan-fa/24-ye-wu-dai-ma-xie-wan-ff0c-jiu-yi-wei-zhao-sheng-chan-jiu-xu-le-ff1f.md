@@ -599,3 +599,102 @@ c49bfce8682d382a04bd9dd8182534bc.jpg
 
 最后希望说的是，除了手动添加业务监控指标外，Micrometer 框架还帮我们自动做了很多有关 JVM 内部各种数据的指标。进入 InfluxDB 命令行客户端，你可以看到下面的这些表（指标），其中前 8 个是我们自己建的业务指标，后面都是框架帮我们建的 JVM、各种组件状态的指标：
 
+
+
+```
+
+> USE mydb
+Using database mydb
+> SHOW MEASUREMENTS
+name: measurements
+name
+----
+createOrder_failed
+createOrder_received
+createOrder_success
+createOrder_totalSuccess
+deliverOrder_failed
+deliverOrder_received
+deliverOrder_success
+deliverOrder_totalSuccess
+hikaricp_connections
+hikaricp_connections_acquire
+hikaricp_connections_active
+hikaricp_connections_creation
+hikaricp_connections_idle
+hikaricp_connections_max
+hikaricp_connections_min
+hikaricp_connections_pending
+hikaricp_connections_timeout
+hikaricp_connections_usage
+http_server_requests
+jdbc_connections_max
+jdbc_connections_min
+jvm_buffer_count
+jvm_buffer_memory_used
+jvm_buffer_total_capacity
+jvm_classes_loaded
+jvm_classes_unloaded
+jvm_gc_live_data_size
+jvm_gc_max_data_size
+jvm_gc_memory_allocated
+jvm_gc_memory_promoted
+jvm_gc_pause
+jvm_memory_committed
+jvm_memory_max
+jvm_memory_used
+jvm_threads_daemon
+jvm_threads_live
+jvm_threads_peak
+jvm_threads_states
+logback_events
+process_cpu_usage
+process_files_max
+process_files_open
+process_start_time
+process_uptime
+rabbitmq_acknowledged
+rabbitmq_acknowledged_published
+rabbitmq_channels
+rabbitmq_connections
+rabbitmq_consumed
+rabbitmq_failed_to_publish
+rabbitmq_not_acknowledged_published
+rabbitmq_published
+rabbitmq_rejected
+rabbitmq_unrouted_published
+spring_rabbitmq_listener
+system_cpu_count
+system_cpu_usage
+system_load_average_1m
+tomcat_sessions_active_current
+tomcat_sessions_active_max
+tomcat_sessions_alive_max
+tomcat_sessions_created
+tomcat_sessions_expired
+tomcat_sessions_rejected
+```
+我们可以按照自己的需求，选取其中的一些指标，在 Grafana 中配置应用监控面板：
+1378d9c6a66ea733cf08200d7f4b65e9.png
+看到这里，通过监控图表来定位问题，是不是比日志方便了很多呢？
+
+## 重点回顾
+
+今天，我和你介绍了如何使用 Spring Boot Actuaor 实现生产就绪的几个关键点，包括健康检测、暴露应用信息和指标监控。
+
+所谓磨刀不误砍柴工，健康检测可以帮我们实现负载均衡的联动；应用信息以及 Actuaor 提供的各种端点，可以帮我们查看应用内部情况，甚至对应用的一些参数进行调整；而指标监控，则有助于我们整体观察应用运行情况，帮助我们快速发现和定位问题。
+
+其实，完整的应用监控体系一般由三个方面构成，包括日志 Logging、指标 Metrics 和追踪 Tracing。其中，日志和指标我相信你应该已经比较清楚了。
+
+追踪一般不涉及开发工作就没有展开阐述，我和你简单介绍一下。追踪也叫做全链路追踪，比较有代表性的开源系统是SkyWalking和Pinpoint。一般而言，接入此类系统无需额外开发，使用其提供的 javaagent 来启动 Java 程序，就可以通过动态修改字节码实现各种组件的改写，以加入追踪代码（类似 AOP）。
+
+全链路追踪的原理是：
+1.请求进入第一个组件时，先生成一个 TraceID，作为整个调用链（Trace）的唯一标识；
+2.对于每次操作，都记录耗时和相关信息形成一个 Span 挂载到调用链上，Span 和 Span 之间同样可以形成树状关联，出现远程调用、跨系统调用的时候，把 TraceID 进行透传（比如，HTTP 调用通过请求透传，MQ 消息则通过消息透传）；
+3.把这些数据汇总提交到数据库中，通过一个 UI 界面查询整个树状调用链。
+
+同时，我们一般会把 TraceID 记录到日志中，方便实现日志和追踪的关联。
+
+我用一张图对比了日志、指标和追踪的区别和特点：
+
+85cabd7ecb4c6a669ff2e8930a369c4c.jpg
