@@ -426,6 +426,9 @@ https://time.geekbang.org/column/article/213295?utm_campaign=guanwang&utm_source
 ```
 
 
+我们知道，切面本身是一个 Bean，Spring 对不同切面增强的执行顺序是由 Bean 优先级决定的，具体规则是：
 
-
+* 入操作（Around（连接点执行前）、Before），切面优先级越高，越先执行。一个切面的入操作执行完，才轮到下一切面，所有切面入操作执行完，才开始执行连接点（方法）。
+* 出操作（Around（连接点执行后）、After、AfterReturning、AfterThrowing），切面优先级越低，越先执行。一个切面的出操作执行完，才轮到下一切面，直到返回到调用点。
+* 同一切面的 Around 比 After、Before 先执行。
 
