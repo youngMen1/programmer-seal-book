@@ -313,3 +313,5 @@ class Child2 extends Parent {
 
 b5e30fb0ade19d71cd7fad1730e85808.png
 
+知道这个问题之后，修改方式就明朗了，可以使用 method 的 isBridge 方法，来判断方法是不是桥接方法：
+
