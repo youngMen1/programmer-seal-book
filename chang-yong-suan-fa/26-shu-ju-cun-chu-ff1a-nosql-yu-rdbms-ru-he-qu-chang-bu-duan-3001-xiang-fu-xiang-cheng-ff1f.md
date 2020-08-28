@@ -91,8 +91,33 @@ public class CommonMistakesApplication {
 [14:22:50.030] [main] [INFO ] [o.g.t.c.n.r.CommonMistakesApplication:74  ] - init mysql finished with count 100000
 ```
 
+然后，比较一下从 MySQL 和 Redis 随机读取单条数据的性能。“公平”起见，像 Redis 那样，我们使用 MySQL 时也根据 Key 来查 Value，也就是根据 name 字段来查 data 字段，并且我们给 name 字段做了索引：
 
 
 
+```
+
+@Autowired
+private JdbcTemplate jdbcTemplate;
+@Autowired
+private StringRedisTemplate stringRedisTemplate;
+
+@GetMapping("redis")
+public void redis() {
+    //使用随机的Key来查询Value，结果应该等于PAYLOAD
+    Assert.assertTrue(stringRedisTemplate.opsForValue().get("item" + (ThreadLocalRandom.current().nextInt(CommonMistakesApplication.ROWS) + 1)).equals(CommonMistakesApplication.PAYLOAD));
+}
+
+@GetMapping("mysql")
+public void mysql() {
+    //根据随机name来查data，name字段有索引，结果应该等于PAYLOAD
+    Assert.assertTrue(jdbcTemplate.queryForObject("SELECT data FROM `r` WHERE name=?", new Object[]{("item" + (ThreadLocalRandom.current().nextInt(CommonMistakesApplication.ROWS) + 1))}, String.class)
+            .equals(CommonMistakesApplication.PAYLOAD));
+}
+```
+
+在我的电脑上，使用 wrk 加 10 个线程 50 个并发连接做压测。可以看到，MySQL 90% 的请求需要 61ms，QPS 为 1460；而 Redis 90% 的请求在 5ms 左右，QPS 达到了 14008，几乎是 MySQL 的十倍：
+
+2d289cc94097c2e62aa97a6602d0554e.png
 
 
