@@ -705,3 +705,7 @@ tomcat_sessions_rejected
 
 ## 思考与讨论
 
+1.Spring Boot Actuator 提供了大量内置端点，你觉得端点和自定义一个 @RestController 有什么区别呢？你能否根据官方文档，开发一个自定义端点呢？
+
+2.在介绍指标 Metrics 时我们看到，InfluxDB 中保存了由 Micrometer 框架自动帮我们收集的一些应用指标。你能否参考源码中两个 Grafana 配置的 JSON 文件，把这些指标在 Grafana 中配置出一个完整的应用监控面板呢？
+
