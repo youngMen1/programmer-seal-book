@@ -58,4 +58,6 @@ application.age(36);
 application.age(Integer.valueOf("36"));
 ```
 
+**但使用反射时的误区是，认为反射调用方法还是根据入参确定方法重载。**比如，使用 getDeclaredMethod 来获取 age 方法，然后传入 Integer.valueOf(“36”)：
+
 
