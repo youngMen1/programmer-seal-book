@@ -665,4 +665,24 @@ public ConfigurableApplicationContext run(String... args) {
 }
 ```
 
+看到这里你是否彻底理清楚 Spring 劫持 PropertySourcesPropertyResolver 的实现方式，以及配置源有优先级的原因了呢？如果你想知道 Spring 各种预定义的配置源的优先级，可以参考官方文档。
+
+
+```
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
+```
+# 重点回顾
+
+
+今天，我用两个业务开发中的实际案例，带你进一步学习了 Spring 的 AOP 和配置优先级这两大知识点。现在，你应该也感受到 Spring 实现的复杂度了。
+
+
+对于 AOP 切 Feign 的案例，我们在实现功能时走了一些弯路。Spring Cloud 会使用 Spring Boot 的特性，根据当前引入包的情况做各种自动装配。如果我们要扩展 Spring 的组件，那么只有清晰了解 Spring 自动装配的运作方式，才能鉴别运行时对象在 Spring 容器中的情况，不能想当然认为代码中能看到的所有 Spring 的类都是 Bean。
+
+对于配置优先级的案例，分析配置源优先级时，如果我们以为看到 PropertySourcesPropertyResolver 就看到了真相，后续进行扩展开发时就可能会踩坑。我们一定要注意，分析 Spring 源码时，你看到的表象不一定是实际运行时的情况，还需要借助日志或调试工具来理清整个过程。如果没有调试工具，你可以借助第 11 讲用到的 Arthas，来分析代码调用路径。
+
+## 思考与讨论
+1.除了我们这两讲用到 execution、within、@within、@annotation 四个指示器外，Spring AOP 还支持 this、target、args、@target、@args。你能说说后面五种指示器的作用吗？
+
+2.Spring 的 Environment 中的 PropertySources 属性可以包含多个 PropertySource，越往前优先级越高。那，我们能否利用这个特点实现配置文件中属性值的自动赋值呢？比如，我们可以定义 %%MYSQL.URL%%、%%MYSQL.USERNAME%% 和 %%MYSQL.PASSWORD%%，分别代表数据库连接字符串、用户名和密码。在配置数据源时，我们只要设置其值为占位符，框架就可以自动根据当前应用程序名 application.name，统一把占位符替换为真实的数据库信息。这样，生产的数据库信息就不需要放在配置文件中了，会更安全。
 
