@@ -215,3 +215,32 @@ value: test updateCount: 1
 其实这治标不治本，其他人使用 Child1 时还是会发现有两个 setValue 方法，非常容易让人困惑。
 
 幸好，架构师在修复上线前发现了这个问题，让开发同学重新实现了 Child2，继承 Parent 的时候提供了 String 作为泛型 T 类型，并使用 @Override 关键字注释了 setValue 方法，实现了真正有效的方法重写：
+
+
+```
+
+class Child2 extends Parent<String> {
+    @Override
+    public void setValue(String value) {
+        System.out.println("Child2.setValue called");
+        super.setValue(value);
+    }
+}
+```
+
+但很可惜，修复代码上线后，还是出现了日志重复记录：
+
+
+```
+
+Child2.setValue called
+Parent.setValue called
+Child2.setValue called
+Parent.setValue called
+value: test updateCount: 2
+```
+可以看到，这次是 Child2 类的 setValue 方法被调用了两次。开发同学惊讶地说，肯定是反射出 Bug 了，通过 getDeclaredMethods 查找到的方法一定是来自 Child2 类本身；而且，怎么看 Child2 类中也只有一个 setValue 方法，为什么还会重复呢？
+
+调试一下可以发现，Child2 类其实有 2 个 setValue 方法，入参分别是 String 和 Object。
+
+81116d6f11440f92757e4fe775df71b8.png
