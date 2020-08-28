@@ -317,3 +317,15 @@ spring.jmx.enabled=true
 可以通过 jconsole 工具，在 org.springframework.boot.Endpoint 中找到 Info 这个 MBean，然后执行 info 操作可以看到，我们刚才自定义的 InfoContributor 输出的有关两个线程池的信息：
 f7c4dd062934be5ca9a5628e7c5d0714.png
 
+这里，我再额外补充一点。对于查看和操作 MBean，除了使用 jconsole 之外，你可以使用 jolokia 把 JMX 转换为 HTTP 协议，引入依赖：
+
+
+```
+
+<dependency>
+    <groupId>org.jolokia</groupId>
+    <artifactId>jolokia-core</artifactId>
+</dependency>
+```
+然后，你就可以通过 jolokia，来执行 org.springframework.boot:type=Endpoint,name=Info 这个 MBean 的 info 操作：
+f7a128cb3efc652b63b773fdceb65f7f.png
