@@ -253,7 +253,7 @@ public class ThreadPoolsHealthContributor implements CompositeHealthContributor 
     }
 }
 ```
-
+程序启动后可以看到，health 接口展现了线程池和外部服务 userService 的健康状态，以及一些具体信息：
 
 
 
