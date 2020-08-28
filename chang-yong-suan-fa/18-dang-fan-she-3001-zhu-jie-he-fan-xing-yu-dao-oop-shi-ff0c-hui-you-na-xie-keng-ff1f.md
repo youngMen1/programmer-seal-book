@@ -187,3 +187,31 @@ value: test updateCount: 2
 但是，开发同学认为问题出在反射 API 使用不当，却没意识到重写失败。他查文档后发现，getMethods 方法能获得当前类和父类的所有 public 方法，而 getDeclaredMethods 只能获得当前类所有的 public、protected、package 和 private 方法。
 
 于是，他就用 getDeclaredMethods 替代了 getMethods：
+
+
+
+```
+
+Arrays.stream(child1.getClass().getDeclaredMethods())
+    .filter(method -> method.getName().equals("setValue"))
+    .forEach(method -> {
+        try {
+            method.invoke(child1, "test");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    });
+```
+这样虽然能解决重复记录日志的问题，但没有解决子类方法重写父类方法失败的问题，得到如下输出：
+
+
+```
+
+Child1.setValue called
+Parent.setValue called
+value: test updateCount: 1
+```
+
+其实这治标不治本，其他人使用 Child1 时还是会发现有两个 setValue 方法，非常容易让人困惑。
+
+幸好，架构师在修复上线前发现了这个问题，让开发同学重新实现了 Child2，继承 Parent 的时候提供了 String 作为泛型 T 类型，并使用 @Override 关键字注释了 setValue 方法，实现了真正有效的方法重写：
