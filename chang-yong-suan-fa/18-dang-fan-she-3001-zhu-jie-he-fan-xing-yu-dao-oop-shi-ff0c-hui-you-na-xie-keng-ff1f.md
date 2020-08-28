@@ -246,3 +246,5 @@ value: test updateCount: 2
 81116d6f11440f92757e4fe775df71b8.png
 
 如果不通过反射来调用方法，我们确实很难发现这个问题。**其实，这就是泛型类型擦除导致的问题。**我们来分析一下。
+
+我们知道，Java 的泛型类型在编译后擦除为 Object。虽然子类指定了父类泛型 T 类型是 String，但编译后 T 会被擦除成为 Object，所以父类 setValue 方法的入参是 Object，value 也是 Object。如果子类 Child2 的 setValue 方法要覆盖父类的 setValue 方法，那入参也必须是 Object。所以，编译器会为我们生成一个所谓的 bridge 桥接方法，你可以使用 javap 命令来反编译编译后的 Child2 类的 class 字节码：
