@@ -18,3 +18,5 @@ Generics:`https://docs.oracle.com/javase/8/docs/technotes/guides/language/generi
 
 Lesson: Generics：`https://docs.oracle.com/javase/tutorial/java/generics/index.html`
 
+接下来，我们就通过几个案例，看看这三大特性结合 OOP 使用时会有哪些坑吧。
+
