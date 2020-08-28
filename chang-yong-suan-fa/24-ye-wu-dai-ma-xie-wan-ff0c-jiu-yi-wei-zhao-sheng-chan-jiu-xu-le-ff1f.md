@@ -259,7 +259,7 @@ d2721794203dcabf411e15143e342cdc.png
 
 我们看到一个 demoThreadPool 为 DOWN 导致父 threadPools 为 DOWN，进一步导致整个程序的 status 为 DOWN：
 
-
+bc947b0c6d4a2a71987f16f16120eb54.png
 
 
 
