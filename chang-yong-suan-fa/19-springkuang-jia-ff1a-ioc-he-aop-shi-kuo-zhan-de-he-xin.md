@@ -418,6 +418,12 @@ java.lang.RuntimeException: invalid username!
 [17:01:17.466] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo2.MetricsAspect      :83  ] - 【成功打点】调用 【class org.geekbang.time.commonmistakes.spring.demo2.MetricsController】【public int org.geekbang.time.commonmistakes.spring.demo2.MetricsController.transaction(java.lang.String)】【http://localhost:45678/metricstest/transaction】 成功，耗时：915 ms
 [17:01:17.467] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo2.MetricsAspect      :98  ] - 【出参日志】调用 【class org.geekbang.time.commonmistakes.spring.demo2.MetricsController】【public int org.geekbang.time.commonmistakes.spring.demo2.MetricsController.transaction(java.lang.String)】【http://localhost:45678/metricstest/transaction】 的返回是：【1】
 ```
+在介绍数据库事务时，我们分析了 Spring 通过 TransactionAspectSupport 类实现事务。在 invokeWithinTransaction 方法中设置断点可以发现，在执行 Service 的 createUser 方法时，TransactionAspectSupport 并没有捕获到异常，所以自然无法回滚事务。原因就是，异常被 MetricsAspect 吃掉了。
+
+
+```
+https://time.geekbang.org/column/article/213295?utm_campaign=guanwang&utm_source=baidu-ad&utm_medium=ppzq-pc&utm_content=title&utm_term=baidu-ad-ppzq-title
+```
 
 
 
