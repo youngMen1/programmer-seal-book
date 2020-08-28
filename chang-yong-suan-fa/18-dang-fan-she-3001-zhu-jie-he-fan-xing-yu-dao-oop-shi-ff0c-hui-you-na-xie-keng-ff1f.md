@@ -346,4 +346,6 @@ Parent.setValue called
 value: test updateCount: 1
 ```
 
+最后小结下，使用反射查询类方法清单时，我们要注意两点：
+
 
