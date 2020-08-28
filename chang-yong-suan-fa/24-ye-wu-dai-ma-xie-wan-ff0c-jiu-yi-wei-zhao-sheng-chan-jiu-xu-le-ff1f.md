@@ -54,6 +54,20 @@ management.endpoints.web.base-path=/admin
 现在，你就可以访问 http://localhost:45679/admin ，来查看 Actuator 的所有功能 URL 了：
 420d5b3d9c10934e380e555c2347834b.png
 
+其中，大部分端点提供的是只读信息，比如查询 Spring 的 Bean、ConfigurableEnvironment、定时任务、SpringBoot 自动配置、Spring MVC 映射等；少部分端点还提供了修改功能，比如优雅关闭程序、下载线程 Dump、下载堆 Dump、修改日志级别等。
+
+
+你可以访问这里，查看所有这些端点的功能，详细了解它们提供的信息以及实现的操作。此外，我再分享一个不错的 Spring Boot 管理工具Spring Boot Admin，它把大部分 Actuator 端点提供的功能封装为了 Web UI。
+
+
+```
+https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/actuator-api//html/
+
+https://github.com/codecentric/spring-boot-admin
+```
+
+## 健康检测需要触达关键组件
+
 
 
 
