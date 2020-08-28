@@ -328,17 +328,24 @@ b287b7ad823a39bb604fa69e02c720e6.png
 到这里坑还没完，为了方便用户登录，需要在页面上显示默认的管理员用户名，于是开发同学在配置文件中定义了一个 user.name 属性，并设置为 defaultadminname：
 
 
+
+```
+
 user.name=defaultadminname
+```
+后来发现，程序读取出来的用户名根本就不是配置文件中定义的。这，又是咋回事？
 
 
+带着这个问题，以及之前环境变量覆盖配置文件配置的问题，我们写段代码看看，从 Spring 中到底能读取到几个 management.server.port 和 user.name 配置项。
 
 
+要想查询 Spring 中所有的配置，我们需要以环境 Environment 接口为入口。接下来，我就与你说说 Spring 通过环境 Environment 抽象出的 Property 和 Profile：
 
+* 针对 Property，又抽象出各种 PropertySource 类代表配置源。一个环境下可能有多个配置源，每个配置源中有诸多配置项。在查询配置信息时，需要按照配置源优先级进行查询。
 
+* Profile 定义了场景的概念。通常，我们会定义类似 dev、test、stage 和 prod 等环境作为不同的 Profile，用于按照场景对 Bean 进行逻辑归属。同时，Profile 和配置文件也有关系，每个环境都有独立的配置文件，但我们只会激活某一个环境来生效特定环境的配置文件。
 
-
-
-
+2c68da94d31182cad34c965f878196c0.png
 
 
 
