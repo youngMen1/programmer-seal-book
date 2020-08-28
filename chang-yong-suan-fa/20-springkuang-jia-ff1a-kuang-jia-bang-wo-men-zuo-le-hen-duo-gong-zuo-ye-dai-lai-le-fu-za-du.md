@@ -420,32 +420,134 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
   }
 }
 ```
+可以看到：
 
 
+* MutablePropertySources 类型的字段 propertySources，看起来代表了所有配置源；
+* getProperty 方法，通过 PropertySourcesPropertyResolver 类进行查询配置；
+* 实例化 PropertySourcesPropertyResolver 的时候，传入了当前的 MutablePropertySources。
 
 
+接下来，我们继续分析 MutablePropertySources 和 PropertySourcesPropertyResolver。先看看 MutablePropertySources 的源码（图中蓝色类）：
 
 
+```
+
+public class MutablePropertySources implements PropertySources {
+
+  private final List<PropertySource<?>> propertySourceList = new CopyOnWriteArrayList<>();
+
+  public void addFirst(PropertySource<?> propertySource) {
+    removeIfPresent(propertySource);
+    this.propertySourceList.add(0, propertySource);
+  }
+  public void addLast(PropertySource<?> propertySource) {
+    removeIfPresent(propertySource);
+    this.propertySourceList.add(propertySource);
+  }
+  public void addBefore(String relativePropertySourceName, PropertySource<?> propertySource) {
+    ...
+    int index = assertPresentAndGetIndex(relativePropertySourceName);
+    addAtIndex(index, propertySource);
+  }
+    public void addAfter(String relativePropertySourceName, PropertySource<?> propertySource) {
+       ...
+       int index = assertPresentAndGetIndex(relativePropertySourceName);
+       addAtIndex(index + 1, propertySource);
+    }
+    private void addAtIndex(int index, PropertySource<?> propertySource) {
+       removeIfPresent(propertySource);
+       this.propertySourceList.add(index, propertySource);
+    }
+}
+```
+
+可以发现：
+
+* propertySourceList 字段用来真正保存 PropertySource 的 List，且这个 List 是一个 CopyOnWriteArrayList。
+
+* 类中定义了 addFirst、addLast、addBefore、addAfter 等方法，来精确控制 PropertySource 加入 propertySourceList 的顺序。这也说明了顺序的重要性。
 
 
+继续看下 PropertySourcesPropertyResolver（图中绿色类）的源码，找到真正查询配置的方法 getProperty。
 
 
+这里，我们重点看一下第 9 行代码：遍历的 propertySources 是 PropertySourcesPropertyResolver 构造方法传入的，再结合 AbstractEnvironment 的源码可以发现，这个 propertySources 正是 AbstractEnvironment 中的 MutablePropertySources 对象。遍历时，如果发现配置源中有对应的 Key 值，则使用这个值。因此，MutablePropertySources 中配置源的次序尤为重要。
 
 
+```
+public class PropertySourcesPropertyResolver extends AbstractPropertyResolver {
+  private final PropertySources propertySources;
+  public PropertySourcesPropertyResolver(@Nullable PropertySources propertySources) {
+    this.propertySources = propertySources;
+  }
+  
+  protected <T> T getProperty(String key, Class<T> targetValueType, boolean resolveNestedPlaceholders) {
+    if (this.propertySources != null) {
+      for (PropertySource<?> propertySource : this.propertySources) {
+        if (logger.isTraceEnabled()) {
+          logger.trace("Searching for key '" + key + "' in PropertySource '" +
+              propertySource.getName() + "'");
+        }
+        Object value = propertySource.getProperty(key);
+        if (value != null) {
+          if (resolveNestedPlaceholders && value instanceof String) {
+            value = resolveNestedPlaceholders((String) value);
+          }
+          logKeyFound(key, propertySource, value);
+          return convertValueIfNecessary(value, targetValueType);
+        }
+      }
+    }
+    ...
+  }
+}
+```
+回到之前的问题，在查询所有配置源的时候，我们注意到处在第一位的是 ConfigurationPropertySourcesPropertySource，这是什么呢？
 
 
+其实，它不是一个实际存在的配置源，扮演的是一个代理的角色。但通过调试你会发现，我们获取的值竟然是由它提供并且返回的，且没有循环遍历后面的 PropertySource：
+7380c93e743e3fc41d8cc58b77895bfb.png
+
+继续查看 ConfigurationPropertySourcesPropertySource（图中红色类）的源码可以发现，getProperty 方法其实是通过 findConfigurationProperty 方法查询配置的。如第 25 行代码所示，这其实还是在遍历所有的配置源：
 
 
+```
 
+class ConfigurationPropertySourcesPropertySource extends PropertySource<Iterable<ConfigurationPropertySource>>
+    implements OriginLookup<String> {
 
+  ConfigurationPropertySourcesPropertySource(String name, Iterable<ConfigurationPropertySource> source) {
+    super(name, source);
+  }
 
-
-
-
-
-
-
-
+  @Override
+  public Object getProperty(String name) {
+    ConfigurationProperty configurationProperty = findConfigurationProperty(name);
+    return (configurationProperty != null) ? configurationProperty.getValue() : null;
+  }
+  private ConfigurationProperty findConfigurationProperty(String name) {
+    try {
+      return findConfigurationProperty(ConfigurationPropertyName.of(name, true));
+    }
+    catch (Exception ex) {
+      return null;
+    }
+  }
+  private ConfigurationProperty findConfigurationProperty(ConfigurationPropertyName name) {
+    if (name == null) {
+      return null;
+    }
+    for (ConfigurationPropertySource configurationPropertySource : getSource()) {
+      ConfigurationProperty configurationProperty = configurationPropertySource.getConfigurationProperty(name);
+      if (configurationProperty != null) {
+        return configurationProperty;
+      }
+    }
+    return null;
+  }
+}
+```
 
 
 
