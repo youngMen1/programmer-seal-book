@@ -148,3 +148,5 @@ public @interface Controller {}
 调试一下也可以发现，注入的 Service 都是 Spring 生成的代理类：
 
 a95f7a5f3a576b3b426c7c5625b29230.png
+
+当然，如果不希望走代理的话还有一种方式是，每次直接从 ApplicationContext 中获取 Bean：
