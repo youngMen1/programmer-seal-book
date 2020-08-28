@@ -311,5 +311,7 @@ public class MetricsAspect {
     }
 }
 ```
+接下来，分别定义最简单的 Controller、Service 和 Repository，来测试 MetricsAspect 的功能。
 
+其中，Service 中实现创建用户的时候做了事务处理，当用户名包含 test 字样时会抛出异常，导致事务回滚。同时，我们为 Service 中的 createUser 标记了 @Metrics 注解。这样一来，我们还可以手动为类或方法标记 @Metrics 注解，实现 Controller 之外的其他组件的自动监控。
 
