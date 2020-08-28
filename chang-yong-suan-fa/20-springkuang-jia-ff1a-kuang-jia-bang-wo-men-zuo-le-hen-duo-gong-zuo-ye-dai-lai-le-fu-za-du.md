@@ -169,3 +169,25 @@ protected <T> T getOptional(FeignContext context, Class<T> type) {
 7b712acf6d7062ae82f1fd04b954ff9a.png
 
 进一步查看 HttpClientFeignLoadBalancedConfiguration 的源码可以发现，LoadBalancerFeignClient 这个 Bean 在实例化的时候，new 出来一个 ApacheHttpClient 作为 delegate 放到了 LoadBalancerFeignClient 中：
+
+
+
+```
+
+@Bean
+@ConditionalOnMissingBean(Client.class)
+public Client feignClient(CachingSpringLoadBalancerFactory cachingFactory,
+      SpringClientFactory clientFactory, HttpClient httpClient) {
+   ApacheHttpClient delegate = new ApacheHttpClient(httpClient);
+   return new LoadBalancerFeignClient(delegate, cachingFactory, clientFactory);
+}
+
+public LoadBalancerFeignClient(Client delegate,
+      CachingSpringLoadBalancerFactory lbClientFactory,
+      SpringClientFactory clientFactory) {
+   this.delegate = delegate;
+   this.lbClientFactory = lbClientFactory;
+   this.clientFactory = clientFactory;
+}
+```
+
