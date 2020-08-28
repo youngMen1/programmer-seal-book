@@ -61,3 +61,19 @@ application.age(Integer.valueOf("36"));
 **但使用反射时的误区是，认为反射调用方法还是根据入参确定方法重载。**比如，使用 getDeclaredMethod 来获取 age 方法，然后传入 Integer.valueOf(“36”)：
 
 
+```
+
+getClass().getDeclaredMethod("age", Integer.TYPE).invoke(this, Integer.valueOf("36"));
+```
+
+输出的日志证明，走的是 int 重载方法：
+
+
+
+```
+
+14:23:09.801 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - int age = 36
+```
+
+输出的日志证明，走的是 int 重载方法：
+
