@@ -331,3 +331,40 @@ https://docs.influxdata.com/influxdb/v1.7/guides/hardware_sizing/
 
 
 总结一下，对于 MySQL 而言，针对大量的数据使用全表扫描的方式来聚合统计指标数据，性能非常差，一般只能作为临时方案来使用。此时，引入 InfluxDB 之类的时间序列数据库，就很有必要了。时间序列数据库可以作为特定场景（比如监控、统计）的主存储，也可以和关系型数据库搭配使用，作为一个辅助数据源，保存业务系统的指标数据。
+
+## 取长补短之 Elasticsearch vs MySQL
+Elasticsearch（以下简称 ES），是目前非常流行的分布式搜索和分析数据库，独特的倒排索引结构尤其适合进行全文搜索。
+
+简单来讲，倒排索引可以认为是一个 Map，其 Key 是分词之后的关键字，Value 是文档 ID/ 片段 ID 的列表。我们只要输入需要搜索的单词，就可以直接在这个 Map 中得到所有包含这个单词的文档 ID/ 片段 ID 列表，然后再根据其中的文档 ID/ 片段 ID 查询出实际的文档内容。
+
+我们来测试一下，对比下使用 ES 进行关键字全文搜索、在 MySQL 中使用 LIKE 进行搜索的效率差距。
+
+首先，定义一个实体 News，包含新闻分类、标题、内容等字段。这个实体同时会用作 Spring Data JPA 和 Spring Data Elasticsearch 的实体：
+
+
+```
+
+@Entity
+@Document(indexName = "news", replicas = 0) //@Document注解定义了这是一个ES的索引，索引名称news，数据不需要冗余
+@Table(name = "news", indexes = {@Index(columnList = "cateid")}) //@Table注解定义了这是一个MySQL表，表名news，对cateid列做索引
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@DynamicUpdate
+public class News {
+    @Id
+    private long id;
+    @Field(type = FieldType.Keyword)
+    private String category;//新闻分类名称
+    private int cateid;//新闻分类ID
+    @Column(columnDefinition = "varchar(500)")//@Column注解定义了在MySQL中字段，比如这里定义title列的类型是varchar(500)
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")//@Field注解定义了ES字段的格式，使用ik分词器进行分词
+    private String title;//新闻标题
+    @Column(columnDefinition = "text")
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
+    private String content;//新闻内容
+}
+```
+
+
+
