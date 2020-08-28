@@ -177,5 +177,5 @@ Parent.setValue called
 Parent.setValue called
 value: test updateCount: 2
 ```
-
+显然，两次 Parent 的 setValue 方法调用，是因为 getMethods 方法找到了两个名为 setValue 的方法，分别是父类和子类的 setValue 方法。
 
