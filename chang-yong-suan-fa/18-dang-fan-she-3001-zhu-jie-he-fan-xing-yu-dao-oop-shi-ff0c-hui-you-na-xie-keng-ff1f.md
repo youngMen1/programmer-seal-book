@@ -94,6 +94,14 @@ getClass().getDeclaredMethod("age", Integer.TYPE).invoke(this, Integer.valueOf("
 getClass().getDeclaredMethod("age", Integer.class).invoke(this, Integer.valueOf("36"));
 getClass().getDeclaredMethod("age", Integer.class).invoke(this, 36);
 ```
+都会调用 Integer 为入参的 age 方法：
 
 
 
+```
+
+14:25:18.028 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - Integer age = 36
+14:25:18.029 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - Integer age = 36
+```
+
+现在我们非常清楚了，反射调用方法，是以反射获取方法时传入的方法名称和参数类型来确定调用方法的。接下来，我们再来看一下反射、泛型擦除和继承结合在一起会碰撞出什么坑。
