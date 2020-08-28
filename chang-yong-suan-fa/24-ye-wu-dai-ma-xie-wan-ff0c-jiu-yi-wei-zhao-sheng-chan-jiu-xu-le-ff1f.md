@@ -262,5 +262,5 @@ d2721794203dcabf411e15143e342cdc.png
 bc947b0c6d4a2a71987f16f16120eb54.png
 以上，就是通过自定义 HealthContributor 和 CompositeHealthContributor，来实现监控检测触达程序内部诸如三方服务、线程池等关键组件，是不是很方便呢？
 
-
+额外补充一下，Spring Boot 2.3.0增强了健康检测的功能，细化了 Liveness 和 Readiness 两个端点，便于 Spring Boot 应用程序和 Kubernetes 整合。
 
