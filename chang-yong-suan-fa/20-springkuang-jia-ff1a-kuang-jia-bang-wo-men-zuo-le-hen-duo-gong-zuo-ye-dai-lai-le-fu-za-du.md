@@ -163,3 +163,5 @@ protected <T> T getOptional(FeignContext context, Class<T> type) {
 1b872a900be7327f74bc09bde4c54230.png
 
 那么，这个 ApacheHttpClient 是从哪里来的呢？这里，我教你一个小技巧：如果你希望知道一个类是怎样调用栈初始化的，可以在构造方法中设置一个断点进行调试。这样，你就可以在 IDE 的栈窗口看到整个方法调用栈，然后点击每一个栈帧看到整个过程。
+
+用这种方式，我们可以看到，是 HttpClientFeignLoadBalancedConfiguration 类实例化的 ApacheHttpClient：
