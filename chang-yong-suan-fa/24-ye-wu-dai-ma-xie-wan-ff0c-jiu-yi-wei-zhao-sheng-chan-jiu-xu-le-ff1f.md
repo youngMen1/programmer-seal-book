@@ -304,3 +304,5 @@ public class ThreadPoolInfoContributor implements InfoContributor {
 访问 /admin/info 接口，可以看到这些数据：
 
 7ed02ed4d047293fe1287e82a6bf8041.png
+
+此外，如果设置开启 JMX 的话：
