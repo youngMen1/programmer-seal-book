@@ -433,3 +433,56 @@ https://time.geekbang.org/column/article/213295?utm_campaign=guanwang&utm_source
 * 同一切面的 Around 比 After、Before 先执行。
 
 对于 Bean 可以通过 @Order 注解来设置优先级，查看 @Order 注解和 Ordered 接口源码可以发现，默认情况下 Bean 的优先级为最低优先级，其值是 Integer 的最大值。**其实，值越大优先级反而越低，这点比较反直觉：**
+
+```
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
+@Documented
+public @interface Order {
+
+   int value() default Ordered.LOWEST_PRECEDENCE;
+
+}
+public interface Ordered {
+   int HIGHEST_PRECEDENCE = Integer.MIN_VALUE;
+   int LOWEST_PRECEDENCE = Integer.MAX_VALUE;
+   int getOrder();
+}
+```
+我们再通过一个例子，来理解下增强的执行顺序。新建一个 TestAspectWithOrder10 切面，通过 @Order 注解设置优先级为 10，在内部定义 @Before、@After、@Around 三类增强，三个增强的逻辑只是简单的日志输出，切点是 TestController 所有方法；然后再定义一个类似的 TestAspectWithOrder20 切面，设置优先级为 20：
+
+
+```
+
+@Aspect
+@Component
+@Order(10)
+@Slf4j
+public class TestAspectWithOrder10 {
+    @Before("execution(* org.geekbang.time.commonmistakes.springpart1.aopmetrics.TestController.*(..))")
+    public void before(JoinPoint joinPoint) throws Throwable {
+        log.info("TestAspectWithOrder10 @Before");
+    }
+    @After("execution(* org.geekbang.time.commonmistakes.springpart1.aopmetrics.TestController.*(..))")
+    public void after(JoinPoint joinPoint) throws Throwable {
+        log.info("TestAspectWithOrder10 @After");
+    }
+    @Around("execution(* org.geekbang.time.commonmistakes.springpart1.aopmetrics.TestController.*(..))")
+    public Object around(ProceedingJoinPoint pjp) throws Throwable {
+        log.info("TestAspectWithOrder10 @Around before");
+        Object o = pjp.proceed();
+        log.info("TestAspectWithOrder10 @Around after");
+        return o;
+    }
+}
+
+@Aspect
+@Component
+@Order(20)
+@Slf4j
+public class TestAspectWithOrder20 {
+  ...
+}
+```
+调用 TestController 的方法后，通过日志输出可以看到，增强执行顺序符合切面执行顺序的三个规则：
+3c687829083abebe1d6e347f5766903e.png
