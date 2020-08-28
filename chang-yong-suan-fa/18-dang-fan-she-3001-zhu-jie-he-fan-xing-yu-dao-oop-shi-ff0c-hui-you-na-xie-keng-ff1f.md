@@ -438,9 +438,7 @@ log.info("ChildMethod:{}", getAnnotationValue(AnnotatedElementUtils.findMergedAn
 
 你可以在反射中多写断言，遇到非预期的情况直接抛异常，避免通过反射实现的业务逻辑不符合预期。
 
-
-
-
-
 微信截图\_20200828154654.png
+
+微信截图\_20200828154717.png
 
