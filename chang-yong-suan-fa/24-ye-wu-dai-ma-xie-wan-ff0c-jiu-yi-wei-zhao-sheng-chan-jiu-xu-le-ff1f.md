@@ -329,3 +329,15 @@ f7c4dd062934be5ca9a5628e7c5d0714.png
 ```
 然后，你就可以通过 jolokia，来执行 org.springframework.boot:type=Endpoint,name=Info 这个 MBean 的 info 操作：
 f7a128cb3efc652b63b773fdceb65f7f.png
+
+## 指标 Metrics 是快速定位问题的“金钥匙”
+指标是指一组和时间关联的、衡量某个维度能力的量化数值。通过收集指标并展现为曲线图、饼图等图表，可以帮助我们快速定位、分析问题。
+
+我们通过一个实际的案例，来看看如何通过图表快速定位问题。
+
+有一个外卖订单的下单和配送流程，如下图所示。
+
+OrderController 进行下单操作，下单操作前先判断参数，如果参数正确调用另一个服务查询商户状态，如果商户在营业的话继续下单，下单成功后发一条消息到 RabbitMQ 进行异步配送流程；然后另一个 DeliverOrderHandler 监听这条消息进行配送操作。
+
+d45e1e97ce1f7881a5930e5eb6648351.png
+
