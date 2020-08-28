@@ -18,3 +18,64 @@
 
 ## 准备工作：配置 Spring Boot Actuator
 
+Spring Boot 有一个 Actuator 模块，封装了诸如健康检测、应用内部信息、Metrics 指标等生产就绪的功能。今天这一讲后面的内容都是基于 Actuator 的，因此我们需要先完成 Actuator 的引入和配置。
+
+我们可以像这样在 pom 中通过添加依赖的方式引入 Actuator：
+
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+之后，你就可以直接使用 Actuator 了，但还要注意一些重要的配置：
+
+
+* 如果你不希望 Web 应用的 Actuator 管理端口和应用端口重合的话，可以使用 management.server.port 设置独立的端口。
+
+* Actuator 自带了很多开箱即用提供信息的端点（Endpoint），可以通过 JMX 或 Web 两种方式进行暴露。考虑到有些信息比较敏感，这些内置的端点默认不是完全开启的，你可以通过官网查看这些默认值。在这里，为了方便后续 Demo，我们设置所有端点通过 Web 方式开启。
+
+* 默认情况下，Actuator 的 Web 访问方式的根地址为 /actuator，可以通过 management.endpoints.web.base-path 参数进行修改。我来演示下，如何将其修改为 /admin。
+
+
+```
+https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints
+```
+
+
+```
+
+management.server.port=45679
+management.endpoints.web.exposure.include=*
+management.endpoints.web.base-path=/admin
+```
+
+现在，你就可以访问 http://localhost:45679/admin ，来查看 Actuator 的所有功能 URL 了：
+420d5b3d9c10934e380e555c2347834b.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
