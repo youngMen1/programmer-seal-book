@@ -386,3 +386,9 @@ java.lang.RuntimeException: invalid username!
 * 对于 Service 中的方法，最好可以自动捕获异常。
 
 于是，他就为 MetricsController 手动加上了 @Metrics 注解，设置 logParameters 和 logReturn 为 false；然后为 Service 中的 createUser 方法的 @Metrics 注解，设置了 ignoreException 属性为 true：
+
+
+
+
+
+
