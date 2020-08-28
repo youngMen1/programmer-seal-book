@@ -196,3 +196,7 @@ public LoadBalancerFeignClient(Client delegate,
 * Spring 只能切入由自己管理的 Bean。
 * 虽然 LoadBalancerFeignClient 和 ApacheHttpClient 都是 feign.Client 接口的实现，但是 HttpClientFeignLoadBalancedConfiguration 的自动配置只是把前者定义为 Bean，后者是 new 出来的、作为了 LoadBalancerFeignClient 的 delegate，不是 Bean。
 * 在定义了 FeignClient 的 URL 属性后，我们获取的是 LoadBalancerFeignClient 的 delegate，它不是 Bean。
+
+因此，定义了 URL 的 FeignClient 采用 within(feign.Client+) 无法切入。
+
+那，如何解决这个问题呢？有一位同学提出，修改一下切点表达式，通过 @FeignClient 注解来切：
