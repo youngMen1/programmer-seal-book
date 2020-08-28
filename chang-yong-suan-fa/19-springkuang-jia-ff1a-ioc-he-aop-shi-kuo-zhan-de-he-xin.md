@@ -490,3 +490,16 @@ public class TestAspectWithOrder20 {
 因为 Spring 的事务管理也是基于 AOP 的，默认情况下优先级最低也就是会先执行出操作，但是自定义切面 MetricsAspect 也同样是最低优先级，这个时候就可能出现问题：如果出操作先执行捕获了异常，那么 Spring 的事务处理就会因为无法捕获到异常导致无法回滚事务。
 
 解决方式是，明确 MetricsAspect 的优先级，可以设置为最高优先级，也就是最先执行入操作最后执行出操作：
+
+
+
+```
+
+//将MetricsAspect这个Bean的优先级设置为最高
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class MetricsAspect {
+    ...
+}
+```
+
+此外，**我们要知道切入的连接点是方法，注解定义在类上是无法直接从方法上获取到注解的。**修复方式是，改为优先从方法获取，如果获取不到再从类获取，如果还是获取不到再使用默认的注解：
