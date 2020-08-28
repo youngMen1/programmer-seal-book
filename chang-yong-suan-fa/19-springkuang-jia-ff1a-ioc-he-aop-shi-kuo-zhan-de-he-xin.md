@@ -144,3 +144,7 @@ public @interface Controller {}
 ```
 
 **Bean 默认是单例的，所以单例的 Controller 注入的 Service 也是一次性创建的，即使 Service 本身标识了 prototype 的范围也没用。**
+
+调试一下也可以发现，注入的 Service 都是 Spring 生成的代理类：
+
+a95f7a5f3a576b3b426c7c5625b29230.png
