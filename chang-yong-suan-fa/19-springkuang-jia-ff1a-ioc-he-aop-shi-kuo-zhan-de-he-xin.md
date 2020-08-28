@@ -29,3 +29,28 @@ c71f2ec73901f7bcaa8332f237dfeddb.png
 我要首先说明的是，Spring 相关问题的问题比较复杂，一方面是 Spring 提供的 IoC 和 AOP 本就灵活，另一方面 Spring Boot 的自动装配、Spring Cloud 复杂的模块会让问题排查变得更复杂。因此，今天这一讲，我会带你先打好基础，通过两个案例来重点聊聊 IoC 和 AOP；然后，我会在下一讲中与你分享 Spring 相关的坑。
 
 ## 单例的 Bean 如何注入 Prototype 的 Bean？
+
+我们虽然知道 Spring 创建的 Bean 默认是单例的，但当 Bean 遇到继承的时候，可能会忽略这一点。为什么呢？忽略这一点又会造成什么影响呢？
+
+接下来，我就和你分享一个由单例引起内存泄露的案例。
+
+架构师一开始定义了这么一个 SayService 抽象类，其中维护了一个类型是 ArrayList 的字段 data，用于保存方法处理的中间数据。每次调用 say 方法都会往 data 加入新数据，可以认为 SayService 是有状态，如果 SayService 是单例的话必然会 OOM：
+
+
+
+```
+
+@Slf4j
+public abstract class SayService {
+    List<String> data = new ArrayList<>();
+
+    public void say() {
+        data.add(IntStream.rangeClosed(1, 1000000)
+                .mapToObj(__ -> "a")
+                .collect(Collectors.joining("")) + UUID.randomUUID().toString());
+        log.info("I'm {} size:{}", this, data.size());
+    }
+}
+```
+
+
