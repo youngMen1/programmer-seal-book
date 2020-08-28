@@ -167,4 +167,63 @@ applicationContext.getBeansOfType(SayService.class).values().forEach(SayService:
 大多数情况下顺序并不是那么重要，但对于 AOP，顺序可能会引发致命问题。我们继续往下看这个问题吧。
 
 
-监控切面因为顺序问题导致 Spring 事务失效
+## 监控切面因为顺序问题导致 Spring 事务失效
+
+实现横切关注点，是 AOP 非常常见的一个应用。我曾看到过一个不错的 AOP 实践，通过 AOP 实现了一个整合日志记录、异常处理和方法耗时打点为一体的统一切面。
+
+但后来发现，使用了 AOP 切面后，这个应用的声明式事务处理居然都是无效的。你可以先回顾下第 6 讲中提到的，Spring 事务失效的几种可能性。
+
+现在我们来看下这个案例，分析下 AOP 实现的监控组件和事务失效有什么关系，以及通过 AOP 实现监控组件是否还有其他坑。首先，定义一个自定义注解 Metrics，打上了该注解的方法可以实现各种监控功能：
+
+
+
+```
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD, ElementType.TYPE})
+public @interface Metrics {
+    /**
+     * 在方法成功执行后打点，记录方法的执行时间发送到指标系统，默认开启
+     *
+     * @return
+     */
+    boolean recordSuccessMetrics() default true;
+
+    /**
+     * 在方法成功失败后打点，记录方法的执行时间发送到指标系统，默认开启
+     *
+     * @return
+     */
+    boolean recordFailMetrics() default true;
+
+    /**
+     * 通过日志记录请求参数，默认开启
+     *
+     * @return
+     */
+    boolean logParameters() default true;
+
+    /**
+     * 通过日志记录方法返回值，默认开启
+     *
+     * @return
+     */
+    boolean logReturn() default true;
+
+    /**
+     * 出现异常后通过日志记录异常信息，默认开启
+     *
+     * @return
+     */
+    boolean logException() default true;
+
+    /**
+     * 出现异常后忽略异常返回默认值，默认关闭
+     *
+     * @return
+     */
+    boolean ignoreException() default false;
+}
+```
+
+然后，实现一个切面完成 Metrics 注解提供的功能。这个切面可以实现标记了 @RestController 注解的 Web 控制器的自动切入，如果还需要对更多 Bean 进行切入的话，再自行标记 @Metrics 注解。
