@@ -257,7 +257,7 @@ public class ThreadPoolsHealthContributor implements CompositeHealthContributor 
 
 d2721794203dcabf411e15143e342cdc.png
 
-
+我们看到一个 demoThreadPool 为 DOWN 导致父 threadPools 为 DOWN，进一步导致整个程序的 status 为 DOWN：
 
 
 
