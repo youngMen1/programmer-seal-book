@@ -107,4 +107,50 @@ public String clientWithUrl() {
 
 Binary data, feign.Request$Options@5c16561
 ```
+这就很费解了。难道为 Feign 指定了 URL，其实现就不是 feign.Clinet 了吗？
 
+
+要明白原因，我们需要分析一下 FeignClient 的创建过程，也就是分析 FeignClientFactoryBean 类的 getTarget 方法。源码第 4 行有一个 if 判断，当 URL 没有内容也就是为空或者不配置时调用 loadBalance 方法，在其内部通过 FeignContext 从容器获取 feign.Client 的实例：
+
+
+```
+
+<T> T getTarget() {
+  FeignContext context = this.applicationContext.getBean(FeignContext.class);
+  Feign.Builder builder = feign(context);
+  if (!StringUtils.hasText(this.url)) {
+    ...
+    return (T) loadBalance(builder, context,
+        new HardCodedTarget<>(this.type, this.name, this.url));
+  }
+  ...
+  String url = this.url + cleanPath();
+  Client client = getOptional(context, Client.class);
+  if (client != null) {
+    if (client instanceof LoadBalancerFeignClient) {
+      // not load balancing because we have a url,
+      // but ribbon is on the classpath, so unwrap
+      client = ((LoadBalancerFeignClient) client).getDelegate();
+    }
+    builder.client(client);
+  }
+  ...
+}
+protected <T> T loadBalance(Feign.Builder builder, FeignContext context,
+    HardCodedTarget<T> target) {
+  Client client = getOptional(context, Client.class);
+  if (client != null) {
+    builder.client(client);
+    Targeter targeter = get(context, Targeter.class);
+    return targeter.target(this, builder, context, target);
+  }
+...
+}
+protected <T> T getOptional(FeignContext context, Class<T> type) {
+  return context.getInstance(this.contextId, type);
+}
+
+```
+
+调试一下可以看到，client 是 LoadBalanceFeignClient，已经是经过代理增强的，明显是一个 Bean：
+0510e28cd764aaf7f1b4b4ca03049ffd.png
