@@ -260,7 +260,7 @@ d2721794203dcabf411e15143e342cdc.png
 我们看到一个 demoThreadPool 为 DOWN 导致父 threadPools 为 DOWN，进一步导致整个程序的 status 为 DOWN：
 
 bc947b0c6d4a2a71987f16f16120eb54.png
-
+以上，就是通过自定义 HealthContributor 和 CompositeHealthContributor，来实现监控检测触达程序内部诸如三方服务、线程池等关键组件，是不是很方便呢？
 
 
 
