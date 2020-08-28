@@ -284,4 +284,32 @@ class org.geekbang.time.commonmistakes.advancedfeatures.demo3.Child2 extends org
 }
 ```
 
+可以看到，入参为 Object 的 setValue 方法在内部调用了入参为 String 的 setValue 方法（第 27 行），也就是代码里实现的那个方法。如果编译器没有帮我们实现这个桥接方法，那么 Child2 子类重写的是父类经过泛型类型擦除后、入参是 Object 的 setValue 方法。这两个方法的参数，一个是 String 一个是 Object，明显不符合 Java 的语义：
+
+
+
+```
+
+class Parent {
+
+    AtomicInteger updateCount = new AtomicInteger();
+    private Object value;
+    public void setValue(Object value) {
+        System.out.println("Parent.setValue called");
+        this.value = value;
+        updateCount.incrementAndGet();
+    }
+}
+
+class Child2 extends Parent {
+    @Override
+    public void setValue(String value) {
+        System.out.println("Child2.setValue called");
+        super.setValue(value);
+    }
+}
+```
+使用 jclasslib 工具打开 Child2 类，同样可以看到入参为 Object 的桥接方法上标记了 public + synthetic + bridge 三个属性。synthetic 代表由编译器生成的不可见代码，bridge 代表这是泛型类型擦除后生成的桥接代码：
+
+b5e30fb0ade19d71cd7fad1730e85808.png
 
