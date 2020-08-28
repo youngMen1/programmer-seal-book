@@ -450,4 +450,48 @@ public class CommonMistakesApplication {
     }
 }
 ```
+由于我们使用了 Spring Data，直接定义两个 Repository，然后直接定义查询方法，无需实现任何逻辑即可实现查询，Spring Data 会根据方法名生成相应的 SQL 语句和 ES 查询 DSL，其中 ES 的翻译逻辑详见这里。
 
+在这里，我们定义一个 countByCateidAndContentContainingAndContentContaining 方法，代表查询条件是：搜索分类等于 cateid 参数，且内容同时包含关键字 keyword1 和 keyword2，计算符合条件的新闻总数量：
+
+
+```
+
+@Repository
+public interface NewsMySQLRepository extends JpaRepository<News, Long> {
+    //JPA：搜索分类等于cateid参数，且内容同时包含关键字keyword1和keyword2，计算符合条件的新闻总数量
+    long countByCateidAndContentContainingAndContentContaining(int cateid, String keyword1, String keyword2);
+}
+
+@Repository
+public interface NewsESRepository extends ElasticsearchRepository<News, Long> {
+    //ES：搜索分类等于cateid参数，且内容同时包含关键字keyword1和keyword2，计算符合条件的新闻总数量
+    long countByCateidAndContentContainingAndContentContaining(int cateid, String keyword1, String keyword2);
+}
+```
+对于 ES 和 MySQL，我们使用相同的条件进行搜索，搜素分类是 1，关键字是社会和苹果，然后输出搜索结果和耗时：
+
+
+```
+
+//测试MySQL搜索，最后输出耗时和结果
+@GetMapping("mysql")
+public void mysql(@RequestParam(value = "cateid", defaultValue = "1") int cateid,
+                  @RequestParam(value = "keyword1", defaultValue = "社会") String keyword1,
+                  @RequestParam(value = "keyword2", defaultValue = "苹果") String keyword2) {
+    long begin = System.currentTimeMillis();
+    Object result = newsMySQLRepository.countByCateidAndContentContainingAndContentContaining(cateid, keyword1, keyword2);
+    log.info("took {} ms result {}", System.currentTimeMillis() - begin, result);
+}
+//测试ES搜索，最后输出耗时和结果
+@GetMapping("es")
+public void es(@RequestParam(value = "cateid", defaultValue = "1") int cateid,
+               @RequestParam(value = "keyword1", defaultValue = "社会") String keyword1,
+               @RequestParam(value = "keyword2", defaultValue = "苹果") String keyword2) {
+    long begin = System.currentTimeMillis();
+    Object result = newsESRepository.countByCateidAndContentContainingAndContentContaining(cateid, keyword1, keyword2);
+    log.info("took {} ms result {}", System.currentTimeMillis() - begin, result);
+}
+```
+
+分别调用接口可以看到，**ES 耗时仅仅 48ms，MySQL 耗时 6 秒多是 ES 的 100 倍**。很遗憾，虽然新闻分类 ID 已经建了索引，但是这个索引只能起到加速过滤分类 ID 这一单一条件的作用，对于文本内容的全文搜索，B+ 树索引无能为力。
