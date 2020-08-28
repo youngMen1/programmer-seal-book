@@ -351,3 +351,131 @@ value: test updateCount: 1
 * getMethods 和 getDeclaredMethods 是有区别的，前者可以查询到父类方法，后者只能查询到当前类。
 
 * 反射进行方法调用要注意过滤桥接方法。
+
+## 注解可以继承吗？
+
+注解可以为 Java 代码提供元数据，各种框架也都会利用注解来暴露功能，比如 Spring 框架中的 @Service、@Controller、@Bean 注解，Spring Boot 的 @SpringBootApplication 注解。
+
+框架可以通过类或方法等元素上标记的注解，来了解它们的功能或特性，并以此来启用或执行相应的功能。通过注解而不是 API 调用来配置框架，属于声明式交互，可以简化框架的配置工作，也可以和框架解耦。
+
+开发同学可能会认为，类继承后，类的注解也可以继承，子类重写父类方法后，父类方法上的注解也能作用于子类，但这些观点其实是错误或者说是不全面的。
+
+我们来验证下吧。首先，定义一个包含 value 属性的 MyAnnotation 注解，可以标记在方法或类上：
+
+
+
+```
+
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MyAnnotation {
+    String value();
+}
+```
+然后，定义一个标记了 @MyAnnotation 注解的父类 Parent，设置 value 为 Class 字符串；同时这个类的 foo 方法也标记了 @MyAnnotation 注解，设置 value 为 Method 字符串。接下来，定义一个子类 Child 继承 Parent 父类，并重写父类的 foo 方法，子类的 foo 方法和类上都没有 @MyAnnotation 注解。
+
+
+```
+
+@MyAnnotation(value = "Class")
+@Slf4j
+static class Parent {
+
+    @MyAnnotation(value = "Method")
+    public void foo() {
+    }
+}
+
+@Slf4j
+static class Child extends Parent {
+    @Override
+    public void foo() {
+    }
+}
+```
+
+再接下来，通过反射分别获取 Parent 和 Child 的类和方法的注解信息，并输出注解的 value 属性的值（如果注解不存在则输出空字符串）：
+
+
+```
+
+private static String getAnnotationValue(MyAnnotation annotation) {
+    if (annotation == null) return "";
+    return annotation.value();
+}
+
+
+public static void wrong() throws NoSuchMethodException {
+    //获取父类的类和方法上的注解
+    Parent parent = new Parent();
+    log.info("ParentClass:{}", getAnnotationValue(parent.getClass().getAnnotation(MyAnnotation.class)));
+    log.info("ParentMethod:{}", getAnnotationValue(parent.getClass().getMethod("foo").getAnnotation(MyAnnotation.class)));
+
+    //获取子类的类和方法上的注解
+    Child child = new Child();
+    log.info("ChildClass:{}", getAnnotationValue(child.getClass().getAnnotation(MyAnnotation.class)));
+    log.info("ChildMethod:{}", getAnnotationValue(child.getClass().getMethod("foo").getAnnotation(MyAnnotation.class)));
+}
+```
+输出如下：
+
+
+```
+
+17:34:25.495 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentClass:Class
+17:34:25.501 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentMethod:Method
+17:34:25.504 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildClass:
+17:34:25.504 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildMethod:
+```
+
+可以看到，父类的类和方法上的注解都可以正确获得，但是子类的类和方法却不能。这说明，**子类以及子类的方法，无法自动继承父类和父类方法上的注解。**
+
+如果你详细了解过注解应该知道，在注解上标记 @Inherited 元注解可以实现注解的继承。那么，把 @MyAnnotation 注解标记了 @Inherited，就可以一键解决问题了吗？
+
+
+```
+
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+public @interface MyAnnotation {
+    String value();
+}
+```
+重新运行代码输出如下：
+
+
+```
+
+17:44:54.831 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentClass:Class
+17:44:54.837 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentMethod:Method
+17:44:54.838 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildClass:Class
+17:44:54.838 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildMethod:
+```
+可以看到，子类可以获得父类类上的注解；子类 foo 方法虽然是重写父类方法，并且注解本身也支持继承，但还是无法获得方法上的注解。如果你再仔细阅读一下@Inherited 的文档就会发现，@Inherited 只能实现类上的注解继承。要想实现方法上注解的继承，你可以通过反射在继承链上找到方法上的注解。但，这样实现起来很繁琐，而且需要考虑桥接方法。好在 Spring 提供了 AnnotatedElementUtils 类，来方便我们处理注解的继承问题。这个类的 findMergedAnnotation 工具方法，可以帮助我们找出父类和接口、父类方法和接口方法上的注解，并可以处理桥接方法，实现一键找到继承链的注解：
+
+
+```
+https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Inherited.html
+```
+
+
+```
+
+Child child = new Child();
+log.info("ChildClass:{}", getAnnotationValue(AnnotatedElementUtils.findMergedAnnotation(child.getClass(), MyAnnotation.class)));
+log.info("ChildMethod:{}", getAnnotationValue(AnnotatedElementUtils.findMergedAnnotation(child.getClass().getMethod("foo"), MyAnnotation.class)));
+```
+
+
+修改后，可以得到如下输出：
+
+
+```
+
+17:47:30.058 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildClass:Class
+17:47:30.059 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildMethod:Method
+```
+## 重点回顾
+
+
