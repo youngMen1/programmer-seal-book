@@ -347,12 +347,79 @@ user.name=defaultadminname
 
 2c68da94d31182cad34c965f878196c0.png
 
+接下来，我们重点看看 Property 的查询过程。
+
+对于非 Web 应用，Spring 对于 Environment 接口的实现是 StandardEnvironment 类。我们通过 Spring 注入 StandardEnvironment 后循环 getPropertySources 获得的 PropertySource，来查询所有的 PropertySource 中 key 是 user.name 或 management.server.port 的属性值；然后遍历 getPropertySources 方法，获得所有配置源并打印出来：
 
 
 
+```
+
+@Autowired
+private StandardEnvironment env;
+@PostConstruct
+public void init(){
+    Arrays.asList("user.name", "management.server.port").forEach(key -> {
+         env.getPropertySources().forEach(propertySource -> {
+                    if (propertySource.containsProperty(key)) {
+                        log.info("{} -> {} 实际取值：{}", propertySource, propertySource.getProperty(key), env.getProperty(key));
+                    }
+                });
+    });
+
+    System.out.println("配置优先级：");
+    env.getPropertySources().stream().forEach(System.out::println);
+}
+```
+我们研究下输出的日志：
 
 
 
+```
+
+2020-01-15 16:08:34.054  INFO 40123 --- [           main] o.g.t.c.s.d.CommonMistakesApplication    : ConfigurationPropertySourcesPropertySource {name='configurationProperties'} -> zhuye 实际取值：zhuye
+2020-01-15 16:08:34.054  INFO 40123 --- [           main] o.g.t.c.s.d.CommonMistakesApplication    : PropertiesPropertySource {name='systemProperties'} -> zhuye 实际取值：zhuye
+2020-01-15 16:08:34.054  INFO 40123 --- [           main] o.g.t.c.s.d.CommonMistakesApplication    : OriginTrackedMapPropertySource {name='applicationConfig: [classpath:/application.properties]'} -> defaultadminname 实际取值：zhuye
+2020-01-15 16:08:34.054  INFO 40123 --- [           main] o.g.t.c.s.d.CommonMistakesApplication    : ConfigurationPropertySourcesPropertySource {name='configurationProperties'} -> 12345 实际取值：12345
+2020-01-15 16:08:34.054  INFO 40123 --- [           main] o.g.t.c.s.d.CommonMistakesApplication    : OriginAwareSystemEnvironmentPropertySource {name=''} -> 12345 实际取值：12345
+2020-01-15 16:08:34.054  INFO 40123 --- [           main] o.g.t.c.s.d.CommonMistakesApplication    : OriginTrackedMapPropertySource {name='applicationConfig: [classpath:/application.properties]'} -> 45679 实际取值：12345
+配置优先级：
+ConfigurationPropertySourcesPropertySource {name='configurationProperties'}
+StubPropertySource {name='servletConfigInitParams'}
+ServletContextPropertySource {name='servletContextInitParams'}
+PropertiesPropertySource {name='systemProperties'}
+OriginAwareSystemEnvironmentPropertySource {name='systemEnvironment'}
+RandomValuePropertySource {name='random'}
+OriginTrackedMapPropertySource {name='applicationConfig: [classpath:/application.properties]'}
+MapPropertySource {name='springCloudClientHostInfo'}
+MapPropertySource {name='defaultProperties'}
+
+```
+* 有三处定义了 user.name：第一个是 configurationProperties，值是 zhuye；第二个是 systemProperties，代表系统配置，值是 zhuye；第三个是 applicationConfig，也就是我们的配置文件，值是配置文件中定义的 defaultadminname。
+
+* 同样地，也有三处定义了 management.server.port：第一个是 configurationProperties，值是 12345；第二个是 systemEnvironment 代表系统环境，值是 12345；第三个是 applicationConfig，也就是我们的配置文件，值是配置文件中定义的 45679。
+
+* 第 7 到 16 行的输出显示，Spring 中有 9 个配置源，值得关注是 ConfigurationPropertySourcesPropertySource、PropertiesPropertySource、OriginAwareSystemEnvironmentPropertySource 和我们的配置文件。
+
+
+那么，Spring 真的是按这个顺序查询配置吗？最前面的 configurationProperties，又是什么？为了回答这 2 个问题，我们需要分析下源码。我先说明下，下面源码分析的逻辑有些复杂，你可以结合着下面的整体流程图来理解：
+3e6dc6456f6d1354da58fb260775c0f9.png
+Demo 中注入的 StandardEnvironment，继承的是 AbstractEnvironment（图中紫色类）。AbstractEnvironment 的源码如下：
+
+
+
+```
+
+public abstract class AbstractEnvironment implements ConfigurableEnvironment {
+  private final MutablePropertySources propertySources = new MutablePropertySources();
+  private final ConfigurablePropertyResolver propertyResolver =
+      new PropertySourcesPropertyResolver(this.propertySources);
+
+  public String getProperty(String key) {
+    return this.propertyResolver.getProperty(key);
+  }
+}
+```
 
 
 
