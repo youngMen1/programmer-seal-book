@@ -379,3 +379,5 @@ java.lang.RuntimeException: invalid username!
 
 * 第 1、8、9 和 10 行分别是 Controller 方法的入参日志、调用 Service 方法出错后记录的错误信息、成功执行的打点和出参日志。因为 Controller 方法内部进行了 try-catch 处理，所以其方法最终是成功执行的。出参日志中显示最后查询到的用户数量是 0，表示用户创建实际是失败的。
 * 第 2、3 和 4~7 行分别是 Service 方法的入参日志、失败打点和异常日志。正是因为 Service 方法的异常抛到了 Controller，所以整个方法才能被 @Transactional 声明式事务回滚。在这里，MetricsAspect 捕获了异常又重新抛出，记录了异常的同时又不影响事务回滚。
+
+一段时间后，开发同学觉得默认的 @Metrics 配置有点不合适，希望进行两个调整：
