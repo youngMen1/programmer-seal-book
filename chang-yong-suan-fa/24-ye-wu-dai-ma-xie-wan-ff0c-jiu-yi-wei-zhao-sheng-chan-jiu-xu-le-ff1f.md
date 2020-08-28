@@ -527,3 +527,15 @@ b942d8bad647e10417acbc96ed289b25.jpg
 * 绿色框 SELECT 配置，选择我们要查询的指标字段，也可以应用一些聚合函数。在这里，我们取 count 字段的值，然后使用 sum 函数进行求和。
 * 紫色框 GROUP BY 配置，我们配置了按 1 分钟时间粒度和 reason 字段进行分组，这样指标的 Y 轴代表 QPM（每分钟请求数），且每种失败的情况都会绘制单独的曲线。
 * 黄色框 ALIAS BY 配置中设置了每一个指标的别名，在别名中引用了 reason 这个 tag。
+
+
+使用 Grafana 配置 InfluxDB 指标的详细方式，你可以参考这里。其中的 FROM、SELECT、GROUP BY 的含义和 SQL 类似，理解起来应该不困难。类似地， 我们配置出一个完整的业务监控面板，包含之前实现的 8 个指标
+
+
+```
+https://grafana.com/docs/grafana/latest/features/datasources/influxdb/
+```
+类似地， 我们配置出一个完整的业务监控面板，包含之前实现的 8 个指标：
+
+* 配置 2 个 Gauge 图表分别呈现总订单完成次数、总配送完成次数。
+* 配置 4 个 Graph 图表分别呈现下单操作的次数和性能，以及配送操作的次数和性能。
