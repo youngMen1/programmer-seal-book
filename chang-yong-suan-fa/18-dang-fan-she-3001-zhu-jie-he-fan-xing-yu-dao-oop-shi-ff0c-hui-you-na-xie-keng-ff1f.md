@@ -115,3 +115,57 @@ Java 编译器对泛型应用了强大的类型检测，如果代码违反了类
 有一个项目希望在类字段内容变动时记录日志，于是开发同学就想到定义一个泛型父类，并在父类中定义一个统一的日志记录方法，子类可以通过继承重用这个方法。代码上线后业务没啥问题，但总是出现日志重复记录的问题。开始时，我们怀疑是日志框架的问题，排查到最后才发现是泛型的问题，反复修改多次才解决了这个问题。
 
 父类是这样的：有一个泛型占位符 T；有一个 AtomicInteger 计数器，用来记录 value 字段更新的次数，其中 value 字段是泛型 T 类型的，setValue 方法每次为 value 赋值时对计数器进行 +1 操作。我重写了 toString 方法，输出 value 字段的值和计数器的值：
+
+
+
+```
+
+class Parent<T> {
+    //用于记录value更新的次数，模拟日志记录的逻辑
+    AtomicInteger updateCount = new AtomicInteger();
+    private T value;
+    //重写toString，输出值和值更新次数
+    @Override
+    public String toString() {
+        return String.format("value: %s updateCount: %d", value, updateCount.get());
+    }
+    //设置值
+    public void setValue(T value) {
+        this.value = value;
+        updateCount.incrementAndGet();
+    }
+}
+```
+子类 Child1 的实现是这样的：继承父类，但没有提供父类泛型参数；定义了一个参数为 String 的 setValue 方法，通过 super.setValue 调用父类方法实现日志记录。我们也能明白，开发同学这么设计是希望覆盖父类的 setValue 实现：
+
+
+
+```
+
+class Child1 extends Parent {
+    public void setValue(String value) {
+        System.out.println("Child1.setValue called");
+        super.setValue(value);
+    }
+}
+```
+
+在实现的时候，子类方法的调用是通过反射进行的。实例化 Child1 类型后，通过 getClass().getMethods 方法获得所有的方法；然后按照方法名过滤出 setValue 方法进行调用，传入字符串 test 作为参数：
+
+
+```
+
+Child1 child1 = new Child1();
+Arrays.stream(child1.getClass().getMethods())
+        .filter(method -> method.getName().equals("setValue"))
+        .forEach(method -> {
+            try {
+                method.invoke(child1, "test");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+System.out.println(child1.toString());
+```
+运行代码后可以看到，虽然 Parent 的 value 字段正确设置了 test，但父类的 setValue 方法调用了两次，计数器也显示 2 而不是 1：
+
