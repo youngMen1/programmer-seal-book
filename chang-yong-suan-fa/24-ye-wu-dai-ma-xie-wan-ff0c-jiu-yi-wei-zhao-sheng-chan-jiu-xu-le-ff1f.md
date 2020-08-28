@@ -68,6 +68,21 @@ https://github.com/codecentric/spring-boot-admin
 
 ## 健康检测需要触达关键组件
 
+在这一讲开始我们提到，健康检测接口可以让监控系统或发布工具知晓应用的真实健康状态，比 ping 应用端口更可靠。不过，要达到这种效果最关键的是，我们能确保健康检测接口可以探查到关键组件的状态。
+
+好在 Spring Boot Actuator 帮我们预先实现了诸如数据库、InfluxDB、Elasticsearch、Redis、RabbitMQ 等三方系统的健康检测指示器 HealthIndicator。
+
+通过 Spring Boot 的自动配置，这些指示器会自动生效。当这些组件有问题的时候，HealthIndicator 会返回 DOWN 或 OUT_OF_SERVICE 状态，health 端点 HTTP 响应状态码也会变为 503，我们可以以此来配置程序健康状态监控报警。
+
+为了演示，我们可以修改配置文件，把 management.endpoint.health.show-details 参数设置为 always，让所有用户都可以直接查看各个组件的健康情况（如果配置为 when-authorized，那么可以结合 management.endpoint.health.roles 配置授权的角色）：
+
+
+
+```
+
+management.endpoint.health.show-details=always
+```
+
 
 
 
