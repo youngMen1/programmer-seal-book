@@ -244,3 +244,5 @@ value: test updateCount: 2
 调试一下可以发现，Child2 类其实有 2 个 setValue 方法，入参分别是 String 和 Object。
 
 81116d6f11440f92757e4fe775df71b8.png
+
+如果不通过反射来调用方法，我们确实很难发现这个问题。**其实，这就是泛型类型擦除导致的问题。**我们来分析一下。
