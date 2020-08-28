@@ -23,3 +23,12 @@ Lesson: Generics：`https://docs.oracle.com/javase/tutorial/java/generics/index.
 ## 反射调用方法不是以传参决定重载
 
 反射的功能包括，在运行时动态获取类和类成员定义，以及动态读取属性调用方法。也就是说，针对类动态调用方法，不管类中字段和方法怎么变动，我们都可以用相同的规则来读取信息和执行方法。因此，几乎所有的 ORM（对象关系映射）、对象映射、MVC 框架都使用了反射。
+
+反射的起点是 Class 类，Class 类提供了各种方法帮我们查询它的信息。你可以通过这个文档，了解每一个方法的作用。
+
+
+
+```
+https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html
+```
+
