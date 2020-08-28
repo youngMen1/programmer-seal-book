@@ -316,3 +316,18 @@ public void influxdb() {
 
 * InfluxDB 不支持数据更新操作，毕竟时间数据只能随着时间产生新数据，肯定无法对过去的数据做修改；
 * 从数据结构上说，时间序列数据数据没有单一的主键标识，必须包含时间戳，数据只能和时间戳进行关联，不适合普通业务数据。
+
+**此外需要注意，即便只是使用 InfluxDB 保存和时间相关的指标数据，我们也要注意不能滥用 tag。**
+
+InfluxDB 提供的 tag 功能，可以为每一个指标设置多个标签，并且 tag 有索引，可以对 tag 进行条件搜索或分组。但是，tag 只能保存有限的、可枚举的标签，不能保存 URL 等信息，否则可能会出现high series cardinality 问题，导致占用大量内存，甚至是 OOM。你可以点击这里，查看 series 和内存占用的关系。对于 InfluxDB，我们无法把 URL 这种原始数据保存到数据库中，只能把数据进行归类，形成有限的 tag 进行保存。
+
+
+```
+https://docs.influxdata.com/influxdb/v1.7/concepts/schema_and_data_layout/#don-t-have-too-many-serieshigh%20series%20cardinality
+
+https://docs.influxdata.com/influxdb/v1.7/guides/hardware_sizing/
+```
+
+
+
+总结一下，对于 MySQL 而言，针对大量的数据使用全表扫描的方式来聚合统计指标数据，性能非常差，一般只能作为临时方案来使用。此时，引入 InfluxDB 之类的时间序列数据库，就很有必要了。时间序列数据库可以作为特定场景（比如监控、统计）的主存储，也可以和关系型数据库搭配使用，作为一个辅助数据源，保存业务系统的指标数据。
