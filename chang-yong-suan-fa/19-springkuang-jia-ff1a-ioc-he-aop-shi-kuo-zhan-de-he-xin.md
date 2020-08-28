@@ -381,3 +381,6 @@ java.lang.RuntimeException: invalid username!
 * 第 2、3 和 4~7 行分别是 Service 方法的入参日志、失败打点和异常日志。正是因为 Service 方法的异常抛到了 Controller，所以整个方法才能被 @Transactional 声明式事务回滚。在这里，MetricsAspect 捕获了异常又重新抛出，记录了异常的同时又不影响事务回滚。
 
 一段时间后，开发同学觉得默认的 @Metrics 配置有点不合适，希望进行两个调整：
+
+* 对于 Controller 的自动打点，不要自动记录入参和出参日志，否则日志量太大；
+* 对于 Service 中的方法，最好可以自动捕获异常。
