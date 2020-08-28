@@ -169,3 +169,13 @@ System.out.println(child1.toString());
 ```
 运行代码后可以看到，虽然 Parent 的 value 字段正确设置了 test，但父类的 setValue 方法调用了两次，计数器也显示 2 而不是 1：
 
+
+```
+
+Child1.setValue called
+Parent.setValue called
+Parent.setValue called
+value: test updateCount: 2
+```
+
+
