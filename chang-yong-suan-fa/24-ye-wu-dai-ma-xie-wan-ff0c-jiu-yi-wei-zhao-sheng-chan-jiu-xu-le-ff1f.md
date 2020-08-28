@@ -223,7 +223,7 @@ public class ThreadPoolHealthIndicator implements HealthIndicator {
     }
 }
 ```
-
+再定义一个 CompositeHealthContributor，来聚合两个 ThreadPoolHealthIndicator 的实例，分别对应 ThreadPoolProvider 中定义的两个线程池：
 
 
 
