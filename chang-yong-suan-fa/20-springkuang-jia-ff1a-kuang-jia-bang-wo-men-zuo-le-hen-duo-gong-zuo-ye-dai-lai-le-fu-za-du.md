@@ -200,3 +200,13 @@ public LoadBalancerFeignClient(Client delegate,
 因此，定义了 URL 的 FeignClient 采用 within(feign.Client+) 无法切入。
 
 那，如何解决这个问题呢？有一位同学提出，修改一下切点表达式，通过 @FeignClient 注解来切：
+
+
+```
+
+@Before("@within(org.springframework.cloud.openfeign.FeignClient)")
+public void before(JoinPoint pjp){
+    log.info("@within(org.springframework.cloud.openfeign.FeignClient) pjp {}, args:{}", pjp, pjp.getArgs());
+}
+```
+
