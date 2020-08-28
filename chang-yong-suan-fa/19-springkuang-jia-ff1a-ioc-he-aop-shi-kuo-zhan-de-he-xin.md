@@ -503,3 +503,33 @@ public class MetricsAspect {
 ```
 
 此外，**我们要知道切入的连接点是方法，注解定义在类上是无法直接从方法上获取到注解的。**修复方式是，改为优先从方法获取，如果获取不到再从类获取，如果还是获取不到再使用默认的注解：
+
+
+```
+
+Metrics metrics = signature.getMethod().getAnnotation(Metrics.class);
+if (metrics == null) {
+    metrics = signature.getMethod().getDeclaringClass().getAnnotation(Metrics.class);
+}
+```
+
+经过这 2 处修改，事务终于又可以回滚了，并且 Controller 的监控日志也不再出现入参、出参信息。
+
+我再总结下这个案例。利用反射 + 注解 +Spring AOP 实现统一的横切日志关注点时，我们遇到的 Spring 事务失效问题，是由自定义的切面执行顺序引起的。这也让我们认识到，因为 Spring 内部大量利用 IoC 和 AOP 实现了各种组件，当使用 IoC 和 AOP 时，一定要考虑是否会影响其他内部组件。
+
+# 重点回顾
+今天，我通过 2 个案例和你分享了 Spring IoC 和 AOP 的基本概念，以及三个比较容易出错的点。
+
+第一，让 Spring 容器管理对象，要考虑对象默认的 Scope 单例是否适合，对于有状态的类型，单例可能产生内存泄露问题。
+
+第二，如果要为单例的 Bean 注入 Prototype 的 Bean，绝不是仅仅修改 Scope 属性这么简单。由于单例的 Bean 在容器启动时就会完成一次性初始化。最简单的解决方案是，把 Prototype 的 Bean 设置为通过代理注入，也就是设置 proxyMode 属性为 TARGET_CLASS。
+
+第三，如果一组相同类型的 Bean 是有顺序的，需要明确使用 @Order 注解来设置顺序。你可以再回顾下，两个不同优先级切面中 @Before、@After 和 @Around 三种增强的执行顺序，是什么样的。
+
+最后我要说的是，文内第二个案例是一个完整的统一日志监控案例，继续修改就可以实现一个完善的、生产级的方法调用监控平台。这些修改主要是两方面：把日志打点，改为对接 Metrics 监控系统；把各种功能的监控开关，从注解属性获取改为通过配置系统实时获取。
+
+## 思考与讨论
+
+1.除了通过 @Autowired 注入 Bean 外，还可以使用 @Inject 或 @Resource 来注入 Bean。你知道这三种方式的区别是什么吗？
+
+2.当 Bean 产生循环依赖时，比如 BeanA 的构造方法依赖 BeanB 作为成员需要注入，BeanB 也依赖 BeanA，你觉得会出现什么问题呢？又有哪些解决方式呢？
