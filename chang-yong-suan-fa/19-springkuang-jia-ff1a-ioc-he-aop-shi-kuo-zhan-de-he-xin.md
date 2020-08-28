@@ -150,3 +150,18 @@ public @interface Controller {}
 a95f7a5f3a576b3b426c7c5625b29230.png
 
 当然，如果不希望走代理的话还有一种方式是，每次直接从 ApplicationContext 中获取 Bean：
+
+
+
+```
+
+@Autowired
+private ApplicationContext applicationContext;
+@GetMapping("test2")
+public void test2() {
+applicationContext.getBeansOfType(SayService.class).values().forEach(SayService::say);
+}
+```
+如果细心的话，你可以发现另一个潜在的问题。这里 Spring 注入的 SayService 的 List，第一个元素是 SayBye，第二个元素是 SayHello。但，我们更希望的是先执行 Hello 再执行 Bye，所以注入一个 List Bean 时，需要进一步考虑 Bean 的顺序或者说优先级。
+
+大多数情况下顺序并不是那么重要，但对于 AOP，顺序可能会引发致命问题。我们继续往下看这个问题吧。
