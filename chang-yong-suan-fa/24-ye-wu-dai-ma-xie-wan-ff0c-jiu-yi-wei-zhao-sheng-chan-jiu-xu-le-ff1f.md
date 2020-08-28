@@ -709,3 +709,8 @@ tomcat_sessions_rejected
 
 2.在介绍指标 Metrics 时我们看到，InfluxDB 中保存了由 Micrometer 框架自动帮我们收集的一些应用指标。你能否参考源码中两个 Grafana 配置的 JSON 文件，把这些指标在 Grafana 中配置出一个完整的应用监控面板呢？
 
+
+
+
+微信截图_20200828141905.png
+
