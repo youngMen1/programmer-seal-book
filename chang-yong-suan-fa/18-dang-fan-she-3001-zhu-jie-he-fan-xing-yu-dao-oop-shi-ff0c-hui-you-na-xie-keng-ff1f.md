@@ -318,4 +318,32 @@ b5e30fb0ade19d71cd7fad1730e85808.png
 * 通过 getDeclaredMethods 方法获取到所有方法后，必须同时根据方法名 setValue 和非 isBridge 两个条件过滤，才能实现唯一过滤；
 
 * 使用 Stream 时，如果希望只匹配 0 或 1 项的话，可以考虑配合 ifPresent 来使用 findFirst 方法。
+
 修复代码如下：
+
+
+
+```
+
+Arrays.stream(child2.getClass().getDeclaredMethods())
+        .filter(method -> method.getName().equals("setValue") && !method.isBridge())
+        .findFirst().ifPresent(method -> {
+    try {
+        method.invoke(chi2, "test");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+});
+```
+
+这样就可以得到正确输出了：
+
+
+```
+
+Child2.setValue called
+Parent.setValue called
+value: test updateCount: 1
+```
+
+
