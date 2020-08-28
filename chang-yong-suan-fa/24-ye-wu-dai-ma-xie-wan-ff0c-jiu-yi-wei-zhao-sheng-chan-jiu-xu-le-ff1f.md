@@ -83,12 +83,11 @@ https://github.com/codecentric/spring-boot-admin
 management.endpoint.health.show-details=always
 ```
 
+访问 health 端点可以看到，数据库、磁盘、RabbitMQ、Redis 等组件健康状态是 UP，整个应用的状态也是 UP：
+3c98443ebb76b65c4231aa35086dc8be.png
+在了解了基本配置之后，我们考虑一下，如果程序依赖一个很重要的三方服务，我们希望这个服务无法访问的时候，应用本身的健康状态也是 DOWN。
 
-
-
-
-
-
+比如三方服务有一个 user 接口，出现异常的概率是 50%：
 
 
 
