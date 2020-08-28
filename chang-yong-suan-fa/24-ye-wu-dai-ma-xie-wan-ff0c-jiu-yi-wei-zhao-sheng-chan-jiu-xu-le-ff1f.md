@@ -106,10 +106,50 @@ public class UserServiceController {
     }
 }
 ```
+要实现这个 user 接口是否正确响应和程序整体的健康状态挂钩的话，很简单，只需定义一个 UserServiceHealthIndicator 实现 HealthIndicator 接口即可。
+
+在 health 方法中，我们通过 RestTemplate 来访问这个 user 接口，如果结果正确则返回 Health.up()，并把调用执行耗时和结果作为补充信息加入 Health 对象中。如果调用接口出现异常，则返回 Health.down()，并把异常信息作为补充信息加入 Health 对象中：
 
 
 
+```
 
+@Component
+@Slf4j
+public class UserServiceHealthIndicator implements HealthIndicator {
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Override
+    public Health health() {
+        long begin = System.currentTimeMillis();
+        long userId = 1L;
+        User user = null;
+        try {
+            //访问远程接口
+            user = restTemplate.getForObject("http://localhost:45678/user?userId=" + userId, User.class);
+            if (user != null && user.getUserId() == userId) {
+                //结果正确，返回UP状态，补充提供耗时和用户信息
+                return Health.up()
+                        .withDetail("user", user)
+                        .withDetail("took", System.currentTimeMillis() - begin)
+                        .build();
+            } else {
+                //结果不正确，返回DOWN状态，补充提供耗时
+                return Health.down().withDetail("took", System.currentTimeMillis() - begin).build();
+            }
+        } catch (Exception ex) {
+            //出现异常，先记录异常，然后返回DOWN状态，补充提供异常信息和耗时
+            log.warn("health check failed!", ex);
+            return Health.down(ex).withDetail("took", System.currentTimeMillis() - begin).build();
+        }
+    }
+}
+```
+
+我们再来看一个聚合多个 HealthIndicator 的案例，也就是定义一个 CompositeHealthContributor 来聚合多个 HealthContributor，实现一组线程池的监控。
+
+首先，在 ThreadPoolProvider 中定义两个线程池，其中 demoThreadPool 是包含一个工作线程的线程池，类型是 ArrayBlockingQueue，阻塞队列的长度为 10；还有一个 ioThreadPool 模拟 IO 操作线程池，核心线程数 10，最大线程数 50：
 
 
 
