@@ -1,4 +1,4 @@
-# 18 | 当反射、注解和泛型遇到OOP时，会有哪些坑？
+# 18 \| 当反射、注解和泛型遇到OOP时，会有哪些坑？
 
 你好，我是朱晔。今天，我们聊聊 Java 高级特性的话题，看看反射、注解和泛型遇到重载和继承时可能会产生的坑。
 
@@ -26,16 +26,13 @@ Lesson: Generics：`https://docs.oracle.com/javase/tutorial/java/generics/index.
 
 反射的起点是 Class 类，Class 类提供了各种方法帮我们查询它的信息。你可以通过这个文档，了解每一个方法的作用。
 
-
-
 ```
 https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html
 ```
+
 接下来，我们先看一个反射调用方法遇到重载的坑：有两个叫 age 的方法，入参分别是基本类型 int 和包装类型 Integer。
 
-
 ```
-
 @Slf4j
 public class ReflectionIssueApplication {
   private void age(int age) {
@@ -47,67 +44,53 @@ public class ReflectionIssueApplication {
   }
 }
 ```
-如果不通过反射调用，走哪个重载方法很清晰，比如传入 36 走 int 参数的重载方法，传入 Integer.valueOf(“36”) 走 Integer 重载：
 
-
+如果不通过反射调用，走哪个重载方法很清晰，比如传入 36 走 int 参数的重载方法，传入 Integer.valueOf\(“36”\) 走 Integer 重载：
 
 ```
-
 ReflectionIssueApplication application = new ReflectionIssueApplication();
 application.age(36);
 application.age(Integer.valueOf("36"));
 ```
 
-**但使用反射时的误区是，认为反射调用方法还是根据入参确定方法重载。**比如，使用 getDeclaredMethod 来获取 age 方法，然后传入 Integer.valueOf(“36”)：
-
+**但使用反射时的误区是，认为反射调用方法还是根据入参确定方法重载。**比如，使用 getDeclaredMethod 来获取 age 方法，然后传入 Integer.valueOf\(“36”\)：
 
 ```
-
 getClass().getDeclaredMethod("age", Integer.TYPE).invoke(this, Integer.valueOf("36"));
 ```
 
 输出的日志证明，走的是 int 重载方法：
 
-
-
 ```
-
 14:23:09.801 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - int age = 36
 ```
 
 输出的日志证明，走的是 int 重载方法：
 
-
 ```
-
 14:23:09.801 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - int age = 36
 ```
 
 其实，要通过反射进行方法调用，第一步就是通过方法签名来确定方法。具体到这个案例，getDeclaredMethod 传入的参数类型 Integer.TYPE 代表的是 int，所以实际执行方法时无论传的是包装类型还是基本类型，都会调用 int 入参的 age 方法。
 
-把 Integer.TYPE 改为 Integer.class，执行的参数类型就是包装类型的 Integer。这时，无论传入的是 Integer.valueOf(“36”) 还是基本类型的 36：
-
-
+把 Integer.TYPE 改为 Integer.class，执行的参数类型就是包装类型的 Integer。这时，无论传入的是 Integer.valueOf\(“36”\) 还是基本类型的 36：
 
 ```
-
 getClass().getDeclaredMethod("age", Integer.class).invoke(this, Integer.valueOf("36"));
 getClass().getDeclaredMethod("age", Integer.class).invoke(this, 36);
 ```
+
 都会调用 Integer 为入参的 age 方法：
 
-
-
 ```
-
 14:25:18.028 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - Integer age = 36
 14:25:18.029 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - Integer age = 36
 ```
 
 现在我们非常清楚了，反射调用方法，是以反射获取方法时传入的方法名称和参数类型来确定调用方法的。接下来，我们再来看一下反射、泛型擦除和继承结合在一起会碰撞出什么坑。
 
-
 ## 泛型经过类型擦除多出桥接方法的坑
+
 泛型是一种风格或范式，一般用于强类型程序设计语言，允许开发者使用类型参数替代明确的类型，实例化时再指明具体的类型。它是代码重用的有效手段，允许把一套代码应用到多种数据类型上，避免针对每一种数据类型实现重复的代码。
 
 Java 编译器对泛型应用了强大的类型检测，如果代码违反了类型安全就会报错，可以在编译时暴露大多数泛型的编码错误。但总有一部分编码错误，比如泛型类型擦除的坑，在运行时才会暴露。接下来，我就和你分享一个案例吧。
@@ -116,10 +99,7 @@ Java 编译器对泛型应用了强大的类型检测，如果代码违反了类
 
 父类是这样的：有一个泛型占位符 T；有一个 AtomicInteger 计数器，用来记录 value 字段更新的次数，其中 value 字段是泛型 T 类型的，setValue 方法每次为 value 赋值时对计数器进行 +1 操作。我重写了 toString 方法，输出 value 字段的值和计数器的值：
 
-
-
 ```
-
 class Parent<T> {
     //用于记录value更新的次数，模拟日志记录的逻辑
     AtomicInteger updateCount = new AtomicInteger();
@@ -136,12 +116,10 @@ class Parent<T> {
     }
 }
 ```
+
 子类 Child1 的实现是这样的：继承父类，但没有提供父类泛型参数；定义了一个参数为 String 的 setValue 方法，通过 super.setValue 调用父类方法实现日志记录。我们也能明白，开发同学这么设计是希望覆盖父类的 setValue 实现：
 
-
-
 ```
-
 class Child1 extends Parent {
     public void setValue(String value) {
         System.out.println("Child1.setValue called");
@@ -150,11 +128,9 @@ class Child1 extends Parent {
 }
 ```
 
-在实现的时候，子类方法的调用是通过反射进行的。实例化 Child1 类型后，通过 getClass().getMethods 方法获得所有的方法；然后按照方法名过滤出 setValue 方法进行调用，传入字符串 test 作为参数：
-
+在实现的时候，子类方法的调用是通过反射进行的。实例化 Child1 类型后，通过 getClass\(\).getMethods 方法获得所有的方法；然后按照方法名过滤出 setValue 方法进行调用，传入字符串 test 作为参数：
 
 ```
-
 Child1 child1 = new Child1();
 Arrays.stream(child1.getClass().getMethods())
         .filter(method -> method.getName().equals("setValue"))
@@ -167,20 +143,21 @@ Arrays.stream(child1.getClass().getMethods())
         });
 System.out.println(child1.toString());
 ```
+
 运行代码后可以看到，虽然 Parent 的 value 字段正确设置了 test，但父类的 setValue 方法调用了两次，计数器也显示 2 而不是 1：
 
-
 ```
-
 Child1.setValue called
 Parent.setValue called
 Parent.setValue called
 value: test updateCount: 2
 ```
+
 显然，两次 Parent 的 setValue 方法调用，是因为 getMethods 方法找到了两个名为 setValue 的方法，分别是父类和子类的 setValue 方法。
 
 这个案例中，子类方法重写父类方法失败的原因，包括两方面：
-* 一是，子类没有指定 String 泛型参数，父类的泛型方法 setValue(T value) 在泛型擦除后是 setValue(Object value)，子类中入参是 String 的 setValue 方法被当作了新方法；
+
+* 一是，子类没有指定 String 泛型参数，父类的泛型方法 setValue\(T value\) 在泛型擦除后是 setValue\(Object value\)，子类中入参是 String 的 setValue 方法被当作了新方法；
 
 * 二是，**子类的 setValue 方法没有增加 @Override 注解，因此编译器没能检测到重写失败的问题。这就说明，重写子类方法时，标记 @Override 是一个好习惯。**
 
@@ -188,10 +165,7 @@ value: test updateCount: 2
 
 于是，他就用 getDeclaredMethods 替代了 getMethods：
 
-
-
 ```
-
 Arrays.stream(child1.getClass().getDeclaredMethods())
     .filter(method -> method.getName().equals("setValue"))
     .forEach(method -> {
@@ -202,11 +176,10 @@ Arrays.stream(child1.getClass().getDeclaredMethods())
         }
     });
 ```
+
 这样虽然能解决重复记录日志的问题，但没有解决子类方法重写父类方法失败的问题，得到如下输出：
 
-
 ```
-
 Child1.setValue called
 Parent.setValue called
 value: test updateCount: 1
@@ -216,9 +189,7 @@ value: test updateCount: 1
 
 幸好，架构师在修复上线前发现了这个问题，让开发同学重新实现了 Child2，继承 Parent 的时候提供了 String 作为泛型 T 类型，并使用 @Override 关键字注释了 setValue 方法，实现了真正有效的方法重写：
 
-
 ```
-
 class Child2 extends Parent<String> {
     @Override
     public void setValue(String value) {
@@ -230,15 +201,14 @@ class Child2 extends Parent<String> {
 
 但很可惜，修复代码上线后，还是出现了日志重复记录：
 
-
 ```
-
 Child2.setValue called
 Parent.setValue called
 Child2.setValue called
 Parent.setValue called
 value: test updateCount: 2
 ```
+
 可以看到，这次是 Child2 类的 setValue 方法被调用了两次。开发同学惊讶地说，肯定是反射出 Bug 了，通过 getDeclaredMethods 查找到的方法一定是来自 Child2 类本身；而且，怎么看 Child2 类中也只有一个 setValue 方法，为什么还会重复呢？
 
 调试一下可以发现，Child2 类其实有 2 个 setValue 方法，入参分别是 String 和 Object。
@@ -249,10 +219,7 @@ value: test updateCount: 2
 
 我们知道，Java 的泛型类型在编译后擦除为 Object。虽然子类指定了父类泛型 T 类型是 String，但编译后 T 会被擦除成为 Object，所以父类 setValue 方法的入参是 Object，value 也是 Object。如果子类 Child2 的 setValue 方法要覆盖父类的 setValue 方法，那入参也必须是 Object。所以，编译器会为我们生成一个所谓的 bridge 桥接方法，你可以使用 javap 命令来反编译编译后的 Child2 类的 class 字节码：
 
-
-
 ```
-
 javap -c /Users/zhuye/Documents/common-mistakes/target/classes/org/geekbang/time/commonmistakes/advancedfeatures/demo3/Child2.class
 Compiled from "GenericAndInheritanceApplication.java"
 class org.geekbang.time.commonmistakes.advancedfeatures.demo3.Child2 extends org.geekbang.time.commonmistakes.advancedfeatures.demo3.Parent<java.lang.String> {
@@ -286,10 +253,7 @@ class org.geekbang.time.commonmistakes.advancedfeatures.demo3.Child2 extends org
 
 可以看到，入参为 Object 的 setValue 方法在内部调用了入参为 String 的 setValue 方法（第 27 行），也就是代码里实现的那个方法。如果编译器没有帮我们实现这个桥接方法，那么 Child2 子类重写的是父类经过泛型类型擦除后、入参是 Object 的 setValue 方法。这两个方法的参数，一个是 String 一个是 Object，明显不符合 Java 的语义：
 
-
-
 ```
-
 class Parent {
 
     AtomicInteger updateCount = new AtomicInteger();
@@ -309,6 +273,7 @@ class Child2 extends Parent {
     }
 }
 ```
+
 使用 jclasslib 工具打开 Child2 类，同样可以看到入参为 Object 的桥接方法上标记了 public + synthetic + bridge 三个属性。synthetic 代表由编译器生成的不可见代码，bridge 代表这是泛型类型擦除后生成的桥接代码：
 
 b5e30fb0ade19d71cd7fad1730e85808.png
@@ -321,10 +286,7 @@ b5e30fb0ade19d71cd7fad1730e85808.png
 
 修复代码如下：
 
-
-
 ```
-
 Arrays.stream(child2.getClass().getDeclaredMethods())
         .filter(method -> method.getName().equals("setValue") && !method.isBridge())
         .findFirst().ifPresent(method -> {
@@ -338,9 +300,7 @@ Arrays.stream(child2.getClass().getDeclaredMethods())
 
 这样就可以得到正确输出了：
 
-
 ```
-
 Child2.setValue called
 Parent.setValue called
 value: test updateCount: 1
@@ -362,21 +322,17 @@ value: test updateCount: 1
 
 我们来验证下吧。首先，定义一个包含 value 属性的 MyAnnotation 注解，可以标记在方法或类上：
 
-
-
 ```
-
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MyAnnotation {
     String value();
 }
 ```
+
 然后，定义一个标记了 @MyAnnotation 注解的父类 Parent，设置 value 为 Class 字符串；同时这个类的 foo 方法也标记了 @MyAnnotation 注解，设置 value 为 Method 字符串。接下来，定义一个子类 Child 继承 Parent 父类，并重写父类的 foo 方法，子类的 foo 方法和类上都没有 @MyAnnotation 注解。
 
-
 ```
-
 @MyAnnotation(value = "Class")
 @Slf4j
 static class Parent {
@@ -396,9 +352,7 @@ static class Child extends Parent {
 
 再接下来，通过反射分别获取 Parent 和 Child 的类和方法的注解信息，并输出注解的 value 属性的值（如果注解不存在则输出空字符串）：
 
-
 ```
-
 private static String getAnnotationValue(MyAnnotation annotation) {
     if (annotation == null) return "";
     return annotation.value();
@@ -417,11 +371,10 @@ public static void wrong() throws NoSuchMethodException {
     log.info("ChildMethod:{}", getAnnotationValue(child.getClass().getMethod("foo").getAnnotation(MyAnnotation.class)));
 }
 ```
+
 输出如下：
 
-
 ```
-
 17:34:25.495 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentClass:Class
 17:34:25.501 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentMethod:Method
 17:34:25.504 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildClass:
@@ -432,9 +385,7 @@ public static void wrong() throws NoSuchMethodException {
 
 如果你详细了解过注解应该知道，在注解上标记 @Inherited 元注解可以实现注解的继承。那么，把 @MyAnnotation 注解标记了 @Inherited，就可以一键解决问题了吗？
 
-
 ```
-
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
@@ -442,40 +393,35 @@ public @interface MyAnnotation {
     String value();
 }
 ```
+
 重新运行代码输出如下：
 
-
 ```
-
 17:44:54.831 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentClass:Class
 17:44:54.837 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ParentMethod:Method
 17:44:54.838 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildClass:Class
 17:44:54.838 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildMethod:
 ```
-可以看到，子类可以获得父类类上的注解；子类 foo 方法虽然是重写父类方法，并且注解本身也支持继承，但还是无法获得方法上的注解。如果你再仔细阅读一下@Inherited 的文档就会发现，@Inherited 只能实现类上的注解继承。要想实现方法上注解的继承，你可以通过反射在继承链上找到方法上的注解。但，这样实现起来很繁琐，而且需要考虑桥接方法。好在 Spring 提供了 AnnotatedElementUtils 类，来方便我们处理注解的继承问题。这个类的 findMergedAnnotation 工具方法，可以帮助我们找出父类和接口、父类方法和接口方法上的注解，并可以处理桥接方法，实现一键找到继承链的注解：
 
+可以看到，子类可以获得父类类上的注解；子类 foo 方法虽然是重写父类方法，并且注解本身也支持继承，但还是无法获得方法上的注解。如果你再仔细阅读一下@Inherited 的文档就会发现，@Inherited 只能实现类上的注解继承。要想实现方法上注解的继承，你可以通过反射在继承链上找到方法上的注解。但，这样实现起来很繁琐，而且需要考虑桥接方法。好在 Spring 提供了 AnnotatedElementUtils 类，来方便我们处理注解的继承问题。这个类的 findMergedAnnotation 工具方法，可以帮助我们找出父类和接口、父类方法和接口方法上的注解，并可以处理桥接方法，实现一键找到继承链的注解：
 
 ```
 https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Inherited.html
 ```
 
-
 ```
-
 Child child = new Child();
 log.info("ChildClass:{}", getAnnotationValue(AnnotatedElementUtils.findMergedAnnotation(child.getClass(), MyAnnotation.class)));
 log.info("ChildMethod:{}", getAnnotationValue(AnnotatedElementUtils.findMergedAnnotation(child.getClass().getMethod("foo"), MyAnnotation.class)));
 ```
 
-
 修改后，可以得到如下输出：
 
-
 ```
-
 17:47:30.058 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildClass:Class
 17:47:30.059 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo2.AnnotationInheritanceApplication - ChildMethod:Method
 ```
+
 ## 重点回顾
 
 今天，我和你分享了使用 Java 反射、注解和泛型高级特性配合 OOP 时，可能会遇到的一些坑。
@@ -491,3 +437,10 @@ log.info("ChildMethod:{}", getAnnotationValue(AnnotatedElementUtils.findMergedAn
 编译后的代码和原始代码并不完全一致，编译器可能会做一些优化，加上还有诸如 AspectJ 等编译时增强框架，使用反射动态获取类型的元数据可能会和我们编写的源码有差异，这点需要特别注意。
 
 你可以在反射中多写断言，遇到非预期的情况直接抛异常，避免通过反射实现的业务逻辑不符合预期。
+
+
+
+
+
+微信截图\_20200828154654.png
+
