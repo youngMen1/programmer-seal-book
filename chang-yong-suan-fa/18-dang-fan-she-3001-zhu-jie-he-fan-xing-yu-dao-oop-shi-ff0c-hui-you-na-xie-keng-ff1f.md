@@ -47,4 +47,15 @@ public class ReflectionIssueApplication {
   }
 }
 ```
+如果不通过反射调用，走哪个重载方法很清晰，比如传入 36 走 int 参数的重载方法，传入 Integer.valueOf(“36”) 走 Integer 重载：
+
+
+
+```
+
+ReflectionIssueApplication application = new ReflectionIssueApplication();
+application.age(36);
+application.age(Integer.valueOf("36"));
+```
+
 
