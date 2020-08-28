@@ -166,6 +166,12 @@ https://time.geekbang.org/column/article/231501
 ## 取长补短之 InfluxDB vs MySQL
 InfluxDB 是一款优秀的时序数据库。在“24 | 业务代码写完，就意味着生产就绪了？”这一讲中，我们就是使用 InfluxDB 来做的 Metrics 打点。时序数据库的优势，在于处理指标数据的聚合，并且读写效率非常高。
 
+
+```
+
+```
+
+
 同样的，我们使用一些测试来对比下 InfluxDB 和 MySQL 的性能。
 
 在如下代码中，我们分别填充了 1000 万条数据到 MySQL 和 InfluxDB 中。其中，每条数据只有 ID、时间戳、10000 以内的随机值这 3 列信息，对于 MySQL 我们把时间戳列做了索引：
@@ -253,7 +259,6 @@ public class CommonMistakesApplication {
         }
     }
 }
-
 ```
 启动后，程序输出了如下日志：
 
@@ -262,7 +267,6 @@ public class CommonMistakesApplication {
 
 [16:08:25.062] [main] [INFO ] [o.g.t.c.n.i.CommonMistakesApplication:104 ] - init influxdb finished with count 1.0E7 took 54280ms
 [16:11:50.462] [main] [INFO ] [o.g.t.c.n.i.CommonMistakesApplication:80  ] - init mysql finished with count 10000000 took 205394ms
-
 ```
 
 InfluxDB 批量插入 1000 万条数据仅用了 54 秒，相当于每秒插入 18 万条数据，速度相当快；MySQL 的批量插入，速度也挺快达到了每秒 4.8 万。
@@ -296,7 +300,6 @@ public void influxdb() {
         log.info("took {} ms result {}", System.currentTimeMillis() - begin, result);
     }
 }
-
 ```
 
 因为数据量非常大，单次查询就已经很慢了，所以这次我们不进行压测。分别调用两个接口，可以看到 **MySQL 查询一次耗时 29 秒左右，而 InfluxDB 耗时 980ms：**
