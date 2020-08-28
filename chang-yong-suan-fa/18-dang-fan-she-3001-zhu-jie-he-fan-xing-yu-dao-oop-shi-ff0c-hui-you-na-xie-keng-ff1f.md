@@ -248,3 +248,40 @@ value: test updateCount: 2
 如果不通过反射来调用方法，我们确实很难发现这个问题。**其实，这就是泛型类型擦除导致的问题。**我们来分析一下。
 
 我们知道，Java 的泛型类型在编译后擦除为 Object。虽然子类指定了父类泛型 T 类型是 String，但编译后 T 会被擦除成为 Object，所以父类 setValue 方法的入参是 Object，value 也是 Object。如果子类 Child2 的 setValue 方法要覆盖父类的 setValue 方法，那入参也必须是 Object。所以，编译器会为我们生成一个所谓的 bridge 桥接方法，你可以使用 javap 命令来反编译编译后的 Child2 类的 class 字节码：
+
+
+
+```
+
+javap -c /Users/zhuye/Documents/common-mistakes/target/classes/org/geekbang/time/commonmistakes/advancedfeatures/demo3/Child2.class
+Compiled from "GenericAndInheritanceApplication.java"
+class org.geekbang.time.commonmistakes.advancedfeatures.demo3.Child2 extends org.geekbang.time.commonmistakes.advancedfeatures.demo3.Parent<java.lang.String> {
+  org.geekbang.time.commonmistakes.advancedfeatures.demo3.Child2();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/geekbang/time/commonmistakes/advancedfeatures/demo3/Parent."<init>":()V
+       4: return
+
+
+  public void setValue(java.lang.String);
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #3                  // String Child2.setValue called
+       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       8: aload_0
+       9: aload_1
+      10: invokespecial #5                  // Method org/geekbang/time/commonmistakes/advancedfeatures/demo3/Parent.setValue:(Ljava/lang/Object;)V
+      13: return
+
+
+  public void setValue(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #6                  // class java/lang/String
+       5: invokevirtual #7                  // Method setValue:(Ljava/lang/String;)V
+       8: return
+}
+```
+
+
