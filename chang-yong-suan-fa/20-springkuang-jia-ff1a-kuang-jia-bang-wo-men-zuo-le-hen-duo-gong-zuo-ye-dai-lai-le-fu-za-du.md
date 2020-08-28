@@ -266,3 +266,36 @@ Caused by: java.lang.IllegalArgumentException: Cannot subclass final class feign
 * CGLIB 动态字节码注入方式，通过继承实现代理，没有这个限制。
 
 **Spring Boot 2.x 默认使用 CGLIB 的方式，但通过继承实现代理有个问题是，无法继承 final 的类。因为，ApacheHttpClient 类就是定义为了 final：**
+
+
+
+```
+
+public final class ApacheHttpClient implements Client {
+```
+为解决这个问题，我们把配置参数 proxy-target-class 的值修改为 false，以切换到使用 JDK 动态代理的方式：
+
+
+```
+
+spring.aop.proxy-target-class=false
+```
+
+修改后执行 clientWithUrl 接口可以看到，通过 within(feign.Client+) 方式可以切入 feign.Client 子类了。以下日志显示了 @within 和 within 的两次切入：
+
+
+```
+
+[16:29:55.303] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo4.Wrong2Aspect       :16  ] - @within(org.springframework.cloud.openfeign.FeignClient) pjp execution(String org.geekbang.time.commonmistakes.spring.demo4.feign.ClientWithUrl.api()), args:[]
+[16:29:55.310] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo4.WrongAspect        :15  ] - within(feign.Client+) pjp execution(Response feign.Client.execute(Request,Options)), args:[GET http://localhost:45678/feignaop/server HTTP/1.1
+
+
+Binary data, feign.Request$Options@387550b0]
+```
+
+这下我们就明白了，Spring Cloud 使用了自动装配来根据依赖装配组件，组件是否成为 Bean 决定了 AOP 是否可以切入，在尝试通过 AOP 切入 Spring Bean 的时候要注意。
+
+加上上一讲的两个案例，我就把 IoC 和 AOP 相关的坑点和你说清楚了。除此之外，我们在业务开发时，还有一个绕不开的点是，Spring 程序的配置问题。接下来，我们就具体看看吧。
+
+## Spring 程序配置的优先级问题
+
