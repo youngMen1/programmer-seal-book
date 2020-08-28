@@ -272,11 +272,35 @@ https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 
 ## 对外暴露应用内部重要组件的状态
 
+除了可以把线程池的状态作为整个应用程序是否健康的依据外，我们还可以通过 Actuator 的 InfoContributor 功能，对外暴露程序内部重要组件的状态数据。这里，我会用一个例子演示使用 info 的 HTTP 端点、JMX MBean 这两种方式，如何查看状态数据。
+
+
+我们看一个具体案例，实现一个 ThreadPoolInfoContributor 来展现线程池的信息。
 
 
 
+```
 
+@Component
+public class ThreadPoolInfoContributor implements InfoContributor {
+    private static Map threadPoolInfo(ThreadPoolExecutor threadPool) {
+        Map<String, Object> info = new HashMap<>();
+        info.put("poolSize", threadPool.getPoolSize());//当前池大小
+        info.put("corePoolSize", threadPool.getCorePoolSize());//设置的核心池大小
+        info.put("largestPoolSize", threadPool.getLargestPoolSize());//最大达到过的池大小
+        info.put("maximumPoolSize", threadPool.getMaximumPoolSize());//设置的最大池大小
+        info.put("completedTaskCount", threadPool.getCompletedTaskCount());//总完成任务数
+        return info;
+    }
 
+    @Override
+    public void contribute(Info.Builder builder) {
+        builder.withDetail("demoThreadPool", threadPoolInfo(ThreadPoolProvider.getDemoThreadPool()));
+        builder.withDetail("ioThreadPool", threadPoolInfo(ThreadPoolProvider.getIOThreadPool()));
+    }
+}
+```
 
+访问 /admin/info 接口，可以看到这些数据：
 
-
+7ed02ed4d047293fe1287e82a6bf8041.png
