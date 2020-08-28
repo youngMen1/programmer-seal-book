@@ -503,6 +503,7 @@ public void es(@RequestParam(value = "cateid", defaultValue = "1") int cateid,
 [22:04:00.951] [http-nio-45678-exec-6] [INFO ] [o.g.t.c.n.esvsmyql.PerformanceController:48  ] - took 48 ms result 2100
 Hibernate: select count(news0_.id) as col_0_0_ from news news0_ where news0_.cateid=? and (news0_.content like ? escape ?) and (news0_.content like ? escape ?)
 [22:04:11.946] [http-nio-45678-exec-7] [INFO ] [o.g.t.c.n.esvsmyql.PerformanceController:39  ] - took 6637 ms result 2100
+
 ```
 但 ES 这种以索引为核心的数据库，也不是万能的，频繁更新就是一个大问题。
 
