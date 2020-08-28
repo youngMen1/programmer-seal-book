@@ -361,3 +361,24 @@ d45e1e97ce1f7881a5930e5eb6648351.png
 
 
 所有的指标还可以附加一些 tags 标签，作为补充数据。比如，当操作执行失败的时候，我们就会附加一个 reason 标签到指标上。
+
+Micrometer 除了抽象了指标外，还抽象了存储。你可以把 Micrometer 理解为类似 SLF4J 这样的框架，只不过后者针对日志抽象，而 Micrometer 是针对指标进行抽象。Micrometer 通过引入各种 registry，可以实现无缝对接各种监控系统或时间序列数据库。
+
+在这个案例中，我们引入了 micrometer-registry-influx 依赖，目的是引入 Micrometer 的核心依赖，以及通过 Micrometer 对于InfluxDB（InfluxDB 是一个时间序列数据库，其专长是存储指标数据）的绑定，以实现指标数据可以保存到 InfluxDB：
+
+
+```
+https://www.influxdata.com/products/influxdb-overview/
+```
+
+
+```
+
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-influx</artifactId>
+</dependency>
+```
+
+
+
