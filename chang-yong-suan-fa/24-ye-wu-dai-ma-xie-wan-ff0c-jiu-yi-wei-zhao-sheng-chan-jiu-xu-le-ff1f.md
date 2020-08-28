@@ -90,6 +90,25 @@ management.endpoint.health.show-details=always
 比如三方服务有一个 user 接口，出现异常的概率是 50%：
 
 
+```
+
+@Slf4j
+@RestController
+@RequestMapping("user")
+public class UserServiceController {
+    @GetMapping
+    public User getUser(@RequestParam("userId") long id) {
+        //一半概率返回正确响应，一半概率抛异常
+        if (ThreadLocalRandom.current().nextInt() % 2 == 0)
+            return new User(id, "name" + id);
+        else
+            throw new RuntimeException("error");
+    }
+}
+```
+
+
+
 
 
 
