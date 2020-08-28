@@ -315,3 +315,49 @@ public class MetricsAspect {
 
 其中，Service 中实现创建用户的时候做了事务处理，当用户名包含 test 字样时会抛出异常，导致事务回滚。同时，我们为 Service 中的 createUser 标记了 @Metrics 注解。这样一来，我们还可以手动为类或方法标记 @Metrics 注解，实现 Controller 之外的其他组件的自动监控。
 
+
+
+```
+
+@Slf4j
+@RestController //自动进行监控
+@RequestMapping("metricstest")
+public class MetricsController {
+    @Autowired
+    private UserService userService;
+    @GetMapping("transaction")
+    public int transaction(@RequestParam("name") String name) {
+        try {
+            userService.createUser(new UserEntity(name));
+        } catch (Exception ex) {
+            log.error("create user failed because {}", ex.getMessage());
+        }
+        return userService.getUserCount(name);
+    }
+}
+
+@Service
+@Slf4j
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+    @Transactional
+    @Metrics //启用方法监控
+    public void createUser(UserEntity entity) {
+        userRepository.save(entity);
+        if (entity.getName().contains("test"))
+            throw new RuntimeException("invalid username!");
+    }
+
+    public int getUserCount(String name) {
+        return userRepository.findByName(name).size();
+    }
+}
+
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    List<UserEntity> findByName(String name);
+}
+```
+
+
