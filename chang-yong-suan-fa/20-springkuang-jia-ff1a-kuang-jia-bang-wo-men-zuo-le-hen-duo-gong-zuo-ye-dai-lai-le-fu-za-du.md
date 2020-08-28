@@ -153,4 +153,7 @@ protected <T> T getOptional(FeignContext context, Class<T> type) {
 ```
 
 调试一下可以看到，client 是 LoadBalanceFeignClient，已经是经过代理增强的，明显是一个 Bean：
+
 0510e28cd764aaf7f1b4b4ca03049ffd.png
+
+所以，没有指定 URL 的 @FeignClient 对应的 LoadBalanceFeignClient，是可以通过 feign.Client 切入的。
