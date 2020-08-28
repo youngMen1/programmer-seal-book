@@ -28,5 +28,4 @@ c71f2ec73901f7bcaa8332f237dfeddb.png
 
 我要首先说明的是，Spring 相关问题的问题比较复杂，一方面是 Spring 提供的 IoC 和 AOP 本就灵活，另一方面 Spring Boot 的自动装配、Spring Cloud 复杂的模块会让问题排查变得更复杂。因此，今天这一讲，我会带你先打好基础，通过两个案例来重点聊聊 IoC 和 AOP；然后，我会在下一讲中与你分享 Spring 相关的坑。
 
-## 单例的 Bean 如何注入 Prototype 的 Bean？**
-**
+## 单例的 Bean 如何注入 Prototype 的 Bean？
