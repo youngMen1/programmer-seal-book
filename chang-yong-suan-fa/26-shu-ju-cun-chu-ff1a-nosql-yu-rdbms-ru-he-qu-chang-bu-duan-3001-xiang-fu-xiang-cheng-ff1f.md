@@ -495,3 +495,77 @@ public void es(@RequestParam(value = "cateid", defaultValue = "1") int cateid,
 ```
 
 分别调用接口可以看到，**ES 耗时仅仅 48ms，MySQL 耗时 6 秒多是 ES 的 100 倍**。很遗憾，虽然新闻分类 ID 已经建了索引，但是这个索引只能起到加速过滤分类 ID 这一单一条件的作用，对于文本内容的全文搜索，B+ 树索引无能为力。
+
+
+
+```
+
+[22:04:00.951] [http-nio-45678-exec-6] [INFO ] [o.g.t.c.n.esvsmyql.PerformanceController:48  ] - took 48 ms result 2100
+Hibernate: select count(news0_.id) as col_0_0_ from news news0_ where news0_.cateid=? and (news0_.content like ? escape ?) and (news0_.content like ? escape ?)
+[22:04:11.946] [http-nio-45678-exec-7] [INFO ] [o.g.t.c.n.esvsmyql.PerformanceController:39  ] - took 6637 ms result 2100
+```
+但 ES 这种以索引为核心的数据库，也不是万能的，频繁更新就是一个大问题。
+
+MySQL 可以做到仅更新某行数据的某个字段，但 ES 里每次数据字段更新都相当于整个文档索引重建。即便 ES 提供了文档部分更新的功能，但本质上只是节省了提交文档的网络流量，以及减少了更新冲突，其内部实现还是文档删除后重新构建索引。因此，如果要在 ES 中保存一个类似计数器的值，要实现不断更新，其执行效率会非常低。
+
+我们来验证下，分别使用 JdbcTemplate+SQL 语句、ElasticsearchTemplate+ 自定义 UpdateQuery，实现部分更新 MySQL 表和 ES 索引的一个字段，每个方法都是循环更新 1000 次：
+
+
+```
+
+@GetMapping("mysql2")
+public void mysql2(@RequestParam(value = "id", defaultValue = "400000") long id) {
+    long begin = System.currentTimeMillis();
+    //对于MySQL，使用JdbcTemplate+SQL语句，实现直接更新某个category字段，更新1000次
+    IntStream.rangeClosed(1, 1000).forEach(i -> {
+        jdbcTemplate.update("UPDATE `news` SET category=? WHERE id=?", new Object[]{"test" + i, id});
+    });
+    log.info("mysql took {} ms result {}", System.currentTimeMillis() - begin, newsMySQLRepository.findById(id));
+}
+
+@GetMapping("es2")
+public void es(@RequestParam(value = "id", defaultValue = "400000") long id) {
+    long begin = System.currentTimeMillis();
+    IntStream.rangeClosed(1, 1000).forEach(i -> {
+        //对于ES，通过ElasticsearchTemplate+自定义UpdateQuery，实现文档的部分更新
+        UpdateQuery updateQuery = null;
+        try {
+            updateQuery = new UpdateQueryBuilder()
+                    .withIndexName("news")
+                    .withId(String.valueOf(id))
+                    .withType("_doc")
+                    .withUpdateRequest(new UpdateRequest().doc(
+                            jsonBuilder()
+                                    .startObject()
+                                    .field("category", "test" + i)
+                                    .endObject()))
+                    .build();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        elasticsearchTemplate.update(updateQuery);
+    });
+    log.info("es took {} ms result {}", System.currentTimeMillis() - begin, newsESRepository.findById(id).get());
+}
+```
+可以看到，**MySQL 耗时仅仅 1.5 秒，而 ES 耗时 6.8 秒：**
+
+63a583a0bced67a3f7cf0eb32e644802.png
+
+ES 是一个分布式的全文搜索数据库，所以与 MySQL 相比的优势在于文本搜索，而且因为其分布式的特性，可以使用一个大 ES 集群处理大规模数据的内容搜索。但，由于 ES 的索引是文档维度的，所以不适用于频繁更新的 OLTP 业务。
+
+一般而言，我们会把 ES 和 MySQL 结合使用，MySQL 直接承担业务系统的增删改操作，而 ES 作为辅助数据库，直接扁平化保存一份业务数据，用于复杂查询、全文搜索和统计。接下来，我也会继续和你分析这一点。
+
+## 结合 NoSQL 和 MySQL 应对高并发的复合数据库架构
+
+现在，我们通过一些案例看到了 Redis、InfluxDB、ES 这些 NoSQL 数据库，都有擅长和不擅长的场景。那么，有没有全能的数据库呢？
+
+我认为没有。每一个存储系统都有其独特的数据结构，数据结构的设计就决定了其擅长和不擅长的场景。
+
+比如，MySQL InnoDB 引擎的 B+ 树对排序和范围查询友好，频繁数据更新的代价不是太大，因此适合 OLTP（On-Line Transaction Processing）。
+
+又比如，ES 的 Lucene 采用了 FST（Finite State Transducer）索引 + 倒排索引，空间效率高，适合对变动不频繁的数据做索引，实现全文搜索。存储系统本身不可能对一份数据使用多种数据结构保存，因此不可能适用于所有场景。
+
+虽然在大多数业务场景下，MySQL 的性能都不算太差，但对于数据量大、访问量大、业务复杂的互联网应用来说，MySQL 因为实现了 ACID（原子性、一致性、隔离性、持久性）会比较重，而且横向扩展能力较差、功能单一，无法扛下所有数据量和流量，无法应对所有功能需求。因此，我们需要通过架构手段，来组合使用多种存储系统，取长补短，实现 1+1>2 的效果。
+
+
