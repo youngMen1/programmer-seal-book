@@ -194,7 +194,7 @@ public void slowTask() {
     });
 }
 ```
-
+做了这些准备工作后，让我们来真正实现自定义的 HealthIndicator 类，用于单一线程池的健康状态。
 
 
 
