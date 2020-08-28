@@ -300,15 +300,35 @@ Binary data, feign.Request$Options@387550b0]
 ## Spring 程序配置的优先级问题
 
 
+我们知道，通过配置文件 application.properties，可以实现 Spring Boot 应用程序的参数配置。但我们可能不知道的是，Spring 程序配置是有优先级的，即当两个不同的配置源包含相同的配置项时，其中一个配置项很可能会被覆盖掉。这，也是为什么我们会遇到些看似诡异的配置失效问题。
+
+我们来通过一个实际案例，研究下配置源以及配置源的优先级问题。
+
+对于 Spring Boot 应用程序，一般我们会通过设置 management.server.port 参数，来暴露独立的 actuator 管理端口。这样做更安全，也更方便监控系统统一监控程序是否健康。
 
 
 
+```
+
+management.server.port=45679
+```
+有一天程序重新发布后，监控系统显示程序离线。但排查下来发现，程序是正常工作的，只是 actuator 管理端口的端口号被改了，不是配置文件中定义的 45679 了。后来发现，运维同学在服务器上定义了两个环境变量 MANAGEMENT_SERVER_IP 和 MANAGEMENT_SERVER_PORT，目的是方便监控 Agent 把监控数据上报到统一的管理服务上：
 
 
 
+```
+
+MANAGEMENT_SERVER_IP=192.168.0.2
+MANAGEMENT_SERVER_PORT=12345
+```
+问题就是出在这里。MANAGEMENT_SERVER_PORT 覆盖了配置文件中的 management.server.port，修改了应用程序本身的端口。当然，监控系统也就无法通过老的管理端口访问到应用的 health 端口了。如下图所示，actuator 的端口号变成了 12345：
+
+b287b7ad823a39bb604fa69e02c720e6.png
+
+到这里坑还没完，为了方便用户登录，需要在页面上显示默认的管理员用户名，于是开发同学在配置文件中定义了一个 user.name 属性，并设置为 defaultadminname：
 
 
-
+user.name=defaultadminname
 
 
 
