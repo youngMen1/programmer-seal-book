@@ -45,7 +45,7 @@ public class CommonMistakesApplication {
     }
 
     //填充数据到MySQL
-    private void initMySQL() {````
+    private void initMySQL() {
         //删除表
         jdbcTemplate.execute("DROP TABLE IF EXISTS `r`;");
         //新建表，name字段做了索引
@@ -136,6 +136,7 @@ public void redis2() {
 public void mysql2() {
     Assert.assertTrue(jdbcTemplate.queryForList("SELECT name FROM `r` WHERE name LIKE 'item71%'", String.class).size() == 1111);
 }
+
 ```
 
 可以看到，在 QPS 方面，**MySQL 的 QPS 达到了 Redis 的 157 倍；在延迟方面，MySQL 的延迟只有 Redis 的十分之一。**
@@ -159,18 +160,14 @@ https://redis.io/topics/security
 
 
 ```
+
 https://time.geekbang.org/column/article/231501
+
 ```
 此外值得一提的是，Redis 提供了丰富的数据结构（Set、SortedSet、Hash、List），并围绕这些数据结构提供了丰富的 API。如果我们好好利用这个特点的话，可以直接在 Redis 中完成一部分服务端计算，避免“读取缓存 -> 计算数据 -> 保存缓存”三部曲中的读取和保存缓存的开销，进一步提高性能。
 
 ## 取长补短之 InfluxDB vs MySQL
 InfluxDB 是一款优秀的时序数据库。在“24 | 业务代码写完，就意味着生产就绪了？”这一讲中，我们就是使用 InfluxDB 来做的 Metrics 打点。时序数据库的优势，在于处理指标数据的聚合，并且读写效率非常高。
-
-
-```
-
-```
-
 
 同样的，我们使用一些测试来对比下 InfluxDB 和 MySQL 的性能。
 
