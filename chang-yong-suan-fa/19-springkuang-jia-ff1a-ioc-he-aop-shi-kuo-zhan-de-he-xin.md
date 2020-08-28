@@ -52,5 +52,95 @@ public abstract class SayService {
     }
 }
 ```
+但实际开发的时候，开发同学没有过多思考就把 SayHello 和 SayBye 类加上了 @Service 注解，让它们成为了 Bean，也没有考虑到父类是有状态的：
 
 
+```
+
+@Service
+@Slf4j
+public class SayHello extends SayService {
+    @Override
+    public void say() {
+        super.say();
+        log.info("hello");
+    }
+}
+
+@Service
+@Slf4j
+public class SayBye extends SayService {
+    @Override
+    public void say() {
+        super.say();
+        log.info("bye");
+    }
+}
+```
+
+许多开发同学认为，@Service 注解的意义在于，能通过 @Autowired 注解让 Spring 自动注入对象，就比如可以直接使用注入的 List获取到 SayHello 和 SayBye，而没想过类的生命周期：
+
+
+```
+
+@Autowired
+List<SayService> sayServiceList;
+
+@GetMapping("test")
+public void test() {
+    log.info("====================");
+    sayServiceList.forEach(SayService::say);
+}
+```
+
+
+这一个点非常容易忽略。开发基类的架构师将基类设计为有状态的，但并不知道子类是怎么使用基类的；而开发子类的同学，没多想就直接标记了 @Service，让类成为了 Bean，通过 @Autowired 注解来注入这个服务。但这样设置后，有状态的基类就可能产生内存泄露或线程安全问题。
+
+正确的方式是，**在为类标记上 @Service 注解把类型交由容器管理前，首先评估一下类是否有状态，然后为 Bean 设置合适的 Scope。**好在上线前，架构师发现了这个内存泄露问题，开发同学也做了修改，为 SayHello 和 SayBye 两个类都标记了 @Scope 注解，设置了 PROTOTYPE 的生命周期，也就是多例：
+
+
+
+```
+
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+```
+
+但，上线后还是出现了内存泄漏，证明修改是无效的。
+
+从日志可以看到，第一次调用和第二次调用的时候，SayBye 对象都是 4c0bfe9e，SayHello 也是一样的问题。从日志第 7 到 10 行还可以看到，第二次调用后 List 的元素个数变为了 2，说明父类 SayService 维护的 List 在不断增长，不断调用必然出现 OOM：
+
+
+```
+
+[15:01:09.349] [http-nio-45678-exec-1] [INFO ] [.s.d.BeanSingletonAndOrderController:22  ] - ====================
+[15:01:09.401] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo1.SayService         :19  ] - I'm org.geekbang.time.commonmistakes.spring.demo1.SayBye@4c0bfe9e size:1
+[15:01:09.402] [http-nio-45678-exec-1] [INFO ] [t.commonmistakes.spring.demo1.SayBye:16  ] - bye
+[15:01:09.469] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo1.SayService         :19  ] - I'm org.geekbang.time.commonmistakes.spring.demo1.SayHello@490fbeaa size:1
+[15:01:09.469] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo1.SayHello           :17  ] - hello
+[15:01:15.167] [http-nio-45678-exec-2] [INFO ] [.s.d.BeanSingletonAndOrderController:22  ] - ====================
+[15:01:15.197] [http-nio-45678-exec-2] [INFO ] [o.g.t.c.spring.demo1.SayService         :19  ] - I'm org.geekbang.time.commonmistakes.spring.demo1.SayBye@4c0bfe9e size:2
+[15:01:15.198] [http-nio-45678-exec-2] [INFO ] [t.commonmistakes.spring.demo1.SayBye:16  ] - bye
+[15:01:15.224] [http-nio-45678-exec-2] [INFO ] [o.g.t.c.spring.demo1.SayService         :19  ] - I'm org.geekbang.time.commonmistakes.spring.demo1.SayHello@490fbeaa size:2
+[15:01:15.224] [http-nio-45678-exec-2] [INFO ] [o.g.t.c.spring.demo1.SayHello           :17  ] - hello
+```
+这就引出了单例的 Bean 如何注入 Prototype 的 Bean 这个问题。Controller 标记了 @RestController 注解，而 @RestController 注解 =@Controller 注解 +@ResponseBody 注解，又因为 @Controller 标记了 @Component 元注解，所以 @RestController 注解其实也是一个 Spring Bean：
+
+
+```
+
+//@RestController注解=@Controller注解+@ResponseBody注解@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Controller
+@ResponseBody
+public @interface RestController {}
+
+//@Controller又标记了@Component元注解
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Controller {}
+```
+
+**Bean 默认是单例的，所以单例的 Controller 注入的 Service 也是一次性创建的，即使 Service 本身标识了 prototype 的范围也没用。**
