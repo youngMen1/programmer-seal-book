@@ -13,3 +13,98 @@
 第二，Spring Boot 根据当前依赖情况实现了自动配置，虽然省去了手动配置的麻烦，但也因此多了一些黑盒、提升了复杂度。
 
 第三，Spring Cloud 模块多版本也多，Spring Boot 1.x 和 2.x 的区别也很大。如果要对 Spring Cloud 或 Spring Boot 进行二次开发的话，考虑兼容性的成本会很高。
+
+今天，我们就通过配置 AOP 切入 Spring Cloud Feign 组件失败、Spring Boot 程序的文件配置被覆盖这两个案例，感受一下 Spring 的复杂度。我希望这一讲的内容，能帮助你面对 Spring 这个复杂框架出现的问题时，可以非常自信地找到解决方案。
+
+## Feign AOP 切不到的诡异案例
+
+我曾遇到过这么一个案例：使用 Spring Cloud 做微服务调用，为方便统一处理 Feign，想到了用 AOP 实现，即使用 within 指示器匹配 feign.Client 接口的实现进行 AOP 切入。
+
+代码如下，通过 @Before 注解在执行方法前打印日志，并在代码中定义了一个标记了 @FeignClient 注解的 Client 类，让其成为一个 Feign 接口：
+
+
+```
+
+//测试Feign
+@FeignClient(name = "client")
+public interface Client {
+    @GetMapping("/feignaop/server")
+    String api();
+}
+
+//AOP切入feign.Client的实现
+@Aspect
+@Slf4j
+@Component
+public class WrongAspect {
+    @Before("within(feign.Client+)")
+    public void before(JoinPoint pjp) {
+        log.info("within(feign.Client+) pjp {}, args:{}", pjp, pjp.getArgs());
+    }
+}
+
+//配置扫描Feign
+@Configuration
+@EnableFeignClients(basePackages = "org.geekbang.time.commonmistakes.spring.demo4.feign")
+public class Config {
+}
+
+```
+
+通过 Feign 调用服务后可以看到日志中有输出，的确实现了 feign.Client 的切入，切入的是 execute 方法：
+
+
+```
+
+[15:48:32.850] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo4.WrongAspect        :20  ] - within(feign.Client+) pjp execution(Response feign.Client.execute(Request,Options)), args:[GET http://client/feignaop/server HTTP/1.1
+
+Binary data, feign.Request$Options@5c16561a]
+```
+
+一开始这个项目使用的是客户端的负载均衡，也就是让 Ribbon 来做负载均衡，代码没啥问题。后来因为后端服务通过 Nginx 实现服务端负载均衡，所以开发同学把 @FeignClient 的配置设置了 URL 属性，直接通过一个固定 URL 调用后端服务：
+
+
+```
+
+@FeignClient(name = "anotherClient",url = "http://localhost:45678")
+public interface ClientWithUrl {
+    @GetMapping("/feignaop/server")
+    String api();
+}
+```
+
+但这样配置后，之前的 AOP 切面竟然失效了，也就是 within(feign.Client+) 无法切入 ClientWithUrl 的调用了。
+
+为了还原这个场景，我写了一段代码，定义两个方法分别通过 Client 和 ClientWithUrl 这两个 Feign 进行接口调用：
+
+
+
+```
+
+@Autowired
+private Client client;
+
+@Autowired
+private ClientWithUrl clientWithUrl;
+
+@GetMapping("client")
+public String client() {
+    return client.api();
+}
+
+@GetMapping("clientWithUrl")
+public String clientWithUrl() {
+    return clientWithUrl.api();
+}
+```
+
+可以看到，调用 Client 后 AOP 有日志输出，调用 ClientWithUrl 后却没有：
+
+
+```
+
+[15:50:32.850] [http-nio-45678-exec-1] [INFO ] [o.g.t.c.spring.demo4.WrongAspect        :20  ] - within(feign.Client+) pjp execution(Response feign.Client.execute(Request,Options)), args:[GET http://client/feignaop/server HTTP/1.1
+
+Binary data, feign.Request$Options@5c16561
+```
+
