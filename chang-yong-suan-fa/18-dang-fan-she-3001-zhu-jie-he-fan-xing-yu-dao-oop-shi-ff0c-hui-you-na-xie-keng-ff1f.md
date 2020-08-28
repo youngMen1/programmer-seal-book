@@ -32,3 +32,19 @@ Lesson: Generics：`https://docs.oracle.com/javase/tutorial/java/generics/index.
 https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html
 ```
 接下来，我们先看一个反射调用方法遇到重载的坑：有两个叫 age 的方法，入参分别是基本类型 int 和包装类型 Integer。
+
+
+```
+
+@Slf4j
+public class ReflectionIssueApplication {
+  private void age(int age) {
+      log.info("int age = {}", age);
+  }
+
+  private void age(Integer age) {
+      log.info("Integer age = {}", age);
+  }
+}
+```
+
