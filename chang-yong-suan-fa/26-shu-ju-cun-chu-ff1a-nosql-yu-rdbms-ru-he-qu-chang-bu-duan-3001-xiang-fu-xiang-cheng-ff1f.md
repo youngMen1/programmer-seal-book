@@ -120,4 +120,29 @@ public void mysql() {
 
 2d289cc94097c2e62aa97a6602d0554e.png
 
+但 Redis 薄弱的地方是，不擅长做 Key 的搜索。对 MySQL，我们可以使用 LIKE 操作前匹配走 B+ 树索引实现快速搜索；但对 Redis，我们使用 Keys 命令对 Key 的搜索，其实相当于在 MySQL 里做全表扫描。
+
+我写一段代码来对比一下性能：
+
+
+
+```
+
+@GetMapping("redis2")
+public void redis2() {
+    Assert.assertTrue(stringRedisTemplate.keys("item71*").size() == 1111);
+}
+@GetMapping("mysql2")
+public void mysql2() {
+    Assert.assertTrue(jdbcTemplate.queryForList("SELECT name FROM `r` WHERE name LIKE 'item71%'", String.class).size() == 1111);
+}
+```
+
+可以看到，在 QPS 方面，**MySQL 的 QPS 达到了 Redis 的 157 倍；在延迟方面，MySQL 的延迟只有 Redis 的十分之一。**
+
+
+5de7a4a7bf27f8736b0ac09ba0dd1fe8.png
+
+Redis 慢的原因有两个：
+* Redis 的 Keys 命令是 O(n) 时间复杂度。如果数据库中 Key 的数量很多，就会非常慢。* * Redis 是单线程的，对于慢的命令如果有并发，串行执行就会非常耗时。
 
