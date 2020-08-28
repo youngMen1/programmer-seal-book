@@ -270,3 +270,13 @@ bc947b0c6d4a2a71987f16f16120eb54.png
 https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 ```
 
+## 对外暴露应用内部重要组件的状态
+
+
+
+
+
+
+
+
+
