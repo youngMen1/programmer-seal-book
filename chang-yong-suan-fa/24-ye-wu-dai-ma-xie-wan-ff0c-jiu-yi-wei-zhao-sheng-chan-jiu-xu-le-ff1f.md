@@ -379,6 +379,151 @@ https://www.influxdata.com/products/influxdb-overview/
     <artifactId>micrometer-registry-influx</artifactId>
 </dependency>
 ```
+然后，修改配置文件，启用指标输出到 InfluxDB 的开关、配置 InfluxDB 的地址，以及设置指标每秒在客户端聚合一次，然后发送到 InfluxDB：
 
 
 
+```
+
+management.metrics.export.influx.enabled=true
+management.metrics.export.influx.uri=http://localhost:8086
+management.metrics.export.influx.step=1S
+```
+接下来，我们在业务逻辑中增加相关的代码来记录指标。
+
+下面是 OrderController 的实现，代码中有详细注释，我就不一一说明了。你需要注意观察如何通过 Micrometer 框架，来实现下单总数量、下单请求、下单成功和下单失败这四个指标，分别对应代码的第 17、25、43、47 行：
+
+
+
+```
+
+//下单操作，以及商户服务的接口
+@Slf4j
+@RestController
+@RequestMapping("order")
+public class OrderController {
+    //总订单创建数量
+    private AtomicLong createOrderCounter = new AtomicLong();
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
+
+
+    @PostConstruct
+    public void init() {
+        //注册createOrder.received指标，gauge指标只需要像这样初始化一次，直接关联到AtomicLong引用即可
+        Metrics.gauge("createOrder.totalSuccess", createOrderCounter);
+    }
+
+
+    //下单接口，提供用户ID和商户ID作为入参
+    @GetMapping("createOrder")
+    public void createOrder(@RequestParam("userId") long userId, @RequestParam("merchantId") long merchantId) {
+        //记录一次createOrder.received指标，这是一个counter指标，表示收到下单请求
+        Metrics.counter("createOrder.received").increment();
+        Instant begin = Instant.now();
+        try {
+            TimeUnit.MILLISECONDS.sleep(200);
+            //模拟无效用户的情况，ID<10为无效用户
+            if (userId < 10)
+                throw new RuntimeException("invalid user");
+            //查询商户服务
+            Boolean merchantStatus = restTemplate.getForObject("http://localhost:45678/order/getMerchantStatus?merchantId=" + merchantId, Boolean.class);
+            if (merchantStatus == null || !merchantStatus)
+                throw new RuntimeException("closed merchant");
+            Order order = new Order();
+            order.setId(createOrderCounter.incrementAndGet()); //gauge指标可以得到自动更新
+            order.setUserId(userId);
+            order.setMerchantId(merchantId);
+            //发送MQ消息
+            rabbitTemplate.convertAndSend(Consts.EXCHANGE, Consts.ROUTING_KEY, order);
+            //记录一次createOrder.success指标，这是一个timer指标，表示下单成功，同时提供耗时
+            Metrics.timer("createOrder.success").record(Duration.between(begin, Instant.now()));
+        } catch (Exception ex) {
+            log.error("creareOrder userId {} failed", userId, ex);
+            //记录一次createOrder.failed指标，这是一个timer指标，表示下单失败，同时提供耗时，并且以tag记录失败原因
+            Metrics.timer("createOrder.failed", "reason", ex.getMessage()).record(Duration.between(begin, Instant.now()));
+        }
+    }
+
+
+    //商户查询接口
+    @GetMapping("getMerchantStatus")
+    public boolean getMerchantStatus(@RequestParam("merchantId") long merchantId) throws InterruptedException {
+        //只有商户ID为2的商户才是营业的
+        TimeUnit.MILLISECONDS.sleep(200);
+        return merchantId == 2;
+    }
+}
+```
+当用户 ID<10 的时候，我们模拟用户数据无效的情况，当商户 ID 不为 2 的时候我们模拟商户不营业的情况。
+
+接下来是 DeliverOrderHandler 配送服务的实现。
+
+其中，deliverOrder 方法监听 OrderController 发出的 MQ 消息模拟配送。如下代码所示，第 17、25、32 和 36 行代码，实现了配送相关四个指标的记录：
+
+
+```
+
+//配送服务消息处理程序
+@RestController
+@Slf4j
+@RequestMapping("deliver")
+public class DeliverOrderHandler {
+    //配送服务运行状态
+    private volatile boolean deliverStatus = true;
+    private AtomicLong deliverCounter = new AtomicLong();
+    //通过一个外部接口来改变配送状态模拟配送服务停工
+    @PostMapping("status")
+    public void status(@RequestParam("status") boolean status) {
+        deliverStatus = status;
+    }
+    @PostConstruct
+    public void init() {
+        //同样注册一个gauge指标deliverOrder.totalSuccess，代表总的配送单量，只需注册一次即可
+        Metrics.gauge("deliverOrder.totalSuccess", deliverCounter);
+    }
+
+    //监听MQ消息
+    @RabbitListener(queues = Consts.QUEUE_NAME)
+    public void deliverOrder(Order order) {
+        Instant begin = Instant.now();
+        //对deliverOrder.received进行递增，代表收到一次订单消息，counter类型
+        Metrics.counter("deliverOrder.received").increment();
+        try {
+            if (!deliverStatus)
+                throw new RuntimeException("deliver outofservice");
+            TimeUnit.MILLISECONDS.sleep(500);
+            deliverCounter.incrementAndGet();
+            //配送成功指标deliverOrder.success，timer类型
+            Metrics.timer("deliverOrder.success").record(Duration.between(begin, Instant.now()));
+        } catch (Exception ex) {
+            log.error("deliver Order {} failed", order, ex);
+            //配送失败指标deliverOrder.failed，同样附加了失败原因作为tags，timer类型
+            Metrics.timer("deliverOrder.failed", "reason", ex.getMessage()).record(Duration.between(begin, Instant.now()));
+        }
+    }
+}
+```
+同时，我们模拟了一个配送服务整体状态的开关，调用 status 接口可以修改其状态。至此，我们完成了场景准备，接下来开始配置指标监控。
+
+首先，我们来安装 Grafana。然后进入 Grafana 配置一个 InfluxDB 数据源：
+
+
+```
+https://grafana.com/docs/grafana/latest/installation/
+```
+e74a6f9ac6840974413486239eb4b796.jpg
+
+配置好数据源之后，就可以添加一个监控面板，然后在面板中添加各种监控图表。比如，我们在一个下单次数图表中添加了下单收到、成功和失败三个指标。
+
+b942d8bad647e10417acbc96ed289b25.jpg
+
+关于这张图中的配置：
+
+* 红色框数据源配置，选择刚才配置的数据源。
+* 蓝色框 FROM 配置，选择我们的指标名。
+* 绿色框 SELECT 配置，选择我们要查询的指标字段，也可以应用一些聚合函数。在这里，我们取 count 字段的值，然后使用 sum 函数进行求和。
+* 紫色框 GROUP BY 配置，我们配置了按 1 分钟时间粒度和 reason 字段进行分组，这样指标的 Y 轴代表 QPM（每分钟请求数），且每种失败的情况都会绘制单独的曲线。
+* 黄色框 ALIAS BY 配置中设置了每一个指标的别名，在别名中引用了 reason 这个 tag。
