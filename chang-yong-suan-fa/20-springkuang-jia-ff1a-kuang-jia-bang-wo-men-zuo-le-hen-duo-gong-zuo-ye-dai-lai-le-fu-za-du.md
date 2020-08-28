@@ -203,10 +203,66 @@ public LoadBalancerFeignClient(Client delegate,
 
 
 ```
-
 @Before("@within(org.springframework.cloud.openfeign.FeignClient)")
 public void before(JoinPoint pjp){
     log.info("@within(org.springframework.cloud.openfeign.FeignClient) pjp {}, args:{}", pjp, pjp.getArgs());
 }
 ```
+修改后通过日志看到，AOP 的确切成功了：
 
+
+```
+
+[15:53:39.093] [http-nio-45678-exec-3] [INFO ] [o.g.t.c.spring.demo4.Wrong2Aspect       :17  ] - @within(org.springframework.cloud.openfeign.FeignClient) pjp execution(String org.geekbang.time.commonmistakes.spring.demo4.feign.ClientWithUrl.api()), args:[]
+```
+但仔细一看就会发现，**这次切入的是 ClientWithUrl 接口的 API 方法，并不是 client.Feign 接口的 execute 方法，显然不符合预期。**
+
+这位同学犯的错误是，没有弄清楚真正希望切的是什么对象。@FeignClient 注解标记在 Feign Client 接口上，所以切的是 Feign 定义的接口，也就是每一个实际的 API 接口。而通过 feign.Client 接口切的是客户端实现类，切到的是通用的、执行所有 Feign 调用的 execute 方法。
+
+那么问题来了，ApacheHttpClient 不是 Bean 无法切入，切 Feign 接口本身又不符合要求。怎么办呢？
+
+经过一番研究发现，ApacheHttpClient 其实有机会独立成为 Bean。查看 HttpClientFeignConfiguration 的源码可以发现，当没有 ILoadBalancer 类型的时候，自动装配会把 ApacheHttpClient 设置为 Bean。
+
+这么做的原因很明确，如果我们不希望做客户端负载均衡的话，应该不会引用 Ribbon 组件的依赖，自然没有 LoadBalancerFeignClient，只有 ApacheHttpClient：
+
+
+```
+
+@Configuration
+@ConditionalOnClass(ApacheHttpClient.class)
+@ConditionalOnMissingClass("com.netflix.loadbalancer.ILoadBalancer")
+@ConditionalOnMissingBean(CloseableHttpClient.class)
+@ConditionalOnProperty(value = "feign.httpclient.enabled", matchIfMissing = true)
+protected static class HttpClientFeignConfiguration {
+  @Bean
+  @ConditionalOnMissingBean(Client.class)
+  public Client feignClient(HttpClient httpClient) {
+    return new ApacheHttpClient(httpClient);
+  }
+}
+```
+那，把 pom.xml 中的 ribbon 模块注释之后，是不是可以解决问题呢？
+
+
+```
+
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+</dependency>
+```
+
+但，问题并没解决，启动出错误了：
+
+
+```
+
+Caused by: java.lang.IllegalArgumentException: Cannot subclass final class feign.httpclient.ApacheHttpClient
+  at org.springframework.cglib.proxy.Enhancer.generateClass(Enhancer.java:657)
+  at org.springframework.cglib.core.DefaultGeneratorStrategy.generate(DefaultGeneratorStrategy.java:25)
+```
+这里，又涉及了 Spring 实现动态代理的两种方式：
+* JDK 动态代理，通过反射实现，只支持对实现接口的类进行代理；
+* CGLIB 动态字节码注入方式，通过继承实现代理，没有这个限制。
+
+**Spring Boot 2.x 默认使用 CGLIB 的方式，但通过继承实现代理有个问题是，无法继承 final 的类。因为，ApacheHttpClient 类就是定义为了 final：**
