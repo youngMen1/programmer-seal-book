@@ -190,4 +190,9 @@ public LoadBalancerFeignClient(Client delegate,
    this.clientFactory = clientFactory;
 }
 ```
+显然，ApacheHttpClient 是 new 出来的，并不是 Bean，而 LoadBalancerFeignClient 是一个 Bean。有了这个信息，我们再来捋一下，为什么 within(feign.Client+) 无法切入设置过 URL 的 @FeignClient ClientWithUrl：
 
+* 表达式声明的是切入 feign.Client 的实现类。
+* Spring 只能切入由自己管理的 Bean。
+* 虽然 LoadBalancerFeignClient 和 ApacheHttpClient 都是 feign.Client 接口的实现，但是 HttpClientFeignLoadBalancedConfiguration 的自动配置只是把前者定义为 Bean，后者是 new 出来的、作为了 LoadBalancerFeignClient 的 delegate，不是 Bean。
+* 在定义了 FeignClient 的 URL 属性后，我们获取的是 LoadBalancerFeignClient 的 delegate，它不是 Bean。
