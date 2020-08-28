@@ -264,3 +264,9 @@ bc947b0c6d4a2a71987f16f16120eb54.png
 
 额外补充一下，Spring Boot 2.3.0增强了健康检测的功能，细化了 Liveness 和 Readiness 两个端点，便于 Spring Boot 应用程序和 Kubernetes 整合。
 
+
+
+```
+https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
+```
+
