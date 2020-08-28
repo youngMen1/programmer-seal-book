@@ -77,3 +77,23 @@ getClass().getDeclaredMethod("age", Integer.TYPE).invoke(this, Integer.valueOf("
 
 输出的日志证明，走的是 int 重载方法：
 
+
+```
+
+14:23:09.801 [main] INFO org.geekbang.time.commonmistakes.advancedfeatures.demo1.ReflectionIssueApplication - int age = 36
+```
+
+其实，要通过反射进行方法调用，第一步就是通过方法签名来确定方法。具体到这个案例，getDeclaredMethod 传入的参数类型 Integer.TYPE 代表的是 int，所以实际执行方法时无论传的是包装类型还是基本类型，都会调用 int 入参的 age 方法。
+
+把 Integer.TYPE 改为 Integer.class，执行的参数类型就是包装类型的 Integer。这时，无论传入的是 Integer.valueOf(“36”) 还是基本类型的 36：
+
+
+
+```
+
+getClass().getDeclaredMethod("age", Integer.class).invoke(this, Integer.valueOf("36"));
+getClass().getDeclaredMethod("age", Integer.class).invoke(this, 36);
+```
+
+
+
