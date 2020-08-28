@@ -306,3 +306,14 @@ public class ThreadPoolInfoContributor implements InfoContributor {
 7ed02ed4d047293fe1287e82a6bf8041.png
 
 此外，如果设置开启 JMX 的话：
+
+
+
+```
+
+spring.jmx.enabled=true
+```
+
+可以通过 jconsole 工具，在 org.springframework.boot.Endpoint 中找到 Info 这个 MBean，然后执行 info 操作可以看到，我们刚才自定义的 InfoContributor 输出的有关两个线程池的信息：
+f7c4dd062934be5ca9a5628e7c5d0714.png
+
