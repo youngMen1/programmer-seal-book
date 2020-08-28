@@ -517,7 +517,7 @@ public class PropertySourcesPropertyResolver extends AbstractPropertyResolver {
 class ConfigurationPropertySourcesPropertySource extends PropertySource<Iterable<ConfigurationPropertySource>>
     implements OriginLookup<String> {
 
-  ConfigurationPropertySourcesPropertySource(String name, Iterable<ConfigurationPropertySource> source) {
+  ConfigurationPropertySourcesPropertySource(String name, Iterable<ConfigurationPropertySource> ````source) {
     super(name, source);
   }
 
@@ -549,12 +549,120 @@ class ConfigurationPropertySourcesPropertySource extends PropertySource<Iterable
 }
 ```
 
+调试可以发现，这个循环遍历（getSource() 的结果）的配置源，其实是 SpringConfigurationPropertySources（图中黄色类），其中包含的配置源列表就是之前看到的 9 个配置源，而第一个就是 ConfigurationPropertySourcesPropertySource。看到这里，我们的第一感觉是会不会产生死循环，它在遍历的时候怎么排除自己呢？
+
+同时观察 configurationProperty 可以看到，这个 ConfigurationProperty 其实类似代理的角色，实际配置是从系统属性中获得的：
+9551d5b5acada84262b7ddeae989750a.png
+继续查看 SpringConfigurationPropertySources 可以发现，它返回的迭代器是内部类 SourcesIterator，在 fetchNext 方法获取下一个项时，通过 isIgnored 方法排除了 ConfigurationPropertySourcesPropertySource（源码第 38 行）：
 
 
 
+```
+
+class SpringConfigurationPropertySources implements Iterable<ConfigurationPropertySource> {
+
+  private final Iterable<PropertySource<?>> sources;
+  private final Map<PropertySource<?>, ConfigurationPropertySource> cache = new ConcurrentReferenceHashMap<>(16,
+      ReferenceType.SOFT);
+
+  SpringConfigurationPropertySources(Iterable<PropertySource<?>> sources) {
+    Assert.notNull(sources, "Sources must not be null");
+    this.sources = sources;
+  }
+
+  @Override
+  public Iterator<ConfigurationPropertySource> iterator() {
+    return new SourcesIterator(this.sources.iterator(), this::adapt);
+  }
+
+  private static class SourcesIterator implements Iterator<ConfigurationPropertySource> {
+
+    @Override
+    public boolean hasNext() {
+      return fetchNext() != null;
+    }
+
+    private ConfigurationPropertySource fetchNext() {
+      if (this.next == null) {
+        if (this.iterators.isEmpty()) {
+          return null;
+        }
+        if (!this.iterators.peek().hasNext()) {
+          this.iterators.pop();
+          return fetchNext();
+        }
+        PropertySource<?> candidate = this.iterators.peek().next();
+        if (candidate.getSource() instanceof ConfigurableEnvironment) {
+          push((ConfigurableEnvironment) candidate.getSource());
+          return fetchNext();
+        }
+        if (isIgnored(candidate)) {
+          return fetchNext();
+        }
+        this.next = this.adapter.apply(candidate);
+      }
+      return this.next;
+    }
+
+
+    private void push(ConfigurableEnvironment environment) {
+      this.iterators.push(environment.getPropertySources().iterator());
+    }
+
+
+    private boolean isIgnored(PropertySource<?> candidate) {
+      return (candidate instanceof StubPropertySource
+          || candidate instanceof ConfigurationPropertySourcesPropertySource);
+    }
+  }
+}
+```
+
+我们已经了解了 ConfigurationPropertySourcesPropertySource 是所有配置源中的第一个，实现了对 PropertySourcesPropertyResolver 中遍历逻辑的“劫持”，并且知道了其遍历逻辑。最后一个问题是，它如何让自己成为第一个配置源呢？
 
 
 
+再次运用之前我们学到的那个小技巧，来查看实例化 ConfigurationPropertySourcesPropertySource 的地方：
 
+f43c15a2f491d88a0383023a42cebd5d.png
+可以看到，ConfigurationPropertySourcesPropertySource 类是由 ConfigurationPropertySources 的 attach 方法实例化的。查阅源码可以发现，这个方法的确从环境中获得了原始的 MutablePropertySources，把自己加入成为一个元素：
+
+
+```
+
+public final class ConfigurationPropertySources {
+  public static void attach(Environment environment) {
+    MutablePropertySources sources = ((ConfigurableEnvironment) environment).getPropertySources();
+    PropertySource<?> attached = sources.get(ATTACHED_PROPERTY_SOURCE_NAME);
+    if (attached == null) {
+      sources.addFirst(new ConfigurationPropertySourcesPropertySource(ATTACHED_PROPERTY_SOURCE_NAME,
+          new SpringConfigurationPropertySources(sources)));
+    }
+  }
+}
+```
+
+而这个 attach 方法，是 Spring 应用程序启动时准备环境的时候调用的。在 SpringApplication 的 run 方法中调用了 prepareEnvironment 方法，然后又调用了 ConfigurationPropertySources.attach 方法：
+
+
+```
+
+public class SpringApplication {
+
+public ConfigurableApplicationContext run(String... args) {
+    ...
+    try {
+      ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+      ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);
+      ...
+  }
+  private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners,
+      ApplicationArguments applicationArguments) {
+    ...
+    ConfigurationPropertySources.attach(environment);
+    ...
+    }
+}
+```
 
 
