@@ -432,3 +432,4 @@ https://time.geekbang.org/column/article/213295?utm_campaign=guanwang&utm_source
 * 出操作（Around（连接点执行后）、After、AfterReturning、AfterThrowing），切面优先级越低，越先执行。一个切面的出操作执行完，才轮到下一切面，直到返回到调用点。
 * 同一切面的 Around 比 After、Before 先执行。
 
+对于 Bean 可以通过 @Order 注解来设置优先级，查看 @Order 注解和 Ordered 接口源码可以发现，默认情况下 Bean 的优先级为最低优先级，其值是 Integer 的最大值。**其实，值越大优先级反而越低，这点比较反直觉：**
