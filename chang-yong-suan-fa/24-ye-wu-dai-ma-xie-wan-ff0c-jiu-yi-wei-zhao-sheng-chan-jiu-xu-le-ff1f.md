@@ -571,3 +571,31 @@ wrk -t 1 -c 1 -d 3600s http://localhost:45678/order/createOrder\?userId\=2\&merc
 536ce4dad0e8bc00aa6d9ad4ff285b5b.jpg
 
 第三种情况是，尝试一下因为商户不营业导致的下单失败：
+
+
+
+
+```
+
+wrk -t 1 -c 1 -d 3600s http://localhost:45678/order/createOrder\?userId\=20\&merchantId\=1
+```
+我把变化的地方圈了出来，你可以自己尝试分析一下：
+
+4cf8d97266f5063550e5db57e61c73d4.jpg
+
+
+第四种情况是，配送停止。我们通过 curl 调用接口，来设置配送停止开关：
+
+
+
+
+```
+
+curl -X POST 'http://localhost:45678/deliver/status?status=false'
+```
+
+从监控可以看到，从开关关闭那刻开始，所有的配送消息全部处理失败了，原因是 deliver outofservice，配送操作性能从 500ms 左右到了 0ms，说明配送失败是一个本地快速失败，并不是因为服务超时等导致的失败。而且虽然配送失败，但下单操作都是正常的：
+c49bfce8682d382a04bd9dd8182534bc.jpg
+
+最后希望说的是，除了手动添加业务监控指标外，Micrometer 框架还帮我们自动做了很多有关 JVM 内部各种数据的指标。进入 InfluxDB 命令行客户端，你可以看到下面的这些表（指标），其中前 8 个是我们自己建的业务指标，后面都是框架帮我们建的 JVM、各种组件状态的指标：
+
