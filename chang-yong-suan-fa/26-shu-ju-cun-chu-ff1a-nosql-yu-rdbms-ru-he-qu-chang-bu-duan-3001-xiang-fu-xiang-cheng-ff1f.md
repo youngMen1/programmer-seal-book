@@ -469,7 +469,12 @@ public interface NewsESRepository extends ElasticsearchRepository<News, Long> {
     long countByCateidAndContentContainingAndContentContaining(int cateid, String keyword1, String keyword2);
 }
 ```
+
+
+
 对于 ES 和 MySQL，我们使用相同的条件进行搜索，搜素分类是 1，关键字是社会和苹果，然后输出搜索结果和耗时：
+
+
 
 
 ```
