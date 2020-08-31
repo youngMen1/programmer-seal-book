@@ -51,7 +51,6 @@
       * [07 \| 链表（下）：如何轻松写出正确的链表代码？](chang-yong-suan-fa/shu-ju-jie-gou-yu-suan-fa-zhi-mei/ji-chu-pian/07-lian-biao-ff08-xia-ff09-ff1a-ru-he-qing-song-xie-chu-zheng-que-de-lian-biao-dai-ma-ff1f.md)
   * [一起从零开始刷力扣](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
   * LRU算法
-  * [23 \| 缓存设计：缓存可以锦上添花也可以落井下石](chang-yong-suan-fa/23-huan-cun-she-ji-ff1a-huan-cun-ke-yi-jin-shang-tian-hua-ye-ke-yi-luo-jing-xia-shi.md)
   * [24 \| 业务代码写完，就意味着生产就绪了？](chang-yong-suan-fa/24-ye-wu-dai-ma-xie-wan-ff0c-jiu-yi-wei-zhao-sheng-chan-jiu-xu-le-ff1f.md)
   * [22 \| 接口设计：系统间对话的语言，一定要统一](chang-yong-suan-fa/22-jie-kou-she-ji-ff1a-xi-tong-jian-dui-hua-de-yu-yan-ff0c-yi-ding-yao-tong-yi.md)
   * [09 \| 数值计算：注意精度、舍入和溢出问题](chang-yong-suan-fa/09-shu-zhi-ji-suan-ff1a-zhu-yi-jing-du-3001-she-ru-he-yi-chu-wen-ti.md)
