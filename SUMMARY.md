@@ -539,6 +539,7 @@
   * [结对编程](xiang-mu-guan-li/jie-dui-bian-cheng.md)
   * [极限编程（XP）](xiang-mu-guan-li/ji-xian-bian-cheng-ff08-xp.md)
   * [PDCA 循环质量管理](xiang-mu-guan-li/pdca-xun-huan-zhi-liang-guan-li.md)
+  * [KISS原则](xiang-mu-guan-li/kissyuan-ze.md)
 * [面试总结问题](mian-shi-zong-jie-wen-ti.md)
   * [数据结构与算法基础](mian-shi-zong-jie-wen-ti/shu-ju-jie-gou-yu-suan-fa-ji-chu.md)
   * [微服务基础](wei-fu-wu-ji-chu.md)
