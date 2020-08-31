@@ -18,15 +18,20 @@
 
 * 依赖倒置原则(Dependence Inversion Principle)：要依赖于抽象,不要依赖于具体，针对接口编程,不针对实现编程,尽可能使用接口或抽象类。
 
-* 迪米特原则(Law of Demeter)：一个软件实体应当尽可能少地与其他实体发生相互作用，通过中间类建立联系。
+* 迪米特法则(Law of Demeter)：一个软件实体应当尽可能少地与其他实体发生相互作用，通过中间类建立联系。
 尽可能的少暴露自己的接口，能不 public 就不 public
 
 * 合成复用原则：尽量使用合成/聚合,而不是使用继承。
 
 
-DRY原则(Don’t Repeat Yourself)：是指编程过程中不写重复代码，将能够公共的部分抽象出来
+DRY原则(Don’t Repeat Yourself)：直译就是不要重复你自己，是指编程过程中不写重复代码，将能够公共的部分抽象出来
 
-KISS 原则(Keep It Simple, Stupid)：保持简单，傻瓜
+KISS 原则(Keep It Simple, Stupid)：直译就是保持简单，傻瓜，
+
+YAGNI 原则(YAGNI stands for "you aren't gonna need it": don't implement something until it is necessary)：译就是你没必要那么着急,不要给你定义的类实现太过于早的功能,你只需要先实现好现在需要的功能点。
+
+
+
 
 # 3.总结
 
