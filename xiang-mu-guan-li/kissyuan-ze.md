@@ -1,4 +1,4 @@
-# KISS原则
+# 1.KISS原则
 
 KISS? 此KISS不是彼KISS, 乃Keep It Simple, Stupid! 直接翻译过来，就是“保持简单，傻瓜！”（ Stupid这个词，在英语中含义也很复杂，很难简单翻译，这个KISS中的Stupid我认为更多是语气词。关于这个词，最喜欢的解释是阿甘的妈妈教育 的那个：“Stupid is as stupid does”.）
 
@@ -19,3 +19,8 @@ KISS? 此KISS不是彼KISS, 乃Keep It Simple, Stupid! 直接翻译过来，就�
 15、 优化原则：在雕琢之前先有原型；在你优化它之前，先让他可以运行；
 16、 差异原则：怀疑所有声称的“唯一真理“
 17、 可扩展原则：为将来做设计，因为它可能比你认为来的要快
+
+# 2.参考
+KISS原则：`https://www.cnblogs.com/lcinx/p/10570365.html`
+
+
