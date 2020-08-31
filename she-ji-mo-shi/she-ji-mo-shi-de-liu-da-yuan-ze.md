@@ -26,7 +26,7 @@
 
 DRY原则(Don’t Repeat Yourself)：是指编程过程中不写重复代码，将能够公共的部分抽象出来
 
-KISS 原则(Keep It Simple, Stupid)
+KISS 原则(Keep It Simple, Stupid)：保持简单，傻瓜
 
 # 3.总结
 
