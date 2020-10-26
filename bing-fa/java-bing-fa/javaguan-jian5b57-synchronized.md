@@ -48,7 +48,7 @@ result: 4573324
 
 现在我们已经知道了怎样synchronized了，看起来很简单，拥有了这个关键字就真的可以在并发编程中得心应手了吗？爱学的你，就真的不想知道synchronized底层是怎样实现了吗？
 
-## 2.1 对象锁（monitor）机制
+## 2.1.对象锁（monitor）机制
 
 现在我们来看看synchronized的具体底层实现。先写一个简单的demo:
 
@@ -83,7 +83,7 @@ public class SynchronizedDemo {
 
 **每个对象拥有一个计数器，当线程获取该对象锁后，计数器就会加一，释放锁后就会将计数器减一**。
 
-任意一个对象都拥有自己的监视器，当这个对象由同步块或者这个对象的同步方法调用时，执行方法的线程必须先获取该对象的监视器才能进入同步块和同步方法，如果没有获取到监视器的线程将会被阻塞在同步块和同步方法的入口处，进入到BLOCKED状态（关于线程的状态可以看[这篇文章]([https://juejin.im/post/5ae6cf7a518825670960fcc2](https://juejin.im/post/5ae6cf7a518825670960fcc2%29)
+任意一个对象都拥有自己的监视器，当这个对象由同步块或者这个对象的同步方法调用时，执行方法的线程必须先获取该对象的监视器才能进入同步块和同步方法，如果没有获取到监视器的线程将会被阻塞在同步块和同步方法的入口处，进入到BLOCKED状态（关于线程的状态可以看\[这篇文章\]\([https://juejin.im/post/5ae6cf7a518825670960fcc2](https://juejin.im/post/5ae6cf7a518825670960fcc2%29)
 
 下图表现了对象，对象监视器，同步队列以及执行线程状态之间的关系：
 
@@ -93,7 +93,7 @@ public class SynchronizedDemo {
 
 ## 2.2 synchronized的happens-before关系
 
-在上一篇文章中讨论过[happens-before](https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：
+在上一篇文章中讨论过\[happens-before\]\([https://juejin.im/post/5ae6d309518825673123fd0e\)规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：](https://juejin.im/post/5ae6d309518825673123fd0e%29规则，抱着学以致用的原则我们现在来看一看Synchronized的happens-before规则，即监视器锁规则：对同一个监视器的解锁，happens-before于对该监视器的加锁。继续来看代码：)
 
 ```
 public class MonitorDemo {
