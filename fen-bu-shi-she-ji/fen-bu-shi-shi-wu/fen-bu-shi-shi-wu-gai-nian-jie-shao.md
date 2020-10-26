@@ -55,5 +55,5 @@
 ![](/static/image/20200331151439275.png)
 
 # 2.参考
-https://blog.csdn.net/linxingliang/category_9764607.html
+分布式事务「2020年」必学:https://blog.csdn.net/linxingliang/article/details/103438875
 
