@@ -11,5 +11,7 @@
 
 ![](/static/image/3723793cc5c810e9d5b06bc95325bf0a.jpg)
 
+
+# 2.本课程需要学习的内容
 ![](/static/image/数据结构和算法123456.jpg)
 
