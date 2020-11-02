@@ -9,13 +9,6 @@ Dijkstra算法算是贪心思想实现的，首先把起点到所有点的距离
 ![](/static/image/20181120091021734.png)
 
 
-
-
-
-
-
-
-
 # 2.参考
 
 Dijkstra算法图文详解：[https://blog.csdn.net/lbperfect123/article/details/84281300](https://blog.csdn.net/lbperfect123/article/details/84281300)
