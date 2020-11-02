@@ -52,10 +52,10 @@
   * [一起从零开始刷力扣](chang-yong-suan-fa/ru-he-shua-li-kou-ti-mu.md)
   * [LRU算法](chang-yong-suan-fa/lrusuan-fa.md)
   * [递归算法](chang-yong-suan-fa/di-gui-suan-fa.md)
-  * [Dijkstra\(迪杰斯特拉\)算法](chang-yong-suan-fa/dijkstradi-jie-si-te-62c929-suan-fa.md)
   * [最短路径算法](chang-yong-suan-fa/zui-duan-lu-jing-suan-fa.md)
     * Bellford算法
     * Floyd算法
+    * [Dijkstra\(迪杰斯特拉\)算法](chang-yong-suan-fa/dijkstradi-jie-si-te-62c929-suan-fa.md)
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
