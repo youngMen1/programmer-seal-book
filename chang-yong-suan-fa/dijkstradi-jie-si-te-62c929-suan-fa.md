@@ -4,6 +4,8 @@ Dijkstra算法算是贪心思想实现的，首先把起点到所有点的距离
 
 ## 1.1.引入问题
 
+指定一个点（源点）到其余各个顶点的最短路径，也叫做“单源最短路径”。例如求下图中的1号顶点到2、3、4、5、6号顶点的最短路径。
+
 # 2.参考
 
 Dijkstra算法图文详解：[https://blog.csdn.net/lbperfect123/article/details/84281300](https://blog.csdn.net/lbperfect123/article/details/84281300)
