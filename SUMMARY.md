@@ -55,6 +55,7 @@
   * [Dijkstra\(迪杰斯特拉\)算法](chang-yong-suan-fa/dijkstradi-jie-si-te-62c929-suan-fa.md)
   * [最短路径算法](chang-yong-suan-fa/zui-duan-lu-jing-suan-fa.md)
     * Bellford算法
+    * Floyd算法
 * [并发](bing-fa.md)
   * [Java 并发](bing-fa/java-bing-fa.md)
     * [并发的优缺点](bing-fa/java-bing-fa/bing-fa-de-you-que-dian.md)
