@@ -11,9 +11,9 @@
 
 （4）main线程，用户程序的入口。那么，如何在用户程序中新建一个线程了，只要有三种方式：
 
-1. 通过继承Thread类，重写run方法；
-2. 通过实现Runnable接口；
-3. 通过实现callable接口这三种方式，下面看具体demo。
+* 1.通过继承Thread类，重写run方法；
+* 2.通过实现Runnable接口；
+* 3.通过实现callable接口这三种方式，下面看具体demo。
 
 ```
 public class CreateThreadDemo {
