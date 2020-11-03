@@ -1,4 +1,4 @@
-# [防雪崩利器：熔断器 Hystrix 的原理与使用]() {#articleTitle}
+# 1.防雪崩利器：熔断器 Hystrix 的原理与使用
 
 ## 前言 {#articleHeader0}
 
