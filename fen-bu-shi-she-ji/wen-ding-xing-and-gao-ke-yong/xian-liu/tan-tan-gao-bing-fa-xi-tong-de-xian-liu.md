@@ -108,7 +108,7 @@ private void doCheck()
 
 Guava是一个Google开源项目，包含了若干被Google的Java项目广泛依赖的核心库，其中的RateLimiter提供了令牌桶算法实现：平滑突发限流\(SmoothBursty\)和平滑预热限流\(SmoothWarmingUp\)实现。
 
-#### 1.常规速率：
+#### 1.1.常规速率：
 
 创建一个限流器，设置每秒放置的令牌数：2个。返回的RateLimiter对象可以保证1秒内不会给超过2个令牌，并且是固定速率的放置。达到平滑输出的效果
 
@@ -136,11 +136,9 @@ public void test()
 
 ![img](/static/image/15700-20170501174041070-1981680853.png)
 
-#### 2.突发流量：
+#### 1.2.突发流量：
 
 突发流量可以是突发的多，也可以是突发的少。首先来看个突发多的例子。还是上面例子的流量，每秒2个数据令牌。如下代码使用acquire方法，指定参数。
-
-
 
 ```
 System.out.println\(r.acquire\(2\)\);  
@@ -149,15 +147,11 @@ System.out.println\(r.acquire\(1\)\);
 System.out.println\(r.acquire\(1\)\);
 ```
 
-
-
 得到如下类似的输出。
 
 ![img](/static/image/15700-20170501174043054-94751454.png)
 
 如果要一次新处理更多的数据，则需要更多的令牌。代码首先获取2个令牌，那么下一个令牌就不是0.5秒之后获得了，还是1秒以后，之后又恢复常规速度。这是一个突发多的例子，如果是突发没有流量，如下代码：
-
-
 
 ```
 System.out.println\(r.acquire\(1\)\);  
@@ -166,8 +160,6 @@ System.out.println\(r.acquire\(1\)\);
 System.out.println\(r.acquire\(1\)\);  
 System.out.println\(r.acquire\(1\)\);
 ```
-
-
 
 得到如下类似的结果：
 
@@ -199,11 +191,11 @@ while (true) {
 
 ![img](/static/image/15700-20170501174044882-556744286.png)
 
-### Nginx
+### 2.Nginx
 
 对于Nginx接入层限流可以使用Nginx自带了两个模块：连接数限流模块ngx\_http\_limit\_conn\_module和漏桶算法实现的请求限流模块ngx\_http\_limit\_req\_module。
 
-#### 1.ngx\_http\_limit\_conn\_module
+#### 2.1.ngx\_http\_limit\_conn\_module
 
 我们经常会遇到这种情况，服务器流量异常，负载过大等等。对于大流量恶意的攻击访问，会带来带宽的浪费，服务器压力，影响业务，往往考虑对同一个ip的连接数，并发数进行限制。ngx\_http\_limit\_conn\_module 模块来实现该需求。该模块可以根据定义的键来限制每个键值的连接数，如同一个IP来源的连接数。并不是所有的连接都会被该模块计数，只有那些正在被处理的请求（这些请求的头信息已被完全读入）所在的连接才会被计数。
 
@@ -226,7 +218,7 @@ limit_conn_status 503;
 limit_conn one 1;
 ```
 
-然后我们是使用ab测试来模拟并发请求：  
+然后我们是使用ab测试来模拟并发请求：
 
 ```
 ab -n 5 -c 5 http://10.23.22.239/index.html
@@ -245,7 +237,7 @@ limit_conn_zone $ server_name zone=perserver:10m;
 limit_conn perserver 1;
 ```
 
-#### 1.ngx\_http\_limit\_req\_module
+#### 2.2.ngx\_http\_limit\_req\_module
 
 上面我们使用到了ngx\_http\_limit\_conn\_module 模块，来限制连接数。那么请求数的限制该怎么做呢？这就需要通过ngx\_http\_limit\_req\_module 模块来实现，该模块可以通过定义的键值来限制请求处理的频率。特别的，可以限制来自单个IP地址的请求处理频率。 限制的方法是使用了漏斗算法，每秒固定处理请求数，推迟过多请求。如果请求的频率超过了限制域配置的值，请求处理会被延迟或被丢弃，所以所有的请求都是以定义的频率被处理的。
 
