@@ -253,8 +253,10 @@ public void timeWindowTest() throws Exception{
 }
 ```
 
-## 总结 {#articleHeader6}
+# 2.总结 {#articleHeader6}
 
 通过使用Hystrix,我们能方便的防止雪崩效应, 同时使系统具有自动降级和自动恢复服务的效果.
+
+# 3.参考
 https://segmentfault.com/a/1190000005988895
 
