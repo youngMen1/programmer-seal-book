@@ -191,7 +191,7 @@ while (true) {
 
 对于Nginx接入层限流可以使用Nginx自带了两个模块：连接数限流模块ngx\_http\_limit\_conn\_module和漏桶算法实现的请求限流模块ngx\_http\_limit\_req\_module。
 
-1. ngx\_http\_limit\_conn\_module
+#### 1.ngx\_http\_limit\_conn\_module
 
 我们经常会遇到这种情况，服务器流量异常，负载过大等等。对于大流量恶意的攻击访问，会带来带宽的浪费，服务器压力，影响业务，往往考虑对同一个ip的连接数，并发数进行限制。ngx\_http\_limit\_conn\_module 模块来实现该需求。该模块可以根据定义的键来限制每个键值的连接数，如同一个IP来源的连接数。并不是所有的连接都会被该模块计数，只有那些正在被处理的请求（这些请求的头信息已被完全读入）所在的连接才会被计数。
 
@@ -230,7 +230,7 @@ limit_conn_zone $ server_name zone=perserver:10m;
 limit_conn perserver 1;
 ```
 
-1. ngx\_http\_limit\_req\_module
+#### 1.ngx\_http\_limit\_req\_module
 
 上面我们使用到了ngx\_http\_limit\_conn\_module 模块，来限制连接数。那么请求数的限制该怎么做呢？这就需要通过ngx\_http\_limit\_req\_module 模块来实现，该模块可以通过定义的键值来限制请求处理的频率。特别的，可以限制来自单个IP地址的请求处理频率。 限制的方法是使用了漏斗算法，每秒固定处理请求数，推迟过多请求。如果请求的频率超过了限制域配置的值，请求处理会被延迟或被丢弃，所以所有的请求都是以定义的频率被处理的。
 
