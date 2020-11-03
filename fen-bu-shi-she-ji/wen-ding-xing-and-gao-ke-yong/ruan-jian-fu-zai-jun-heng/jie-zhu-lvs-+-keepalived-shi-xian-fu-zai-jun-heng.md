@@ -1,6 +1,6 @@
-# [借助LVS+Keepalived实现负载均衡](https://www.cnblogs.com/edisonchou/p/4281978.html)
+# 1.借助LVS+Keepalived实现负载均衡
 
-# 一、负载均衡：必不可少的基础手段
+#1.1.负载均衡：必不可少的基础手段
 
 当前大多数的互联网系统都使用了服务器集群技术，集群即**将相同服务部署在多台服务器上构成一个集群整体对外提供服务**
 
@@ -18,7 +18,7 @@
 
 软件负载解决的两个核心问题是：选谁、转发，其中最著名的是**LVS**（Linux Virtual Server）。
 
-# 二、初识LVS：Linux Virtual Server
+# 1.2.初识LVS：Linux Virtual Server
 
 ## 2.1 LVS是神马东西
 
@@ -118,7 +118,7 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 ②执行关闭防火墙自动运行命令：**chkconfig iptables off**
 
-验证：**chkconfig --list \| grep iptables**
+验证：**chkconfig --list | grep iptables**
 
 ## 3.3 配置两台Web服务器
 
@@ -126,19 +126,27 @@ DR模式下需要LVS和RS集群绑定同一个VIP（RS通过将VIP绑定在loopb
 
 （1）开启http服务
 
-命令：service httpd start
+命令：`service httpd start`
 
-补充：chkconfig httpd on --&gt;将httpd设为自启动服务
+补充：
+
+
+```
+将httpd设为自启动服务
+chkconfig httpd on
+```
+
+
 
 （2）在宿主机访问Web网页，并通过FTP工具上传自定义网页：这里上传一个静态网页，并通过更改其中的html来区别两台Web服务器，以下图所示为例，其中一台显示from 192.168.80.102，而另一台显示from 192.168.80.103；
 
-092331330897815.jpg
+![](/static/image/092331330897815.jpg)
 
 （3）编辑realserver脚本文件
 
-①进入指定文件夹：cd /etc/init.d/
+①进入指定文件夹：`cd /etc/init.d/`
 
-②编辑脚本文件：vim realserver
+②编辑脚本文件：`vim realserver`
 
 ```
 SNS_VIP=192.168.80.200
@@ -306,9 +314,14 @@ vrrp_instance VI_1 {
 
 ![](/static/image/100013188088138.gif)
 
-# 学习小结
+# 2.总结
 
 　　LVS是目前广为采用的软件负载均衡解决方案，在一些大型企业级系统及互联网系统中应用。本次，简单地了解了一下LVS，并在Linux下搭建了一个小小的测试环境，借助Keepalived实现了一个最小化的负载均衡测试环境。LVS是一个可以工作在网络第四层的负载均衡软件，因此它相对于Nginx一类工作在第七层的负载均衡软件有着无可比拟的性能优势，而且它还是我国的章文嵩博士（现在阿里的副总裁，淘宝的技术专家）作为创始人发起的，现已经成为Linux内核的组成部分。
 
 　　当然，目前流行的LVS解决方案中，在Web服务器端也有采用了Nginx+Tomcat这样的搭配类型，静态文件和动态文件分开进行处理，也不失为一种有效的尝试。在以后的日子里，我还会尝试下在Linux下借助Jexus跑ASP.NET MVC项目，试试.NET项目在Linux下的运行效果，希望到时也可以做一些分享。好了，今天就到此停笔。
+
+# 3.参考
+借助LVS+Keepalived实现负载均衡：https://www.cnblogs.com/edisonchou/p/4281978.html
+
+
 
