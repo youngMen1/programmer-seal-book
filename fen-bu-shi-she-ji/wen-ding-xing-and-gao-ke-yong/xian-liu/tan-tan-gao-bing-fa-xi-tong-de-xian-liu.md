@@ -1,4 +1,4 @@
-# [谈谈高并发系统的限流](https://www.cnblogs.com/haoxinyue/p/6792309.html)
+# 谈谈高并发系统的限流
 
 开涛大神在博客中说过：**在开发高并发系统时有三把利器用来保护系统：缓存、降级和限流**。本文结合作者的一些经验介绍限流的相关概念、算法和常规的实现方式。
 
@@ -259,3 +259,5 @@ limit_req zone=one burst=5;
 
 ![img](/static/image/15700-20170501174046164-903720634.png)
 
+# 2.参考
+谈谈高并发系统的限流：https://www.cnblogs.com/haoxinyue/p/6792309.html
