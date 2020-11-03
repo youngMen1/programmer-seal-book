@@ -154,7 +154,7 @@
     * [环境分离](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/chi-xu-ji-621028-ci-cd/huan-jing-fen-li.md)
   * [自动化运维](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/zi-dong-hua-yun-wei.md)
   * [测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi.md)
-    * A/B 、灰度、蓝绿测试
+    * [A/B 、灰度、蓝绿测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/ab-3001-hui-du-3001-lan-lv-ce-shi.md)
     * [全链路压测](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/quan-lian-lu-ya-ce.md)
     * [压力测试](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/ya-li-ce-shi.md)
     * [TDD 理论](yun-wei-and-tong-ji-and-ji-zhu-zhi-chi/ce-shi/tdd-li-lun.md)
