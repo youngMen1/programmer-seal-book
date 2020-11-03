@@ -93,7 +93,7 @@ as-if-serial语义的意思是：不管怎么重排序（编译器和处理器�
 
 ## 4.1 happens-before定义
 
-happens-before的概念最初由Leslie Lamport\(莱斯利·兰波特\)在其一篇影响深远的论文（《Time，Clocks and the Ordering of Events in a Distributed System》）中提出，有兴趣的可以google一下。JSR-133使用happens-before的概念来指定**两个操作之间的执行顺序。**
+happens-before的概念最初由Leslie Lamport(莱斯利·兰波特)在其一篇影响深远的论文（《Time，Clocks and the Ordering of Events in a Distributed System》）中提出，有兴趣的可以google一下。JSR-133使用happens-before的概念来指定**两个操作之间的执行顺序。**
 
 由于这两个操作可以在一个线程之内，也可以是在不同线程之间。因此，**JMM可以通过happens-before关系向程序员提供跨线程的内存可见性保证（如果A线程的写操作a与B线程的读操作b之间存在happens-before关系，尽管a操作和b操作在不同的线程中执行，但JMM向程序员保证a操作将对b操作可见）**。
 
@@ -129,13 +129,13 @@ happens-before的概念最初由Leslie Lamport\(莱斯利·兰波特\)在其一�
 
 4. 传递性：如果A happens-before B，且B happens-before C，那么A happens-before C。
 
-5. start\(\)规则：如果线程A执行操作ThreadB.start\(\)（启动线程B），那么A线程的ThreadB.start\(\)操作happens-before于线程B中的任意操作。
+5. start()规则：如果线程A执行操作ThreadB.start()（启动线程B），那么A线程的ThreadB.start()操作happens-before于线程B中的任意操作。
 
-6. join\(\)规则：如果线程A执行操作ThreadB.join\(\)并成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join\(\)操作成功返回。
+6. join()规则：如果线程A执行操作ThreadB.join()并成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join()操作成功返回。
 
-7. 程序中断规则：对线程interrupted\(\)方法的调用先行于被中断线程的代码检测到中断时间的发生。
+7. 程序中断规则：对线程interrupted()方法的调用先行于被中断线程的代码检测到中断时间的发生。
 
-8. 对象finalize规则：一个对象的初始化完成（构造函数执行结束）先行于发生它的finalize\(\)方法的开始。
+8. 对象finalize规则：一个对象的初始化完成（构造函数执行结束）先行于发生它的finalize()方法的开始。
 
 下面以一个**具体的例子来讲下如何使用这些规则进行推论**：
 
