@@ -210,7 +210,7 @@ public class JoinDemo {
 
 在上面的例子中一个创建了10个线程，每个线程都会等待前一个线程结束才会继续运行。可以通俗的理解成接力，前一个线程将接力棒传给下一个线程，然后又传给下一个线程......
 
-### 3.3 sleep
+### 3.3.sleep
 
 public static native void sleep\(long millis\)方法显然是Thread的静态方法，很显然它是让当前线程按照指定的时间休眠，其休眠时间的精度取决于处理器的计时器和调度器。需要注意的是如果当前线程获得了锁，sleep方法并不会失去锁。sleep方法经常拿来与Object.wait\(\)方法进行比价，这也是面试经常被问的地方。
 
@@ -224,7 +224,7 @@ public static native void sleep\(long millis\)方法显然是Thread的静态方�
 
 3. sleep\(\)方法在休眠时间达到后如果再次获得CPU时间片就会继续执行，而wait\(\)方法必须等待Object.notift/Object.notifyAll通知后，才会离开等待池，并且再次获得CPU时间片才会继续执行。
 
-### 3.4 yield
+### 3.4.yield
 
 public static native void yield\(\);这是一个静态方法，一旦执行，**它会是当前线程让出CPU**，但是，需要注意的是，让出的CPU并不是代表当前线程不再运行了，如果在下一次竞争中，又获得了CPU时间片当前线程依然会继续运行。另外，让出的时间片只会分配**给当前线程相同优先级**的线程。什么是线程优先级了？下面就来具体聊一聊。
 
@@ -284,5 +284,5 @@ public class DaemonDemo {
 
 &gt;     at learn.DaemonDemo.main\(DaemonDemo.java:19\)
 
-这样的异常，但是该线程还是会执行，只不过会当做正常的用户线程执行。
+这样的异常，但是该线程还是会执行，只不过会当做正常的用户线程执行。 n
 
