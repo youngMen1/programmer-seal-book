@@ -104,11 +104,11 @@ private void doCheck()
 
 ## 1.3.2.限流算法实现
 
-**Guava**
+### 1.Guava
 
 Guava是一个Google开源项目，包含了若干被Google的Java项目广泛依赖的核心库，其中的RateLimiter提供了令牌桶算法实现：平滑突发限流\(SmoothBursty\)和平滑预热限流\(SmoothWarmingUp\)实现。
 
-### 1.常规速率：
+#### 1.常规速率：
 
 创建一个限流器，设置每秒放置的令牌数：2个。返回的RateLimiter对象可以保证1秒内不会给超过2个令牌，并且是固定速率的放置。达到平滑输出的效果
 
@@ -136,7 +136,7 @@ public void test()
 
 ![img](/static/image/15700-20170501174041070-1981680853.png)
 
-1. 突发流量：
+#### 2.突发流量：
 
 突发流量可以是突发的多，也可以是突发的少。首先来看个突发多的例子。还是上面例子的流量，每秒2个数据令牌。如下代码使用acquire方法，指定参数。
 
@@ -187,7 +187,7 @@ while (true) {
 
 ![img](/static/image/15700-20170501174044882-556744286.png)
 
-**Nginx**
+### Nginx
 
 对于Nginx接入层限流可以使用Nginx自带了两个模块：连接数限流模块ngx\_http\_limit\_conn\_module和漏桶算法实现的请求限流模块ngx\_http\_limit\_req\_module。
 
