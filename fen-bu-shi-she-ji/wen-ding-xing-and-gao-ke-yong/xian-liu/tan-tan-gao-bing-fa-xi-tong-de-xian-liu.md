@@ -140,10 +140,16 @@ public void test()
 
 突发流量可以是突发的多，也可以是突发的少。首先来看个突发多的例子。还是上面例子的流量，每秒2个数据令牌。如下代码使用acquire方法，指定参数。
 
+
+
+```
 System.out.println\(r.acquire\(2\)\);  
 System.out.println\(r.acquire\(1\)\);  
 System.out.println\(r.acquire\(1\)\);  
 System.out.println\(r.acquire\(1\)\);
+```
+
+
 
 得到如下类似的输出。
 
@@ -151,11 +157,17 @@ System.out.println\(r.acquire\(1\)\);
 
 如果要一次新处理更多的数据，则需要更多的令牌。代码首先获取2个令牌，那么下一个令牌就不是0.5秒之后获得了，还是1秒以后，之后又恢复常规速度。这是一个突发多的例子，如果是突发没有流量，如下代码：
 
+
+
+```
 System.out.println\(r.acquire\(1\)\);  
 Thread.sleep\(2000\);  
 System.out.println\(r.acquire\(1\)\);  
 System.out.println\(r.acquire\(1\)\);  
 System.out.println\(r.acquire\(1\)\);
+```
+
+
 
 得到如下类似的结果：
 
