@@ -1,4 +1,4 @@
-## [几种负载均衡算法](https://www.cnblogs.com/tianzhiliang/articles/2317808.html)
+# 几种负载均衡算法
 
 本地流量管理技术主要有一下几种负载均衡算法：
 
