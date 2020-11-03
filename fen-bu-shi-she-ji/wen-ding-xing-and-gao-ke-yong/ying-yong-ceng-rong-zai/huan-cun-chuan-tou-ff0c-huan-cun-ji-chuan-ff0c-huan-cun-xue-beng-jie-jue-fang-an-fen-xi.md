@@ -194,13 +194,13 @@ String get(final String key) {
 
 ![img](/static/image/微信截图_20190903172328.png)
 
-## 总结
+# 2.总结
 
 针对业务系统，永远都是具体情况具体分析，没有最好，只有最合适。
 
 最后，对于缓存系统常见的缓存满了和数据丢失问题，需要根据具体业务分析，通常我们采用LRU策略处理溢出，Redis的RDB和AOF持久化策略来保证一定情况下的数据安全。
 
-# 参考
+# 3.参考
 
 **双11万亿流量下的分布式缓存：**[https://yq.aliyun.com/articles/290865](https://yq.aliyun.com/articles/290865)
 
