@@ -82,7 +82,7 @@ join\(long\),
 
 LockSupport.parkNanos\(\),
 
-LockSupport.parkUtil\(\)增加了超时等待的功能，也就是调用这些方法后线程会进入**TIMED\_WAITING**状态，当超时等待时间到达后，线程会切换到Runable的状态，另外当WAITING和TIMED \_WAITING状态时可以通过**Object.notify\(\),Object.notifyAll\(\)方法使线程转换到Runable状态。**当线程出现资源竞争时，即等待获取锁的时候，线程会进入到\*\*BLOCKED\*\*阻塞状态，当线程获取锁时，线程进入到Runable状态。线程运行结束后，线程进入到\*\*TERMINATED\*\*状态，状态转换可以说是线程的生命周期。另外需要注意的是：
+LockSupport.parkUtil\(\)增加了超时等待的功能，也就是调用这些方法后线程会进入**TIMED\_WAITING**状态，当超时等待时间到达后，线程会切换到Runable的状态，另外当WAITING和TIMED \_WAITING状态时可以通过**Object.notify\(\),Object.notifyAll\(\)方法使线程转换到Runable状态。**当线程出现资源竞争时，即等待获取锁的时候，线程会进入到**BLOCKED**阻塞状态，当线程获取锁时，线程进入到Runable状态。线程运行结束后，线程进入到**TERMINATED**状态，状态转换可以说是线程的生命周期。另外需要注意的是：
 
 * 当线程进入到synchronized方法或者synchronized代码块时，线程切换到的是BLOCKED状态，而使用java.util.concurrent.locks下lock进行加锁的时候线程切换的是WAITING或者TIMED\_WAITING状态，因为lock会调用LockSupport的方法。
 
