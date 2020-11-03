@@ -189,8 +189,7 @@ _Hystrix能解决如下问题：_
 
 ### 8、你所知道的微服务技术栈有哪些？请列举一二
 
-服务开发  
-Springboot、Spring、SpringMVC
+服务开发Springboot、Spring、SpringMVC
 
 * 服务配置与管理  
   Netflix公司的Archaius、阿里的Diamond等
