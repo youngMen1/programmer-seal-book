@@ -50,3 +50,10 @@
 
 持续性算法（Persistent）：    从一个特定的客户端发出的请求都被分配到一个实服务组中的同一个实服务器上进行处理。主要包括：A．基于IP的算法－Persistent IP \(pi\)：基于用户IP地址来选择服务器。－Hash IP \(hi\) ：基于用户IP地址的HASH值，来选择服务器－Consistent Hash IP \(chi\)：B．基于报头/请求的算法－Hash Header \(hh\)：基于用户请求报中HTTP报头来选择服务器；－Persistent Hostname \(ph\) ：基于用户请求报中HTTP报头的Hostname的HASH值，来选择服务器；－Persistent URL \(pu\)：基于对URI Tag 和值的静态对应关系来选择服务器。－SSL Session ID \(sslsid\)：基于SSL会话ID来选择服务器。C．基于Cookie的算法－Persistent Cookie \(pc\) ： 选择服务器基于用户请求包用Cookie Name / Value 的静态对应关系； －Hash Cookie \(hc\) ：选择服务器基于用户请求包用Cookie Name / Value 的Hash 值对应关系；－Insert Cookie \(ic\) ：选择服务器基于[负载均衡](http://www.semptian.com/fzjh/)器 向服务器响应包中插入Cookie；－Re-write Cookie \(rc\)：选择服务器基于负载均衡器向服务器响应包中重写Cookie值。（必须为重写指定Cookie值的偏移量）
 
+
+# 2.参考
+
+几种负载均衡算法：https://www.cnblogs.com/tianzhiliang/articles/2317808.html
+
+
+
