@@ -227,9 +227,9 @@ ab -n 5 -c 5 http://10.23.22.239/index.html
 另外刚才是配置针对单个IP的并发限制，还是可以针对域名进行并发限制，配置和客户端IP类似。
 
 ```
- #http{}段配置
+# http{}段配置
 limit_conn_zone $ server_name zone=perserver:10m;
-#server{}段配置
+# server{}段配置
 limit_conn perserver 1;
 ```
 
@@ -239,9 +239,8 @@ limit_conn perserver 1;
 
 在http{}中配置
 
-\#区域名称为one，大小为10m，平均处理的请求频率不能超过每秒一次。
-
 ```
+#区域名称为one，大小为10m，平均处理的请求频率不能超过每秒一次。
 limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 ```
 
@@ -254,7 +253,7 @@ limit_req zone=one burst=5;
 
 上面设置定义了每个IP的请求处理只能限制在每秒1个。并且服务端可以为每个IP缓存5个请求，如果操作了5个请求，请求就会被丢弃。
 
-使用ab测试模拟客户端连续访问10次：ab -n 10 -c 10[http://10.23.22.239/index.html](http://10.23.22.239/index.html)
+使用ab测试模拟客户端连续访问10次：`ab -n 10 -c 10 http://10.23.22.239/index.html`
 
 如下图，设置了通的个数为5个。一共10个请求，第一个请求马上被处理。第2-6个被存放在桶中。由于桶满了，没有设置nodelay因此，余下的4个请求被丢弃。
 
