@@ -42,7 +42,7 @@ ThreadLocal：线程局部变量。为每一个使用该变量的线程都提供
 
 ## 9、ConcurrentHashMap的实现原理是？ {#9、ConcurrentHashMap的实现原理是？}
 
-在jdk1.6中ConcurrentHashMap使用锁分段技术提高并发访问效率。首先将数据分成一段一段地存储，然后给每一段数据配一个锁，当一个线程占用锁访问其中一段数据时，其他段的数据也能被其他线程访问。然而在jdk1.8中的实现已经抛弃了Segment分段锁机制，利用CAS+Synchronized来保证并发更新的安全，底层依然采用数组+链表+红黑树的存储结构。
+在jdk1.6中ConcurrentHashMap使用锁分段技术提高并发访问效率。首先将数据分成一段一段地存储，然后给每一段数据配一个锁，当一个线程占用锁访问其中一段数据时，其他段的数据也能被其他线程访问。然而在jdk1.8中的实现已经抛弃了Segment分段锁机制，利用CAS+Synchronized来保证并发更新的安全，底层依然采用**数组+链表+红黑树的存储结构**。
 
 附：[深入浅出CAS](https://www.jianshu.com/p/fb6e91b013cc)
 
