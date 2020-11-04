@@ -1,6 +1,6 @@
 ## 1、如何创建线程？如何保证线程安全？ {#1、如何创建线程？如何保证线程安全？}
 
-继承Thread类，实现Runnable接口，使用Executor框架来创建线程池。
+继承Thread类，实现Runnable接口，使用Executors框架来创建线程池。
 
 使用volatile、synchronized关键字或者Jdk的各种并发API可以保证线程安全
 
