@@ -51,7 +51,7 @@ PROPAGATION\_NESTED – 如果当前存在事务，则在嵌套事务内执行�
 
 五个隔离级别：
 
-ISOLATION\_DEFAULT 这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别.
+ISOLATION\_DEFAULT：可重复读   这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别.
 
 另外四个与JDBC的隔离级别相对应：
 
@@ -124,8 +124,9 @@ public class LockAspect {
 
 ## 10.对spring框架怎么理解
 
-Spring 的两大核心概念就是 IOC 和 aop​
-IOC​是 spring 的两大核心概念之一，IoC 给我们提供了一个 IOC 得 bean 容器，这个容器会为我们自动的创建对象，不需要我们手动的创建，IOC 有一个强大的功能 DI 依赖注入，我们可以通过 JAVA 代码或者 xml 配置可以把我们想要注入对象依赖的 bean 注入到里面，正是因为这个依赖注入，使得 IOC 有个非常强大的东西，就是解耦。
+Spring 的两大核心概念就是 IOC 和 aop​  
+IOC​是 spring 的两大核心概念之一，IoC 给我们提供了一个 IOC 得 bean 容器，这个容器会为我们自动的创建对象，不需要我们手动的创建，IOC 有一个强大的功能 DI 依赖注入，我们可以通过 JAVA 代码或者 xml 配置可以把我们想要注入对象依赖的 bean 注入到里面，正是因为这个依赖注入，使得 IOC 有个非常强大的东西，就是解耦。  
 举个例子，表现最明显的地方就是 jdbctemplate 如果我们要把它注入到容器里面就会需要依赖一个数据源，如果 jdbctenplate 和 druid 的数据源强耦合在一起，就会导致要用 jdbctemplate 得时候必须用 druid 得数据源，依赖注入就可以帮我们解决这个问题，他可以让我们在注入的时候依赖一个 datesource 接口就可以啦，不需要依赖具体的实现。还有在 springMVC 初始化，就会把所有的 bean 创建好，在程序运行就不需要创建 bean，提升了效率
 
 aop 是面向切面编程，比如说我们平常编程的时候会遇到好多重复的代码，比如说事务和日志，我们需要在好多类里面同时把这些代码同时写进去，spring 的 aop 就为我们提供了一种方式我们可以把共有得代码抽象出来，然后切入到我们想要切入的类里面，极大的方便了代码的书写，提高了复用性，当然 aop 的实现是通过动态代理实现的，如果需要代理的对象有接口我们就使用 jdk 动态代理来完成，如果没有接口就使用 cglib 来实现。
+
