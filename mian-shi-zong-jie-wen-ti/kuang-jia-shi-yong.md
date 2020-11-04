@@ -49,7 +49,7 @@ PROPAGATION\_NEVER – 以非事务方式执行，如果当前存在事务，则
 
 PROPAGATION\_NESTED – 如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与PROPAGATION\_REQUIRED类似的操作。
 
-4个事务隔离级别
+**mysql的4种事务隔离级别：**
 
 读未提交（read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（serializable ）。下面我逐一为你解释：
 
