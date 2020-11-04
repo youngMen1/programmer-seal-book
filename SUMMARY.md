@@ -556,6 +556,7 @@
     * [JVM常见参数](mian-shi-zong-jie-wen-ti/mian-shi-wen-ti-zheng-li/mian-shi-wen-ti.md)
     * [Java基础总结](mian-shi-zong-jie-wen-ti/mian-shi-wen-ti-zheng-li/javaji-chu-zong-jie.md)
   * [三面字节跳动](mian-shi-zong-jie-wen-ti/san-mian-zi-jie-tiao-dong.md)
+  * [2020年面试总结](mian-shi-zong-jie-wen-ti/2020nian-mian-shi-zong-jie.md)
 * [独角兽公司](du-jiao-shou-gong-si.md)
   * [携程旅游网岗位要求和面试题](du-jiao-shou-gong-si/xi-cheng-lv-you-wang-gang-wei-yao-qiu-he-mian-shi-ti.md)
   * [优剪岗位要求和面试题](du-jiao-shou-gong-si/you-jian-gang-wei-yao-qiu-he-mian-shi-ti.md)
