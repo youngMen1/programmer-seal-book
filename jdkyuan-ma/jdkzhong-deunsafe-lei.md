@@ -32,9 +32,6 @@ public final class Unsafe {
 
 Unsafe无法实例化，那么怎么获取Unsafe呢？答案就是通过反射来获取Unsafe：
 
-
-
-
 ```
 public Unsafe getUnsafe() throws IllegalAccessException {
     Field unsafeField = Unsafe.class.getDeclaredFields()[0];
