@@ -293,7 +293,57 @@ ConcurrentHashMap中维护着一个Segment数组，每个Segment可以看做是�
 数据结构：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。  
 线程安全：将原先Segment数组加锁，变更为table数组元素作为锁。
 
-## 1.4.ConcurrentHashMap使用问题
+
+
+## 1.5.Collections.synchronizedList和CopyOnWriteArrayList性能分析
+
+
+## 1.4.ConcurrentHashMap jdk1.7、jdk1.8性能比较
+测试程序如下：
+
+
+```
+public class CompareConcurrentHashMap {
+    private static ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<String, Integer>(40000);
+
+
+    public static void putPerformance(int index, int num) {
+        for (int i = index; i < (num + index) ; i++)
+            map.put(String.valueOf(i), i);
+    }
+public static void getPerformance2() {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 400000; i++)
+            map.get(String.valueOf(i));
+        long end = System.currentTimeMillis();
+        System.out.println("get: it costs " + (end - start) + " ms");
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        final CountDownLatch cdLatch = new CountDownLatch(4);
+        for (int i = 0; i < 4; i++) {
+            final int finalI = i;
+            new Thread(new Runnable() {
+                public void run() {
+                    CompareConcurrentHashMap.putPerformance(100000 * finalI, 100000);
+                    cdLatch.countDown();
+                }
+            }).start();
+        }
+        cdLatch.await();
+        long end = System.currentTimeMillis();
+        System.out.println("put: it costs " + (end - start) + " ms");
+        CompareConcurrentHashMap.getPerformance2();
+    }
+}
+```
+
+程序运行多次后取平均值，结果如下：
+
+764863-20160620210413115-733159871.png
+
+## 1.6.ConcurrentHashMap使用问题
 
 TODO   
 1.使用put\(\)方法因为将指定的元素（key-value）存入当前map，并返回旧值，允许覆盖，
