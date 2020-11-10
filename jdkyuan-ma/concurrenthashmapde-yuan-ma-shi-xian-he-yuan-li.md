@@ -373,8 +373,8 @@ public class App {
     }
 }
 ```
-
-
+结果如下：
+![](/static/image/764863-20160620211116897-1685244837.png)
 
 ## 1.4.ConcurrentHashMap jdk1.7、jdk1.8性能比较
 测试程序如下：
