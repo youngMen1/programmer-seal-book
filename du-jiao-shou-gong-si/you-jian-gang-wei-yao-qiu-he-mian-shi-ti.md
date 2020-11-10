@@ -28,5 +28,10 @@
 
 # 2.面试题
 
+1.介绍自己
+2.最近做的东西，及难点
+3.hashMap底层实现
+4.concurrentHashMap
+
 
 
