@@ -312,6 +312,6 @@ TODO
 分段锁的思想就是：锁的时候不锁整个hash表，而是只锁一部分。
 
 # 3.参考
-https://www.cnblogs.com/everSeeker/p/5601861.html
+ConcurrentHashMap在jdk1.8中的改进：https://www.cnblogs.com/everSeeker/p/5601861.html
 
 
