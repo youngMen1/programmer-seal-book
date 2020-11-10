@@ -285,23 +285,20 @@ ConcurrentHashMap中维护着一个Segment数组，每个Segment可以看做是�
 
 在Segment中通过HashEntry数组来维护其内部的hash表。
 
-**jdk1.8:**
-取消segments字段，直接采用**`private transient volatile HashEntry<K,V>[] table`**保存数据，采用table数组元素作为锁，从而实现了对每一行数据进行加锁，进一步减少并发冲突的概率。
+**jdk1.8:**  
+取消segments字段，直接采用`private transient volatile HashEntry<K,V>[] table`保存数据，采用table数组元素作为锁，从而实现了对每一行数据进行加锁，进一步减少并发冲突的概率。
 
 ## 1.3.jdk1.7和jdk1.8的区别
-数据结构：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。
+
+数据结构：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。  
 线程安全：将原先Segment数组加锁，变更为table数组元素作为锁。
 
-
 ## 1.4.ConcurrentHashMap使用问题
-TODO 
-1.使用put()方法因为将指定的元素（key-value）存入当前map，并返回旧值，允许覆盖，
 
-我们应该使用putIfAbsent()方法，将指定的元素（key-value）存入当前map，并返回旧值，不允许覆盖
+TODO   
+1.使用put\(\)方法因为将指定的元素（key-value）存入当前map，并返回旧值，允许覆盖，
 
-
-
-
+我们应该使用putIfAbsent\(\)方法，将指定的元素（key-value）存入当前map，并返回旧值，不允许覆盖
 
 # 2.总结
 
@@ -312,6 +309,6 @@ TODO
 分段锁的思想就是：锁的时候不锁整个hash表，而是只锁一部分。
 
 # 3.参考
-ConcurrentHashMap在jdk1.8中的改进：https://www.cnblogs.com/everSeeker/p/5601861.html
 
+ConcurrentHashMap在jdk1.8中的改进：[https://www.cnblogs.com/everSeeker/p/5601861.html](https://www.cnblogs.com/everSeeker/p/5601861.html)
 
