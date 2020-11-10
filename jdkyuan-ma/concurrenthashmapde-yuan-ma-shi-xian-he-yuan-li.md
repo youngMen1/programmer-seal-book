@@ -293,11 +293,9 @@ ConcurrentHashMap中维护着一个Segment数组，每个Segment可以看做是�
 数据结构：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。  
 线程安全：将原先Segment数组加锁，变更为table数组元素作为锁。
 
-
-
 ## 1.4.ConcurrentHashMap jdk1.7、jdk1.8性能比较
-测试程序如下：
 
+测试程序如下：
 
 ```
 public class CompareConcurrentHashMap {
@@ -341,8 +339,8 @@ public static void getPerformance2() {
 ![](/static/image/764863-20160620210413115-733159871.png)
 
 ## 1.5.Collections.synchronizedList和CopyOnWriteArrayList性能分析
-CopyOnWriteArrayList在线程对其进行变更操作的时候，会拷贝一个新的数组以存放新的字段，因此写操作性能很差；而Collections.synchronizedList读操作采用了synchronized，因此读性能较差。以下为测试程序：
 
+CopyOnWriteArrayList在线程对其进行变更操作的时候，会拷贝一个新的数组以存放新的字段，因此写操作性能很差；而Collections.synchronizedList读操作采用了synchronized，因此读性能较差。以下为测试程序：
 
 ```
 public class App {
@@ -418,12 +416,15 @@ System.out.println("copyOnWriteArrayList get: " + (System.currentTimeMillis() - 
 }
 }
 ```
-结果如下：
+
+结果如下：  
 ![](/static/image/764863-20160620211116897-1685244837.png)
 
 ## 1.6.ConcurrentHashMap使用问题
 
-TODO   
+TODO
+
+1.concurrentHashMap可以解决  
 1.使用put\(\)方法因为将指定的元素（key-value）存入当前map，并返回旧值，允许覆盖，
 
 我们应该使用putIfAbsent\(\)方法，将指定的元素（key-value）存入当前map，并返回旧值，不允许覆盖
