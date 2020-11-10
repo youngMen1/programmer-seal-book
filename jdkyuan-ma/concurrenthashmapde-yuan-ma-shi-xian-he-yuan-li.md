@@ -424,7 +424,7 @@ System.out.println("copyOnWriteArrayList get: " + (System.currentTimeMillis() - 
 
 TODO
 
-1.concurrentHashMap可以解决  
+1.concurrentHashMap可以解决线程安全问题，但是没对复合逻辑加锁导致业务逻辑错误，如果你希望在一整段业务逻辑中，对容器的操作都保持整体一致的话，需要加锁处理。  
 1.使用put\(\)方法因为将指定的元素（key-value）存入当前map，并返回旧值，允许覆盖，
 
 我们应该使用putIfAbsent\(\)方法，将指定的元素（key-value）存入当前map，并返回旧值，不允许覆盖
