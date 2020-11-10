@@ -193,14 +193,11 @@ public class ConcurrentHashMap<K, V> extends AbstractMap<K, V>
 
 ### 1.1.2.ConcurrentHashMap在jdk1.8中的设计
 
-**改进一：取消segments字段，直接采用`transient volatile HashEntry<K,V>[] table`保存数据，采用table数组元素作为锁，从而实现了对每一行数据进行加锁，进一步减少并发冲突的概率。**
+**改进一：取消segments字段，直接采用**`transient volatile HashEntry<K,V>[] table`**保存数据，采用table数组元素作为锁，从而实现了对每一行数据进行加锁，进一步减少并发冲突的概率。**
 
-**改进二：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。对于hash表来说，最核心的能力在于将key hash之后能均匀的分布在数组中。如果hash之后散列的很均匀，那么table数组中的每个队列长度主要为0或者1。但实际情况并非总是如此理想，虽然ConcurrentHashMap类默认的加载因子为0.75，但是在数据量过大或者运气不佳的情况下，还是会存在一些队列长度过长的情况，如果还是采用单向列表方式，那么查询某个节点的时间复杂度为O(n)；因此，对于个数超过8(默认值)的列表，jdk1.8中采用了红黑树的结构，那么查询的时间复杂度可以降低到O(logN)，可以改进性能。**
-
+**改进二：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。对于hash表来说，最核心的能力在于将key hash之后能均匀的分布在数组中。如果hash之后散列的很均匀，那么table数组中的每个队列长度主要为0或者1。但实际情况并非总是如此理想，虽然ConcurrentHashMap类默认的加载因子为0.75，但是在数据量过大或者运气不佳的情况下，还是会存在一些队列长度过长的情况，如果还是采用单向列表方式，那么查询某个节点的时间复杂度为O\(n\)；因此，对于个数超过8\(默认值\)的列表，jdk1.8中采用了红黑树的结构，那么查询的时间复杂度可以降低到O\(logN\)，可以改进性能。**
 
 为了说明以上2个改动，看一下put操作是如何实现的。
-
-
 
 ```
 final V putVal(K key, V value, boolean onlyIfAbsent) {
@@ -276,11 +273,15 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 }
 ```
 
-另外，在其他方面也有一些小的改进，比如新增字段 `private transient volatile CounterCell[] counterCells;` 可方便的计算hashmap中所有元素的个数，性能大大优于jdk1.7中的size()方法。
-
-
+另外，在其他方面也有一些小的改进，比如新增字段 `private transient volatile CounterCell[] counterCells;` 可方便的计算hashmap中所有元素的个数，性能大大优于jdk1.7中的size\(\)方法。
 
 ## 1.2.如何实现线程安全的
+
+**jdk1.7**
+
+
+
+
 
 ## 1.3.jdk1.7和jdk1.8的区别
 
