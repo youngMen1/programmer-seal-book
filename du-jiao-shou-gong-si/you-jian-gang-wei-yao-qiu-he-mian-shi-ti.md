@@ -33,7 +33,7 @@
 3.hashMap底层实现  
 4.concurrentHashMap底层实现，怎样实现线程安全的  
 5.jvm内存区域
-6.synchronize内存语义  
+6.synchronize内存语义及不同用法的区别(主要效率和性能上的影响，粒度不能效率不同)  
 7.垃圾收集器和垃圾收集算法  
 8.说一下CMS收集器  
 9.说一下数据库InnoDB存储引擎  
