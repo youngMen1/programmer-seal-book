@@ -297,7 +297,7 @@ ConcurrentHashMap中维护着一个Segment数组，每个Segment可以看做是�
 TODO 
 1.使用put()方法因为将指定的元素（key-value）存入当前map，并返回旧值，允许覆盖，
 
-我们应该使用putIfAbsent()方法
+我们应该使用putIfAbsent()方法，将指定的元素（key-value）存入当前map，并返回旧值，不允许覆盖
 
 
 
