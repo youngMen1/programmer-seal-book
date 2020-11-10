@@ -290,6 +290,10 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 
 在ConcurrentHashMap没有出现以前，jdk使用hashtable来实现线程安全，但是hashtable是将整个hash表锁住，所以效率很低下。
 
+针对HashTable会锁整个hash表的问题，ConcurrentHashMap提出了分段锁的解决方案。
+
+分段锁的思想就是：锁的时候不锁整个hash表，而是只锁一部分。
+
 # 3.参考
 
 
