@@ -6,6 +6,7 @@ ConcurrentHashMap使用了锁分段（减小锁范围）、CAS（乐观锁，减
 
 ### 1.1.1.ConcurrentHashMap在jdk1.7中的设计
 
+先简单看下ConcurrentHashMap类在jdk1.7中的设计，其基本结构如图所示：
 764863-20160620202714522-1795796503.png
 
 
