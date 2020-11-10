@@ -28,10 +28,10 @@
 
 # 2.面试题
 
-1.介绍自己
-2.最近做的东西，及难点
-3.hashMap底层实现
-4.concurrentHashMap
+1.介绍自己  
+2.最近做的东西，及难点  
+3.hashMap底层实现  
+4.concurrentHashMap底层实现，怎样实现线程安全的
 
 
 
