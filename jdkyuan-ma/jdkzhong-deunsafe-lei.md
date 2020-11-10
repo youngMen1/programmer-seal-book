@@ -51,3 +51,5 @@ Unsafe的功能如下图：
 
 jdk中的Unsafe类：[https://www.jianshu.com/p/db8dce09232d](https://www.jianshu.com/p/db8dce09232d)
 
+Unsafe类的介绍和使用：https://juejin.im/post/6844903805838950413
+
