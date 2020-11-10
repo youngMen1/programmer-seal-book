@@ -41,8 +41,9 @@ public Unsafe getUnsafe() throws IllegalAccessException {
 }
 ```
 
-
-11963487-607a966eba2eed13.webp
+## 主要功能
+Unsafe的功能如下图：
+![](/static/image/11963487-607a966eba2eed13.webp)
 
 # 2.参考
 jdk中的Unsafe类：https://www.jianshu.com/p/db8dce09232d
