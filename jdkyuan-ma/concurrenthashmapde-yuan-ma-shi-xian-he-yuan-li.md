@@ -277,8 +277,15 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 
 ## 1.2.如何实现线程安全的
 
-**jdk1.7**
+**jdk1.7:**
 
+ConcurrentHashMap中维护着一个Segment数组，每个Segment可以看做是一个HashMap。
+
+而Segment本身继承了ReentrantLock，它本身就是一个锁。
+
+在Segment中通过HashEntry数组来维护其内部的hash表。
+
+**jdk1.8:**
 
 
 
