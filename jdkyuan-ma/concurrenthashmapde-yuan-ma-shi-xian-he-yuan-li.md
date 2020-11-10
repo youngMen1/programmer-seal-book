@@ -1,6 +1,6 @@
 # 1.ConcurrentHashMap的源码实现和原理
 
-ConcurrentHashMap则使用了锁分段（减小锁范围）、CAS（乐观锁，减小上下文切换开销，无阻塞）等等技术
+ConcurrentHashMap使用了锁分段（减小锁范围）、CAS（乐观锁，减小上下文切换开销，无阻塞）等等技术
 
 ## 1.1.ConcurrentHashMap源码如何实现的
 
