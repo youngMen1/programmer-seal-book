@@ -6,6 +6,8 @@ ConcurrentHashMap使用了锁分段（减小锁范围）、CAS（乐观锁，减
 
 ### 1.1.1.ConcurrentHashMap在jdk1.7中的设计
 
+764863-20160620202714522-1795796503.png
+
 
 ### 1.1.2.ConcurrentHashMap在jdk1.8中的设计
 
@@ -23,7 +25,7 @@ ConcurrentHashMap使用了锁分段（减小锁范围）、CAS（乐观锁，减
 ## 1.4.ConcurrentHashMap使用问题
 
 # 2.总结
-TODO 
+在ConcurrentHashMap没有出现以前，jdk使用hashtable来实现线程安全，但是hashtable是将整个hash表锁住，所以效率很低下。
 
 # 3.参考
 
