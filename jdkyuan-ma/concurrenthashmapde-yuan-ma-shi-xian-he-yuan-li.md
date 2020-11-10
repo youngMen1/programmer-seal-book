@@ -276,7 +276,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 }
 ```
 
-另外，在其他方面也有一些小的改进，比如新增字段 transient volatile CounterCell[] counterCells; 可方便的计算hashmap中所有元素的个数，性能大大优于jdk1.7中的size()方法。
+另外，在其他方面也有一些小的改进，比如新增字段 `private transient volatile CounterCell[] counterCells;` 可方便的计算hashmap中所有元素的个数，性能大大优于jdk1.7中的size()方法。
 
 
 
