@@ -8,6 +8,8 @@ ConcurrentHashMap使用了锁分段（减小锁范围）、CAS（乐观锁，减
 
 先简单看下ConcurrentHashMap类在jdk1.7中的设计，其基本结构如图所示：
 764863-20160620202714522-1795796503.png
+每一个segment都是一个HashEntry<K,V>[] table， table中的每一个元素本质上都是一个HashEntry的单向队列。比如table[3]为首节点，table[3]->next为节点1，之后为节点2，依次类推。
+
 
 
 ### 1.1.2.ConcurrentHashMap在jdk1.8中的设计
