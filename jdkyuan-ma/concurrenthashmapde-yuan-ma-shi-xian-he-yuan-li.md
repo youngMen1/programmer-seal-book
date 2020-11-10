@@ -4,10 +4,13 @@ ConcurrentHashMap使用了锁分段（减小锁范围）、CAS（乐观锁，减
 
 ## 1.1.ConcurrentHashMap源码如何实现的
 
-### 1.1.1.简单回顾ConcurrentHashMap在jdk1.7中的设计
+### 1.1.1.ConcurrentHashMap在jdk1.7中的设计
 
 
-### 1.1.2.
+### 1.1.2.ConcurrentHashMap在jdk1.8中的设计
+
+
+
 
 
 
