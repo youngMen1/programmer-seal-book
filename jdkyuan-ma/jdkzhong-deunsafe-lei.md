@@ -18,10 +18,32 @@ public final class Unsafe {
     // 单例对象
     private static final Unsafe theUnsafe = new Unsafe();
 
+   // 构造函数是private的，不允许外部实例化
+    private Unsafe() {
+    }
+
 ....
 }
 
 ```
+因此我们无法在外部对Unsafe进行实例化。
+
+## 获取Unsafe
+
+Unsafe无法实例化，那么怎么获取Unsafe呢？答案就是通过反射来获取Unsafe：
+
+
+
+
+```
+public Unsafe getUnsafe() throws IllegalAccessException {
+    Field unsafeField = Unsafe.class.getDeclaredFields()[0];
+    unsafeField.setAccessible(true);
+    Unsafe unsafe = (Unsafe) unsafeField.get(null);
+    return unsafe;
+}
+```
+
 
 11963487-607a966eba2eed13.webp
 
