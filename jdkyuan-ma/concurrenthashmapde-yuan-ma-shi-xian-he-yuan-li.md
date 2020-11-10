@@ -341,7 +341,7 @@ public static void getPerformance2() {
 
 程序运行多次后取平均值，结果如下：
 
-764863-20160620210413115-733159871.png
+![](/static/image/764863-20160620210413115-733159871.png)
 
 ## 1.6.ConcurrentHashMap使用问题
 
