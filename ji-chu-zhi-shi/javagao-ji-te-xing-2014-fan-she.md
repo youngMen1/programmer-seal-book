@@ -40,7 +40,7 @@
 
 * **获得类中属性相关的方法**
 
-| 方法  | 用途 |
+| 方法 | 用途 |
 | :--- | :--- |
 | getField\(String name\) | 获得某个公有的属性对象 |
 | getFields\(\) | 获得所有公有的属性对象 |
@@ -94,11 +94,9 @@
 
 | 方法 | 用途 |
 | :--- | :--- |
-| equals(Object obj) | 属性与obj相等则返回true |
-| get(Object obj) | 获得obj中对应的属性值 |
-| set(Object obj, Object value) | 设置obj中对应属性值 |
-
-
+| equals\(Object obj\) | 属性与obj相等则返回true |
+| get\(Object obj\) | 获得obj中对应的属性值 |
+| set\(Object obj, Object value\) | 设置obj中对应属性值 |
 
 ### 1.2.3.Method类
 
@@ -112,9 +110,19 @@
 
 [Constructor](https://developer.android.google.cn/reference/java/lang/reflect/Constructor)代表类的构造方法。
 
-| 方法  | 用途 |
+| 方法 | 用途 |
 | :--- | :--- |
 | newInstance\(Object... initargs\) | 根据传递的参数创建类的对象 |
+
+## 1.3.示例
+
+为了演示反射的使用，首先构造一个与书籍相关的model——Book.java，然后通过反射方法示例创建对象、反射私有构造方法、反射私有属性、反射私有方法，最后给出两个比较复杂的反射示例——获得当前ZenMode和关机Shutdown。
+
+
+
+
+
+
 
 # 2.参考
 
