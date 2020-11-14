@@ -341,7 +341,40 @@ public class ReflectClass {
 08-27 15:11:38.004 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectDemo:  zenmode = 0
 ```
 
-# 2.参考
+## 
+
+## 2.总结
+
+本文列举了反射机制使用过程中常用的、重要的一些类及其方法，更多信息和用法需要近一步的阅读Google提供的相关文档和示例。
+
+在阅读Class类文档时发现一个特点，以通过反射获得Method对象为例，一般会提供四种方法，getMethod\(parameterTypes\)、getMethods\(\)、getDeclaredMethod\(parameterTypes\)和getDeclaredMethods\(\)。getMethod\(parameterTypes\)用来获取某个公有的方法的对象，getMethods\(\)获得该类所有公有的方法，getDeclaredMethod\(parameterTypes\)获得该类某个方法，getDeclaredMethods\(\)获得该类所有方法。**带有Declared修饰的方法可以反射到私有的方法，没有Declared修饰的只能用来反射公有的方法。**其他的Annotation、Field、Constructor也是如此。
+
+在ReflectClass类中还提供了两种反射PowerManager.shutdown\(\)的方法，在调用的时候会输出如下log，提示没有相关权限。之前在项目中尝试反射其他方法的时候还遇到过有权限和没权限返回的值不一样的情况。**如果源码中明确进行了权限验证，而你的应用又无法获得这个权限的话，建议就不要浪费时间反射了。**
+
+```
+ W/System.err: java.lang.reflect.InvocationTargetException
+ W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
+ W/System.err:     at .ReflectClass.shutDown(ReflectClass.java:104)
+ W/System.err:     at .MainActivity$1.onClick(MainActivity.java:25)
+ W/System.err:     at android.view.View.performClick(View.java:6259)
+ W/System.err:     at android.view.View$PerformClick.run(View.java:24732)
+ W/System.err:     at android.os.Handler.handleCallback(Handler.java:789)
+ W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:98)
+ W/System.err:     at android.os.Looper.loop(Looper.java:164)
+ W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:6592)
+ W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
+ W/System.err:     at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+ W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:769)
+ W/System.err: Caused by: java.lang.SecurityException: Neither user 10224 nor current process has android.permission.REBOOT.
+ W/System.err:     at android.os.Parcel.readException(Parcel.java:1942)
+ W/System.err:     at android.os.Parcel.readException(Parcel.java:1888)
+ W/System.err:     at android.os.IPowerManager$Stub$Proxy.shutdown(IPowerManager.java:787)
+ W/System.err:  ... 12 more
+```
+
+
+
+# 3.参考
 
 Java高级特性—反射：[https://www.jianshu.com/p/9be58ee20dee](https://www.jianshu.com/p/9be58ee20dee)
 
