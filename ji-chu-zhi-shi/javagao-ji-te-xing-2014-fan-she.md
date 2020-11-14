@@ -312,7 +312,33 @@ public class ReflectClass {
 ## 1.3.3.**调用相应反射逻辑方法**
 
 ```
+        try {
+            // 创建对象
+            ReflectClass.reflectNewInstance();
 
+            // 反射私有的构造方法
+            ReflectClass.reflectPrivateConstructor();
+
+            // 反射私有属性
+            ReflectClass.reflectPrivateField();
+
+            // 反射私有方法
+            ReflectClass.reflectPrivateMethod();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        Log.d(TAG," zenmode = " + ReflectClass.getZenMode());
+```
+
+Log输出结果如下：
+
+```
+08-27 15:11:37.999 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectNewInstance book = Book{name='Android进阶之光', author='刘望舒'}
+08-27 15:11:38.000 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectPrivateConstructor book = Book{name='Android开发艺术探索', author='任玉刚'}
+08-27 15:11:38.000 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectPrivateField tag = BookTag
+08-27 15:11:38.000 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectPrivateMethod string = I am declaredMethod 1 !
+08-27 15:11:38.004 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectDemo:  zenmode = 0
 ```
 
 # 2.参考
