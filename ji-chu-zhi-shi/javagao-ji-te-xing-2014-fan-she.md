@@ -331,7 +331,7 @@ public class ReflectClass {
         Log.d(TAG," zenmode = " + ReflectClass.getZenMode());
 ```
 
-Log输出结果如下：
+### 1.3.4.Log输出结果如下：
 
 ```
 08-27 15:11:37.999 11987-11987/com.android.peter.reflectdemo D/peter.log.ReflectClass: reflectNewInstance book = Book{name='Android进阶之光', author='刘望舒'}
