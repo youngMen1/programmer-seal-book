@@ -22,6 +22,28 @@
 [Class](https://developer.android.google.cn/reference/java/lang/Class)代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。
 
 * **获得类相关的方法**
+
+| 方法 |
+| :--- |
+
+
+| 1 | 用途 |
+| :--- | :--- |
+| asSubclass\(Class&lt;U&gt; clazz\) | 把传递的类的对象转换成代表其子类的对象 |
+| Cast | 把对象转换成代表类或是接口的对象 |
+| getClassLoader\(\) | 获得类的加载器 |
+| getClasses\(\) | 返回一个数组，数组中包含该类中所有公共类和接口类的对象 |
+| getDeclaredClasses\(\) | 返回一个数组，数组中包含该类中所有类和接口类的对象 |
+| forName\(String className\) | 根据类名返回类的对象 |
+| getName\(\) | 获得类的完整路径名字 |
+| newInstance\(\) | 创建类的实例 |
+| getPackage\(\) | 获得类的包 |
+| getSimpleName\(\) | 获得类的名字 |
+| getSuperclass\(\) | 获得当前类继承的父类的名字 |
+| getInterfaces\(\) | 获得当前类实现的类或是接口 |
+
+
+
 * **获得类中属性相关的方法**
 * **获得类中注解相关的方法**
 * **获得类中构造器相关的方法**
