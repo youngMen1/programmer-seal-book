@@ -92,58 +92,19 @@
 
 [Field](https://developer.android.google.cn/reference/java/lang/reflect/Field)代表类的成员变量（成员变量也称为类的属性）。
 
-| 方法 |
-| :--- |
-
-
-| 用途 |
-| :--- |
-
-
-| equals\(Object obj\) | 属性与obj相等则返回true |
+| 方法 | 用途 |
 | :--- | :--- |
+| equals(Object obj) | 属性与obj相等则返回true |
+| get(Object obj) | 获得obj中对应的属性值 |
+| set(Object obj, Object value) | 设置obj中对应属性值 |
 
 
-| get\(Object obj\) | 获得obj中对应的属性值 |
-| :--- | :--- |
-
-
-| set\(Object obj, Object value\) | 设置obj中对应属性值 |
-| :--- | :--- |
-
-
-  
-
-
-  
-
-
-作者：peter\_RD\_nj
-
-  
-
-
-链接：https://www.jianshu.com/p/9be58ee20dee
-
-  
-
-
-来源：简书
-
-  
-
-
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ### 1.2.3.Method类
 
 [Method](https://developer.android.google.cn/reference/java/lang/reflect/Method)代表类的方法。
 
-| 方法 |
-| :--- |
-
-
-|  | 用途 |
+| 方法 | 用途 |
 | :--- | :--- |
 | invoke\(Object obj, Object... args\) | 传递object对象及参数调用该对象对应的方法 |
 
@@ -151,11 +112,7 @@
 
 [Constructor](https://developer.android.google.cn/reference/java/lang/reflect/Constructor)代表类的构造方法。
 
-| 方法 |
-| :--- |
-
-
-|  | 用途 |
+| 方法  | 用途 |
 | :--- | :--- |
 | newInstance\(Object... initargs\) | 根据传递的参数创建类的对象 |
 
