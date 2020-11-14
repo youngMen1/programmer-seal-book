@@ -21,21 +21,24 @@
 
 [Class](https://developer.android.google.cn/reference/java/lang/Class)代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。
 
-
-
-
-
-
-
-
-
-
+* **获得类相关的方法**
+* **获得类中属性相关的方法**
+* **获得类中注解相关的方法**
+* **获得类中构造器相关的方法**
+* **获得类中方法相关的方法**
+* **类中其他重要的方法**
 
 ### 1.2.2.Field类
 
+[Field](https://developer.android.google.cn/reference/java/lang/reflect/Field)代表类的成员变量（成员变量也称为类的属性）。
+
 ### 1.2.3.Method类
 
+[Method](https://developer.android.google.cn/reference/java/lang/reflect/Method)代表类的方法。
+
 ### 1.2.4.Constructor类
+
+[Constructor](https://developer.android.google.cn/reference/java/lang/reflect/Constructor)代表类的构造方法。
 
 # 2.参考
 
