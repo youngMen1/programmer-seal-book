@@ -116,9 +116,9 @@
 
 ## 1.3.示例
 
-为了演示反射的使用，首先构造一个与书籍相关的model——Book.java，然后通过反射方法示例创建对象、反射私有构造方法、反射私有属性、反射私有方法，最后给出两个比较复杂的反射示例——获得当前ZenMode和关机Shutdown。
+为了演示反射的使用JVM读取相应类的字节码文件，首先构造一个与书籍相关的model——Book.java，然后通过反射方法示例创建对象、反射私有构造方法、反射私有属性、反射私有方法，最后给出两个比较复杂的反射示例——获得当前ZenMode和关机Shutdown。
 
-### 1.3.1.**被反射类Book.java**
+### 1.3.1.**被反射类Book.class**
 
 ```
 public class Book{
@@ -371,8 +371,6 @@ public class ReflectClass {
  W/System.err:     at android.os.IPowerManager$Stub$Proxy.shutdown(IPowerManager.java:787)
  W/System.err:  ... 12 more
 ```
-
-
 
 # 3.参考
 
