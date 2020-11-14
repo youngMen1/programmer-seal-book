@@ -43,12 +43,80 @@
 | getInterfaces\(\) | 获得当前类实现的类或是接口 |
 
 * **获得类中属性相关的方法**
+
+| 方法 |
+| :--- |
+
+
+| 1 | 用途 |
+| :--- | :--- |
+| getField\(String name\) | 获得某个公有的属性对象 |
+| getFields\(\) | 获得所有公有的属性对象 |
+| getDeclaredField\(String name\) | 获得某个属性对象 |
+| getDeclaredFields\(\) | 获得所有属性对象 |
+
 * **获得类中注解相关的方法**
+
+
+
+| 方法 |
+| :--- |
+
+
+| 1 | 用途 |
+| :--- | :--- |
+| getAnnotation\(Class&lt;A&gt; annotationClass\) | 返回该类中与参数类型匹配的公有注解对象 |
+| getAnnotations\(\) | 返回该类所有的公有注解对象 |
+| getDeclaredAnnotation\(Class&lt;A&gt; annotationClass\) | 返回该类中与参数类型匹配的所有注解对象 |
+| getDeclaredAnnotations\(\) | 返回该类所有的注解对象 |
+
 * **获得类中构造器相关的方法**
+
+| 方法 |
+| :--- |
+
+
+| 1 | 用途 |
+| :--- | :--- |
+| getConstructor\(Class...&lt;?&gt; parameterTypes\) | 获得该类中与参数类型匹配的公有构造方法 |
+| getConstructors\(\) | 获得该类的所有公有构造方法 |
+| getDeclaredConstructor\(Class...&lt;?&gt; parameterTypes\) | 获得该类中与参数类型匹配的构造方法 |
+| getDeclaredConstructors\(\) | 获得该类所有构造方法 |
+
 * **获得类中方法相关的方法**
+
+| 方法 |
+| :--- |
+
+
+|  | 用途 |
+| :--- | :--- |
+| getMethod\(String name, Class...&lt;?&gt; parameterTypes\) | 获得该类某个公有的方法 |
+| getMethods\(\) | 获得该类所有公有的方法 |
+| getDeclaredMethod\(String name, Class...&lt;?&gt; parameterTypes\) | 获得该类某个方法 |
+| getDeclaredMethods\(\) | 获得该类所有方法 |
+
 * **类中其他重要的方法**
 
+| 方法 |
+| :--- |
+
+
+|  | 用途 |
+| :--- | :--- |
+| isAnnotation\(\) | 如果是注解类型则返回true |
+| isAnnotationPresent\(Class&lt;? extends Annotation&gt; annotationClass\) | 如果是指定类型注解类型则返回true |
+| isAnonymousClass\(\) | 如果是匿名类则返回true |
+| isArray\(\) | 如果是一个数组类则返回true |
+| isEnum\(\) | 如果是枚举类则返回true |
+| isInstance\(Object obj\) | 如果obj是该类的实例则返回true |
+| isInterface\(\) | 如果是接口类则返回true |
+| isLocalClass\(\) | 如果是局部类则返回true |
+| isMemberClass\(\) | 如果是内部类则返回true |
+
 ### 1.2.2.Field类
+
+
 
 [Field](https://developer.android.google.cn/reference/java/lang/reflect/Field)代表类的成员变量（成员变量也称为类的属性）。
 
