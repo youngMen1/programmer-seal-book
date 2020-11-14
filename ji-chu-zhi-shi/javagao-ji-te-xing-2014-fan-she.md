@@ -19,12 +19,23 @@
 
 ### 1.2.1.Class类
 
+[Class](https://developer.android.google.cn/reference/java/lang/Class)代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。
+
+
+
+
+
+
+
+
+
+
+
 ### 1.2.2.Field类
 
 ### 1.2.3.Method类
 
 ### 1.2.4.Constructor类
-
 
 # 2.参考
 
